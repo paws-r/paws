@@ -15,6 +15,21 @@ in the API response.}
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  vpceConfigurations = list(
+    list(
+      arn = "string",
+      vpceConfigurationName = "string",
+      vpceServiceName = "string",
+      serviceDnsName = "string",
+      vpceConfigurationDescription = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns information about all Amazon Virtual Private Cloud (VPC)
 endpoint configurations in the AWS account.

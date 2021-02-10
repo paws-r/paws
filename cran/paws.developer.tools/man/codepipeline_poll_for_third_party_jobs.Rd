@@ -12,6 +12,17 @@ codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize)
 
 \item{maxBatchSize}{The maximum number of jobs to return in a poll for jobs call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobs = list(
+    list(
+      clientId = "string",
+      jobId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Determines whether there are any third party jobs for a job worker to
 act on. Used for partner actions only.

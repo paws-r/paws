@@ -11,6 +11,9 @@ robomaker_delete_robot_application(application, applicationVersion)
 
 \item{applicationVersion}{The version of the robot application to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a robot application.
 }

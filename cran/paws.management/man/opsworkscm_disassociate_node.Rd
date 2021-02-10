@@ -22,6 +22,12 @@ associated. By default only one organization named \code{default} can
 exist.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NodeAssociationStatusToken = "string"
+)
+}
+}
 \description{
 Disassociates a node from an AWS OpsWorks CM server, and removes the
 node from the server's managed nodes. After a node is disassociated, the

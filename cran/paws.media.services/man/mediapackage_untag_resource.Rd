@@ -11,6 +11,9 @@ mediapackage_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The key(s) of tag to be deleted}
 }
+\value{
+An empty list.
+}
 \description{
 Untag resource
 }

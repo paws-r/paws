@@ -11,6 +11,9 @@ codecommit_update_default_branch(repositoryName, defaultBranchName)
 
 \item{defaultBranchName}{[required] The name of the branch to set as the default.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets or changes the default branch name for the specified repository.
 

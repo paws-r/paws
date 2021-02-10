@@ -43,6 +43,17 @@ NULL
 #' You must specify the ARN or the name, and you can specify both.
 #' @param FirewallPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the firewall policy.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   FirewallPolicyArn = "string",
+#'   UpdateToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_firewall_policy(
@@ -115,6 +126,21 @@ networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, Firewa
 #' 
 #' You must specify the ARN or the name, and you can specify both.
 #' @param SubnetMappings &#91;required&#93; The IDs of the subnets that you want to associate with the firewall.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   SubnetMappings = list(
+#'     list(
+#'       SubnetId = "string"
+#'     )
+#'   ),
+#'   UpdateToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -215,6 +241,53 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' @param Description A description of the firewall.
 #' @param Tags The key:value pairs to associate with the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Firewall = list(
+#'     FirewallName = "string",
+#'     FirewallArn = "string",
+#'     FirewallPolicyArn = "string",
+#'     VpcId = "string",
+#'     SubnetMappings = list(
+#'       list(
+#'         SubnetId = "string"
+#'       )
+#'     ),
+#'     DeleteProtection = TRUE|FALSE,
+#'     SubnetChangeProtection = TRUE|FALSE,
+#'     FirewallPolicyChangeProtection = TRUE|FALSE,
+#'     Description = "string",
+#'     FirewallId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   FirewallStatus = list(
+#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC",
+#'     SyncStates = list(
+#'       list(
+#'         Attachment = list(
+#'           SubnetId = "string",
+#'           EndpointId = "string",
+#'           Status = "CREATING"|"DELETING"|"SCALING"|"READY"
+#'         ),
+#'         Config = list(
+#'           list(
+#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_firewall(
@@ -292,6 +365,27 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   FirewallPolicyResponse = list(
+#'     FirewallPolicyName = "string",
+#'     FirewallPolicyArn = "string",
+#'     FirewallPolicyId = "string",
+#'     Description = "string",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -459,6 +553,29 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   RuleGroupResponse = list(
+#'     RuleGroupArn = "string",
+#'     RuleGroupName = "string",
+#'     RuleGroupId = "string",
+#'     Description = "string",
+#'     Type = "STATELESS"|"STATEFUL",
+#'     Capacity = 123,
+#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -644,6 +761,53 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' 
 #' You must specify the ARN or the name, and you can specify both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Firewall = list(
+#'     FirewallName = "string",
+#'     FirewallArn = "string",
+#'     FirewallPolicyArn = "string",
+#'     VpcId = "string",
+#'     SubnetMappings = list(
+#'       list(
+#'         SubnetId = "string"
+#'       )
+#'     ),
+#'     DeleteProtection = TRUE|FALSE,
+#'     SubnetChangeProtection = TRUE|FALSE,
+#'     FirewallPolicyChangeProtection = TRUE|FALSE,
+#'     Description = "string",
+#'     FirewallId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   FirewallStatus = list(
+#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC",
+#'     SyncStates = list(
+#'       list(
+#'         Attachment = list(
+#'           SubnetId = "string",
+#'           EndpointId = "string",
+#'           Status = "CREATING"|"DELETING"|"SCALING"|"READY"
+#'         ),
+#'         Config = list(
+#'           list(
+#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_firewall(
@@ -689,6 +853,26 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
 #' 
 #' You must specify the ARN or the name, and you can specify both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallPolicyResponse = list(
+#'     FirewallPolicyName = "string",
+#'     FirewallPolicyArn = "string",
+#'     FirewallPolicyId = "string",
+#'     Description = "string",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_firewall_policy(
@@ -729,6 +913,9 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group or firewall policy
 #' whose resource policy you want to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -779,6 +966,28 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #' This setting is required for requests that do not include the
 #' `RuleGroupARN`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleGroupResponse = list(
+#'     RuleGroupArn = "string",
+#'     RuleGroupName = "string",
+#'     RuleGroupId = "string",
+#'     Description = "string",
+#'     Type = "STATELESS"|"STATEFUL",
+#'     Capacity = 123,
+#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_rule_group(
@@ -823,6 +1032,54 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
 #' 
 #' You must specify the ARN or the name, and you can specify both.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   Firewall = list(
+#'     FirewallName = "string",
+#'     FirewallArn = "string",
+#'     FirewallPolicyArn = "string",
+#'     VpcId = "string",
+#'     SubnetMappings = list(
+#'       list(
+#'         SubnetId = "string"
+#'       )
+#'     ),
+#'     DeleteProtection = TRUE|FALSE,
+#'     SubnetChangeProtection = TRUE|FALSE,
+#'     FirewallPolicyChangeProtection = TRUE|FALSE,
+#'     Description = "string",
+#'     FirewallId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   FirewallStatus = list(
+#'     Status = "PROVISIONING"|"DELETING"|"READY",
+#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC",
+#'     SyncStates = list(
+#'       list(
+#'         Attachment = list(
+#'           SubnetId = "string",
+#'           EndpointId = "string",
+#'           Status = "CREATING"|"DELETING"|"SCALING"|"READY"
+#'         ),
+#'         Config = list(
+#'           list(
+#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -869,6 +1126,60 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #' 
 #' You must specify the ARN or the name, and you can specify both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   FirewallPolicyResponse = list(
+#'     FirewallPolicyName = "string",
+#'     FirewallPolicyArn = "string",
+#'     FirewallPolicyId = "string",
+#'     Description = "string",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   FirewallPolicy = list(
+#'     StatelessRuleGroupReferences = list(
+#'       list(
+#'         ResourceArn = "string",
+#'         Priority = 123
+#'       )
+#'     ),
+#'     StatelessDefaultActions = list(
+#'       "string"
+#'     ),
+#'     StatelessFragmentDefaultActions = list(
+#'       "string"
+#'     ),
+#'     StatelessCustomActions = list(
+#'       list(
+#'         ActionName = "string",
+#'         ActionDefinition = list(
+#'           PublishMetricAction = list(
+#'             Dimensions = list(
+#'               list(
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StatefulRuleGroupReferences = list(
+#'       list(
+#'         ResourceArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_firewall_policy(
@@ -914,6 +1225,25 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
 #' 
 #' You must specify the ARN or the name, and you can specify both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   LoggingConfiguration = list(
+#'     LogDestinationConfigs = list(
+#'       list(
+#'         LogType = "ALERT"|"FLOW",
+#'         LogDestinationType = "S3"|"CloudWatchLogs"|"KinesisDataFirehose",
+#'         LogDestination = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_logging_configuration(
@@ -954,6 +1284,14 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group or firewall policy
 #' whose resource policy you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1003,6 +1341,143 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' 
 #' This setting is required for requests that do not include the
 #' `RuleGroupARN`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   RuleGroup = list(
+#'     RuleVariables = list(
+#'       IPSets = list(
+#'         list(
+#'           Definition = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       PortSets = list(
+#'         list(
+#'           Definition = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RulesSource = list(
+#'       RulesString = "string",
+#'       RulesSourceList = list(
+#'         Targets = list(
+#'           "string"
+#'         ),
+#'         TargetTypes = list(
+#'           "TLS_SNI"|"HTTP_HOST"
+#'         ),
+#'         GeneratedRulesType = "ALLOWLIST"|"DENYLIST"
+#'       ),
+#'       StatefulRules = list(
+#'         list(
+#'           Action = "PASS"|"DROP"|"ALERT",
+#'           Header = list(
+#'             Protocol = "IP"|"TCP"|"UDP"|"ICMP"|"HTTP"|"FTP"|"TLS"|"SMB"|"DNS"|"DCERPC"|"SSH"|"SMTP"|"IMAP"|"MSN"|"KRB5"|"IKEV2"|"TFTP"|"NTP"|"DHCP",
+#'             Source = "string",
+#'             SourcePort = "string",
+#'             Direction = "FORWARD"|"ANY",
+#'             Destination = "string",
+#'             DestinationPort = "string"
+#'           ),
+#'           RuleOptions = list(
+#'             list(
+#'               Keyword = "string",
+#'               Settings = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       StatelessRulesAndCustomActions = list(
+#'         StatelessRules = list(
+#'           list(
+#'             RuleDefinition = list(
+#'               MatchAttributes = list(
+#'                 Sources = list(
+#'                   list(
+#'                     AddressDefinition = "string"
+#'                   )
+#'                 ),
+#'                 Destinations = list(
+#'                   list(
+#'                     AddressDefinition = "string"
+#'                   )
+#'                 ),
+#'                 SourcePorts = list(
+#'                   list(
+#'                     FromPort = 123,
+#'                     ToPort = 123
+#'                   )
+#'                 ),
+#'                 DestinationPorts = list(
+#'                   list(
+#'                     FromPort = 123,
+#'                     ToPort = 123
+#'                   )
+#'                 ),
+#'                 Protocols = list(
+#'                   123
+#'                 ),
+#'                 TCPFlags = list(
+#'                   list(
+#'                     Flags = list(
+#'                       "FIN"|"SYN"|"RST"|"PSH"|"ACK"|"URG"|"ECE"|"CWR"
+#'                     ),
+#'                     Masks = list(
+#'                       "FIN"|"SYN"|"RST"|"PSH"|"ACK"|"URG"|"ECE"|"CWR"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               Actions = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Priority = 123
+#'           )
+#'         ),
+#'         CustomActions = list(
+#'           list(
+#'             ActionName = "string",
+#'             ActionDefinition = list(
+#'               PublishMetricAction = list(
+#'                 Dimensions = list(
+#'                   list(
+#'                     Value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RuleGroupResponse = list(
+#'     RuleGroupArn = "string",
+#'     RuleGroupName = "string",
+#'     RuleGroupId = "string",
+#'     Description = "string",
+#'     Type = "STATELESS"|"STATEFUL",
+#'     Capacity = 123,
+#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1070,6 +1545,21 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
 #' You must specify the ARN or the name, and you can specify both.
 #' @param SubnetIds &#91;required&#93; The unique identifiers for the subnets that you want to disassociate.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   SubnetMappings = list(
+#'     list(
+#'       SubnetId = "string"
+#'     )
+#'   ),
+#'   UpdateToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_subnets(
@@ -1121,6 +1611,20 @@ networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn
 #' for this request. If more objects are available, in the response,
 #' Network Firewall provides a `NextToken` value that you can use in a
 #' subsequent call to get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   FirewallPolicies = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1176,6 +1680,20 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
 #' Network Firewall provides a `NextToken` value that you can use in a
 #' subsequent call to get the next batch of objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Firewalls = list(
+#'     list(
+#'       FirewallName = "string",
+#'       FirewallArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_firewalls(
@@ -1226,6 +1744,20 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 #' for this request. If more objects are available, in the response,
 #' Network Firewall provides a `NextToken` value that you can use in a
 #' subsequent call to get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   RuleGroups = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1282,6 +1814,20 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
 #' Network Firewall provides a `NextToken` value that you can use in a
 #' subsequent call to get the next batch of objects.
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1375,6 +1921,9 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #' rule groups and firewall policies that you want to share with the
 #' account that you specified in `Arn`.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_resource_policy(
@@ -1420,6 +1969,9 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1472,6 +2024,9 @@ networkfirewall_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1546,6 +2101,17 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
 #' firewall that is in use. When you create a firewall, the operation
 #' initializes this flag to `TRUE`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   DeleteProtection = TRUE|FALSE,
+#'   UpdateToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_firewall_delete_protection(
@@ -1612,6 +2178,17 @@ networkfirewall_update_firewall_delete_protection <- function(UpdateToken = NULL
 #' You must specify the ARN or the name, and you can specify both.
 #' @param Description The new description for the firewall. If you omit this setting, Network
 #' Firewall removes the description for the firewall.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   Description = "string",
+#'   UpdateToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1685,6 +2262,27 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   FirewallPolicyResponse = list(
+#'     FirewallPolicyName = "string",
+#'     FirewallPolicyArn = "string",
+#'     FirewallPolicyId = "string",
+#'     Description = "string",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1789,6 +2387,17 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
 #' use. When you create a firewall, the operation initializes this setting
 #' to `TRUE`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   FirewallPolicyChangeProtection = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_firewall_policy_change_protection(
@@ -1861,6 +2470,26 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 #' You must specify the ARN or the name, and you can specify both.
 #' @param LoggingConfiguration Defines how Network Firewall performs logging for a firewall. If you
 #' omit this setting, Network Firewall disables logging for the firewall.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   LoggingConfiguration = list(
+#'     LogDestinationConfigs = list(
+#'       list(
+#'         LogType = "ALERT"|"FLOW",
+#'         LogDestinationType = "S3"|"CloudWatchLogs"|"KinesisDataFirehose",
+#'         LogDestination = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1975,6 +2604,29 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   RuleGroupResponse = list(
+#'     RuleGroupArn = "string",
+#'     RuleGroupName = "string",
+#'     RuleGroupId = "string",
+#'     Description = "string",
+#'     Type = "STATELESS"|"STATEFUL",
+#'     Capacity = 123,
+#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2161,6 +2813,17 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
 #' accidentally modifying the subnet associations for a firewall that is in
 #' use. When you create a firewall, the operation initializes this setting
 #' to `TRUE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateToken = "string",
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   SubnetChangeProtection = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

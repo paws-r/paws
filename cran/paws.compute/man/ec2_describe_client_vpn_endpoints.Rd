@@ -27,6 +27,79 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientVpnEndpoints = list(
+    list(
+      ClientVpnEndpointId = "string",
+      Description = "string",
+      Status = list(
+        Code = "pending-associate"|"available"|"deleting"|"deleted",
+        Message = "string"
+      ),
+      CreationTime = "string",
+      DeletionTime = "string",
+      DnsName = "string",
+      ClientCidrBlock = "string",
+      DnsServers = list(
+        "string"
+      ),
+      SplitTunnel = TRUE|FALSE,
+      VpnProtocol = "openvpn",
+      TransportProtocol = "tcp"|"udp",
+      VpnPort = 123,
+      AssociatedTargetNetworks = list(
+        list(
+          NetworkId = "string",
+          NetworkType = "vpc"
+        )
+      ),
+      ServerCertificateArn = "string",
+      AuthenticationOptions = list(
+        list(
+          Type = "certificate-authentication"|"directory-service-authentication"|"federated-authentication",
+          ActiveDirectory = list(
+            DirectoryId = "string"
+          ),
+          MutualAuthentication = list(
+            ClientRootCertificateChain = "string"
+          ),
+          FederatedAuthentication = list(
+            SamlProviderArn = "string",
+            SelfServiceSamlProviderArn = "string"
+          )
+        )
+      ),
+      ConnectionLogOptions = list(
+        Enabled = TRUE|FALSE,
+        CloudwatchLogGroup = "string",
+        CloudwatchLogStream = "string"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      SecurityGroupIds = list(
+        "string"
+      ),
+      VpcId = "string",
+      SelfServicePortalUrl = "string",
+      ClientConnectOptions = list(
+        Enabled = TRUE|FALSE,
+        LambdaFunctionArn = "string",
+        Status = list(
+          Code = "applying"|"applied",
+          Message = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more Client VPN endpoints in the account.
 }

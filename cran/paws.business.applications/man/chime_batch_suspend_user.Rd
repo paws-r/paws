@@ -12,6 +12,18 @@ chime_batch_suspend_user(AccountId, UserIdList)
 
 \item{UserIdList}{[required] The request containing the user IDs to suspend.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserErrors = list(
+    list(
+      UserId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Suspends up to 50 users from a \code{Team} or \code{EnterpriseLWA} Amazon Chime
 account. For more information about different account types, see

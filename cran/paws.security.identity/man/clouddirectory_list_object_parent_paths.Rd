@@ -18,6 +18,20 @@ clouddirectory_list_object_parent_paths(DirectoryArn, ObjectReference,
 \item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an
 approximate number.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PathToObjectIdentifiersList = list(
+    list(
+      Path = "string",
+      ObjectIdentifiers = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all available parent paths for any object type such as node,
 leaf node, policy node, and index node objects. For more information

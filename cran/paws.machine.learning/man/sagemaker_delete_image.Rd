@@ -9,6 +9,9 @@ sagemaker_delete_image(ImageName)
 \arguments{
 \item{ImageName}{[required] The name of the image to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a SageMaker image and all versions of the image. The container
 images aren't deleted.

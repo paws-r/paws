@@ -15,6 +15,15 @@ apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
 
 \item{Stage}{[required] The API stage.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiId = "string",
+  ApiMappingId = "string",
+  ApiMappingKey = "string",
+  Stage = "string"
+)
+}
+}
 \description{
 Creates an API mapping.
 }

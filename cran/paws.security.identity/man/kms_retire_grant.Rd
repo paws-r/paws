@@ -21,6 +21,9 @@ the response to a \code{\link[=kms_create_grant]{create_grant}} operation.
 0123456789012345678901234567890123456789012345678901234567890123
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Retires a grant. To clean up, you can retire a grant when you're done
 using it. You should revoke a grant when you intend to actively deny

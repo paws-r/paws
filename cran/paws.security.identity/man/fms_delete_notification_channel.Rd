@@ -8,6 +8,9 @@ AWS Firewall Manager SNS logs}
 \usage{
 fms_delete_notification_channel()
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an AWS Firewall Manager association with the IAM role and the
 Amazon Simple Notification Service (SNS) topic that is used to record

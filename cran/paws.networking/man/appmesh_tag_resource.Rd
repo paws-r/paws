@@ -14,6 +14,9 @@ appmesh_tag_resource(resourceArn, tags)
 Tag keys can have a maximum character length of 128 characters, and tag
 values can have a maximum length of 256 characters.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates the specified tags to a resource with the specified
 \code{resourceArn}. If existing tags on a resource aren't specified in the

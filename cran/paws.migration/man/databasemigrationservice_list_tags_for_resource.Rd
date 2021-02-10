@@ -11,6 +11,17 @@ databasemigrationservice_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the AWS
 DMS resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists all metadata tags attached to an AWS DMS resource, including
 replication instance, endpoint, security group, and migration task. For

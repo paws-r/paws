@@ -20,6 +20,9 @@ after replication is complete.}
 \item{serverGroupLaunchConfigurations}{Information about the launch configurations for server groups in the
 application.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or updates the launch configuration for the specified
 application.

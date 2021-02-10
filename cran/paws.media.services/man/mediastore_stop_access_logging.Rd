@@ -9,6 +9,9 @@ mediastore_stop_access_logging(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container that you want to stop access logging on.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops access logging on the specified container. When you stop access
 logging on a container, MediaStore stops sending access logs to Amazon

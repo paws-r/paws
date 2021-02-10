@@ -10,9 +10,27 @@ iotanalytics_get_dataset_content(datasetName, versionId)
 \item{datasetName}{[required] The name of the data set whose contents are retrieved.}
 
 \item{versionId}{The version of the data set whose contents are retrieved. You can also
-use the strings "$LATEST" or "$LATEST\\_SUCCEEDED" to retrieve the
+use the strings "$LATEST" or "$LATEST_SUCCEEDED" to retrieve the
 contents of the latest or latest successfully completed data set. If not
-specified, "$LATEST\\_SUCCEEDED" is the default.}
+specified, "$LATEST_SUCCEEDED" is the default.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  entries = list(
+    list(
+      entryName = "string",
+      dataURI = "string"
+    )
+  ),
+  timestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  status = list(
+    state = "CREATING"|"SUCCEEDED"|"FAILED",
+    reason = "string"
+  )
+)
+}
 }
 \description{
 Retrieves the contents of a data set as presigned URIs.

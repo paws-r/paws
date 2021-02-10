@@ -26,6 +26,9 @@ chain, and each certificate in the chain signs the one preceding.
 This parameter must be supplied when you import a subordinate CA. When
 you import a root CA, there is no chain.}
 }
+\value{
+An empty list.
+}
 \description{
 Imports a signed private CA certificate into ACM Private CA. This action
 is used when you are using a chain of trust whose root is located

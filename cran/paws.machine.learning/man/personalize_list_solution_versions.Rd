@@ -15,6 +15,25 @@ getting the next set of solution versions (if they exist).}
 
 \item{maxResults}{The maximum number of solution versions to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  solutionVersions = list(
+    list(
+      solutionVersionArn = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      failureReason = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of solution versions for the given solution. When a
 solution is not specified, all the solution versions associated with the

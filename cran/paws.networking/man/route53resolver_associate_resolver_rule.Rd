@@ -16,6 +16,19 @@ and a VPC.}
 
 \item{VPCId}{[required] The ID of the VPC that you want to associate the Resolver rule with.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverRuleAssociation = list(
+    Id = "string",
+    ResolverRuleId = "string",
+    Name = "string",
+    VPCId = "string",
+    Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
+    StatusMessage = "string"
+  )
+)
+}
+}
 \description{
 Associates a Resolver rule with a VPC. When you associate a rule with a
 VPC, Resolver forwards all DNS queries for the domain name that is

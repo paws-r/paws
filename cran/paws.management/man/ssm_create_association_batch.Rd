@@ -10,6 +10,140 @@ ssm_create_association_batch(Entries)
 \arguments{
 \item{Entries}{[required] One or more associations.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Successful = list(
+    list(
+      Name = "string",
+      InstanceId = "string",
+      AssociationVersion = "string",
+      Date = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdateAssociationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = list(
+        Date = as.POSIXct(
+          "2015-01-01"
+        ),
+        Name = "Pending"|"Success"|"Failed",
+        Message = "string",
+        AdditionalInfo = "string"
+      ),
+      Overview = list(
+        Status = "string",
+        DetailedStatus = "string",
+        AssociationStatusAggregatedCount = list(
+          123
+        )
+      ),
+      DocumentVersion = "string",
+      AutomationTargetParameterName = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      ),
+      AssociationId = "string",
+      Targets = list(
+        list(
+          Key = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      ScheduleExpression = "string",
+      OutputLocation = list(
+        S3Location = list(
+          OutputS3Region = "string",
+          OutputS3BucketName = "string",
+          OutputS3KeyPrefix = "string"
+        )
+      ),
+      LastExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastSuccessfulExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      AssociationName = "string",
+      MaxErrors = "string",
+      MaxConcurrency = "string",
+      ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+      SyncCompliance = "AUTO"|"MANUAL",
+      ApplyOnlyAtCronInterval = TRUE|FALSE,
+      TargetLocations = list(
+        list(
+          Accounts = list(
+            "string"
+          ),
+          Regions = list(
+            "string"
+          ),
+          TargetLocationMaxConcurrency = "string",
+          TargetLocationMaxErrors = "string",
+          ExecutionRoleName = "string"
+        )
+      )
+    )
+  ),
+  Failed = list(
+    list(
+      Entry = list(
+        Name = "string",
+        InstanceId = "string",
+        Parameters = list(
+          list(
+            "string"
+          )
+        ),
+        AutomationTargetParameterName = "string",
+        DocumentVersion = "string",
+        Targets = list(
+          list(
+            Key = "string",
+            Values = list(
+              "string"
+            )
+          )
+        ),
+        ScheduleExpression = "string",
+        OutputLocation = list(
+          S3Location = list(
+            OutputS3Region = "string",
+            OutputS3BucketName = "string",
+            OutputS3KeyPrefix = "string"
+          )
+        ),
+        AssociationName = "string",
+        MaxErrors = "string",
+        MaxConcurrency = "string",
+        ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+        SyncCompliance = "AUTO"|"MANUAL",
+        ApplyOnlyAtCronInterval = TRUE|FALSE,
+        TargetLocations = list(
+          list(
+            Accounts = list(
+              "string"
+            ),
+            Regions = list(
+              "string"
+            ),
+            TargetLocationMaxConcurrency = "string",
+            TargetLocationMaxErrors = "string",
+            ExecutionRoleName = "string"
+          )
+        )
+      ),
+      Message = "string",
+      Fault = "Client"|"Server"|"Unknown"
+    )
+  )
+)
+}
+}
 \description{
 Associates the specified Systems Manager document with the specified
 instances or targets.

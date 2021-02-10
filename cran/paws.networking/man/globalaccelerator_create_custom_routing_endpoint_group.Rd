@@ -22,6 +22,29 @@ traffic on.}
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointGroup = list(
+    EndpointGroupArn = "string",
+    EndpointGroupRegion = "string",
+    DestinationDescriptions = list(
+      list(
+        FromPort = 123,
+        ToPort = 123,
+        Protocols = list(
+          "TCP"|"UDP"
+        )
+      )
+    ),
+    EndpointDescriptions = list(
+      list(
+        EndpointId = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Create an endpoint group for the specified listener for a custom routing
 accelerator. An endpoint group is a collection of endpoints in one AWS

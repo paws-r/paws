@@ -13,6 +13,9 @@ administrator credentials to access the API.}
 
 \item{ResourceId}{[required] The ID of the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes all the permissions from the specified resource.
 }

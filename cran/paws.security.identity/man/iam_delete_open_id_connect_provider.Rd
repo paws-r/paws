@@ -13,6 +13,9 @@ resource ARNs by using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an OpenID Connect identity provider (IdP) resource object in
 IAM.

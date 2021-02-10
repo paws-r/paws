@@ -19,6 +19,13 @@ serial number and must be in the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = "string",
+  CertificateChain = "string"
+)
+}
+}
 \description{
 Retrieves a certificate from your private CA or one that has been shared
 with you. The ARN of the certificate is returned when you call the

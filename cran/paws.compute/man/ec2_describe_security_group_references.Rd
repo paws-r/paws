@@ -16,6 +16,18 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The IDs of the security groups in your account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityGroupReferenceSet = list(
+    list(
+      GroupId = "string",
+      ReferencingVpcId = "string",
+      VpcPeeringConnectionId = "string"
+    )
+  )
+)
+}
+}
 \description{
 [VPC only] Describes the VPCs on the other side of a VPC peering
 connection that are referencing the security groups you've specified in

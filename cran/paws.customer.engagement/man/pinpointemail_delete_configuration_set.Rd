@@ -9,6 +9,9 @@ pinpointemail_delete_configuration_set(ConfigurationSetName)
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete an existing configuration set.
 

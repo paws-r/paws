@@ -9,6 +9,73 @@ eks_delete_cluster(name)
 \arguments{
 \item{name}{[required] The name of the cluster to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cluster = list(
+    name = "string",
+    arn = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    version = "string",
+    endpoint = "string",
+    roleArn = "string",
+    resourcesVpcConfig = list(
+      subnetIds = list(
+        "string"
+      ),
+      securityGroupIds = list(
+        "string"
+      ),
+      clusterSecurityGroupId = "string",
+      vpcId = "string",
+      endpointPublicAccess = TRUE|FALSE,
+      endpointPrivateAccess = TRUE|FALSE,
+      publicAccessCidrs = list(
+        "string"
+      )
+    ),
+    kubernetesNetworkConfig = list(
+      serviceIpv4Cidr = "string"
+    ),
+    logging = list(
+      clusterLogging = list(
+        list(
+          types = list(
+            "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
+          ),
+          enabled = TRUE|FALSE
+        )
+      )
+    ),
+    identity = list(
+      oidc = list(
+        issuer = "string"
+      )
+    ),
+    status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING",
+    certificateAuthority = list(
+      data = "string"
+    ),
+    clientRequestToken = "string",
+    platformVersion = "string",
+    tags = list(
+      "string"
+    ),
+    encryptionConfig = list(
+      list(
+        resources = list(
+          "string"
+        ),
+        provider = list(
+          keyArn = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes the Amazon EKS cluster control plane.
 

@@ -18,6 +18,19 @@ Set the value of this parameter to null for the first request to a list
 action. For subsequent calls, use the \code{NextToken} value returned from
 the previous request to continue listing results after the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Destinations = list(
+    list(
+      DestinationId = "string",
+      DestinationType = "S3",
+      Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of publishing destinations associated with the specified
 \code{dectectorId}.

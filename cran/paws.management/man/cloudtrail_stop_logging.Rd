@@ -14,6 +14,9 @@ is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
+\value{
+An empty list.
+}
 \description{
 Suspends the recording of AWS API calls and log file delivery for the
 specified trail. Under most circumstances, there is no need to use this

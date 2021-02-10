@@ -9,6 +9,12 @@ machinelearning_delete_ml_model(MLModelId)
 \arguments{
 \item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MLModelId = "string"
+)
+}
+}
 \description{
 Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable.
 

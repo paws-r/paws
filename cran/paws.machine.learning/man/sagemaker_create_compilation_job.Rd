@@ -41,6 +41,12 @@ Use this API to cap model training costs.}
 resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CompilationJobArn = "string"
+)
+}
+}
 \description{
 Starts a model compilation job. After the model has been compiled,
 Amazon SageMaker saves the resulting model artifacts to an Amazon Simple

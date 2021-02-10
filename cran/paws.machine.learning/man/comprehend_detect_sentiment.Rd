@@ -15,6 +15,18 @@ UTF-8 encoded characters.}
 languages supported by Amazon Comprehend. All documents must be in the
 same language.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Sentiment = "POSITIVE"|"NEGATIVE"|"NEUTRAL"|"MIXED",
+  SentimentScore = list(
+    Positive = 123.0,
+    Negative = 123.0,
+    Neutral = 123.0,
+    Mixed = 123.0
+  )
+)
+}
+}
 \description{
 Inspects text and returns an inference of the prevailing sentiment
 (\code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}).

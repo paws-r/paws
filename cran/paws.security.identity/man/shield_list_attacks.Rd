@@ -37,6 +37,29 @@ If there are more objects to return, Shield Advanced returns a value in
 \code{NextToken} that you can use in your next request, to get the next batch
 of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttackSummaries = list(
+    list(
+      AttackId = "string",
+      ResourceArn = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AttackVectors = list(
+        list(
+          VectorType = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 time period.

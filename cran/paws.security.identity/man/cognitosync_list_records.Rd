@@ -9,11 +9,16 @@ cognitosync_list_records(IdentityPoolId, IdentityId, DatasetName,
   LastSyncCount, NextToken, MaxResults, SyncSessionToken)
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
 
-\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
 
-\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).}
+\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+'_' (underscore), '-' (dash), and '.' (dot).}
 
 \item{LastSyncCount}{The last server sync count for this record.}
 
@@ -22,6 +27,35 @@ cognitosync_list_records(IdentityPoolId, IdentityId, DatasetName,
 \item{MaxResults}{The maximum number of results to be returned.}
 
 \item{SyncSessionToken}{A token containing a session ID, identity ID, and expiration.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Records = list(
+    list(
+      Key = "string",
+      Value = "string",
+      SyncCount = 123,
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedBy = "string",
+      DeviceLastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string",
+  Count = 123,
+  DatasetSyncCount = 123,
+  LastModifiedBy = "string",
+  MergedDatasetNames = list(
+    "string"
+  ),
+  DatasetExists = TRUE|FALSE,
+  DatasetDeletedAfterRequestedSyncCount = TRUE|FALSE,
+  SyncSessionToken = "string"
+)
+}
 }
 \description{
 Gets paginated records, optionally changed after a particular sync count

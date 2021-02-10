@@ -9,6 +9,9 @@ cloudwatch_enable_alarm_actions(AlarmNames)
 \arguments{
 \item{AlarmNames}{[required] The names of the alarms.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables the actions for the specified alarms.
 }

@@ -14,6 +14,20 @@ apigateway_get_request_validators(restApiId, position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      name = "string",
+      validateRequestBody = TRUE|FALSE,
+      validateRequestParameters = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Gets the RequestValidators collection of a given RestApi.
 }

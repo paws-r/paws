@@ -10,6 +10,9 @@ devicefarm_delete_remote_access_session(arn)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the session for which you want to
 delete remote access.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a completed remote access session and its results.
 }

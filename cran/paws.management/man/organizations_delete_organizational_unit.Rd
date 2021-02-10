@@ -18,6 +18,9 @@ lowercase letters or digits (the ID of the root that contains the OU).
 This string is followed by a second "-" dash and from 8 to 32 additional
 lowercase letters or digits.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an organizational unit (OU) from a root or another OU. You must
 first remove all accounts and child OUs from the OU that you want to

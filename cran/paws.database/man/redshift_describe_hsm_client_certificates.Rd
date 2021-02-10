@@ -46,6 +46,24 @@ these tag values in the request, Amazon Redshift returns a response with
 the HSM client certificates that have either or both of these tag values
 associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  HsmClientCertificates = list(
+    list(
+      HsmClientCertificateIdentifier = "string",
+      HsmClientCertificatePublicKey = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about the specified HSM client certificate. If no
 certificate ID is specified, returns information about all the HSM

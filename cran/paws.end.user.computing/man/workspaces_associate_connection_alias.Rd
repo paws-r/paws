@@ -12,6 +12,12 @@ workspaces_associate_connection_alias(AliasId, ResourceId)
 
 \item{ResourceId}{[required] The identifier of the directory to associate the connection alias with.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConnectionIdentifier = "string"
+)
+}
+}
 \description{
 Associates the specified connection alias with the specified directory
 to enable cross-Region redirection. For more information, see

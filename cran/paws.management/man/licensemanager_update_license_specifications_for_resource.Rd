@@ -15,6 +15,9 @@ licensemanager_update_license_specifications_for_resource(ResourceArn,
 
 \item{RemoveLicenseSpecifications}{ARNs of the license configurations to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or removes the specified license configurations for the specified
 AWS resource.

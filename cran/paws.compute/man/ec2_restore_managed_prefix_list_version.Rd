@@ -20,6 +20,28 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{CurrentVersion}{[required] The current version number for the prefix list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PrefixList = list(
+    PrefixListId = "string",
+    AddressFamily = "string",
+    State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
+    StateMessage = "string",
+    PrefixListArn = "string",
+    PrefixListName = "string",
+    MaxEntries = 123,
+    Version = 123,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    OwnerId = "string"
+  )
+)
+}
+}
 \description{
 Restores the entries from a previous version of a managed prefix list to
 a new version of the prefix list.

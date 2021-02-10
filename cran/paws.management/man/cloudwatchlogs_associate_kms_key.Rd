@@ -14,6 +14,9 @@ cloudwatchlogs_associate_kms_key(logGroupName, kmsKeyId)
 data. This must be a symmetric CMK. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - AWS Key Management Service (AWS KMS)}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates the specified AWS Key Management Service (AWS KMS) customer
 master key (CMK) with the specified log group.

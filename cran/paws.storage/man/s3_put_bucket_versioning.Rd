@@ -26,6 +26,9 @@ and the value that is displayed on your authentication device.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the versioning state of an existing bucket. To set the versioning
 state, you must be the bucket owner.
@@ -53,7 +56,7 @@ you enable versioning, you must add a noncurrent expiration policy. The
 noncurrent expiration lifecycle policy will manage the deletes of the
 noncurrent object versions in the version-enabled bucket. (A
 version-enabled bucket maintains one current and zero or more noncurrent
-object versions.) For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-and-other-bucket-config}{Lifecycle and Versioning}.
+object versions.) For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html#lifecycle-and-other-bucket-config}{Lifecycle and Versioning}.
 
 \strong{Related Resources}
 \itemize{

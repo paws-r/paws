@@ -16,6 +16,26 @@ chime_update_room_membership(AccountId, RoomId, MemberId, Role)
 
 \item{Role}{The role of the member.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoomMembership = list(
+    RoomId = "string",
+    Member = list(
+      MemberId = "string",
+      MemberType = "User"|"Bot"|"Webhook",
+      Email = "string",
+      FullName = "string",
+      AccountId = "string"
+    ),
+    Role = "Administrator"|"Member",
+    InvitedBy = "string",
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates room membership details, such as the member role, for a room in
 an Amazon Chime Enterprise account. The member role designates whether

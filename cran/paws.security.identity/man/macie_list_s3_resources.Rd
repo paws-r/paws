@@ -18,6 +18,22 @@ the previous response to continue listing data.}
 \item{maxResults}{Use this parameter to indicate the maximum number of items that you want
 in the response. The default value is 250.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  s3Resources = list(
+    list(
+      bucketName = "string",
+      prefix = "string",
+      classificationType = list(
+        oneTime = "FULL"|"NONE",
+        continuous = "FULL"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all the S3 resources associated with Amazon Macie Classic. If
 memberAccountId isn't specified, the action lists the S3 resources

@@ -20,6 +20,15 @@ NULL
 #' created.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupId = "string",
+#'   DisplayName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_group(
@@ -64,6 +73,15 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' This value is generated at the time that a new identity store is
 #' created.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserName = "string",
+#'   UserId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -124,6 +142,20 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #' @param Filters A list of `Filter` objects, which is used in the
 #' [`list_users`][identitystore_list_users] and
 #' [`list_groups`][identitystore_list_groups] request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       GroupId = "string",
+#'       DisplayName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -191,6 +223,20 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' @param Filters A list of `Filter` objects, which is used in the
 #' [`list_users`][identitystore_list_users] and
 #' [`list_groups`][identitystore_list_groups] request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       UserName = "string",
+#'       UserId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

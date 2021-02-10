@@ -9,6 +9,9 @@ glue_delete_security_configuration(Name)
 \arguments{
 \item{Name}{[required] The name of the security configuration to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified security configuration.
 }

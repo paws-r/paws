@@ -9,6 +9,16 @@ alexaforbusiness_get_skill_group(SkillGroupArn)
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group for which to get details. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SkillGroup = list(
+    SkillGroupArn = "string",
+    SkillGroupName = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Gets skill group details by skill group ARN.
 }

@@ -15,7 +15,7 @@ Constraints: Up to 255 characters in length
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-.\\_-:/()\\#,@[]+=&;\{\}!$*}
+._-:/()\#,@[]+=&;\{\}!$*}
 
 \item{GroupName}{[required] The name of the security group.
 
@@ -24,7 +24,7 @@ Constraints: Up to 255 characters in length. Cannot start with \verb{sg-}.
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-.\\_-:/()\\#,@[]+=&;\{\}!$*}
+._-:/()\#,@[]+=&;\{\}!$*}
 
 \item{VpcId}{[EC2-VPC] The ID of the VPC. Required for EC2-VPC.}
 
@@ -34,6 +34,18 @@ Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a security group.

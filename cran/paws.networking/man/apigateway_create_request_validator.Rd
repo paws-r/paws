@@ -18,6 +18,15 @@ the configured model schema for the method (\code{true}) or not (\code{false}).}
 \item{validateRequestParameters}{A Boolean flag to indicate whether to validate request parameters,
 \code{true}, or not \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  validateRequestBody = TRUE|FALSE,
+  validateRequestParameters = TRUE|FALSE
+)
+}
+}
 \description{
 Creates a ReqeustValidator of a given RestApi.
 }

@@ -10,6 +10,22 @@ directconnect_describe_tags(resourceArns)
 \arguments{
 \item{resourceArns}{[required] The Amazon Resource Names (ARNs) of the resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceTags = list(
+    list(
+      resourceArn = "string",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the tags associated with the specified AWS Direct Connect
 resources.

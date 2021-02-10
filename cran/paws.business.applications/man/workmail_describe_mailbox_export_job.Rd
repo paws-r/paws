@@ -11,6 +11,27 @@ workmail_describe_mailbox_export_job(JobId, OrganizationId)
 
 \item{OrganizationId}{[required] The organization ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EntityId = "string",
+  Description = "string",
+  RoleArn = "string",
+  KmsKeyArn = "string",
+  S3BucketName = "string",
+  S3Prefix = "string",
+  S3Path = "string",
+  EstimatedProgress = 123,
+  State = "RUNNING"|"COMPLETED"|"FAILED"|"CANCELLED",
+  ErrorInfo = "string",
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Describes the current status of a mailbox export job.
 }

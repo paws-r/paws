@@ -15,6 +15,18 @@ results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingGroups = list(
+    list(
+      groupName = "string",
+      groupArn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 List the thing groups to which the specified thing belongs.
 }

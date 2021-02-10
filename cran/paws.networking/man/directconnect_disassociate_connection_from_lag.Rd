@@ -11,6 +11,35 @@ directconnect_disassociate_connection_from_lag(connectionId, lagId)
 
 \item{lagId}{[required] The ID of the LAG.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ownerAccount = "string",
+  connectionId = "string",
+  connectionName = "string",
+  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+  region = "string",
+  location = "string",
+  bandwidth = "string",
+  vlan = 123,
+  partnerName = "string",
+  loaIssueTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  lagId = "string",
+  awsDevice = "string",
+  jumboFrameCapable = TRUE|FALSE,
+  awsDeviceV2 = "string",
+  hasLogicalRedundancy = "unknown"|"yes"|"no",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  providerName = "string"
+)
+}
+}
 \description{
 Disassociates a connection from a link aggregation group (LAG). The
 connection is interrupted and re-established as a standalone connection

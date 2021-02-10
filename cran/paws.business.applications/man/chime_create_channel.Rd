@@ -27,6 +27,12 @@ discoverable by anyone in the app instance.}
 
 \item{Tags}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string"
+)
+}
+}
 \description{
 Creates a channel to which you can add users and send messages.
 

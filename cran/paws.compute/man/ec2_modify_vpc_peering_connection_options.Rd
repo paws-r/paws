@@ -21,6 +21,21 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccepterPeeringConnectionOptions = list(
+    AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+    AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+    AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+  ),
+  RequesterPeeringConnectionOptions = list(
+    AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+    AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+    AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Modifies the VPC peering connection options on one side of a VPC peering
 connection. You can do the following:

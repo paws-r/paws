@@ -9,6 +9,22 @@ globalaccelerator_describe_listener(ListenerArn)
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Listener = list(
+    ListenerArn = "string",
+    PortRanges = list(
+      list(
+        FromPort = 123,
+        ToPort = 123
+      )
+    ),
+    Protocol = "TCP"|"UDP",
+    ClientAffinity = "NONE"|"SOURCE_IP"
+  )
+)
+}
+}
 \description{
 Describe a listener.
 }

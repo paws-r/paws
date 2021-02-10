@@ -20,6 +20,9 @@ Condition: You must specify either this or an EnvironmentId, or both. If
 you do not specify either, AWS Elastic Beanstalk returns
 \code{MissingRequiredParameter} error.}
 }
+\value{
+An empty list.
+}
 \description{
 Causes the environment to restart the application container server
 running on each Amazon EC2 instance.

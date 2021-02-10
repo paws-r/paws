@@ -14,6 +14,9 @@ chime_update_user_settings(AccountId, UserId, UserSettings)
 
 \item{UserSettings}{[required] The user settings to update.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the settings for the specified user, such as phone number
 settings.

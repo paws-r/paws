@@ -10,6 +10,15 @@ chime_get_account_settings(AccountId)
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountSettings = list(
+    DisableRemoteControl = TRUE|FALSE,
+    EnableDialOut = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Retrieves account settings for the specified Amazon Chime account ID,
 such as remote control and dial out settings. For more information about

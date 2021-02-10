@@ -10,6 +10,45 @@ elasticbeanstalk_describe_applications(ApplicationNames)
 \item{ApplicationNames}{If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to only include those with the specified names.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Applications = list(
+    list(
+      ApplicationArn = "string",
+      ApplicationName = "string",
+      Description = "string",
+      DateCreated = as.POSIXct(
+        "2015-01-01"
+      ),
+      DateUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      Versions = list(
+        "string"
+      ),
+      ConfigurationTemplates = list(
+        "string"
+      ),
+      ResourceLifecycleConfig = list(
+        ServiceRole = "string",
+        VersionLifecycleConfig = list(
+          MaxCountRule = list(
+            Enabled = TRUE|FALSE,
+            MaxCount = 123,
+            DeleteSourceFromS3 = TRUE|FALSE
+          ),
+          MaxAgeRule = list(
+            Enabled = TRUE|FALSE,
+            MaxAgeInDays = 123,
+            DeleteSourceFromS3 = TRUE|FALSE
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the descriptions of existing applications.
 }

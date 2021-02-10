@@ -43,6 +43,12 @@ interface ID, but not both.}
 with the Elastic IP address. If no private IP address is specified, the
 Elastic IP address is associated with the primary private IP address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationId = "string"
+)
+}
+}
 \description{
 Associates an Elastic IP address, or carrier IP address (for instances
 that are in subnets in Wavelength Zones) with an instance or a network

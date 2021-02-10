@@ -2,9 +2,7 @@
 % Please edit documentation in R/lexmodelbuildingservice_operations.R
 \name{lexmodelbuildingservice_get_slot_types}
 \alias{lexmodelbuildingservice_get_slot_types}
-\title{Returns slot type information as follows: - If you specify the
-nameContains field, returns the $LATEST version of all slot types that
-contain the specified string}
+\title{Returns slot type information as follows:}
 \usage{
 lexmodelbuildingservice_get_slot_types(nextToken, maxResults,
   nameContains)
@@ -21,6 +19,25 @@ is 10.}
 \item{nameContains}{Substring to match in slot type names. A slot type will be returned if
 any part of its name matches the substring. For example, "xyz" matches
 both "xyzabc" and "abcxyz."}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  slotTypes = list(
+    list(
+      name = "string",
+      description = "string",
+      lastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      version = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
 }
 \description{
 Returns slot type information as follows:

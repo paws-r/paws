@@ -9,6 +9,9 @@ glue_delete_dev_endpoint(EndpointName)
 \arguments{
 \item{EndpointName}{[required] The name of the \code{DevEndpoint}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified development endpoint.
 }

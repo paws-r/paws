@@ -17,6 +17,20 @@ retrieve the application version ID using
 
 \item{CloudWatchLoggingOption}{[required] Provides the Amazon CloudWatch log stream Amazon Resource Name (ARN).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123,
+  CloudWatchLoggingOptionDescriptions = list(
+    list(
+      CloudWatchLoggingOptionId = "string",
+      LogStreamARN = "string",
+      RoleARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds an Amazon CloudWatch log stream to monitor application
 configuration errors.

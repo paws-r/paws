@@ -16,6 +16,9 @@ attribute name.}
 
 \item{AccessToken}{[required] The access token used in the request to delete user attributes.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the attributes for a user.
 }

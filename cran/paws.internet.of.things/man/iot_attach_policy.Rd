@@ -13,6 +13,9 @@ iot_attach_policy(policyName, target)
 \href{https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html}{identity}
 to which the policy is attached.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches a policy to the specified target.
 }

@@ -11,6 +11,9 @@ connect_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The tag keys.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified tags from the specified resource.
 }

@@ -17,7 +17,7 @@ ExecutionId (EQUAL)
 
 Status (EQUAL)
 
-CreatedTime (EQUAL, GREATER\\_THAN, LESS\\_THAN)}
+CreatedTime (EQUAL, GREATER_THAN, LESS_THAN)}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -25,6 +25,28 @@ next set of results.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationExecutions = list(
+    list(
+      AssociationId = "string",
+      AssociationVersion = "string",
+      ExecutionId = "string",
+      Status = "string",
+      DetailedStatus = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceCountByStatus = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Use this API action to view all executions for a specific association

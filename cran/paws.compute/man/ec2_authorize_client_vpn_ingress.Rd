@@ -31,6 +31,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = list(
+    Code = "authorizing"|"active"|"failed"|"revoking",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Adds an ingress authorization rule to a Client VPN endpoint. Ingress
 authorization rules act as firewall rules that grant access to networks.

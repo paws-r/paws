@@ -13,6 +13,9 @@ credentials.}
 
 \item{UserId}{[required] The ID of the user.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified user from a Simple AD or Microsoft AD directory.
 }

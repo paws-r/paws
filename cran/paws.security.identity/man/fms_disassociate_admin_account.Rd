@@ -7,6 +7,9 @@ administrator account}
 \usage{
 fms_disassociate_admin_account()
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the account that has been set as the AWS Firewall Manager
 administrator account. To set a different account as the administrator

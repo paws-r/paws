@@ -11,6 +11,14 @@ mediatailor_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the playback configuration. You can
 get this from the response to any playback configuration request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of the tags assigned to the specified playback
 configuration resource.

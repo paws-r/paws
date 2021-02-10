@@ -9,6 +9,12 @@ cloudhsm_delete_luna_client(ClientArn)
 \arguments{
 \item{ClientArn}{[required] The ARN of the client to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

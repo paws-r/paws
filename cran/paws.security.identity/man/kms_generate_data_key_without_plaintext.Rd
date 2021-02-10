@@ -56,6 +56,13 @@ the \code{KeySpec} field instead of this one.}
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CiphertextBlob = raw,
+  KeyId = "string"
+)
+}
+}
 \description{
 Generates a unique symmetric data key. This operation returns a data key
 that is encrypted under a customer master key (CMK) that you specify. To

@@ -25,6 +25,12 @@ To get the key ID and key ARN for a CMK, use
 To get the names of key policies, use
 \code{\link[=kms_list_key_policies]{list_key_policies}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string"
+)
+}
+}
 \description{
 Gets a key policy attached to the specified customer master key (CMK).
 

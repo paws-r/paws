@@ -20,6 +20,12 @@ software that is used as your organization's IdP.}
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SAMLProviderArn = "string"
+)
+}
+}
 \description{
 Updates the metadata document for an existing SAML provider resource
 object.

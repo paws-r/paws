@@ -15,6 +15,25 @@ mturk_list_qualification_requests(QualificationTypeId, NextToken,
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NumResults = 123,
+  NextToken = "string",
+  QualificationRequests = list(
+    list(
+      QualificationRequestId = "string",
+      QualificationTypeId = "string",
+      WorkerId = "string",
+      Test = "string",
+      Answer = "string",
+      SubmitTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_list_qualification_requests]{list_qualification_requests}}
 operation retrieves requests for Qualifications of a particular

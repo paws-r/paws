@@ -29,6 +29,24 @@ account of your organization
 \item \code{IMPORTED} - List imported portfolios
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortfolioDetails = list(
+    list(
+      Id = "string",
+      ARN = "string",
+      DisplayName = "string",
+      Description = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ProviderName = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists all portfolios for which sharing was accepted by this account.
 }

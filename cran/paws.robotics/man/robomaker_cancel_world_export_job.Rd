@@ -9,6 +9,9 @@ robomaker_cancel_world_export_job(job)
 \arguments{
 \item{job}{[required] The Amazon Resource Name (arn) of the world export job to cancel.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels the specified export job.
 }

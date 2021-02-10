@@ -30,6 +30,12 @@ order for the administrator to monitor the status of the
 \item{ShareTagOptions}{Enables or disables \code{TagOptions } sharing when creating the portfolio
 share. If this flag is not provided, TagOptions sharing is disabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortfolioShareToken = "string"
+)
+}
+}
 \description{
 Shares the specified portfolio with the specified account or
 organization node. Shares to an organization node can only be created by

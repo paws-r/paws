@@ -28,6 +28,21 @@ you do not specify either, AWS Elastic Beanstalk returns
 
 \item{InfoType}{[required] The type of information to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EnvironmentInfo = list(
+    list(
+      InfoType = "tail"|"bundle",
+      Ec2InstanceId = "string",
+      SampleTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the compiled information from a
 \code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}}

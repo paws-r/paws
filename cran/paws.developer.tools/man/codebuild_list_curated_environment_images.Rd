@@ -6,6 +6,30 @@
 \usage{
 codebuild_list_curated_environment_images()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  platforms = list(
+    list(
+      platform = "DEBIAN"|"AMAZON_LINUX"|"UBUNTU"|"WINDOWS_SERVER",
+      languages = list(
+        list(
+          language = "JAVA"|"PYTHON"|"NODE_JS"|"RUBY"|"GOLANG"|"DOCKER"|"ANDROID"|"DOTNET"|"BASE"|"PHP",
+          images = list(
+            list(
+              name = "string",
+              description = "string",
+              versions = list(
+                "string"
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about Docker images that are managed by AWS CodeBuild.
 }

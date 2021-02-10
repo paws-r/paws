@@ -10,6 +10,20 @@ ses_get_identity_dkim_attributes(Identities)
 \item{Identities}{[required] A list of one or more verified identities - email addresses, domains, or
 both.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DkimAttributes = list(
+    list(
+      DkimEnabled = TRUE|FALSE,
+      DkimVerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
+      DkimTokens = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the current status of Easy DKIM signing for an entity. For
 domain name identities, this operation also returns the DKIM tokens that

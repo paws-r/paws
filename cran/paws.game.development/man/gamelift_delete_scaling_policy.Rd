@@ -13,6 +13,9 @@ names do not need to be unique.}
 \item{FleetId}{[required] A unique identifier for a fleet to be deleted. You can use either the
 fleet ID or ARN value.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a fleet scaling policy. Once deleted, the policy is no longer in
 force and GameLift removes all record of it. To delete a scaling policy,

@@ -13,6 +13,18 @@ autoscaling_batch_put_scheduled_update_group_action(
 
 \item{ScheduledUpdateGroupActions}{[required] One or more scheduled actions. The maximum number allowed is 50.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedScheduledUpdateGroupActions = list(
+    list(
+      ScheduledActionName = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates or updates one or more scheduled scaling actions for an Auto
 Scaling group. If you leave a parameter unspecified when updating a

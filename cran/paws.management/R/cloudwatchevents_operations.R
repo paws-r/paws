@@ -15,6 +15,9 @@ NULL
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to activate.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$activate_event_source(
@@ -51,6 +54,16 @@ cloudwatchevents_activate_event_source <- function(Name) {
 #' cloudwatchevents_cancel_replay(ReplayName)
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to cancel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplayArn = "string",
+#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+#'   StateReason = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -99,6 +112,19 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
 #' @param EventPattern An event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events for. Default value is 0. If set to
 #' 0, events are retained indefinitely
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ArchiveArn = "string",
+#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+#'   StateReason = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -153,6 +179,14 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
 #' @param EventSourceName If you are creating a partner event bus, this specifies the partner
 #' event source that the new event bus will be matched with.
 #' @param Tags Tags to associate with the event bus.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventBusArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -210,12 +244,12 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #' 
 #' ` partner_name/event_namespace/event_name `
 #' 
-#' *partner\\_name* is determined during partner registration and identifies
-#' the partner to AWS customers. *event\\_namespace* is determined by the
+#' *partner_name* is determined during partner registration and identifies
+#' the partner to AWS customers. *event_namespace* is determined by the
 #' partner and is a way for the partner to categorize their events.
-#' *event\\_name* is determined by the partner, and should uniquely identify
+#' *event_name* is determined by the partner, and should uniquely identify
 #' an event-generating resource within the partner system. The combination
-#' of *event\\_namespace* and *event\\_name* should help AWS customers decide
+#' of *event_namespace* and *event_name* should help AWS customers decide
 #' whether to create an event bus to receive these events.
 #'
 #' @usage
@@ -228,6 +262,14 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #' source.
 #' @param Account &#91;required&#93; The AWS account ID that is permitted to create a matching partner event
 #' bus for this partner event source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSourceArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -276,6 +318,9 @@ cloudwatchevents_create_partner_event_source <- function(Name, Account) {
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to deactivate.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deactivate_event_source(
@@ -312,6 +357,9 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 #' cloudwatchevents_delete_archive(ArchiveName)
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -351,6 +399,9 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
 #' cloudwatchevents_delete_event_bus(Name)
 #'
 #' @param Name &#91;required&#93; The name of the event bus to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -394,6 +445,9 @@ cloudwatchevents_delete_event_bus <- function(Name) {
 #' @param Name &#91;required&#93; The name of the event source to delete.
 #' @param Account &#91;required&#93; The AWS account ID of the AWS customer that the event source was created
 #' for.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -454,6 +508,9 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' [`list_rules`][cloudwatchevents_list_rules] and checking the `ManagedBy`
 #' field of the response.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_rule(
@@ -492,6 +549,26 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
 #' cloudwatchevents_describe_archive(ArchiveName)
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ArchiveArn = "string",
+#'   ArchiveName = "string",
+#'   EventSourceArn = "string",
+#'   Description = "string",
+#'   EventPattern = "string",
+#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+#'   StateReason = "string",
+#'   RetentionDays = 123,
+#'   SizeBytes = 123,
+#'   EventCount = 123,
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -542,6 +619,16 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
 #' @param Name The name or ARN of the event bus to show details for. If you omit this,
 #' the default event bus is displayed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_bus(
@@ -580,6 +667,23 @@ cloudwatchevents_describe_event_bus <- function(Name = NULL) {
 #' cloudwatchevents_describe_event_source(Name)
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to display the details of.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreatedBy = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ExpirationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   State = "PENDING"|"ACTIVE"|"DELETED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -622,6 +726,15 @@ cloudwatchevents_describe_event_source <- function(Name) {
 #' cloudwatchevents_describe_partner_event_source(Name)
 #'
 #' @param Name &#91;required&#93; The name of the event source to display.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -671,6 +784,40 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplayName = "string",
+#'   ReplayArn = "string",
+#'   Description = "string",
+#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+#'   StateReason = "string",
+#'   EventSourceArn = "string",
+#'   Destination = list(
+#'     Arn = "string",
+#'     FilterArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   EventStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EventEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EventLastReplayedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ReplayStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ReplayEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_replay(
@@ -713,6 +860,23 @@ cloudwatchevents_describe_replay <- function(ReplayName) {
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   EventPattern = "string",
+#'   ScheduleExpression = "string",
+#'   State = "ENABLED"|"DISABLED",
+#'   Description = "string",
+#'   RoleArn = "string",
+#'   ManagedBy = "string",
+#'   EventBusName = "string",
+#'   CreatedBy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -758,6 +922,9 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_rule(
@@ -802,6 +969,9 @@ cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -849,6 +1019,28 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Archives = list(
+#'     list(
+#'       ArchiveName = "string",
+#'       EventSourceArn = "string",
+#'       State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+#'       StateReason = "string",
+#'       RetentionDays = 123,
+#'       SizeBytes = 123,
+#'       EventCount = 123,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -899,6 +1091,21 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventBuses = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       Policy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_event_buses(
@@ -946,6 +1153,28 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
 #' @param Limit Specifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSources = list(
+#'     list(
+#'       Arn = "string",
+#'       CreatedBy = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       State = "PENDING"|"ACTIVE"|"DELETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -996,6 +1225,26 @@ cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = N
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PartnerEventSourceAccounts = list(
+#'     list(
+#'       Account = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING"|"ACTIVE"|"DELETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_partner_event_source_accounts(
@@ -1045,6 +1294,20 @@ cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName,
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PartnerEventSources = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_partner_event_sources(
@@ -1093,6 +1356,37 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
 #' results.
 #' @param Limit The maximum number of replays to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Replays = list(
+#'     list(
+#'       ReplayName = "string",
+#'       EventSourceArn = "string",
+#'       State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+#'       StateReason = "string",
+#'       EventStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EventEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EventLastReplayedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ReplayStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ReplayEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_replays(
@@ -1140,6 +1434,17 @@ cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, Event
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleNames = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1191,6 +1496,27 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
 #' results.
 #' @param Limit The maximum number of results to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rules = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       EventPattern = "string",
+#'       State = "ENABLED"|"DISABLED",
+#'       Description = "string",
+#'       ScheduleExpression = "string",
+#'       RoleArn = "string",
+#'       ManagedBy = "string",
+#'       EventBusName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_rules(
@@ -1231,6 +1557,19 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, 
 #' cloudwatchevents_list_tags_for_resource(ResourceARN)
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource for which you want to view tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1275,6 +1614,99 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #' results.
 #' @param Limit The maximum number of results to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Targets = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       RoleArn = "string",
+#'       Input = "string",
+#'       InputPath = "string",
+#'       InputTransformer = list(
+#'         InputPathsMap = list(
+#'           "string"
+#'         ),
+#'         InputTemplate = "string"
+#'       ),
+#'       KinesisParameters = list(
+#'         PartitionKeyPath = "string"
+#'       ),
+#'       RunCommandParameters = list(
+#'         RunCommandTargets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       EcsParameters = list(
+#'         TaskDefinitionArn = "string",
+#'         TaskCount = 123,
+#'         LaunchType = "EC2"|"FARGATE",
+#'         NetworkConfiguration = list(
+#'           awsvpcConfiguration = list(
+#'             Subnets = list(
+#'               "string"
+#'             ),
+#'             SecurityGroups = list(
+#'               "string"
+#'             ),
+#'             AssignPublicIp = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         PlatformVersion = "string",
+#'         Group = "string"
+#'       ),
+#'       BatchParameters = list(
+#'         JobDefinition = "string",
+#'         JobName = "string",
+#'         ArrayProperties = list(
+#'           Size = 123
+#'         ),
+#'         RetryStrategy = list(
+#'           Attempts = 123
+#'         )
+#'       ),
+#'       SqsParameters = list(
+#'         MessageGroupId = "string"
+#'       ),
+#'       HttpParameters = list(
+#'         PathParameterValues = list(
+#'           "string"
+#'         ),
+#'         HeaderParameters = list(
+#'           "string"
+#'         ),
+#'         QueryStringParameters = list(
+#'           "string"
+#'         )
+#'       ),
+#'       RedshiftDataParameters = list(
+#'         SecretManagerArn = "string",
+#'         Database = "string",
+#'         DbUser = "string",
+#'         Sql = "string",
+#'         StatementName = "string",
+#'         WithEvent = TRUE|FALSE
+#'       ),
+#'       DeadLetterConfig = list(
+#'         Arn = "string"
+#'       ),
+#'       RetryPolicy = list(
+#'         MaximumRetryAttempts = 123,
+#'         MaximumEventAgeInSeconds = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_targets_by_rule(
@@ -1318,6 +1750,21 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
 #' @param Entries &#91;required&#93; The entry that defines an event in your system. You can specify several
 #' parameters for the entry such as the source and type of the event,
 #' resources associated with the event, and so on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntryCount = 123,
+#'   Entries = list(
+#'     list(
+#'       EventId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1370,6 +1817,21 @@ cloudwatchevents_put_events <- function(Entries) {
 #' cloudwatchevents_put_partner_events(Entries)
 #'
 #' @param Entries &#91;required&#93; The list of events to write to the event bus.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntryCount = 123,
+#'   Entries = list(
+#'     list(
+#'       EventId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1479,6 +1941,9 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' @param Policy A JSON string that describes the permission policy statement. You can
 #' include a `Policy` parameter in the request instead of using the
 #' `StatementId`, `Action`, `Principal`, or `Condition` parameters.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1601,6 +2066,14 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' @param Tags The list of key-value pairs to associate with the rule.
 #' @param EventBusName The name or ARN of the event bus to associate with this rule. If you
 #' omit this, the default event bus is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1776,6 +2249,21 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' this, the default event bus is used.
 #' @param Targets &#91;required&#93; The targets to update or add to the rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntryCount = 123,
+#'   FailedEntries = list(
+#'     list(
+#'       TargetId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_targets(
@@ -1911,6 +2399,9 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' @param EventBusName The name of the event bus to revoke permissions for. If you omit this,
 #' the default event bus is used.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_permission(
@@ -1969,6 +2460,21 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
 #' [`describe_rule`][cloudwatchevents_describe_rule] or
 #' [`list_rules`][cloudwatchevents_list_rules] and checking the `ManagedBy`
 #' field of the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntryCount = 123,
+#'   FailedEntries = list(
+#'     list(
+#'       TargetId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2030,6 +2536,19 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
 #' occurred between the `EventStartTime` and `EventEndTime` are replayed.
 #' @param Destination &#91;required&#93; A `ReplayDestination` object that includes details about the destination
 #' for the replay.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplayArn = "string",
+#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+#'   StateReason = "string",
+#'   ReplayStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2100,6 +2619,9 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource that you're adding tags to.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2152,6 +2674,14 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #' in the *Amazon EventBridge User Guide*.
 #' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Result = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_event_pattern(
@@ -2192,6 +2722,9 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource from which you are removing tags.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2236,6 +2769,19 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param Description The description for the archive.
 #' @param EventPattern The event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events in the archive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ArchiveArn = "string",
+#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+#'   StateReason = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

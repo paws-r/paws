@@ -9,6 +9,23 @@ ecr_put_replication_configuration(replicationConfiguration)
 \arguments{
 \item{replicationConfiguration}{[required] An object representing the replication configuration for a registry.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  replicationConfiguration = list(
+    rules = list(
+      list(
+        destinations = list(
+          list(
+            region = "string",
+            registryId = "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates or updates the replication configuration for a registry. The
 existing replication configuration for a repository can be retrieved

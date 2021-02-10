@@ -10,6 +10,34 @@ rds_cancel_export_task(ExportTaskIdentifier)
 \arguments{
 \item{ExportTaskIdentifier}{[required] The identifier of the snapshot export task to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExportTaskIdentifier = "string",
+  SourceArn = "string",
+  ExportOnly = list(
+    "string"
+  ),
+  SnapshotTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  TaskStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  TaskEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  S3Bucket = "string",
+  S3Prefix = "string",
+  IamRoleArn = "string",
+  KmsKeyId = "string",
+  Status = "string",
+  PercentProgress = 123,
+  TotalExtractedDataInGB = 123,
+  FailureCause = "string",
+  WarningMessage = "string"
+)
+}
+}
 \description{
 Cancels an export task in progress that is exporting a snapshot to
 Amazon S3. Any data that has already been written to the S3 bucket isn't

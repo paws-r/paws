@@ -9,6 +9,9 @@ chime_delete_app_instance(AppInstanceArn)
 \arguments{
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an \code{AppInstance} and all associated data asynchronously.
 }

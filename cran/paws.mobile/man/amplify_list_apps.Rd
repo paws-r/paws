@@ -12,6 +12,76 @@ result. Pass its value in another request to retrieve more entries.}
 
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  apps = list(
+    list(
+      appId = "string",
+      appArn = "string",
+      name = "string",
+      tags = list(
+        "string"
+      ),
+      description = "string",
+      repository = "string",
+      platform = "WEB",
+      createTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      updateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      iamServiceRoleArn = "string",
+      environmentVariables = list(
+        "string"
+      ),
+      defaultDomain = "string",
+      enableBranchAutoBuild = TRUE|FALSE,
+      enableBranchAutoDeletion = TRUE|FALSE,
+      enableBasicAuth = TRUE|FALSE,
+      basicAuthCredentials = "string",
+      customRules = list(
+        list(
+          source = "string",
+          target = "string",
+          status = "string",
+          condition = "string"
+        )
+      ),
+      productionBranch = list(
+        lastDeployTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        status = "string",
+        thumbnailUrl = "string",
+        branchName = "string"
+      ),
+      buildSpec = "string",
+      customHeaders = "string",
+      enableAutoBranchCreation = TRUE|FALSE,
+      autoBranchCreationPatterns = list(
+        "string"
+      ),
+      autoBranchCreationConfig = list(
+        stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+        framework = "string",
+        enableAutoBuild = TRUE|FALSE,
+        environmentVariables = list(
+          "string"
+        ),
+        basicAuthCredentials = "string",
+        enableBasicAuth = TRUE|FALSE,
+        enablePerformanceMode = TRUE|FALSE,
+        buildSpec = "string",
+        enablePullRequestPreview = TRUE|FALSE,
+        pullRequestEnvironmentName = "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the existing Amplify apps.
 }

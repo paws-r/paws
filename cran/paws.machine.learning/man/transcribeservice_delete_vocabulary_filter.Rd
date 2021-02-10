@@ -9,6 +9,9 @@ transcribeservice_delete_vocabulary_filter(VocabularyFilterName)
 \arguments{
 \item{VocabularyFilterName}{[required] The name of the vocabulary filter to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a vocabulary filter.
 }

@@ -14,6 +14,16 @@ apigateway_update_model(restApiId, modelName, patchOperations)
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  schema = "string",
+  contentType = "string"
+)
+}
+}
 \description{
 Changes information about a model.
 }

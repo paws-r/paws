@@ -17,7 +17,21 @@ NULL
 #' ioteventsdata_batch_put_message(messages)
 #'
 #' @param messages &#91;required&#93; The list of messages to send. Each message has the following format:
-#' `'\{ "messageId": "string", "inputName": "string", "payload": "string"\}'`
+#' `'{ "messageId": "string", "inputName": "string", "payload": "string"}'`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BatchPutMessageErrorEntries = list(
+#'     list(
+#'       messageId = "string",
+#'       errorCode = "ResourceNotFoundException"|"InvalidRequestException"|"InternalFailureException"|"ServiceUnavailableException"|"ThrottlingException",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -64,6 +78,20 @@ ioteventsdata_batch_put_message <- function(messages) {
 #'
 #' @param detectors &#91;required&#93; The list of detectors (instances) to update, along with the values to
 #' update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchUpdateDetectorErrorEntries = list(
+#'     list(
+#'       messageId = "string",
+#'       errorCode = "ResourceNotFoundException"|"InvalidRequestException"|"InternalFailureException"|"ServiceUnavailableException"|"ThrottlingException",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -126,6 +154,41 @@ ioteventsdata_batch_update_detector <- function(detectors) {
 #' @param keyValue A filter used to limit results to detectors (instances) created because
 #' of the given key ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detector = list(
+#'     detectorModelName = "string",
+#'     keyValue = "string",
+#'     detectorModelVersion = "string",
+#'     state = list(
+#'       stateName = "string",
+#'       variables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       timers = list(
+#'         list(
+#'           name = "string",
+#'           timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_detector(
@@ -168,6 +231,30 @@ ioteventsdata_describe_detector <- function(detectorModelName, keyValue = NULL) 
 #' state.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorSummaries = list(
+#'     list(
+#'       detectorModelName = "string",
+#'       keyValue = "string",
+#'       detectorModelVersion = "string",
+#'       state = list(
+#'         stateName = "string"
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

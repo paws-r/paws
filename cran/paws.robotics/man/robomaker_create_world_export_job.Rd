@@ -22,6 +22,26 @@ bucket and put the export.}
 \item{tags}{A map that contains tag keys and tag values that are attached to the
 world export job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  status = "Pending"|"Running"|"Completed"|"Failed"|"Canceling"|"Canceled",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AccessDenied",
+  clientRequestToken = "string",
+  outputLocation = list(
+    s3Bucket = "string",
+    s3Prefix = "string"
+  ),
+  iamRole = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a world export job.
 }

@@ -9,6 +9,9 @@ iot_delete_domain_configuration(domainConfigurationName)
 \arguments{
 \item{domainConfigurationName}{[required] The name of the domain configuration to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified domain configuration.
 

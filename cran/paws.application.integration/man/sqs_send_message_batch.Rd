@@ -13,6 +13,29 @@ Queue URLs and names are case-sensitive.}
 
 \item{Entries}{[required] A list of \code{SendMessageBatchRequestEntry} items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Successful = list(
+    list(
+      Id = "string",
+      MessageId = "string",
+      MD5OfMessageBody = "string",
+      MD5OfMessageAttributes = "string",
+      MD5OfMessageSystemAttributes = "string",
+      SequenceNumber = "string"
+    )
+  ),
+  Failed = list(
+    list(
+      Id = "string",
+      SenderFault = TRUE|FALSE,
+      Code = "string",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Delivers up to ten messages to the specified queue. This is a batch
 version of \code{ SendMessage.} For a FIFO queue, multiple messages within a

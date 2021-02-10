@@ -10,6 +10,17 @@ iot1clickdevicesservice_get_device_methods(DeviceId)
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceMethods = list(
+    list(
+      DeviceType = "string",
+      MethodName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Given a device ID, returns the invokable methods associated with the
 device.

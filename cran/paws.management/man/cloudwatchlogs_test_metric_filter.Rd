@@ -12,6 +12,20 @@ cloudwatchlogs_test_metric_filter(filterPattern, logEventMessages)
 
 \item{logEventMessages}{[required] The log event messages to test.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  matches = list(
+    list(
+      eventNumber = 123,
+      eventMessage = "string",
+      extractedValues = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Tests the filter pattern of a metric filter against a sample of log
 event messages. You can use this operation to validate the correctness

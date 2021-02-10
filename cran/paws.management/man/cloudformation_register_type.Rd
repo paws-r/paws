@@ -15,7 +15,7 @@ Currently, the only valid value is \code{RESOURCE}.}
 \item{TypeName}{[required] The name of the type being registered.
 
 We recommend that type names adhere to the following pattern:
-\emph{company\\_or\\_organization}::\emph{service}::\emph{type}.
+\emph{company_or_organization}::\emph{service}::\emph{type}.
 
 The following organization namespaces are reserved and cannot be used in
 your resource type names:
@@ -62,6 +62,12 @@ registration request. Specifying a client request token prevents
 CloudFormation from generating more than one version of a type from the
 same registeration request, even if the request is submitted multiple
 times.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RegistrationToken = "string"
+)
+}
 }
 \description{
 Registers a type with the CloudFormation service. Registering a type

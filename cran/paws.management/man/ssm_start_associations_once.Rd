@@ -9,6 +9,9 @@ ssm_start_associations_once(AssociationIds)
 \arguments{
 \item{AssociationIds}{[required] The association IDs that you want to run immediately and only one time.}
 }
+\value{
+An empty list.
+}
 \description{
 Use this API action to run an association immediately and only one time.
 This action can be helpful when troubleshooting associations.

@@ -49,6 +49,25 @@ longer be used in CloudFormation operations.
 
 The default is \code{LIVE}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TypeVersionSummaries = list(
+    list(
+      Type = "RESOURCE"|"MODULE",
+      TypeName = "string",
+      VersionId = "string",
+      IsDefaultVersion = TRUE|FALSE,
+      Arn = "string",
+      TimeCreated = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summary information about the versions of a type.
 }

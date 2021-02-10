@@ -24,15 +24,14 @@ more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{DetectionAttributes}{An array of facial attributes that you want to be returned. This can be
 the default list of attributes or all attributes. If you don't specify a
-value for \code{Attributes} or if you specify \verb{\\\["DEFAULT"\\\]}, the API
-returns the following subset of facial attributes: \code{BoundingBox},
-\code{Confidence}, \code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide
-\verb{\\\["ALL"\\\]}, all facial attributes are returned, but the operation
-takes longer to complete.
+value for \code{Attributes} or if you specify \verb{["DEFAULT"]}, the API returns
+the following subset of facial attributes: \code{BoundingBox}, \code{Confidence},
+\code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide \verb{["ALL"]}, all facial
+attributes are returned, but the operation takes longer to complete.
 
-If you provide both, \verb{\\\["ALL", "DEFAULT"\\\]}, the service uses a
-logical AND operator to determine which attributes to return (in this
-case, all attributes).}
+If you provide both, \verb{["ALL", "DEFAULT"]}, the service uses a logical
+AND operator to determine which attributes to return (in this case, all
+attributes).}
 
 \item{MaxFaces}{The maximum number of faces to index. The value of \code{MaxFaces} must be
 greater than or equal to 1. \code{\link[=rekognition_index_faces]{index_faces}}
@@ -66,6 +65,170 @@ performed.
 
 To use quality filtering, the collection you are using must be
 associated with version 3 of the face model or higher.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  FaceRecords = list(
+    list(
+      Face = list(
+        FaceId = "string",
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        ImageId = "string",
+        ExternalImageId = "string",
+        Confidence = 123.0
+      ),
+      FaceDetail = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        AgeRange = list(
+          Low = 123,
+          High = 123
+        ),
+        Smile = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Eyeglasses = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Sunglasses = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Gender = list(
+          Value = "Male"|"Female",
+          Confidence = 123.0
+        ),
+        Beard = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Mustache = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        EyesOpen = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        MouthOpen = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Emotions = list(
+          list(
+            Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+            Confidence = 123.0
+          )
+        ),
+        Landmarks = list(
+          list(
+            Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+            X = 123.0,
+            Y = 123.0
+          )
+        ),
+        Pose = list(
+          Roll = 123.0,
+          Yaw = 123.0,
+          Pitch = 123.0
+        ),
+        Quality = list(
+          Brightness = 123.0,
+          Sharpness = 123.0
+        ),
+        Confidence = 123.0
+      )
+    )
+  ),
+  OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
+  FaceModelVersion = "string",
+  UnindexedFaces = list(
+    list(
+      Reasons = list(
+        "EXCEEDS_MAX_FACES"|"EXTREME_POSE"|"LOW_BRIGHTNESS"|"LOW_SHARPNESS"|"LOW_CONFIDENCE"|"SMALL_BOUNDING_BOX"|"LOW_FACE_QUALITY"
+      ),
+      FaceDetail = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        AgeRange = list(
+          Low = 123,
+          High = 123
+        ),
+        Smile = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Eyeglasses = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Sunglasses = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Gender = list(
+          Value = "Male"|"Female",
+          Confidence = 123.0
+        ),
+        Beard = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Mustache = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        EyesOpen = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        MouthOpen = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Emotions = list(
+          list(
+            Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+            Confidence = 123.0
+          )
+        ),
+        Landmarks = list(
+          list(
+            Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+            X = 123.0,
+            Y = 123.0
+          )
+        ),
+        Pose = list(
+          Roll = 123.0,
+          Yaw = 123.0,
+          Pitch = 123.0
+        ),
+        Quality = list(
+          Brightness = 123.0,
+          Sharpness = 123.0
+        ),
+        Confidence = 123.0
+      )
+    )
+  )
+)
+}
 }
 \description{
 Detects faces in the input image and adds them to the specified

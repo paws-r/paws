@@ -9,6 +9,9 @@ chime_delete_sip_rule(SipRuleId)
 \arguments{
 \item{SipRuleId}{[required] The SIP rule ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a SIP rule. You must disable a SIP rule before you can delete
 it.

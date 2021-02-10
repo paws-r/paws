@@ -16,7 +16,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -25,7 +25,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] Key name of the object to delete.}
@@ -46,6 +46,14 @@ restrictions to process this operation.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeleteMarker = TRUE|FALSE,
+  VersionId = "string",
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Removes the null version (if there is one) of an object and inserts a
 delete marker, which becomes the latest version of the object. If there
@@ -61,7 +69,7 @@ versioning configuration is MFA Delete enabled, you must include the
 \code{x-amz-mfa} request header in the DELETE \code{versionId} request. Requests
 that include \code{x-amz-mfa} must use HTTPS.
 
-For more information about MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html}{Using MFA Delete}.
+For more information about MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMFADelete.html}{Using MFA Delete}.
 To see sample requests that use versioning, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html#ExampleVersionObjectDelete}{Sample Request}.
 
 You can delete objects by explicitly calling the DELETE Object API or

@@ -10,6 +10,19 @@ eventbridge_put_partner_events(Entries)
 \arguments{
 \item{Entries}{[required] The list of events to write to the event bus.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedEntryCount = 123,
+  Entries = list(
+    list(
+      EventId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 This is used by SaaS partners to write events to a customer's partner
 event bus. AWS customers do not use this operation.

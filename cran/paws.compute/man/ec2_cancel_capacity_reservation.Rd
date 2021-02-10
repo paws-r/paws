@@ -15,6 +15,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Cancels the specified Capacity Reservation, releases the reserved
 capacity, and changes the Capacity Reservation's state to \code{cancelled}.

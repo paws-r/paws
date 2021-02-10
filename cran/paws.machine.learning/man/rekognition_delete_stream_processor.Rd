@@ -9,6 +9,9 @@ rekognition_delete_stream_processor(Name)
 \arguments{
 \item{Name}{[required] The name of the stream processor you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the stream processor identified by \code{Name}. You assign the value
 for \code{Name} when you create the stream processor with

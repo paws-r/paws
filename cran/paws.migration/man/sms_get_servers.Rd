@@ -15,6 +15,34 @@ the returned \code{NextToken} value.}
 
 \item{vmServerAddressList}{The server addresses.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  lastModifiedOn = as.POSIXct(
+    "2015-01-01"
+  ),
+  serverCatalogStatus = "NOT_IMPORTED"|"IMPORTING"|"AVAILABLE"|"DELETED"|"EXPIRED",
+  serverList = list(
+    list(
+      serverId = "string",
+      serverType = "VIRTUAL_MACHINE",
+      vmServer = list(
+        vmServerAddress = list(
+          vmManagerId = "string",
+          vmId = "string"
+        ),
+        vmName = "string",
+        vmManagerName = "string",
+        vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+        vmPath = "string"
+      ),
+      replicationJobId = "string",
+      replicationJobTerminated = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Describes the servers in your server catalog.
 

@@ -12,6 +12,9 @@ remove tags from. An ARN uniquely identifies a resource.}
 
 \item{TagKeys}{[required] The tag key pairs that you want to remove from the specified resources.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove tags from a Global Accelerator resource. When you specify a tag
 key, the action removes both that key and its associated value. The

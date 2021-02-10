@@ -15,6 +15,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PublicIp}{[required] The Elastic IP address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PublicIp = "string",
+  Status = "MoveInProgress"|"InVpc"|"InClassic"
+)
+}
+}
 \description{
 Restores an Elastic IP address that was previously moved to the EC2-VPC
 platform back to the EC2-Classic platform. You cannot move an Elastic IP

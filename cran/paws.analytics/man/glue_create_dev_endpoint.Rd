@@ -99,6 +99,36 @@ the developer guide.}
 
 \item{Arguments}{A map of arguments used to configure the \code{DevEndpoint}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointName = "string",
+  Status = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  SubnetId = "string",
+  RoleArn = "string",
+  YarnEndpointAddress = "string",
+  ZeppelinRemoteSparkInterpreterPort = 123,
+  NumberOfNodes = 123,
+  WorkerType = "Standard"|"G.1X"|"G.2X",
+  GlueVersion = "string",
+  NumberOfWorkers = 123,
+  AvailabilityZone = "string",
+  VpcId = "string",
+  ExtraPythonLibsS3Path = "string",
+  ExtraJarsS3Path = "string",
+  FailureReason = "string",
+  SecurityConfiguration = "string",
+  CreatedTimestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  Arguments = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a new development endpoint.
 }

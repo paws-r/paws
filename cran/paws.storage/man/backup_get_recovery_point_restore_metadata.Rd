@@ -18,6 +18,16 @@ lowercase letters, numbers, and hyphens.}
 for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupVaultArn = "string",
+  RecoveryPointArn = "string",
+  RestoreMetadata = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a set of metadata key-value pairs that were used to create the
 backup.

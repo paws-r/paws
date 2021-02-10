@@ -9,7 +9,27 @@ mq_describe_user(BrokerId, Username)
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
-\item{Username}{[required] The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
+\item{Username}{[required] The username of the ActiveMQ user. This value can contain only
+alphanumeric characters, dashes, periods, underscores, and tildes (- .
+_ ~). This value must be 2-100 characters long.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BrokerId = "string",
+  ConsoleAccess = TRUE|FALSE,
+  Groups = list(
+    "string"
+  ),
+  Pending = list(
+    ConsoleAccess = TRUE|FALSE,
+    Groups = list(
+      "string"
+    ),
+    PendingChange = "CREATE"|"UPDATE"|"DELETE"
+  ),
+  Username = "string"
+)
+}
 }
 \description{
 Returns information about an ActiveMQ user.

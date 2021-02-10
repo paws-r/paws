@@ -11,6 +11,28 @@ apigatewayv2_update_vpc_link(Name, VpcLinkId)
 
 \item{VpcLinkId}{[required] The ID of the VPC link.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Name = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    "string"
+  ),
+  VpcLinkId = "string",
+  VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
+  VpcLinkStatusMessage = "string",
+  VpcLinkVersion = "V2"
+)
+}
+}
 \description{
 Updates a VPC link.
 }

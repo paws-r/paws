@@ -29,6 +29,29 @@ If you do not specify a \code{SourceSchemaName} value, the default is
 
 \item{NewTableName}{[required] The name of the table to create as a result of the current request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableRestoreStatus = list(
+    TableRestoreRequestId = "string",
+    Status = "PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED",
+    Message = "string",
+    RequestTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProgressInMegaBytes = 123,
+    TotalDataInMegaBytes = 123,
+    ClusterIdentifier = "string",
+    SnapshotIdentifier = "string",
+    SourceDatabaseName = "string",
+    SourceSchemaName = "string",
+    SourceTableName = "string",
+    TargetDatabaseName = "string",
+    TargetSchemaName = "string",
+    NewTableName = "string"
+  )
+)
+}
+}
 \description{
 Creates a new table from a table in an Amazon Redshift cluster snapshot.
 You must create the new table within the Amazon Redshift cluster that

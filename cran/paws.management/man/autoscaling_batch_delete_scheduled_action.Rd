@@ -14,6 +14,18 @@ autoscaling_batch_delete_scheduled_action(AutoScalingGroupName,
 \item{ScheduledActionNames}{[required] The names of the scheduled actions to delete. The maximum number allowed
 is 50.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedScheduledActions = list(
+    list(
+      ScheduledActionName = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more scheduled actions for the specified Auto Scaling
 group.

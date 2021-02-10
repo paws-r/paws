@@ -11,6 +11,9 @@ kinesis_remove_tags_from_stream(StreamName, TagKeys)
 
 \item{TagKeys}{[required] A list of tag keys. Each corresponding tag is removed from the stream.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from the specified Kinesis data stream. Removed tags are
 deleted and cannot be recovered after this operation successfully

@@ -12,6 +12,24 @@ mturk_get_qualification_score(QualificationTypeId, WorkerId)
 
 \item{WorkerId}{[required] The ID of the Worker whose Qualification is being updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Qualification = list(
+    QualificationTypeId = "string",
+    WorkerId = "string",
+    GrantTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    IntegerValue = 123,
+    LocaleValue = list(
+      Country = "string",
+      Subdivision = "string"
+    ),
+    Status = "Granted"|"Revoked"
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_get_qualification_score]{get_qualification_score}} operation
 returns the value of a Worker's Qualification for a given Qualification

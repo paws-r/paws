@@ -19,6 +19,9 @@ the \code{\link[=acmpca_put_policy]{put_policy}} action returns an
 \code{InvalidPolicyException}. For information about IAM policy and statement
 structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json}{Overview of JSON Policies}.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches a resource-based policy to a private CA.
 

@@ -11,6 +11,9 @@ chime_delete_channel_moderator(ChannelArn, ChannelModeratorArn)
 
 \item{ChannelModeratorArn}{[required] The ARN of the moderator being deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a channel moderator.
 }

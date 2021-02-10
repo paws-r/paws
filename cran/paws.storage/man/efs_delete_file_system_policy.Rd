@@ -10,6 +10,9 @@ efs_delete_file_system_policy(FileSystemId)
 \item{FileSystemId}{[required] Specifies the EFS file system for which to delete the
 \code{FileSystemPolicy}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the \code{FileSystemPolicy} for the specified file system. The
 default \code{FileSystemPolicy} goes into effect once the existing policy is

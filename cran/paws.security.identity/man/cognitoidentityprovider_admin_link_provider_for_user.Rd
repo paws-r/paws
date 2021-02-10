@@ -50,6 +50,9 @@ through the SAML identity provider and submit that claim name as the
 \code{Cognito_Subject}, Cognito will automatically parse the default unique
 identifier found in the subject from the SAML token.}
 }
+\value{
+An empty list.
+}
 \description{
 Links an existing user account in a user pool (\code{DestinationUser}) to an
 identity from an external identity provider (\code{SourceUser}) based on a

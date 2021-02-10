@@ -31,6 +31,17 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 \item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only
 2048-bit RSA public keys are supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyId = "string",
+  ImportToken = raw,
+  PublicKey = raw,
+  ParametersValidTo = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns the items you need to import key material into a symmetric,
 customer managed customer master key (CMK). For more information about

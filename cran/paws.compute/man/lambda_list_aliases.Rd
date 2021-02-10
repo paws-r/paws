@@ -28,6 +28,26 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Limit the number of aliases returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  Aliases = list(
+    list(
+      AliasArn = "string",
+      Name = "string",
+      FunctionVersion = "string",
+      Description = "string",
+      RoutingConfig = list(
+        AdditionalVersionWeights = list(
+          123.0
+        )
+      ),
+      RevisionId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{aliases}

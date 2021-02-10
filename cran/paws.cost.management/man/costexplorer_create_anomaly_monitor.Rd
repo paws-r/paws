@@ -10,6 +10,12 @@ costexplorer_create_anomaly_monitor(AnomalyMonitor)
 \arguments{
 \item{AnomalyMonitor}{[required] The cost anomaly detection monitor object that you want to create.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitorArn = "string"
+)
+}
+}
 \description{
 Creates a new cost anomaly detection monitor with the requested type and
 monitor specification.

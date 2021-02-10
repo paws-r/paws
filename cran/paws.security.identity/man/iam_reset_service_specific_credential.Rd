@@ -14,12 +14,28 @@ the user whose credentials are used to call the operation.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{ServiceSpecificCredentialId}{[required] The unique identifier of the service-specific credential.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that can consist of any upper or lowercased letter or digit.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceSpecificCredential = list(
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ServiceName = "string",
+    ServiceUserName = "string",
+    ServicePassword = "string",
+    ServiceSpecificCredentialId = "string",
+    UserName = "string",
+    Status = "Active"|"Inactive"
+  )
+)
+}
 }
 \description{
 Resets the password for a service-specific credential. The new password

@@ -17,6 +17,9 @@ example:
 For more information on S3 bucket requirements, including an example
 bucket policy, see the example S3 bucket policy on this page.}
 }
+\value{
+An empty list.
+}
 \description{
 Generates a report that lists all tagged resources in accounts across
 your organization and tells whether each resource is compliant with the

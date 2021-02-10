@@ -23,6 +23,26 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IamInstanceProfileAssociations = list(
+    list(
+      AssociationId = "string",
+      InstanceId = "string",
+      IamInstanceProfile = list(
+        Arn = "string",
+        Id = "string"
+      ),
+      State = "associating"|"associated"|"disassociating"|"disassociated",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes your IAM instance profile associations.
 }

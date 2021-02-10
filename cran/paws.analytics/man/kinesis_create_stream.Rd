@@ -17,6 +17,9 @@ different Regions can also have the same name.}
 stream is a function of the number of shards; more shards are required
 for greater provisioned throughput.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a Kinesis data stream. A stream captures and transports data
 records that are continuously emitted from different data sources or

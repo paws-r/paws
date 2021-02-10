@@ -12,6 +12,9 @@ autoscaling_delete_scheduled_action(AutoScalingGroupName,
 
 \item{ScheduledActionName}{[required] The name of the action to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified scheduled action.
 }

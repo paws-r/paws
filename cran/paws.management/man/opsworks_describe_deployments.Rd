@@ -17,6 +17,36 @@ description of the commands associated with the specified app.}
 parameter, the command returns a description of the specified
 deployments. Otherwise, it returns a description of every deployment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Deployments = list(
+    list(
+      DeploymentId = "string",
+      StackId = "string",
+      AppId = "string",
+      CreatedAt = "string",
+      CompletedAt = "string",
+      Duration = 123,
+      IamUserArn = "string",
+      Comment = "string",
+      Command = list(
+        Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
+        Args = list(
+          list(
+            "string"
+          )
+        )
+      ),
+      Status = "string",
+      CustomJson = "string",
+      InstanceIds = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Requests a description of a specified set of deployments.
 

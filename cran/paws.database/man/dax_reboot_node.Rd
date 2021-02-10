@@ -11,6 +11,65 @@ dax_reboot_node(ClusterName, NodeId)
 
 \item{NodeId}{[required] The system-assigned ID of the node to be rebooted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Cluster = list(
+    ClusterName = "string",
+    Description = "string",
+    ClusterArn = "string",
+    TotalNodes = 123,
+    ActiveNodes = 123,
+    NodeType = "string",
+    Status = "string",
+    ClusterDiscoveryEndpoint = list(
+      Address = "string",
+      Port = 123
+    ),
+    NodeIdsToRemove = list(
+      "string"
+    ),
+    Nodes = list(
+      list(
+        NodeId = "string",
+        Endpoint = list(
+          Address = "string",
+          Port = 123
+        ),
+        NodeCreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        AvailabilityZone = "string",
+        NodeStatus = "string",
+        ParameterGroupStatus = "string"
+      )
+    ),
+    PreferredMaintenanceWindow = "string",
+    NotificationConfiguration = list(
+      TopicArn = "string",
+      TopicStatus = "string"
+    ),
+    SubnetGroup = "string",
+    SecurityGroups = list(
+      list(
+        SecurityGroupIdentifier = "string",
+        Status = "string"
+      )
+    ),
+    IamRoleArn = "string",
+    ParameterGroup = list(
+      ParameterGroupName = "string",
+      ParameterApplyStatus = "string",
+      NodeIdsToReboot = list(
+        "string"
+      )
+    ),
+    SSEDescription = list(
+      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+    )
+  )
+)
+}
+}
 \description{
 Reboots a single node of a DAX cluster. The reboot action takes place as
 soon as possible. During the reboot, the node status is set to

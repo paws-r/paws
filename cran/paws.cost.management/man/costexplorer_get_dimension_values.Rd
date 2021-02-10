@@ -34,36 +34,36 @@ If you set the context to \code{COST_AND_USAGE}, you can use the following
 dimensions for searching:
 \itemize{
 \item AZ - The Availability Zone. An example is \verb{us-east-1a}.
-\item DATABASE\\_ENGINE - The Amazon Relational Database Service database.
+\item DATABASE_ENGINE - The Amazon Relational Database Service database.
 Examples are Aurora or MySQL.
-\item INSTANCE\\_TYPE - The type of Amazon EC2 instance. An example is
+\item INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
 \code{m4.xlarge}.
-\item LEGAL\\_ENTITY\\_NAME - The name of the organization that sells you
+\item LEGAL_ENTITY_NAME - The name of the organization that sells you
 AWS services, such as Amazon Web Services.
-\item LINKED\\_ACCOUNT - The description in the attribute map that includes
+\item LINKED_ACCOUNT - The description in the attribute map that includes
 the full name of the member account. The value field contains the
 AWS ID of the member account.
-\item OPERATING\\_SYSTEM - The operating system. Examples are Windows or
+\item OPERATING_SYSTEM - The operating system. Examples are Windows or
 Linux.
 \item OPERATION - The action performed. Examples include \code{RunInstance} and
 \code{CreateBucket}.
 \item PLATFORM - The Amazon EC2 operating system. Examples are Windows or
 Linux.
-\item PURCHASE\\_TYPE - The reservation type of the purchase to which this
+\item PURCHASE_TYPE - The reservation type of the purchase to which this
 usage is related. Examples include On-Demand Instances and Standard
 Reserved Instances.
 \item SERVICE - The AWS service such as Amazon DynamoDB.
-\item USAGE\\_TYPE - The type of usage. An example is
+\item USAGE_TYPE - The type of usage. An example is
 DataTransfer-In-Bytes. The response for the
 \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}
 operation includes a unit attribute. Examples include GB and Hrs.
-\item USAGE\\_TYPE\\_GROUP - The grouping of common usage types. An example
+\item USAGE_TYPE_GROUP - The grouping of common usage types. An example
 is Amazon EC2: CloudWatch – Alarms. The response for this operation
 includes a unit attribute.
 \item REGION - The AWS Region.
-\item RECORD\\_TYPE - The different types of charges such as RI fees, usage
+\item RECORD_TYPE - The different types of charges such as RI fees, usage
 costs, tax refunds, and credits.
-\item RESOURCE\\_ID - The unique identifier of the resource. ResourceId is
+\item RESOURCE_ID - The unique identifier of the resource. ResourceId is
 an opt-in feature only available for last 14 days for EC2-Compute
 Service.
 }
@@ -72,13 +72,13 @@ If you set the context to \code{RESERVATIONS}, you can use the following
 dimensions for searching:
 \itemize{
 \item AZ - The Availability Zone. An example is \verb{us-east-1a}.
-\item CACHE\\_ENGINE - The Amazon ElastiCache operating system. Examples
+\item CACHE_ENGINE - The Amazon ElastiCache operating system. Examples
 are Windows or Linux.
-\item DEPLOYMENT\\_OPTION - The scope of Amazon Relational Database Service
+\item DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
 deployments. Valid values are \code{SingleAZ} and \code{MultiAZ}.
-\item INSTANCE\\_TYPE - The type of Amazon EC2 instance. An example is
+\item INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
 \code{m4.xlarge}.
-\item LINKED\\_ACCOUNT - The description in the attribute map that includes
+\item LINKED_ACCOUNT - The description in the attribute map that includes
 the full name of the member account. The value field contains the
 AWS ID of the member account.
 \item PLATFORM - The Amazon EC2 operating system. Examples are Windows or
@@ -95,16 +95,16 @@ dedicated.
 If you set the context to \code{SAVINGS_PLANS}, you can use the following
 dimensions for searching:
 \itemize{
-\item SAVINGS\\_PLANS\\_TYPE - Type of Savings Plans (EC2 Instance or
+\item SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or
 Compute)
-\item PAYMENT\\_OPTION - Payment option for the given Savings Plans (for
+\item PAYMENT_OPTION - Payment option for the given Savings Plans (for
 example, All Upfront)
 \item REGION - The AWS Region.
-\item INSTANCE\\_TYPE\\_FAMILY - The family of instances (For example, \code{m5})
-\item LINKED\\_ACCOUNT - The description in the attribute map that includes
+\item INSTANCE_TYPE_FAMILY - The family of instances (For example, \code{m5})
+\item LINKED_ACCOUNT - The description in the attribute map that includes
 the full name of the member account. The value field contains the
 AWS ID of the member account.
-\item SAVINGS\\_PLAN\\_ARN - The unique identifier for your Savings Plan
+\item SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
 }}
 
 \item{Filter}{}
@@ -137,6 +137,22 @@ results as the default value for this parameter.}
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum
 page size.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DimensionValues = list(
+    list(
+      Value = "string",
+      Attributes = list(
+        "string"
+      )
+    )
+  ),
+  ReturnSize = 123,
+  TotalSize = 123,
+  NextPageToken = "string"
+)
+}
 }
 \description{
 Retrieves all available filter values for a specified filter over a

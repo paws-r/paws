@@ -29,6 +29,41 @@ length of 256 characters.}
 
 \item{virtualRouterName}{[required] The name to use for the virtual router.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualRouter = list(
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    spec = list(
+      listeners = list(
+        list(
+          portMapping = list(
+            port = 123,
+            protocol = "http"|"tcp"|"http2"|"grpc"
+          )
+        )
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    ),
+    virtualRouterName = "string"
+  )
+)
+}
+}
 \description{
 Creates a virtual router within a service mesh.
 

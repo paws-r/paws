@@ -13,6 +13,9 @@ workdocs_deactivate_user(UserId, AuthenticationToken)
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
 administrator credentials to access the API.}
 }
+\value{
+An empty list.
+}
 \description{
 Deactivates the specified user, which revokes the user's access to
 Amazon WorkDocs.

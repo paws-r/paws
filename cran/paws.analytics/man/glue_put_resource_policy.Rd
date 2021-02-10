@@ -32,6 +32,12 @@ co-exist with an account-level policy. A value of \code{YES} means the use of
 both resource-level and account/catalog-level resource policies is
 allowed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyHash = "string"
+)
+}
+}
 \description{
 Sets the Data Catalog resource policy for access control.
 }

@@ -50,6 +50,9 @@ only.}
 
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
 }
+\value{
+An empty list.
+}
 \description{
 Replaces an existing route within a route table in a VPC. You must
 provide only one of the following: internet gateway, virtual private

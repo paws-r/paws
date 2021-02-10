@@ -23,6 +23,22 @@ also allows the Limit request parameter.}
 \item{NextToken}{The nextToken string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Results = list(
+    "string"
+  ),
+  QueryInfo = list(
+    SelectFields = list(
+      list(
+        Name = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Accepts a structured query language (SQL) SELECT command and an
 aggregator to query configuration state of AWS resources across multiple

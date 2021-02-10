@@ -20,6 +20,32 @@ this call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DestinationPortMappings = list(
+    list(
+      AcceleratorArn = "string",
+      AcceleratorSocketAddresses = list(
+        list(
+          IpAddress = "string",
+          Port = 123
+        )
+      ),
+      EndpointGroupArn = "string",
+      EndpointId = "string",
+      EndpointGroupRegion = "string",
+      DestinationSocketAddress = list(
+        IpAddress = "string",
+        Port = 123
+      ),
+      IpAddressType = "IPV4",
+      DestinationTrafficState = "ALLOW"|"DENY"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the port mappings for a specific EC2 instance (destination) in a
 VPC subnet endpoint. The response is the mappings for one destination IP

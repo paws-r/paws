@@ -14,6 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupName}{[required] The name of the placement group.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For

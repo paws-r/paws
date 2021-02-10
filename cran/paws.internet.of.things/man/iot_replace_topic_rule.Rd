@@ -11,6 +11,9 @@ iot_replace_topic_rule(ruleName, topicRulePayload)
 
 \item{topicRulePayload}{[required] The rule payload.}
 }
+\value{
+An empty list.
+}
 \description{
 Replaces the rule. You must specify all parameters for the new rule.
 Creating rules is an administrator-level action. Any user who has

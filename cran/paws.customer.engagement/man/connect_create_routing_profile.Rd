@@ -25,6 +25,13 @@ this routing profile.}
 
 \item{Tags}{One or more tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoutingProfileArn = "string",
+  RoutingProfileId = "string"
+)
+}
+}
 \description{
 Creates a new routing profile.
 }

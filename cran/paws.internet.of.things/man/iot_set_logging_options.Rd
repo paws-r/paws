@@ -9,6 +9,9 @@ iot_set_logging_options(loggingOptionsPayload)
 \arguments{
 \item{loggingOptionsPayload}{[required] The logging options payload.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the logging options.
 

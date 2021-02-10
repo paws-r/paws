@@ -23,6 +23,38 @@ results, use null.}
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisioningArtifactViews = list(
+    list(
+      ProductViewSummary = list(
+        Id = "string",
+        ProductId = "string",
+        Name = "string",
+        Owner = "string",
+        ShortDescription = "string",
+        Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+        Distributor = "string",
+        HasDefaultPath = TRUE|FALSE,
+        SupportEmail = "string",
+        SupportDescription = "string",
+        SupportUrl = "string"
+      ),
+      ProvisioningArtifact = list(
+        Id = "string",
+        Name = "string",
+        Description = "string",
+        CreatedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        Guidance = "DEFAULT"|"DEPRECATED"
+      )
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists all provisioning artifacts (also known as versions) for the
 specified self-service action.

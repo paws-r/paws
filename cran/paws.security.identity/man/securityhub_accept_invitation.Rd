@@ -13,6 +13,9 @@ invitation.}
 
 \item{InvitationId}{[required] The ID of the invitation sent from the Security Hub master account.}
 }
+\value{
+An empty list.
+}
 \description{
 Accepts the invitation to be a member account and be monitored by the
 Security Hub master account that the invitation was sent from.

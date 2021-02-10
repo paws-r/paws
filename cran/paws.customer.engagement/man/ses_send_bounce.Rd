@@ -31,6 +31,12 @@ the identity that is associated with the sending authorization policy
 that permits you to use the address in the "From" header of the bounce.
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageId = "string"
+)
+}
+}
 \description{
 Generates and sends a bounce message to the sender of an email you
 received through Amazon SES. You can only use this API on an email up to

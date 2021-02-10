@@ -54,7 +54,7 @@ The value can be in date, checkpoint, or LSN/SCN format.
 Date Example: --cdc-start-position “2018-03-08T12:12:12”
 
 Checkpoint Example: --cdc-start-position
-"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#*\\#0\\#93"
+"checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
 
 LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 
@@ -68,9 +68,9 @@ more information, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-“server\\_time:2018-02-09T12:12:12”
+“server_time:2018-02-09T12:12:12”
 
-Commit time example: --cdc-stop-position “commit\\_time:
+Commit time example: --cdc-stop-position “commit_time:
 2018-02-09T12:12:12 “}
 
 \item{Tags}{One or more tags to be assigned to the replication task.}
@@ -90,6 +90,58 @@ this value might result in the \code{EndpointArn} value
 \code{arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1}. If you don't
 specify a \code{ResourceIdentifier} value, AWS DMS generates a default
 identifier value for the end of \code{EndpointArn}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationTask = list(
+    ReplicationTaskIdentifier = "string",
+    SourceEndpointArn = "string",
+    TargetEndpointArn = "string",
+    ReplicationInstanceArn = "string",
+    MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+    TableMappings = "string",
+    ReplicationTaskSettings = "string",
+    Status = "string",
+    LastFailureMessage = "string",
+    StopReason = "string",
+    ReplicationTaskCreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ReplicationTaskStartDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CdcStartPosition = "string",
+    CdcStopPosition = "string",
+    RecoveryCheckpoint = "string",
+    ReplicationTaskArn = "string",
+    ReplicationTaskStats = list(
+      FullLoadProgressPercent = 123,
+      ElapsedTimeMillis = 123,
+      TablesLoaded = 123,
+      TablesLoading = 123,
+      TablesQueued = 123,
+      TablesErrored = 123,
+      FreshStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      StartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      StopDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      FullLoadStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      FullLoadFinishDate = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    TaskData = "string",
+    TargetReplicationInstanceArn = "string"
+  )
+)
+}
 }
 \description{
 Creates a replication task using the specified parameters.
@@ -126,10 +178,10 @@ Creates a replication task using the specified parameters.
 svc$create_replication_task(
   CdcStartTime = "2016-12-14T18:25:43Z",
   MigrationType = "full-load",
-  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ...",
+  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
   ReplicationTaskIdentifier = "task1",
   ReplicationTaskSettings = "",
-  SourceEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ZW5UAN6P4E77EC7YWHK4RZZ3B...",
+  SourceEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ZW5UAN6P4E77EC7YWHK4RZZ3BE",
   TableMappings = "file://mappingfile.json",
   Tags = list(
     list(
@@ -137,7 +189,7 @@ svc$create_replication_task(
       Value = "24352226"
     )
   ),
-  TargetEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7..."
+  TargetEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E"
 )
 }
 

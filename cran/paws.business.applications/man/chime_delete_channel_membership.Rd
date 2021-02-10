@@ -11,6 +11,9 @@ chime_delete_channel_membership(ChannelArn, MemberArn)
 
 \item{MemberArn}{[required] The ARN of the member that you're removing from the channel.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a member from a channel.
 }

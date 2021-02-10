@@ -21,6 +21,29 @@ Default: There is no default value.}
 \item{NextToken}{A string that identifies the next page of events that you want to
 retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackEvents = list(
+    list(
+      StackId = "string",
+      EventId = "string",
+      StackName = "string",
+      LogicalResourceId = "string",
+      PhysicalResourceId = "string",
+      ResourceType = "string",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
+      ResourceStatusReason = "string",
+      ResourceProperties = "string",
+      ClientRequestToken = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns all stack related events for a specified stack in reverse
 chronological order. For more information about a stack's event history,

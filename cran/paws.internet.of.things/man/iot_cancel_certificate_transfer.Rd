@@ -10,6 +10,9 @@ iot_cancel_certificate_transfer(certificateId)
 \item{certificateId}{[required] The ID of the certificate. (The last part of the certificate ARN
 contains the certificate ID.)}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels a pending transfer for the specified certificate.
 
@@ -21,7 +24,7 @@ account in the INACTIVE state. After the destination account has
 accepted the transfer, the transfer cannot be cancelled.
 
 After a certificate transfer is cancelled, the status of the certificate
-changes from PENDING\\_TRANSFER to INACTIVE.
+changes from PENDING_TRANSFER to INACTIVE.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_certificate_transfer(

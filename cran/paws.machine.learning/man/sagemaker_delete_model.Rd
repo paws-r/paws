@@ -9,6 +9,9 @@ sagemaker_delete_model(ModelName)
 \arguments{
 \item{ModelName}{[required] The name of the model to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a model. The \code{\link[=sagemaker_delete_model]{delete_model}} API
 deletes only the model entry that was created in Amazon SageMaker when

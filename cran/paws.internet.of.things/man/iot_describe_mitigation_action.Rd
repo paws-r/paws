@@ -9,6 +9,46 @@ iot_describe_mitigation_action(actionName)
 \arguments{
 \item{actionName}{[required] The friendly name that uniquely identifies the mitigation action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actionName = "string",
+  actionType = "UPDATE_DEVICE_CERTIFICATE"|"UPDATE_CA_CERTIFICATE"|"ADD_THINGS_TO_THING_GROUP"|"REPLACE_DEFAULT_POLICY_VERSION"|"ENABLE_IOT_LOGGING"|"PUBLISH_FINDING_TO_SNS",
+  actionArn = "string",
+  actionId = "string",
+  roleArn = "string",
+  actionParams = list(
+    updateDeviceCertificateParams = list(
+      action = "DEACTIVATE"
+    ),
+    updateCACertificateParams = list(
+      action = "DEACTIVATE"
+    ),
+    addThingsToThingGroupParams = list(
+      thingGroupNames = list(
+        "string"
+      ),
+      overrideDynamicGroups = TRUE|FALSE
+    ),
+    replaceDefaultPolicyVersionParams = list(
+      templateName = "BLANK_POLICY"
+    ),
+    enableIoTLoggingParams = list(
+      roleArnForLogging = "string",
+      logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+    ),
+    publishFindingToSnsParams = list(
+      topicArn = "string"
+    )
+  ),
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets information about a mitigation action.
 }

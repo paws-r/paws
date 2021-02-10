@@ -27,6 +27,9 @@ This applies when you use the \verb{AssumeRole*} API operations or the
 operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
 in the \emph{IAM User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the description or maximum session duration setting of a role.
 }

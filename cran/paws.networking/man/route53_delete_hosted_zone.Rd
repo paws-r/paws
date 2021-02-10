@@ -9,6 +9,19 @@ route53_delete_hosted_zone(Id)
 \arguments{
 \item{Id}{[required] The ID of the hosted zone you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Deletes a hosted zone.
 

@@ -15,6 +15,12 @@ where the object resides. For more information, see arns.}
 
 \item{AttributeUpdates}{[required] The attributes update structure.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ObjectIdentifier = "string"
+)
+}
+}
 \description{
 Updates a given object's attributes.
 }

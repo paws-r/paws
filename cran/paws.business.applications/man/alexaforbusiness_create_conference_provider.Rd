@@ -21,6 +21,12 @@ alexaforbusiness_create_conference_provider(ConferenceProviderName,
 
 \item{ClientRequestToken}{The request token of the client.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConferenceProviderArn = "string"
+)
+}
+}
 \description{
 Adds a new conference provider under the user's AWS account.
 }

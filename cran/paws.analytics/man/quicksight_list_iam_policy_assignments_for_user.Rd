@@ -21,6 +21,20 @@ results.}
 
 \item{Namespace}{[required] The namespace of the assignment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActiveAssignments = list(
+    list(
+      AssignmentName = "string",
+      PolicyArn = "string"
+    )
+  ),
+  RequestId = "string",
+  NextToken = "string",
+  Status = 123
+)
+}
+}
 \description{
 Lists all the IAM policy assignments, including the Amazon Resource
 Names (ARNs) for the IAM policies assigned to the specified user and

@@ -22,6 +22,12 @@ For example:
 To get the key ID and key ARN for a CMK, use
 \href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyId = "string"
+)
+}
+}
 \description{
 Cancels the deletion of a customer master key (CMK). When this operation
 succeeds, the key state of the CMK is \code{Disabled}. To enable the CMK, use

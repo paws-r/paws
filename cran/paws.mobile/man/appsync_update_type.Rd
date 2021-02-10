@@ -15,6 +15,18 @@ appsync_update_type(apiId, typeName, definition, format)
 
 \item{format}{[required] The new type format: SDL or JSON.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  type = list(
+    name = "string",
+    description = "string",
+    arn = "string",
+    definition = "string",
+    format = "SDL"|"JSON"
+  )
+)
+}
+}
 \description{
 Updates a \code{Type} object.
 }

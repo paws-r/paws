@@ -45,6 +45,12 @@ self-managed object storage server location.}
 location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string"
+)
+}
+}
 \description{
 Creates an endpoint for a self-managed object storage bucket. For more
 information about self-managed object storage locations, see

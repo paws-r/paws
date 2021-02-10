@@ -16,6 +16,25 @@ describe.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IAMPolicyAssignment = list(
+    AwsAccountId = "string",
+    AssignmentId = "string",
+    AssignmentName = "string",
+    PolicyArn = "string",
+    Identities = list(
+      list(
+        "string"
+      )
+    ),
+    AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED"
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes an existing IAM policy assignment, as specified by the
 assignment name.

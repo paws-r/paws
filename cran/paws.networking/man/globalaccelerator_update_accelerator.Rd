@@ -22,6 +22,33 @@ The default value is true.
 If the value is set to true, the accelerator cannot be deleted. If set
 to false, the accelerator can be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Accelerator = list(
+    AcceleratorArn = "string",
+    Name = "string",
+    IpAddressType = "IPV4",
+    Enabled = TRUE|FALSE,
+    IpSets = list(
+      list(
+        IpFamily = "string",
+        IpAddresses = list(
+          "string"
+        )
+      )
+    ),
+    DnsName = "string",
+    Status = "DEPLOYED"|"IN_PROGRESS",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Update an accelerator.
 

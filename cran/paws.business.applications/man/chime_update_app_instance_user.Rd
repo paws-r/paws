@@ -13,6 +13,12 @@ chime_update_app_instance_user(AppInstanceUserArn, Name, Metadata)
 
 \item{Metadata}{The metadata of the app instance user.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceUserArn = "string"
+)
+}
+}
 \description{
 Updates the details for an \code{AppInstanceUser}. You can update names and
 metadata.

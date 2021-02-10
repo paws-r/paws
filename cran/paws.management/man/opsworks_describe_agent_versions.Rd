@@ -11,6 +11,20 @@ opsworks_describe_agent_versions(StackId, ConfigurationManager)
 
 \item{ConfigurationManager}{The configuration manager.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AgentVersions = list(
+    list(
+      Version = "string",
+      ConfigurationManager = list(
+        Name = "string",
+        Version = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the available AWS OpsWorks Stacks agent versions. You must
 specify a stack ID or a configuration manager.

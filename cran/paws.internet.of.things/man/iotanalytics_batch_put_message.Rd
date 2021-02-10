@@ -15,20 +15,32 @@ iotanalytics_batch_put_message(channelName, messages)
 The field names of message payloads (data) that you send to AWS IoT
 Analytics:
 \itemize{
-\item Must contain only alphanumeric characters and undescores (\\_). No
+\item Must contain only alphanumeric characters and undescores (_). No
 other special characters are allowed.
-\item Must begin with an alphabetic character or single underscore (\\_).
+\item Must begin with an alphabetic character or single underscore (_).
 \item Cannot contain hyphens (-).
 \item In regular expression terms:
-"^[A-Za-z\\\emph{]([A-Za-z0-9]*|[A-Za-z0-9][A-Za-z0-9\\}]*)$".
+"^[A-Za-z_]([A-Za-z0-9]\emph{|[A-Za-z0-9][A-Za-z0-9_]})$".
 \item Cannot be more than 255 characters.
 \item Are case insensitive. (Fields named foo and FOO in the same payload
 are considered duplicates.)
 }
 
-For example, \{"temp\\_01": 29\} or \{"\\_temp\\_01": 29\} are valid, but
-\{"temp-01": 29\}, \{"01\\\emph{temp": 29\} or \{"\\}\\_temp\\_01": 29\} are invalid in
-message payloads.}
+For example, \{"temp_01": 29\} or \{"_temp_01": 29\} are valid,
+but \{"temp-01": 29\}, \{"01_temp": 29\} or \{"__temp_01":
+29\} are invalid in message payloads.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  batchPutMessageErrorEntries = list(
+    list(
+      messageId = "string",
+      errorCode = "string",
+      errorMessage = "string"
+    )
+  )
+)
+}
 }
 \description{
 Sends messages to a channel.

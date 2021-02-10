@@ -13,6 +13,9 @@ iot_attach_principal_policy(policyName, principal)
 \item{principal}{[required] The principal, which can be a certificate ARN (as returned from the
 CreateCertificate operation) or an Amazon Cognito ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches the specified policy to the specified principal (certificate or
 other credential).

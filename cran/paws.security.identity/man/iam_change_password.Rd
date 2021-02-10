@@ -14,13 +14,16 @@ password policy, if one exists.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
-include almost any printable ASCII character from the space (\code{U+0020})
-through the end of the ASCII character range (\verb{U+00FF}). You can also
-include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
-(\verb{U+000D}) characters. Any of these characters are valid in a password.
+include almost any printable ASCII character from the space (\verb{\\u0020})
+through the end of the ASCII character range (\verb{\\u00FF}). You can also
+include the tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and carriage return
+(\verb{\\u000D}) characters. Any of these characters are valid in a password.
 However, many tools, such as the AWS Management Console, might restrict
 the ability to type certain characters because they have special meaning
 within that tool.}
+}
+\value{
+An empty list.
 }
 \description{
 Changes the password of the IAM user who is calling this operation. The
@@ -43,7 +46,7 @@ in the \emph{IAM User Guide}.
 \dontrun{
 # The following command changes the password for the current IAM user.
 svc$change_password(
-  NewPassword = "]35d/\{pB9Fo9wJ",
+  NewPassword = "]35d/{pB9Fo9wJ",
   OldPassword = "3s0K_;xh4~8XXI"
 )
 }

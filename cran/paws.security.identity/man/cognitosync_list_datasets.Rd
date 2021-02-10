@@ -8,13 +8,39 @@ cognitosync_list_datasets(IdentityPoolId, IdentityId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
 
-\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
 
 \item{NextToken}{A pagination token for obtaining the next page of results.}
 
 \item{MaxResults}{The maximum number of results to be returned.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Datasets = list(
+    list(
+      IdentityId = "string",
+      DatasetName = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedBy = "string",
+      DataStorage = 123,
+      NumRecords = 123
+    )
+  ),
+  Count = 123,
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists datasets for an identity. With Amazon Cognito Sync, each identity

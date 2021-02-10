@@ -24,6 +24,29 @@ parameter to get the next set of results.}
 \item{Status}{The status of the stack sets that you want to get summary information
 about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Summaries = list(
+    list(
+      StackSetName = "string",
+      StackSetId = "string",
+      Description = "string",
+      Status = "ACTIVE"|"DELETED",
+      AutoDeployment = list(
+        Enabled = TRUE|FALSE,
+        RetainStacksOnAccountRemoval = TRUE|FALSE
+      ),
+      PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
+      DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
+      LastDriftCheckTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summary information about stack sets that are associated with
 the user.

@@ -13,6 +13,9 @@ ID returned from \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}}.}
 
 \item{failureDetails}{[required] The details about the failure of a job.}
 }
+\value{
+An empty list.
+}
 \description{
 Represents the failure of a job as returned to the pipeline by a job
 worker. Used for custom actions only.

@@ -21,6 +21,12 @@ IAM role or another AWS account ID.}
 
 \item{statementId}{[required] A unique identifier for the cross-account permission statement.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  revisionId = "string"
+)
+}
+}
 \description{
 Adds cross-account permissions to a signing profile.
 }

@@ -20,6 +20,12 @@ operation generates only service data. If you specify action-level
 granularity, it generates service and action data. If you don't include
 this optional parameter, the operation generates service data.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Generates a report that includes details about when an IAM resource
 (user, group, role, or policy) was last used in an attempt to access AWS

@@ -16,6 +16,13 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OwnerId = "string",
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Determines whether a product code is associated with an instance. This
 action can only be used by the owner of the product code. It is useful

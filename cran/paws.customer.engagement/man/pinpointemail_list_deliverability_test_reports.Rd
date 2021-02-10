@@ -22,6 +22,24 @@ can use to obtain additional results.
 The value you specify has to be at least 0, and can be no more than
 1000.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeliverabilityTestReports = list(
+    list(
+      ReportId = "string",
+      ReportName = "string",
+      Subject = "string",
+      FromEmailAddress = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Show a list of the predictive inbox placement tests that you've
 performed, regardless of their statuses. For predictive inbox placement

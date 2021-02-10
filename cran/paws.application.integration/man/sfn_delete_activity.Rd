@@ -9,6 +9,9 @@ sfn_delete_activity(activityArn)
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an activity.
 }

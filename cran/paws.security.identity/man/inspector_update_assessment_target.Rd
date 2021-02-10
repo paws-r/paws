@@ -16,6 +16,9 @@ inspector_update_assessment_target(assessmentTargetArn,
 \item{resourceGroupArn}{The ARN of the resource group that is used to specify the new resource
 group to associate with the assessment target.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the assessment target that is specified by the ARN of the
 assessment target.

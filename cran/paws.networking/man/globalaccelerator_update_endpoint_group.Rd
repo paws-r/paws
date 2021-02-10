@@ -53,6 +53,36 @@ respectively, on the endpoints.
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html}{Port overrides}
 in the \emph{AWS Global Accelerator Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointGroup = list(
+    EndpointGroupArn = "string",
+    EndpointGroupRegion = "string",
+    EndpointDescriptions = list(
+      list(
+        EndpointId = "string",
+        Weight = 123,
+        HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
+        HealthReason = "string",
+        ClientIPPreservationEnabled = TRUE|FALSE
+      )
+    ),
+    TrafficDialPercentage = 123.0,
+    HealthCheckPort = 123,
+    HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+    HealthCheckPath = "string",
+    HealthCheckIntervalSeconds = 123,
+    ThresholdCount = 123,
+    PortOverrides = list(
+      list(
+        ListenerPort = 123,
+        EndpointPort = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Update an endpoint group. A resource must be valid and active when you
 add it as an endpoint.

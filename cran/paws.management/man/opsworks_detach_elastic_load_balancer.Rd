@@ -12,6 +12,9 @@ opsworks_detach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 \item{LayerId}{[required] The ID of the layer that the Elastic Load Balancing instance is attached
 to.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches a specified Elastic Load Balancing instance from its layer.
 

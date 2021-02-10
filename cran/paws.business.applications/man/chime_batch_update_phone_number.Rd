@@ -10,6 +10,18 @@ chime_batch_update_phone_number(UpdatePhoneNumberRequestItems)
 \item{UpdatePhoneNumberRequestItems}{[required] The request containing the phone number IDs and product types or calling
 names to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumberErrors = list(
+    list(
+      PhoneNumberId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates phone number product types or calling names. You can update one
 attribute at a time for each \code{UpdatePhoneNumberRequestItem}. For

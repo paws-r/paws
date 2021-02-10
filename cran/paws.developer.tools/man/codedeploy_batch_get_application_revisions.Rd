@@ -14,6 +14,54 @@ information.}
 about the application revisions, including type and location. The
 maximum number of \code{RevisionLocation} objects you can specify is 25.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  applicationName = "string",
+  errorMessage = "string",
+  revisions = list(
+    list(
+      revisionLocation = list(
+        revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
+        s3Location = list(
+          bucket = "string",
+          key = "string",
+          bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
+          version = "string",
+          eTag = "string"
+        ),
+        gitHubLocation = list(
+          repository = "string",
+          commitId = "string"
+        ),
+        string = list(
+          content = "string",
+          sha256 = "string"
+        ),
+        appSpecContent = list(
+          content = "string",
+          sha256 = "string"
+        )
+      ),
+      genericRevisionInfo = list(
+        description = "string",
+        deploymentGroups = list(
+          "string"
+        ),
+        firstUsedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        lastUsedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        registerTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about one or more application revisions. The maximum
 number of application revisions that can be returned is 25.

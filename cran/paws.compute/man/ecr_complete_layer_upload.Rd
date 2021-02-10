@@ -21,6 +21,15 @@ associate with the image layer.}
 
 \item{layerDigests}{[required] The \code{sha256} digest of the image layer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  uploadId = "string",
+  layerDigest = "string"
+)
+}
+}
 \description{
 Informs Amazon ECR that the image layer upload has completed for a
 specified registry, repository name, and upload ID. You can optionally

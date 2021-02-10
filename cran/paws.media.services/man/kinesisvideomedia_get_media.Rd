@@ -16,6 +16,13 @@ you don't specify the \code{streamARN}, you must specify the \code{streamName}.}
 
 \item{StartSelector}{[required] Identifies the starting chunk to get from the specified stream.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentType = "string",
+  Payload = raw
+)
+}
+}
 \description{
 Use this API to retrieve media content from a Kinesis video stream. In
 the request, you identify the stream name or stream Amazon Resource Name

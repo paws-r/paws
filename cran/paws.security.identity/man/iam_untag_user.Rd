@@ -16,6 +16,9 @@ spaces. You can also include any of the following characters: =,.@-}
 \item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching
 keys are removed from the specified user.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified tags from the user. For more information about
 tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}

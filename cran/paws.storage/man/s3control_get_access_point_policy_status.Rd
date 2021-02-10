@@ -12,10 +12,18 @@ s3control_get_access_point_policy_status(AccountId, Name)
 
 \item{Name}{[required] The name of the access point whose policy status you want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyStatus = list(
+    IsPublic = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Indicates whether the specified access point currently has a policy that
 allows public access. For more information about public access through
-access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{Managing Data Access with Amazon S3 Access Points}
+access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{

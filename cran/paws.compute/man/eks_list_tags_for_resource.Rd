@@ -11,6 +11,14 @@ eks_list_tags_for_resource(resourceArn)
 list the tags. Currently, the supported resources are Amazon EKS
 clusters and managed node groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 List the tags for an Amazon EKS resource.
 }

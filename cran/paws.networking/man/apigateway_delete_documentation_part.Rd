@@ -11,6 +11,9 @@ apigateway_delete_documentation_part(restApiId, documentationPartId)
 
 \item{documentationPartId}{[required] [Required] The identifier of the to-be-deleted documentation part.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete documentation part
 }

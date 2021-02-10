@@ -20,6 +20,28 @@ Example: \code{mysubnetgroup}}
 
 \item{SubnetIds}{The EC2 subnet IDs for the cache subnet group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CacheSubnetGroup = list(
+    CacheSubnetGroupName = "string",
+    CacheSubnetGroupDescription = "string",
+    VpcId = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = list(
+          Name = "string"
+        ),
+        SubnetOutpost = list(
+          SubnetOutpostArn = "string"
+        )
+      )
+    ),
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Modifies an existing cache subnet group.
 }

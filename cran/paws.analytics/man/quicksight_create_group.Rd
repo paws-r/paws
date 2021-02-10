@@ -16,6 +16,19 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    Arn = "string",
+    GroupName = "string",
+    Description = "string",
+    PrincipalId = "string"
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Creates an Amazon QuickSight group.
 

@@ -14,6 +14,9 @@ connect_update_user_security_profiles(SecurityProfileIds, UserId,
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Assigns the specified security profiles to the specified user.
 }

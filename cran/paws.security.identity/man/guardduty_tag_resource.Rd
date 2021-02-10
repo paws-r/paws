@@ -12,6 +12,9 @@ to.}
 
 \item{Tags}{[required] The tags to be added to a resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds tags to a resource.
 }

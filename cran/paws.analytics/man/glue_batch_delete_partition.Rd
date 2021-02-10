@@ -18,6 +18,22 @@ none is provided, the AWS account ID is used by default.}
 \item{PartitionsToDelete}{[required] A list of \code{PartitionInput} structures that define the partitions to be
 deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Errors = list(
+    list(
+      PartitionValues = list(
+        "string"
+      ),
+      ErrorDetail = list(
+        ErrorCode = "string",
+        ErrorMessage = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more partitions in a batch operation.
 }

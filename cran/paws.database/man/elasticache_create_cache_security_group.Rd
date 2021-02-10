@@ -18,6 +18,24 @@ Example: \code{mysecuritygroup}}
 
 \item{Description}{[required] A description for the cache security group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CacheSecurityGroup = list(
+    OwnerId = "string",
+    CacheSecurityGroupName = "string",
+    Description = "string",
+    EC2SecurityGroups = list(
+      list(
+        Status = "string",
+        EC2SecurityGroupName = "string",
+        EC2SecurityGroupOwnerId = "string"
+      )
+    ),
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Creates a new cache security group. Use a cache security group to
 control access to one or more clusters.

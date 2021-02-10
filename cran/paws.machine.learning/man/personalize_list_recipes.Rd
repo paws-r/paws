@@ -15,6 +15,25 @@ recipes (if they exist).}
 
 \item{maxResults}{The maximum number of recipes to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  recipes = list(
+    list(
+      name = "string",
+      recipeArn = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of available recipes. The response provides the
 properties for each recipe, including the recipe's Amazon Resource Name

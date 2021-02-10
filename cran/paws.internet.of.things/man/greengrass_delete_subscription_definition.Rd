@@ -9,6 +9,9 @@ greengrass_delete_subscription_definition(SubscriptionDefinitionId)
 \arguments{
 \item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a subscription definition.
 }

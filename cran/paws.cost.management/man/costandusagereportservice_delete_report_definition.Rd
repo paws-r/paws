@@ -10,6 +10,12 @@ costandusagereportservice_delete_report_definition(ReportName)
 \item{ReportName}{The name of the report that you want to delete. The name must be unique,
 is case sensitive, and can't include spaces.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResponseMessage = "string"
+)
+}
+}
 \description{
 Deletes the specified report.
 }

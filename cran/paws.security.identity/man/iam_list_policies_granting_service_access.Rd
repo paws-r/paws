@@ -27,6 +27,27 @@ example, \verb{(service prefix: a4b)}. For more information about service
 namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PoliciesGrantingServiceAccess = list(
+    list(
+      ServiceNamespace = "string",
+      Policies = list(
+        list(
+          PolicyName = "string",
+          PolicyType = "INLINE"|"MANAGED",
+          PolicyArn = "string",
+          EntityType = "USER"|"ROLE"|"GROUP",
+          EntityName = "string"
+        )
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or
 role) can use to access each specified service.

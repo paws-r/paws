@@ -13,6 +13,14 @@ ssm_get_patch_baseline_for_patch_group(PatchGroup, OperatingSystem)
 \item{OperatingSystem}{Returns he operating system rule specified for patch groups using the
 patch baseline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineId = "string",
+  PatchGroup = "string",
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
+)
+}
+}
 \description{
 Retrieves the patch baseline that should be used for the specified patch
 group.

@@ -12,6 +12,9 @@ iot_set_default_policy_version(policyName, policyVersionId)
 
 \item{policyVersionId}{[required] The policy version ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the specified version of the specified policy as the policy's
 default (operative) version. This action affects all certificates to

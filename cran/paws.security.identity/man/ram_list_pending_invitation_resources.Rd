@@ -17,6 +17,28 @@ ram_list_pending_invitation_resources(resourceShareInvitationArn,
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resources = list(
+    list(
+      arn = "string",
+      type = "string",
+      resourceShareArn = "string",
+      resourceGroupArn = "string",
+      status = "AVAILABLE"|"ZONAL_RESOURCE_INACCESSIBLE"|"LIMIT_EXCEEDED"|"UNAVAILABLE"|"PENDING",
+      statusMessage = "string",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the resources in a resource share that is shared with you but that
 the invitation is still pending for.

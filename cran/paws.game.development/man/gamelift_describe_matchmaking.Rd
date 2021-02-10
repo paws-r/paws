@@ -10,6 +10,61 @@ gamelift_describe_matchmaking(TicketIds)
 \item{TicketIds}{[required] A unique identifier for a matchmaking ticket. You can include up to 10
 ID values.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TicketList = list(
+    list(
+      TicketId = "string",
+      ConfigurationName = "string",
+      ConfigurationArn = "string",
+      Status = "CANCELLED"|"COMPLETED"|"FAILED"|"PLACING"|"QUEUED"|"REQUIRES_ACCEPTANCE"|"SEARCHING"|"TIMED_OUT",
+      StatusReason = "string",
+      StatusMessage = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Players = list(
+        list(
+          PlayerId = "string",
+          PlayerAttributes = list(
+            list(
+              S = "string",
+              N = 123.0,
+              SL = list(
+                "string"
+              ),
+              SDM = list(
+                123.0
+              )
+            )
+          ),
+          Team = "string",
+          LatencyInMs = list(
+            123
+          )
+        )
+      ),
+      GameSessionConnectionInfo = list(
+        GameSessionArn = "string",
+        IpAddress = "string",
+        DnsName = "string",
+        Port = 123,
+        MatchedPlayerSessions = list(
+          list(
+            PlayerId = "string",
+            PlayerSessionId = "string"
+          )
+        )
+      ),
+      EstimatedWaitTime = 123
+    )
+  )
+)
+}
+}
 \description{
 Retrieves one or more matchmaking tickets. Use this operation to
 retrieve ticket information, including--after a successful match is

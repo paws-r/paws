@@ -10,6 +10,29 @@ cloudtrail_get_trail(Name)
 \item{Name}{[required] The name or the Amazon Resource Name (ARN) of the trail for which you
 want to retrieve settings information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Trail = list(
+    Name = "string",
+    S3BucketName = "string",
+    S3KeyPrefix = "string",
+    SnsTopicName = "string",
+    SnsTopicARN = "string",
+    IncludeGlobalServiceEvents = TRUE|FALSE,
+    IsMultiRegionTrail = TRUE|FALSE,
+    HomeRegion = "string",
+    TrailARN = "string",
+    LogFileValidationEnabled = TRUE|FALSE,
+    CloudWatchLogsLogGroupArn = "string",
+    CloudWatchLogsRoleArn = "string",
+    KmsKeyId = "string",
+    HasCustomEventSelectors = TRUE|FALSE,
+    HasInsightSelectors = TRUE|FALSE,
+    IsOrganizationTrail = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Returns settings information for a specified trail.
 }

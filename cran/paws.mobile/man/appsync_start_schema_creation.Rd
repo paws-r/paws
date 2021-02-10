@@ -11,6 +11,12 @@ appsync_start_schema_creation(apiId, definition)
 
 \item{definition}{[required] The schema definition, in GraphQL schema language format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "PROCESSING"|"ACTIVE"|"DELETING"|"FAILED"|"SUCCESS"|"NOT_APPLICABLE"
+)
+}
+}
 \description{
 Adds a new schema to your GraphQL API.
 

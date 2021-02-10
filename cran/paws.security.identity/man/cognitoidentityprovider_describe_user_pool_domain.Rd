@@ -9,6 +9,23 @@ cognitoidentityprovider_describe_user_pool_domain(Domain)
 \arguments{
 \item{Domain}{[required] The domain string.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainDescription = list(
+    UserPoolId = "string",
+    AWSAccountId = "string",
+    Domain = "string",
+    S3Bucket = "string",
+    CloudFrontDistribution = "string",
+    Version = "string",
+    Status = "CREATING"|"DELETING"|"UPDATING"|"ACTIVE"|"FAILED",
+    CustomDomainConfig = list(
+      CertificateArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a domain.
 }

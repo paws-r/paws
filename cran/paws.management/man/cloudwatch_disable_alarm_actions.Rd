@@ -9,6 +9,9 @@ cloudwatch_disable_alarm_actions(AlarmNames)
 \arguments{
 \item{AlarmNames}{[required] The names of the alarms.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables the actions for the specified alarms. When an alarm's actions
 are disabled, the alarm actions do not execute when the alarm state

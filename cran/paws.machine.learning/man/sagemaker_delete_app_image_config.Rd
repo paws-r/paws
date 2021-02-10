@@ -9,6 +9,9 @@ sagemaker_delete_app_image_config(AppImageConfigName)
 \arguments{
 \item{AppImageConfigName}{[required] The name of the AppImageConfig to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an AppImageConfig.
 }

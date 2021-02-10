@@ -18,6 +18,26 @@ results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSources = list(
+    list(
+      Arn = "string",
+      CreatedBy = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExpirationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "string",
+      State = "PENDING"|"ACTIVE"|"DELETED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 You can use this to see all the partner event sources that have been
 shared with your AWS account. For more information about partner event

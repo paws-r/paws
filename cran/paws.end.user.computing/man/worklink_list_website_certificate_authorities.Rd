@@ -16,6 +16,21 @@ worklink_list_website_certificate_authorities(FleetArn, MaxResults,
 \item{NextToken}{The pagination token used to retrieve the next page of results for this
 operation. If this value is null, it retrieves the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WebsiteCertificateAuthorities = list(
+    list(
+      WebsiteCaId = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DisplayName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of certificate authorities added for the current
 account and Region.

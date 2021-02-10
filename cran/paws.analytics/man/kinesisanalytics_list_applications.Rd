@@ -15,6 +15,19 @@ retrieve the list, you don't need to specify this parameter in the first
 request. However, in subsequent requests, you add the last application
 name from the previous response to get the next page of applications.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationSummaries = list(
+    list(
+      ApplicationName = "string",
+      ApplicationARN = "string",
+      ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"
+    )
+  ),
+  HasMoreApplications = TRUE|FALSE
+)
+}
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

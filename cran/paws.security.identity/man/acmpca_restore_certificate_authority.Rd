@@ -13,6 +13,9 @@ action. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }
+\value{
+An empty list.
+}
 \description{
 Restores a certificate authority (CA) that is in the \code{DELETED} state.
 You can restore a CA during the period that you defined in the

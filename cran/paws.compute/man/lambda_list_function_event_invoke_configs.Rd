@@ -27,6 +27,30 @@ retrieve the next page of results.}
 
 \item{MaxItems}{The maximum number of configurations to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FunctionEventInvokeConfigs = list(
+    list(
+      LastModified = as.POSIXct(
+        "2015-01-01"
+      ),
+      FunctionArn = "string",
+      MaximumRetryAttempts = 123,
+      MaximumEventAgeInSeconds = 123,
+      DestinationConfig = list(
+        OnSuccess = list(
+          Destination = "string"
+        ),
+        OnFailure = list(
+          Destination = "string"
+        )
+      )
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Retrieves a list of configurations for asynchronous invocation for a
 function.

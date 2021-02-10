@@ -17,6 +17,24 @@ security group.}
 this is not the same thing as an AWS access key ID - you must provide a
 valid AWS account number for this parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CacheSecurityGroup = list(
+    OwnerId = "string",
+    CacheSecurityGroupName = "string",
+    Description = "string",
+    EC2SecurityGroups = list(
+      list(
+        Status = "string",
+        EC2SecurityGroupName = "string",
+        EC2SecurityGroupOwnerId = "string"
+      )
+    ),
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Allows network ingress to a cache security group. Applications using
 ElastiCache must be running on Amazon EC2, and Amazon EC2 security

@@ -9,6 +9,46 @@ robomaker_describe_world_generation_job(job)
 \arguments{
 \item{job}{[required] The Amazon Resource Name (arn) of the world generation job to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  status = "Pending"|"Running"|"Completed"|"Failed"|"PartialFailed"|"Canceling"|"Canceled",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AllWorldGenerationFailed",
+  failureReason = "string",
+  clientRequestToken = "string",
+  template = "string",
+  worldCount = list(
+    floorplanCount = 123,
+    interiorCountPerFloorplan = 123
+  ),
+  finishedWorldsSummary = list(
+    finishedCount = 123,
+    succeededWorlds = list(
+      "string"
+    ),
+    failureSummary = list(
+      totalFailureCount = 123,
+      failures = list(
+        list(
+          failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AllWorldGenerationFailed",
+          sampleFailureReason = "string",
+          failureCount = 123
+        )
+      )
+    )
+  ),
+  tags = list(
+    "string"
+  ),
+  worldTags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a world generation job.
 }

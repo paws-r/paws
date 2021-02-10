@@ -42,6 +42,28 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficMirrorSession = list(
+    TrafficMirrorSessionId = "string",
+    TrafficMirrorTargetId = "string",
+    TrafficMirrorFilterId = "string",
+    NetworkInterfaceId = "string",
+    OwnerId = "string",
+    PacketLength = 123,
+    SessionNumber = 123,
+    VirtualNetworkId = 123,
+    Description = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies a Traffic Mirror session.
 }

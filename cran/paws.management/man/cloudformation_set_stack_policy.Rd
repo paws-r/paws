@@ -20,6 +20,9 @@ policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 as the stack. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets a stack policy for a specified stack.
 }

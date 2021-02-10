@@ -33,6 +33,12 @@ assume to perform tasks on your behalf.}
 \item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobDefinitionArn = "string"
+)
+}
+}
 \description{
 Creates a definition for a job that monitors data quality and drift. For
 information about model monitor, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html}{Amazon SageMaker Model Monitor}.

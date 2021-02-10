@@ -44,6 +44,19 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to assign to the Elastic IP address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PublicIp = "string",
+  AllocationId = "string",
+  PublicIpv4Pool = "string",
+  NetworkBorderGroup = "string",
+  Domain = "vpc"|"standard",
+  CustomerOwnedIp = "string",
+  CustomerOwnedIpv4Pool = "string",
+  CarrierIp = "string"
+)
+}
+}
 \description{
 Allocates an Elastic IP address to your AWS account. After you allocate
 the Elastic IP address you can associate it with an instance or network

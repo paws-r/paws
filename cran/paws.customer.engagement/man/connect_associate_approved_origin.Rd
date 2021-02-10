@@ -12,6 +12,9 @@ connect_associate_approved_origin(InstanceId, Origin)
 
 \item{Origin}{[required] The domain to add to your allow list.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

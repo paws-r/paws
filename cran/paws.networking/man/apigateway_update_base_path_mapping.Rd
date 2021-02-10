@@ -17,6 +17,14 @@ To specify an empty base path, set this parameter to \code{'(none)'}.}
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  basePath = "string",
+  restApiId = "string",
+  stage = "string"
+)
+}
+}
 \description{
 Changes information about the BasePathMapping resource.
 }

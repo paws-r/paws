@@ -11,6 +11,21 @@ appsync_get_function(apiId, functionId)
 
 \item{functionId}{[required] The \code{Function} ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  functionConfiguration = list(
+    functionId = "string",
+    functionArn = "string",
+    name = "string",
+    description = "string",
+    dataSourceName = "string",
+    requestMappingTemplate = "string",
+    responseMappingTemplate = "string",
+    functionVersion = "string"
+  )
+)
+}
+}
 \description{
 Get a \code{Function}.
 }

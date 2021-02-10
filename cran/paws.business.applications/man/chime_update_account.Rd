@@ -11,6 +11,29 @@ chime_update_account(AccountId, Name)
 
 \item{Name}{The new name for the specified Amazon Chime account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Account = list(
+    AwsAccountId = "string",
+    AccountId = "string",
+    Name = "string",
+    AccountType = "Team"|"EnterpriseDirectory"|"EnterpriseLWA"|"EnterpriseOIDC",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    DefaultLicense = "Basic"|"Plus"|"Pro"|"ProTrial",
+    SupportedLicenses = list(
+      "Basic"|"Plus"|"Pro"|"ProTrial"
+    ),
+    SigninDelegateGroups = list(
+      list(
+        GroupName = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates account details for the specified Amazon Chime account.
 Currently, only account name updates are supported for this action.

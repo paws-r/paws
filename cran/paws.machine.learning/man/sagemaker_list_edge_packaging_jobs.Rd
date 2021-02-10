@@ -33,6 +33,28 @@ need tokening.}
 
 \item{SortOrder}{What direction to sort by.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EdgePackagingJobSummaries = list(
+    list(
+      EdgePackagingJobArn = "string",
+      EdgePackagingJobName = "string",
+      EdgePackagingJobStatus = "STARTING"|"INPROGRESS"|"COMPLETED"|"FAILED"|"STOPPING"|"STOPPED",
+      CompilationJobName = "string",
+      ModelName = "string",
+      ModelVersion = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of edge packaging jobs.
 }

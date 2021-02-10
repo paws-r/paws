@@ -14,6 +14,9 @@ s3_delete_bucket_policy(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+An empty list.
+}
 \description{
 This implementation of the DELETE operation uses the policy subresource
 to delete the policy of a specified bucket. If you are using an identity

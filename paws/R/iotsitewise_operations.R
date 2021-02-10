@@ -28,6 +28,9 @@ NULL
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_assets(
@@ -74,6 +77,20 @@ iotsitewise_associate_assets <- function(assetId, hierarchyId, childAssetId, cli
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       assetId = "string",
+#'       code = "INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -122,6 +139,20 @@ iotsitewise_batch_associate_project_assets <- function(projectId, assetIds, clie
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       assetId = "string",
+#'       code = "INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -180,7 +211,7 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 #' 
 #' For each asset property, AWS IoT SiteWise overwrites TQVs with duplicate
 #' timestamps unless the newer TQV has a different quality. For example, if
-#' you store a TQV `\{T1, GOOD, V1\}`, then storing `\{T1, GOOD, V2\}` replaces
+#' you store a TQV `{T1, GOOD, V1}`, then storing `{T1, GOOD, V2}` replaces
 #' the existing TQV.
 #' 
 #' AWS IoT SiteWise authorizes access to each
@@ -195,6 +226,30 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 #'
 #' @param entries &#91;required&#93; The list of asset property value entries for the batch put request. You
 #' can specify up to 10 entries per request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errorEntries = list(
+#'     list(
+#'       entryId = "string",
+#'       errors = list(
+#'         list(
+#'           errorCode = "ResourceNotFoundException"|"InvalidRequestException"|"InternalFailureException"|"ServiceUnavailableException"|"ThrottlingException"|"LimitExceededException"|"ConflictingOperationException"|"TimestampOutOfRangeException"|"AccessDeniedException",
+#'           errorMessage = "string",
+#'           timestamps = list(
+#'             list(
+#'               timeInSeconds = 123,
+#'               offsetInNanos = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -272,6 +327,15 @@ iotsitewise_batch_put_asset_property_value <- function(entries) {
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessPolicyId = "string",
+#'   accessPolicyArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_access_policy(
@@ -342,6 +406,22 @@ iotsitewise_create_access_policy <- function(accessPolicyIdentity, accessPolicyR
 #' information, see [Tagging your AWS IoT SiteWise
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetId = "string",
+#'   assetArn = "string",
+#'   assetStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -425,6 +505,22 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #' more information, see [Tagging your AWS IoT SiteWise
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetModelId = "string",
+#'   assetModelArn = "string",
+#'   assetModelStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"PROPAGATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -581,6 +677,15 @@ iotsitewise_create_asset_model <- function(assetModelName, assetModelDescription
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dashboardId = "string",
+#'   dashboardArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_dashboard(
@@ -621,8 +726,9 @@ iotsitewise_create_dashboard <- function(projectId, dashboardName, dashboardDesc
 #' @description
 #' Creates a gateway, which is a virtual or edge device that delivers
 #' industrial data streams from local servers to AWS IoT SiteWise. For more
-#' information, see Ingesting data using a gateway in the *AWS IoT SiteWise
-#' User Guide*.
+#' information, see [Ingesting data using a
+#' gateway](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateways.html)
+#' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
 #' iotsitewise_create_gateway(gatewayName, gatewayPlatform, tags)
@@ -633,6 +739,15 @@ iotsitewise_create_dashboard <- function(projectId, dashboardName, dashboardDesc
 #' more information, see [Tagging your AWS IoT SiteWise
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   gatewayId = "string",
+#'   gatewayArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -725,6 +840,24 @@ iotsitewise_create_gateway <- function(gatewayName, gatewayPlatform, tags = NULL
 #' 
 #' Default: `SSO`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   portalId = "string",
+#'   portalArn = "string",
+#'   portalStartUrl = "string",
+#'   portalStatus = list(
+#'     state = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'     error = list(
+#'       code = "INTERNAL_FAILURE"|"VALIDATION_ERROR"|"LIMIT_EXCEEDED",
+#'       message = "string"
+#'     )
+#'   ),
+#'   ssoApplicationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_portal(
@@ -784,6 +917,15 @@ iotsitewise_create_portal <- function(portalName, portalDescription = NULL, port
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projectId = "string",
+#'   projectArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_project(
@@ -833,6 +975,9 @@ iotsitewise_create_project <- function(portalId, projectName, projectDescription
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_access_policy(
@@ -880,6 +1025,20 @@ iotsitewise_delete_access_policy <- function(accessPolicyId, clientToken = NULL)
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -929,6 +1088,20 @@ iotsitewise_delete_asset <- function(assetId, clientToken = NULL) {
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetModelStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"PROPAGATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_asset_model(
@@ -970,6 +1143,9 @@ iotsitewise_delete_asset_model <- function(assetModelId, clientToken = NULL) {
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dashboard(
@@ -1008,6 +1184,9 @@ iotsitewise_delete_dashboard <- function(dashboardId, clientToken = NULL) {
 #' iotsitewise_delete_gateway(gatewayId)
 #'
 #' @param gatewayId &#91;required&#93; The ID of the gateway to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1048,6 +1227,20 @@ iotsitewise_delete_gateway <- function(gatewayId) {
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   portalStatus = list(
+#'     state = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'     error = list(
+#'       code = "INTERNAL_FAILURE"|"VALIDATION_ERROR"|"LIMIT_EXCEEDED",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1090,6 +1283,9 @@ iotsitewise_delete_portal <- function(portalId, clientToken = NULL) {
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -1130,6 +1326,41 @@ iotsitewise_delete_project <- function(projectId, clientToken = NULL) {
 #'
 #' @param accessPolicyId &#91;required&#93; The ID of the access policy.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessPolicyId = "string",
+#'   accessPolicyArn = "string",
+#'   accessPolicyIdentity = list(
+#'     user = list(
+#'       id = "string"
+#'     ),
+#'     group = list(
+#'       id = "string"
+#'     ),
+#'     iamUser = list(
+#'       arn = "string"
+#'     )
+#'   ),
+#'   accessPolicyResource = list(
+#'     portal = list(
+#'       id = "string"
+#'     ),
+#'     project = list(
+#'       id = "string"
+#'     )
+#'   ),
+#'   accessPolicyPermission = "ADMINISTRATOR"|"VIEWER",
+#'   accessPolicyCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   accessPolicyLastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_access_policy(
@@ -1167,6 +1398,71 @@ iotsitewise_describe_access_policy <- function(accessPolicyId) {
 #'
 #' @param assetId &#91;required&#93; The ID of the asset.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetId = "string",
+#'   assetArn = "string",
+#'   assetName = "string",
+#'   assetModelId = "string",
+#'   assetProperties = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       alias = "string",
+#'       notification = list(
+#'         topic = "string",
+#'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'       dataTypeSpec = "string",
+#'       unit = "string"
+#'     )
+#'   ),
+#'   assetHierarchies = list(
+#'     list(
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   assetCompositeModels = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       type = "string",
+#'       properties = list(
+#'         list(
+#'           id = "string",
+#'           name = "string",
+#'           alias = "string",
+#'           notification = list(
+#'             topic = "string",
+#'             state = "ENABLED"|"DISABLED"
+#'           ),
+#'           dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'           dataTypeSpec = "string",
+#'           unit = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   assetCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   assetLastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   assetStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_asset(
@@ -1203,6 +1499,132 @@ iotsitewise_describe_asset <- function(assetId) {
 #' iotsitewise_describe_asset_model(assetModelId)
 #'
 #' @param assetModelId &#91;required&#93; The ID of the asset model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetModelId = "string",
+#'   assetModelArn = "string",
+#'   assetModelName = "string",
+#'   assetModelDescription = "string",
+#'   assetModelProperties = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'       dataTypeSpec = "string",
+#'       unit = "string",
+#'       type = list(
+#'         attribute = list(
+#'           defaultValue = "string"
+#'         ),
+#'         measurement = list(),
+#'         transform = list(
+#'           expression = "string",
+#'           variables = list(
+#'             list(
+#'               name = "string",
+#'               value = list(
+#'                 propertyId = "string",
+#'                 hierarchyId = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         metric = list(
+#'           expression = "string",
+#'           variables = list(
+#'             list(
+#'               name = "string",
+#'               value = list(
+#'                 propertyId = "string",
+#'                 hierarchyId = "string"
+#'               )
+#'             )
+#'           ),
+#'           window = list(
+#'             tumbling = list(
+#'               interval = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   assetModelHierarchies = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       childAssetModelId = "string"
+#'     )
+#'   ),
+#'   assetModelCompositeModels = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       type = "string",
+#'       properties = list(
+#'         list(
+#'           id = "string",
+#'           name = "string",
+#'           dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'           dataTypeSpec = "string",
+#'           unit = "string",
+#'           type = list(
+#'             attribute = list(
+#'               defaultValue = "string"
+#'             ),
+#'             measurement = list(),
+#'             transform = list(
+#'               expression = "string",
+#'               variables = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = list(
+#'                     propertyId = "string",
+#'                     hierarchyId = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             metric = list(
+#'               expression = "string",
+#'               variables = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = list(
+#'                     propertyId = "string",
+#'                     hierarchyId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               window = list(
+#'                 tumbling = list(
+#'                   interval = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   assetModelCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   assetModelLastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   assetModelStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"PROPAGATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1251,6 +1673,112 @@ iotsitewise_describe_asset_model <- function(assetModelId) {
 #' @param assetId &#91;required&#93; The ID of the asset.
 #' @param propertyId &#91;required&#93; The ID of the asset property.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetId = "string",
+#'   assetName = "string",
+#'   assetModelId = "string",
+#'   assetProperty = list(
+#'     id = "string",
+#'     name = "string",
+#'     alias = "string",
+#'     notification = list(
+#'       topic = "string",
+#'       state = "ENABLED"|"DISABLED"
+#'     ),
+#'     dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'     unit = "string",
+#'     type = list(
+#'       attribute = list(
+#'         defaultValue = "string"
+#'       ),
+#'       measurement = list(),
+#'       transform = list(
+#'         expression = "string",
+#'         variables = list(
+#'           list(
+#'             name = "string",
+#'             value = list(
+#'               propertyId = "string",
+#'               hierarchyId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       metric = list(
+#'         expression = "string",
+#'         variables = list(
+#'           list(
+#'             name = "string",
+#'             value = list(
+#'               propertyId = "string",
+#'               hierarchyId = "string"
+#'             )
+#'           )
+#'         ),
+#'         window = list(
+#'           tumbling = list(
+#'             interval = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   compositeModel = list(
+#'     name = "string",
+#'     type = "string",
+#'     assetProperty = list(
+#'       id = "string",
+#'       name = "string",
+#'       alias = "string",
+#'       notification = list(
+#'         topic = "string",
+#'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'       unit = "string",
+#'       type = list(
+#'         attribute = list(
+#'           defaultValue = "string"
+#'         ),
+#'         measurement = list(),
+#'         transform = list(
+#'           expression = "string",
+#'           variables = list(
+#'             list(
+#'               name = "string",
+#'               value = list(
+#'                 propertyId = "string",
+#'                 hierarchyId = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         metric = list(
+#'           expression = "string",
+#'           variables = list(
+#'             list(
+#'               name = "string",
+#'               value = list(
+#'                 propertyId = "string",
+#'                 hierarchyId = "string"
+#'               )
+#'             )
+#'           ),
+#'           window = list(
+#'             tumbling = list(
+#'               interval = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_asset_property(
@@ -1288,6 +1816,25 @@ iotsitewise_describe_asset_property <- function(assetId, propertyId) {
 #' iotsitewise_describe_dashboard(dashboardId)
 #'
 #' @param dashboardId &#91;required&#93; The ID of the dashboard.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dashboardId = "string",
+#'   dashboardArn = "string",
+#'   dashboardName = "string",
+#'   projectId = "string",
+#'   dashboardDescription = "string",
+#'   dashboardDefinition = "string",
+#'   dashboardCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   dashboardLastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1329,6 +1876,22 @@ iotsitewise_describe_dashboard <- function(dashboardId) {
 #' @usage
 #' iotsitewise_describe_default_encryption_configuration()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   encryptionType = "SITEWISE_DEFAULT_ENCRYPTION"|"KMS_BASED_ENCRYPTION",
+#'   kmsKeyArn = "string",
+#'   configurationStatus = list(
+#'     state = "ACTIVE"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_default_encryption_configuration()
@@ -1363,6 +1926,33 @@ iotsitewise_describe_default_encryption_configuration <- function() {
 #' iotsitewise_describe_gateway(gatewayId)
 #'
 #' @param gatewayId &#91;required&#93; The ID of the gateway device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   gatewayId = "string",
+#'   gatewayName = "string",
+#'   gatewayArn = "string",
+#'   gatewayPlatform = list(
+#'     greengrass = list(
+#'       groupArn = "string"
+#'     )
+#'   ),
+#'   gatewayCapabilitySummaries = list(
+#'     list(
+#'       capabilityNamespace = "string",
+#'       capabilitySyncStatus = "IN_SYNC"|"OUT_OF_SYNC"|"SYNC_FAILED"
+#'     )
+#'   ),
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1413,6 +2003,17 @@ iotsitewise_describe_gateway <- function(gatewayId) {
 #' `iotsitewise:opcuacollector:version`, where `version` is a number such
 #' as `1`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   gatewayId = "string",
+#'   capabilityNamespace = "string",
+#'   capabilityConfiguration = "string",
+#'   capabilitySyncStatus = "IN_SYNC"|"OUT_OF_SYNC"|"SYNC_FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_gateway_capability_configuration(
@@ -1449,6 +2050,16 @@ iotsitewise_describe_gateway_capability_configuration <- function(gatewayId, cap
 #' @usage
 #' iotsitewise_describe_logging_options()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loggingOptions = list(
+#'     level = "ERROR"|"INFO"|"OFF"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_logging_options()
@@ -1483,6 +2094,39 @@ iotsitewise_describe_logging_options <- function() {
 #' iotsitewise_describe_portal(portalId)
 #'
 #' @param portalId &#91;required&#93; The ID of the portal.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   portalId = "string",
+#'   portalArn = "string",
+#'   portalName = "string",
+#'   portalDescription = "string",
+#'   portalClientId = "string",
+#'   portalStartUrl = "string",
+#'   portalContactEmail = "string",
+#'   portalStatus = list(
+#'     state = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'     error = list(
+#'       code = "INTERNAL_FAILURE"|"VALIDATION_ERROR"|"LIMIT_EXCEEDED",
+#'       message = "string"
+#'     )
+#'   ),
+#'   portalCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   portalLastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   portalLogoImageLocation = list(
+#'     id = "string",
+#'     url = "string"
+#'   ),
+#'   roleArn = "string",
+#'   portalAuthMode = "IAM"|"SSO"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1520,6 +2164,24 @@ iotsitewise_describe_portal <- function(portalId) {
 #' iotsitewise_describe_project(projectId)
 #'
 #' @param projectId &#91;required&#93; The ID of the project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projectId = "string",
+#'   projectArn = "string",
+#'   projectName = "string",
+#'   portalId = "string",
+#'   projectDescription = "string",
+#'   projectCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   projectLastUpdateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1570,6 +2232,9 @@ iotsitewise_describe_project <- function(projectId) {
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1646,6 +2311,30 @@ iotsitewise_disassociate_assets <- function(assetId, hierarchyId, childAssetId, 
 #' 
 #' Default: 100
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   aggregatedValues = list(
+#'     list(
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       quality = "GOOD"|"BAD"|"UNCERTAIN",
+#'       value = list(
+#'         average = 123.0,
+#'         count = 123.0,
+#'         maximum = 123.0,
+#'         minimum = 123.0,
+#'         sum = 123.0,
+#'         standardDeviation = 123.0
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_asset_property_aggregates(
@@ -1720,6 +2409,26 @@ iotsitewise_get_asset_property_aggregates <- function(assetId = NULL, propertyId
 #' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   propertyValue = list(
+#'     value = list(
+#'       stringValue = "string",
+#'       integerValue = 123,
+#'       doubleValue = 123.0,
+#'       booleanValue = TRUE|FALSE
+#'     ),
+#'     timestamp = list(
+#'       timeInSeconds = 123,
+#'       offsetInNanos = 123
+#'     ),
+#'     quality = "GOOD"|"BAD"|"UNCERTAIN"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_asset_property_value(
@@ -1792,6 +2501,29 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 #' 
 #' Default: 100
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetPropertyValueHistory = list(
+#'     list(
+#'       value = list(
+#'         stringValue = "string",
+#'         integerValue = 123,
+#'         doubleValue = 123.0,
+#'         booleanValue = TRUE|FALSE
+#'       ),
+#'       timestamp = list(
+#'         timeInSeconds = 123,
+#'         offsetInNanos = 123
+#'       ),
+#'       quality = "GOOD"|"BAD"|"UNCERTAIN"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_asset_property_value_history(
@@ -1863,6 +2595,45 @@ iotsitewise_get_asset_property_value_history <- function(assetId = NULL, propert
 #' 
 #' Default: 50
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessPolicySummaries = list(
+#'     list(
+#'       id = "string",
+#'       identity = list(
+#'         user = list(
+#'           id = "string"
+#'         ),
+#'         group = list(
+#'           id = "string"
+#'         ),
+#'         iamUser = list(
+#'           arn = "string"
+#'         )
+#'       ),
+#'       resource = list(
+#'         portal = list(
+#'           id = "string"
+#'         ),
+#'         project = list(
+#'           id = "string"
+#'         )
+#'       ),
+#'       permission = "ADMINISTRATOR"|"VIEWER",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_access_policies(
@@ -1908,6 +2679,35 @@ iotsitewise_list_access_policies <- function(identityType = NULL, identityId = N
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' 
 #' Default: 50
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetModelSummaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = list(
+#'         state = "CREATING"|"ACTIVE"|"UPDATING"|"PROPAGATING"|"DELETING"|"FAILED",
+#'         error = list(
+#'           code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'           message = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1958,6 +2758,23 @@ iotsitewise_list_asset_models <- function(nextToken = NULL, maxResults = NULL) {
 #'     the last result.
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetRelationshipSummaries = list(
+#'     list(
+#'       hierarchyInfo = list(
+#'         parentAssetId = "string",
+#'         childAssetId = "string"
+#'       ),
+#'       relationshipType = "HIERARCHY"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2025,6 +2842,41 @@ iotsitewise_list_asset_relationships <- function(assetId, traversalType, nextTok
 #'     hierarchy tree.
 #' 
 #' Default: `ALL`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetSummaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string",
+#'       assetModelId = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = list(
+#'         state = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'         error = list(
+#'           code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'           message = "string"
+#'         )
+#'       ),
+#'       hierarchies = list(
+#'         list(
+#'           id = "string",
+#'           name = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2098,6 +2950,41 @@ iotsitewise_list_assets <- function(nextToken = NULL, maxResults = NULL, assetMo
 #' 
 #' Default: 50
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetSummaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string",
+#'       assetModelId = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = list(
+#'         state = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'         error = list(
+#'           code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'           message = "string"
+#'         )
+#'       ),
+#'       hierarchies = list(
+#'         list(
+#'           id = "string",
+#'           name = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_associated_assets(
@@ -2145,6 +3032,27 @@ iotsitewise_list_associated_assets <- function(assetId, hierarchyId = NULL, trav
 #' 
 #' Default: 50
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dashboardSummaries = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_dashboards(
@@ -2187,6 +3095,32 @@ iotsitewise_list_dashboards <- function(projectId, nextToken = NULL, maxResults 
 #' 
 #' Default: 50
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   gatewaySummaries = list(
+#'     list(
+#'       gatewayId = "string",
+#'       gatewayName = "string",
+#'       gatewayCapabilitySummaries = list(
+#'         list(
+#'           capabilityNamespace = "string",
+#'           capabilitySyncStatus = "IN_SYNC"|"OUT_OF_SYNC"|"SYNC_FAILED"
+#'         )
+#'       ),
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_gateways(
@@ -2227,6 +3161,36 @@ iotsitewise_list_gateways <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' 
 #' Default: 50
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   portalSummaries = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       startUrl = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       roleArn = "string",
+#'       status = list(
+#'         state = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'         error = list(
+#'           code = "INTERNAL_FAILURE"|"VALIDATION_ERROR"|"LIMIT_EXCEEDED",
+#'           message = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2271,6 +3235,17 @@ iotsitewise_list_portals <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' 
 #' Default: 50
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetIds = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2317,6 +3292,27 @@ iotsitewise_list_project_assets <- function(projectId, nextToken = NULL, maxResu
 #' 
 #' Default: 50
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projectSummaries = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_projects(
@@ -2357,6 +3353,16 @@ iotsitewise_list_projects <- function(portalId, nextToken = NULL, maxResults = N
 #' @param resourceArn &#91;required&#93; The
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2401,6 +3407,22 @@ iotsitewise_list_tags_for_resource <- function(resourceArn) {
 #' @param kmsKeyId The Key ID of the customer managed customer master key (CMK) used for
 #' AWS KMS encryption. This is required if you use `KMS_BASED_ENCRYPTION`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   encryptionType = "SITEWISE_DEFAULT_ENCRYPTION"|"KMS_BASED_ENCRYPTION",
+#'   kmsKeyArn = "string",
+#'   configurationStatus = list(
+#'     state = "ACTIVE"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_default_encryption_configuration(
@@ -2438,6 +3460,9 @@ iotsitewise_put_default_encryption_configuration <- function(encryptionType, kms
 #' iotsitewise_put_logging_options(loggingOptions)
 #'
 #' @param loggingOptions &#91;required&#93; The logging options to set.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2485,6 +3510,9 @@ iotsitewise_put_logging_options <- function(loggingOptions) {
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2527,6 +3555,9 @@ iotsitewise_tag_resource <- function(resourceArn, tags) {
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the resource to untag.
 #' @param tagKeys &#91;required&#93; A list of keys for tags to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2579,6 +3610,9 @@ iotsitewise_untag_resource <- function(resourceArn, tagKeys) {
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2643,6 +3677,20 @@ iotsitewise_update_access_policy <- function(accessPolicyId, accessPolicyIdentit
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2731,6 +3779,20 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assetModelStatus = list(
+#'     state = "CREATING"|"ACTIVE"|"UPDATING"|"PROPAGATING"|"DELETING"|"FAILED",
+#'     error = list(
+#'       code = "VALIDATION_ERROR"|"INTERNAL_FAILURE",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2901,6 +3963,9 @@ iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetMo
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_asset_property(
@@ -2952,6 +4017,9 @@ iotsitewise_update_asset_property <- function(assetId, propertyId, propertyAlias
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_dashboard(
@@ -2993,6 +4061,9 @@ iotsitewise_update_dashboard <- function(dashboardId, dashboardName, dashboardDe
 #'
 #' @param gatewayId &#91;required&#93; The ID of the gateway to update.
 #' @param gatewayName &#91;required&#93; A unique, friendly name for the gateway.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3049,6 +4120,15 @@ iotsitewise_update_gateway <- function(gatewayId, gatewayName) {
 #' (CLI)](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/configure-sources.html#configure-source-cli)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capabilityNamespace = "string",
+#'   capabilitySyncStatus = "IN_SYNC"|"OUT_OF_SYNC"|"SYNC_FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_gateway_capability_configuration(
@@ -3102,6 +4182,20 @@ iotsitewise_update_gateway_capability_configuration <- function(gatewayId, capab
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   portalStatus = list(
+#'     state = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"FAILED",
+#'     error = list(
+#'       code = "INTERNAL_FAILURE"|"VALIDATION_ERROR"|"LIMIT_EXCEEDED",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3157,6 +4251,9 @@ iotsitewise_update_portal <- function(portalId, portalName, portalDescription = 
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

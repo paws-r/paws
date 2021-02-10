@@ -9,6 +9,25 @@ codestar_describe_project(id)
 \arguments{
 \item{id}{[required] The ID of the project.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  id = "string",
+  arn = "string",
+  description = "string",
+  clientRequestToken = "string",
+  createdTimeStamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  stackId = "string",
+  projectTemplateId = "string",
+  status = list(
+    state = "string",
+    reason = "string"
+  )
+)
+}
+}
 \description{
 Describes a project and its resources.
 }

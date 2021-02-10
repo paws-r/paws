@@ -32,6 +32,19 @@ product.}
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Outputs = list(
+    list(
+      OutputKey = "string",
+      OutputValue = "string",
+      Description = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 This API takes either a \code{ProvisonedProductId} or a
 \code{ProvisionedProductName}, along with a list of one or more output keys,

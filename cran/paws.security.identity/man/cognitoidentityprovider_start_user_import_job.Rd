@@ -12,6 +12,32 @@ into.}
 
 \item{JobId}{[required] The job ID for the user import job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserImportJob = list(
+    JobName = "string",
+    JobId = "string",
+    UserPoolId = "string",
+    PreSignedUrl = "string",
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    StartDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CompletionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
+    CloudWatchLogsRoleArn = "string",
+    ImportedUsers = 123,
+    SkippedUsers = 123,
+    FailedUsers = 123,
+    CompletionMessage = "string"
+  )
+)
+}
+}
 \description{
 Starts the user import.
 }

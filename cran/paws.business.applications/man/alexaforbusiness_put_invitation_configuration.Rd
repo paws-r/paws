@@ -17,6 +17,9 @@ user can use.}
 \item{PrivateSkillIds}{The list of private skill IDs that you want to recommend to the user to
 enable in the invitation.}
 }
+\value{
+An empty list.
+}
 \description{
 Configures the email template for the user enrollment invitation with
 the specified attributes.

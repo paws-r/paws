@@ -12,6 +12,13 @@ swf_count_pending_activity_tasks(domain, taskList)
 
 \item{taskList}{[required] The name of the task list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  count = 123,
+  truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Returns the estimated number of activity tasks in the specified task
 list. The count returned is an approximation and isn't guaranteed to be

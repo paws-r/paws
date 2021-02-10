@@ -40,6 +40,9 @@ default for the workflow type or through this parameter. If neither this
 parameter is set nor a default child policy was specified at
 registration time then a fault is returned.}
 }
+\value{
+An empty list.
+}
 \description{
 Records a \code{WorkflowExecutionTerminated} event and forces closure of the
 workflow execution identified by the given domain, runId, and

@@ -25,6 +25,30 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBSubnetGroups = list(
+    list(
+      DBSubnetGroupName = "string",
+      DBSubnetGroupDescription = "string",
+      VpcId = "string",
+      SubnetGroupStatus = "string",
+      Subnets = list(
+        list(
+          SubnetIdentifier = "string",
+          SubnetAvailabilityZone = list(
+            Name = "string"
+          ),
+          SubnetStatus = "string"
+        )
+      ),
+      DBSubnetGroupArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of \code{DBSubnetGroup} descriptions. If a \code{DBSubnetGroupName}
 is specified, the list will contain only the descriptions of the

@@ -14,6 +14,23 @@ returned list of gateways.}
 \item{Limit}{Specifies that the list of gateways returned be limited to the specified
 number of items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Gateways = list(
+    list(
+      GatewayId = "string",
+      GatewayARN = "string",
+      GatewayType = "string",
+      GatewayOperationalState = "string",
+      GatewayName = "string",
+      Ec2InstanceId = "string",
+      Ec2InstanceRegion = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists gateways owned by an AWS account in an AWS Region specified in the
 request. The returned list is ordered by gateway Amazon Resource Name

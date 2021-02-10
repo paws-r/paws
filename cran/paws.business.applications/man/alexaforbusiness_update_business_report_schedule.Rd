@@ -22,6 +22,9 @@ of individual files).}
 
 \item{Recurrence}{The recurrence of the reports.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the configuration of the report delivery schedule with the
 specified schedule ARN.

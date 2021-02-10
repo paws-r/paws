@@ -11,9 +11,12 @@ mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
 \arguments{
 \item{Decryption}{The type of encryption used on the content ingested from this source.}
 
-\item{Description}{A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account.}
+\item{Description}{A description for the source. This value is not used or seen outside of
+the current AWS Elemental MediaConnect account.}
 
-\item{EntitlementArn}{The ARN of the entitlement that allows you to subscribe to this flow. The entitlement is set by the flow originator, and the ARN is generated as part of the originator's flow.}
+\item{EntitlementArn}{The ARN of the entitlement that allows you to subscribe to this flow.
+The entitlement is set by the flow originator, and the ARN is generated
+as part of the originator's flow.}
 
 \item{FlowArn}{[required] The flow that is associated with the source that you want to update.}
 
@@ -21,17 +24,60 @@ mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
 
 \item{MaxBitrate}{The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.}
 
-\item{MaxLatency}{The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.}
+\item{MaxLatency}{The maximum latency in milliseconds. This parameter applies only to
+RIST-based and Zixi-based streams.}
 
 \item{Protocol}{The protocol that is used by the source.}
 
 \item{SourceArn}{[required] The ARN of the source that you want to update.}
 
-\item{StreamId}{The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.}
+\item{StreamId}{The stream ID that you want to use for this transport. This parameter
+applies only to Zixi-based streams.}
 
 \item{VpcInterfaceName}{The name of the VPC Interface to configure this Source with.}
 
-\item{WhitelistCidr}{The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
+\item{WhitelistCidr}{The range of IP addresses that should be allowed to contribute content
+to your source. These IP addresses should be in the form of a Classless
+Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  Source = list(
+    DataTransferSubscriberFeePercent = 123,
+    Decryption = list(
+      Algorithm = "aes128"|"aes192"|"aes256",
+      ConstantInitializationVector = "string",
+      DeviceId = "string",
+      KeyType = "speke"|"static-key",
+      Region = "string",
+      ResourceId = "string",
+      RoleArn = "string",
+      SecretArn = "string",
+      Url = "string"
+    ),
+    Description = "string",
+    EntitlementArn = "string",
+    IngestIp = "string",
+    IngestPort = 123,
+    Name = "string",
+    SourceArn = "string",
+    Transport = list(
+      CidrAllowList = list(
+        "string"
+      ),
+      MaxBitrate = 123,
+      MaxLatency = 123,
+      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+      RemoteId = "string",
+      SmoothingLatency = 123,
+      StreamId = "string"
+    ),
+    VpcInterfaceName = "string",
+    WhitelistCidr = "string"
+  )
+)
+}
 }
 \description{
 Updates the source of a flow.

@@ -31,6 +31,17 @@ Currently, only geospatial hierarchy is supported.}
 
 \item{ColumnLevelPermissionRules}{A set of one or more definitions of a \code{ColumnLevelPermissionRule}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  DataSetId = "string",
+  IngestionArn = "string",
+  IngestionId = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates a dataset.
 }

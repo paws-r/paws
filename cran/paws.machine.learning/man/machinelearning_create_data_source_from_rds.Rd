@@ -49,7 +49,7 @@ required if \code{DataSchemaUri} is specified.
 rearrangement requirements for the \code{Datasource}.
 
 Sample -
-\verb{ "\\\{\\"splitting\\":\\\{\\"percentBegin\\":10,\\"percentEnd\\":60\\\}\\\}"}
+\verb{ "\{\\"splitting\\":\{\\"percentBegin\\":10,\\"percentEnd\\":60\}\}"}
 }}
 
 \item{RoleARN}{[required] The role that Amazon ML assumes on behalf of the user to create and
@@ -61,6 +61,12 @@ from the observation data referenced by a \code{DataSource}. Amazon ML uses
 the statistics internally during \code{MLModel} training. This parameter must
 be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel}
 training.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSourceId = "string"
+)
+}
 }
 \description{
 Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}

@@ -51,6 +51,14 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 Default: \code{off}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HostIds = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the
 supported instance type or instance family, the Availability Zone in

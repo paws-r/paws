@@ -13,6 +13,9 @@ signer_revoke_signature(jobId, jobOwner, reason)
 
 \item{reason}{[required] The reason for revoking the signing job.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the state of a signing job to REVOKED. This indicates that the
 signature is no longer valid.

@@ -21,6 +21,13 @@ Required.}
 
 \item{ClientRequestToken}{[required] The \code{Idempotency} token for each client request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  MessageId = "string"
+)
+}
+}
 \description{
 Sends a message to a particular channel that the member is a part of.
 

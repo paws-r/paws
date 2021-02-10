@@ -27,6 +27,9 @@ that you send using the configuration set.}
 \item{Tags}{An array of objects that define the tags (keys and values) that you want
 to associate with the configuration set.}
 }
+\value{
+An empty list.
+}
 \description{
 Create a configuration set. \emph{Configuration sets} are groups of rules
 that you can apply to the emails you send using Amazon Pinpoint. You

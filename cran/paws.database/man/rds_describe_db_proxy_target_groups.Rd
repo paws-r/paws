@@ -28,6 +28,36 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TargetGroups = list(
+    list(
+      DBProxyName = "string",
+      TargetGroupName = "string",
+      TargetGroupArn = "string",
+      IsDefault = TRUE|FALSE,
+      Status = "string",
+      ConnectionPoolConfig = list(
+        MaxConnectionsPercent = 123,
+        MaxIdleConnectionsPercent = 123,
+        ConnectionBorrowTimeout = 123,
+        SessionPinningFilters = list(
+          "string"
+        ),
+        InitQuery = "string"
+      ),
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns information about DB proxy target groups, represented by
 \code{DBProxyTargetGroup} data structures.

@@ -9,6 +9,22 @@ elb_describe_tags(LoadBalancerNames)
 \arguments{
 \item{LoadBalancerNames}{[required] The names of the load balancers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagDescriptions = list(
+    list(
+      LoadBalancerName = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the tags associated with the specified load balancers.
 }

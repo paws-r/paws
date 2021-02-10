@@ -19,6 +19,9 @@ in the \emph{AWS General Reference}.}
 For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the specified version of the specified policy as the policy's
 default (operative) version.

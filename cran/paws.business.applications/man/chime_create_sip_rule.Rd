@@ -32,6 +32,31 @@ them.}
 \item{TargetApplications}{[required] List of SIP media applications with priority and AWS Region. Only one
 SIP application per AWS Region can be used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipRule = list(
+    SipRuleId = "string",
+    Name = "string",
+    Disabled = TRUE|FALSE,
+    TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+    TriggerValue = "string",
+    TargetApplications = list(
+      list(
+        SipMediaApplicationId = "string",
+        Priority = 123,
+        AwsRegion = "string"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a SIP rule which can be used to run a SIP media application as a
 target for a specific trigger type.

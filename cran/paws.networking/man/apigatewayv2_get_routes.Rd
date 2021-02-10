@@ -14,6 +14,37 @@ apigatewayv2_get_routes(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      ApiGatewayManaged = TRUE|FALSE,
+      ApiKeyRequired = TRUE|FALSE,
+      AuthorizationScopes = list(
+        "string"
+      ),
+      AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
+      AuthorizerId = "string",
+      ModelSelectionExpression = "string",
+      OperationName = "string",
+      RequestModels = list(
+        "string"
+      ),
+      RequestParameters = list(
+        list(
+          Required = TRUE|FALSE
+        )
+      ),
+      RouteId = "string",
+      RouteKey = "string",
+      RouteResponseSelectionExpression = "string",
+      Target = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets the Routes for an API.
 }

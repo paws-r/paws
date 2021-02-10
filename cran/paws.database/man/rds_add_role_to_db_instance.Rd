@@ -17,6 +17,9 @@ instance, for example \verb{arn:aws:iam::123456789012:role/AccessRole}.}
 associated with. For the list of supported feature names, see
 DBEngineVersion.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates an AWS Identity and Access Management (IAM) role with a DB
 instance.

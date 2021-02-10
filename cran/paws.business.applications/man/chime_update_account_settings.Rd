@@ -11,6 +11,9 @@ chime_update_account_settings(AccountId, AccountSettings)
 
 \item{AccountSettings}{[required] The Amazon Chime account settings to update.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the settings for the specified Amazon Chime account. You can
 update settings for remote control of shared screens, or for the

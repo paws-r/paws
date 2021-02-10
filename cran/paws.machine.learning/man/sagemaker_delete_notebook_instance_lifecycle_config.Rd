@@ -10,6 +10,9 @@ sagemaker_delete_notebook_instance_lifecycle_config(
 \arguments{
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a notebook instance lifecycle configuration.
 }

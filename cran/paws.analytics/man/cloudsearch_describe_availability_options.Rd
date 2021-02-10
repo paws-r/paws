@@ -12,6 +12,25 @@ cloudsearch_describe_availability_options(DomainName, Deployed)
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AvailabilityOptions = list(
+    Options = TRUE|FALSE,
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Gets the availability options configured for a domain. By default, shows
 the configuration with any pending changes. Set the \code{Deployed} option to

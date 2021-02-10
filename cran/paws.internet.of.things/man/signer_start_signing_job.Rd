@@ -21,6 +21,13 @@ that use this token return the same response as the first call.}
 
 \item{profileOwner}{The AWS account ID of the signing profile owner.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobId = "string",
+  jobOwner = "string"
+)
+}
+}
 \description{
 Initiates a signing job to be performed on the code provided. Signing
 jobs are viewable by the \code{\link[=signer_list_signing_jobs]{list_signing_jobs}}
@@ -28,7 +35,7 @@ operation for two years after they are performed. Note the following
 requirements:
 \itemize{
 \item You must create an Amazon S3 source bucket. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html}{Create a Bucket}
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html}{Create a Bucket}
 in the \emph{Amazon S3 Getting Started Guide}.
 \item Your S3 source bucket must be version enabled.
 \item You must create an S3 destination bucket. Code signing uses your S3

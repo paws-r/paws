@@ -86,6 +86,17 @@ Default Value: \code{enabled}}
 \item{ClientConnectOptions}{The options for managing connection authorization for new client
 connections.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientVpnEndpointId = "string",
+  Status = list(
+    Code = "pending-associate"|"available"|"deleting"|"deleted",
+    Message = "string"
+  ),
+  DnsName = "string"
+)
+}
+}
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you
 create and configure to enable and manage client VPN sessions. It is the

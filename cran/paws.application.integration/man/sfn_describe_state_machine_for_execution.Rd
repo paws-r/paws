@@ -10,6 +10,32 @@ sfn_describe_state_machine_for_execution(executionArn)
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution you want state machine
 information for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  stateMachineArn = "string",
+  name = "string",
+  definition = "string",
+  roleArn = "string",
+  updateDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  loggingConfiguration = list(
+    level = "ALL"|"ERROR"|"FATAL"|"OFF",
+    includeExecutionData = TRUE|FALSE,
+    destinations = list(
+      list(
+        cloudWatchLogsLogGroup = list(
+          logGroupArn = "string"
+        )
+      )
+    )
+  ),
+  tracingConfiguration = list(
+    enabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Describes the state machine associated with a specific execution.
 

@@ -15,6 +15,9 @@ when the OTA update is deleted.}
 \item{forceDeleteAWSJob}{Specifies if the AWS Job associated with the OTA update should be
 deleted when the OTA update is deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete an OTA update.
 }

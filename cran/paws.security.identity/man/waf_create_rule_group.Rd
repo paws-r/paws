@@ -14,13 +14,24 @@ after you create a \code{RuleGroup}.}
 name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
 maximum length 128 and minimum length one. It can't contain whitespace
 or metric names reserved for AWS WAF, including "All" and
-"Default\\_Action." You can't change the name of the metric after you
+"Default_Action." You can't change the name of the metric after you
 create the \code{RuleGroup}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 
 \item{Tags}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RuleGroup = list(
+    RuleGroupId = "string",
+    Name = "string",
+    MetricName = "string"
+  ),
+  ChangeToken = "string"
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

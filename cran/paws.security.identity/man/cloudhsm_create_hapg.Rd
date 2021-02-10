@@ -9,6 +9,12 @@ cloudhsm_create_hapg(Label)
 \arguments{
 \item{Label}{[required] The label of the new high-availability partition group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HapgArn = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

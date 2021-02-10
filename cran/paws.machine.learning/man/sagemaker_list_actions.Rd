@@ -29,6 +29,31 @@ next set of actions.}
 \item{MaxResults}{The maximum number of actions to return in the response. The default
 value is 10.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionSummaries = list(
+    list(
+      ActionArn = "string",
+      ActionName = "string",
+      Source = list(
+        SourceUri = "string",
+        SourceType = "string",
+        SourceId = "string"
+      ),
+      ActionType = "string",
+      Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the actions in your account and their properties.
 }

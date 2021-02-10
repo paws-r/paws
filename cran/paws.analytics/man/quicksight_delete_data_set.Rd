@@ -12,6 +12,15 @@ quicksight_delete_data_set(AwsAccountId, DataSetId)
 \item{DataSetId}{[required] The ID for the dataset that you want to create. This ID is unique per
 AWS Region for each AWS account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  DataSetId = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Deletes a dataset.
 }

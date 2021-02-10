@@ -13,6 +13,9 @@ none is provided, the AWS account ID is used by default.}
 
 \item{DataCatalogEncryptionSettings}{[required] The security configuration to set.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the security configuration for a specified catalog. After the
 configuration has been set, the specified encryption is applied to every

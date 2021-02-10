@@ -12,6 +12,9 @@ the typed link.}
 
 \item{TypedLinkSpecifier}{[required] Used to accept a typed link specifier as input.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches a typed link from a specified source and target object. For
 more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.

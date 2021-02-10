@@ -22,6 +22,9 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.}
 
 \item{Tags}{A list of comma separated tags to add to the workgroup that is created.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a workgroup with the specified name.
 }

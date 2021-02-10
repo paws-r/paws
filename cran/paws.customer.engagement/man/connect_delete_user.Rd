@@ -11,6 +11,9 @@ connect_delete_user(InstanceId, UserId)
 
 \item{UserId}{[required] The identifier of the user.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a user account from the specified Amazon Connect instance.
 

@@ -9,6 +9,9 @@ comprehend_delete_endpoint(EndpointArn)
 \arguments{
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint being deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a model-specific endpoint for a previously-trained custom model.
 All endpoints must be deleted in order for the model to be deleted.

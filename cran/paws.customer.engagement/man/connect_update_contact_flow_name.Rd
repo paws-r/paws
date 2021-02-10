@@ -16,6 +16,9 @@ connect_update_contact_flow_name(InstanceId, ContactFlowId, Name,
 
 \item{Description}{The description of the contact flow.}
 }
+\value{
+An empty list.
+}
 \description{
 The name of the contact flow.
 

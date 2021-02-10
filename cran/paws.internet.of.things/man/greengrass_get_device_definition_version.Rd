@@ -10,9 +10,35 @@ greengrass_get_device_definition_version(DeviceDefinitionId,
 \arguments{
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
 
-\item{DeviceDefinitionVersionId}{[required] The ID of the device definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListDeviceDefinitionVersions'' requests. If the version is the last one that was associated with a device definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.}
+\item{DeviceDefinitionVersionId}{[required] The ID of the device definition version. This value maps to the
+''Version'' property of the corresponding ''VersionInformation'' object,
+which is returned by ''ListDeviceDefinitionVersions'' requests. If the
+version is the last one that was associated with a device definition,
+the value also maps to the ''LatestVersion'' property of the
+corresponding ''DefinitionInformation'' object.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Definition = list(
+    Devices = list(
+      list(
+        CertificateArn = "string",
+        Id = "string",
+        SyncShadow = TRUE|FALSE,
+        ThingArn = "string"
+      )
+    )
+  ),
+  Id = "string",
+  NextToken = "string",
+  Version = "string"
+)
+}
 }
 \description{
 Retrieves information about a device definition version.

@@ -19,6 +19,18 @@ using the returned token in \code{NextToken}.}
 
 \item{MaxResults}{The maximum number of results returned per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  DiscoveredResourceList = list(
+    list(
+      ConfigurationId = "string",
+      Description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists discovered resources associated with the given \code{MigrationTask}.
 }

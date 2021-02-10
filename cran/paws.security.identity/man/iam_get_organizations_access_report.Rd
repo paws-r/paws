@@ -32,6 +32,38 @@ indicate where the next call should start.}
 key, the results are returned in alphabetical order. If you choose the
 time key, the results are sorted numerically by the date and time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+  JobCreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  JobCompletionDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  NumberOfServicesAccessible = 123,
+  NumberOfServicesNotAccessed = 123,
+  AccessDetails = list(
+    list(
+      ServiceName = "string",
+      ServiceNamespace = "string",
+      Region = "string",
+      EntityPath = "string",
+      LastAuthenticatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TotalAuthenticatedEntities = 123
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string",
+  ErrorDetails = list(
+    Message = "string",
+    Code = "string"
+  )
+)
+}
+}
 \description{
 Retrieves the service last accessed data report for AWS Organizations
 that was previously generated using the

@@ -11,6 +11,17 @@ dax_tag_resource(ResourceName, Tags)
 
 \item{Tags}{[required] The tags to be assigned to the DAX resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Associates a set of tags with a DAX resource. You can call
 \code{\link[=dax_tag_resource]{tag_resource}} up to 5 times per second, per

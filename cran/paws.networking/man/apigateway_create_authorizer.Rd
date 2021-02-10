@@ -21,7 +21,7 @@ pool.}
 
 \item{providerARNs}{A list of the Amazon Cognito user pool ARNs for the \code{COGNITO_USER_POOLS}
 authorizer. Each element is of this format:
-\verb{arn:aws:cognito-idp:\\\{region\\\}:\\\{account_id\\\}:userpool/\\\{user_pool_id\\\}}. For
+\code{arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}}. For
 a \code{TOKEN} or \code{REQUEST} authorizer, this is not defined.}
 
 \item{authType}{Optional customer-defined field, used in OpenAPI imports and exports
@@ -30,14 +30,14 @@ without functional impact.}
 \item{authorizerUri}{Specifies the authorizer's Uniform Resource Identifier (URI). For
 \code{TOKEN} or \code{REQUEST} authorizers, this must be a well-formed Lambda
 function URI, for example,
-\verb{arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\\\{account_id\\\}:function:\\\{lambda_function_name\\\}/invocations}.
+\verb{arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account_id\}:function:\{lambda_function_name\}/invocations}.
 In general, the URI has this form
-\verb{arn:aws:apigateway:\\\{region\\\}:lambda:path/\\\{service_api\\\}}, where
-\verb{\\\{region\\\}} is the same as the region hosting the Lambda function, \code{path}
+\code{arn:aws:apigateway:{region}:lambda:path/{service_api}}, where
+\code{{region}} is the same as the region hosting the Lambda function, \code{path}
 indicates that the remaining substring in the URI should be treated as
 the path to the resource, including the initial \code{/}. For Lambda
 functions, this is usually of the form
-\verb{/2015-03-31/functions/\\\[FunctionARN\\\]/invocations}.}
+\verb{/2015-03-31/functions/[FunctionARN]/invocations}.}
 
 \item{authorizerCredentials}{Specifies the required credentials as an IAM role for API Gateway to
 invoke the authorizer. To specify an IAM role for API Gateway to assume,
@@ -81,6 +81,23 @@ apply to the \code{REQUEST} authorizer.}
 authorization caching is disabled. If it is greater than 0, API Gateway
 will cache authorizer responses. If this field is not set, the default
 value is 300. The maximum value is 3600, or 1 hour.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+  providerARNs = list(
+    "string"
+  ),
+  authType = "string",
+  authorizerUri = "string",
+  authorizerCredentials = "string",
+  identitySource = "string",
+  identityValidationExpression = "string",
+  authorizerResultTtlInSeconds = 123
+)
+}
 }
 \description{
 Adds a new Authorizer resource to an existing RestApi resource.<div class="seeAlso">

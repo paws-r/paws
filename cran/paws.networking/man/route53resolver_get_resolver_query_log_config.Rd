@@ -12,6 +12,23 @@ route53resolver_get_resolver_query_log_config(ResolverQueryLogConfigId)
 \item{ResolverQueryLogConfigId}{[required] The ID of the Resolver query logging configuration that you want to get
 information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverQueryLogConfig = list(
+    Id = "string",
+    OwnerId = "string",
+    Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+    AssociationCount = 123,
+    Arn = "string",
+    Name = "string",
+    DestinationArn = "string",
+    CreatorRequestId = "string",
+    CreationTime = "string"
+  )
+)
+}
+}
 \description{
 Gets information about a specified Resolver query logging configuration,
 such as the number of VPCs that the configuration is logging queries for

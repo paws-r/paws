@@ -12,6 +12,9 @@ delete.}
 
 \item{RuleName}{[required] The name of the receipt rule to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified receipt rule.
 

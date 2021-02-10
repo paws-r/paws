@@ -12,10 +12,13 @@ contains the certificate ID.)}
 
 \item{rejectReason}{The reason the certificate transfer was rejected.}
 }
+\value{
+An empty list.
+}
 \description{
 Rejects a pending certificate transfer. After AWS IoT rejects a
 certificate transfer, the certificate status changes from
-\strong{PENDING\\_TRANSFER} to \strong{INACTIVE}.
+\strong{PENDING_TRANSFER} to \strong{INACTIVE}.
 
 To check for pending certificate transfers, call
 \code{\link[=iot_list_certificates]{list_certificates}} to enumerate your

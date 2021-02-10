@@ -18,6 +18,18 @@ specified by \code{MaxResults}.}
 results exist than the specified \code{MaxResults} value, a token is included
 in the response so that the remaining results can be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all tags for the specified resource.
 }

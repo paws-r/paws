@@ -18,6 +18,21 @@ rule template.
 The length constraint limit is for each string in the array. The array
 itself can be empty.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  disassociatedRepositoryNames = list(
+    "string"
+  ),
+  errors = list(
+    list(
+      repositoryName = "string",
+      errorCode = "string",
+      errorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes the association between an approval rule template and one or
 more specified repositories.

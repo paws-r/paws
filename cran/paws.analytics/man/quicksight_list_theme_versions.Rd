@@ -17,6 +17,25 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThemeVersionSummaryList = list(
+    list(
+      VersionNumber = 123,
+      Arn = "string",
+      Description = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED"
+    )
+  ),
+  NextToken = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Lists all the versions of the themes in the current AWS account.
 }

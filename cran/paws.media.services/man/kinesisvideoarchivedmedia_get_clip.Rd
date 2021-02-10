@@ -20,6 +20,13 @@ You must specify either the StreamName or the StreamARN.}
 
 \item{ClipFragmentSelector}{[required] The time range of the requested clip and the source of the timestamps.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentType = "string",
+  Payload = raw
+)
+}
+}
 \description{
 Downloads an MP4 file (clip) containing the archived, on-demand media
 from the specified video stream over the specified time range.
@@ -29,16 +36,16 @@ must specify either the StreamName or the StreamARN when invoking this
 API operation.
 
 As a prerequsite to using GetCLip API, you must obtain an endpoint using
-\code{GetDataEndpoint}, specifying GET\\_CLIP for`` the \code{APIName} parameter.
+\code{GetDataEndpoint}, specifying GET_CLIP for`` the \code{APIName} parameter.
 
 An Amazon Kinesis video stream has the following requirements for
 providing data through MP4:
 \itemize{
 \item The media must contain h.264 or h.265 encoded video and, optionally,
 AAC or G.711 encoded audio. Specifically, the codec ID of track 1
-should be \code{V_MPEG/ISO/AVC} (for h.264) or V\\_MPEGH/ISO/HEVC (for
+should be \code{V_MPEG/ISO/AVC} (for h.264) or V_MPEGH/ISO/HEVC (for
 H.265). Optionally, the codec ID of track 2 should be \code{A_AAC} (for
-AAC) or A\\_MS/ACM (for G.711).
+AAC) or A_MS/ACM (for G.711).
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265

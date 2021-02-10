@@ -11,6 +11,9 @@ efs_tag_resource(ResourceId, Tags)
 
 \item{Tags}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a tag for an EFS resource. You can create tags for EFS file
 systems and access points using this API operation.

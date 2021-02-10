@@ -63,10 +63,17 @@ you can represent in UTF-8 format, and the following special characters:
 \itemize{
 \item 
 \itemize{
-\item = . \\_ : / @. The maximum length of a tag's key is 128 characters,
+\item = . _ : / @. The maximum length of a tag's key is 128 characters,
 and the maximum length for a tag's value is 256 characters.
 }
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string",
+  TargetARN = "string"
+)
+}
 }
 \description{
 Creates a cached volume on a specified cached volume gateway. This

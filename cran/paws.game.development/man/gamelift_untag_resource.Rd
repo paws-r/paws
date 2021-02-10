@@ -8,7 +8,7 @@ gamelift_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name
-(\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN})
+(\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html}{ARN})
 that is assigned to and uniquely identifies the GameLift resource that
 you want to remove tags from. GameLift resource ARNs are included in the
 data object for the resource, which can be retrieved by calling a List
@@ -17,6 +17,9 @@ or Describe operation for the resource type.}
 \item{TagKeys}{[required] A list of one or more tag keys to remove from the specified GameLift
 resource. An AWS resource can have only one tag with a specific tag key,
 so specifying the tag key identifies which tag to remove.}
+}
+\value{
+An empty list.
 }
 \description{
 Removes a tag that is assigned to a GameLift resource. Resource tags are

@@ -23,6 +23,36 @@ signing platform.}
 \item{statuses}{Filters results to return only signing jobs with statuses in the
 specified list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  profiles = list(
+    list(
+      profileName = "string",
+      profileVersion = "string",
+      profileVersionArn = "string",
+      signingMaterial = list(
+        certificateArn = "string"
+      ),
+      signatureValidityPeriod = list(
+        value = 123,
+        type = "DAYS"|"MONTHS"|"YEARS"
+      ),
+      platformId = "string",
+      platformDisplayName = "string",
+      signingParameters = list(
+        "string"
+      ),
+      status = "Active"|"Canceled"|"Revoked",
+      arn = "string",
+      tags = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all available signing profiles in your AWS account. Returns only
 profiles with an \code{ACTIVE} status unless the \code{includeCanceled} request

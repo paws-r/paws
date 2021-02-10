@@ -21,6 +21,9 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \item{lockId}{[required] The \code{lockId} value is the lock ID obtained from a
 \code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}} request.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation completes the vault locking process by transitioning the
 vault lock from the \code{InProgress} state to the \code{Locked} state, which

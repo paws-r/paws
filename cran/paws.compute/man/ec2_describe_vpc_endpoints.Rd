@@ -45,6 +45,59 @@ items.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a prior call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcEndpoints = list(
+    list(
+      VpcEndpointId = "string",
+      VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
+      VpcId = "string",
+      ServiceName = "string",
+      State = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
+      PolicyDocument = "string",
+      RouteTableIds = list(
+        "string"
+      ),
+      SubnetIds = list(
+        "string"
+      ),
+      Groups = list(
+        list(
+          GroupId = "string",
+          GroupName = "string"
+        )
+      ),
+      PrivateDnsEnabled = TRUE|FALSE,
+      RequesterManaged = TRUE|FALSE,
+      NetworkInterfaceIds = list(
+        "string"
+      ),
+      DnsEntries = list(
+        list(
+          DnsName = "string",
+          HostedZoneId = "string"
+        )
+      ),
+      CreationTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      OwnerId = "string",
+      LastError = list(
+        Message = "string",
+        Code = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your VPC endpoints.
 }

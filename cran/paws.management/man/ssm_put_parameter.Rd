@@ -49,7 +49,7 @@ parameters have a value limit of 4 KB. Advanced parameters have a value
 limit of 8 KB.
 
 Parameters can't be referenced or nested in the values of other
-parameters. You can't include \verb{\\\{\\\{\\\}\\\}} or \verb{\\\{\\\{ssm:parameter-name\\\}\\\}} in a
+parameters. You can't include \code{{{}}} or \code{{{ssm:parameter-name}}} in a
 parameter value.}
 
 \item{Type}{The type of parameter that you want to add to the system.
@@ -86,7 +86,7 @@ the \verb{Key ID} parameter.
 
 \item{AllowedPattern}{A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the
-following: AllowedPattern=^\verb{\\\\d}+$}
+following: AllowedPattern=^\\d+$}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or
@@ -208,6 +208,13 @@ Systems Manager validates the parameter value is in the required format,
 such as \verb{ami-12345abcdeEXAMPLE}, and that the specified AMI is available
 in your AWS account. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}
 in the \emph{AWS Systems Manager User Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Version = 123,
+  Tier = "Standard"|"Advanced"|"Intelligent-Tiering"
+)
+}
 }
 \description{
 Add a parameter to the system.

@@ -12,6 +12,16 @@ chime_get_events_configuration(AccountId, BotId)
 
 \item{BotId}{[required] The bot ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventsConfiguration = list(
+    BotId = "string",
+    OutboundEventsHTTPSEndpoint = "string",
+    LambdaFunctionArn = "string"
+  )
+)
+}
+}
 \description{
 Gets details for an events configuration that allows a bot to receive
 outgoing events, such as an HTTPS endpoint or Lambda function ARN.

@@ -9,6 +9,9 @@ devicefarm_delete_run(arn)
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) for the run to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the run, given the run ARN.
 

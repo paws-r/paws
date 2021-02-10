@@ -42,6 +42,9 @@ root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Moves an account from its current source parent root or organizational
 unit (OU) to the specified destination parent root or OU.

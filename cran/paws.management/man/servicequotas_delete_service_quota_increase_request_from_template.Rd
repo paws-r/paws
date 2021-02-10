@@ -15,6 +15,9 @@ servicequotas_delete_service_quota_increase_request_from_template(
 
 \item{AwsRegion}{[required] The AWS Region.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the quota increase request for the specified quota from your
 quota request template.

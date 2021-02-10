@@ -15,6 +15,51 @@ store.}
 
 \item{MaxResults}{The maximum number of skills returned per paginated calls.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SkillsStoreSkills = list(
+    list(
+      SkillId = "string",
+      SkillName = "string",
+      ShortDescription = "string",
+      IconUrl = "string",
+      SampleUtterances = list(
+        "string"
+      ),
+      SkillDetails = list(
+        ProductDescription = "string",
+        InvocationPhrase = "string",
+        ReleaseDate = "string",
+        EndUserLicenseAgreement = "string",
+        GenericKeywords = list(
+          "string"
+        ),
+        BulletPoints = list(
+          "string"
+        ),
+        NewInThisVersionBulletPoints = list(
+          "string"
+        ),
+        SkillTypes = list(
+          "string"
+        ),
+        Reviews = list(
+          "string"
+        ),
+        DeveloperInfo = list(
+          DeveloperName = "string",
+          PrivacyPolicy = "string",
+          Email = "string",
+          Url = "string"
+        )
+      ),
+      SupportsLinking = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all skills in the Alexa skill store by category.
 }

@@ -10,6 +10,28 @@ athena_batch_get_named_query(NamedQueryIds)
 \arguments{
 \item{NamedQueryIds}{[required] An array of query IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NamedQueries = list(
+    list(
+      Name = "string",
+      Description = "string",
+      Database = "string",
+      QueryString = "string",
+      NamedQueryId = "string",
+      WorkGroup = "string"
+    )
+  ),
+  UnprocessedNamedQueryIds = list(
+    list(
+      NamedQueryId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the details of a single named query or a list of up to 50
 queries, which you provide as an array of query ID strings. Requires you

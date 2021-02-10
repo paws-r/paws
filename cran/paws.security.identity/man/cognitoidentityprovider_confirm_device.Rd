@@ -16,6 +16,12 @@ cognitoidentityprovider_confirm_device(AccessToken, DeviceKey,
 
 \item{DeviceName}{The device name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserConfirmationNecessary = TRUE|FALSE
+)
+}
+}
 \description{
 Confirms tracking of the device. This API call is the call that begins
 device tracking.

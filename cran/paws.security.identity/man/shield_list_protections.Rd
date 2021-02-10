@@ -21,6 +21,22 @@ If there are more objects to return, Shield Advanced returns a value in
 \code{NextToken} that you can use in your next request, to get the next batch
 of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Protections = list(
+    list(
+      Id = "string",
+      Name = "string",
+      ResourceArn = "string",
+      HealthCheckIds = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all Protection objects for the account.
 }

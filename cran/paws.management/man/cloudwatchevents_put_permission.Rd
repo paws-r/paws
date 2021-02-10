@@ -46,6 +46,9 @@ The \code{Condition} is a JSON string which must contain \code{Type}, \code{Key}
 include a \code{Policy} parameter in the request instead of using the
 \code{StatementId}, \code{Action}, \code{Principal}, or \code{Condition} parameters.}
 }
+\value{
+An empty list.
+}
 \description{
 Running \code{\link[=cloudwatchevents_put_permission]{put_permission}} permits the
 specified AWS account or AWS organization to put events to the specified

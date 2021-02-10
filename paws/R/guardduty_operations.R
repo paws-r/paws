@@ -19,6 +19,9 @@ NULL
 #' @param InvitationId &#91;required&#93; The value that is used to validate the administrator account to the
 #' member account.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_invitation(
@@ -64,6 +67,9 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to archive.
 #' @param FindingIds &#91;required&#93; The IDs of the findings that you want to archive.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -114,6 +120,14 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' @param DataSources Describes which data sources will be enabled for the detector.
 #' @param Tags The tags to be added to a new detector resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DetectorId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_detector(
@@ -163,7 +177,7 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' @param DetectorId &#91;required&#93; The ID of the detector belonging to the GuardDuty account that you want
 #' to create a filter for.
 #' @param Name &#91;required&#93; The name of the filter. Minimum length of 3. Maximum length of 64. Valid
-#' characters include alphanumeric characters, dot (.), underscore (\\_),
+#' characters include alphanumeric characters, dot (.), underscore (_),
 #' and dash (-). Spaces are not allowed.
 #' @param Description The description of the filter.
 #' @param Action Specifies the action that is to be applied to the findings that match
@@ -287,6 +301,14 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new filter resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_filter(
@@ -367,7 +389,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' @param Name &#91;required&#93; The user-friendly name to identify the IPSet.
 #' 
 #' Allowed characters are alphanumerics, spaces, hyphens (-), and
-#' underscores (\\_).
+#' underscores (_).
 #' @param Format &#91;required&#93; The format of the file that contains the IPSet.
 #' @param Location &#91;required&#93; The URI of the file that contains the IPSet. For example:
 #' https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
@@ -375,6 +397,14 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' uploaded IPSet.
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new IP set resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IpSetId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -438,6 +468,19 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' @param AccountDetails &#91;required&#93; A list of account ID and email address pairs of the accounts that you
 #' want to associate with the GuardDuty administrator account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_members(
@@ -489,6 +532,14 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 #' destination and the KMS key used for encryption.
 #' @param ClientToken The idempotency token for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DestinationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_publishing_destination(
@@ -535,6 +586,9 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to create sample findings for.
 #' @param FindingTypes The types of sample findings to generate.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -590,6 +644,14 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new threat list resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ThreatIntelSetId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_threat_intel_set(
@@ -638,6 +700,19 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
 #' @param AccountIds &#91;required&#93; A list of account IDs of the AWS accounts that sent invitations to the
 #' current member account that you want to decline invitations from.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$decline_invitations(
@@ -679,6 +754,9 @@ guardduty_decline_invitations <- function(AccountIds) {
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_detector(
@@ -716,6 +794,9 @@ guardduty_delete_detector <- function(DetectorId) {
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param FilterName &#91;required&#93; The name of the filter that you want to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -757,6 +838,9 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the IPSet.
 #' @param IpSetId &#91;required&#93; The unique ID of the IPSet to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_ip_set(
@@ -797,6 +881,19 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
 #'
 #' @param AccountIds &#91;required&#93; A list of account IDs of the AWS accounts that sent invitations to the
 #' current member account that you want to delete invitations from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -842,6 +939,19 @@ guardduty_delete_invitations <- function(AccountIds) {
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts that you want to
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_members(
@@ -884,6 +994,9 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
 #' to delete.
 #' @param DestinationId &#91;required&#93; The ID of the publishing destination to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_publishing_destination(
@@ -923,6 +1036,9 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
 #' @param ThreatIntelSetId &#91;required&#93; The unique ID of the threatIntelSet that you want to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -965,6 +1081,20 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' @param DetectorId &#91;required&#93; The ID of the detector to retrieve information about the delegated
 #' administrator from.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoEnable = TRUE|FALSE,
+#'   MemberAccountLimitReached = TRUE|FALSE,
+#'   DataSources = list(
+#'     S3Logs = list(
+#'       AutoEnable = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_organization_configuration(
@@ -1005,6 +1135,21 @@ guardduty_describe_organization_configuration <- function(DetectorId) {
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the publishing destination
 #' to retrieve.
 #' @param DestinationId &#91;required&#93; The ID of the publishing destination to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DestinationId = "string",
+#'   DestinationType = "S3",
+#'   Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED",
+#'   PublishingFailureStartTimestamp = 123,
+#'   DestinationProperties = list(
+#'     DestinationArn = "string",
+#'     KmsKeyArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1047,6 +1192,9 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 #' @param AdminAccountId &#91;required&#93; The AWS Account ID for the organizations account to be disabled as a
 #' GuardDuty delegated administrator.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_organization_admin_account(
@@ -1085,6 +1233,9 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 #' guardduty_disassociate_from_master_account(DetectorId)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1127,6 +1278,19 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #' want to disassociate from the administrator account.
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts that you want to
 #' disassociate from the administrator account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1171,6 +1335,9 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 #' @param AdminAccountId &#91;required&#93; The AWS Account ID for the organization account to be enabled as a
 #' GuardDuty delegated administrator.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_organization_admin_account(
@@ -1207,6 +1374,35 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 #' guardduty_get_detector(DetectorId)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that you want to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedAt = "string",
+#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
+#'   ServiceRole = "string",
+#'   Status = "ENABLED"|"DISABLED",
+#'   UpdatedAt = "string",
+#'   DataSources = list(
+#'     CloudTrail = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     ),
+#'     DNSLogs = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     ),
+#'     FlowLogs = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     ),
+#'     S3Logs = list(
+#'       Status = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1245,6 +1441,46 @@ guardduty_get_detector <- function(DetectorId) {
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param FilterName &#91;required&#93; The name of the filter you want to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Description = "string",
+#'   Action = "NOOP"|"ARCHIVE",
+#'   Rank = 123,
+#'   FindingCriteria = list(
+#'     Criterion = list(
+#'       list(
+#'         Eq = list(
+#'           "string"
+#'         ),
+#'         Neq = list(
+#'           "string"
+#'         ),
+#'         Gt = 123,
+#'         Gte = 123,
+#'         Lt = 123,
+#'         Lte = 123,
+#'         Equals = list(
+#'           "string"
+#'         ),
+#'         NotEquals = list(
+#'           "string"
+#'         ),
+#'         GreaterThan = 123,
+#'         GreaterThanOrEqual = 123,
+#'         LessThan = 123,
+#'         LessThanOrEqual = 123
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1286,6 +1522,269 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #' findings you want to retrieve.
 #' @param FindingIds &#91;required&#93; The IDs of the findings that you want to retrieve.
 #' @param SortCriteria Represents the criteria used for sorting findings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Findings = list(
+#'     list(
+#'       AccountId = "string",
+#'       Arn = "string",
+#'       Confidence = 123.0,
+#'       CreatedAt = "string",
+#'       Description = "string",
+#'       Id = "string",
+#'       Partition = "string",
+#'       Region = "string",
+#'       Resource = list(
+#'         AccessKeyDetails = list(
+#'           AccessKeyId = "string",
+#'           PrincipalId = "string",
+#'           UserName = "string",
+#'           UserType = "string"
+#'         ),
+#'         S3BucketDetails = list(
+#'           list(
+#'             Arn = "string",
+#'             Name = "string",
+#'             Type = "string",
+#'             CreatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Owner = list(
+#'               Id = "string"
+#'             ),
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             DefaultServerSideEncryption = list(
+#'               EncryptionType = "string",
+#'               KmsMasterKeyArn = "string"
+#'             ),
+#'             PublicAccess = list(
+#'               PermissionConfiguration = list(
+#'                 BucketLevelPermissions = list(
+#'                   AccessControlList = list(
+#'                     AllowsPublicReadAccess = TRUE|FALSE,
+#'                     AllowsPublicWriteAccess = TRUE|FALSE
+#'                   ),
+#'                   BucketPolicy = list(
+#'                     AllowsPublicReadAccess = TRUE|FALSE,
+#'                     AllowsPublicWriteAccess = TRUE|FALSE
+#'                   ),
+#'                   BlockPublicAccess = list(
+#'                     IgnorePublicAcls = TRUE|FALSE,
+#'                     RestrictPublicBuckets = TRUE|FALSE,
+#'                     BlockPublicAcls = TRUE|FALSE,
+#'                     BlockPublicPolicy = TRUE|FALSE
+#'                   )
+#'                 ),
+#'                 AccountLevelPermissions = list(
+#'                   BlockPublicAccess = list(
+#'                     IgnorePublicAcls = TRUE|FALSE,
+#'                     RestrictPublicBuckets = TRUE|FALSE,
+#'                     BlockPublicAcls = TRUE|FALSE,
+#'                     BlockPublicPolicy = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               EffectivePermission = "string"
+#'             )
+#'           )
+#'         ),
+#'         InstanceDetails = list(
+#'           AvailabilityZone = "string",
+#'           IamInstanceProfile = list(
+#'             Arn = "string",
+#'             Id = "string"
+#'           ),
+#'           ImageDescription = "string",
+#'           ImageId = "string",
+#'           InstanceId = "string",
+#'           InstanceState = "string",
+#'           InstanceType = "string",
+#'           OutpostArn = "string",
+#'           LaunchTime = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               Ipv6Addresses = list(
+#'                 "string"
+#'               ),
+#'               NetworkInterfaceId = "string",
+#'               PrivateDnsName = "string",
+#'               PrivateIpAddress = "string",
+#'               PrivateIpAddresses = list(
+#'                 list(
+#'                   PrivateDnsName = "string",
+#'                   PrivateIpAddress = "string"
+#'                 )
+#'               ),
+#'               PublicDnsName = "string",
+#'               PublicIp = "string",
+#'               SecurityGroups = list(
+#'                 list(
+#'                   GroupId = "string",
+#'                   GroupName = "string"
+#'                 )
+#'               ),
+#'               SubnetId = "string",
+#'               VpcId = "string"
+#'             )
+#'           ),
+#'           Platform = "string",
+#'           ProductCodes = list(
+#'             list(
+#'               Code = "string",
+#'               ProductType = "string"
+#'             )
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         ),
+#'         ResourceType = "string"
+#'       ),
+#'       SchemaVersion = "string",
+#'       Service = list(
+#'         Action = list(
+#'           ActionType = "string",
+#'           AwsApiCallAction = list(
+#'             Api = "string",
+#'             CallerType = "string",
+#'             DomainDetails = list(
+#'               Domain = "string"
+#'             ),
+#'             ErrorCode = "string",
+#'             RemoteIpDetails = list(
+#'               City = list(
+#'                 CityName = "string"
+#'               ),
+#'               Country = list(
+#'                 CountryCode = "string",
+#'                 CountryName = "string"
+#'               ),
+#'               GeoLocation = list(
+#'                 Lat = 123.0,
+#'                 Lon = 123.0
+#'               ),
+#'               IpAddressV4 = "string",
+#'               Organization = list(
+#'                 Asn = "string",
+#'                 AsnOrg = "string",
+#'                 Isp = "string",
+#'                 Org = "string"
+#'               )
+#'             ),
+#'             ServiceName = "string"
+#'           ),
+#'           DnsRequestAction = list(
+#'             Domain = "string"
+#'           ),
+#'           NetworkConnectionAction = list(
+#'             Blocked = TRUE|FALSE,
+#'             ConnectionDirection = "string",
+#'             LocalPortDetails = list(
+#'               Port = 123,
+#'               PortName = "string"
+#'             ),
+#'             Protocol = "string",
+#'             LocalIpDetails = list(
+#'               IpAddressV4 = "string"
+#'             ),
+#'             RemoteIpDetails = list(
+#'               City = list(
+#'                 CityName = "string"
+#'               ),
+#'               Country = list(
+#'                 CountryCode = "string",
+#'                 CountryName = "string"
+#'               ),
+#'               GeoLocation = list(
+#'                 Lat = 123.0,
+#'                 Lon = 123.0
+#'               ),
+#'               IpAddressV4 = "string",
+#'               Organization = list(
+#'                 Asn = "string",
+#'                 AsnOrg = "string",
+#'                 Isp = "string",
+#'                 Org = "string"
+#'               )
+#'             ),
+#'             RemotePortDetails = list(
+#'               Port = 123,
+#'               PortName = "string"
+#'             )
+#'           ),
+#'           PortProbeAction = list(
+#'             Blocked = TRUE|FALSE,
+#'             PortProbeDetails = list(
+#'               list(
+#'                 LocalPortDetails = list(
+#'                   Port = 123,
+#'                   PortName = "string"
+#'                 ),
+#'                 LocalIpDetails = list(
+#'                   IpAddressV4 = "string"
+#'                 ),
+#'                 RemoteIpDetails = list(
+#'                   City = list(
+#'                     CityName = "string"
+#'                   ),
+#'                   Country = list(
+#'                     CountryCode = "string",
+#'                     CountryName = "string"
+#'                   ),
+#'                   GeoLocation = list(
+#'                     Lat = 123.0,
+#'                     Lon = 123.0
+#'                   ),
+#'                   IpAddressV4 = "string",
+#'                   Organization = list(
+#'                     Asn = "string",
+#'                     AsnOrg = "string",
+#'                     Isp = "string",
+#'                     Org = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Evidence = list(
+#'           ThreatIntelligenceDetails = list(
+#'             list(
+#'               ThreatListName = "string",
+#'               ThreatNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Archived = TRUE|FALSE,
+#'         Count = 123,
+#'         DetectorId = "string",
+#'         EventFirstSeen = "string",
+#'         EventLastSeen = "string",
+#'         ResourceRole = "string",
+#'         ServiceName = "string",
+#'         UserFeedback = "string"
+#'       ),
+#'       Severity = 123.0,
+#'       Title = "string",
+#'       Type = "string",
+#'       UpdatedAt = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1335,6 +1834,18 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 #' findings' statistics you want to retrieve.
 #' @param FindingStatisticTypes &#91;required&#93; The types of finding statistics to retrieve.
 #' @param FindingCriteria Represents the criteria that is used for querying findings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FindingStatistics = list(
+#'     CountBySeverity = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1403,6 +1914,20 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes,
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the IPSet is associated with.
 #' @param IpSetId &#91;required&#93; The unique ID of the IPSet to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
+#'   Location = "string",
+#'   Status = "INACTIVE"|"ACTIVATING"|"ACTIVE"|"DEACTIVATING"|"ERROR"|"DELETE_PENDING"|"DELETED",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ip_set(
@@ -1441,6 +1966,14 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #' @usage
 #' guardduty_get_invitations_count()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InvitationsCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_invitations_count()
@@ -1477,6 +2010,19 @@ guardduty_get_invitations_count <- function() {
 #' guardduty_get_master_account(DetectorId)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Master = list(
+#'     AccountId = "string",
+#'     InvitationId = "string",
+#'     RelationshipStatus = "string",
+#'     InvitedAt = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1517,6 +2063,38 @@ guardduty_get_master_account <- function(DetectorId) {
 #'
 #' @param DetectorId &#91;required&#93; The detector ID for the administrator account.
 #' @param AccountIds &#91;required&#93; The account ID of the member account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MemberDataSourceConfigurations = list(
+#'     list(
+#'       AccountId = "string",
+#'       DataSources = list(
+#'         CloudTrail = list(
+#'           Status = "ENABLED"|"DISABLED"
+#'         ),
+#'         DNSLogs = list(
+#'           Status = "ENABLED"|"DISABLED"
+#'         ),
+#'         FlowLogs = list(
+#'           Status = "ENABLED"|"DISABLED"
+#'         ),
+#'         S3Logs = list(
+#'           Status = "ENABLED"|"DISABLED"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1563,6 +2141,30 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts that you want to
 #' describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Members = list(
+#'     list(
+#'       AccountId = "string",
+#'       DetectorId = "string",
+#'       MasterId = "string",
+#'       Email = "string",
+#'       RelationshipStatus = "string",
+#'       InvitedAt = "string",
+#'       UpdatedAt = "string"
+#'     )
+#'   ),
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_members(
@@ -1604,6 +2206,20 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
 #' @param ThreatIntelSetId &#91;required&#93; The unique ID of the threatIntelSet that you want to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
+#'   Location = "string",
+#'   Status = "INACTIVE"|"ACTIVATING"|"ACTIVE"|"DEACTIVATING"|"ERROR"|"DELETE_PENDING"|"DELETED",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1660,6 +2276,52 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' Set the value of this parameter to null for the first request to a list
 #' action. For subsequent calls, use the NextToken value returned from the
 #' previous request to continue listing results after the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UsageStatistics = list(
+#'     SumByAccount = list(
+#'       list(
+#'         AccountId = "string",
+#'         Total = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         )
+#'       )
+#'     ),
+#'     SumByDataSource = list(
+#'       list(
+#'         DataSource = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS",
+#'         Total = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         )
+#'       )
+#'     ),
+#'     SumByResource = list(
+#'       list(
+#'         Resource = "string",
+#'         Total = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         )
+#'       )
+#'     ),
+#'     TopResources = list(
+#'       list(
+#'         Resource = "string",
+#'         Total = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1728,6 +2390,19 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' @param Message The invitation message that you want to send to the accounts that you're
 #' inviting to GuardDuty as members.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$invite_members(
@@ -1778,6 +2453,17 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DetectorIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_detectors(
@@ -1822,6 +2508,17 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
 #' this parameter to null on your first call to the list action. For
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FilterNames = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1978,6 +2675,17 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FindingIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_findings(
@@ -2055,6 +2763,17 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IpSetIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_ip_sets(
@@ -2101,6 +2820,22 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' this parameter to null on your first call to the list action. For
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Invitations = list(
+#'     list(
+#'       AccountId = "string",
+#'       InvitationId = "string",
+#'       RelationshipStatus = "string",
+#'       InvitedAt = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2152,6 +2887,25 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' members (including members who haven't been invited yet or have been
 #' disassociated).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Members = list(
+#'     list(
+#'       AccountId = "string",
+#'       DetectorId = "string",
+#'       MasterId = "string",
+#'       Email = "string",
+#'       RelationshipStatus = "string",
+#'       InvitedAt = "string",
+#'       UpdatedAt = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_members(
@@ -2195,6 +2949,20 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' Set the value of this parameter to null for the first request to a list
 #' action. For subsequent calls, use the `NextToken` value returned from
 #' the previous request to continue listing results after the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdminAccounts = list(
+#'     list(
+#'       AdminAccountId = "string",
+#'       AdminStatus = "ENABLED"|"DISABLE_IN_PROGRESS"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2242,6 +3010,21 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
 #' action. For subsequent calls, use the `NextToken` value returned from
 #' the previous request to continue listing results after the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Destinations = list(
+#'     list(
+#'       DestinationId = "string",
+#'       DestinationType = "S3",
+#'       Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_publishing_destinations(
@@ -2283,6 +3066,16 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #' guardduty_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2333,6 +3126,17 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' the value of NextToken from the previous response to continue listing
 #' data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ThreatIntelSetIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_threat_intel_sets(
@@ -2378,6 +3182,19 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts to start
 #' monitoring.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_monitoring_members(
@@ -2422,6 +3239,19 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 #' administrator account that is monitoring member accounts.
 #' @param AccountIds &#91;required&#93; A list of account IDs for the member accounts to stop monitoring.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_monitoring_members(
@@ -2464,6 +3294,9 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
 #' to.
 #' @param Tags &#91;required&#93; The tags to be added to a resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2505,6 +3338,9 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
 #' @param DetectorId &#91;required&#93; The ID of the detector associated with the findings to unarchive.
 #' @param FindingIds &#91;required&#93; The IDs of the findings to unarchive.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unarchive_findings(
@@ -2545,6 +3381,9 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource to remove tags from.
 #' @param TagKeys &#91;required&#93; The tag keys to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2590,6 +3429,9 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param FindingPublishingFrequency An enum value that specifies how frequently findings are exported, such
 #' as to CloudWatch Events.
 #' @param DataSources Describes which data sources will be updated.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2644,6 +3486,14 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' Also specifies the order in which this filter is applied to the
 #' findings.
 #' @param FindingCriteria Represents the criteria to be used in the filter for querying findings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2717,6 +3567,9 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
 #' @param Feedback &#91;required&#93; The feedback for the finding.
 #' @param Comments Additional feedback about the GuardDuty findings.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_findings_feedback(
@@ -2766,6 +3619,9 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
 #' @param Activate The updated Boolean value that specifies whether the IPSet is active or
 #' not.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_ip_set(
@@ -2808,6 +3664,19 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 #' @param DetectorId &#91;required&#93; The detector ID of the administrator account.
 #' @param AccountIds &#91;required&#93; A list of member account IDs to be updated.
 #' @param DataSources Describes which data sources will be updated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Result = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2857,6 +3726,9 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' @param AutoEnable &#91;required&#93; Indicates whether to automatically enable member accounts in the
 #' organization.
 #' @param DataSources Describes which data sources will be updated.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2908,6 +3780,9 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable, 
 #' @param DestinationProperties A `DestinationProperties` object that includes the `DestinationArn` and
 #' `KmsKeyArn` of the publishing destination.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_publishing_destination(
@@ -2956,6 +3831,9 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 #' @param Location The updated URI of the file that contains the ThreateIntelSet.
 #' @param Activate The updated Boolean value that specifies whether the ThreateIntelSet is
 #' active or not.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

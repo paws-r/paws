@@ -15,6 +15,28 @@ configservice_describe_conformance_pack_status(ConformancePackNames,
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConformancePackStatusDetails = list(
+    list(
+      ConformancePackName = "string",
+      ConformancePackId = "string",
+      ConformancePackArn = "string",
+      ConformancePackState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED",
+      StackArn = "string",
+      ConformancePackStatusReason = "string",
+      LastUpdateRequestedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdateCompletedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides one or more conformance packs deployment status.
 

@@ -17,6 +17,47 @@ cognitoidentityprovider_admin_list_user_auth_events(UserPoolId,
 
 \item{NextToken}{A pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthEvents = list(
+    list(
+      EventId = "string",
+      EventType = "SignIn"|"SignUp"|"ForgotPassword",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      EventResponse = "Success"|"Failure",
+      EventRisk = list(
+        RiskDecision = "NoRisk"|"AccountTakeover"|"Block",
+        RiskLevel = "Low"|"Medium"|"High",
+        CompromisedCredentialsDetected = TRUE|FALSE
+      ),
+      ChallengeResponses = list(
+        list(
+          ChallengeName = "Password"|"Mfa",
+          ChallengeResponse = "Success"|"Failure"
+        )
+      ),
+      EventContextData = list(
+        IpAddress = "string",
+        DeviceName = "string",
+        Timezone = "string",
+        City = "string",
+        Country = "string"
+      ),
+      EventFeedback = list(
+        FeedbackValue = "Valid"|"Invalid",
+        Provider = "string",
+        FeedbackDate = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists a history of user activity and any risks detected as part of
 Amazon Cognito advanced security.

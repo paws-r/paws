@@ -12,6 +12,13 @@ quicksight_untag_resource(ResourceArn, TagKeys)
 \item{TagKeys}{[required] The keys of the key-value pairs for the resource tag or tags assigned to
 the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Removes a tag or tags from a resource.
 }

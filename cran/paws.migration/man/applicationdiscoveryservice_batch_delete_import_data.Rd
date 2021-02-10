@@ -9,6 +9,18 @@ applicationdiscoveryservice_batch_delete_import_data(importTaskIds)
 \arguments{
 \item{importTaskIds}{[required] The IDs for the import tasks that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  errors = list(
+    list(
+      importTaskId = "string",
+      errorCode = "NOT_FOUND"|"INTERNAL_SERVER_ERROR"|"OVER_LIMIT",
+      errorDescription = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more import tasks, each identified by their import ID.
 Each import task has a number of records that can identify servers or

@@ -11,6 +11,9 @@ opsworks_deregister_volume(VolumeId)
 Stacks assigned to the instance when you registered the volume with the
 stack, not the Amazon EC2 volume ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deregisters an Amazon EBS volume. The volume can then be registered by
 another stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.

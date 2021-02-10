@@ -10,6 +10,9 @@ gamelift_delete_build(BuildId)
 \item{BuildId}{[required] A unique identifier for a build to delete. You can use either the build
 ID or ARN value.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a build. This operation permanently deletes the build resource
 and any uploaded build files. Deleting a build does not affect the

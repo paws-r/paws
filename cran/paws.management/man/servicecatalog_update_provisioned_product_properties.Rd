@@ -56,6 +56,17 @@ Service Catalog console on that provisioned product.}
 \item{IdempotencyToken}{[required] The idempotency token that uniquely identifies the provisioning product
 update request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisionedProductId = "string",
+  ProvisionedProductProperties = list(
+    "string"
+  ),
+  RecordId = "string",
+  Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED"
+)
+}
+}
 \description{
 Requests updates to the properties of the specified provisioned product.
 }

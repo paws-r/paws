@@ -91,6 +91,40 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CapacityReservation = list(
+    CapacityReservationId = "string",
+    OwnerId = "string",
+    CapacityReservationArn = "string",
+    AvailabilityZoneId = "string",
+    InstanceType = "string",
+    InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
+    AvailabilityZone = "string",
+    Tenancy = "default"|"dedicated",
+    TotalInstanceCount = 123,
+    AvailableInstanceCount = 123,
+    EbsOptimized = TRUE|FALSE,
+    EphemeralStorage = TRUE|FALSE,
+    State = "active"|"expired"|"cancelled"|"pending"|"failed",
+    EndDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndDateType = "unlimited"|"limited",
+    InstanceMatchCriteria = "open"|"targeted",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new Capacity Reservation with the specified attributes.
 

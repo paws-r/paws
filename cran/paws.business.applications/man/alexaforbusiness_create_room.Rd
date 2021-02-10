@@ -21,6 +21,12 @@ idempotency.}
 
 \item{Tags}{The tags for the room.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoomArn = "string"
+)
+}
+}
 \description{
 Creates a room with the specified details.
 }

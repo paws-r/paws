@@ -7,6 +7,19 @@ to the Docker process on your local machine}
 \usage{
 lightsail_create_container_service_registry_login()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryLogin = list(
+    username = "string",
+    password = "string",
+    expiresAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    registry = "string"
+  )
+)
+}
+}
 \description{
 Creates a temporary set of log in credentials that you can use to log in
 to the Docker process on your local machine. After you're logged in, you

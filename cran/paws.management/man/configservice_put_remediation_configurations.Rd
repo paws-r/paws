@@ -10,6 +10,48 @@ configservice_put_remediation_configurations(RemediationConfigurations)
 \arguments{
 \item{RemediationConfigurations}{[required] A list of remediation configuration objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedBatches = list(
+    list(
+      FailureMessage = "string",
+      FailedItems = list(
+        list(
+          ConfigRuleName = "string",
+          TargetType = "SSM_DOCUMENT",
+          TargetId = "string",
+          TargetVersion = "string",
+          Parameters = list(
+            list(
+              ResourceValue = list(
+                Value = "RESOURCE_ID"
+              ),
+              StaticValue = list(
+                Values = list(
+                  "string"
+                )
+              )
+            )
+          ),
+          ResourceType = "string",
+          Automatic = TRUE|FALSE,
+          ExecutionControls = list(
+            SsmControls = list(
+              ConcurrentExecutionRatePercentage = 123,
+              ErrorPercentage = 123
+            )
+          ),
+          MaximumAutomaticAttempts = 123,
+          RetryAttemptSeconds = 123,
+          Arn = "string",
+          CreatedByService = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds or updates the remediation configuration with a specific AWS Config
 rule with the selected target or action. The API creates the

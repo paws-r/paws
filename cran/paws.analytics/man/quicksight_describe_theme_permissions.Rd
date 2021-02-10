@@ -12,6 +12,23 @@ describing.}
 
 \item{ThemeId}{[required] The ID for the theme that you want to describe permissions for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThemeId = "string",
+  ThemeArn = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes the read and write permissions for a theme.
 }

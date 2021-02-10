@@ -34,6 +34,9 @@ format.
 
 The \code{namespaceId} feature is in public preview.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates supported fields of the specified job.
 }

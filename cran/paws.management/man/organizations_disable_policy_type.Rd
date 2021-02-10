@@ -18,11 +18,27 @@ digits.}
 \item{PolicyType}{[required] The policy type that you want to disable in this root. You can specify
 one of the following values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Root = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string",
+    PolicyTypes = list(
+      list(
+        Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+        Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Disables an organizational policy type in a root. A policy of a certain

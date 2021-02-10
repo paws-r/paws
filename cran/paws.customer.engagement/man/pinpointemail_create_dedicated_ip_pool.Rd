@@ -12,6 +12,9 @@ pinpointemail_create_dedicated_ip_pool(PoolName, Tags)
 \item{Tags}{An object that defines the tags (keys and values) that you want to
 associate with the pool.}
 }
+\value{
+An empty list.
+}
 \description{
 Create a new pool of dedicated IP addresses. A pool can include one or
 more dedicated IP addresses that are associated with your Amazon

@@ -14,6 +14,15 @@ stack names that are importing this value.}
 response output) that identifies the next page of stacks that are
 importing the specified exported output value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Imports = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all stacks that are importing an exported output value. To modify
 or remove an exported output value, first use this action to see which

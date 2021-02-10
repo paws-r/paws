@@ -12,6 +12,21 @@ emr_list_bootstrap_actions(ClusterId, Marker)
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BootstrapActions = list(
+    list(
+      Name = "string",
+      ScriptPath = "string",
+      Args = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Provides information about the bootstrap actions associated with a
 cluster.

@@ -16,6 +16,12 @@ Currently, the only valid extension URL type is \code{FLINK_DASHBOARD_URL}.}
 
 \item{SessionExpirationDurationInSeconds}{The duration in seconds for which the returned URL will be valid.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthorizedUrl = "string"
+)
+}
+}
 \description{
 Creates and returns a URL that you can use to connect to an
 application's extension. Currently, the only available extension is the

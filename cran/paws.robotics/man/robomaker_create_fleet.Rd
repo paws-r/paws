@@ -13,6 +13,19 @@ robomaker_create_fleet(name, tags)
 \item{tags}{A map that contains tag keys and tag values that are attached to the
 fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a fleet, a logical group of robots running the same robot
 application.

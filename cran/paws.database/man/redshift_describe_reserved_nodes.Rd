@@ -27,6 +27,36 @@ exceed the value specified in \code{MaxRecords}, AWS returns a value in the
 response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReservedNodes = list(
+    list(
+      ReservedNodeId = "string",
+      ReservedNodeOfferingId = "string",
+      NodeType = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Duration = 123,
+      FixedPrice = 123.0,
+      UsagePrice = 123.0,
+      CurrencyCode = "string",
+      NodeCount = 123,
+      State = "string",
+      OfferingType = "string",
+      RecurringCharges = list(
+        list(
+          RecurringChargeAmount = 123.0,
+          RecurringChargeFrequency = "string"
+        )
+      ),
+      ReservedNodeOfferingType = "Regular"|"Upgradable"
+    )
+  )
+)
+}
+}
 \description{
 Returns the descriptions of the reserved nodes.
 }

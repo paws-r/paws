@@ -26,6 +26,23 @@ values are \code{Accept}, \code{Connect}, \code{Delete}, and \code{Reject}.}
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConnectionNotification = list(
+    ConnectionNotificationId = "string",
+    ServiceId = "string",
+    VpcEndpointId = "string",
+    ConnectionNotificationType = "Topic",
+    ConnectionNotificationArn = "string",
+    ConnectionEvents = list(
+      "string"
+    ),
+    ConnectionNotificationState = "Enabled"|"Disabled"
+  ),
+  ClientToken = "string"
+)
+}
+}
 \description{
 Creates a connection notification for a specified VPC endpoint or VPC
 endpoint service. A connection notification notifies you of specific

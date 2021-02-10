@@ -209,6 +209,12 @@ the console, each stack event would be assigned the same token in the
 following format:
 \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackId = "string"
+)
+}
+}
 \description{
 Updates a stack as specified in the template. After the call completes
 successfully, the stack update starts. You can check the status of the

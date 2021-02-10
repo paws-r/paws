@@ -9,6 +9,14 @@ worklink_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves a list of tags for the specified resource.
 }

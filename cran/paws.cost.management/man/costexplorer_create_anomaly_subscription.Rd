@@ -9,6 +9,12 @@ costexplorer_create_anomaly_subscription(AnomalySubscription)
 \arguments{
 \item{AnomalySubscription}{[required] The cost anomaly subscription object that you want to create.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SubscriptionArn = "string"
+)
+}
+}
 \description{
 Adds a subscription to a cost anomaly detection monitor. You can use
 each subscription to define subscribers with email or SNS notifications.

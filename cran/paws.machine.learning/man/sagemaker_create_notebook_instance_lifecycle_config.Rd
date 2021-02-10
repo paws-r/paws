@@ -18,6 +18,12 @@ The shell script must be a base64-encoded string.}
 including when you create the notebook instance. The shell script must
 be a base64-encoded string.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotebookInstanceLifecycleConfigArn = "string"
+)
+}
+}
 \description{
 Creates a lifecycle configuration that you can associate with a notebook
 instance. A \emph{lifecycle configuration} is a collection of shell scripts
@@ -30,7 +36,7 @@ scripts is \verb{/sbin:bin:/usr/sbin:/usr/bin}.
 
 View CloudWatch Logs for notebook instance lifecycle configurations in
 log group \verb{/aws/sagemaker/NotebookInstances} in log stream
-\verb{\\\[notebook-instance-name\\\]/\\\[LifecycleConfigHook\\\]}.
+\verb{[notebook-instance-name]/[LifecycleConfigHook]}.
 
 Lifecycle configuration scripts cannot run for longer than 5 minutes. If
 a script runs for longer than 5 minutes, it fails and the notebook

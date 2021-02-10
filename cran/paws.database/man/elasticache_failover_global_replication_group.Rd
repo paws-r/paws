@@ -14,6 +14,39 @@ elasticache_failover_global_replication_group(GlobalReplicationGroupId,
 
 \item{PrimaryReplicationGroupId}{[required] The name of the primary replication group}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalReplicationGroup = list(
+    GlobalReplicationGroupId = "string",
+    GlobalReplicationGroupDescription = "string",
+    Status = "string",
+    CacheNodeType = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    Members = list(
+      list(
+        ReplicationGroupId = "string",
+        ReplicationGroupRegion = "string",
+        Role = "string",
+        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+        Status = "string"
+      )
+    ),
+    ClusterEnabled = TRUE|FALSE,
+    GlobalNodeGroups = list(
+      list(
+        GlobalNodeGroupId = "string",
+        Slots = "string"
+      )
+    ),
+    AuthTokenEnabled = TRUE|FALSE,
+    TransitEncryptionEnabled = TRUE|FALSE,
+    AtRestEncryptionEnabled = TRUE|FALSE,
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Used to failover the primary region to a selected secondary region. The
 selected secondary region will become primary, and all other clusters

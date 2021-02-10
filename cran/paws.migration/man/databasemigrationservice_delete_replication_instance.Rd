@@ -11,6 +11,68 @@ databasemigrationservice_delete_replication_instance(
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance to be
 deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationInstance = list(
+    ReplicationInstanceIdentifier = "string",
+    ReplicationInstanceClass = "string",
+    ReplicationInstanceStatus = "string",
+    AllocatedStorage = 123,
+    InstanceCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    VpcSecurityGroups = list(
+      list(
+        VpcSecurityGroupId = "string",
+        Status = "string"
+      )
+    ),
+    AvailabilityZone = "string",
+    ReplicationSubnetGroup = list(
+      ReplicationSubnetGroupIdentifier = "string",
+      ReplicationSubnetGroupDescription = "string",
+      VpcId = "string",
+      SubnetGroupStatus = "string",
+      Subnets = list(
+        list(
+          SubnetIdentifier = "string",
+          SubnetAvailabilityZone = list(
+            Name = "string"
+          ),
+          SubnetStatus = "string"
+        )
+      )
+    ),
+    PreferredMaintenanceWindow = "string",
+    PendingModifiedValues = list(
+      ReplicationInstanceClass = "string",
+      AllocatedStorage = 123,
+      MultiAZ = TRUE|FALSE,
+      EngineVersion = "string"
+    ),
+    MultiAZ = TRUE|FALSE,
+    EngineVersion = "string",
+    AutoMinorVersionUpgrade = TRUE|FALSE,
+    KmsKeyId = "string",
+    ReplicationInstanceArn = "string",
+    ReplicationInstancePublicIpAddress = "string",
+    ReplicationInstancePrivateIpAddress = "string",
+    ReplicationInstancePublicIpAddresses = list(
+      "string"
+    ),
+    ReplicationInstancePrivateIpAddresses = list(
+      "string"
+    ),
+    PubliclyAccessible = TRUE|FALSE,
+    SecondaryAvailabilityZone = "string",
+    FreeUntil = as.POSIXct(
+      "2015-01-01"
+    ),
+    DnsNameServers = "string"
+  )
+)
+}
+}
 \description{
 Deletes the specified replication instance.
 
@@ -32,7 +94,7 @@ replication instance before you can delete it.
 # 
 # 
 svc$delete_replication_instance(
-  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
+  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
 )
 }
 

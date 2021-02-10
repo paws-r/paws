@@ -9,6 +9,14 @@ sqs_list_queue_tags(QueueUrl)
 \arguments{
 \item{QueueUrl}{[required] The URL of the queue.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 List all cost allocation tags added to the specified Amazon SQS queue.
 For an overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}

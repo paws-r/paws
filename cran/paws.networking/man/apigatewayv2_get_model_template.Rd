@@ -11,6 +11,12 @@ apigatewayv2_get_model_template(ApiId, ModelId)
 
 \item{ModelId}{[required] The model ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Value = "string"
+)
+}
+}
 \description{
 Gets a model template.
 }

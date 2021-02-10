@@ -12,6 +12,9 @@ iot_delete_v2_logging_level(targetType, targetName)
 
 \item{targetName}{[required] The name of the resource for which you are configuring logging.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a logging level.
 }

@@ -31,6 +31,9 @@ you do not specify either, AWS Elastic Beanstalk returns
 
 \item{InfoType}{[required] The type of information to request.}
 }
+\value{
+An empty list.
+}
 \description{
 Initiates a request to compile the specified type of information of the
 deployed environment.

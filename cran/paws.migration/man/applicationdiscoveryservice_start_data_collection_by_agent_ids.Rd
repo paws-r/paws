@@ -16,6 +16,18 @@ and you do not have permission to contact some of those
 agents/connectors, the system does not throw an exception. Instead, the
 system shows \code{Failed} in the \emph{Description} field.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  agentsConfigurationStatus = list(
+    list(
+      agentId = "string",
+      operationSucceeded = TRUE|FALSE,
+      description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Instructs the specified agents or connectors to start collecting data.
 }

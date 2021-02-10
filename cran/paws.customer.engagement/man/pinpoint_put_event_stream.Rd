@@ -13,6 +13,19 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{WriteEventStream}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventStream = list(
+    ApplicationId = "string",
+    DestinationStreamArn = "string",
+    ExternalId = "string",
+    LastModifiedDate = "string",
+    LastUpdatedBy = "string",
+    RoleArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new event stream for an application or updates the settings of
 an existing event stream for an application.

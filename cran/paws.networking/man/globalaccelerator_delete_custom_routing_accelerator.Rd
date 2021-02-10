@@ -10,6 +10,9 @@ globalaccelerator_delete_custom_routing_accelerator(AcceleratorArn)
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the custom routing accelerator to
 delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete a custom routing accelerator. Before you can delete an
 accelerator, you must disable it and remove all dependent resources

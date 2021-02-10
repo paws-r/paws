@@ -9,6 +9,23 @@ iot_describe_billing_group(billingGroupName)
 \arguments{
 \item{billingGroupName}{[required] The name of the billing group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  billingGroupName = "string",
+  billingGroupId = "string",
+  billingGroupArn = "string",
+  version = 123,
+  billingGroupProperties = list(
+    billingGroupDescription = "string"
+  ),
+  billingGroupMetadata = list(
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a billing group.
 }

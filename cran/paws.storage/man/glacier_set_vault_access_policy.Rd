@@ -18,6 +18,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{policy}{The vault access policy as a JSON string.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation configures an access policy for a vault and will
 overwrite an existing policy. To configure a vault access policy, send a
@@ -45,7 +48,7 @@ KB in size. For more information about vault access policies, see
 svc$set_vault_access_policy(
   accountId = "-",
   policy = list(
-    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":..."
+    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-owner-access-rights..."
   ),
   vaultName = "examplevault"
 )

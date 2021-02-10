@@ -11,6 +11,14 @@ glue_get_workflow_run_properties(Name, RunId)
 
 \item{RunId}{[required] The ID of the workflow run whose run properties should be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RunProperties = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves the workflow run properties which were set during the run.
 }

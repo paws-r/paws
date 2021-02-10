@@ -22,6 +22,31 @@ that used that token.}
 
 \item{content}{[required] The contents of your reply to a comment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  comment = list(
+    commentId = "string",
+    content = "string",
+    inReplyTo = "string",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    authorArn = "string",
+    deleted = TRUE|FALSE,
+    clientRequestToken = "string",
+    callerReactions = list(
+      "string"
+    ),
+    reactionCounts = list(
+      123
+    )
+  )
+)
+}
+}
 \description{
 Posts a comment in reply to an existing comment on a comparison between
 commits or a pull request.

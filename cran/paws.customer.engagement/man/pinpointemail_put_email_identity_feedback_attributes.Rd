@@ -26,6 +26,9 @@ receiving bounce or complaint notifications, Amazon Pinpoint sends an
 email notification when these events occur (even if this setting is
 disabled).}
 }
+\value{
+An empty list.
+}
 \description{
 Used to enable or disable feedback forwarding for an identity. This
 setting determines what happens when an identity is used to send an

@@ -16,6 +16,59 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to assign to the route table.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RouteTable = list(
+    Associations = list(
+      list(
+        Main = TRUE|FALSE,
+        RouteTableAssociationId = "string",
+        RouteTableId = "string",
+        SubnetId = "string",
+        GatewayId = "string",
+        AssociationState = list(
+          State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
+          StatusMessage = "string"
+        )
+      )
+    ),
+    PropagatingVgws = list(
+      list(
+        GatewayId = "string"
+      )
+    ),
+    RouteTableId = "string",
+    Routes = list(
+      list(
+        DestinationCidrBlock = "string",
+        DestinationIpv6CidrBlock = "string",
+        DestinationPrefixListId = "string",
+        EgressOnlyInternetGatewayId = "string",
+        GatewayId = "string",
+        InstanceId = "string",
+        InstanceOwnerId = "string",
+        NatGatewayId = "string",
+        TransitGatewayId = "string",
+        LocalGatewayId = "string",
+        CarrierGatewayId = "string",
+        NetworkInterfaceId = "string",
+        Origin = "CreateRouteTable"|"CreateRoute"|"EnableVgwRoutePropagation",
+        State = "active"|"blackhole",
+        VpcPeeringConnectionId = "string"
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    VpcId = "string",
+    OwnerId = "string"
+  )
+)
+}
+}
 \description{
 Creates a route table for the specified VPC. After you create a route
 table, you can add routes and associate the table with a subnet.

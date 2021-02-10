@@ -16,6 +16,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcId = "string",
+  EnableDnsHostnames = list(
+    Value = TRUE|FALSE
+  ),
+  EnableDnsSupport = list(
+    Value = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Describes the specified attribute of the specified VPC. You can specify
 only one attribute at a time.

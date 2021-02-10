@@ -15,6 +15,28 @@ information about.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    PolicyName = "string",
+    PolicyId = "string",
+    Arn = "string",
+    Path = "string",
+    DefaultVersionId = "string",
+    AttachmentCount = 123,
+    PermissionsBoundaryUsageCount = 123,
+    IsAttachable = TRUE|FALSE,
+    Description = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdateDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about the specified managed policy, including the
 policy's default version and the total number of IAM users, groups, and

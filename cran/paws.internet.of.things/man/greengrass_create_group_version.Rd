@@ -29,6 +29,15 @@ greengrass_create_group_version(AmznClientToken,
 
 \item{SubscriptionDefinitionVersionArn}{The ARN of the subscription definition version for this group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
+}
 \description{
 Creates a version of a group which has already been defined.
 }

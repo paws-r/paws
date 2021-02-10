@@ -9,6 +9,9 @@ personalize_delete_filter(filterArn)
 \arguments{
 \item{filterArn}{[required] The ARN of the filter to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a filter.
 }

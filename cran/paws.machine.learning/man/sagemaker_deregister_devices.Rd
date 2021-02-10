@@ -11,6 +11,9 @@ sagemaker_deregister_devices(DeviceFleetName, DeviceNames)
 
 \item{DeviceNames}{[required] The unique IDs of the devices.}
 }
+\value{
+An empty list.
+}
 \description{
 Deregisters the specified devices. After you deregister a device, you
 will need to re-register the devices.

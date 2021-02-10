@@ -14,6 +14,9 @@ depends on the type of the tagged resource.}
 \item{Tags}{[required] Key-value pairs that are used to help organize your resources. You can
 assign your own metadata to the resources you create.}
 }
+\value{
+An empty list.
+}
 \description{
 Assigns a set of key-value pairs to a recovery point, backup plan, or
 backup vault identified by an Amazon Resource Name (ARN).

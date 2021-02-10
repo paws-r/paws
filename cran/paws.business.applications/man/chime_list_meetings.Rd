@@ -11,6 +11,28 @@ chime_list_meetings(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Meetings = list(
+    list(
+      MeetingId = "string",
+      ExternalMeetingId = "string",
+      MediaPlacement = list(
+        AudioHostUrl = "string",
+        AudioFallbackUrl = "string",
+        ScreenDataUrl = "string",
+        ScreenSharingUrl = "string",
+        ScreenViewingUrl = "string",
+        SignalingUrl = "string",
+        TurnControlUrl = "string"
+      ),
+      MediaRegion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists up to 100 active Amazon Chime SDK meetings. For more information
 about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in

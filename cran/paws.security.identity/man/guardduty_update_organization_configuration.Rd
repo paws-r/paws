@@ -15,6 +15,9 @@ organization.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the delegated administrator account with the values provided.
 }

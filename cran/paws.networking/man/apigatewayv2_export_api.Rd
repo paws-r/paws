@@ -26,6 +26,12 @@ the only supported value.}
 \item{StageName}{The name of the API stage to export. If you don't specify this property,
 a representation of the latest API configuration is exported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  body = raw
+)
+}
+}
 \description{
 Export api
 }

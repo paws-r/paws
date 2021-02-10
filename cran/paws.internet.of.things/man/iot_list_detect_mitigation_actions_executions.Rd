@@ -26,6 +26,29 @@ executions are returned.}
 
 \item{nextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actionsExecutions = list(
+    list(
+      taskId = "string",
+      violationId = "string",
+      actionName = "string",
+      thingName = "string",
+      executionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      executionEndDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"SKIPPED",
+      errorCode = "string",
+      message = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists mitigation actions executions for a Device Defender ML Detect
 Security Profile.

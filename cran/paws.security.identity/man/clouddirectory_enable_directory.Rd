@@ -9,6 +9,12 @@ clouddirectory_enable_directory(DirectoryArn)
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to enable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryArn = "string"
+)
+}
+}
 \description{
 Enables the specified directory. Only disabled directories can be
 enabled. Once enabled, the directory can then be read and written to.

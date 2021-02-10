@@ -14,6 +14,19 @@ chime_invite_users(AccountId, UserEmailList, UserType)
 
 \item{UserType}{The user type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Invites = list(
+    list(
+      InviteId = "string",
+      Status = "Pending"|"Accepted"|"Failed",
+      EmailAddress = "string",
+      EmailStatus = "NotSent"|"Sent"|"Failed"
+    )
+  )
+)
+}
+}
 \description{
 Sends email to a maximum of 50 users, inviting them to the specified
 Amazon Chime \code{Team} account. Only \code{Team} account types are currently

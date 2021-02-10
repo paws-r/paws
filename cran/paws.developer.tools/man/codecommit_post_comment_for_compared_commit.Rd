@@ -28,6 +28,41 @@ parameter. If a request is received with the same parameters and a token
 is included, the request returns information about the initial request
 that used that token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositoryName = "string",
+  beforeCommitId = "string",
+  afterCommitId = "string",
+  beforeBlobId = "string",
+  afterBlobId = "string",
+  location = list(
+    filePath = "string",
+    filePosition = 123,
+    relativeFileVersion = "BEFORE"|"AFTER"
+  ),
+  comment = list(
+    commentId = "string",
+    content = "string",
+    inReplyTo = "string",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    authorArn = "string",
+    deleted = TRUE|FALSE,
+    clientRequestToken = "string",
+    callerReactions = list(
+      "string"
+    ),
+    reactionCounts = list(
+      123
+    )
+  )
+)
+}
+}
 \description{
 Posts a comment on the comparison between two commits.
 }

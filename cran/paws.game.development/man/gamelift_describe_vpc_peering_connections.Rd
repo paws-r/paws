@@ -10,6 +10,25 @@ gamelift_describe_vpc_peering_connections(FleetId)
 \item{FleetId}{A unique identifier for a fleet. You can use either the fleet ID or ARN
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcPeeringConnections = list(
+    list(
+      FleetId = "string",
+      FleetArn = "string",
+      IpV4CidrBlock = "string",
+      VpcPeeringConnectionId = "string",
+      Status = list(
+        Code = "string",
+        Message = "string"
+      ),
+      PeerVpcId = "string",
+      GameLiftVpcId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information on VPC peering connections. Use this operation to
 get peering information for all fleets or for one specific fleet ID.

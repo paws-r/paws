@@ -18,6 +18,16 @@ results.}
 
 \item{maxResults}{The maximum number of results to return per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceLinks = list(
+    "string"
+  ),
+  reportType = "ERRORS"|"RESULTS",
+  nextToken = "string"
+)
+}
+}
 \description{
 Information about the thing registration tasks.
 }

@@ -14,6 +14,21 @@ iot_list_provisioning_template_versions(templateName, maxResults,
 
 \item{nextToken}{A token to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  versions = list(
+    list(
+      versionId = 123,
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      isDefaultVersion = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 A list of fleet provisioning template versions.
 }

@@ -10,6 +10,17 @@ globalaccelerator_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the accelerator to list tags for. An
 ARN uniquely identifies an accelerator.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 List all tags for an accelerator.
 

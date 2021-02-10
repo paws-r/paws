@@ -12,6 +12,37 @@ inspector_describe_exclusions(exclusionArns, locale)
 \item{locale}{The locale into which you want to translate the exclusion's title,
 description, and recommendation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  exclusions = list(
+    list(
+      arn = "string",
+      title = "string",
+      description = "string",
+      recommendation = "string",
+      scopes = list(
+        list(
+          key = "INSTANCE_ID"|"RULES_PACKAGE_ARN",
+          value = "string"
+        )
+      ),
+      attributes = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  ),
+  failedItems = list(
+    list(
+      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+      retryable = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes the exclusions that are specified by the exclusions' ARNs.
 }

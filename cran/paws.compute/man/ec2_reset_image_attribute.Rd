@@ -17,6 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Resets an attribute of an AMI to its default value.
 

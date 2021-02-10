@@ -15,6 +15,27 @@ also the ID of the last public key on that page).}
 
 \item{MaxItems}{The maximum number of public keys you want in the response body.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PublicKeyList = list(
+    NextMarker = "string",
+    MaxItems = 123,
+    Quantity = 123,
+    Items = list(
+      list(
+        Id = "string",
+        Name = "string",
+        CreatedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        EncodedKey = "string",
+        Comment = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 List all public keys that have been added to CloudFront for this
 account.

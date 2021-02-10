@@ -14,6 +14,9 @@ encryption (SSE).}
 \item{DeliveryStreamEncryptionConfigurationInput}{Used to specify the type and Amazon Resource Name (ARN) of the KMS key
 needed for Server-Side Encryption (SSE).}
 }
+\value{
+An empty list.
+}
 \description{
 Enables server-side encryption (SSE) for the delivery stream.
 

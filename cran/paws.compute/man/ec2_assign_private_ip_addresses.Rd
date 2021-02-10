@@ -26,6 +26,17 @@ IP address within the subnet range.}
 You can't specify this parameter when also specifying private IP
 addresses.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInterfaceId = "string",
+  AssignedPrivateIpAddresses = list(
+    list(
+      PrivateIpAddress = "string"
+    )
+  )
+)
+}
+}
 \description{
 Assigns one or more secondary private IP addresses to the specified
 network interface.

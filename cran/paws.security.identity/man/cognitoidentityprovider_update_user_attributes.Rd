@@ -44,6 +44,18 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeDeliveryDetailsList = list(
+    list(
+      Destination = "string",
+      DeliveryMedium = "SMS"|"EMAIL",
+      AttributeName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Allows a user to update a specific attribute (one at a time).
 }

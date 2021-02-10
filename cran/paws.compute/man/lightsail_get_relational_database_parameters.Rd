@@ -19,6 +19,24 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  parameters = list(
+    list(
+      allowedValues = "string",
+      applyMethod = "string",
+      applyType = "string",
+      dataType = "string",
+      description = "string",
+      isModifiable = TRUE|FALSE,
+      parameterName = "string",
+      parameterValue = "string"
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns all of the runtime parameters offered by the underlying database
 software, or engine, for a specific database in Amazon Lightsail.

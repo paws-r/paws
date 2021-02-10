@@ -15,6 +15,15 @@ deleting.}
 \item{VersionNumber}{The version number of the dashboard. If the version number property is
 provided, only the specified version of the dashboard is deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = 123,
+  Arn = "string",
+  DashboardId = "string",
+  RequestId = "string"
+)
+}
+}
 \description{
 Deletes a dashboard.
 }

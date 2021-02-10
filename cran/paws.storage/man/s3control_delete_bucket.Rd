@@ -23,6 +23,9 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
+\value{
+An empty list.
+}
 \description{
 This API operation deletes an Amazon S3 on Outposts bucket. To delete an
 S3 bucket, see \code{\link[=s3control_delete_bucket]{delete_bucket}} in the \emph{Amazon
@@ -30,7 +33,7 @@ Simple Storage Service API}.
 
 Deletes the Amazon S3 on Outposts bucket. All objects (including all
 object versions and delete markers) in the bucket must be deleted before
-the bucket itself can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+the bucket itself can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 All Amazon S3 on Outposts REST API requests for this action require an

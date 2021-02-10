@@ -15,6 +15,9 @@ sms_put_app_validation_configuration(appId, appValidationConfigurations,
 
 \item{serverGroupValidationConfigurations}{The configuration for instance validation.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or updates a validation configuration for the specified
 application.

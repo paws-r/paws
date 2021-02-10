@@ -31,6 +31,42 @@ this parameter, see ScheduledAction.}
 \item{Enable}{A modified enable flag of the scheduled action. If true, the scheduled
 action is active. If false, the scheduled action is disabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScheduledActionName = "string",
+  TargetAction = list(
+    ResizeCluster = list(
+      ClusterIdentifier = "string",
+      ClusterType = "string",
+      NodeType = "string",
+      NumberOfNodes = 123,
+      Classic = TRUE|FALSE
+    ),
+    PauseCluster = list(
+      ClusterIdentifier = "string"
+    ),
+    ResumeCluster = list(
+      ClusterIdentifier = "string"
+    )
+  ),
+  Schedule = "string",
+  IamRole = "string",
+  ScheduledActionDescription = "string",
+  State = "ACTIVE"|"DISABLED",
+  NextInvocations = list(
+    as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Modifies a scheduled action.
 }

@@ -13,6 +13,19 @@ wafregional_create_regex_pattern_set(Name, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegexPatternSet = list(
+    RegexPatternSetId = "string",
+    Name = "string",
+    RegexPatternStrings = list(
+      "string"
+    )
+  ),
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
@@ -26,8 +39,8 @@ regional and global use.
 Creates a \code{RegexPatternSet}. You then use
 \code{\link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set}} to
 specify the regular expression (regex) pattern that you want AWS WAF to
-search for, such as \verb{B\\\[a@\\\]dB\\\[o0\\\]t}. You can then configure AWS
-WAF to reject those requests.
+search for, such as \verb{B[a@]dB[o0]t}. You can then configure AWS WAF to
+reject those requests.
 
 To create and configure a \code{RegexPatternSet}, perform the following
 steps:

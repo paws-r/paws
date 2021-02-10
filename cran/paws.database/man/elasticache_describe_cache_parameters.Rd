@@ -28,6 +28,43 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ChangeType = "immediate"|"requires-reboot"
+    )
+  ),
+  CacheNodeTypeSpecificParameters = list(
+    list(
+      ParameterName = "string",
+      Description = "string",
+      Source = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      CacheNodeTypeSpecificValues = list(
+        list(
+          CacheNodeType = "string",
+          Value = "string"
+        )
+      ),
+      ChangeType = "immediate"|"requires-reboot"
+    )
+  )
+)
+}
+}
 \description{
 Returns the detailed parameter list for a particular cache parameter
 group.

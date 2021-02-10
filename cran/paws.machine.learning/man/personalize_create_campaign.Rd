@@ -18,6 +18,12 @@ your account.}
 
 \item{campaignConfig}{The configuration details of a campaign.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  campaignArn = "string"
+)
+}
+}
 \description{
 Creates a campaign by deploying a solution version. When a client calls
 the
@@ -45,9 +51,9 @@ track your usage using Amazon CloudWatch metrics, and then increase the
 
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
 FAILED
-\item DELETE PENDING > DELETE IN\\_PROGRESS
+\item DELETE PENDING > DELETE IN_PROGRESS
 }
 
 To get the campaign status, call

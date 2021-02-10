@@ -27,6 +27,13 @@ to create a new custom metric that already exists with a different
 token, an exception occurs. If you omit this value, AWS SDKs will
 automatically generate a unique client request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metricName = "string",
+  metricArn = "string"
+)
+}
+}
 \description{
 Use this API to define a Custom Metric published by your devices to
 Device Defender.

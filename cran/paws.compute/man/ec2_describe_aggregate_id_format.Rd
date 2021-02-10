@@ -13,6 +13,21 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UseLongIdsAggregated = TRUE|FALSE,
+  Statuses = list(
+    list(
+      Deadline = as.POSIXct(
+        "2015-01-01"
+      ),
+      Resource = "string",
+      UseLongIds = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes the longer ID format settings for all resource types in a
 specific Region. This request is useful for performing a quick audit to

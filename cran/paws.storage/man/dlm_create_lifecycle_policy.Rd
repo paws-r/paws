@@ -12,13 +12,19 @@ dlm_create_lifecycle_policy(ExecutionRoleArn, Description, State,
 operations specified by the lifecycle policy.}
 
 \item{Description}{[required] A description of the lifecycle policy. The characters ^[0-9A-Za-z
-\\_-]+$ are supported.}
+_-]+$ are supported.}
 
 \item{State}{[required] The desired activation state of the lifecycle policy after creation.}
 
 \item{PolicyDetails}{[required] The configuration details of the lifecycle policy.}
 
 \item{Tags}{The tags to apply to the lifecycle policy during creation.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyId = "string"
+)
+}
 }
 \description{
 Creates a policy to manage the lifecycle of the specified AWS resources.

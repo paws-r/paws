@@ -12,6 +12,9 @@ eventbridge_enable_rule(Name, EventBusName)
 \item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
 this, the default event bus is used.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables the specified rule. If the rule does not exist, the operation
 fails.

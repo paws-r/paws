@@ -16,6 +16,12 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  location = "string"
+)
+}
+}
 \description{
 This operation creates a new vault with the specified name. The name of
 the vault must be unique within a region for an AWS account. You can
@@ -25,7 +31,7 @@ vaults, contact Amazon S3 Glacier.
 You must use the following guidelines when naming a vault.
 \itemize{
 \item Names can be between 1 and 255 characters long.
-\item Allowed characters are a-z, A-Z, 0-9, '\\_' (underscore), '-'
+\item Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-'
 (hyphen), and '.' (period).
 }
 

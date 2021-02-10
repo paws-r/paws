@@ -12,8 +12,35 @@ pinpointsmsvoice_get_configuration_set_event_destinations(
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventDestinations = list(
+    list(
+      CloudWatchLogsDestination = list(
+        IamRoleArn = "string",
+        LogGroupArn = "string"
+      ),
+      Enabled = TRUE|FALSE,
+      KinesisFirehoseDestination = list(
+        DeliveryStreamArn = "string",
+        IamRoleArn = "string"
+      ),
+      MatchingEventTypes = list(
+        "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
+      ),
+      Name = "string",
+      SnsDestination = list(
+        TopicArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
-Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
+Obtain information about an event destination, including the types of
+events it reports, the Amazon Resource Name (ARN) of the destination,
+and the name of the event destination.
 }
 \section{Request syntax}{
 \preformatted{svc$get_configuration_set_event_destinations(

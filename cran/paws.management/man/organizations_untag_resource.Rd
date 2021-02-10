@@ -22,6 +22,9 @@ similar to: \verb{p-12abcdefg3 }
 
 \item{TagKeys}{[required] The list of keys for tags to remove from the specified resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes any tags with the specified keys from the specified resource.
 

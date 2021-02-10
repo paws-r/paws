@@ -17,6 +17,30 @@ results than the maximum page size.}
 
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CostCategoryReferences = list(
+    list(
+      CostCategoryArn = "string",
+      Name = "string",
+      EffectiveStart = "string",
+      EffectiveEnd = "string",
+      NumberOfRules = 123,
+      ProcessingStatus = list(
+        list(
+          Component = "COST_EXPLORER",
+          Status = "PROCESSING"|"APPLIED"
+        )
+      ),
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the name, ARN, \code{NumberOfRules} and effective dates of all Cost
 Categories defined in the account. You have the option to use

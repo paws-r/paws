@@ -10,6 +10,22 @@ datasync_describe_location_object_storage(LocationArn)
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the self-managed object storage server
 location that was described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string",
+  LocationUri = "string",
+  AccessKey = "string",
+  ServerPort = 123,
+  ServerProtocol = "HTTPS"|"HTTP",
+  AgentArns = list(
+    "string"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns metadata about a self-managed object storage server location.
 For more information about self-managed object storage locations, see

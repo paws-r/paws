@@ -16,6 +16,26 @@ getting the next set of dataset import jobs (if they exist).}
 
 \item{maxResults}{The maximum number of dataset import jobs to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasetImportJobs = list(
+    list(
+      datasetImportJobArn = "string",
+      jobName = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      failureReason = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of dataset import jobs that use the given dataset. When a
 dataset is not specified, all the dataset import jobs associated with

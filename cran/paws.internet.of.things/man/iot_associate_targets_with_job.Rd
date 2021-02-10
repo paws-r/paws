@@ -24,13 +24,21 @@ format.
 
 The \code{namespaceId} feature is in public preview.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobArn = "string",
+  jobId = "string",
+  description = "string"
+)
+}
+}
 \description{
 Associates a group with a continuous job. The following criteria must be
 met:
 \itemize{
 \item The job must have been created with the \code{targetSelection} field set
 to "CONTINUOUS".
-\item The job status must currently be "IN\\_PROGRESS".
+\item The job status must currently be "IN_PROGRESS".
 \item The total number of targets associated with a job must not
 exceed 100.
 }

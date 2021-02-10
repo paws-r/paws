@@ -29,6 +29,9 @@ continuation token should be supplied.}
 \item{executionDetails}{The details of the actions taken and results produced on an artifact as
 it passes through stages in the pipeline.}
 }
+\value{
+An empty list.
+}
 \description{
 Represents the success of a third party job as returned to the pipeline
 by a job worker. Used for partner actions only.

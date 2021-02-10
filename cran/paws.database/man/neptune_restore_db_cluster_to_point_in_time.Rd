@@ -131,6 +131,85 @@ DBClusterParameterGroup.
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBCluster = list(
+    AllocatedStorage = 123,
+    AvailabilityZones = list(
+      "string"
+    ),
+    BackupRetentionPeriod = 123,
+    CharacterSetName = "string",
+    DatabaseName = "string",
+    DBClusterIdentifier = "string",
+    DBClusterParameterGroup = "string",
+    DBSubnetGroup = "string",
+    Status = "string",
+    PercentProgress = "string",
+    EarliestRestorableTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Endpoint = "string",
+    ReaderEndpoint = "string",
+    MultiAZ = TRUE|FALSE,
+    Engine = "string",
+    EngineVersion = "string",
+    LatestRestorableTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Port = 123,
+    MasterUsername = "string",
+    DBClusterOptionGroupMemberships = list(
+      list(
+        DBClusterOptionGroupName = "string",
+        Status = "string"
+      )
+    ),
+    PreferredBackupWindow = "string",
+    PreferredMaintenanceWindow = "string",
+    ReplicationSourceIdentifier = "string",
+    ReadReplicaIdentifiers = list(
+      "string"
+    ),
+    DBClusterMembers = list(
+      list(
+        DBInstanceIdentifier = "string",
+        IsClusterWriter = TRUE|FALSE,
+        DBClusterParameterGroupStatus = "string",
+        PromotionTier = 123
+      )
+    ),
+    VpcSecurityGroups = list(
+      list(
+        VpcSecurityGroupId = "string",
+        Status = "string"
+      )
+    ),
+    HostedZoneId = "string",
+    StorageEncrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    DbClusterResourceId = "string",
+    DBClusterArn = "string",
+    AssociatedRoles = list(
+      list(
+        RoleArn = "string",
+        Status = "string",
+        FeatureName = "string"
+      )
+    ),
+    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+    CloneGroupId = "string",
+    ClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EnabledCloudwatchLogsExports = list(
+      "string"
+    ),
+    DeletionProtection = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore
 to any point in time before \code{LatestRestorableTime} for up to

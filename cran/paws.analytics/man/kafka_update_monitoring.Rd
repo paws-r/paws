@@ -8,21 +8,31 @@ kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
   OpenMonitoring, LoggingInfo)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
+\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 
-\item{CurrentVersion}{[required]
-<p>The version of the MSK cluster to update. Cluster versions aren't simple numbers. You can describe an MSK cluster to find its version. When this update operation is successful, it generates a new cluster version.</p>}
+\item{CurrentVersion}{[required] The version of the MSK cluster to update. Cluster versions aren't simple
+numbers. You can describe an MSK cluster to find its version. When this
+update operation is successful, it generates a new cluster version.}
 
-\item{EnhancedMonitoring}{<p>Specifies which Apache Kafka metrics Amazon MSK gathers and sends to Amazon CloudWatch for this cluster.</p>}
+\item{EnhancedMonitoring}{Specifies which Apache Kafka metrics Amazon MSK gathers and sends to
+Amazon CloudWatch for this cluster.}
 
-\item{OpenMonitoring}{<p>The settings for open monitoring.</p>}
+\item{OpenMonitoring}{The settings for open monitoring.}
 
 \item{LoggingInfo}{}
 }
-\description{
-\preformatted{        <p>Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.</p>
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterArn = "string",
+  ClusterOperationArn = "string"
+)
 }
+}
+\description{
+Updates the monitoring settings for the cluster. You can use this
+operation to specify which Apache Kafka metrics you want Amazon MSK to
+send to Amazon CloudWatch. You can also specify settings for open
+monitoring with Prometheus.
 }
 \section{Request syntax}{
 \preformatted{svc$update_monitoring(

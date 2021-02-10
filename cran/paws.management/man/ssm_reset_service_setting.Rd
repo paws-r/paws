@@ -13,6 +13,21 @@ setting ID can be \verb{/ssm/parameter-store/default-parameter-tier},
 \verb{/ssm/managed-instance/activation-tier}. For example,
 \code{arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceSetting = list(
+    SettingId = "string",
+    SettingValue = "string",
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedUser = "string",
+    ARN = "string",
+    Status = "string"
+  )
+)
+}
+}
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This
 setting defines how a user interacts with or uses a service or a feature

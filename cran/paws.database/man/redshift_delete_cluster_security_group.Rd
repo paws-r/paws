@@ -9,6 +9,9 @@ redshift_delete_cluster_security_group(ClusterSecurityGroupName)
 \arguments{
 \item{ClusterSecurityGroupName}{[required] The name of the cluster security group to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an Amazon Redshift security group.
 

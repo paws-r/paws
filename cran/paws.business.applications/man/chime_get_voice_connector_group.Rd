@@ -10,6 +10,27 @@ chime_get_voice_connector_group(VoiceConnectorGroupId)
 \arguments{
 \item{VoiceConnectorGroupId}{[required] The Amazon Chime Voice Connector group ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceConnectorGroup = list(
+    VoiceConnectorGroupId = "string",
+    Name = "string",
+    VoiceConnectorItems = list(
+      list(
+        VoiceConnectorId = "string",
+        Priority = 123
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves details for the specified Amazon Chime Voice Connector group,
 such as timestamps, name, and associated \code{VoiceConnectorItems}.

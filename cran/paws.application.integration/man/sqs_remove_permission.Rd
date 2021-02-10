@@ -15,6 +15,9 @@ Queue URLs and names are case-sensitive.}
 \item{Label}{[required] The identification of the permission to remove. This is the label added
 using the \code{\link[=sqs_add_permission]{add_permission}} action.}
 }
+\value{
+An empty list.
+}
 \description{
 Revokes any permissions in the queue policy that matches the specified
 \code{Label} parameter.

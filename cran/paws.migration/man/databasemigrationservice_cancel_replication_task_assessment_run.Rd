@@ -11,6 +11,30 @@ databasemigrationservice_cancel_replication_task_assessment_run(
 \item{ReplicationTaskAssessmentRunArn}{[required] Amazon Resource Name (ARN) of the premigration assessment run to be
 canceled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationTaskAssessmentRun = list(
+    ReplicationTaskAssessmentRunArn = "string",
+    ReplicationTaskArn = "string",
+    Status = "string",
+    ReplicationTaskAssessmentRunCreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssessmentProgress = list(
+      IndividualAssessmentCount = 123,
+      IndividualAssessmentCompletedCount = 123
+    ),
+    LastFailureMessage = "string",
+    ServiceAccessRoleArn = "string",
+    ResultLocationBucket = "string",
+    ResultLocationFolder = "string",
+    ResultEncryptionMode = "string",
+    ResultKmsKeyArn = "string",
+    AssessmentRunName = "string"
+  )
+)
+}
+}
 \description{
 Cancels a single premigration assessment run.
 

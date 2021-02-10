@@ -7,6 +7,12 @@ current AWS account}
 \usage{
 route53_get_hosted_zone_count()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HostedZoneCount = 123
+)
+}
+}
 \description{
 Retrieves the number of hosted zones that are associated with the
 current AWS account.

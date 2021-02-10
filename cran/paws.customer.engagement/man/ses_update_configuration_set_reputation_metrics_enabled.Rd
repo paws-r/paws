@@ -15,6 +15,9 @@ ses_update_configuration_set_reputation_metrics_enabled(
 the configuration set, such as bounce and complaint rates, to Amazon
 CloudWatch.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables or disables the publishing of reputation metrics for emails sent
 using a specific configuration set in a given AWS Region. Reputation

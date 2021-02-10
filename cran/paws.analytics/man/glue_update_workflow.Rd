@@ -21,6 +21,12 @@ number of concurrent runs of any of the component jobs. If you leave
 this parameter blank, there is no limit to the number of concurrent
 workflow runs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Updates an existing workflow.
 }

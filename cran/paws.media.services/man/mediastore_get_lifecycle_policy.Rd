@@ -10,6 +10,12 @@ mediastore_get_lifecycle_policy(ContainerName)
 \item{ContainerName}{[required] The name of the container that the object lifecycle policy is assigned
 to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LifecyclePolicy = "string"
+)
+}
+}
 \description{
 Retrieves the object lifecycle policy that is assigned to a container.
 }

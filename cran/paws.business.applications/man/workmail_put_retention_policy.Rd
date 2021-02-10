@@ -18,6 +18,9 @@ workmail_put_retention_policy(OrganizationId, Id, Name, Description,
 
 \item{FolderConfigurations}{[required] The retention policy folder configurations.}
 }
+\value{
+An empty list.
+}
 \description{
 Puts a retention policy to the specified organization.
 }

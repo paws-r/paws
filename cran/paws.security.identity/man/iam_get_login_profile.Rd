@@ -12,7 +12,19 @@ iam_get_login_profile(UserName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  LoginProfile = list(
+    UserName = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    PasswordResetRequired = TRUE|FALSE
+  )
+)
+}
 }
 \description{
 Retrieves the user name and password-creation date for the specified IAM

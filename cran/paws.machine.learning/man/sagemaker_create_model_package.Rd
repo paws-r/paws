@@ -65,6 +65,12 @@ For versioned models, the value of this parameter must be set to
 
 \item{ClientToken}{A unique token that guarantees that the call to this API is idempotent.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelPackageArn = "string"
+)
+}
+}
 \description{
 Creates a model package that you can use to create Amazon SageMaker
 models or list on AWS Marketplace, or a versioned model that is part of

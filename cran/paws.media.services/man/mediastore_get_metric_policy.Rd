@@ -9,6 +9,20 @@ mediastore_get_metric_policy(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container that is associated with the metric policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MetricPolicy = list(
+    ContainerLevelMetrics = "ENABLED"|"DISABLED",
+    MetricPolicyRules = list(
+      list(
+        ObjectGroup = "string",
+        ObjectGroupName = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the metric policy for the specified container.
 }

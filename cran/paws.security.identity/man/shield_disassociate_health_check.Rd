@@ -14,6 +14,9 @@ health check association from.}
 \item{HealthCheckArn}{[required] The Amazon Resource Name (ARN) of the health check that is associated
 with the protection.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes health-based detection from the Shield Advanced protection for a
 resource. Shield Advanced health-based detection uses the health of your

@@ -12,6 +12,17 @@ chime_put_app_instance_streaming_configurations(AppInstanceArn,
 
 \item{AppInstanceStreamingConfigurations}{[required] The streaming configurations set for an app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceStreamingConfigurations = list(
+    list(
+      AppInstanceDataType = "Channel"|"ChannelMessage",
+      ResourceArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 The data streaming configurations of an app instance.
 }

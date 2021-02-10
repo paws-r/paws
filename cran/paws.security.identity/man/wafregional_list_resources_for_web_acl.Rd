@@ -13,6 +13,14 @@ associated resources.}
 \item{ResourceType}{The type of resource to list, either an application load balancer or
 Amazon API Gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceArns = list(
+    "string"
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic Regional} documentation. For more
 information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

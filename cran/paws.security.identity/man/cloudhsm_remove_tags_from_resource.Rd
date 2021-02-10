@@ -15,6 +15,12 @@ Specify only the tag key to remove (not the value). To overwrite the
 value for an existing tag, use
 \code{\link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

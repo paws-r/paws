@@ -42,6 +42,13 @@ organize your resources. Each tag consists of a key and an optional
 value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging your AWS Batch resources}
 in \emph{AWS Batch User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobQueueName = "string",
+  jobQueueArn = "string"
+)
+}
+}
 \description{
 Creates an AWS Batch job queue. When you create a job queue, you
 associate one or more compute environments to the queue and assign an

@@ -13,6 +13,9 @@ chime_put_voice_connector_termination_credentials(VoiceConnectorId,
 
 \item{Credentials}{The termination SIP credentials.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds termination SIP credentials for the specified Amazon Chime Voice
 Connector.

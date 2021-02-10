@@ -12,6 +12,16 @@ chime_get_attendee(MeetingId, AttendeeId)
 
 \item{AttendeeId}{[required] The Amazon Chime SDK attendee ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attendee = list(
+    ExternalUserId = "string",
+    AttendeeId = "string",
+    JoinToken = "string"
+  )
+)
+}
+}
 \description{
 Gets the Amazon Chime SDK attendee details for a specified meeting ID
 and attendee ID. For more information about the Amazon Chime SDK, see

@@ -14,6 +14,27 @@ s3_get_bucket_logging(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoggingEnabled = list(
+    TargetBucket = "string",
+    TargetGrants = list(
+      list(
+        Grantee = list(
+          DisplayName = "string",
+          EmailAddress = "string",
+          ID = "string",
+          Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
+          URI = "string"
+        ),
+        Permission = "FULL_CONTROL"|"READ"|"WRITE"
+      )
+    ),
+    TargetPrefix = "string"
+  )
+)
+}
+}
 \description{
 Returns the logging status of a bucket and the permissions users have to
 view and modify that status. To use GET, you must be the bucket owner.

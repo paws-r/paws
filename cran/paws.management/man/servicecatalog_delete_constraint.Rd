@@ -16,6 +16,9 @@ servicecatalog_delete_constraint(AcceptLanguage, Id)
 
 \item{Id}{[required] The identifier of the constraint.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified constraint.
 

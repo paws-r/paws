@@ -9,6 +9,102 @@ iot_get_ota_update(otaUpdateId)
 \arguments{
 \item{otaUpdateId}{[required] The OTA update ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  otaUpdateInfo = list(
+    otaUpdateId = "string",
+    otaUpdateArn = "string",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    description = "string",
+    targets = list(
+      "string"
+    ),
+    protocols = list(
+      "MQTT"|"HTTP"
+    ),
+    awsJobExecutionsRolloutConfig = list(
+      maximumPerMinute = 123,
+      exponentialRate = list(
+        baseRatePerMinute = 123,
+        incrementFactor = 123.0,
+        rateIncreaseCriteria = list(
+          numberOfNotifiedThings = 123,
+          numberOfSucceededThings = 123
+        )
+      )
+    ),
+    awsJobPresignedUrlConfig = list(
+      expiresInSec = 123
+    ),
+    targetSelection = "CONTINUOUS"|"SNAPSHOT",
+    otaUpdateFiles = list(
+      list(
+        fileName = "string",
+        fileType = 123,
+        fileVersion = "string",
+        fileLocation = list(
+          stream = list(
+            streamId = "string",
+            fileId = 123
+          ),
+          s3Location = list(
+            bucket = "string",
+            key = "string",
+            version = "string"
+          )
+        ),
+        codeSigning = list(
+          awsSignerJobId = "string",
+          startSigningJobParameter = list(
+            signingProfileParameter = list(
+              certificateArn = "string",
+              platform = "string",
+              certificatePathOnDevice = "string"
+            ),
+            signingProfileName = "string",
+            destination = list(
+              s3Destination = list(
+                bucket = "string",
+                prefix = "string"
+              )
+            )
+          ),
+          customCodeSigning = list(
+            signature = list(
+              inlineDocument = raw
+            ),
+            certificateChain = list(
+              certificateName = "string",
+              inlineDocument = "string"
+            ),
+            hashAlgorithm = "string",
+            signatureAlgorithm = "string"
+          )
+        ),
+        attributes = list(
+          "string"
+        )
+      )
+    ),
+    otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED",
+    awsIotJobId = "string",
+    awsIotJobArn = "string",
+    errorInfo = list(
+      code = "string",
+      message = "string"
+    ),
+    additionalParameters = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets an OTA update.
 }

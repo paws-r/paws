@@ -46,147 +46,147 @@ returned.}
 metric. The following historical metrics are available. For a
 description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html}{Historical Metrics Definitions}
 in the \emph{Amazon Connect Administrator Guide}.
-\subsection{ABANDON\\_TIME}{
+\subsection{ABANDON_TIME}{
 
 Unit: SECONDS
 
 Statistic: AVG
 }
 
-\subsection{AFTER\\_CONTACT\\_WORK\\_TIME}{
+\subsection{AFTER_CONTACT_WORK_TIME}{
 
 Unit: SECONDS
 
 Statistic: AVG
 }
 
-\subsection{API\\_CONTACTS\\_HANDLED}{
+\subsection{API_CONTACTS_HANDLED}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CALLBACK\\_CONTACTS\\_HANDLED}{
+\subsection{CALLBACK_CONTACTS_HANDLED}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_ABANDONED}{
+\subsection{CONTACTS_ABANDONED}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_AGENT\\_HUNG\\_UP\\_FIRST}{
+\subsection{CONTACTS_AGENT_HUNG_UP_FIRST}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_CONSULTED}{
+\subsection{CONTACTS_CONSULTED}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_HANDLED}{
+\subsection{CONTACTS_HANDLED}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_HANDLED\\_INCOMING}{
+\subsection{CONTACTS_HANDLED_INCOMING}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_HANDLED\\_OUTBOUND}{
+\subsection{CONTACTS_HANDLED_OUTBOUND}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_HOLD\\_ABANDONS}{
+\subsection{CONTACTS_HOLD_ABANDONS}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_MISSED}{
+\subsection{CONTACTS_MISSED}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_QUEUED}{
+\subsection{CONTACTS_QUEUED}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_TRANSFERRED\\_IN}{
+\subsection{CONTACTS_TRANSFERRED_IN}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_TRANSFERRED\\_IN\\_FROM\\_QUEUE}{
+\subsection{CONTACTS_TRANSFERRED_IN_FROM_QUEUE}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_TRANSFERRED\\_OUT}{
+\subsection{CONTACTS_TRANSFERRED_OUT}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{CONTACTS\\_TRANSFERRED\\_OUT\\_FROM\\_QUEUE}{
+\subsection{CONTACTS_TRANSFERRED_OUT_FROM_QUEUE}{
 
 Unit: COUNT
 
 Statistic: SUM
 }
 
-\subsection{HANDLE\\_TIME}{
+\subsection{HANDLE_TIME}{
 
 Unit: SECONDS
 
 Statistic: AVG
 }
 
-\subsection{HOLD\\_TIME}{
+\subsection{HOLD_TIME}{
 
 Unit: SECONDS
 
 Statistic: AVG
 }
 
-\subsection{INTERACTION\\_AND\\_HOLD\\_TIME}{
+\subsection{INTERACTION_AND_HOLD_TIME}{
 
 Unit: SECONDS
 
 Statistic: AVG
 }
 
-\subsection{INTERACTION\\_TIME}{
+\subsection{INTERACTION_TIME}{
 
 Unit: SECONDS
 
@@ -200,21 +200,21 @@ Unit: PERCENT
 Statistic: AVG
 }
 
-\subsection{QUEUE\\_ANSWER\\_TIME}{
+\subsection{QUEUE_ANSWER_TIME}{
 
 Unit: SECONDS
 
 Statistic: AVG
 }
 
-\subsection{QUEUED\\_TIME}{
+\subsection{QUEUED_TIME}{
 
 Unit: SECONDS
 
 Statistic: MAX
 }
 
-\subsection{SERVICE\\_LEVEL}{
+\subsection{SERVICE_LEVEL}{
 
 Unit: PERCENT
 
@@ -230,6 +230,37 @@ previous response in the next request to retrieve the next set of
 results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  MetricResults = list(
+    list(
+      Dimensions = list(
+        Queue = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Channel = "VOICE"|"CHAT"|"TASK"
+      ),
+      Collections = list(
+        list(
+          Metric = list(
+            Name = "CONTACTS_QUEUED"|"CONTACTS_HANDLED"|"CONTACTS_ABANDONED"|"CONTACTS_CONSULTED"|"CONTACTS_AGENT_HUNG_UP_FIRST"|"CONTACTS_HANDLED_INCOMING"|"CONTACTS_HANDLED_OUTBOUND"|"CONTACTS_HOLD_ABANDONS"|"CONTACTS_TRANSFERRED_IN"|"CONTACTS_TRANSFERRED_OUT"|"CONTACTS_TRANSFERRED_IN_FROM_QUEUE"|"CONTACTS_TRANSFERRED_OUT_FROM_QUEUE"|"CONTACTS_MISSED"|"CALLBACK_CONTACTS_HANDLED"|"API_CONTACTS_HANDLED"|"OCCUPANCY"|"HANDLE_TIME"|"AFTER_CONTACT_WORK_TIME"|"QUEUED_TIME"|"ABANDON_TIME"|"QUEUE_ANSWER_TIME"|"HOLD_TIME"|"INTERACTION_TIME"|"INTERACTION_AND_HOLD_TIME"|"SERVICE_LEVEL",
+            Threshold = list(
+              Comparison = "LT",
+              ThresholdValue = 123.0
+            ),
+            Statistic = "SUM"|"MAX"|"AVG",
+            Unit = "SECONDS"|"COUNT"|"PERCENT"
+          ),
+          Value = 123.0
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Gets historical metric data from the specified Amazon Connect instance.

@@ -13,6 +13,9 @@ sagemaker_register_devices(DeviceFleetName, Devices, Tags)
 
 \item{Tags}{The tags associated with devices.}
 }
+\value{
+An empty list.
+}
 \description{
 Register devices.
 }

@@ -9,6 +9,14 @@ chime_list_voice_connector_termination_credentials(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Usernames = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists the SIP credentials for the specified Amazon Chime Voice
 Connector.

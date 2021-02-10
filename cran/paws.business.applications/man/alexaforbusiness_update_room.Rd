@@ -18,6 +18,9 @@ alexaforbusiness_update_room(RoomArn, RoomName, Description,
 
 \item{ProfileArn}{The updated profile ARN for the room.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates room details by room ARN.
 }

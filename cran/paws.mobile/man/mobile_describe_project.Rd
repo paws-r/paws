@@ -13,6 +13,35 @@ mobile_describe_project(projectId, syncFromResources)
 other services, e.g., update state of AWS CloudFormation stacks in the
 AWS Mobile Hub project.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  details = list(
+    name = "string",
+    projectId = "string",
+    region = "string",
+    state = "NORMAL"|"SYNCING"|"IMPORTING",
+    createdDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    consoleUrl = "string",
+    resources = list(
+      list(
+        type = "string",
+        name = "string",
+        arn = "string",
+        feature = "string",
+        attributes = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets details about a project in AWS Mobile Hub.
 }

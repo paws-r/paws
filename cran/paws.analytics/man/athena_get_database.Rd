@@ -11,6 +11,18 @@ athena_get_database(CatalogName, DatabaseName)
 
 \item{DatabaseName}{[required] The name of the database to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Database = list(
+    Name = "string",
+    Description = "string",
+    Parameters = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a database object for the specfied database and data catalog.
 }

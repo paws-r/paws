@@ -17,6 +17,9 @@ administrator credentials to access the API.}
 
 \item{VersionStatus}{The status of the version.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the status of the document version to ACTIVE.
 

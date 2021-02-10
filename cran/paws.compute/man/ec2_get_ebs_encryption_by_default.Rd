@@ -13,6 +13,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EbsEncryptionByDefault = TRUE|FALSE
+)
+}
+}
 \description{
 Describes whether EBS encryption by default is enabled for your account
 in the current Region.

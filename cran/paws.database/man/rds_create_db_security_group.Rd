@@ -25,6 +25,32 @@ Example: \code{mysecuritygroup}}
 
 \item{Tags}{Tags to assign to the DB security group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSecurityGroup = list(
+    OwnerId = "string",
+    DBSecurityGroupName = "string",
+    DBSecurityGroupDescription = "string",
+    VpcId = "string",
+    EC2SecurityGroups = list(
+      list(
+        Status = "string",
+        EC2SecurityGroupName = "string",
+        EC2SecurityGroupId = "string",
+        EC2SecurityGroupOwnerId = "string"
+      )
+    ),
+    IPRanges = list(
+      list(
+        Status = "string",
+        CIDRIP = "string"
+      )
+    ),
+    DBSecurityGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new DB security group. DB security groups control access to a
 DB instance.

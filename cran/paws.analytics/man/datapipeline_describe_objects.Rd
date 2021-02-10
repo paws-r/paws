@@ -23,6 +23,26 @@ this value should be empty. As long as there are more results, continue
 to call \code{\link[=datapipeline_describe_objects]{describe_objects}} with the
 marker value from the previous call to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineObjects = list(
+    list(
+      id = "string",
+      name = "string",
+      fields = list(
+        list(
+          key = "string",
+          stringValue = "string",
+          refValue = "string"
+        )
+      )
+    )
+  ),
+  marker = "string",
+  hasMoreResults = TRUE|FALSE
+)
+}
+}
 \description{
 Gets the object definitions for a set of objects associated with the
 pipeline. Object definitions are composed of a set of fields that define

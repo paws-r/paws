@@ -15,6 +15,17 @@ AWS CLI command or the
 \code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} AWS API
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the tags assigned to the specified applied quota.
 }

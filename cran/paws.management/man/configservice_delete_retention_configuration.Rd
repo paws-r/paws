@@ -9,6 +9,9 @@ configservice_delete_retention_configuration(RetentionConfigurationName)
 \arguments{
 \item{RetentionConfigurationName}{[required] The name of the retention configuration to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the retention configuration.
 }

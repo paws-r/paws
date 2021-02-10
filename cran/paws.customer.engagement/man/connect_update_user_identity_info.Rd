@@ -13,6 +13,9 @@ connect_update_user_identity_info(IdentityInfo, UserId, InstanceId)
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the identity information for the specified user.
 

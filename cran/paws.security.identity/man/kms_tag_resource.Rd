@@ -30,6 +30,9 @@ You cannot have more than one tag on a CMK with the same tag key. If you
 specify an existing tag key with a different tag value, AWS KMS replaces
 the current tag value with the specified one.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or edits tags on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}.
 

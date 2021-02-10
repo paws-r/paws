@@ -15,6 +15,9 @@ that you want to cancel.}
 \item{EnvironmentName}{This specifies the name of the environment with the in-progress update
 that you want to cancel.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels in-progress environment configuration update or application
 version deployment.

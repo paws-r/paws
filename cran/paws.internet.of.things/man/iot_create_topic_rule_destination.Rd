@@ -9,6 +9,35 @@ iot_create_topic_rule_destination(destinationConfiguration)
 \arguments{
 \item{destinationConfiguration}{[required] The topic rule destination configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  topicRuleDestination = list(
+    arn = "string",
+    status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    statusReason = "string",
+    httpUrlProperties = list(
+      confirmationUrl = "string"
+    ),
+    vpcProperties = list(
+      subnetIds = list(
+        "string"
+      ),
+      securityGroups = list(
+        "string"
+      ),
+      vpcId = "string",
+      roleArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a topic rule destination. The destination must be confirmed
 prior to use.

@@ -11,6 +11,70 @@ glue_get_classifiers(MaxResults, NextToken)
 
 \item{NextToken}{An optional continuation token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Classifiers = list(
+    list(
+      GrokClassifier = list(
+        Name = "string",
+        Classification = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastUpdated = as.POSIXct(
+          "2015-01-01"
+        ),
+        Version = 123,
+        GrokPattern = "string",
+        CustomPatterns = "string"
+      ),
+      XMLClassifier = list(
+        Name = "string",
+        Classification = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastUpdated = as.POSIXct(
+          "2015-01-01"
+        ),
+        Version = 123,
+        RowTag = "string"
+      ),
+      JsonClassifier = list(
+        Name = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastUpdated = as.POSIXct(
+          "2015-01-01"
+        ),
+        Version = 123,
+        JsonPath = "string"
+      ),
+      CsvClassifier = list(
+        Name = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastUpdated = as.POSIXct(
+          "2015-01-01"
+        ),
+        Version = 123,
+        Delimiter = "string",
+        QuoteSymbol = "string",
+        ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
+        Header = list(
+          "string"
+        ),
+        DisableValueTrimming = TRUE|FALSE,
+        AllowSingleColumn = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all classifier objects in the Data Catalog.
 }

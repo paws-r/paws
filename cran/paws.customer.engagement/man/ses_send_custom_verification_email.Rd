@@ -16,6 +16,12 @@ the verification email.}
 
 \item{ConfigurationSetName}{Name of a configuration set to use when sending the verification email.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageId = "string"
+)
+}
+}
 \description{
 Adds an email address to the list of identities for your Amazon SES
 account in the current AWS Region and attempts to verify it. As a result

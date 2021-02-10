@@ -9,8 +9,34 @@ mediaconnect_describe_reservation(ReservationArn)
 \arguments{
 \item{ReservationArn}{[required] The Amazon Resource Name (ARN) of the reservation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Reservation = list(
+    CurrencyCode = "string",
+    Duration = 123,
+    DurationUnits = "MONTHS",
+    End = "string",
+    OfferingArn = "string",
+    OfferingDescription = "string",
+    PricePerUnit = "string",
+    PriceUnits = "HOURLY",
+    ReservationArn = "string",
+    ReservationName = "string",
+    ReservationState = "ACTIVE"|"EXPIRED"|"PROCESSING"|"CANCELED",
+    ResourceSpecification = list(
+      ReservedBitrate = 123,
+      ResourceType = "Mbps_Outbound_Bandwidth"
+    ),
+    Start = "string"
+  )
+)
+}
+}
 \description{
-Displays the details of a reservation. The response includes the reservation name, state, start date and time, and the details of the offering that make up the rest of the reservation (such as price, duration, and outbound bandwidth).
+Displays the details of a reservation. The response includes the
+reservation name, state, start date and time, and the details of the
+offering that make up the rest of the reservation (such as price,
+duration, and outbound bandwidth).
 }
 \section{Request syntax}{
 \preformatted{svc$describe_reservation(

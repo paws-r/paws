@@ -16,6 +16,9 @@ merge.}
 
 \item{AdjacentShardToMerge}{[required] The shard ID of the adjacent shard for the merge.}
 }
+\value{
+An empty list.
+}
 \description{
 Merges two adjacent shards in a Kinesis data stream and combines them
 into a single shard to reduce the stream's capacity to ingest and

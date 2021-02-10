@@ -19,6 +19,14 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateS3BucketName = "string",
+  CertificateS3ObjectKey = "string",
+  EncryptionKmsKeyId = "string"
+)
+}
+}
 \description{
 Associates an AWS Identity and Access Management (IAM) role with an AWS
 Certificate Manager (ACM) certificate. This enables the certificate to

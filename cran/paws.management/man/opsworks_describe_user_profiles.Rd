@@ -10,6 +10,20 @@ opsworks_describe_user_profiles(IamUserArns)
 \item{IamUserArns}{An array of IAM or federated user ARNs that identify the users to be
 described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserProfiles = list(
+    list(
+      IamUserArn = "string",
+      Name = "string",
+      SshUsername = "string",
+      SshPublicKey = "string",
+      AllowSelfManagement = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describe specified users.
 

@@ -6,6 +6,9 @@
 \usage{
 organizations_delete_organization()
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the organization. You can delete an organization only by using
 credentials from the management account. The organization must be empty

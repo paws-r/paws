@@ -11,6 +11,9 @@ appstream_disassociate_fleet(FleetName, StackName)
 
 \item{StackName}{[required] The name of the stack.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the specified fleet from the specified stack.
 }

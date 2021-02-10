@@ -11,6 +11,18 @@ rekognition_list_collections(NextToken, MaxResults)
 
 \item{MaxResults}{Maximum number of collection IDs to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CollectionIds = list(
+    "string"
+  ),
+  NextToken = "string",
+  FaceModelVersions = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns list of collection IDs in your account. If the result is
 truncated, the response also provides a \code{NextToken} that you can use in

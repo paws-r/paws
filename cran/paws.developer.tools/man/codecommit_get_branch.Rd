@@ -13,6 +13,15 @@ to retrieve information.}
 
 \item{branchName}{The name of the branch for which you want to retrieve information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  branch = list(
+    branchName = "string",
+    commitId = "string"
+  )
+)
+}
+}
 \description{
 Returns information about a repository branch, including its name and
 the last commit ID.

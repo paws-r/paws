@@ -13,6 +13,9 @@ contains the certificate ID.)}
 \item{forceDelete}{Forces the deletion of a certificate if it is inactive and is not
 attached to an IoT thing.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified certificate.
 

@@ -23,6 +23,36 @@ Default: \code{1}}
 
 \item{Tags}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedDBInstance = list(
+    ReservedDBInstanceId = "string",
+    ReservedDBInstancesOfferingId = "string",
+    DBInstanceClass = "string",
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Duration = 123,
+    FixedPrice = 123.0,
+    UsagePrice = 123.0,
+    CurrencyCode = "string",
+    DBInstanceCount = 123,
+    ProductDescription = "string",
+    OfferingType = "string",
+    MultiAZ = TRUE|FALSE,
+    State = "string",
+    RecurringCharges = list(
+      list(
+        RecurringChargeAmount = 123.0,
+        RecurringChargeFrequency = "string"
+      )
+    ),
+    ReservedDBInstanceArn = "string",
+    LeaseId = "string"
+  )
+)
+}
+}
 \description{
 Purchases a reserved DB instance offering.
 }

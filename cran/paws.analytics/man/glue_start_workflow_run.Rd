@@ -9,6 +9,12 @@ glue_start_workflow_run(Name)
 \arguments{
 \item{Name}{[required] The name of the workflow to start.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RunId = "string"
+)
+}
+}
 \description{
 Starts a new run of the specified workflow.
 }

@@ -15,6 +15,9 @@ worklink_update_identity_provider_configuration(FleetArn,
 \item{IdentityProviderSamlMetadata}{The SAML metadata document provided by the customer’s identity provider.
 The existing IdentityProviderSamlMetadata is unset if null is passed.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the identity provider configuration for the fleet.
 }

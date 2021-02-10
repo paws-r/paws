@@ -17,7 +17,7 @@ swf_register_workflow_type(domain, name, version, description,
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{version}{[required] The version of the workflow type.
@@ -29,7 +29,7 @@ registered workflow types, use the
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{description}{Textual description of the workflow type.}
@@ -97,6 +97,9 @@ type, the default Lambda role is attached to the execution. For more
 information, see
 \url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
 in the \emph{Amazon SWF Developer Guide}.}
+}
+\value{
+An empty list.
 }
 \description{
 Registers a new \emph{workflow type} and its configuration settings in the

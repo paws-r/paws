@@ -13,6 +13,9 @@ s3_delete_bucket_tagging(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the tags from the bucket.
 

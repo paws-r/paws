@@ -31,6 +31,32 @@ option value.}
 
 Constraint: You can remove only \code{UserDefined} configuration options.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  ApplicationName = "string",
+  TemplateName = "string",
+  Description = "string",
+  EnvironmentName = "string",
+  DeploymentStatus = "deployed"|"pending"|"failed",
+  DateCreated = as.POSIXct(
+    "2015-01-01"
+  ),
+  DateUpdated = as.POSIXct(
+    "2015-01-01"
+  ),
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the specified configuration template to have the specified
 properties or configuration option values.

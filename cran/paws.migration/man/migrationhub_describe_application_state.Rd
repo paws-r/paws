@@ -10,6 +10,15 @@ migrationhub_describe_application_state(ApplicationId)
 \item{ApplicationId}{[required] The configurationId in Application Discovery Service that uniquely
 identifies the grouped application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationStatus = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+  LastUpdatedTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets the migration status of an application.
 }

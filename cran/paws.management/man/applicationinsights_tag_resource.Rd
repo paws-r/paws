@@ -15,6 +15,9 @@ required tag key (\code{Key}) and an associated tag value (\code{Value}). The
 maximum length of a tag key is 128 characters. The maximum length of a
 tag value is 256 characters.}
 }
+\value{
+An empty list.
+}
 \description{
 Add one or more tags (keys and values) to a specified application. A
 \emph{tag} is a label that you optionally define and associate with an

@@ -14,6 +14,9 @@ connect_update_instance_attribute(InstanceId, AttributeType, Value)
 
 \item{Value}{[required] The value for the attribute. Maximum character limit is 100.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

@@ -33,6 +33,30 @@ value in the \code{marker} parameter and retrying the request.
 Constraints: You can specify either the \code{ClusterIdentifier} parameter,
 or the \code{marker} parameter, but not both.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ClusterDbRevisions = list(
+    list(
+      ClusterIdentifier = "string",
+      CurrentDatabaseRevision = "string",
+      DatabaseRevisionReleaseDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      RevisionTargets = list(
+        list(
+          DatabaseRevision = "string",
+          Description = "string",
+          DatabaseRevisionReleaseDate = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns an array of \code{ClusterDbRevision} objects.
 }

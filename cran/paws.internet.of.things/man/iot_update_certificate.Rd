@@ -12,13 +12,16 @@ contains the certificate ID.)}
 
 \item{newStatus}{[required] The new status.
 
-\strong{Note:} Setting the status to PENDING\\_TRANSFER or PENDING\\_ACTIVATION
-will result in an exception being thrown. PENDING\\_TRANSFER and
-PENDING\\_ACTIVATION are statuses used internally by AWS IoT. They are
+\strong{Note:} Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION
+will result in an exception being thrown. PENDING_TRANSFER and
+PENDING_ACTIVATION are statuses used internally by AWS IoT. They are
 not intended for developer use.
 
-\strong{Note:} The status value REGISTER\\_INACTIVE is deprecated and should
+\strong{Note:} The status value REGISTER_INACTIVE is deprecated and should
 not be used.}
+}
+\value{
+An empty list.
 }
 \description{
 Updates the status of the specified certificate. This operation is

@@ -45,6 +45,88 @@ without modifying the function code.}
 specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FunctionName = "string",
+  FunctionArn = "string",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
+  Role = "string",
+  Handler = "string",
+  CodeSize = 123,
+  Description = "string",
+  Timeout = 123,
+  MemorySize = 123,
+  LastModified = "string",
+  CodeSha256 = "string",
+  Version = "string",
+  VpcConfig = list(
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    ),
+    VpcId = "string"
+  ),
+  DeadLetterConfig = list(
+    TargetArn = "string"
+  ),
+  Environment = list(
+    Variables = list(
+      "string"
+    ),
+    Error = list(
+      ErrorCode = "string",
+      Message = "string"
+    )
+  ),
+  KMSKeyArn = "string",
+  TracingConfig = list(
+    Mode = "Active"|"PassThrough"
+  ),
+  MasterArn = "string",
+  RevisionId = "string",
+  Layers = list(
+    list(
+      Arn = "string",
+      CodeSize = 123,
+      SigningProfileVersionArn = "string",
+      SigningJobArn = "string"
+    )
+  ),
+  State = "Pending"|"Active"|"Inactive"|"Failed",
+  StateReason = "string",
+  StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
+  LastUpdateStatus = "Successful"|"Failed"|"InProgress",
+  LastUpdateStatusReason = "string",
+  LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
+  FileSystemConfigs = list(
+    list(
+      Arn = "string",
+      LocalMountPath = "string"
+    )
+  ),
+  PackageType = "Zip"|"Image",
+  ImageConfigResponse = list(
+    ImageConfig = list(
+      EntryPoint = list(
+        "string"
+      ),
+      Command = list(
+        "string"
+      ),
+      WorkingDirectory = "string"
+    ),
+    Error = list(
+      ErrorCode = "string",
+      Message = "string"
+    )
+  ),
+  SigningProfileVersionArn = "string",
+  SigningJobArn = "string"
+)
+}
+}
 \description{
 Updates a Lambda function's code. If code signing is enabled for the
 function, the code package must be signed by a trusted publisher. For

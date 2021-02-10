@@ -12,6 +12,32 @@ alexaforbusiness_list_conference_providers(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of conference providers to be returned, per paginated
 calls.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConferenceProviders = list(
+    list(
+      Arn = "string",
+      Name = "string",
+      Type = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
+      IPDialIn = list(
+        Endpoint = "string",
+        CommsProtocol = "SIP"|"SIPS"|"H323"
+      ),
+      PSTNDialIn = list(
+        CountryCode = "string",
+        PhoneNumber = "string",
+        OneClickIdDelay = "string",
+        OneClickPinDelay = "string"
+      ),
+      MeetingSetting = list(
+        RequirePin = "YES"|"NO"|"OPTIONAL"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists conference providers under a specific AWS account.
 }

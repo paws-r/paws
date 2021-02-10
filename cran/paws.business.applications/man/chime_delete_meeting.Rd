@@ -9,6 +9,9 @@ chime_delete_meeting(MeetingId)
 \arguments{
 \item{MeetingId}{[required] The Amazon Chime SDK meeting ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Amazon Chime SDK meeting. When a meeting is
 deleted, its attendees are also deleted and clients can no longer join

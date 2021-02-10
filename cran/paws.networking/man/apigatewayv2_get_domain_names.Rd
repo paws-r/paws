@@ -12,6 +12,43 @@ apigatewayv2_get_domain_names(MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      ApiMappingSelectionExpression = "string",
+      DomainName = "string",
+      DomainNameConfigurations = list(
+        list(
+          ApiGatewayDomainName = "string",
+          CertificateArn = "string",
+          CertificateName = "string",
+          CertificateUploadDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          DomainNameStatus = "AVAILABLE"|"UPDATING",
+          DomainNameStatusMessage = "string",
+          EndpointType = "REGIONAL"|"EDGE",
+          HostedZoneId = "string",
+          SecurityPolicy = "TLS_1_0"|"TLS_1_2"
+        )
+      ),
+      MutualTlsAuthentication = list(
+        TruststoreUri = "string",
+        TruststoreVersion = "string",
+        TruststoreWarnings = list(
+          "string"
+        )
+      ),
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets the domain names for an AWS account.
 }

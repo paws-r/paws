@@ -48,6 +48,9 @@ required.}
 parameter. When this parameter is set to \code{KEY_MATERIAL_DOES_NOT_EXPIRE},
 you must omit the \code{ValidTo} parameter.}
 }
+\value{
+An empty list.
+}
 \description{
 Imports key material into an existing symmetric AWS KMS customer master
 key (CMK) that was created without key material. After you successfully

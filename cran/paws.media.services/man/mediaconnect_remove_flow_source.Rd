@@ -11,8 +11,16 @@ mediaconnect_remove_flow_source(FlowArn, SourceArn)
 
 \item{SourceArn}{[required] The ARN of the source that you want to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  SourceArn = "string"
+)
+}
+}
 \description{
-Removes a source from an existing flow. This request can be made only if there is more than one source on the flow.
+Removes a source from an existing flow. This request can be made only if
+there is more than one source on the flow.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_flow_source(

@@ -36,6 +36,31 @@ value. This value can be between 5 and 1000.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ElasticGpuSet = list(
+    list(
+      ElasticGpuId = "string",
+      AvailabilityZone = "string",
+      ElasticGpuType = "string",
+      ElasticGpuHealth = list(
+        Status = "OK"|"IMPAIRED"
+      ),
+      ElasticGpuState = "ATTACHED",
+      InstanceId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the Elastic Graphics accelerator associated with your
 instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.

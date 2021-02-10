@@ -14,6 +14,9 @@ codedeploy_register_on_premises_instance(instanceName, iamSessionArn,
 
 \item{iamUserArn}{The ARN of the IAM user to associate with the on-premises instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Registers an on-premises instance.
 

@@ -26,6 +26,73 @@ February 21, 2019.}
 which can be used to return the next set of action executions in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actionExecutionDetails = list(
+    list(
+      pipelineExecutionId = "string",
+      actionExecutionId = "string",
+      pipelineVersion = 123,
+      stageName = "string",
+      actionName = "string",
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
+      input = list(
+        actionTypeId = list(
+          category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+          owner = "AWS"|"ThirdParty"|"Custom",
+          provider = "string",
+          version = "string"
+        ),
+        configuration = list(
+          "string"
+        ),
+        resolvedConfiguration = list(
+          "string"
+        ),
+        roleArn = "string",
+        region = "string",
+        inputArtifacts = list(
+          list(
+            name = "string",
+            s3location = list(
+              bucket = "string",
+              key = "string"
+            )
+          )
+        ),
+        namespace = "string"
+      ),
+      output = list(
+        outputArtifacts = list(
+          list(
+            name = "string",
+            s3location = list(
+              bucket = "string",
+              key = "string"
+            )
+          )
+        ),
+        executionResult = list(
+          externalExecutionId = "string",
+          externalExecutionSummary = "string",
+          externalExecutionUrl = "string"
+        ),
+        outputVariables = list(
+          "string"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the action executions that have occurred in a pipeline.
 }

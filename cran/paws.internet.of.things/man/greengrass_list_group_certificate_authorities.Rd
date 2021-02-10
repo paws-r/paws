@@ -9,6 +9,17 @@ greengrass_list_group_certificate_authorities(GroupId)
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupCertificateAuthorities = list(
+    list(
+      GroupCertificateAuthorityArn = "string",
+      GroupCertificateAuthorityId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the current CAs for a group.
 }

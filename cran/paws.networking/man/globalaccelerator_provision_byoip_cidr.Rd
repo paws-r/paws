@@ -17,6 +17,23 @@ Region.}
 \item{CidrAuthorizationContext}{[required] A signed document that proves that you are authorized to bring the
 specified IP address range to Amazon using BYOIP.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ByoipCidr = list(
+    Cidr = "string",
+    State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+    Events = list(
+      list(
+        Message = "string",
+        Timestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Provisions an IP address range to use with your AWS resources through
 bring your own IP addresses (BYOIP) and creates a corresponding address

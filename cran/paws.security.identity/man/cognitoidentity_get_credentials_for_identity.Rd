@@ -11,8 +11,8 @@ cognitoidentity_get_credentials_for_identity(IdentityId, Logins,
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
 \item{Logins}{A set of optional name-value pairs that map provider names to provider
-tokens. The name-value pair will follow the syntax "provider\\_name":
-"provider\\_user\\_identifier".
+tokens. The name-value pair will follow the syntax "provider_name":
+"provider_user_identifier".
 
 Logins should not be specified when trying to get credentials for an
 unauthenticated identity.
@@ -26,6 +26,20 @@ section of the Amazon Cognito Developer Guide.}
 roles were received in the token from the identity provider. For
 example, a SAML-based identity provider. This parameter is optional for
 identity providers that do not support role customization.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityId = "string",
+  Credentials = list(
+    AccessKeyId = "string",
+    SecretKey = "string",
+    SessionToken = "string",
+    Expiration = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Returns credentials for the provided identity ID. Any provided logins

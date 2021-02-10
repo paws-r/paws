@@ -10,6 +10,9 @@ ec2_cancel_export_task(ExportTaskId)
 \item{ExportTaskId}{[required] The ID of the export task. This is the ID returned by
 \code{\link[=ec2_create_instance_export_task]{create_instance_export_task}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels an active export task. The request removes all artifacts of the
 export, including any partially-created Amazon S3 objects. If the export

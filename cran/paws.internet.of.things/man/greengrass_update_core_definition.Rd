@@ -11,6 +11,9 @@ greengrass_update_core_definition(CoreDefinitionId, Name)
 
 \item{Name}{The name of the definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a core definition.
 }

@@ -13,6 +13,13 @@ machinelearning_delete_tags(TagKeys, ResourceId, ResourceType)
 
 \item{ResourceType}{[required] The type of the tagged ML object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceId = "string",
+  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+)
+}
+}
 \description{
 Deletes the specified tags associated with an ML object. After this
 operation is complete, you can't recover deleted tags.

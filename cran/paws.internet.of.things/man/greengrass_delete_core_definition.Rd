@@ -9,6 +9,9 @@ greengrass_delete_core_definition(CoreDefinitionId)
 \arguments{
 \item{CoreDefinitionId}{[required] The ID of the core definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a core definition.
 }

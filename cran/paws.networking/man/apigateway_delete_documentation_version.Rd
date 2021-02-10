@@ -12,6 +12,9 @@ apigateway_delete_documentation_version(restApiId, documentationVersion)
 \item{documentationVersion}{[required] [Required] The version identifier of a to-be-deleted documentation
 snapshot.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete documentation version
 }

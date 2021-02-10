@@ -9,6 +9,30 @@ robomaker_describe_world_export_job(job)
 \arguments{
 \item{job}{[required] The Amazon Resource Name (arn) of the world export job to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  status = "Pending"|"Running"|"Completed"|"Failed"|"Canceling"|"Canceled",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AccessDenied",
+  failureReason = "string",
+  clientRequestToken = "string",
+  worlds = list(
+    "string"
+  ),
+  outputLocation = list(
+    s3Bucket = "string",
+    s3Prefix = "string"
+  ),
+  iamRole = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a world export job.
 }

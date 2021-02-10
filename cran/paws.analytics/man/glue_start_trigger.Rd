@@ -9,6 +9,12 @@ glue_start_trigger(Name)
 \arguments{
 \item{Name}{[required] The name of the trigger to start.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Starts an existing trigger. See \href{https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html}{Triggering Jobs} for
 information about how different types of trigger are started.

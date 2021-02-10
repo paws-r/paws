@@ -31,6 +31,27 @@ in the \emph{Amazon RDS User Guide} or by using the
 
 \item{Enabled}{A value that indicates whether to activate the subscription.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = "string",
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE,
+    EventSubscriptionArn = "string"
+  )
+)
+}
+}
 \description{
 Modifies an existing RDS event notification subscription. You can't
 modify the source identifiers using this call. To change source

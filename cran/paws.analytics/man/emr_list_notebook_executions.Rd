@@ -43,6 +43,26 @@ default is the current timestamp.}
 indicates the start of the list for this
 \code{\link[=emr_list_notebook_executions]{list_notebook_executions}} call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotebookExecutions = list(
+    list(
+      NotebookExecutionId = "string",
+      EditorId = "string",
+      NotebookExecutionName = "string",
+      Status = "START_PENDING"|"STARTING"|"RUNNING"|"FINISHING"|"FINISHED"|"FAILING"|"FAILED"|"STOP_PENDING"|"STOPPING"|"STOPPED",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Provides summaries of all notebook executions. You can filter the list
 based on multiple criteria such as status, time range, and editor id.

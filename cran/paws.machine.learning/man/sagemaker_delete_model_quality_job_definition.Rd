@@ -9,6 +9,9 @@ sagemaker_delete_model_quality_job_definition(JobDefinitionName)
 \arguments{
 \item{JobDefinitionName}{[required] The name of the model quality monitoring job definition to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the secified model quality monitoring job definition.
 }

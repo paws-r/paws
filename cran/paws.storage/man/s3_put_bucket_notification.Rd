@@ -22,6 +22,9 @@ SDKs, this field is calculated automatically.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+An empty list.
+}
 \description{
 No longer used, see the
 \code{\link[=s3_put_bucket_notification_configuration]{put_bucket_notification_configuration}}

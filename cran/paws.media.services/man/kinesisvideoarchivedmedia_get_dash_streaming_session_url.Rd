@@ -138,6 +138,12 @@ The maximum value of 1,000 fragments corresponds to more than 16 minutes
 of video on streams with 1-second fragments, and more than 2 1/2 hours
 of video on streams with 10-second fragments.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DASHStreamingSessionURL = "string"
+)
+}
+}
 \description{
 Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for
 the stream. You can then open the URL in a media player to view the
@@ -152,9 +158,9 @@ providing data through MPEG-DASH:
 \itemize{
 \item The media must contain h.264 or h.265 encoded video and, optionally,
 AAC or G.711 encoded audio. Specifically, the codec ID of track 1
-should be \code{V_MPEG/ISO/AVC} (for h.264) or V\\_MPEGH/ISO/HEVC (for
+should be \code{V_MPEG/ISO/AVC} (for h.264) or V_MPEGH/ISO/HEVC (for
 H.265). Optionally, the codec ID of track 2 should be \code{A_AAC} (for
-AAC) or A\\_MS/ACM (for G.711).
+AAC) or A_MS/ACM (for G.711).
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265

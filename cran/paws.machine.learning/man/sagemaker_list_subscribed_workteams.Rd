@@ -18,6 +18,21 @@ the next set of labeling jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of work teams to return in each page of the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SubscribedWorkteams = list(
+    list(
+      WorkteamArn = "string",
+      MarketplaceTitle = "string",
+      SellerName = "string",
+      MarketplaceDescription = "string",
+      ListingId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the work teams that you are subscribed to in the AWS
 Marketplace. The list may be empty if no work team satisfies the filter

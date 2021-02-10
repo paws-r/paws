@@ -23,6 +23,9 @@ in the \emph{AWS General Reference}.}
 IAM OpenID Connect provider. For more information, see
 \code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Replaces the existing list of server certificate thumbprints associated
 with an OpenID Connect (OIDC) provider resource object with a new list

@@ -18,6 +18,25 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OpsMetadataList = list(
+    list(
+      ResourceId = "string",
+      OpsMetadataArn = "string",
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedUser = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Systems Manager calls this API action when displaying all Application
 Manager OpsMetadata objects or blobs.

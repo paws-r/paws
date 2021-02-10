@@ -10,6 +10,9 @@ mturk_delete_qualification_type(QualificationTypeId)
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the QualificationType to dispose.}
 }
+\value{
+An empty list.
+}
 \description{
 The \code{\link[=mturk_delete_qualification_type]{delete_qualification_type}}
 deletes a Qualification type and deletes any HIT types that are

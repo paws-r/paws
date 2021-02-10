@@ -25,6 +25,22 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerEvents = list(
+    list(
+      CreatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServerName = "string",
+      Message = "string",
+      LogUrl = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes events for a specified server. Results are ordered by time,
 with newest events first.

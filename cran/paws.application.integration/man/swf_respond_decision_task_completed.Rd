@@ -22,6 +22,9 @@ for details.}
 
 \item{executionContext}{User defined context to add to workflow execution.}
 }
+\value{
+An empty list.
+}
 \description{
 Used by deciders to tell the service that the DecisionTask identified by
 the \code{taskToken} has successfully completed. The \code{decisions} argument

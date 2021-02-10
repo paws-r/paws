@@ -30,6 +30,9 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 \item{IdentityType}{[required] Specifies whether the identity to delete from the Studio is a user or a
 group.}
 }
+\value{
+An empty list.
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

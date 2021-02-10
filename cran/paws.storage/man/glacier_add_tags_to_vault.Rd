@@ -18,6 +18,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{Tags}{The tags to add to the vault. Each tag is composed of a key and a value.
 The value can be an empty string.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation adds the specified tags to a vault. Each tag is composed
 of a key and a value. Each vault can have up to 10 tags. If your request

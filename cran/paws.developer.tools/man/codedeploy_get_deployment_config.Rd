@@ -10,6 +10,34 @@ codedeploy_get_deployment_config(deploymentConfigName)
 \item{deploymentConfigName}{[required] The name of a deployment configuration associated with the IAM user or
 AWS account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deploymentConfigInfo = list(
+    deploymentConfigId = "string",
+    deploymentConfigName = "string",
+    minimumHealthyHosts = list(
+      value = 123,
+      type = "HOST_COUNT"|"FLEET_PERCENT"
+    ),
+    createTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    computePlatform = "Server"|"Lambda"|"ECS",
+    trafficRoutingConfig = list(
+      type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",
+      timeBasedCanary = list(
+        canaryPercentage = 123,
+        canaryInterval = 123
+      ),
+      timeBasedLinear = list(
+        linearPercentage = 123,
+        linearInterval = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a deployment configuration.
 }

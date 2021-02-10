@@ -10,6 +10,12 @@ sts_decode_authorization_message(EncodedMessage)
 \arguments{
 \item{EncodedMessage}{[required] The encoded message that was returned with the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DecodedMessage = "string"
+)
+}
+}
 \description{
 Decodes additional information about the authorization status of a
 request from an encoded message returned in response to an AWS request.

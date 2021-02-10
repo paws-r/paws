@@ -15,7 +15,7 @@ the name of a \code{RateBasedRule} after you create it.}
 The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
 maximum length 128 and minimum length one. It can't contain whitespace
 or metric names reserved for AWS WAF, including "All" and
-"Default\\_Action." You can't change the name of the metric after you
+"Default_Action." You can't change the name of the metric after you
 create the \code{RateBasedRule}.}
 
 \item{RateKey}{[required] The field that AWS WAF uses to determine if requests are likely arriving
@@ -37,6 +37,26 @@ information, see
 \code{\link[=waf_get_change_token_status]{get_change_token_status}}.}
 
 \item{Tags}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Rule = list(
+    RuleId = "string",
+    Name = "string",
+    MetricName = "string",
+    MatchPredicates = list(
+      list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    ),
+    RateKey = "IP",
+    RateLimit = 123
+  ),
+  ChangeToken = "string"
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

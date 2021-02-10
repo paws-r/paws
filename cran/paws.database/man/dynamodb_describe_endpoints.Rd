@@ -6,6 +6,17 @@
 \usage{
 dynamodb_describe_endpoints()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Endpoints = list(
+    list(
+      Address = "string",
+      CachePeriodInMinutes = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns the regional endpoint information.
 }

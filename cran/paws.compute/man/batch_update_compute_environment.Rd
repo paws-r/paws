@@ -48,6 +48,13 @@ of the service role, AWS Batch assumes that your ARN does not use the
 specify the full ARN of your service role when you create compute
 environments.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  computeEnvironmentName = "string",
+  computeEnvironmentArn = "string"
+)
+}
+}
 \description{
 Updates an AWS Batch compute environment.
 }

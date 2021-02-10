@@ -106,6 +106,44 @@ conversations between two or more speakers, e.g., a conversations
 between doctors and patients. \code{DICTATION} refers to single-speaker
 dictated speech, e.g., for clinical notes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MedicalTranscriptionJob = list(
+    MedicalTranscriptionJobName = "string",
+    TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+    LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+    MediaSampleRateHertz = 123,
+    MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+    Media = list(
+      MediaFileUri = "string"
+    ),
+    Transcript = list(
+      TranscriptFileUri = "string"
+    ),
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CompletionTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FailureReason = "string",
+    Settings = list(
+      ShowSpeakerLabels = TRUE|FALSE,
+      MaxSpeakerLabels = 123,
+      ChannelIdentification = TRUE|FALSE,
+      ShowAlternatives = TRUE|FALSE,
+      MaxAlternatives = 123,
+      VocabularyName = "string"
+    ),
+    Specialty = "PRIMARYCARE",
+    Type = "CONVERSATION"|"DICTATION"
+  )
+)
+}
+}
 \description{
 Starts a batch job to transcribe medical speech to text.
 }

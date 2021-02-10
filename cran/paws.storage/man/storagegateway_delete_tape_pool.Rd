@@ -9,6 +9,12 @@ storagegateway_delete_tape_pool(PoolARN)
 \arguments{
 \item{PoolARN}{[required] The Amazon Resource Name (ARN) of the custom tape pool to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PoolARN = "string"
+)
+}
+}
 \description{
 Delete a custom tape pool. A custom tape pool can only be deleted if
 there are no tapes in the pool and if there are no automatic tape

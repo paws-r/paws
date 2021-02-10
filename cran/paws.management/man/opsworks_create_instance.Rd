@@ -103,7 +103,7 @@ your instances have the latest security updates.}
 options:
 \itemize{
 \item \code{INHERIT} - Use the stack's default agent version setting.
-\item \emph{version\\_number} - Use the specified agent version. This value
+\item \emph{version_number} - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version,
 edit the instance configuration and specify a new version. AWS
 OpsWorks Stacks then automatically installs that version on the
@@ -125,6 +125,12 @@ choosing them for your instances. For more information about dedicated
 hosts, see \href{https://aws.amazon.com/ec2/dedicated-hosts/}{Dedicated Hosts Overview} and \href{https://aws.amazon.com/ec2/dedicated-hosts/}{Amazon EC2 Dedicated Hosts}. For more
 information about dedicated instances, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Dedicated Instances} and
 \href{https://aws.amazon.com/ec2/pricing/dedicated-instances/}{Amazon EC2 Dedicated Instances}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceId = "string"
+)
+}
 }
 \description{
 Creates an instance in a specified stack. For more information, see

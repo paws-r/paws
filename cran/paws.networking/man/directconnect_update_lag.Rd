@@ -14,6 +14,60 @@ directconnect_update_lag(lagId, lagName, minimumLinks)
 \item{minimumLinks}{The minimum number of physical connections that must be operational for
 the LAG itself to be operational.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  connectionsBandwidth = "string",
+  numberOfConnections = 123,
+  lagId = "string",
+  ownerAccount = "string",
+  lagName = "string",
+  lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+  location = "string",
+  region = "string",
+  minimumLinks = 123,
+  awsDevice = "string",
+  awsDeviceV2 = "string",
+  connections = list(
+    list(
+      ownerAccount = "string",
+      connectionId = "string",
+      connectionName = "string",
+      connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+      region = "string",
+      location = "string",
+      bandwidth = "string",
+      vlan = 123,
+      partnerName = "string",
+      loaIssueTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lagId = "string",
+      awsDevice = "string",
+      jumboFrameCapable = TRUE|FALSE,
+      awsDeviceV2 = "string",
+      hasLogicalRedundancy = "unknown"|"yes"|"no",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      providerName = "string"
+    )
+  ),
+  allowsHostedConnections = TRUE|FALSE,
+  jumboFrameCapable = TRUE|FALSE,
+  hasLogicalRedundancy = "unknown"|"yes"|"no",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  providerName = "string"
+)
+}
+}
 \description{
 Updates the attributes of the specified link aggregation group (LAG).
 

@@ -11,6 +11,9 @@ appsync_delete_api_key(apiId, id)
 
 \item{id}{[required] The ID for the API key.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an API key.
 }

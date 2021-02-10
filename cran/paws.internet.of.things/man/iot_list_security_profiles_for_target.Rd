@@ -18,6 +18,23 @@ iot_list_security_profiles_for_target(nextToken, maxResults, recursive,
 \item{securityProfileTargetArn}{[required] The ARN of the target (thing group) whose attached security profiles you
 want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  securityProfileTargetMappings = list(
+    list(
+      securityProfileIdentifier = list(
+        name = "string",
+        arn = "string"
+      ),
+      target = list(
+        arn = "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the Device Defender security profiles attached to a target (thing
 group).

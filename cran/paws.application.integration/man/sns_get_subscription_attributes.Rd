@@ -9,6 +9,14 @@ sns_get_subscription_attributes(SubscriptionArn)
 \arguments{
 \item{SubscriptionArn}{[required] The ARN of the subscription whose properties you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns all of the properties of a subscription.
 }

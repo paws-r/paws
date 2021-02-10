@@ -14,6 +14,31 @@ details for.}
 \item{DefaultList}{Specifies whether the list to retrieve is a default list owned by AWS
 Firewall Manager.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProtocolsList = list(
+    ListId = "string",
+    ListName = "string",
+    ListUpdateToken = "string",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProtocolsList = list(
+      "string"
+    ),
+    PreviousProtocolsList = list(
+      list(
+        "string"
+      )
+    )
+  ),
+  ProtocolsListArn = "string"
+)
+}
+}
 \description{
 Returns information about the specified AWS Firewall Manager protocols
 list.

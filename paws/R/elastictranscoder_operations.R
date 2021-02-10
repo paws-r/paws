@@ -24,6 +24,9 @@ NULL
 #' [`list_jobs_by_status`][elastictranscoder_list_jobs_by_status] API
 #' action.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_job(
@@ -97,6 +100,337 @@ elastictranscoder_cancel_job <- function(Id) {
 #' add up to 10 `key/value` pairs per job. Elastic Transcoder does not
 #' guarantee that `key/value` pairs are returned in the same order in which
 #' you specify them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Job = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     PipelineId = "string",
+#'     Input = list(
+#'       Key = "string",
+#'       FrameRate = "string",
+#'       Resolution = "string",
+#'       AspectRatio = "string",
+#'       Interlaced = "string",
+#'       Container = "string",
+#'       Encryption = list(
+#'         Mode = "string",
+#'         Key = "string",
+#'         KeyMd5 = "string",
+#'         InitializationVector = "string"
+#'       ),
+#'       TimeSpan = list(
+#'         StartTime = "string",
+#'         Duration = "string"
+#'       ),
+#'       InputCaptions = list(
+#'         MergePolicy = "string",
+#'         CaptionSources = list(
+#'           list(
+#'             Key = "string",
+#'             Language = "string",
+#'             TimeOffset = "string",
+#'             Label = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DetectedProperties = list(
+#'         Width = 123,
+#'         Height = 123,
+#'         FrameRate = "string",
+#'         FileSize = 123,
+#'         DurationMillis = 123
+#'       )
+#'     ),
+#'     Inputs = list(
+#'       list(
+#'         Key = "string",
+#'         FrameRate = "string",
+#'         Resolution = "string",
+#'         AspectRatio = "string",
+#'         Interlaced = "string",
+#'         Container = "string",
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         TimeSpan = list(
+#'           StartTime = "string",
+#'           Duration = "string"
+#'         ),
+#'         InputCaptions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DetectedProperties = list(
+#'           Width = 123,
+#'           Height = 123,
+#'           FrameRate = "string",
+#'           FileSize = 123,
+#'           DurationMillis = 123
+#'         )
+#'       )
+#'     ),
+#'     Output = list(
+#'       Id = "string",
+#'       Key = "string",
+#'       ThumbnailPattern = "string",
+#'       ThumbnailEncryption = list(
+#'         Mode = "string",
+#'         Key = "string",
+#'         KeyMd5 = "string",
+#'         InitializationVector = "string"
+#'       ),
+#'       Rotate = "string",
+#'       PresetId = "string",
+#'       SegmentDuration = "string",
+#'       Status = "string",
+#'       StatusDetail = "string",
+#'       Duration = 123,
+#'       Width = 123,
+#'       Height = 123,
+#'       FrameRate = "string",
+#'       FileSize = 123,
+#'       DurationMillis = 123,
+#'       Watermarks = list(
+#'         list(
+#'           PresetWatermarkId = "string",
+#'           InputKey = "string",
+#'           Encryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           )
+#'         )
+#'       ),
+#'       AlbumArt = list(
+#'         MergePolicy = "string",
+#'         Artwork = list(
+#'           list(
+#'             InputKey = "string",
+#'             MaxWidth = "string",
+#'             MaxHeight = "string",
+#'             SizingPolicy = "string",
+#'             PaddingPolicy = "string",
+#'             AlbumArtFormat = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Composition = list(
+#'         list(
+#'           TimeSpan = list(
+#'             StartTime = "string",
+#'             Duration = "string"
+#'           )
+#'         )
+#'       ),
+#'       Captions = list(
+#'         MergePolicy = "string",
+#'         CaptionSources = list(
+#'           list(
+#'             Key = "string",
+#'             Language = "string",
+#'             TimeOffset = "string",
+#'             Label = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         ),
+#'         CaptionFormats = list(
+#'           list(
+#'             Format = "string",
+#'             Pattern = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Encryption = list(
+#'         Mode = "string",
+#'         Key = "string",
+#'         KeyMd5 = "string",
+#'         InitializationVector = "string"
+#'       ),
+#'       AppliedColorSpaceConversion = "string"
+#'     ),
+#'     Outputs = list(
+#'       list(
+#'         Id = "string",
+#'         Key = "string",
+#'         ThumbnailPattern = "string",
+#'         ThumbnailEncryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         Rotate = "string",
+#'         PresetId = "string",
+#'         SegmentDuration = "string",
+#'         Status = "string",
+#'         StatusDetail = "string",
+#'         Duration = 123,
+#'         Width = 123,
+#'         Height = 123,
+#'         FrameRate = "string",
+#'         FileSize = 123,
+#'         DurationMillis = 123,
+#'         Watermarks = list(
+#'           list(
+#'             PresetWatermarkId = "string",
+#'             InputKey = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         ),
+#'         AlbumArt = list(
+#'           MergePolicy = "string",
+#'           Artwork = list(
+#'             list(
+#'               InputKey = "string",
+#'               MaxWidth = "string",
+#'               MaxHeight = "string",
+#'               SizingPolicy = "string",
+#'               PaddingPolicy = "string",
+#'               AlbumArtFormat = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Composition = list(
+#'           list(
+#'             TimeSpan = list(
+#'               StartTime = "string",
+#'               Duration = "string"
+#'             )
+#'           )
+#'         ),
+#'         Captions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           ),
+#'           CaptionFormats = list(
+#'             list(
+#'               Format = "string",
+#'               Pattern = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         AppliedColorSpaceConversion = "string"
+#'       )
+#'     ),
+#'     OutputKeyPrefix = "string",
+#'     Playlists = list(
+#'       list(
+#'         Name = "string",
+#'         Format = "string",
+#'         OutputKeys = list(
+#'           "string"
+#'         ),
+#'         HlsContentProtection = list(
+#'           Method = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string",
+#'           LicenseAcquisitionUrl = "string",
+#'           KeyStoragePolicy = "string"
+#'         ),
+#'         PlayReadyDrm = list(
+#'           Format = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           KeyId = "string",
+#'           InitializationVector = "string",
+#'           LicenseAcquisitionUrl = "string"
+#'         ),
+#'         Status = "string",
+#'         StatusDetail = "string"
+#'       )
+#'     ),
+#'     Status = "string",
+#'     UserMetadata = list(
+#'       "string"
+#'     ),
+#'     Timing = list(
+#'       SubmitTimeMillis = 123,
+#'       StartTimeMillis = 123,
+#'       FinishTimeMillis = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -633,6 +967,61 @@ elastictranscoder_create_job <- function(PipelineId, Input = NULL, Inputs = NULL
 #'     `ReducedRedundancy`, that you want Elastic Transcoder to assign to
 #'     the thumbnails that it stores in your Amazon S3 bucket.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Pipeline = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     InputBucket = "string",
+#'     OutputBucket = "string",
+#'     Role = "string",
+#'     AwsKmsKeyArn = "string",
+#'     Notifications = list(
+#'       Progressing = "string",
+#'       Completed = "string",
+#'       Warning = "string",
+#'       Error = "string"
+#'     ),
+#'     ContentConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ThumbnailConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_pipeline(
@@ -734,6 +1123,77 @@ elastictranscoder_create_pipeline <- function(Name, InputBucket, OutputBucket = 
 #' @param Thumbnails A section of the request body that specifies the thumbnail parameters,
 #' if any.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Preset = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Container = "string",
+#'     Audio = list(
+#'       Codec = "string",
+#'       SampleRate = "string",
+#'       BitRate = "string",
+#'       Channels = "string",
+#'       AudioPackingMode = "string",
+#'       CodecOptions = list(
+#'         Profile = "string",
+#'         BitDepth = "string",
+#'         BitOrder = "string",
+#'         Signed = "string"
+#'       )
+#'     ),
+#'     Video = list(
+#'       Codec = "string",
+#'       CodecOptions = list(
+#'         "string"
+#'       ),
+#'       KeyframesMaxDist = "string",
+#'       FixedGOP = "string",
+#'       BitRate = "string",
+#'       FrameRate = "string",
+#'       MaxFrameRate = "string",
+#'       Resolution = "string",
+#'       AspectRatio = "string",
+#'       MaxWidth = "string",
+#'       MaxHeight = "string",
+#'       DisplayAspectRatio = "string",
+#'       SizingPolicy = "string",
+#'       PaddingPolicy = "string",
+#'       Watermarks = list(
+#'         list(
+#'           Id = "string",
+#'           MaxWidth = "string",
+#'           MaxHeight = "string",
+#'           SizingPolicy = "string",
+#'           HorizontalAlign = "string",
+#'           HorizontalOffset = "string",
+#'           VerticalAlign = "string",
+#'           VerticalOffset = "string",
+#'           Opacity = "string",
+#'           Target = "string"
+#'         )
+#'       )
+#'     ),
+#'     Thumbnails = list(
+#'       Format = "string",
+#'       Interval = "string",
+#'       Resolution = "string",
+#'       AspectRatio = "string",
+#'       MaxWidth = "string",
+#'       MaxHeight = "string",
+#'       SizingPolicy = "string",
+#'       PaddingPolicy = "string"
+#'     ),
+#'     Type = "string"
+#'   ),
+#'   Warning = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_preset(
@@ -833,6 +1293,9 @@ elastictranscoder_create_preset <- function(Name, Description = NULL, Container,
 #'
 #' @param Id &#91;required&#93; The identifier of the pipeline that you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_pipeline(
@@ -875,6 +1338,9 @@ elastictranscoder_delete_pipeline <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The identifier of the preset for which you want to get detailed
 #' information.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -926,6 +1392,340 @@ elastictranscoder_delete_preset <- function(Id) {
 #' `pageToken` in subsequent `GET` requests to get each successive page of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       PipelineId = "string",
+#'       Input = list(
+#'         Key = "string",
+#'         FrameRate = "string",
+#'         Resolution = "string",
+#'         AspectRatio = "string",
+#'         Interlaced = "string",
+#'         Container = "string",
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         TimeSpan = list(
+#'           StartTime = "string",
+#'           Duration = "string"
+#'         ),
+#'         InputCaptions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DetectedProperties = list(
+#'           Width = 123,
+#'           Height = 123,
+#'           FrameRate = "string",
+#'           FileSize = 123,
+#'           DurationMillis = 123
+#'         )
+#'       ),
+#'       Inputs = list(
+#'         list(
+#'           Key = "string",
+#'           FrameRate = "string",
+#'           Resolution = "string",
+#'           AspectRatio = "string",
+#'           Interlaced = "string",
+#'           Container = "string",
+#'           Encryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           ),
+#'           TimeSpan = list(
+#'             StartTime = "string",
+#'             Duration = "string"
+#'           ),
+#'           InputCaptions = list(
+#'             MergePolicy = "string",
+#'             CaptionSources = list(
+#'               list(
+#'                 Key = "string",
+#'                 Language = "string",
+#'                 TimeOffset = "string",
+#'                 Label = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           DetectedProperties = list(
+#'             Width = 123,
+#'             Height = 123,
+#'             FrameRate = "string",
+#'             FileSize = 123,
+#'             DurationMillis = 123
+#'           )
+#'         )
+#'       ),
+#'       Output = list(
+#'         Id = "string",
+#'         Key = "string",
+#'         ThumbnailPattern = "string",
+#'         ThumbnailEncryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         Rotate = "string",
+#'         PresetId = "string",
+#'         SegmentDuration = "string",
+#'         Status = "string",
+#'         StatusDetail = "string",
+#'         Duration = 123,
+#'         Width = 123,
+#'         Height = 123,
+#'         FrameRate = "string",
+#'         FileSize = 123,
+#'         DurationMillis = 123,
+#'         Watermarks = list(
+#'           list(
+#'             PresetWatermarkId = "string",
+#'             InputKey = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         ),
+#'         AlbumArt = list(
+#'           MergePolicy = "string",
+#'           Artwork = list(
+#'             list(
+#'               InputKey = "string",
+#'               MaxWidth = "string",
+#'               MaxHeight = "string",
+#'               SizingPolicy = "string",
+#'               PaddingPolicy = "string",
+#'               AlbumArtFormat = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Composition = list(
+#'           list(
+#'             TimeSpan = list(
+#'               StartTime = "string",
+#'               Duration = "string"
+#'             )
+#'           )
+#'         ),
+#'         Captions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           ),
+#'           CaptionFormats = list(
+#'             list(
+#'               Format = "string",
+#'               Pattern = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         AppliedColorSpaceConversion = "string"
+#'       ),
+#'       Outputs = list(
+#'         list(
+#'           Id = "string",
+#'           Key = "string",
+#'           ThumbnailPattern = "string",
+#'           ThumbnailEncryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           ),
+#'           Rotate = "string",
+#'           PresetId = "string",
+#'           SegmentDuration = "string",
+#'           Status = "string",
+#'           StatusDetail = "string",
+#'           Duration = 123,
+#'           Width = 123,
+#'           Height = 123,
+#'           FrameRate = "string",
+#'           FileSize = 123,
+#'           DurationMillis = 123,
+#'           Watermarks = list(
+#'             list(
+#'               PresetWatermarkId = "string",
+#'               InputKey = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           ),
+#'           AlbumArt = list(
+#'             MergePolicy = "string",
+#'             Artwork = list(
+#'               list(
+#'                 InputKey = "string",
+#'                 MaxWidth = "string",
+#'                 MaxHeight = "string",
+#'                 SizingPolicy = "string",
+#'                 PaddingPolicy = "string",
+#'                 AlbumArtFormat = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Composition = list(
+#'             list(
+#'               TimeSpan = list(
+#'                 StartTime = "string",
+#'                 Duration = "string"
+#'               )
+#'             )
+#'           ),
+#'           Captions = list(
+#'             MergePolicy = "string",
+#'             CaptionSources = list(
+#'               list(
+#'                 Key = "string",
+#'                 Language = "string",
+#'                 TimeOffset = "string",
+#'                 Label = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             ),
+#'             CaptionFormats = list(
+#'               list(
+#'                 Format = "string",
+#'                 Pattern = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Encryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           ),
+#'           AppliedColorSpaceConversion = "string"
+#'         )
+#'       ),
+#'       OutputKeyPrefix = "string",
+#'       Playlists = list(
+#'         list(
+#'           Name = "string",
+#'           Format = "string",
+#'           OutputKeys = list(
+#'             "string"
+#'           ),
+#'           HlsContentProtection = list(
+#'             Method = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string",
+#'             LicenseAcquisitionUrl = "string",
+#'             KeyStoragePolicy = "string"
+#'           ),
+#'           PlayReadyDrm = list(
+#'             Format = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             KeyId = "string",
+#'             InitializationVector = "string",
+#'             LicenseAcquisitionUrl = "string"
+#'           ),
+#'           Status = "string",
+#'           StatusDetail = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       UserMetadata = list(
+#'         "string"
+#'       ),
+#'       Timing = list(
+#'         SubmitTimeMillis = 123,
+#'         StartTimeMillis = 123,
+#'         FinishTimeMillis = 123
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_jobs_by_pipeline(
@@ -976,6 +1776,340 @@ elastictranscoder_list_jobs_by_pipeline <- function(PipelineId, Ascending = NULL
 #' `pageToken` in subsequent `GET` requests to get each successive page of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       PipelineId = "string",
+#'       Input = list(
+#'         Key = "string",
+#'         FrameRate = "string",
+#'         Resolution = "string",
+#'         AspectRatio = "string",
+#'         Interlaced = "string",
+#'         Container = "string",
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         TimeSpan = list(
+#'           StartTime = "string",
+#'           Duration = "string"
+#'         ),
+#'         InputCaptions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DetectedProperties = list(
+#'           Width = 123,
+#'           Height = 123,
+#'           FrameRate = "string",
+#'           FileSize = 123,
+#'           DurationMillis = 123
+#'         )
+#'       ),
+#'       Inputs = list(
+#'         list(
+#'           Key = "string",
+#'           FrameRate = "string",
+#'           Resolution = "string",
+#'           AspectRatio = "string",
+#'           Interlaced = "string",
+#'           Container = "string",
+#'           Encryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           ),
+#'           TimeSpan = list(
+#'             StartTime = "string",
+#'             Duration = "string"
+#'           ),
+#'           InputCaptions = list(
+#'             MergePolicy = "string",
+#'             CaptionSources = list(
+#'               list(
+#'                 Key = "string",
+#'                 Language = "string",
+#'                 TimeOffset = "string",
+#'                 Label = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           DetectedProperties = list(
+#'             Width = 123,
+#'             Height = 123,
+#'             FrameRate = "string",
+#'             FileSize = 123,
+#'             DurationMillis = 123
+#'           )
+#'         )
+#'       ),
+#'       Output = list(
+#'         Id = "string",
+#'         Key = "string",
+#'         ThumbnailPattern = "string",
+#'         ThumbnailEncryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         Rotate = "string",
+#'         PresetId = "string",
+#'         SegmentDuration = "string",
+#'         Status = "string",
+#'         StatusDetail = "string",
+#'         Duration = 123,
+#'         Width = 123,
+#'         Height = 123,
+#'         FrameRate = "string",
+#'         FileSize = 123,
+#'         DurationMillis = 123,
+#'         Watermarks = list(
+#'           list(
+#'             PresetWatermarkId = "string",
+#'             InputKey = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         ),
+#'         AlbumArt = list(
+#'           MergePolicy = "string",
+#'           Artwork = list(
+#'             list(
+#'               InputKey = "string",
+#'               MaxWidth = "string",
+#'               MaxHeight = "string",
+#'               SizingPolicy = "string",
+#'               PaddingPolicy = "string",
+#'               AlbumArtFormat = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Composition = list(
+#'           list(
+#'             TimeSpan = list(
+#'               StartTime = "string",
+#'               Duration = "string"
+#'             )
+#'           )
+#'         ),
+#'         Captions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           ),
+#'           CaptionFormats = list(
+#'             list(
+#'               Format = "string",
+#'               Pattern = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         AppliedColorSpaceConversion = "string"
+#'       ),
+#'       Outputs = list(
+#'         list(
+#'           Id = "string",
+#'           Key = "string",
+#'           ThumbnailPattern = "string",
+#'           ThumbnailEncryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           ),
+#'           Rotate = "string",
+#'           PresetId = "string",
+#'           SegmentDuration = "string",
+#'           Status = "string",
+#'           StatusDetail = "string",
+#'           Duration = 123,
+#'           Width = 123,
+#'           Height = 123,
+#'           FrameRate = "string",
+#'           FileSize = 123,
+#'           DurationMillis = 123,
+#'           Watermarks = list(
+#'             list(
+#'               PresetWatermarkId = "string",
+#'               InputKey = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           ),
+#'           AlbumArt = list(
+#'             MergePolicy = "string",
+#'             Artwork = list(
+#'               list(
+#'                 InputKey = "string",
+#'                 MaxWidth = "string",
+#'                 MaxHeight = "string",
+#'                 SizingPolicy = "string",
+#'                 PaddingPolicy = "string",
+#'                 AlbumArtFormat = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Composition = list(
+#'             list(
+#'               TimeSpan = list(
+#'                 StartTime = "string",
+#'                 Duration = "string"
+#'               )
+#'             )
+#'           ),
+#'           Captions = list(
+#'             MergePolicy = "string",
+#'             CaptionSources = list(
+#'               list(
+#'                 Key = "string",
+#'                 Language = "string",
+#'                 TimeOffset = "string",
+#'                 Label = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             ),
+#'             CaptionFormats = list(
+#'               list(
+#'                 Format = "string",
+#'                 Pattern = "string",
+#'                 Encryption = list(
+#'                   Mode = "string",
+#'                   Key = "string",
+#'                   KeyMd5 = "string",
+#'                   InitializationVector = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Encryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           ),
+#'           AppliedColorSpaceConversion = "string"
+#'         )
+#'       ),
+#'       OutputKeyPrefix = "string",
+#'       Playlists = list(
+#'         list(
+#'           Name = "string",
+#'           Format = "string",
+#'           OutputKeys = list(
+#'             "string"
+#'           ),
+#'           HlsContentProtection = list(
+#'             Method = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string",
+#'             LicenseAcquisitionUrl = "string",
+#'             KeyStoragePolicy = "string"
+#'           ),
+#'           PlayReadyDrm = list(
+#'             Format = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             KeyId = "string",
+#'             InitializationVector = "string",
+#'             LicenseAcquisitionUrl = "string"
+#'           ),
+#'           Status = "string",
+#'           StatusDetail = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       UserMetadata = list(
+#'         "string"
+#'       ),
+#'       Timing = list(
+#'         SubmitTimeMillis = 123,
+#'         StartTimeMillis = 123,
+#'         FinishTimeMillis = 123
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_jobs_by_status(
@@ -1021,6 +2155,58 @@ elastictranscoder_list_jobs_by_status <- function(Status, Ascending = NULL, Page
 #' @param PageToken When Elastic Transcoder returns more than one page of results, use
 #' `pageToken` in subsequent `GET` requests to get each successive page of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Pipelines = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Status = "string",
+#'       InputBucket = "string",
+#'       OutputBucket = "string",
+#'       Role = "string",
+#'       AwsKmsKeyArn = "string",
+#'       Notifications = list(
+#'         Progressing = "string",
+#'         Completed = "string",
+#'         Warning = "string",
+#'         Error = "string"
+#'       ),
+#'       ContentConfig = list(
+#'         Bucket = "string",
+#'         StorageClass = "string",
+#'         Permissions = list(
+#'           list(
+#'             GranteeType = "string",
+#'             Grantee = "string",
+#'             Access = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ThumbnailConfig = list(
+#'         Bucket = "string",
+#'         StorageClass = "string",
+#'         Permissions = list(
+#'           list(
+#'             GranteeType = "string",
+#'             Grantee = "string",
+#'             Access = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1069,6 +2255,79 @@ elastictranscoder_list_pipelines <- function(Ascending = NULL, PageToken = NULL)
 #' `pageToken` in subsequent `GET` requests to get each successive page of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Presets = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Container = "string",
+#'       Audio = list(
+#'         Codec = "string",
+#'         SampleRate = "string",
+#'         BitRate = "string",
+#'         Channels = "string",
+#'         AudioPackingMode = "string",
+#'         CodecOptions = list(
+#'           Profile = "string",
+#'           BitDepth = "string",
+#'           BitOrder = "string",
+#'           Signed = "string"
+#'         )
+#'       ),
+#'       Video = list(
+#'         Codec = "string",
+#'         CodecOptions = list(
+#'           "string"
+#'         ),
+#'         KeyframesMaxDist = "string",
+#'         FixedGOP = "string",
+#'         BitRate = "string",
+#'         FrameRate = "string",
+#'         MaxFrameRate = "string",
+#'         Resolution = "string",
+#'         AspectRatio = "string",
+#'         MaxWidth = "string",
+#'         MaxHeight = "string",
+#'         DisplayAspectRatio = "string",
+#'         SizingPolicy = "string",
+#'         PaddingPolicy = "string",
+#'         Watermarks = list(
+#'           list(
+#'             Id = "string",
+#'             MaxWidth = "string",
+#'             MaxHeight = "string",
+#'             SizingPolicy = "string",
+#'             HorizontalAlign = "string",
+#'             HorizontalOffset = "string",
+#'             VerticalAlign = "string",
+#'             VerticalOffset = "string",
+#'             Opacity = "string",
+#'             Target = "string"
+#'           )
+#'         )
+#'       ),
+#'       Thumbnails = list(
+#'         Format = "string",
+#'         Interval = "string",
+#'         Resolution = "string",
+#'         AspectRatio = "string",
+#'         MaxWidth = "string",
+#'         MaxHeight = "string",
+#'         SizingPolicy = "string",
+#'         PaddingPolicy = "string"
+#'       ),
+#'       Type = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_presets(
@@ -1108,6 +2367,337 @@ elastictranscoder_list_presets <- function(Ascending = NULL, PageToken = NULL) {
 #' @param Id &#91;required&#93; The identifier of the job for which you want to get detailed
 #' information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Job = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     PipelineId = "string",
+#'     Input = list(
+#'       Key = "string",
+#'       FrameRate = "string",
+#'       Resolution = "string",
+#'       AspectRatio = "string",
+#'       Interlaced = "string",
+#'       Container = "string",
+#'       Encryption = list(
+#'         Mode = "string",
+#'         Key = "string",
+#'         KeyMd5 = "string",
+#'         InitializationVector = "string"
+#'       ),
+#'       TimeSpan = list(
+#'         StartTime = "string",
+#'         Duration = "string"
+#'       ),
+#'       InputCaptions = list(
+#'         MergePolicy = "string",
+#'         CaptionSources = list(
+#'           list(
+#'             Key = "string",
+#'             Language = "string",
+#'             TimeOffset = "string",
+#'             Label = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DetectedProperties = list(
+#'         Width = 123,
+#'         Height = 123,
+#'         FrameRate = "string",
+#'         FileSize = 123,
+#'         DurationMillis = 123
+#'       )
+#'     ),
+#'     Inputs = list(
+#'       list(
+#'         Key = "string",
+#'         FrameRate = "string",
+#'         Resolution = "string",
+#'         AspectRatio = "string",
+#'         Interlaced = "string",
+#'         Container = "string",
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         TimeSpan = list(
+#'           StartTime = "string",
+#'           Duration = "string"
+#'         ),
+#'         InputCaptions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DetectedProperties = list(
+#'           Width = 123,
+#'           Height = 123,
+#'           FrameRate = "string",
+#'           FileSize = 123,
+#'           DurationMillis = 123
+#'         )
+#'       )
+#'     ),
+#'     Output = list(
+#'       Id = "string",
+#'       Key = "string",
+#'       ThumbnailPattern = "string",
+#'       ThumbnailEncryption = list(
+#'         Mode = "string",
+#'         Key = "string",
+#'         KeyMd5 = "string",
+#'         InitializationVector = "string"
+#'       ),
+#'       Rotate = "string",
+#'       PresetId = "string",
+#'       SegmentDuration = "string",
+#'       Status = "string",
+#'       StatusDetail = "string",
+#'       Duration = 123,
+#'       Width = 123,
+#'       Height = 123,
+#'       FrameRate = "string",
+#'       FileSize = 123,
+#'       DurationMillis = 123,
+#'       Watermarks = list(
+#'         list(
+#'           PresetWatermarkId = "string",
+#'           InputKey = "string",
+#'           Encryption = list(
+#'             Mode = "string",
+#'             Key = "string",
+#'             KeyMd5 = "string",
+#'             InitializationVector = "string"
+#'           )
+#'         )
+#'       ),
+#'       AlbumArt = list(
+#'         MergePolicy = "string",
+#'         Artwork = list(
+#'           list(
+#'             InputKey = "string",
+#'             MaxWidth = "string",
+#'             MaxHeight = "string",
+#'             SizingPolicy = "string",
+#'             PaddingPolicy = "string",
+#'             AlbumArtFormat = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Composition = list(
+#'         list(
+#'           TimeSpan = list(
+#'             StartTime = "string",
+#'             Duration = "string"
+#'           )
+#'         )
+#'       ),
+#'       Captions = list(
+#'         MergePolicy = "string",
+#'         CaptionSources = list(
+#'           list(
+#'             Key = "string",
+#'             Language = "string",
+#'             TimeOffset = "string",
+#'             Label = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         ),
+#'         CaptionFormats = list(
+#'           list(
+#'             Format = "string",
+#'             Pattern = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Encryption = list(
+#'         Mode = "string",
+#'         Key = "string",
+#'         KeyMd5 = "string",
+#'         InitializationVector = "string"
+#'       ),
+#'       AppliedColorSpaceConversion = "string"
+#'     ),
+#'     Outputs = list(
+#'       list(
+#'         Id = "string",
+#'         Key = "string",
+#'         ThumbnailPattern = "string",
+#'         ThumbnailEncryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         Rotate = "string",
+#'         PresetId = "string",
+#'         SegmentDuration = "string",
+#'         Status = "string",
+#'         StatusDetail = "string",
+#'         Duration = 123,
+#'         Width = 123,
+#'         Height = 123,
+#'         FrameRate = "string",
+#'         FileSize = 123,
+#'         DurationMillis = 123,
+#'         Watermarks = list(
+#'           list(
+#'             PresetWatermarkId = "string",
+#'             InputKey = "string",
+#'             Encryption = list(
+#'               Mode = "string",
+#'               Key = "string",
+#'               KeyMd5 = "string",
+#'               InitializationVector = "string"
+#'             )
+#'           )
+#'         ),
+#'         AlbumArt = list(
+#'           MergePolicy = "string",
+#'           Artwork = list(
+#'             list(
+#'               InputKey = "string",
+#'               MaxWidth = "string",
+#'               MaxHeight = "string",
+#'               SizingPolicy = "string",
+#'               PaddingPolicy = "string",
+#'               AlbumArtFormat = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Composition = list(
+#'           list(
+#'             TimeSpan = list(
+#'               StartTime = "string",
+#'               Duration = "string"
+#'             )
+#'           )
+#'         ),
+#'         Captions = list(
+#'           MergePolicy = "string",
+#'           CaptionSources = list(
+#'             list(
+#'               Key = "string",
+#'               Language = "string",
+#'               TimeOffset = "string",
+#'               Label = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           ),
+#'           CaptionFormats = list(
+#'             list(
+#'               Format = "string",
+#'               Pattern = "string",
+#'               Encryption = list(
+#'                 Mode = "string",
+#'                 Key = "string",
+#'                 KeyMd5 = "string",
+#'                 InitializationVector = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Encryption = list(
+#'           Mode = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string"
+#'         ),
+#'         AppliedColorSpaceConversion = "string"
+#'       )
+#'     ),
+#'     OutputKeyPrefix = "string",
+#'     Playlists = list(
+#'       list(
+#'         Name = "string",
+#'         Format = "string",
+#'         OutputKeys = list(
+#'           "string"
+#'         ),
+#'         HlsContentProtection = list(
+#'           Method = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           InitializationVector = "string",
+#'           LicenseAcquisitionUrl = "string",
+#'           KeyStoragePolicy = "string"
+#'         ),
+#'         PlayReadyDrm = list(
+#'           Format = "string",
+#'           Key = "string",
+#'           KeyMd5 = "string",
+#'           KeyId = "string",
+#'           InitializationVector = "string",
+#'           LicenseAcquisitionUrl = "string"
+#'         ),
+#'         Status = "string",
+#'         StatusDetail = "string"
+#'       )
+#'     ),
+#'     Status = "string",
+#'     UserMetadata = list(
+#'       "string"
+#'     ),
+#'     Timing = list(
+#'       SubmitTimeMillis = 123,
+#'       StartTimeMillis = 123,
+#'       FinishTimeMillis = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$read_job(
@@ -1144,6 +2734,61 @@ elastictranscoder_read_job <- function(Id) {
 #' elastictranscoder_read_pipeline(Id)
 #'
 #' @param Id &#91;required&#93; The identifier of the pipeline to read.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Pipeline = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     InputBucket = "string",
+#'     OutputBucket = "string",
+#'     Role = "string",
+#'     AwsKmsKeyArn = "string",
+#'     Notifications = list(
+#'       Progressing = "string",
+#'       Completed = "string",
+#'       Warning = "string",
+#'       Error = "string"
+#'     ),
+#'     ContentConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ThumbnailConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1182,6 +2827,76 @@ elastictranscoder_read_pipeline <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The identifier of the preset for which you want to get detailed
 #' information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Preset = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Container = "string",
+#'     Audio = list(
+#'       Codec = "string",
+#'       SampleRate = "string",
+#'       BitRate = "string",
+#'       Channels = "string",
+#'       AudioPackingMode = "string",
+#'       CodecOptions = list(
+#'         Profile = "string",
+#'         BitDepth = "string",
+#'         BitOrder = "string",
+#'         Signed = "string"
+#'       )
+#'     ),
+#'     Video = list(
+#'       Codec = "string",
+#'       CodecOptions = list(
+#'         "string"
+#'       ),
+#'       KeyframesMaxDist = "string",
+#'       FixedGOP = "string",
+#'       BitRate = "string",
+#'       FrameRate = "string",
+#'       MaxFrameRate = "string",
+#'       Resolution = "string",
+#'       AspectRatio = "string",
+#'       MaxWidth = "string",
+#'       MaxHeight = "string",
+#'       DisplayAspectRatio = "string",
+#'       SizingPolicy = "string",
+#'       PaddingPolicy = "string",
+#'       Watermarks = list(
+#'         list(
+#'           Id = "string",
+#'           MaxWidth = "string",
+#'           MaxHeight = "string",
+#'           SizingPolicy = "string",
+#'           HorizontalAlign = "string",
+#'           HorizontalOffset = "string",
+#'           VerticalAlign = "string",
+#'           VerticalOffset = "string",
+#'           Opacity = "string",
+#'           Target = "string"
+#'         )
+#'       )
+#'     ),
+#'     Thumbnails = list(
+#'       Format = "string",
+#'       Interval = "string",
+#'       Resolution = "string",
+#'       AspectRatio = "string",
+#'       MaxWidth = "string",
+#'       MaxHeight = "string",
+#'       SizingPolicy = "string",
+#'       PaddingPolicy = "string"
+#'     ),
+#'     Type = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1233,6 +2948,17 @@ elastictranscoder_read_preset <- function(Id) {
 #' files to. The action attempts to read from this bucket.
 #' @param Topics &#91;required&#93; The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
 #' topics that you want the action to send a test notification to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Success = "string",
+#'   Messages = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1457,6 +3183,61 @@ elastictranscoder_test_role <- function(Role, InputBucket, OutputBucket, Topics)
 #'     `ReducedRedundancy`, that you want Elastic Transcoder to assign to
 #'     the thumbnails that it stores in your Amazon S3 bucket.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Pipeline = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     InputBucket = "string",
+#'     OutputBucket = "string",
+#'     Role = "string",
+#'     AwsKmsKeyArn = "string",
+#'     Notifications = list(
+#'       Progressing = "string",
+#'       Completed = "string",
+#'       Warning = "string",
+#'       Error = "string"
+#'     ),
+#'     ContentConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ThumbnailConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_pipeline(
@@ -1559,6 +3340,55 @@ elastictranscoder_update_pipeline <- function(Id, Name = NULL, InputBucket = NUL
 #'     notify when Elastic Transcoder encounters an error condition. This
 #'     is the ARN that Amazon SNS returned when you created the topic.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Pipeline = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     InputBucket = "string",
+#'     OutputBucket = "string",
+#'     Role = "string",
+#'     AwsKmsKeyArn = "string",
+#'     Notifications = list(
+#'       Progressing = "string",
+#'       Completed = "string",
+#'       Warning = "string",
+#'       Error = "string"
+#'     ),
+#'     ContentConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ThumbnailConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_pipeline_notifications(
@@ -1615,6 +3445,55 @@ elastictranscoder_update_pipeline_notifications <- function(Id, Notifications) {
 #' -   `Active`: The pipeline is processing jobs.
 #' 
 #' -   `Paused`: The pipeline is not currently processing jobs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Pipeline = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     InputBucket = "string",
+#'     OutputBucket = "string",
+#'     Role = "string",
+#'     AwsKmsKeyArn = "string",
+#'     Notifications = list(
+#'       Progressing = "string",
+#'       Completed = "string",
+#'       Warning = "string",
+#'       Error = "string"
+#'     ),
+#'     ContentConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ThumbnailConfig = list(
+#'       Bucket = "string",
+#'       StorageClass = "string",
+#'       Permissions = list(
+#'         list(
+#'           GranteeType = "string",
+#'           Grantee = "string",
+#'           Access = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

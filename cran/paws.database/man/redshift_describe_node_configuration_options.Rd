@@ -47,6 +47,20 @@ Default: \code{500}
 
 Constraints: minimum 100, maximum 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NodeConfigurationOptionList = list(
+    list(
+      NodeType = "string",
+      NumberOfNodes = 123,
+      EstimatedDiskUtilizationPercent = 123.0,
+      Mode = "standard"|"high-performance"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns properties of possible node configurations such as node type,
 number of nodes, and disk usage for the specified action type.

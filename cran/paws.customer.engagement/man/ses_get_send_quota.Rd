@@ -6,6 +6,14 @@
 \usage{
 ses_get_send_quota()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Max24HourSend = 123.0,
+  MaxSendRate = 123.0,
+  SentLast24Hours = 123.0
+)
+}
+}
 \description{
 Provides the sending limits for the Amazon SES account.
 

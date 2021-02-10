@@ -9,6 +9,76 @@ iot_describe_job(jobId)
 \arguments{
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  documentSource = "string",
+  job = list(
+    jobArn = "string",
+    jobId = "string",
+    targetSelection = "CONTINUOUS"|"SNAPSHOT",
+    status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
+    forceCanceled = TRUE|FALSE,
+    reasonCode = "string",
+    comment = "string",
+    targets = list(
+      "string"
+    ),
+    description = "string",
+    presignedUrlConfig = list(
+      roleArn = "string",
+      expiresInSec = 123
+    ),
+    jobExecutionsRolloutConfig = list(
+      maximumPerMinute = 123,
+      exponentialRate = list(
+        baseRatePerMinute = 123,
+        incrementFactor = 123.0,
+        rateIncreaseCriteria = list(
+          numberOfNotifiedThings = 123,
+          numberOfSucceededThings = 123
+        )
+      )
+    ),
+    abortConfig = list(
+      criteriaList = list(
+        list(
+          failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+          action = "CANCEL",
+          thresholdPercentage = 123.0,
+          minNumberOfExecutedThings = 123
+        )
+      )
+    ),
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    completedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    jobProcessDetails = list(
+      processingTargets = list(
+        "string"
+      ),
+      numberOfCanceledThings = 123,
+      numberOfSucceededThings = 123,
+      numberOfFailedThings = 123,
+      numberOfRejectedThings = 123,
+      numberOfQueuedThings = 123,
+      numberOfInProgressThings = 123,
+      numberOfRemovedThings = 123,
+      numberOfTimedOutThings = 123
+    ),
+    timeoutConfig = list(
+      inProgressTimeoutInMinutes = 123
+    ),
+    namespaceId = "string"
+  )
+)
+}
+}
 \description{
 Describes a job.
 }

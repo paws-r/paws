@@ -22,6 +22,20 @@ page. The default is 1000. You cannot specify a number greater than
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TotalDiscoveredResources = 123,
+  GroupByKey = "string",
+  GroupedResourceCounts = list(
+    list(
+      GroupName = "string",
+      ResourceCount = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the resource counts across accounts and regions that are present
 in your AWS Config aggregator. You can request the resource counts by
@@ -29,7 +43,7 @@ providing filters and GroupByKey.
 
 For example, if the input contains accountID 12345678910 and region
 us-east-1 in filters, the API returns the count of resources in account
-ID 12345678910 and region us-east-1. If the input contains ACCOUNT\\_ID
+ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
 as a GroupByKey, the API returns resource counts for all source accounts
 that are present in your aggregator.
 }

@@ -13,6 +13,27 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EventsRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventsResponse = list(
+    Results = list(
+      list(
+        EndpointItemResponse = list(
+          Message = "string",
+          StatusCode = 123
+        ),
+        EventsItemResponse = list(
+          list(
+            Message = "string",
+            StatusCode = 123
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new event to record for endpoints, or creates or updates
 endpoint data that existing events are associated with.

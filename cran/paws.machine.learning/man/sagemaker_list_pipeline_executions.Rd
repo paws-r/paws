@@ -27,6 +27,23 @@ set of pipeline executions, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of pipeline executions to return in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineExecutionSummaries = list(
+    list(
+      PipelineExecutionArn = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      PipelineExecutionStatus = "Executing"|"Stopping"|"Stopped"|"Failed"|"Succeeded",
+      PipelineExecutionDescription = "string",
+      PipelineExecutionDisplayName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the pipeline executions.
 }

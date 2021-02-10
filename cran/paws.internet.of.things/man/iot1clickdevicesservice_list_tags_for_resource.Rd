@@ -9,6 +9,14 @@ iot1clickdevicesservice_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists the tags associated with the specified resource ARN.
 }

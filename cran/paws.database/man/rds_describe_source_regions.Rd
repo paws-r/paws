@@ -32,6 +32,20 @@ the marker, up to the value specified by \code{MaxRecords}.}
 
 \item{Filters}{This parameter isn't currently supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  SourceRegions = list(
+    list(
+      RegionName = "string",
+      Endpoint = "string",
+      Status = "string",
+      SupportsDBInstanceAutomatedBackupsReplication = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the source AWS Regions where the current AWS Region
 can create a read replica, copy a DB snapshot from, or replicate

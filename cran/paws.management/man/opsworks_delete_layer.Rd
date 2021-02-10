@@ -9,6 +9,9 @@ opsworks_delete_layer(LayerId)
 \arguments{
 \item{LayerId}{[required] The layer ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified layer. You must first stop and then delete all
 associated instances or unassign registered instances. For more

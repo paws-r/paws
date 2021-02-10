@@ -9,6 +9,14 @@ ses_verify_domain_dkim(Domain)
 \arguments{
 \item{Domain}{[required] The name of the domain to be verified for Easy DKIM signing.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DkimTokens = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a set of DKIM tokens for a domain identity.
 
@@ -32,7 +40,7 @@ is authenticated using DKIM.
 To create the CNAME records for DKIM authentication, use the following
 values:
 \itemize{
-\item \strong{Name}: \emph{token}.\\_domainkey.\emph{example.com}
+\item \strong{Name}: \emph{token}._domainkey.\emph{example.com}
 \item \strong{Type}: CNAME
 \item \strong{Value}: \emph{token}.dkim.amazonses.com
 }

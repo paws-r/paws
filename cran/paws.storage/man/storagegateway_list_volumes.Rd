@@ -16,6 +16,24 @@ Volumes request.}
 \item{Limit}{Specifies that the list of volumes returned be limited to the specified
 number of items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  Marker = "string",
+  VolumeInfos = list(
+    list(
+      VolumeARN = "string",
+      VolumeId = "string",
+      GatewayARN = "string",
+      GatewayId = "string",
+      VolumeType = "string",
+      VolumeSizeInBytes = 123,
+      VolumeAttachmentStatus = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the iSCSI stored volumes of a gateway. Results are sorted by
 volume ARN. The response includes only the volume ARNs. If you want

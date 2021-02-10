@@ -24,8 +24,8 @@ slash (/).
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{PolicyDocument}{[required] The JSON policy document that you want to use as the content for the new
@@ -41,11 +41,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{Description}{A friendly description of the policy.
@@ -55,6 +55,28 @@ policy. For example, "Grants access to production DynamoDB tables."
 
 The policy description is immutable. After a value is assigned, it
 cannot be changed.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    PolicyName = "string",
+    PolicyId = "string",
+    Arn = "string",
+    Path = "string",
+    DefaultVersionId = "string",
+    AttachmentCount = 123,
+    PermissionsBoundaryUsageCount = 123,
+    IsAttachable = TRUE|FALSE,
+    Description = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdateDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new managed policy for your AWS account.

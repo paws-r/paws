@@ -9,6 +9,9 @@ iot_delete_role_alias(roleAlias)
 \arguments{
 \item{roleAlias}{[required] The role alias to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a role alias
 }

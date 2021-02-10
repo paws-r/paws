@@ -15,6 +15,9 @@ activity.}
 Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
 }
+\value{
+An empty list.
+}
 \description{
 Add a tag to a Step Functions resource.
 

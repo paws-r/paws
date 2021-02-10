@@ -12,6 +12,9 @@ tags.}
 
 \item{TagsToRemove}{[required] Tags to remove from this resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from a resource.
 }

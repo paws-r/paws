@@ -9,6 +9,23 @@ iot_describe_dimension(name)
 \arguments{
 \item{name}{[required] The unique identifier for the dimension.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  arn = "string",
+  type = "TOPIC_FILTER",
+  stringValues = list(
+    "string"
+  ),
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Provides details about a dimension that is defined in your AWS account.
 }

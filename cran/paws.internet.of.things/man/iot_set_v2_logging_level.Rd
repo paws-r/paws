@@ -11,6 +11,9 @@ iot_set_v2_logging_level(logTarget, logLevel)
 
 \item{logLevel}{[required] The log level.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the logging level.
 }

@@ -25,6 +25,9 @@ function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{A version number or alias name.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the configuration for asynchronous invocation for a function,
 version, or alias.

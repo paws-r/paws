@@ -11,6 +11,41 @@ apigatewayv2_get_integration(ApiId, IntegrationId)
 
 \item{IntegrationId}{[required] The integration ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiGatewayManaged = TRUE|FALSE,
+  ConnectionId = "string",
+  ConnectionType = "INTERNET"|"VPC_LINK",
+  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  CredentialsArn = "string",
+  Description = "string",
+  IntegrationId = "string",
+  IntegrationMethod = "string",
+  IntegrationResponseSelectionExpression = "string",
+  IntegrationSubtype = "string",
+  IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+  IntegrationUri = "string",
+  PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+  PayloadFormatVersion = "string",
+  RequestParameters = list(
+    "string"
+  ),
+  RequestTemplates = list(
+    "string"
+  ),
+  ResponseParameters = list(
+    list(
+      "string"
+    )
+  ),
+  TemplateSelectionExpression = "string",
+  TimeoutInMillis = 123,
+  TlsConfig = list(
+    ServerNameToVerify = "string"
+  )
+)
+}
+}
 \description{
 Gets an Integration.
 }

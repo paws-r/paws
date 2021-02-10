@@ -9,6 +9,31 @@ chime_describe_channel(ChannelArn)
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Channel = list(
+    Name = "string",
+    ChannelArn = "string",
+    Mode = "UNRESTRICTED"|"RESTRICTED",
+    Privacy = "PUBLIC"|"PRIVATE",
+    Metadata = "string",
+    CreatedBy = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastMessageTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns the full details of a channel in an Amazon Chime app instance.
 }

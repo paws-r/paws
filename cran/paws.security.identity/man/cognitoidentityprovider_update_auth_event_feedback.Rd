@@ -19,6 +19,9 @@ cognitoidentityprovider_update_auth_event_feedback(UserPoolId, Username,
 
 \item{FeedbackValue}{[required] The authentication event feedback value.}
 }
+\value{
+An empty list.
+}
 \description{
 Provides the feedback for an authentication event whether it was from a
 valid user or not. This feedback is used for improving the risk

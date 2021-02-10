@@ -24,6 +24,20 @@ insights notifications for the group. Notifications can only be
 enabled on a group with InsightsEnabled set to true.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupName = "string",
+    GroupARN = "string",
+    FilterExpression = "string",
+    InsightsConfiguration = list(
+      InsightsEnabled = TRUE|FALSE,
+      NotificationsEnabled = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Updates a group resource.
 }

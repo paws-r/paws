@@ -16,6 +16,19 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserHierarchyGroupSummaryList = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides summary information about the hierarchy groups for the
 specified Amazon Connect instance.

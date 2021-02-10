@@ -7,6 +7,21 @@ Lightsail container services}
 \usage{
 lightsail_get_container_service_powers()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  powers = list(
+    list(
+      powerId = "string",
+      price = 123.0,
+      cpuCount = 123.0,
+      ramSizeInGb = 123.0,
+      name = "string",
+      isActive = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns the list of powers that can be specified for your Amazon
 Lightsail container services.

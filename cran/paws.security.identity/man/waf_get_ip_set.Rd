@@ -11,6 +11,21 @@ waf_get_ip_set(IPSetId)
 by \code{\link[=waf_create_ip_set]{create_ip_set}} and by
 \code{\link[=waf_list_ip_sets]{list_ip_sets}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IPSet = list(
+    IPSetId = "string",
+    Name = "string",
+    IPSetDescriptors = list(
+      list(
+        Type = "IPV4"|"IPV6",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

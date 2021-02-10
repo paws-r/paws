@@ -9,6 +9,9 @@ datapipeline_delete_pipeline(pipelineId)
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a pipeline, its pipeline definition, and its run history. AWS
 Data Pipeline attempts to cancel instances associated with the pipeline

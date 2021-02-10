@@ -9,6 +9,17 @@ storagegateway_describe_working_storage(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  ),
+  WorkingStorageUsedInBytes = 123,
+  WorkingStorageAllocatedInBytes = 123
+)
+}
+}
 \description{
 Returns information about the working storage of a gateway. This
 operation is only supported in the stored volumes gateway type. This

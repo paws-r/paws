@@ -9,7 +9,7 @@ ec2_create_spot_datafeed_subscription(Bucket, DryRun, Prefix)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket in which to store the Spot Instance
-data feed. For more information about bucket names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules}{Rules for bucket naming}
+data feed. For more information about bucket names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules}{Rules for bucket naming}
 in the \emph{Amazon S3 Developer Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -18,6 +18,21 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Prefix}{The prefix for the data feed file names.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SpotDatafeedSubscription = list(
+    Bucket = "string",
+    Fault = list(
+      Code = "string",
+      Message = "string"
+    ),
+    OwnerId = "string",
+    Prefix = "string",
+    State = "Active"|"Inactive"
+  )
+)
+}
 }
 \description{
 Creates a data feed for Spot Instances, enabling you to view Spot

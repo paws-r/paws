@@ -22,6 +22,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Name}{[required] The name of the alias.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.

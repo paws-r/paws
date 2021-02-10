@@ -11,6 +11,9 @@ lambda_untag_resource(Resource, TagKeys)
 
 \item{TagKeys}{[required] A list of tag keys to remove from the function.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}

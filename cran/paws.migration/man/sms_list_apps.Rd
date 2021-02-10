@@ -15,6 +15,47 @@ sms_list_apps(appIds, nextToken, maxResults)
 value is 100. To retrieve the remaining results, make another call with
 the returned \code{NextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  apps = list(
+    list(
+      appId = "string",
+      importedAppId = "string",
+      name = "string",
+      description = "string",
+      status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+      statusMessage = "string",
+      replicationConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+      replicationStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_REPLICATION"|"VALIDATION_IN_PROGRESS"|"REPLICATION_PENDING"|"REPLICATION_IN_PROGRESS"|"REPLICATED"|"PARTIALLY_REPLICATED"|"DELTA_REPLICATION_IN_PROGRESS"|"DELTA_REPLICATED"|"DELTA_REPLICATION_FAILED"|"REPLICATION_FAILED"|"REPLICATION_STOPPING"|"REPLICATION_STOP_FAILED"|"REPLICATION_STOPPED",
+      replicationStatusMessage = "string",
+      latestReplicationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      launchConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+      launchStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_LAUNCH"|"VALIDATION_IN_PROGRESS"|"LAUNCH_PENDING"|"LAUNCH_IN_PROGRESS"|"LAUNCHED"|"PARTIALLY_LAUNCHED"|"DELTA_LAUNCH_IN_PROGRESS"|"DELTA_LAUNCH_FAILED"|"LAUNCH_FAILED"|"TERMINATE_IN_PROGRESS"|"TERMINATE_FAILED"|"TERMINATED",
+      launchStatusMessage = "string",
+      launchDetails = list(
+        latestLaunchTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        stackName = "string",
+        stackId = "string"
+      ),
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastModified = as.POSIXct(
+        "2015-01-01"
+      ),
+      roleName = "string",
+      totalServerGroups = 123,
+      totalServers = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves summaries for all applications.
 }

@@ -75,6 +75,12 @@ that contains the \code{MLModel} recipe. You must specify either the recipe
 or its URI. If you don't specify a recipe or its URI, Amazon ML creates
 a default.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MLModelId = "string"
+)
+}
+}
 \description{
 Creates a new \code{MLModel} using the \code{DataSource} and the recipe as
 information sources.

@@ -14,6 +14,46 @@ list.}
 \item{MaxResults}{[required] The maximum number of results you want the request to return when
 listing the user pools.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserPools = list(
+    list(
+      Id = "string",
+      Name = "string",
+      LambdaConfig = list(
+        PreSignUp = "string",
+        CustomMessage = "string",
+        PostConfirmation = "string",
+        PreAuthentication = "string",
+        PostAuthentication = "string",
+        DefineAuthChallenge = "string",
+        CreateAuthChallenge = "string",
+        VerifyAuthChallengeResponse = "string",
+        PreTokenGeneration = "string",
+        UserMigration = "string",
+        CustomSMSSender = list(
+          LambdaVersion = "V1_0",
+          LambdaArn = "string"
+        ),
+        CustomEmailSender = list(
+          LambdaVersion = "V1_0",
+          LambdaArn = "string"
+        ),
+        KMSKeyID = "string"
+      ),
+      Status = "Enabled"|"Disabled",
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the user pools associated with an AWS account.
 }

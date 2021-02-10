@@ -11,6 +11,35 @@ mediaconnect_grant_flow_entitlements(Entitlements, FlowArn)
 
 \item{FlowArn}{[required] The flow that you want to grant entitlements on.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Entitlements = list(
+    list(
+      DataTransferSubscriberFeePercent = 123,
+      Description = "string",
+      Encryption = list(
+        Algorithm = "aes128"|"aes192"|"aes256",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SecretArn = "string",
+        Url = "string"
+      ),
+      EntitlementArn = "string",
+      EntitlementStatus = "ENABLED"|"DISABLED",
+      Name = "string",
+      Subscribers = list(
+        "string"
+      )
+    )
+  ),
+  FlowArn = "string"
+)
+}
+}
 \description{
 Grants entitlements to an existing flow.
 }

@@ -10,6 +10,9 @@ costandusagereportservice_put_report_definition(ReportDefinition)
 \item{ReportDefinition}{[required] Represents the output of the PutReportDefinition operation. The content
 consists of the detailed metadata and data file information.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new report using the description that you provide.
 }

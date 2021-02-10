@@ -17,6 +17,9 @@ delete.}
 
 \item{Stat}{[required] The statistic associated with the anomaly detection model to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified anomaly detection model from your account.
 }

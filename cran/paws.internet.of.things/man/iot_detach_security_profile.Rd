@@ -13,6 +13,9 @@ iot_detach_security_profile(securityProfileName,
 
 \item{securityProfileTargetArn}{[required] The ARN of the thing group from which the security profile is detached.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates a Device Defender security profile from a thing group or
 from this account.

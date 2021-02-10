@@ -13,6 +13,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KmsKeyId = "string"
+)
+}
+}
 \description{
 Resets the default customer master key (CMK) for EBS encryption for your
 account in this Region to the AWS managed CMK for EBS.

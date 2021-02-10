@@ -11,6 +11,18 @@ devicefarm_get_vpce_configuration(arn)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the VPC endpoint configuration you
 want to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  vpceConfiguration = list(
+    arn = "string",
+    vpceConfigurationName = "string",
+    vpceServiceName = "string",
+    serviceDnsName = "string",
+    vpceConfigurationDescription = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the configuration settings for your Amazon
 Virtual Private Cloud (VPC) endpoint.

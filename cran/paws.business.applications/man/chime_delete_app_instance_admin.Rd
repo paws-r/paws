@@ -11,6 +11,9 @@ chime_delete_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Demotes an \code{AppInstanceAdmin} to an \code{AppInstanceUser}. This action does
 not delete the user.

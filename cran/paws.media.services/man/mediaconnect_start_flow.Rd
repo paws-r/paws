@@ -9,6 +9,13 @@ mediaconnect_start_flow(FlowArn)
 \arguments{
 \item{FlowArn}{[required] The ARN of the flow that you want to start.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
+)
+}
+}
 \description{
 Starts a flow.
 }

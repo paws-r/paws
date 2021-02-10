@@ -17,6 +17,21 @@ will be returned.}
 
 \item{Limit}{The maximum number of items returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LogSubscriptions = list(
+    list(
+      DirectoryId = "string",
+      LogGroupName = "string",
+      SubscriptionCreatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the active log subscriptions for the AWS account.
 }

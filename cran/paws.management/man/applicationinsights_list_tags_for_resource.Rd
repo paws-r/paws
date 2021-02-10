@@ -11,6 +11,17 @@ applicationinsights_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the application that you want to
 retrieve tag information for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a
 specified application. A \emph{tag} is a label that you optionally define and

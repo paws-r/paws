@@ -10,6 +10,9 @@ gamelift_stop_matchmaking(TicketId)
 \arguments{
 \item{TicketId}{[required] A unique identifier for a matchmaking ticket.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels a matchmaking ticket or match backfill ticket that is currently
 being processed. To stop the matchmaking operation, specify the ticket

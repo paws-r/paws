@@ -11,6 +11,19 @@ apigatewayv2_get_deployment(ApiId, DeploymentId)
 
 \item{DeploymentId}{[required] The deployment ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoDeployed = TRUE|FALSE,
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DeploymentId = "string",
+  DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+  DeploymentStatusMessage = "string",
+  Description = "string"
+)
+}
+}
 \description{
 Gets a Deployment.
 }

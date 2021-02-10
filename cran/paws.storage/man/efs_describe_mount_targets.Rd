@@ -33,6 +33,27 @@ to list. It must be included in your request if a \code{FileSystemId} or
 \code{MountTargetId} is not included in your request. Accepts either an
 access point ID or ARN as input.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  MountTargets = list(
+    list(
+      OwnerId = "string",
+      MountTargetId = "string",
+      FileSystemId = "string",
+      SubnetId = "string",
+      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+      IpAddress = "string",
+      NetworkInterfaceId = "string",
+      AvailabilityZoneId = "string",
+      AvailabilityZoneName = "string",
+      VpcId = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Returns the descriptions of all the current mount targets, or a specific
 mount target, for a file system. When requesting all of the current

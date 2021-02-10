@@ -9,6 +9,29 @@ databasemigrationservice_delete_certificate(CertificateArn)
 \arguments{
 \item{CertificateArn}{[required] The Amazon Resource Name (ARN) of the deleted certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = list(
+    CertificateIdentifier = "string",
+    CertificateCreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CertificatePem = "string",
+    CertificateWallet = raw,
+    CertificateArn = "string",
+    CertificateOwner = "string",
+    ValidFromDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ValidToDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    SigningAlgorithm = "string",
+    KeyLength = 123
+  )
+)
+}
+}
 \description{
 Deletes the specified certificate.
 }

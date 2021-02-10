@@ -14,6 +14,12 @@ appsync_get_introspection_schema(apiId, format, includeDirectives)
 \item{includeDirectives}{A flag that specifies whether the schema introspection should contain
 directives.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  schema = raw
+)
+}
+}
 \description{
 Retrieves the introspection schema for a GraphQL API.
 }

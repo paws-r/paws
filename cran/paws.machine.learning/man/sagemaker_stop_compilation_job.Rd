@@ -9,6 +9,9 @@ sagemaker_stop_compilation_job(CompilationJobName)
 \arguments{
 \item{CompilationJobName}{[required] The name of the model compilation job to stop.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a model compilation job.
 

@@ -94,6 +94,36 @@ target cluster snapshot, and otherwise \code{false}. The default is \code{false}
 
 \item{Tags}{The tags to be assigned to the cluster snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshot = list(
+    AvailabilityZones = list(
+      "string"
+    ),
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterIdentifier = "string",
+    SnapshotCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Engine = "string",
+    Status = "string",
+    Port = 123,
+    VpcId = "string",
+    ClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    EngineVersion = "string",
+    SnapshotType = "string",
+    PercentProgress = 123,
+    StorageEncrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    DBClusterSnapshotArn = "string",
+    SourceDBClusterSnapshotArn = "string"
+  )
+)
+}
+}
 \description{
 Copies a snapshot of a cluster.
 

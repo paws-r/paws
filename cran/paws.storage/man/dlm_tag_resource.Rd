@@ -11,6 +11,9 @@ dlm_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] One or more tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds the specified tags to the specified resource.
 }

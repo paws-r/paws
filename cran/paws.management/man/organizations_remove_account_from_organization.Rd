@@ -13,6 +13,9 @@ from the organization.
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
 ID string requires exactly 12 digits.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified account from the organization.
 

@@ -21,6 +21,38 @@ robomaker_update_simulation_application(application, sources,
 
 \item{currentRevisionId}{The revision id for the robot application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  version = "string",
+  sources = list(
+    list(
+      s3Bucket = "string",
+      s3Key = "string",
+      etag = "string",
+      architecture = "X86_64"|"ARM64"|"ARMHF"
+    )
+  ),
+  simulationSoftwareSuite = list(
+    name = "Gazebo"|"RosbagPlay",
+    version = "string"
+  ),
+  robotSoftwareSuite = list(
+    name = "ROS"|"ROS2",
+    version = "Kinetic"|"Melodic"|"Dashing"
+  ),
+  renderingEngine = list(
+    name = "OGRE",
+    version = "string"
+  ),
+  lastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  revisionId = "string"
+)
+}
+}
 \description{
 Updates a simulation application.
 }

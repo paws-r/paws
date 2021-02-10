@@ -12,6 +12,12 @@ trigger.}
 
 \item{triggers}{[required] The JSON block of configuration information for each trigger.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  configurationId = "string"
+)
+}
+}
 \description{
 Replaces all triggers for a repository. Used to create or delete
 triggers.

@@ -12,6 +12,9 @@ ses_set_identity_dkim_enabled(Identity, DkimEnabled)
 \item{DkimEnabled}{[required] Sets whether DKIM signing is enabled for an identity. Set to \code{true} to
 enable DKIM signing for this identity; \code{false} to disable it.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables or disables Easy DKIM signing of email sent from an identity. If
 Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to

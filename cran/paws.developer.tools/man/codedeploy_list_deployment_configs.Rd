@@ -12,6 +12,15 @@ codedeploy_list_deployment_configs(nextToken)
 can be used to return the next set of deployment configurations in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deploymentConfigsList = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the deployment configurations with the IAM user or AWS account.
 }

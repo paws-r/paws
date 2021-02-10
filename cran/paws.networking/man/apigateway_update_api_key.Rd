@@ -12,6 +12,29 @@ apigateway_update_api_key(apiKey, patchOperations)
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  value = "string",
+  name = "string",
+  customerId = "string",
+  description = "string",
+  enabled = TRUE|FALSE,
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  stageKeys = list(
+    "string"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Changes information about an ApiKey resource.
 }

@@ -23,6 +23,63 @@ You can separate SQL statements from each other with a semicolon (;).
 Any valid SQL statement is permitted, including data definition, data
 manipulation, and commit statements.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  sqlStatementResults = list(
+    list(
+      numberOfRecordsUpdated = 123,
+      resultFrame = list(
+        records = list(
+          list(
+            values = list(
+              list(
+                arrayValues = list(
+                  list()
+                ),
+                bigIntValue = 123,
+                bitValue = TRUE|FALSE,
+                blobValue = raw,
+                doubleValue = 123.0,
+                intValue = 123,
+                isNull = TRUE|FALSE,
+                realValue = 123.0,
+                stringValue = "string",
+                structValue = list(
+                  attributes = list(
+                    list()
+                  )
+                )
+              )
+            )
+          )
+        ),
+        resultSetMetadata = list(
+          columnCount = 123,
+          columnMetadata = list(
+            list(
+              arrayBaseColumnType = 123,
+              isAutoIncrement = TRUE|FALSE,
+              isCaseSensitive = TRUE|FALSE,
+              isCurrency = TRUE|FALSE,
+              isSigned = TRUE|FALSE,
+              label = "string",
+              name = "string",
+              nullable = 123,
+              precision = 123,
+              scale = 123,
+              schemaName = "string",
+              tableName = "string",
+              type = 123,
+              typeName = "string"
+            )
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Runs one or more SQL statements.
 

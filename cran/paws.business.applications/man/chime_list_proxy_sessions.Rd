@@ -16,6 +16,45 @@ chime_list_proxy_sessions(VoiceConnectorId, Status, NextToken,
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProxySessions = list(
+    list(
+      VoiceConnectorId = "string",
+      ProxySessionId = "string",
+      Name = "string",
+      Status = "Open"|"InProgress"|"Closed",
+      ExpiryMinutes = 123,
+      Capabilities = list(
+        "Voice"|"SMS"
+      ),
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Participants = list(
+        list(
+          PhoneNumber = "string",
+          ProxyPhoneNumber = "string"
+        )
+      ),
+      NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+      GeoMatchLevel = "Country"|"AreaCode",
+      GeoMatchParams = list(
+        Country = "string",
+        AreaCode = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the proxy sessions for the specified Amazon Chime Voice Connector.
 }

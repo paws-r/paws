@@ -23,6 +23,9 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact(
 \item \code{zh} - Chinese
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the specified self-service action association from the
 specified provisioning artifact.

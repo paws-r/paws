@@ -9,6 +9,9 @@ alexaforbusiness_delete_room(RoomArn)
 \arguments{
 \item{RoomArn}{The ARN of the room to delete. Required.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a room by the room ARN.
 }

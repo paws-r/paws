@@ -11,6 +11,18 @@ route53_get_reusable_delegation_set(Id)
 \item{Id}{[required] The ID of the reusable delegation set that you want to get a list of
 name servers for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DelegationSet = list(
+    Id = "string",
+    CallerReference = "string",
+    NameServers = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about a specified reusable delegation set,
 including the four name servers that are assigned to the delegation set.

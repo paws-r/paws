@@ -18,6 +18,9 @@ resource type and storage config for the given instance ID.}
 
 \item{StorageConfig}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

@@ -15,6 +15,14 @@ NULL
 #'
 #' @param deploymentId &#91;required&#93; The ID of the deployment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   message = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_deployment(
@@ -106,6 +114,26 @@ greengrassv2_cancel_deployment <- function(deploymentId) {
 #' @param tags A list of key-value pairs that contain metadata for the resource. For
 #' more information, see Tag your resources in the *AWS IoT Greengrass V2
 #' Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   componentName = "string",
+#'   componentVersion = "string",
+#'   creationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = list(
+#'     componentState = "REQUESTED"|"INITIATED"|"DEPLOYABLE"|"FAILED"|"DEPRECATED",
+#'     message = "string",
+#'     errors = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -246,6 +274,16 @@ greengrassv2_create_component_version <- function(inlineRecipe = NULL, lambdaFun
 #' more information, see Tag your resources in the *AWS IoT Greengrass V2
 #' Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deploymentId = "string",
+#'   iotJobId = "string",
+#'   iotJobArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_deployment(
@@ -345,6 +383,9 @@ greengrassv2_create_deployment <- function(targetArn, deploymentName = NULL, com
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the component version.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_component(
@@ -387,6 +428,9 @@ greengrassv2_delete_component <- function(arn) {
 #'
 #' @param coreDeviceThingName &#91;required&#93; The name of the core device. This is also the name of the AWS IoT thing.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_core_device(
@@ -425,6 +469,39 @@ greengrassv2_delete_core_device <- function(coreDeviceThingName) {
 #' @param arn &#91;required&#93; The
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the component version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   componentName = "string",
+#'   componentVersion = "string",
+#'   creationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   publisher = "string",
+#'   description = "string",
+#'   status = list(
+#'     componentState = "REQUESTED"|"INITIATED"|"DEPLOYABLE"|"FAILED"|"DEPRECATED",
+#'     message = "string",
+#'     errors = list(
+#'       "string"
+#'     )
+#'   ),
+#'   platforms = list(
+#'     list(
+#'       name = "string",
+#'       attributes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -467,6 +544,18 @@ greengrassv2_describe_component <- function(arn) {
 #' @param arn &#91;required&#93; The
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the component version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recipeOutputFormat = "JSON"|"YAML",
+#'   recipe = raw,
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -511,6 +600,14 @@ greengrassv2_get_component <- function(recipeOutputFormat = NULL, arn) {
 #' of the component version.
 #' @param artifactName &#91;required&#93; The name of the artifact.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   preSignedUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_component_version_artifact(
@@ -549,6 +646,24 @@ greengrassv2_get_component_version_artifact <- function(arn, artifactName) {
 #'
 #' @param coreDeviceThingName &#91;required&#93; The name of the core device. This is also the name of the AWS IoT thing.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   coreDeviceThingName = "string",
+#'   coreVersion = "string",
+#'   platform = "string",
+#'   architecture = "string",
+#'   status = "HEALTHY"|"UNHEALTHY",
+#'   lastStatusUpdateTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_core_device(
@@ -586,6 +701,77 @@ greengrassv2_get_core_device <- function(coreDeviceThingName) {
 #' greengrassv2_get_deployment(deploymentId)
 #'
 #' @param deploymentId &#91;required&#93; The ID of the deployment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   targetArn = "string",
+#'   revisionId = "string",
+#'   deploymentId = "string",
+#'   deploymentName = "string",
+#'   deploymentStatus = "ACTIVE"|"COMPLETED"|"CANCELED"|"FAILED"|"INACTIVE",
+#'   iotJobId = "string",
+#'   iotJobArn = "string",
+#'   components = list(
+#'     list(
+#'       componentVersion = "string",
+#'       configurationUpdate = list(
+#'         merge = "string",
+#'         reset = list(
+#'           "string"
+#'         )
+#'       ),
+#'       runWith = list(
+#'         posixUser = "string"
+#'       )
+#'     )
+#'   ),
+#'   deploymentPolicies = list(
+#'     failureHandlingPolicy = "ROLLBACK"|"DO_NOTHING",
+#'     componentUpdatePolicy = list(
+#'       timeoutInSeconds = 123,
+#'       action = "NOTIFY_COMPONENTS"|"SKIP_NOTIFY_COMPONENTS"
+#'     ),
+#'     configurationValidationPolicy = list(
+#'       timeoutInSeconds = 123
+#'     )
+#'   ),
+#'   iotJobConfiguration = list(
+#'     jobExecutionsRolloutConfig = list(
+#'       exponentialRate = list(
+#'         baseRatePerMinute = 123,
+#'         incrementFactor = 123.0,
+#'         rateIncreaseCriteria = list(
+#'           numberOfNotifiedThings = 123,
+#'           numberOfSucceededThings = 123
+#'         )
+#'       ),
+#'       maximumPerMinute = 123
+#'     ),
+#'     abortConfig = list(
+#'       criteriaList = list(
+#'         list(
+#'           failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+#'           action = "CANCEL",
+#'           thresholdPercentage = 123.0,
+#'           minNumberOfExecutedThings = 123
+#'         )
+#'       )
+#'     ),
+#'     timeoutConfig = list(
+#'       inProgressTimeoutInMinutes = 123
+#'     )
+#'   ),
+#'   creationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   isLatestForTarget = TRUE|FALSE,
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -627,6 +813,21 @@ greengrassv2_get_deployment <- function(deploymentId) {
 #' of the component version.
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' @param nextToken The token to be used for the next set of paginated results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   componentVersions = list(
+#'     list(
+#'       componentName = "string",
+#'       componentVersion = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -671,6 +872,37 @@ greengrassv2_list_component_versions <- function(arn, maxResults = NULL, nextTok
 #' Default: `PRIVATE`
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' @param nextToken The token to be used for the next set of paginated results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   components = list(
+#'     list(
+#'       arn = "string",
+#'       componentName = "string",
+#'       latestVersion = list(
+#'         arn = "string",
+#'         componentVersion = "string",
+#'         creationTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         description = "string",
+#'         publisher = "string",
+#'         platforms = list(
+#'           list(
+#'             name = "string",
+#'             attributes = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -727,6 +959,23 @@ greengrassv2_list_components <- function(scope = NULL, maxResults = NULL, nextTo
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' @param nextToken The token to be used for the next set of paginated results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   coreDevices = list(
+#'     list(
+#'       coreDeviceThingName = "string",
+#'       status = "HEALTHY"|"UNHEALTHY",
+#'       lastStatusUpdateTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_core_devices(
@@ -781,6 +1030,27 @@ greengrassv2_list_core_devices <- function(thingGroupArn = NULL, status = NULL, 
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' @param nextToken The token to be used for the next set of paginated results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deployments = list(
+#'     list(
+#'       targetArn = "string",
+#'       revisionId = "string",
+#'       deploymentId = "string",
+#'       deploymentName = "string",
+#'       creationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deploymentStatus = "ACTIVE"|"COMPLETED"|"CANCELED"|"FAILED"|"INACTIVE",
+#'       isLatestForTarget = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_deployments(
@@ -826,6 +1096,32 @@ greengrassv2_list_deployments <- function(targetArn = NULL, historyFilter = NULL
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' @param nextToken The token to be used for the next set of paginated results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   effectiveDeployments = list(
+#'     list(
+#'       deploymentId = "string",
+#'       deploymentName = "string",
+#'       iotJobId = "string",
+#'       iotJobArn = "string",
+#'       description = "string",
+#'       targetArn = "string",
+#'       coreDeviceExecutionStatus = "IN_PROGRESS"|"QUEUED"|"FAILED"|"COMPLETED"|"TIMED_OUT"|"CANCELED"|"REJECTED",
+#'       reason = "string",
+#'       creationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       modifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_effective_deployments(
@@ -870,6 +1166,23 @@ greengrassv2_list_effective_deployments <- function(coreDeviceThingName, maxResu
 #' @param maxResults The maximum number of results to be returned per paginated request.
 #' @param nextToken The token to be used for the next set of paginated results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   installedComponents = list(
+#'     list(
+#'       componentName = "string",
+#'       componentVersion = "string",
+#'       lifecycleState = "NEW"|"INSTALLED"|"STARTING"|"RUNNING"|"STOPPING"|"ERRORED"|"BROKEN"|"FINISHED",
+#'       lifecycleStateDetails = "string",
+#'       isRoot = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_installed_components(
@@ -910,6 +1223,16 @@ greengrassv2_list_installed_components <- function(coreDeviceThingName, maxResul
 #' @param resourceArn &#91;required&#93; The
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -968,6 +1291,21 @@ greengrassv2_list_tags_for_resource <- function(resourceArn) {
 #' @param platform &#91;required&#93; The platform to use to resolve compatible components.
 #' @param componentCandidates &#91;required&#93; The list of components to resolve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resolvedComponentVersions = list(
+#'     list(
+#'       arn = "string",
+#'       componentName = "string",
+#'       componentVersion = "string",
+#'       recipe = raw
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$resolve_component_candidates(
@@ -1025,6 +1363,9 @@ greengrassv2_resolve_component_candidates <- function(platform, componentCandida
 #' more information, see Tag your resources in the *AWS IoT Greengrass V2
 #' Developer Guide*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1067,6 +1408,9 @@ greengrassv2_tag_resource <- function(resourceArn, tags) {
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the resource to untag.
 #' @param tagKeys &#91;required&#93; A list of keys for tags to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

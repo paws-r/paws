@@ -13,6 +13,26 @@ wafregional_create_regex_match_set(Name, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegexMatchSet = list(
+    RegexMatchSetId = "string",
+    Name = "string",
+    RegexMatchTuples = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        RegexPatternSetId = "string"
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
@@ -29,8 +49,8 @@ identify the part of a web request that you want AWS WAF to inspect,
 such as the values of the \code{User-Agent} header or the query string. For
 example, you can create a \code{RegexMatchSet} that contains a
 \code{RegexMatchTuple} that looks for any requests with \code{User-Agent} headers
-that match a \code{RegexPatternSet} with pattern \verb{B\\\[a@\\\]dB\\\[o0\\\]t}. You
-can then configure AWS WAF to reject those requests.
+that match a \code{RegexPatternSet} with pattern \verb{B[a@]dB[o0]t}. You can then
+configure AWS WAF to reject those requests.
 
 To create and configure a \code{RegexMatchSet}, perform the following steps:
 \enumerate{

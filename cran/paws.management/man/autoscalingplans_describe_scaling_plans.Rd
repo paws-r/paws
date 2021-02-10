@@ -25,6 +25,93 @@ between 1 and 50. The default value is 50.}
 
 \item{NextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScalingPlans = list(
+    list(
+      ScalingPlanName = "string",
+      ScalingPlanVersion = 123,
+      ApplicationSource = list(
+        CloudFormationStackARN = "string",
+        TagFilters = list(
+          list(
+            Key = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      ),
+      ScalingInstructions = list(
+        list(
+          ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
+          ResourceId = "string",
+          ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
+          MinCapacity = 123,
+          MaxCapacity = 123,
+          TargetTrackingConfigurations = list(
+            list(
+              PredefinedScalingMetricSpecification = list(
+                PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
+                ResourceLabel = "string"
+              ),
+              CustomizedScalingMetricSpecification = list(
+                MetricName = "string",
+                Namespace = "string",
+                Dimensions = list(
+                  list(
+                    Name = "string",
+                    Value = "string"
+                  )
+                ),
+                Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+                Unit = "string"
+              ),
+              TargetValue = 123.0,
+              DisableScaleIn = TRUE|FALSE,
+              ScaleOutCooldown = 123,
+              ScaleInCooldown = 123,
+              EstimatedInstanceWarmup = 123
+            )
+          ),
+          PredefinedLoadMetricSpecification = list(
+            PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
+            ResourceLabel = "string"
+          ),
+          CustomizedLoadMetricSpecification = list(
+            MetricName = "string",
+            Namespace = "string",
+            Dimensions = list(
+              list(
+                Name = "string",
+                Value = "string"
+              )
+            ),
+            Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+            Unit = "string"
+          ),
+          ScheduledActionBufferTime = 123,
+          PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
+          PredictiveScalingMaxCapacityBuffer = 123,
+          PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
+          ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
+          DisableDynamicScaling = TRUE|FALSE
+        )
+      ),
+      StatusCode = "Active"|"ActiveWithProblems"|"CreationInProgress"|"CreationFailed"|"DeletionInProgress"|"DeletionFailed"|"UpdateInProgress"|"UpdateFailed",
+      StatusMessage = "string",
+      StatusStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your scaling plans.
 }

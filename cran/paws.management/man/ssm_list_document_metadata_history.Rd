@@ -22,6 +22,35 @@ from a previous call.)}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  DocumentVersion = "string",
+  Author = "string",
+  Metadata = list(
+    ReviewerResponse = list(
+      list(
+        CreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdatedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+        Comment = list(
+          list(
+            Type = "Comment",
+            Content = "string"
+          )
+        ),
+        Reviewer = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Information about approval reviews for a version of an SSM document.
 }

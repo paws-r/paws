@@ -33,6 +33,31 @@ complete value of the filtered item. You can use up to three filters,
 but they must be for the same named item. For example, if you are
 looking for items with the status \code{Preparing} or the status \code{Running}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  simulationJobSummaries = list(
+    list(
+      arn = "string",
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      name = "string",
+      status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+      simulationApplicationNames = list(
+        "string"
+      ),
+      robotApplicationNames = list(
+        "string"
+      ),
+      dataSourceNames = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of simulation jobs. You can optionally provide filters to
 retrieve specific simulation jobs.

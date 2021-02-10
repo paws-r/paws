@@ -6,6 +6,9 @@
 \usage{
 appstream_delete_usage_report_subscription()
 }
+\value{
+An empty list.
+}
 \description{
 Disables usage report generation.
 }

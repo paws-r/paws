@@ -17,6 +17,24 @@ The allowed values are \code{COMPLIANT} and \code{NON_COMPLIANT}.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComplianceByConfigRules = list(
+    list(
+      ConfigRuleName = "string",
+      Compliance = list(
+        ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+        ComplianceContributorCount = list(
+          CappedCount = 123,
+          CapExceeded = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Indicates whether the specified AWS Config rules are compliant. If a
 rule is noncompliant, this action returns the number of AWS resources

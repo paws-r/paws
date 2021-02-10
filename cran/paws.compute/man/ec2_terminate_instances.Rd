@@ -17,6 +17,24 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TerminatingInstances = list(
+    list(
+      CurrentState = list(
+        Code = 123,
+        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+      ),
+      InstanceId = "string",
+      PreviousState = list(
+        Code = 123,
+        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Shuts down the specified instances. This operation is idempotent; if you
 terminate an instance more than once, each call succeeds.

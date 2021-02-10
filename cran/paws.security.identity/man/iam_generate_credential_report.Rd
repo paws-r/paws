@@ -6,6 +6,13 @@
 \usage{
 iam_generate_credential_report()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  State = "STARTED"|"INPROGRESS"|"COMPLETE",
+  Description = "string"
+)
+}
+}
 \description{
 Generates a credential report for the AWS account. For more information
 about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html}{Getting Credential Reports}

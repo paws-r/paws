@@ -24,6 +24,12 @@ unexpected prices.}
 \item{PurchaseTime}{The time at which to purchase the Reserved Instance, in UTC format (for
 example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedInstancesId = "string"
+)
+}
+}
 \description{
 Purchases a Reserved Instance for use with your account. With Reserved
 Instances, you pay a lower hourly rate compared to On-Demand instance

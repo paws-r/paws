@@ -15,6 +15,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation deletes a vault. Amazon S3 Glacier will delete a vault
 only if there are no archives in the vault as of the last inventory and

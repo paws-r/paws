@@ -10,6 +10,23 @@ chime_get_voice_connector_origination(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Origination = list(
+    Routes = list(
+      list(
+        Host = "string",
+        Port = 123,
+        Protocol = "TCP"|"UDP",
+        Priority = 123,
+        Weight = 123
+      )
+    ),
+    Disabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Retrieves origination setting details for the specified Amazon Chime
 Voice Connector.

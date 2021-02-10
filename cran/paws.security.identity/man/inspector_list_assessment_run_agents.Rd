@@ -28,6 +28,29 @@ previous response to continue listing data.}
 you want in the response. The default value is 10. The maximum value is
 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  assessmentRunAgents = list(
+    list(
+      agentId = "string",
+      assessmentRunArn = "string",
+      agentHealth = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+      agentHealthCode = "IDLE"|"RUNNING"|"SHUTDOWN"|"UNHEALTHY"|"THROTTLED"|"UNKNOWN",
+      agentHealthDetails = "string",
+      autoScalingGroup = "string",
+      telemetryMetadata = list(
+        list(
+          messageType = "string",
+          count = 123,
+          dataSize = 123
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the agents of the assessment runs that are specified by the ARNs
 of the assessment runs.
@@ -54,7 +77,7 @@ of the assessment runs.
 # Lists the agents of the assessment runs that are specified by the ARNs
 # of the assessment runs.
 svc$list_assessment_run_agents(
-  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-...",
+  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/temp...",
   maxResults = 123L
 )
 }

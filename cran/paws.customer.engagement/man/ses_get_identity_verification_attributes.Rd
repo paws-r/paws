@@ -11,6 +11,17 @@ ses_get_identity_verification_attributes(Identities)
 \arguments{
 \item{Identities}{[required] A list of identities.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VerificationAttributes = list(
+    list(
+      VerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
+      VerificationToken = "string"
+    )
+  )
+)
+}
+}
 \description{
 Given a list of identities (email addresses and/or domains), returns the
 verification status and (for domain identities) the verification token

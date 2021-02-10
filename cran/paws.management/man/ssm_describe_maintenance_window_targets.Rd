@@ -21,6 +21,30 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Targets = list(
+    list(
+      WindowId = "string",
+      WindowTargetId = "string",
+      ResourceType = "INSTANCE"|"RESOURCE_GROUP",
+      Targets = list(
+        list(
+          Key = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      OwnerInformation = "string",
+      Name = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the targets registered with the maintenance window.
 }

@@ -11,6 +11,9 @@ efs_delete_tags(FileSystemId, TagKeys)
 
 \item{TagKeys}{[required] A list of tag keys to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified tags from a file system. If the
 \code{\link[=efs_delete_tags]{delete_tags}} request includes a tag key that doesn't

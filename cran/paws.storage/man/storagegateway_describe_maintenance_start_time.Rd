@@ -10,6 +10,17 @@ storagegateway_describe_maintenance_start_time(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  HourOfDay = 123,
+  MinuteOfHour = 123,
+  DayOfWeek = 123,
+  DayOfMonth = 123,
+  Timezone = "string"
+)
+}
+}
 \description{
 Returns your gateway's weekly maintenance start time including the day
 and time of the week. Note that values are in terms of the gateway's

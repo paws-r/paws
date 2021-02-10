@@ -21,6 +21,114 @@ null if this is the first call.}
 maximum number of items is specified by the limitations of the
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryDescriptions = list(
+    list(
+      DirectoryId = "string",
+      Name = "string",
+      ShortName = "string",
+      Size = "Small"|"Large",
+      Edition = "Enterprise"|"Standard",
+      Alias = "string",
+      AccessUrl = "string",
+      Description = "string",
+      DnsIpAddrs = list(
+        "string"
+      ),
+      Stage = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed",
+      ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
+      ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
+      ShareNotes = "string",
+      LaunchTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StageLastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Type = "SimpleAD"|"ADConnector"|"MicrosoftAD"|"SharedMicrosoftAD",
+      VpcSettings = list(
+        VpcId = "string",
+        SubnetIds = list(
+          "string"
+        ),
+        SecurityGroupId = "string",
+        AvailabilityZones = list(
+          "string"
+        )
+      ),
+      ConnectSettings = list(
+        VpcId = "string",
+        SubnetIds = list(
+          "string"
+        ),
+        CustomerUserName = "string",
+        SecurityGroupId = "string",
+        AvailabilityZones = list(
+          "string"
+        ),
+        ConnectIps = list(
+          "string"
+        )
+      ),
+      RadiusSettings = list(
+        RadiusServers = list(
+          "string"
+        ),
+        RadiusPort = 123,
+        RadiusTimeout = 123,
+        RadiusRetries = 123,
+        SharedSecret = "string",
+        AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
+        DisplayLabel = "string",
+        UseSameUsername = TRUE|FALSE
+      ),
+      RadiusStatus = "Creating"|"Completed"|"Failed",
+      StageReason = "string",
+      SsoEnabled = TRUE|FALSE,
+      DesiredNumberOfDomainControllers = 123,
+      OwnerDirectoryDescription = list(
+        DirectoryId = "string",
+        AccountId = "string",
+        DnsIpAddrs = list(
+          "string"
+        ),
+        VpcSettings = list(
+          VpcId = "string",
+          SubnetIds = list(
+            "string"
+          ),
+          SecurityGroupId = "string",
+          AvailabilityZones = list(
+            "string"
+          )
+        ),
+        RadiusSettings = list(
+          RadiusServers = list(
+            "string"
+          ),
+          RadiusPort = 123,
+          RadiusTimeout = 123,
+          RadiusRetries = 123,
+          SharedSecret = "string",
+          AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
+          DisplayLabel = "string",
+          UseSameUsername = TRUE|FALSE
+        ),
+        RadiusStatus = "Creating"|"Completed"|"Failed"
+      ),
+      RegionsInfo = list(
+        PrimaryRegion = "string",
+        AdditionalRegions = list(
+          "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Obtains information about the directories that belong to this account.
 

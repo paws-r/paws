@@ -12,6 +12,9 @@ connect_associate_lex_bot(InstanceId, LexBot)
 
 \item{LexBot}{[required] The Amazon Lex box to associate with the instance.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

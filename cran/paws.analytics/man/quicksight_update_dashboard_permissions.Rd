@@ -17,6 +17,23 @@ you're updating.}
 
 \item{RevokePermissions}{The permissions that you want to revoke from this resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardArn = "string",
+  DashboardId = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates read and write permissions on a dashboard.
 }

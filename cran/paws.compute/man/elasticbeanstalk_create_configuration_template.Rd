@@ -67,6 +67,32 @@ in the \emph{AWS Elastic Beanstalk Developer Guide}.}
 
 \item{Tags}{Specifies the tags applied to the configuration template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  ApplicationName = "string",
+  TemplateName = "string",
+  Description = "string",
+  EnvironmentName = "string",
+  DeploymentStatus = "deployed"|"pending"|"failed",
+  DateCreated = as.POSIXct(
+    "2015-01-01"
+  ),
+  DateUpdated = as.POSIXct(
+    "2015-01-01"
+  ),
+  OptionSettings = list(
+    list(
+      ResourceName = "string",
+      Namespace = "string",
+      OptionName = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates an AWS Elastic Beanstalk configuration template, associated with
 a specific Elastic Beanstalk application. You define application

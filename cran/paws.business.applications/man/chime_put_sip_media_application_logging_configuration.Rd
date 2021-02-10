@@ -13,6 +13,14 @@ chime_put_sip_media_application_logging_configuration(
 
 \item{SipMediaApplicationLoggingConfiguration}{The actual logging configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipMediaApplicationLoggingConfiguration = list(
+    EnableSipMediaApplicationMessageLogs = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Updates the logging configuration for the specified SIP media
 application.

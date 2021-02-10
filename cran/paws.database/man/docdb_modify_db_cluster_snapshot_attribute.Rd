@@ -36,6 +36,22 @@ or restore the cluster snapshot, set it to \code{all} . If you specify \code{all
 an AWS account whose account ID is explicitly added to the \code{restore}
 attribute can still copy or restore a manual cluster snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshotAttributesResult = list(
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterSnapshotAttributes = list(
+      list(
+        AttributeName = "string",
+        AttributeValues = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds an attribute and values to, or removes an attribute and values
 from, a manual DB cluster snapshot.

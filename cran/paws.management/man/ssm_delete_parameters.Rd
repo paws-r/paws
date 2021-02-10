@@ -9,6 +9,17 @@ ssm_delete_parameters(Names)
 \arguments{
 \item{Names}{[required] The names of the parameters to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeletedParameters = list(
+    "string"
+  ),
+  InvalidParameters = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Delete a list of parameters.
 }

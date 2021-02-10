@@ -9,6 +9,9 @@ globalaccelerator_delete_accelerator(AcceleratorArn)
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of an accelerator.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete an accelerator. Before you can delete an accelerator, you must
 disable it and remove all dependent resources (listeners and endpoint

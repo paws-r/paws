@@ -14,6 +14,9 @@ cloudwatchlogs_put_destination_policy(destinationName, accessPolicy)
 their log events to the associated destination. This can be up to 5120
 bytes.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or updates an access policy associated with an existing
 destination. An access policy is an \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{IAM policy document}

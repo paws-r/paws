@@ -12,6 +12,9 @@ administrator credentials to access the API.}
 
 \item{FolderId}{[required] The ID of the folder.}
 }
+\value{
+An empty list.
+}
 \description{
 Permanently deletes the specified folder and its contents.
 }

@@ -59,6 +59,12 @@ endpoint.}
 \item{ClientConnectOptions}{The options for managing connection authorization for new client
 connections.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies the specified Client VPN endpoint. Modifying the DNS server
 resets existing client connections.

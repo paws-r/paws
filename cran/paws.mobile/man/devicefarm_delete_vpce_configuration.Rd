@@ -11,6 +11,9 @@ devicefarm_delete_vpce_configuration(arn)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the VPC endpoint configuration you
 want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 endpoint.

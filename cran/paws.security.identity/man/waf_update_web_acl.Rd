@@ -34,6 +34,12 @@ requests, \code{ActivatedRule|Action} is used instead of
 performs the default action if a request doesn't match the criteria in
 any of the rules in a web ACL.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
@@ -101,7 +107,7 @@ the rule group from the web ACL, the re-insert it again, specifying
 the excluded rules. For details, see ActivatedRule$ExcludedRules .
 }
 
-Be aware that if you try to add a RATE\\_BASED rule to a web ACL without
+Be aware that if you try to add a RATE_BASED rule to a web ACL without
 setting the rule type when first creating the rule, the
 \code{\link[=waf_update_web_acl]{update_web_acl}} request will fail because the
 request tries to add a REGULAR rule (the default rule type) with the

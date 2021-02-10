@@ -9,6 +9,14 @@ medialive_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Produces list of tags that have been created for a resource
 }

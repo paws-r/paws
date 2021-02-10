@@ -6,6 +6,9 @@
 \usage{
 servicequotas_disassociate_service_quota_template()
 }
+\value{
+An empty list.
+}
 \description{
 Disables your quota request template. After a template is disabled, the
 quota increase requests in the template are not applied to new accounts

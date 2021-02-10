@@ -7,6 +7,9 @@ associated master account}
 \usage{
 securityhub_disassociate_from_master_account()
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the current Security Hub member account from the
 associated master account.

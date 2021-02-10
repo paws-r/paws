@@ -8,7 +8,8 @@ medialive_create_multiplex(AvailabilityZones, MultiplexSettings, Name,
   RequestId, Tags)
 }
 \arguments{
-\item{AvailabilityZones}{[required] A list of availability zones for the multiplex. You must specify exactly two.}
+\item{AvailabilityZones}{[required] A list of availability zones for the multiplex. You must specify exactly
+two.}
 
 \item{MultiplexSettings}{[required] Configuration for a multiplex event.}
 
@@ -18,6 +19,38 @@ medialive_create_multiplex(AvailabilityZones, MultiplexSettings, Name,
 resources.}
 
 \item{Tags}{A collection of key-value pairs.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Multiplex = list(
+    Arn = "string",
+    AvailabilityZones = list(
+      "string"
+    ),
+    Destinations = list(
+      list(
+        MediaConnectSettings = list(
+          EntitlementArn = "string"
+        )
+      )
+    ),
+    Id = "string",
+    MultiplexSettings = list(
+      MaximumVideoBufferDelayMilliseconds = 123,
+      TransportStreamBitrate = 123,
+      TransportStreamId = 123,
+      TransportStreamReservedBitrate = 123
+    ),
+    Name = "string",
+    PipelinesRunningCount = 123,
+    ProgramCount = 123,
+    State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED",
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
 }
 \description{
 Create a new multiplex.

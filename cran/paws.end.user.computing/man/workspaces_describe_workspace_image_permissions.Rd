@@ -16,6 +16,18 @@ provide this token to receive the next set of results.}
 
 \item{MaxResults}{The maximum number of items to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageId = "string",
+  ImagePermissions = list(
+    list(
+      SharedAccountId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the permissions that the owner of an image has granted to
 other AWS accounts for an image.

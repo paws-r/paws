@@ -14,6 +14,29 @@ apigateway_get_deployments(restApiId, position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      description = "string",
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      apiSummary = list(
+        list(
+          list(
+            authorizationType = "string",
+            apiKeyRequired = TRUE|FALSE
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a Deployments collection.
 }

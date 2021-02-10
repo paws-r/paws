@@ -56,6 +56,35 @@ Values: ERROR, INFO}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Severity = "string",
+    Enabled = TRUE|FALSE,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an Amazon Redshift event notification subscription. This action
 requires an ARN (Amazon Resource Name) of an Amazon SNS topic created by

@@ -18,6 +18,9 @@ certificates that have been mistakenly or maliciously issued.
 Certificates that have not been logged typically produce an error
 message in a browser.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a certificate. Currently, you can use this function to specify
 whether to opt in to or out of recording your certificate in a

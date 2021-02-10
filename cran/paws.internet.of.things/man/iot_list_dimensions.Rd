@@ -11,6 +11,15 @@ iot_list_dimensions(nextToken, maxResults)
 
 \item{maxResults}{The maximum number of results to retrieve at one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  dimensionNames = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 List the set of dimensions that are defined for your AWS account.
 }

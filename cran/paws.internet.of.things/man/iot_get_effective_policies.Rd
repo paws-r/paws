@@ -18,6 +18,18 @@ iot_get_effective_policies(principal, cognitoIdentityPoolId, thingName)
 
 \item{thingName}{The thing name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  effectivePolicies = list(
+    list(
+      policyName = "string",
+      policyArn = "string",
+      policyDocument = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of the policies that have an effect on the authorization
 behavior of the specified device when it connects to the AWS IoT device

@@ -9,6 +9,9 @@ transcribeservice_delete_vocabulary(VocabularyName)
 \arguments{
 \item{VocabularyName}{[required] The name of the vocabulary to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a vocabulary from Amazon Transcribe.
 }

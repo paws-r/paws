@@ -9,6 +9,9 @@ personalize_delete_campaign(campaignArn)
 \arguments{
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a campaign by deleting the solution deployment. The solution
 that the campaign is based on is not deleted and can be redeployed when

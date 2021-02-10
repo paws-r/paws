@@ -19,6 +19,51 @@ is 100.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationConfigRules = list(
+    list(
+      OrganizationConfigRuleName = "string",
+      OrganizationConfigRuleArn = "string",
+      OrganizationManagedRuleMetadata = list(
+        Description = "string",
+        RuleIdentifier = "string",
+        InputParameters = "string",
+        MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+        ResourceTypesScope = list(
+          "string"
+        ),
+        ResourceIdScope = "string",
+        TagKeyScope = "string",
+        TagValueScope = "string"
+      ),
+      OrganizationCustomRuleMetadata = list(
+        Description = "string",
+        LambdaFunctionArn = "string",
+        OrganizationConfigRuleTriggerTypes = list(
+          "ConfigurationItemChangeNotification"|"OversizedConfigurationItemChangeNotification"|"ScheduledNotification"
+        ),
+        InputParameters = "string",
+        MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+        ResourceTypesScope = list(
+          "string"
+        ),
+        ResourceIdScope = "string",
+        TagKeyScope = "string",
+        TagValueScope = "string"
+      ),
+      ExcludedAccounts = list(
+        "string"
+      ),
+      LastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of organization config rules.
 

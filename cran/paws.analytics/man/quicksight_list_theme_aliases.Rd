@@ -18,6 +18,21 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThemeAliasList = list(
+    list(
+      Arn = "string",
+      AliasName = "string",
+      ThemeVersionNumber = 123
+    )
+  ),
+  Status = 123,
+  RequestId = "string",
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all the aliases of a theme.
 }

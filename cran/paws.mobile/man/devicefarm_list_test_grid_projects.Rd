@@ -11,6 +11,22 @@ devicefarm_list_test_grid_projects(maxResult, nextToken)
 
 \item{nextToken}{From a response, used to continue a paginated listing.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  testGridProjects = list(
+    list(
+      arn = "string",
+      name = "string",
+      description = "string",
+      created = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a list of all Selenium testing projects in your account.
 }

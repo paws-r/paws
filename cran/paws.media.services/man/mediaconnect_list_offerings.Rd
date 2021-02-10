@@ -8,12 +8,47 @@ the current AWS Region}
 mediaconnect_list_offerings(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{The maximum number of results to return per API request. For example, you submit a ListOfferings request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page.}
+\item{MaxResults}{The maximum number of results to return per API request. For example,
+you submit a ListOfferings request with MaxResults set at 5. Although 20
+items match your request, the service returns no more than the first 5
+items. (The service also returns a NextToken value that you can use to
+fetch the next batch of results.) The service might return fewer results
+than the MaxResults value. If MaxResults is not included in the request,
+the service defaults to pagination with a maximum of 10 results per
+page.}
 
-\item{NextToken}{The token that identifies which batch of results that you want to see. For example, you submit a ListOfferings request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListOfferings request a second time and specify the NextToken value.}
+\item{NextToken}{The token that identifies which batch of results that you want to see.
+For example, you submit a ListOfferings request with MaxResults set at
+5. The service returns the first batch of results (up to 5) and a
+NextToken value. To see the next batch of results, you can submit the
+ListOfferings request a second time and specify the NextToken value.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Offerings = list(
+    list(
+      CurrencyCode = "string",
+      Duration = 123,
+      DurationUnits = "MONTHS",
+      OfferingArn = "string",
+      OfferingDescription = "string",
+      PricePerUnit = "string",
+      PriceUnits = "HOURLY",
+      ResourceSpecification = list(
+        ReservedBitrate = 123,
+        ResourceType = "Mbps_Outbound_Bandwidth"
+      )
+    )
+  )
+)
+}
 }
 \description{
-Displays a list of all offerings that are available to this account in the current AWS Region. If you have an active reservation (which means you've purchased an offering that has already started and hasn't expired yet), your account isn't eligible for other offerings.
+Displays a list of all offerings that are available to this account in
+the current AWS Region. If you have an active reservation (which means
+you've purchased an offering that has already started and hasn't expired
+yet), your account isn't eligible for other offerings.
 }
 \section{Request syntax}{
 \preformatted{svc$list_offerings(

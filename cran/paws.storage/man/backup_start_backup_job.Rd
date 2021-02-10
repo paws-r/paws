@@ -51,6 +51,16 @@ backup option and create a VSS Windows backup. Set to
 “WindowsVSS”:”disabled” to create a regular backup. The WindowsVSS
 option is not enabled by default.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupJobId = "string",
+  RecoveryPointArn = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Starts an on-demand backup job for the specified resource.
 }

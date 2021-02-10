@@ -11,7 +11,10 @@ iam_delete_instance_profile(InstanceProfileName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+An empty list.
 }
 \description{
 Deletes the specified instance profile. The instance profile must not

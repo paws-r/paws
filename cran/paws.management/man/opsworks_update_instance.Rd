@@ -85,7 +85,7 @@ your instances have the latest security updates.}
 options:
 \itemize{
 \item \code{INHERIT} - Use the stack's default agent version setting.
-\item \emph{version\\_number} - Use the specified agent version. This value
+\item \emph{version_number} - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version,
 you must edit the instance configuration and specify a new version.
 AWS OpsWorks Stacks then automatically installs that version on the
@@ -98,6 +98,9 @@ console. For a list of available agent version numbers, call
 \code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}}.
 
 AgentVersion cannot be set to Chef 12.2.}
+}
+\value{
+An empty list.
 }
 \description{
 Updates a specified instance.

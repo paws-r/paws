@@ -22,6 +22,12 @@ associated with them.}
 \item{Name}{The new name under which the schema will be published. If this is not
 provided, the development schema is considered.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PublishedSchemaArn = "string"
+)
+}
+}
 \description{
 Publishes a development schema with a major version and a recommended
 minor version.

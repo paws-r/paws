@@ -17,6 +17,9 @@ workgroup.}
 
 \item{State}{The workgroup state that will be updated for the given workgroup.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the workgroup with the specified name. The workgroup's name
 cannot be changed.

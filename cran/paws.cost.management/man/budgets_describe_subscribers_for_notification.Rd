@@ -21,6 +21,18 @@ response contains. The maximum is 100.}
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Subscribers = list(
+    list(
+      SubscriptionType = "SNS"|"EMAIL",
+      Address = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the subscribers that are associated with a notification.
 }

@@ -19,6 +19,9 @@ index.}
 \item{PartitionIndex}{[required] Specifies a \code{PartitionIndex} structure to create a partition index in an
 existing table.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a specified partition index in an existing table.
 }

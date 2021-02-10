@@ -29,6 +29,9 @@ The configuration JSON must not exceed 64 KB.}
 
 \item{Tags}{Tags associated with the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Records the configuration state for the resource provided in the
 request. The configuration state of a resource is represented in AWS

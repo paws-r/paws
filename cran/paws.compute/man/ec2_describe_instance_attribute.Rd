@@ -18,6 +18,73 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceId}{[required] The ID of the instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Groups = list(
+    list(
+      GroupName = "string",
+      GroupId = "string"
+    )
+  ),
+  BlockDeviceMappings = list(
+    list(
+      DeviceName = "string",
+      Ebs = list(
+        AttachTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        DeleteOnTermination = TRUE|FALSE,
+        Status = "attaching"|"attached"|"detaching"|"detached",
+        VolumeId = "string"
+      )
+    )
+  ),
+  DisableApiTermination = list(
+    Value = TRUE|FALSE
+  ),
+  EnaSupport = list(
+    Value = TRUE|FALSE
+  ),
+  EnclaveOptions = list(
+    Enabled = TRUE|FALSE
+  ),
+  EbsOptimized = list(
+    Value = TRUE|FALSE
+  ),
+  InstanceId = "string",
+  InstanceInitiatedShutdownBehavior = list(
+    Value = "string"
+  ),
+  InstanceType = list(
+    Value = "string"
+  ),
+  KernelId = list(
+    Value = "string"
+  ),
+  ProductCodes = list(
+    list(
+      ProductCodeId = "string",
+      ProductCodeType = "devpay"|"marketplace"
+    )
+  ),
+  RamdiskId = list(
+    Value = "string"
+  ),
+  RootDeviceName = list(
+    Value = "string"
+  ),
+  SourceDestCheck = list(
+    Value = TRUE|FALSE
+  ),
+  SriovNetSupport = list(
+    Value = "string"
+  ),
+  UserData = list(
+    Value = "string"
+  )
+)
+}
+}
 \description{
 Describes the specified attribute of the specified instance. You can
 specify only one attribute at a time. Valid attribute values are:

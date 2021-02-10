@@ -9,6 +9,14 @@ storagegateway_describe_bandwidth_rate_limit(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  AverageUploadRateLimitInBitsPerSec = 123,
+  AverageDownloadRateLimitInBitsPerSec = 123
+)
+}
+}
 \description{
 Returns the bandwidth rate limits of a gateway. By default, these limits
 are not set, which means no bandwidth rate limiting is in effect. This

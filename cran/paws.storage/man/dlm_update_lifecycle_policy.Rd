@@ -20,6 +20,9 @@ operations specified by the lifecycle policy.}
 \item{PolicyDetails}{The configuration of the lifecycle policy. You cannot update the policy
 type or the resource type.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the specified lifecycle policy.
 }

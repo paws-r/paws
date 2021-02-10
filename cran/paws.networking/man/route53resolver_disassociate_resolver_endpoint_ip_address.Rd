@@ -13,6 +13,27 @@ address from.}
 
 \item{IpAddress}{[required] The IPv4 address that you want to remove from a Resolver endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverEndpoint = list(
+    Id = "string",
+    CreatorRequestId = "string",
+    Arn = "string",
+    Name = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Direction = "INBOUND"|"OUTBOUND",
+    IpAddressCount = 123,
+    HostVPCId = "string",
+    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+    StatusMessage = "string",
+    CreationTime = "string",
+    ModificationTime = "string"
+  )
+)
+}
+}
 \description{
 Removes IP addresses from an inbound or an outbound Resolver endpoint.
 If you want to remove more than one IP address, submit one

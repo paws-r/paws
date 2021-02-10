@@ -30,6 +30,12 @@ only be delivered one time when the API is called.}
 
 \item{Tags}{The tags for the business report schedule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScheduleArn = "string"
+)
+}
+}
 \description{
 Creates a recurring schedule for usage reports to deliver to the
 specified S3 location with a specified daily or weekly interval.

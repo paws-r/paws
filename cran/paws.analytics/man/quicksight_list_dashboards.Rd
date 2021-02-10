@@ -15,6 +15,31 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardSummaryList = list(
+    list(
+      Arn = "string",
+      DashboardId = "string",
+      Name = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      PublishedVersionNumber = 123,
+      LastPublishedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Lists dashboards in an AWS account.
 }

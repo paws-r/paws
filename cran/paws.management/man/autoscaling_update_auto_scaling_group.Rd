@@ -105,6 +105,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html}{Amazon EC2 Auto Scaling Capacity Rebalancing}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 \strong{We strongly recommend that all Auto Scaling groups use launch
 templates to ensure full functionality for Amazon EC2 Auto Scaling and

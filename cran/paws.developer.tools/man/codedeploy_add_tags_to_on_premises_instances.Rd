@@ -14,6 +14,9 @@ Value-only tags are not allowed.}
 
 \item{instanceNames}{[required] The names of the on-premises instances to which to add tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds tags to on-premises instances.
 }

@@ -10,6 +10,9 @@ transcribeservice_delete_transcription_job(TranscriptionJobName)
 \arguments{
 \item{TranscriptionJobName}{[required] The name of the transcription job to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a previously submitted transcription job along with any other
 generated results such as the transcription, models, and so on.

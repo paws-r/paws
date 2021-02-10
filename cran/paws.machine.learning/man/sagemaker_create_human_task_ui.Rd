@@ -16,6 +16,12 @@ sagemaker_create_human_task_ui(HumanTaskUiName, UiTemplate, Tags)
 and organize a human review workflow user interface. Each tag consists
 of a key and a value, both of which you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HumanTaskUiArn = "string"
+)
+}
+}
 \description{
 Defines the settings you will use for the human review workflow user
 interface. Reviewers will see a three-panel interface with an

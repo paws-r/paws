@@ -11,6 +11,9 @@ cognitoidentityprovider_delete_resource_server(UserPoolId, Identifier)
 
 \item{Identifier}{[required] The identifier for the resource server.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a resource server.
 }

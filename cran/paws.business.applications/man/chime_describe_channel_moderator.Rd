@@ -11,6 +11,25 @@ chime_describe_channel_moderator(ChannelArn, ChannelModeratorArn)
 
 \item{ChannelModeratorArn}{[required] The ARN of the channel moderator.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelModerator = list(
+    Moderator = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    ChannelArn = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatedBy = list(
+      Arn = "string",
+      Name = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the full details of a single ChannelModerator.
 }

@@ -9,6 +9,42 @@ dynamodb_describe_global_table(GlobalTableName)
 \arguments{
 \item{GlobalTableName}{[required] The name of the global table.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalTableDescription = list(
+    ReplicationGroup = list(
+      list(
+        RegionName = "string",
+        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+        ReplicaStatusDescription = "string",
+        ReplicaStatusPercentProgress = "string",
+        KMSMasterKeyId = "string",
+        ProvisionedThroughputOverride = list(
+          ReadCapacityUnits = 123
+        ),
+        GlobalSecondaryIndexes = list(
+          list(
+            IndexName = "string",
+            ProvisionedThroughputOverride = list(
+              ReadCapacityUnits = 123
+            )
+          )
+        ),
+        ReplicaInaccessibleDateTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    GlobalTableArn = "string",
+    CreationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    GlobalTableStatus = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING",
+    GlobalTableName = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the specified global table.
 

@@ -17,6 +17,27 @@ domain.}
 \item{ConnectionAlias}{[required] Specifies the connection alias that will be used by the customer for
 this connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SourceDomainInfo = list(
+    OwnerId = "string",
+    DomainName = "string",
+    Region = "string"
+  ),
+  DestinationDomainInfo = list(
+    OwnerId = "string",
+    DomainName = "string",
+    Region = "string"
+  ),
+  ConnectionAlias = "string",
+  ConnectionStatus = list(
+    StatusCode = "PENDING_ACCEPTANCE"|"VALIDATING"|"VALIDATION_FAILED"|"PROVISIONING"|"ACTIVE"|"REJECTED"|"DELETING"|"DELETED",
+    Message = "string"
+  ),
+  CrossClusterSearchConnectionId = "string"
+)
+}
+}
 \description{
 Creates a new cross-cluster search connection from a source domain to a
 destination domain.

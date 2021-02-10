@@ -14,6 +14,16 @@ delegation set.}
 
 \item{DelegationSetId}{[required] The ID of the delegation set that you want to get the limit for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Limit = list(
+    Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
+    Value = 123
+  ),
+  Count = 123
+)
+}
+}
 \description{
 Gets the maximum number of hosted zones that you can associate with the
 specified reusable delegation set.

@@ -13,9 +13,15 @@ Cognito. Here, the ID of the pool that the identity belongs to.}
 
 \item{IdentityId}{[required] The unique ID for this identity.}
 
-\item{Platform}{[required] The SNS platform type (e.g. GCM, SDM, APNS, APNS\\_SANDBOX).}
+\item{Platform}{[required] The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).}
 
 \item{Token}{[required] The push token.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceId = "string"
+)
+}
 }
 \description{
 Registers a device to receive push sync notifications.

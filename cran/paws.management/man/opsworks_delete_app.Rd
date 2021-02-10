@@ -9,6 +9,9 @@ opsworks_delete_app(AppId)
 \arguments{
 \item{AppId}{[required] The app ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified app.
 

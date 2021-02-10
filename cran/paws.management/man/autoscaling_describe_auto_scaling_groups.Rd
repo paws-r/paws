@@ -20,6 +20,118 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoScalingGroups = list(
+    list(
+      AutoScalingGroupName = "string",
+      AutoScalingGroupARN = "string",
+      LaunchConfigurationName = "string",
+      LaunchTemplate = list(
+        LaunchTemplateId = "string",
+        LaunchTemplateName = "string",
+        Version = "string"
+      ),
+      MixedInstancesPolicy = list(
+        LaunchTemplate = list(
+          LaunchTemplateSpecification = list(
+            LaunchTemplateId = "string",
+            LaunchTemplateName = "string",
+            Version = "string"
+          ),
+          Overrides = list(
+            list(
+              InstanceType = "string",
+              WeightedCapacity = "string",
+              LaunchTemplateSpecification = list(
+                LaunchTemplateId = "string",
+                LaunchTemplateName = "string",
+                Version = "string"
+              )
+            )
+          )
+        ),
+        InstancesDistribution = list(
+          OnDemandAllocationStrategy = "string",
+          OnDemandBaseCapacity = 123,
+          OnDemandPercentageAboveBaseCapacity = 123,
+          SpotAllocationStrategy = "string",
+          SpotInstancePools = 123,
+          SpotMaxPrice = "string"
+        )
+      ),
+      MinSize = 123,
+      MaxSize = 123,
+      DesiredCapacity = 123,
+      DefaultCooldown = 123,
+      AvailabilityZones = list(
+        "string"
+      ),
+      LoadBalancerNames = list(
+        "string"
+      ),
+      TargetGroupARNs = list(
+        "string"
+      ),
+      HealthCheckType = "string",
+      HealthCheckGracePeriod = 123,
+      Instances = list(
+        list(
+          InstanceId = "string",
+          InstanceType = "string",
+          AvailabilityZone = "string",
+          LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby",
+          HealthStatus = "string",
+          LaunchConfigurationName = "string",
+          LaunchTemplate = list(
+            LaunchTemplateId = "string",
+            LaunchTemplateName = "string",
+            Version = "string"
+          ),
+          ProtectedFromScaleIn = TRUE|FALSE,
+          WeightedCapacity = "string"
+        )
+      ),
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      SuspendedProcesses = list(
+        list(
+          ProcessName = "string",
+          SuspensionReason = "string"
+        )
+      ),
+      PlacementGroup = "string",
+      VPCZoneIdentifier = "string",
+      EnabledMetrics = list(
+        list(
+          Metric = "string",
+          Granularity = "string"
+        )
+      ),
+      Status = "string",
+      Tags = list(
+        list(
+          ResourceId = "string",
+          ResourceType = "string",
+          Key = "string",
+          Value = "string",
+          PropagateAtLaunch = TRUE|FALSE
+        )
+      ),
+      TerminationPolicies = list(
+        "string"
+      ),
+      NewInstancesProtectedFromScaleIn = TRUE|FALSE,
+      ServiceLinkedRoleARN = "string",
+      MaxInstanceLifetime = 123,
+      CapacityRebalance = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more Auto Scaling groups.
 }

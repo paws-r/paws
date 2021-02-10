@@ -28,6 +28,42 @@ number with that of the first participant.}
 
 \item{GeoMatchParams}{The country and area code for the proxy phone number.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProxySession = list(
+    VoiceConnectorId = "string",
+    ProxySessionId = "string",
+    Name = "string",
+    Status = "Open"|"InProgress"|"Closed",
+    ExpiryMinutes = 123,
+    Capabilities = list(
+      "Voice"|"SMS"
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Participants = list(
+      list(
+        PhoneNumber = "string",
+        ProxyPhoneNumber = "string"
+      )
+    ),
+    NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+    GeoMatchLevel = "Country"|"AreaCode",
+    GeoMatchParams = list(
+      Country = "string",
+      AreaCode = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a proxy session on the specified Amazon Chime Voice Connector
 for the specified participant phone numbers.

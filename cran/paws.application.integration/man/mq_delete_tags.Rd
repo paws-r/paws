@@ -11,6 +11,9 @@ mq_delete_tags(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] An array of tag keys to delete}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a tag from a resource.
 }

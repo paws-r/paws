@@ -11,6 +11,23 @@ datasync_describe_location_s3(LocationArn)
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the Amazon S3 bucket location to
 describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string",
+  LocationUri = "string",
+  S3StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
+  S3Config = list(
+    BucketAccessRoleArn = "string"
+  ),
+  AgentArns = list(
+    "string"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns metadata, such as bucket name, about an Amazon S3 bucket
 location.

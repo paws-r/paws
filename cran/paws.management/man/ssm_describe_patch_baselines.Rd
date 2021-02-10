@@ -9,7 +9,7 @@ ssm_describe_patch_baselines(Filters, MaxResults, NextToken)
 \arguments{
 \item{Filters}{Each element in the array is a structure containing:
 
-Key: (string, "NAME\\_PREFIX" or "OWNER")
+Key: (string, "NAME_PREFIX" or "OWNER")
 
 Value: (array of strings, exactly 1 entry, between 1 and 255 characters)}
 
@@ -17,6 +17,21 @@ Value: (array of strings, exactly 1 entry, between 1 and 255 characters)}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineIdentities = list(
+    list(
+      BaselineId = "string",
+      BaselineName = "string",
+      OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+      BaselineDescription = "string",
+      DefaultBaseline = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists the patch baselines in your AWS account.

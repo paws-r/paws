@@ -14,6 +14,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInsightsAnalysisId}{[required] The ID of the network insights analysis.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInsightsAnalysisId = "string"
+)
+}
+}
 \description{
 Deletes the specified network insights analysis.
 }

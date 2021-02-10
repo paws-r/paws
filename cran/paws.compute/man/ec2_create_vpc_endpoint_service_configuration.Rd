@@ -32,6 +32,49 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 
 \item{TagSpecifications}{The tags to associate with the service.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceConfiguration = list(
+    ServiceType = list(
+      list(
+        ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
+      )
+    ),
+    ServiceId = "string",
+    ServiceName = "string",
+    ServiceState = "Pending"|"Available"|"Deleting"|"Deleted"|"Failed",
+    AvailabilityZones = list(
+      "string"
+    ),
+    AcceptanceRequired = TRUE|FALSE,
+    ManagesVpcEndpoints = TRUE|FALSE,
+    NetworkLoadBalancerArns = list(
+      "string"
+    ),
+    GatewayLoadBalancerArns = list(
+      "string"
+    ),
+    BaseEndpointDnsNames = list(
+      "string"
+    ),
+    PrivateDnsName = "string",
+    PrivateDnsNameConfiguration = list(
+      State = "pendingVerification"|"verified"|"failed",
+      Type = "string",
+      Value = "string",
+      Name = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  ),
+  ClientToken = "string"
+)
+}
+}
 \description{
 Creates a VPC endpoint service configuration to which service consumers
 (AWS accounts, IAM users, and IAM roles) can connect.

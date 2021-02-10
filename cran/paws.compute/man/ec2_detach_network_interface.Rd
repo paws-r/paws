@@ -29,6 +29,9 @@ instance metadata will get updated when you stop and start the
 instance.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches a network interface from an instance.
 }

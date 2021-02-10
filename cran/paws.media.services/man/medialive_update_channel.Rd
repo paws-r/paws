@@ -25,7 +25,915 @@ medialive_update_channel(CdiInputSpecification, ChannelId, Destinations,
 
 \item{Name}{The name of the channel.}
 
-\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when running the Channel. If you do not specify this on an update call but the role was previously set that role will be removed.}
+\item{RoleArn}{An optional Amazon Resource Name (ARN) of the role to assume when
+running the Channel. If you do not specify this on an update call but
+the role was previously set that role will be removed.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Channel = list(
+    Arn = "string",
+    CdiInputSpecification = list(
+      Resolution = "SD"|"HD"|"FHD"|"UHD"
+    ),
+    ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
+    Destinations = list(
+      list(
+        Id = "string",
+        MediaPackageSettings = list(
+          list(
+            ChannelId = "string"
+          )
+        ),
+        MultiplexSettings = list(
+          MultiplexId = "string",
+          ProgramName = "string"
+        ),
+        Settings = list(
+          list(
+            PasswordParam = "string",
+            StreamName = "string",
+            Url = "string",
+            Username = "string"
+          )
+        )
+      )
+    ),
+    EgressEndpoints = list(
+      list(
+        SourceIp = "string"
+      )
+    ),
+    EncoderSettings = list(
+      AudioDescriptions = list(
+        list(
+          AudioNormalizationSettings = list(
+            Algorithm = "ITU_1770_1"|"ITU_1770_2",
+            AlgorithmControl = "CORRECT_AUDIO",
+            TargetLkfs = 123.0
+          ),
+          AudioSelectorName = "string",
+          AudioType = "CLEAN_EFFECTS"|"HEARING_IMPAIRED"|"UNDEFINED"|"VISUAL_IMPAIRED_COMMENTARY",
+          AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+          CodecSettings = list(
+            AacSettings = list(
+              Bitrate = 123.0,
+              CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+              InputType = "BROADCASTER_MIXED_AD"|"NORMAL",
+              Profile = "HEV1"|"HEV2"|"LC",
+              RateControlMode = "CBR"|"VBR",
+              RawFormat = "LATM_LOAS"|"NONE",
+              SampleRate = 123.0,
+              Spec = "MPEG2"|"MPEG4",
+              VbrQuality = "HIGH"|"LOW"|"MEDIUM_HIGH"|"MEDIUM_LOW"
+            ),
+            Ac3Settings = list(
+              Bitrate = 123.0,
+              BitstreamMode = "COMMENTARY"|"COMPLETE_MAIN"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+              CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+              Dialnorm = 123,
+              DrcProfile = "FILM_STANDARD"|"NONE",
+              LfeFilter = "DISABLED"|"ENABLED",
+              MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED"
+            ),
+            Eac3Settings = list(
+              AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+              Bitrate = 123.0,
+              BitstreamMode = "COMMENTARY"|"COMPLETE_MAIN"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+              CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+              DcFilter = "DISABLED"|"ENABLED",
+              Dialnorm = 123,
+              DrcLine = "FILM_LIGHT"|"FILM_STANDARD"|"MUSIC_LIGHT"|"MUSIC_STANDARD"|"NONE"|"SPEECH",
+              DrcRf = "FILM_LIGHT"|"FILM_STANDARD"|"MUSIC_LIGHT"|"MUSIC_STANDARD"|"NONE"|"SPEECH",
+              LfeControl = "LFE"|"NO_LFE",
+              LfeFilter = "DISABLED"|"ENABLED",
+              LoRoCenterMixLevel = 123.0,
+              LoRoSurroundMixLevel = 123.0,
+              LtRtCenterMixLevel = 123.0,
+              LtRtSurroundMixLevel = 123.0,
+              MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+              PassthroughControl = "NO_PASSTHROUGH"|"WHEN_POSSIBLE",
+              PhaseControl = "NO_SHIFT"|"SHIFT_90_DEGREES",
+              StereoDownmix = "DPL2"|"LO_RO"|"LT_RT"|"NOT_INDICATED",
+              SurroundExMode = "DISABLED"|"ENABLED"|"NOT_INDICATED",
+              SurroundMode = "DISABLED"|"ENABLED"|"NOT_INDICATED"
+            ),
+            Mp2Settings = list(
+              Bitrate = 123.0,
+              CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0",
+              SampleRate = 123.0
+            ),
+            PassThroughSettings = list(),
+            WavSettings = list(
+              BitDepth = 123.0,
+              CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_4_0"|"CODING_MODE_8_0",
+              SampleRate = 123.0
+            )
+          ),
+          LanguageCode = "string",
+          LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+          Name = "string",
+          RemixSettings = list(
+            ChannelMappings = list(
+              list(
+                InputChannelLevels = list(
+                  list(
+                    Gain = 123,
+                    InputChannel = 123
+                  )
+                ),
+                OutputChannel = 123
+              )
+            ),
+            ChannelsIn = 123,
+            ChannelsOut = 123
+          ),
+          StreamName = "string"
+        )
+      ),
+      AvailBlanking = list(
+        AvailBlankingImage = list(
+          PasswordParam = "string",
+          Uri = "string",
+          Username = "string"
+        ),
+        State = "DISABLED"|"ENABLED"
+      ),
+      AvailConfiguration = list(
+        AvailSettings = list(
+          Scte35SpliceInsert = list(
+            AdAvailOffset = 123,
+            NoRegionalBlackoutFlag = "FOLLOW"|"IGNORE",
+            WebDeliveryAllowedFlag = "FOLLOW"|"IGNORE"
+          ),
+          Scte35TimeSignalApos = list(
+            AdAvailOffset = 123,
+            NoRegionalBlackoutFlag = "FOLLOW"|"IGNORE",
+            WebDeliveryAllowedFlag = "FOLLOW"|"IGNORE"
+          )
+        )
+      ),
+      BlackoutSlate = list(
+        BlackoutSlateImage = list(
+          PasswordParam = "string",
+          Uri = "string",
+          Username = "string"
+        ),
+        NetworkEndBlackout = "DISABLED"|"ENABLED",
+        NetworkEndBlackoutImage = list(
+          PasswordParam = "string",
+          Uri = "string",
+          Username = "string"
+        ),
+        NetworkId = "string",
+        State = "DISABLED"|"ENABLED"
+      ),
+      CaptionDescriptions = list(
+        list(
+          CaptionSelectorName = "string",
+          DestinationSettings = list(
+            AribDestinationSettings = list(),
+            BurnInDestinationSettings = list(
+              Alignment = "CENTERED"|"LEFT"|"SMART",
+              BackgroundColor = "BLACK"|"NONE"|"WHITE",
+              BackgroundOpacity = 123,
+              Font = list(
+                PasswordParam = "string",
+                Uri = "string",
+                Username = "string"
+              ),
+              FontColor = "BLACK"|"BLUE"|"GREEN"|"RED"|"WHITE"|"YELLOW",
+              FontOpacity = 123,
+              FontResolution = 123,
+              FontSize = "string",
+              OutlineColor = "BLACK"|"BLUE"|"GREEN"|"RED"|"WHITE"|"YELLOW",
+              OutlineSize = 123,
+              ShadowColor = "BLACK"|"NONE"|"WHITE",
+              ShadowOpacity = 123,
+              ShadowXOffset = 123,
+              ShadowYOffset = 123,
+              TeletextGridControl = "FIXED"|"SCALED",
+              XPosition = 123,
+              YPosition = 123
+            ),
+            DvbSubDestinationSettings = list(
+              Alignment = "CENTERED"|"LEFT"|"SMART",
+              BackgroundColor = "BLACK"|"NONE"|"WHITE",
+              BackgroundOpacity = 123,
+              Font = list(
+                PasswordParam = "string",
+                Uri = "string",
+                Username = "string"
+              ),
+              FontColor = "BLACK"|"BLUE"|"GREEN"|"RED"|"WHITE"|"YELLOW",
+              FontOpacity = 123,
+              FontResolution = 123,
+              FontSize = "string",
+              OutlineColor = "BLACK"|"BLUE"|"GREEN"|"RED"|"WHITE"|"YELLOW",
+              OutlineSize = 123,
+              ShadowColor = "BLACK"|"NONE"|"WHITE",
+              ShadowOpacity = 123,
+              ShadowXOffset = 123,
+              ShadowYOffset = 123,
+              TeletextGridControl = "FIXED"|"SCALED",
+              XPosition = 123,
+              YPosition = 123
+            ),
+            EbuTtDDestinationSettings = list(
+              FillLineGap = "DISABLED"|"ENABLED",
+              FontFamily = "string",
+              StyleControl = "EXCLUDE"|"INCLUDE"
+            ),
+            EmbeddedDestinationSettings = list(),
+            EmbeddedPlusScte20DestinationSettings = list(),
+            RtmpCaptionInfoDestinationSettings = list(),
+            Scte20PlusEmbeddedDestinationSettings = list(),
+            Scte27DestinationSettings = list(),
+            SmpteTtDestinationSettings = list(),
+            TeletextDestinationSettings = list(),
+            TtmlDestinationSettings = list(
+              StyleControl = "PASSTHROUGH"|"USE_CONFIGURED"
+            ),
+            WebvttDestinationSettings = list()
+          ),
+          LanguageCode = "string",
+          LanguageDescription = "string",
+          Name = "string"
+        )
+      ),
+      FeatureActivations = list(
+        InputPrepareScheduleActions = "DISABLED"|"ENABLED"
+      ),
+      GlobalConfiguration = list(
+        InitialAudioGain = 123,
+        InputEndAction = "NONE"|"SWITCH_AND_LOOP_INPUTS",
+        InputLossBehavior = list(
+          BlackFrameMsec = 123,
+          InputLossImageColor = "string",
+          InputLossImageSlate = list(
+            PasswordParam = "string",
+            Uri = "string",
+            Username = "string"
+          ),
+          InputLossImageType = "COLOR"|"SLATE",
+          RepeatFrameMsec = 123
+        ),
+        OutputLockingMode = "EPOCH_LOCKING"|"PIPELINE_LOCKING",
+        OutputTimingSource = "INPUT_CLOCK"|"SYSTEM_CLOCK",
+        SupportLowFramerateInputs = "DISABLED"|"ENABLED"
+      ),
+      NielsenConfiguration = list(
+        DistributorId = "string",
+        NielsenPcmToId3Tagging = "DISABLED"|"ENABLED"
+      ),
+      OutputGroups = list(
+        list(
+          Name = "string",
+          OutputGroupSettings = list(
+            ArchiveGroupSettings = list(
+              Destination = list(
+                DestinationRefId = "string"
+              ),
+              RolloverInterval = 123
+            ),
+            FrameCaptureGroupSettings = list(
+              Destination = list(
+                DestinationRefId = "string"
+              )
+            ),
+            HlsGroupSettings = list(
+              AdMarkers = list(
+                "ADOBE"|"ELEMENTAL"|"ELEMENTAL_SCTE35"
+              ),
+              BaseUrlContent = "string",
+              BaseUrlContent1 = "string",
+              BaseUrlManifest = "string",
+              BaseUrlManifest1 = "string",
+              CaptionLanguageMappings = list(
+                list(
+                  CaptionChannel = 123,
+                  LanguageCode = "string",
+                  LanguageDescription = "string"
+                )
+              ),
+              CaptionLanguageSetting = "INSERT"|"NONE"|"OMIT",
+              ClientCache = "DISABLED"|"ENABLED",
+              CodecSpecification = "RFC_4281"|"RFC_6381",
+              ConstantIv = "string",
+              Destination = list(
+                DestinationRefId = "string"
+              ),
+              DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+              DiscontinuityTags = "INSERT"|"NEVER_INSERT",
+              EncryptionType = "AES128"|"SAMPLE_AES",
+              HlsCdnSettings = list(
+                HlsAkamaiSettings = list(
+                  ConnectionRetryInterval = 123,
+                  FilecacheDuration = 123,
+                  HttpTransferMode = "CHUNKED"|"NON_CHUNKED",
+                  NumRetries = 123,
+                  RestartDelay = 123,
+                  Salt = "string",
+                  Token = "string"
+                ),
+                HlsBasicPutSettings = list(
+                  ConnectionRetryInterval = 123,
+                  FilecacheDuration = 123,
+                  NumRetries = 123,
+                  RestartDelay = 123
+                ),
+                HlsMediaStoreSettings = list(
+                  ConnectionRetryInterval = 123,
+                  FilecacheDuration = 123,
+                  MediaStoreStorageClass = "TEMPORAL",
+                  NumRetries = 123,
+                  RestartDelay = 123
+                ),
+                HlsWebdavSettings = list(
+                  ConnectionRetryInterval = 123,
+                  FilecacheDuration = 123,
+                  HttpTransferMode = "CHUNKED"|"NON_CHUNKED",
+                  NumRetries = 123,
+                  RestartDelay = 123
+                )
+              ),
+              HlsId3SegmentTagging = "DISABLED"|"ENABLED",
+              IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
+              IncompleteSegmentBehavior = "AUTO"|"SUPPRESS",
+              IndexNSegments = 123,
+              InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
+              IvInManifest = "EXCLUDE"|"INCLUDE",
+              IvSource = "EXPLICIT"|"FOLLOWS_SEGMENT_NUMBER",
+              KeepSegments = 123,
+              KeyFormat = "string",
+              KeyFormatVersions = "string",
+              KeyProviderSettings = list(
+                StaticKeySettings = list(
+                  KeyProviderServer = list(
+                    PasswordParam = "string",
+                    Uri = "string",
+                    Username = "string"
+                  ),
+                  StaticKeyValue = "string"
+                )
+              ),
+              ManifestCompression = "GZIP"|"NONE",
+              ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+              MinSegmentLength = 123,
+              Mode = "LIVE"|"VOD",
+              OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY"|"VARIANT_MANIFESTS_AND_SEGMENTS",
+              ProgramDateTime = "EXCLUDE"|"INCLUDE",
+              ProgramDateTimePeriod = 123,
+              RedundantManifest = "DISABLED"|"ENABLED",
+              SegmentLength = 123,
+              SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
+              SegmentsPerSubdirectory = 123,
+              StreamInfResolution = "EXCLUDE"|"INCLUDE",
+              TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+              TimedMetadataId3Period = 123,
+              TimestampDeltaMilliseconds = 123,
+              TsFileMode = "SEGMENTED_FILES"|"SINGLE_FILE"
+            ),
+            MediaPackageGroupSettings = list(
+              Destination = list(
+                DestinationRefId = "string"
+              )
+            ),
+            MsSmoothGroupSettings = list(
+              AcquisitionPointId = "string",
+              AudioOnlyTimecodeControl = "PASSTHROUGH"|"USE_CONFIGURED_CLOCK",
+              CertificateMode = "SELF_SIGNED"|"VERIFY_AUTHENTICITY",
+              ConnectionRetryInterval = 123,
+              Destination = list(
+                DestinationRefId = "string"
+              ),
+              EventId = "string",
+              EventIdMode = "NO_EVENT_ID"|"USE_CONFIGURED"|"USE_TIMESTAMP",
+              EventStopBehavior = "NONE"|"SEND_EOS",
+              FilecacheDuration = 123,
+              FragmentLength = 123,
+              InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
+              NumRetries = 123,
+              RestartDelay = 123,
+              SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
+              SendDelayMs = 123,
+              SparseTrackType = "NONE"|"SCTE_35"|"SCTE_35_WITHOUT_SEGMENTATION",
+              StreamManifestBehavior = "DO_NOT_SEND"|"SEND",
+              TimestampOffset = "string",
+              TimestampOffsetMode = "USE_CONFIGURED_OFFSET"|"USE_EVENT_START_DATE"
+            ),
+            MultiplexGroupSettings = list(),
+            RtmpGroupSettings = list(
+              AdMarkers = list(
+                "ON_CUE_POINT_SCTE35"
+              ),
+              AuthenticationScheme = "AKAMAI"|"COMMON",
+              CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
+              CacheLength = 123,
+              CaptionData = "ALL"|"FIELD1_608"|"FIELD1_AND_FIELD2_608",
+              InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
+              RestartDelay = 123
+            ),
+            UdpGroupSettings = list(
+              InputLossAction = "DROP_PROGRAM"|"DROP_TS"|"EMIT_PROGRAM",
+              TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+              TimedMetadataId3Period = 123
+            )
+          ),
+          Outputs = list(
+            list(
+              AudioDescriptionNames = list(
+                "string"
+              ),
+              CaptionDescriptionNames = list(
+                "string"
+              ),
+              OutputName = "string",
+              OutputSettings = list(
+                ArchiveOutputSettings = list(
+                  ContainerSettings = list(
+                    M2tsSettings = list(
+                      AbsentInputAudioBehavior = "DROP"|"ENCODE_SILENCE",
+                      Arib = "DISABLED"|"ENABLED",
+                      AribCaptionsPid = "string",
+                      AribCaptionsPidControl = "AUTO"|"USE_CONFIGURED",
+                      AudioBufferModel = "ATSC"|"DVB",
+                      AudioFramesPerPes = 123,
+                      AudioPids = "string",
+                      AudioStreamType = "ATSC"|"DVB",
+                      Bitrate = 123,
+                      BufferModel = "MULTIPLEX"|"NONE",
+                      CcDescriptor = "DISABLED"|"ENABLED",
+                      DvbNitSettings = list(
+                        NetworkId = 123,
+                        NetworkName = "string",
+                        RepInterval = 123
+                      ),
+                      DvbSdtSettings = list(
+                        OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+                        RepInterval = 123,
+                        ServiceName = "string",
+                        ServiceProviderName = "string"
+                      ),
+                      DvbSubPids = "string",
+                      DvbTdtSettings = list(
+                        RepInterval = 123
+                      ),
+                      DvbTeletextPid = "string",
+                      Ebif = "NONE"|"PASSTHROUGH",
+                      EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+                      EbpLookaheadMs = 123,
+                      EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+                      EcmPid = "string",
+                      EsRateInPes = "EXCLUDE"|"INCLUDE",
+                      EtvPlatformPid = "string",
+                      EtvSignalPid = "string",
+                      FragmentTime = 123.0,
+                      Klv = "NONE"|"PASSTHROUGH",
+                      KlvDataPids = "string",
+                      NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                      NullPacketBitrate = 123.0,
+                      PatInterval = 123,
+                      PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
+                      PcrPeriod = 123,
+                      PcrPid = "string",
+                      PmtInterval = 123,
+                      PmtPid = "string",
+                      ProgramNum = 123,
+                      RateMode = "CBR"|"VBR",
+                      Scte27Pids = "string",
+                      Scte35Control = "NONE"|"PASSTHROUGH",
+                      Scte35Pid = "string",
+                      SegmentationMarkers = "EBP"|"EBP_LEGACY"|"NONE"|"PSI_SEGSTART"|"RAI_ADAPT"|"RAI_SEGSTART",
+                      SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+                      SegmentationTime = 123.0,
+                      TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                      TimedMetadataPid = "string",
+                      TransportStreamId = 123,
+                      VideoPid = "string"
+                    ),
+                    RawSettings = list()
+                  ),
+                  Extension = "string",
+                  NameModifier = "string"
+                ),
+                FrameCaptureOutputSettings = list(
+                  NameModifier = "string"
+                ),
+                HlsOutputSettings = list(
+                  H265PackagingType = "HEV1"|"HVC1",
+                  HlsSettings = list(
+                    AudioOnlyHlsSettings = list(
+                      AudioGroupId = "string",
+                      AudioOnlyImage = list(
+                        PasswordParam = "string",
+                        Uri = "string",
+                        Username = "string"
+                      ),
+                      AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+                      SegmentType = "AAC"|"FMP4"
+                    ),
+                    Fmp4HlsSettings = list(
+                      AudioRenditionSets = "string",
+                      NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                      TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
+                    ),
+                    StandardHlsSettings = list(
+                      AudioRenditionSets = "string",
+                      M3u8Settings = list(
+                        AudioFramesPerPes = 123,
+                        AudioPids = "string",
+                        EcmPid = "string",
+                        NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                        PatInterval = 123,
+                        PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
+                        PcrPeriod = 123,
+                        PcrPid = "string",
+                        PmtInterval = 123,
+                        PmtPid = "string",
+                        ProgramNum = 123,
+                        Scte35Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                        Scte35Pid = "string",
+                        TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                        TimedMetadataPid = "string",
+                        TransportStreamId = 123,
+                        VideoPid = "string"
+                      )
+                    )
+                  ),
+                  NameModifier = "string",
+                  SegmentModifier = "string"
+                ),
+                MediaPackageOutputSettings = list(),
+                MsSmoothOutputSettings = list(
+                  H265PackagingType = "HEV1"|"HVC1",
+                  NameModifier = "string"
+                ),
+                MultiplexOutputSettings = list(
+                  Destination = list(
+                    DestinationRefId = "string"
+                  )
+                ),
+                RtmpOutputSettings = list(
+                  CertificateMode = "SELF_SIGNED"|"VERIFY_AUTHENTICITY",
+                  ConnectionRetryInterval = 123,
+                  Destination = list(
+                    DestinationRefId = "string"
+                  ),
+                  NumRetries = 123
+                ),
+                UdpOutputSettings = list(
+                  BufferMsec = 123,
+                  ContainerSettings = list(
+                    M2tsSettings = list(
+                      AbsentInputAudioBehavior = "DROP"|"ENCODE_SILENCE",
+                      Arib = "DISABLED"|"ENABLED",
+                      AribCaptionsPid = "string",
+                      AribCaptionsPidControl = "AUTO"|"USE_CONFIGURED",
+                      AudioBufferModel = "ATSC"|"DVB",
+                      AudioFramesPerPes = 123,
+                      AudioPids = "string",
+                      AudioStreamType = "ATSC"|"DVB",
+                      Bitrate = 123,
+                      BufferModel = "MULTIPLEX"|"NONE",
+                      CcDescriptor = "DISABLED"|"ENABLED",
+                      DvbNitSettings = list(
+                        NetworkId = 123,
+                        NetworkName = "string",
+                        RepInterval = 123
+                      ),
+                      DvbSdtSettings = list(
+                        OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+                        RepInterval = 123,
+                        ServiceName = "string",
+                        ServiceProviderName = "string"
+                      ),
+                      DvbSubPids = "string",
+                      DvbTdtSettings = list(
+                        RepInterval = 123
+                      ),
+                      DvbTeletextPid = "string",
+                      Ebif = "NONE"|"PASSTHROUGH",
+                      EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+                      EbpLookaheadMs = 123,
+                      EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+                      EcmPid = "string",
+                      EsRateInPes = "EXCLUDE"|"INCLUDE",
+                      EtvPlatformPid = "string",
+                      EtvSignalPid = "string",
+                      FragmentTime = 123.0,
+                      Klv = "NONE"|"PASSTHROUGH",
+                      KlvDataPids = "string",
+                      NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                      NullPacketBitrate = 123.0,
+                      PatInterval = 123,
+                      PcrControl = "CONFIGURED_PCR_PERIOD"|"PCR_EVERY_PES_PACKET",
+                      PcrPeriod = 123,
+                      PcrPid = "string",
+                      PmtInterval = 123,
+                      PmtPid = "string",
+                      ProgramNum = 123,
+                      RateMode = "CBR"|"VBR",
+                      Scte27Pids = "string",
+                      Scte35Control = "NONE"|"PASSTHROUGH",
+                      Scte35Pid = "string",
+                      SegmentationMarkers = "EBP"|"EBP_LEGACY"|"NONE"|"PSI_SEGSTART"|"RAI_ADAPT"|"RAI_SEGSTART",
+                      SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+                      SegmentationTime = 123.0,
+                      TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                      TimedMetadataPid = "string",
+                      TransportStreamId = 123,
+                      VideoPid = "string"
+                    )
+                  ),
+                  Destination = list(
+                    DestinationRefId = "string"
+                  ),
+                  FecOutputSettings = list(
+                    ColumnDepth = 123,
+                    IncludeFec = "COLUMN"|"COLUMN_AND_ROW",
+                    RowLength = 123
+                  )
+                )
+              ),
+              VideoDescriptionName = "string"
+            )
+          )
+        )
+      ),
+      TimecodeConfig = list(
+        Source = "EMBEDDED"|"SYSTEMCLOCK"|"ZEROBASED",
+        SyncThreshold = 123
+      ),
+      VideoDescriptions = list(
+        list(
+          CodecSettings = list(
+            FrameCaptureSettings = list(
+              CaptureInterval = 123,
+              CaptureIntervalUnits = "MILLISECONDS"|"SECONDS"
+            ),
+            H264Settings = list(
+              AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
+              AfdSignaling = "AUTO"|"FIXED"|"NONE",
+              Bitrate = 123,
+              BufFillPct = 123,
+              BufSize = 123,
+              ColorMetadata = "IGNORE"|"INSERT",
+              ColorSpaceSettings = list(
+                ColorSpacePassthroughSettings = list(),
+                Rec601Settings = list(),
+                Rec709Settings = list()
+              ),
+              EntropyEncoding = "CABAC"|"CAVLC",
+              FilterSettings = list(
+                TemporalFilterSettings = list(
+                  PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+                  Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+                )
+              ),
+              FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+              FlickerAq = "DISABLED"|"ENABLED",
+              ForceFieldPictures = "DISABLED"|"ENABLED",
+              FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+              FramerateDenominator = 123,
+              FramerateNumerator = 123,
+              GopBReference = "DISABLED"|"ENABLED",
+              GopClosedCadence = 123,
+              GopNumBFrames = 123,
+              GopSize = 123.0,
+              GopSizeUnits = "FRAMES"|"SECONDS",
+              Level = "H264_LEVEL_1"|"H264_LEVEL_1_1"|"H264_LEVEL_1_2"|"H264_LEVEL_1_3"|"H264_LEVEL_2"|"H264_LEVEL_2_1"|"H264_LEVEL_2_2"|"H264_LEVEL_3"|"H264_LEVEL_3_1"|"H264_LEVEL_3_2"|"H264_LEVEL_4"|"H264_LEVEL_4_1"|"H264_LEVEL_4_2"|"H264_LEVEL_5"|"H264_LEVEL_5_1"|"H264_LEVEL_5_2"|"H264_LEVEL_AUTO",
+              LookAheadRateControl = "HIGH"|"LOW"|"MEDIUM",
+              MaxBitrate = 123,
+              MinIInterval = 123,
+              NumRefFrames = 123,
+              ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+              ParDenominator = 123,
+              ParNumerator = 123,
+              Profile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+              QualityLevel = "ENHANCED_QUALITY"|"STANDARD_QUALITY",
+              QvbrQualityLevel = 123,
+              RateControlMode = "CBR"|"MULTIPLEX"|"QVBR"|"VBR",
+              ScanType = "INTERLACED"|"PROGRESSIVE",
+              SceneChangeDetect = "DISABLED"|"ENABLED",
+              Slices = 123,
+              Softness = 123,
+              SpatialAq = "DISABLED"|"ENABLED",
+              SubgopLength = "DYNAMIC"|"FIXED",
+              Syntax = "DEFAULT"|"RP2027",
+              TemporalAq = "DISABLED"|"ENABLED",
+              TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
+            ),
+            H265Settings = list(
+              AdaptiveQuantization = "HIGH"|"HIGHER"|"LOW"|"MAX"|"MEDIUM"|"OFF",
+              AfdSignaling = "AUTO"|"FIXED"|"NONE",
+              AlternativeTransferFunction = "INSERT"|"OMIT",
+              Bitrate = 123,
+              BufSize = 123,
+              ColorMetadata = "IGNORE"|"INSERT",
+              ColorSpaceSettings = list(
+                ColorSpacePassthroughSettings = list(),
+                Hdr10Settings = list(
+                  MaxCll = 123,
+                  MaxFall = 123
+                ),
+                Rec601Settings = list(),
+                Rec709Settings = list()
+              ),
+              FilterSettings = list(
+                TemporalFilterSettings = list(
+                  PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+                  Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+                )
+              ),
+              FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+              FlickerAq = "DISABLED"|"ENABLED",
+              FramerateDenominator = 123,
+              FramerateNumerator = 123,
+              GopClosedCadence = 123,
+              GopSize = 123.0,
+              GopSizeUnits = "FRAMES"|"SECONDS",
+              Level = "H265_LEVEL_1"|"H265_LEVEL_2"|"H265_LEVEL_2_1"|"H265_LEVEL_3"|"H265_LEVEL_3_1"|"H265_LEVEL_4"|"H265_LEVEL_4_1"|"H265_LEVEL_5"|"H265_LEVEL_5_1"|"H265_LEVEL_5_2"|"H265_LEVEL_6"|"H265_LEVEL_6_1"|"H265_LEVEL_6_2"|"H265_LEVEL_AUTO",
+              LookAheadRateControl = "HIGH"|"LOW"|"MEDIUM",
+              MaxBitrate = 123,
+              MinIInterval = 123,
+              ParDenominator = 123,
+              ParNumerator = 123,
+              Profile = "MAIN"|"MAIN_10BIT",
+              QvbrQualityLevel = 123,
+              RateControlMode = "CBR"|"MULTIPLEX"|"QVBR",
+              ScanType = "INTERLACED"|"PROGRESSIVE",
+              SceneChangeDetect = "DISABLED"|"ENABLED",
+              Slices = 123,
+              Tier = "HIGH"|"MAIN",
+              TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
+            ),
+            Mpeg2Settings = list(
+              AdaptiveQuantization = "AUTO"|"HIGH"|"LOW"|"MEDIUM"|"OFF",
+              AfdSignaling = "AUTO"|"FIXED"|"NONE",
+              ColorMetadata = "IGNORE"|"INSERT",
+              ColorSpace = "AUTO"|"PASSTHROUGH",
+              DisplayAspectRatio = "DISPLAYRATIO16X9"|"DISPLAYRATIO4X3",
+              FilterSettings = list(
+                TemporalFilterSettings = list(
+                  PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+                  Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+                )
+              ),
+              FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+              FramerateDenominator = 123,
+              FramerateNumerator = 123,
+              GopClosedCadence = 123,
+              GopNumBFrames = 123,
+              GopSize = 123.0,
+              GopSizeUnits = "FRAMES"|"SECONDS",
+              ScanType = "INTERLACED"|"PROGRESSIVE",
+              SubgopLength = "DYNAMIC"|"FIXED",
+              TimecodeInsertion = "DISABLED"|"GOP_TIMECODE"
+            )
+          ),
+          Height = 123,
+          Name = "string",
+          RespondToAfd = "NONE"|"PASSTHROUGH"|"RESPOND",
+          ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+          Sharpness = 123,
+          Width = 123
+        )
+      )
+    ),
+    Id = "string",
+    InputAttachments = list(
+      list(
+        AutomaticInputFailoverSettings = list(
+          ErrorClearTimeMsec = 123,
+          FailoverConditions = list(
+            list(
+              FailoverConditionSettings = list(
+                AudioSilenceSettings = list(
+                  AudioSelectorName = "string",
+                  AudioSilenceThresholdMsec = 123
+                ),
+                InputLossSettings = list(
+                  InputLossThresholdMsec = 123
+                ),
+                VideoBlackSettings = list(
+                  BlackDetectThreshold = 123.0,
+                  VideoBlackThresholdMsec = 123
+                )
+              )
+            )
+          ),
+          InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
+          SecondaryInputId = "string"
+        ),
+        InputAttachmentName = "string",
+        InputId = "string",
+        InputSettings = list(
+          AudioSelectors = list(
+            list(
+              Name = "string",
+              SelectorSettings = list(
+                AudioLanguageSelection = list(
+                  LanguageCode = "string",
+                  LanguageSelectionPolicy = "LOOSE"|"STRICT"
+                ),
+                AudioPidSelection = list(
+                  Pid = 123
+                ),
+                AudioTrackSelection = list(
+                  Tracks = list(
+                    list(
+                      Track = 123
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          CaptionSelectors = list(
+            list(
+              LanguageCode = "string",
+              Name = "string",
+              SelectorSettings = list(
+                AncillarySourceSettings = list(
+                  SourceAncillaryChannelNumber = 123
+                ),
+                AribSourceSettings = list(),
+                DvbSubSourceSettings = list(
+                  Pid = 123
+                ),
+                EmbeddedSourceSettings = list(
+                  Convert608To708 = "DISABLED"|"UPCONVERT",
+                  Scte20Detection = "AUTO"|"OFF",
+                  Source608ChannelNumber = 123,
+                  Source608TrackNumber = 123
+                ),
+                Scte20SourceSettings = list(
+                  Convert608To708 = "DISABLED"|"UPCONVERT",
+                  Source608ChannelNumber = 123
+                ),
+                Scte27SourceSettings = list(
+                  Pid = 123
+                ),
+                TeletextSourceSettings = list(
+                  PageNumber = "string"
+                )
+              )
+            )
+          ),
+          DeblockFilter = "DISABLED"|"ENABLED",
+          DenoiseFilter = "DISABLED"|"ENABLED",
+          FilterStrength = 123,
+          InputFilter = "AUTO"|"DISABLED"|"FORCED",
+          NetworkInputSettings = list(
+            HlsInputSettings = list(
+              Bandwidth = 123,
+              BufferSegments = 123,
+              Retries = 123,
+              RetryInterval = 123
+            ),
+            ServerValidation = "CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME"|"CHECK_CRYPTOGRAPHY_ONLY"
+          ),
+          Smpte2038DataPreference = "IGNORE"|"PREFER",
+          SourceEndBehavior = "CONTINUE"|"LOOP",
+          VideoSelector = list(
+            ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+            ColorSpaceUsage = "FALLBACK"|"FORCE",
+            SelectorSettings = list(
+              VideoSelectorPid = list(
+                Pid = 123
+              ),
+              VideoSelectorProgramId = list(
+                ProgramId = 123
+              )
+            )
+          )
+        )
+      )
+    ),
+    InputSpecification = list(
+      Codec = "MPEG2"|"AVC"|"HEVC",
+      MaximumBitrate = "MAX_10_MBPS"|"MAX_20_MBPS"|"MAX_50_MBPS",
+      Resolution = "SD"|"HD"|"UHD"
+    ),
+    LogLevel = "ERROR"|"WARNING"|"INFO"|"DEBUG"|"DISABLED",
+    Name = "string",
+    PipelineDetails = list(
+      list(
+        ActiveInputAttachmentName = "string",
+        ActiveInputSwitchActionName = "string",
+        PipelineId = "string"
+      )
+    ),
+    PipelinesRunningCount = 123,
+    RoleArn = "string",
+    State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
 }
 \description{
 Updates a channel.

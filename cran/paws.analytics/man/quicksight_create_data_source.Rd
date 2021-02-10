@@ -40,6 +40,16 @@ to your underlying source.}
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the data source.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  DataSourceId = "string",
+  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Creates a data source.
 }

@@ -11,13 +11,16 @@ iam_add_role_to_instance_profile(InstanceProfileName, RoleName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{RoleName}{[required] The name of the role to add.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+An empty list.
 }
 \description{
 Adds the specified IAM role to the specified instance profile. An

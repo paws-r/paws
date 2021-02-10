@@ -13,6 +13,19 @@ consumer with. For more info, see \href{https://docs.aws.amazon.com/general/late
 \item{ConsumerName}{[required] For a given Kinesis data stream, each consumer must have a unique name.
 However, consumer names don't have to be unique across data streams.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Consumer = list(
+    ConsumerName = "string",
+    ConsumerARN = "string",
+    ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
+    ConsumerCreationTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Registers a consumer with a Kinesis data stream. When you use this
 operation, the consumer you register can then call SubscribeToShard to

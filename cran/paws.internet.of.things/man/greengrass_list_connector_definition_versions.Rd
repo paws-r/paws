@@ -13,10 +13,28 @@ greengrass_list_connector_definition_versions(ConnectorDefinitionId,
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Versions = list(
+    list(
+      Arn = "string",
+      CreationTimestamp = "string",
+      Id = "string",
+      Version = "string"
+    )
+  )
+)
+}
 }
 \description{
-Lists the versions of a connector definition, which are containers for connectors. Connectors run on the Greengrass core and contain built-in integration with local infrastructure, device protocols, AWS, and other cloud services.
+Lists the versions of a connector definition, which are containers for
+connectors. Connectors run on the Greengrass core and contain built-in
+integration with local infrastructure, device protocols, AWS, and other
+cloud services.
 }
 \section{Request syntax}{
 \preformatted{svc$list_connector_definition_versions(

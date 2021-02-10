@@ -13,6 +13,36 @@ iotanalytics_list_datastores(nextToken, maxResults)
 
 The default value is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datastoreSummaries = list(
+    list(
+      datastoreName = "string",
+      datastoreStorage = list(
+        serviceManagedS3 = list(),
+        customerManagedS3 = list(
+          bucket = "string",
+          keyPrefix = "string",
+          roleArn = "string"
+        )
+      ),
+      status = "CREATING"|"ACTIVE"|"DELETING",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastMessageArrivalTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      fileFormatType = "JSON"|"PARQUET"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of data stores.
 }

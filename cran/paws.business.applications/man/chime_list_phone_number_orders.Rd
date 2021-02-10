@@ -12,6 +12,31 @@ chime_list_phone_number_orders(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumberOrders = list(
+    list(
+      PhoneNumberOrderId = "string",
+      ProductType = "BusinessCalling"|"VoiceConnector",
+      Status = "Processing"|"Successful"|"Failed"|"Partial",
+      OrderedPhoneNumbers = list(
+        list(
+          E164PhoneNumber = "string",
+          Status = "Processing"|"Acquired"|"Failed"
+        )
+      ),
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the phone number orders for the administrator's Amazon Chime
 account.

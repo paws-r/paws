@@ -12,6 +12,12 @@ and \code{Expression}.}
 
 \item{Tags}{A list of \code{Tags} object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueryArn = "string"
+)
+}
+}
 \description{
 Saves a new query or updates an existing saved query. The \code{QueryName}
 must be unique for an AWS account in an AWS Region. You can create upto

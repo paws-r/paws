@@ -19,6 +19,9 @@ with results.}
 
 \item{details}{Detailed information about the failure.}
 }
+\value{
+An empty list.
+}
 \description{
 Used by workers to tell the service that the ActivityTask identified by
 the \code{taskToken} has failed with \code{reason} (if specified). The \code{reason}

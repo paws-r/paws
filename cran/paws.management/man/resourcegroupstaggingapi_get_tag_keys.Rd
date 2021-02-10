@@ -12,6 +12,15 @@ value empty for your initial request. If the response includes a
 \code{PaginationToken}, use that string for this value to request an
 additional page of data.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PaginationToken = "string",
+  TagKeys = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns all tag keys in the specified Region for the AWS account.
 }

@@ -13,6 +13,29 @@ chime_describe_channel_membership_for_app_instance_user(ChannelArn,
 
 \item{AppInstanceUserArn}{[required] The ARN of the user in a channel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelMembership = list(
+    ChannelSummary = list(
+      Name = "string",
+      ChannelArn = "string",
+      Mode = "UNRESTRICTED"|"RESTRICTED",
+      Privacy = "PUBLIC"|"PRIVATE",
+      Metadata = "string",
+      LastMessageTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    AppInstanceUserMembershipSummary = list(
+      Type = "DEFAULT"|"HIDDEN",
+      ReadMarkerTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the details of a channel based on the membership of the
 \code{AppInstanceUser} specified.

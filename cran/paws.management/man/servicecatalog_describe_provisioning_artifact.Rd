@@ -27,6 +27,26 @@ servicecatalog_describe_provisioning_artifact(AcceptLanguage,
 
 \item{Verbose}{Indicates whether a verbose level of detail is enabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisioningArtifactDetail = list(
+    Id = "string",
+    Name = "string",
+    Description = "string",
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Active = TRUE|FALSE,
+    Guidance = "DEFAULT"|"DEPRECATED"
+  ),
+  Info = list(
+    "string"
+  ),
+  Status = "AVAILABLE"|"CREATING"|"FAILED"
+)
+}
+}
 \description{
 Gets information about the specified provisioning artifact (also known
 as a version) for the specified product.

@@ -12,6 +12,19 @@ eventbridge_put_events(Entries)
 parameters for the entry such as the source and type of the event,
 resources associated with the event, and so on.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedEntryCount = 123,
+  Entries = list(
+    list(
+      EventId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Sends custom events to Amazon EventBridge so that they can be matched to
 rules.

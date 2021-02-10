@@ -16,6 +16,9 @@ or
 \href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText}
 operation request that contained the utterance.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes stored utterances.
 

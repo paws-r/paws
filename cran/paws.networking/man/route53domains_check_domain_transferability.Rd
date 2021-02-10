@@ -26,6 +26,14 @@ label.
 authorization code to transfer the domain, the code that you got from
 the current registrar for the domain.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Transferability = list(
+    Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"
+  )
+)
+}
+}
 \description{
 Checks whether a domain name can be transferred to Amazon Route 53.
 }

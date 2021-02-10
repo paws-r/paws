@@ -19,6 +19,24 @@ servicequotas_list_service_quota_increase_requests_in_template(
 the remaining results, if any, make another call with the token returned
 from this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceQuotaIncreaseRequestInTemplateList = list(
+    list(
+      ServiceCode = "string",
+      ServiceName = "string",
+      QuotaCode = "string",
+      QuotaName = "string",
+      DesiredValue = 123.0,
+      AwsRegion = "string",
+      Unit = "string",
+      GlobalQuota = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the quota increase requests in the specified quota request
 template.

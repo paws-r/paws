@@ -15,6 +15,27 @@ with.}
 subnet ID. If you specify a subnet ID, Resolver chooses an IP address
 for you from the available IPs in the specified subnet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverEndpoint = list(
+    Id = "string",
+    CreatorRequestId = "string",
+    Arn = "string",
+    Name = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Direction = "INBOUND"|"OUTBOUND",
+    IpAddressCount = 123,
+    HostVPCId = "string",
+    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+    StatusMessage = "string",
+    CreationTime = "string",
+    ModificationTime = "string"
+  )
+)
+}
+}
 \description{
 Adds IP addresses to an inbound or an outbound Resolver endpoint. If you
 want to add more than one IP address, submit one

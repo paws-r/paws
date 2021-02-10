@@ -34,6 +34,21 @@ of the alias.}
 specified. Use this option to avoid modifying an alias that has changed
 since you last read it.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AliasArn = "string",
+  Name = "string",
+  FunctionVersion = "string",
+  Description = "string",
+  RoutingConfig = list(
+    AdditionalVersionWeights = list(
+      123.0
+    )
+  ),
+  RevisionId = "string"
+)
+}
+}
 \description{
 Updates the configuration of a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.

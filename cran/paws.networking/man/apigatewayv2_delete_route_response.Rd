@@ -13,6 +13,9 @@ apigatewayv2_delete_route_response(ApiId, RouteId, RouteResponseId)
 
 \item{RouteResponseId}{[required] The route response ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a RouteResponse.
 }

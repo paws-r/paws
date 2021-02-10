@@ -21,6 +21,22 @@ parameter.}
 
 \item{RegionName}{Lists the global tables in a specific Region.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalTables = list(
+    list(
+      GlobalTableName = "string",
+      ReplicationGroup = list(
+        list(
+          RegionName = "string"
+        )
+      )
+    )
+  ),
+  LastEvaluatedGlobalTableName = "string"
+)
+}
+}
 \description{
 Lists all global tables that have a replica in the specified Region.
 

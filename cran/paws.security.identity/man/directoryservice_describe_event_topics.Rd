@@ -17,6 +17,22 @@ returned.
 
 An empty list results in an \code{InvalidParameterException} being thrown.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventTopics = list(
+    list(
+      DirectoryId = "string",
+      TopicName = "string",
+      TopicArn = "string",
+      CreatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "Registered"|"Topic not found"|"Failed"|"Deleted"
+    )
+  )
+)
+}
+}
 \description{
 Obtains information about which SNS topics receive status messages from
 the specified directory.

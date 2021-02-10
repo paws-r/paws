@@ -13,6 +13,9 @@ iot_detach_thing_principal(thingName, principal)
 certificate. If the principal is an Amazon Cognito identity, this value
 must be the ID of the Amazon Cognito identity.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches the specified principal from the specified thing. A principal
 can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito

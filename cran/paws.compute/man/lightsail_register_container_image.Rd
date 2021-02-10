@@ -38,6 +38,18 @@ version number will be \code{3}, and so on.}
 
 \item{digest}{[required] The digest of the container image to be registered.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  containerImage = list(
+    image = "string",
+    digest = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Registers a container image to your Amazon Lightsail container service.
 

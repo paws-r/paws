@@ -23,6 +23,23 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Routes = list(
+    list(
+      DestinationCidrBlock = "string",
+      LocalGatewayVirtualInterfaceGroupId = "string",
+      Type = "static"|"propagated",
+      State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
+      LocalGatewayRouteTableId = "string",
+      LocalGatewayRouteTableArn = "string",
+      OwnerId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Searches for routes in the specified local gateway route table.
 }

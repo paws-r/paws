@@ -34,6 +34,26 @@ specified by \code{MaxRecords}.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  InstallationMedia = list(
+    list(
+      InstallationMediaId = "string",
+      CustomAvailabilityZoneId = "string",
+      Engine = "string",
+      EngineVersion = "string",
+      EngineInstallationMediaPath = "string",
+      OSInstallationMediaPath = "string",
+      Status = "string",
+      FailureCause = list(
+        Message = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the available installation media for a DB engine that requires
 an on-premises customer provided license, such as Microsoft SQL Server.

@@ -30,6 +30,24 @@ Specify \code{TimestampDescending} to have the newest event history returned
 first, and specify \code{TimestampAscending} to have the oldest history
 returned first.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AlarmHistoryItems = list(
+    list(
+      AlarmName = "string",
+      AlarmType = "CompositeAlarm"|"MetricAlarm",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
+      HistorySummary = "string",
+      HistoryData = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the history for the specified alarm. You can filter the
 results by date range or item type. If an alarm name is not specified,

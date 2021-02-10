@@ -9,6 +9,12 @@ glue_delete_ml_transform(TransformId)
 \arguments{
 \item{TransformId}{[required] The unique identifier of the transform to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformId = "string"
+)
+}
+}
 \description{
 Deletes an AWS Glue machine learning transform. Machine learning
 transforms are a special type of transform that use machine learning to

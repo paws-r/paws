@@ -11,6 +11,9 @@ sqs_tag_queue(QueueUrl, Tags)
 
 \item{Tags}{[required] The list of tags to be added to the specified queue.}
 }
+\value{
+An empty list.
+}
 \description{
 Add cost allocation tags to the specified Amazon SQS queue. For an
 overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}

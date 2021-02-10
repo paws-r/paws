@@ -15,6 +15,9 @@ or retrieve.}
 
 \item{IntelligentTieringConfiguration}{[required] Container for S3 Intelligent-Tiering configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 Puts a S3 Intelligent-Tiering configuration to the specified bucket.
 
@@ -32,7 +35,7 @@ frequent access tier rates in the S3 Intelligent-Tiering storage class.
 
 If you delete an object before the end of the 30-day minimum storage
 duration period, you are charged for 30 days. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access}{Storage class for automatically optimizing frequently and infrequently accessed objects}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access}{Storage class for automatically optimizing frequently and infrequently accessed objects}.
 
 Operations related to
 \code{\link[=s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration}}

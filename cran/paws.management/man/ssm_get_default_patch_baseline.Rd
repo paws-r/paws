@@ -9,6 +9,13 @@ ssm_get_default_patch_baseline(OperatingSystem)
 \arguments{
 \item{OperatingSystem}{Returns the default patch baseline for the specified operating system.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineId = "string",
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
+)
+}
+}
 \description{
 Retrieves the default patch baseline. Note that Systems Manager supports
 creating multiple default patch baselines. For example, you can create a

@@ -17,6 +17,9 @@ administrator credentials to access the API.}
 
 \item{CommentId}{[required] The ID of the comment.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified comment from the document version.
 }

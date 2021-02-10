@@ -13,6 +13,9 @@ connect_delete_integration_association(InstanceId,
 
 \item{IntegrationAssociationId}{[required] The identifier for the AppIntegration association.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

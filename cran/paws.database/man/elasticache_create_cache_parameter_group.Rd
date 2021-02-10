@@ -19,6 +19,18 @@ Valid values are: \code{memcached1.4} | \code{memcached1.5} | \code{memcached1.6
 
 \item{Description}{[required] A user-specified description for the cache parameter group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CacheParameterGroup = list(
+    CacheParameterGroupName = "string",
+    CacheParameterGroupFamily = "string",
+    Description = "string",
+    IsGlobal = TRUE|FALSE,
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Creates a new Amazon ElastiCache cache parameter group. An ElastiCache
 cache parameter group is a collection of parameters and their values

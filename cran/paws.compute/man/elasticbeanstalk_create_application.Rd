@@ -21,6 +21,43 @@ your application from accumulating too many versions.}
 Elastic Beanstalk applies these tags only to the application.
 Environments that you create in the application don't inherit the tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Application = list(
+    ApplicationArn = "string",
+    ApplicationName = "string",
+    Description = "string",
+    DateCreated = as.POSIXct(
+      "2015-01-01"
+    ),
+    DateUpdated = as.POSIXct(
+      "2015-01-01"
+    ),
+    Versions = list(
+      "string"
+    ),
+    ConfigurationTemplates = list(
+      "string"
+    ),
+    ResourceLifecycleConfig = list(
+      ServiceRole = "string",
+      VersionLifecycleConfig = list(
+        MaxCountRule = list(
+          Enabled = TRUE|FALSE,
+          MaxCount = 123,
+          DeleteSourceFromS3 = TRUE|FALSE
+        ),
+        MaxAgeRule = list(
+          Enabled = TRUE|FALSE,
+          MaxAgeInDays = 123,
+          DeleteSourceFromS3 = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an application that has one configuration template named
 \code{default} and no application versions.

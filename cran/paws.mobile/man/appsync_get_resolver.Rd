@@ -13,6 +13,38 @@ appsync_get_resolver(apiId, typeName, fieldName)
 
 \item{fieldName}{[required] The resolver field name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resolver = list(
+    typeName = "string",
+    fieldName = "string",
+    dataSourceName = "string",
+    resolverArn = "string",
+    requestMappingTemplate = "string",
+    responseMappingTemplate = "string",
+    kind = "UNIT"|"PIPELINE",
+    pipelineConfig = list(
+      functions = list(
+        "string"
+      )
+    ),
+    syncConfig = list(
+      conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+      conflictDetection = "VERSION"|"NONE",
+      lambdaConflictHandlerConfig = list(
+        lambdaConflictHandlerArn = "string"
+      )
+    ),
+    cachingConfig = list(
+      ttl = 123,
+      cachingKeys = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves a \code{Resolver} object.
 }

@@ -24,6 +24,13 @@ function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{Specify a version or alias to get the policy for that resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string",
+  RevisionId = "string"
+)
+}
+}
 \description{
 Returns the \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy}
 for a function, version, or alias.

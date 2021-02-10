@@ -12,6 +12,9 @@ apigatewayv2_delete_stage(ApiId, StageName)
 \item{StageName}{[required] The stage name. Stage names can only contain alphanumeric characters,
 hyphens, and underscores. Maximum length is 128 characters.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Stage.
 }

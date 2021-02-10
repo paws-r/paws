@@ -10,6 +10,9 @@ iam_delete_user_permissions_boundary(UserName)
 \item{UserName}{[required] The name (friendly name, not ARN) of the IAM user from which you want to
 remove the permissions boundary.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the permissions boundary for the specified IAM user.
 

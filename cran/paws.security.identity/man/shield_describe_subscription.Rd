@@ -7,6 +7,46 @@ account}
 \usage{
 shield_describe_subscription()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Subscription = list(
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    TimeCommitmentInSeconds = 123,
+    AutoRenew = "ENABLED"|"DISABLED",
+    Limits = list(
+      list(
+        Type = "string",
+        Max = 123
+      )
+    ),
+    ProactiveEngagementStatus = "ENABLED"|"DISABLED"|"PENDING",
+    SubscriptionLimits = list(
+      ProtectionLimits = list(
+        ProtectedResourceTypeLimits = list(
+          list(
+            Type = "string",
+            Max = 123
+          )
+        )
+      ),
+      ProtectionGroupLimits = list(
+        MaxProtectionGroups = 123,
+        PatternTypeLimits = list(
+          ArbitraryPatternLimits = list(
+            MaxMembers = 123
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Provides details about the AWS Shield Advanced subscription for an
 account.

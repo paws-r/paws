@@ -15,6 +15,9 @@ this field.}}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a progress update stream, including all of its tasks, which was
 previously created as an AWS resource used for access control. This API

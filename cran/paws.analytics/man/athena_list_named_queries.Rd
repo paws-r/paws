@@ -19,6 +19,15 @@ previous page call.}
 returned. If a workgroup is not specified, the saved queries for the
 primary workgroup are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NamedQueryIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides a list of available query IDs only for queries saved in the
 specified workgroup. Requires that you have access to the specified

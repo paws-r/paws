@@ -16,6 +16,15 @@ iot_list_policy_principals(policyName, marker, pageSize, ascendingOrder)
 \item{ascendingOrder}{Specifies the order for results. If true, the results are returned in
 ascending creation order.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  principals = list(
+    "string"
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Lists the principals associated with the specified policy.
 

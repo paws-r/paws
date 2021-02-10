@@ -9,6 +9,9 @@ cloudwatchlogs_delete_retention_policy(logGroupName)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified retention policy.
 

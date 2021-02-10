@@ -14,6 +14,19 @@ dynamodb_list_contributor_insights(TableName, NextToken, MaxResults)
 
 \item{MaxResults}{Maximum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContributorInsightsSummaries = list(
+    list(
+      TableName = "string",
+      IndexName = "string",
+      ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of ContributorInsightsSummary for a table and all its
 global secondary indexes.

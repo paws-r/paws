@@ -11,6 +11,9 @@ directoryservice_cancel_schema_extension(DirectoryId, SchemaExtensionId)
 
 \item{SchemaExtensionId}{[required] The identifier of the schema extension that will be canceled.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels an in-progress schema extension to a Microsoft AD directory.
 Once a schema extension has started replicating to all domain

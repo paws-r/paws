@@ -39,6 +39,9 @@ scope of the policy, those accounts and resources are handled by the
 policy. All others are out of scope. If you don't specify tags or
 accounts, all resources are in scope.}
 }
+\value{
+An empty list.
+}
 \description{
 Permanently deletes an AWS Firewall Manager policy.
 }

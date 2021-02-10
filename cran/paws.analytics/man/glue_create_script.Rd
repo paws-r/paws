@@ -13,6 +13,13 @@ glue_create_script(DagNodes, DagEdges, Language)
 
 \item{Language}{The programming language of the resulting code from the DAG.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PythonScript = "string",
+  ScalaCode = "string"
+)
+}
+}
 \description{
 Transforms a directed acyclic graph (DAG) into code.
 }

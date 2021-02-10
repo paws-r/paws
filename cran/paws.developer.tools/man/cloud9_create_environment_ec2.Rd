@@ -41,6 +41,12 @@ Cloud9 development environment.}
 
 \item{connectionType}{The connection type used for connecting to an Amazon EC2 environment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  environmentId = "string"
+)
+}
+}
 \description{
 Creates an AWS Cloud9 development environment, launches an Amazon
 Elastic Compute Cloud (Amazon EC2) instance, and then connects from the

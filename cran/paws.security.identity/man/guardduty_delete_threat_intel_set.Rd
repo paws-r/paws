@@ -12,6 +12,9 @@ with.}
 
 \item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 }

@@ -19,6 +19,15 @@ ram_get_resource_policies(resourceArns, principal, nextToken,
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policies = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the policies for the specified resources that you own and have
 shared.

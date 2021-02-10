@@ -14,14 +14,16 @@ in the \emph{AWS Step Functions Developer Guide}.
 A name must \emph{not} contain:
 \itemize{
 \item white space
-\item brackets \verb{< > \\\{ \\\} \\\[ \\\]}
+\item brackets \verb{< > \{ \} [ ]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ & , ; : /}
+\item special characters \verb{\\" # \% \\ ^ | ~ \\` $ & , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }
 
 To enable logging with CloudWatch Logs, the name should only contain
-0-9, A-Z, a-z, - and \\_.}
+0-9, A-Z, a-z, - and _.
+
+[ ]: R:\%20}
 
 \item{tags}{The list of tags to add to a resource.
 
@@ -30,6 +32,15 @@ in the \emph{AWS Billing and Cost Management User Guide}, and \href{https://docs
 
 Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  activityArn = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
 }
 \description{
 Creates an activity. An activity is a task that you write in any

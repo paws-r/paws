@@ -15,6 +15,19 @@ you want to change.}
 \item{ChangeBatch}{[required] A complex type that contains an optional comment and the \code{Changes}
 element.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Creates, changes, or deletes a resource record set, which contains
 authoritative DNS information for a specified domain name or subdomain

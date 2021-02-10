@@ -12,6 +12,9 @@ configservice_put_external_evaluation(ConfigRuleName,
 
 \item{ExternalEvaluation}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Put external evaluation
 }

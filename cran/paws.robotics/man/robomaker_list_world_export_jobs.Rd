@@ -29,6 +29,24 @@ to 100 results and a \code{nextToken} value if applicable.}
 \item{filters}{Optional filters to limit results. You can use \code{generationJobId} and
 \code{templateId}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  worldExportJobSummaries = list(
+    list(
+      arn = "string",
+      status = "Pending"|"Running"|"Completed"|"Failed"|"Canceling"|"Canceled",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      worlds = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists world export jobs.
 }

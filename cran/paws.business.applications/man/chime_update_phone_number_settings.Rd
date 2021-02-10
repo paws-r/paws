@@ -10,6 +10,9 @@ chime_update_phone_number_settings(CallingName)
 \arguments{
 \item{CallingName}{[required] The default outbound calling name for the account.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the phone number settings for the administrator's AWS account,
 such as the default outbound calling name. You can update the default

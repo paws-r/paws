@@ -18,6 +18,14 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{jobParameters}{Provides options for specifying job information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  location = "string",
+  jobId = "string",
+  jobOutputPath = "string"
+)
+}
+}
 \description{
 This operation initiates a job of the specified type, which can be a
 select, an archival retrieval, or a vault retrieval. For more

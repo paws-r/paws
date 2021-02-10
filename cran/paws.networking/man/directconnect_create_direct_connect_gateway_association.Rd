@@ -24,6 +24,32 @@ in the \emph{AWS Direct Connect User Guide}.}
 
 \item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  directConnectGatewayAssociation = list(
+    directConnectGatewayId = "string",
+    directConnectGatewayOwnerAccount = "string",
+    associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
+    stateChangeError = "string",
+    associatedGateway = list(
+      id = "string",
+      type = "virtualPrivateGateway"|"transitGateway",
+      ownerAccount = "string",
+      region = "string"
+    ),
+    associationId = "string",
+    allowedPrefixesToDirectConnectGateway = list(
+      list(
+        cidr = "string"
+      )
+    ),
+    virtualGatewayId = "string",
+    virtualGatewayRegion = "string",
+    virtualGatewayOwnerAccount = "string"
+  )
+)
+}
+}
 \description{
 Creates an association between a Direct Connect gateway and a virtual
 private gateway. The virtual private gateway must be attached to a VPC

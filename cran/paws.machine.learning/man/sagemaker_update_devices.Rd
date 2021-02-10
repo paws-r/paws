@@ -11,6 +11,9 @@ sagemaker_update_devices(DeviceFleetName, Devices)
 
 \item{Devices}{[required] List of devices to register with Edge Manager agent.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates one or more devices in a fleet.
 }

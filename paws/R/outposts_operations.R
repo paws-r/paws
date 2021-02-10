@@ -19,6 +19,27 @@ NULL
 #' @param AvailabilityZoneId 
 #' @param Tags The tags to apply to the Outpost.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Outpost = list(
+#'     OutpostId = "string",
+#'     OwnerId = "string",
+#'     OutpostArn = "string",
+#'     SiteId = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     LifeCycleStatus = "string",
+#'     AvailabilityZone = "string",
+#'     AvailabilityZoneId = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_outpost(
@@ -63,6 +84,9 @@ outposts_create_outpost <- function(Name, Description = NULL, SiteId, Availabili
 #'
 #' @param OutpostId &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_outpost(
@@ -100,6 +124,9 @@ outposts_delete_outpost <- function(OutpostId) {
 #'
 #' @param SiteId &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_site(
@@ -136,6 +163,27 @@ outposts_delete_site <- function(SiteId) {
 #' outposts_get_outpost(OutpostId)
 #'
 #' @param OutpostId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Outpost = list(
+#'     OutpostId = "string",
+#'     OwnerId = "string",
+#'     OutpostArn = "string",
+#'     SiteId = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     LifeCycleStatus = "string",
+#'     AvailabilityZone = "string",
+#'     AvailabilityZoneId = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -175,6 +223,21 @@ outposts_get_outpost <- function(OutpostId) {
 #' @param OutpostId &#91;required&#93; 
 #' @param NextToken 
 #' @param MaxResults 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceTypes = list(
+#'     list(
+#'       InstanceType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   OutpostId = "string",
+#'   OutpostArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -216,6 +279,30 @@ outposts_get_outpost_instance_types <- function(OutpostId, NextToken = NULL, Max
 #' @param NextToken 
 #' @param MaxResults 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Outposts = list(
+#'     list(
+#'       OutpostId = "string",
+#'       OwnerId = "string",
+#'       OutpostArn = "string",
+#'       SiteId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       LifeCycleStatus = "string",
+#'       AvailabilityZone = "string",
+#'       AvailabilityZoneId = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_outposts(
@@ -255,6 +342,25 @@ outposts_list_outposts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param NextToken 
 #' @param MaxResults 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sites = list(
+#'     list(
+#'       SiteId = "string",
+#'       AccountId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_sites(
@@ -293,6 +399,16 @@ outposts_list_sites <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -330,6 +446,9 @@ outposts_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; The tags to add to the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -371,6 +490,9 @@ outposts_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

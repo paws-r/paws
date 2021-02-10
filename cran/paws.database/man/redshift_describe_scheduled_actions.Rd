@@ -42,6 +42,47 @@ Default: \code{100}
 
 Constraints: minimum 20, maximum 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ScheduledActions = list(
+    list(
+      ScheduledActionName = "string",
+      TargetAction = list(
+        ResizeCluster = list(
+          ClusterIdentifier = "string",
+          ClusterType = "string",
+          NodeType = "string",
+          NumberOfNodes = 123,
+          Classic = TRUE|FALSE
+        ),
+        PauseCluster = list(
+          ClusterIdentifier = "string"
+        ),
+        ResumeCluster = list(
+          ClusterIdentifier = "string"
+        )
+      ),
+      Schedule = "string",
+      IamRole = "string",
+      ScheduledActionDescription = "string",
+      State = "ACTIVE"|"DISABLED",
+      NextInvocations = list(
+        as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes properties of scheduled actions.
 }

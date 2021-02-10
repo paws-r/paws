@@ -31,6 +31,14 @@ If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  VersionId = "string"
+)
+}
+}
 \description{
 Disables automatic scheduled rotation and cancels the rotation of a
 secret if currently in progress.

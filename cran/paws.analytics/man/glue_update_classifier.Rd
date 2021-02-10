@@ -17,6 +17,9 @@ glue_update_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
 
 \item{CsvClassifier}{A \code{CsvClassifier} object with updated fields.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies an existing classifier (a \code{GrokClassifier}, an \code{XMLClassifier},
 a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field is

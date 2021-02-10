@@ -11,6 +11,9 @@ datasync_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] The tags to apply.}
 }
+\value{
+An empty list.
+}
 \description{
 Applies a key-value pair to an AWS resource.
 }

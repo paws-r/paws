@@ -10,9 +10,24 @@ greengrass_list_subscription_definition_versions(MaxResults, NextToken,
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
 
 \item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Versions = list(
+    list(
+      Arn = "string",
+      CreationTimestamp = "string",
+      Id = "string",
+      Version = "string"
+    )
+  )
+)
+}
 }
 \description{
 Lists the versions of a subscription definition.

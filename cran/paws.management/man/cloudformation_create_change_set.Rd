@@ -177,6 +177,13 @@ type to create a change set for an existing stack.}
 template. The default behavior of this action is set to \code{False}. To
 include nested sets in a change set, specify \code{True}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Id = "string",
+  StackId = "string"
+)
+}
+}
 \description{
 Creates a list of changes that will be applied to a stack so that you
 can review the changes before executing them. You can create a change

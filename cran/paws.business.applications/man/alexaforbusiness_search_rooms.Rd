@@ -24,6 +24,23 @@ filter keys are RoomName and ProfileName.}
 \item{SortCriteria}{The sort order to use in listing the specified set of rooms. The
 supported sort keys are RoomName and ProfileName.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rooms = list(
+    list(
+      RoomArn = "string",
+      RoomName = "string",
+      Description = "string",
+      ProviderCalendarId = "string",
+      ProfileArn = "string",
+      ProfileName = "string"
+    )
+  ),
+  NextToken = "string",
+  TotalCount = 123
+)
+}
+}
 \description{
 Searches rooms and lists the ones that meet a set of filter and sort
 criteria.

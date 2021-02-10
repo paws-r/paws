@@ -7,6 +7,9 @@ manage and maintain VPC domains}
 \usage{
 elasticsearchservice_delete_elasticsearch_service_role()
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the service-linked role that Elasticsearch Service uses to
 manage and maintain VPC domains. Role deletion will fail if any existing

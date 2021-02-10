@@ -27,6 +27,27 @@ servicecatalog_update_portfolio(AcceptLanguage, Id, DisplayName,
 
 \item{RemoveTags}{The tags to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortfolioDetail = list(
+    Id = "string",
+    ARN = "string",
+    DisplayName = "string",
+    Description = "string",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProviderName = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the specified portfolio.
 

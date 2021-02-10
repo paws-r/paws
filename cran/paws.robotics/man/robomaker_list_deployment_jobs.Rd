@@ -33,6 +33,49 @@ and 200. If this parameter is not used, then
 \code{\link[=robomaker_list_deployment_jobs]{list_deployment_jobs}} returns up to
 200 results and a \code{nextToken} value if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deploymentJobs = list(
+    list(
+      arn = "string",
+      fleet = "string",
+      status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+      deploymentApplicationConfigs = list(
+        list(
+          application = "string",
+          applicationVersion = "string",
+          launchConfig = list(
+            packageName = "string",
+            preLaunchFile = "string",
+            launchFile = "string",
+            postLaunchFile = "string",
+            environmentVariables = list(
+              "string"
+            )
+          )
+        )
+      ),
+      deploymentConfig = list(
+        concurrentDeploymentPercentage = 123,
+        failureThresholdPercentage = 123,
+        robotDeploymentTimeoutInSeconds = 123,
+        downloadConditionFile = list(
+          bucket = "string",
+          key = "string",
+          etag = "string"
+        )
+      ),
+      failureReason = "string",
+      failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of deployment jobs for a fleet. You can optionally
 provide filters to retrieve specific deployment jobs.

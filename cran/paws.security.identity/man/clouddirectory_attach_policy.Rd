@@ -16,6 +16,9 @@ where both objects reside. For more information, see arns.}
 \item{ObjectReference}{[required] The reference that identifies the object to which the policy will be
 attached.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches a policy object to a regular object. An object can have a
 limited number of attached policies.

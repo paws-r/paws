@@ -31,6 +31,26 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomerGateway = list(
+    BgpAsn = "string",
+    CustomerGatewayId = "string",
+    IpAddress = "string",
+    CertificateArn = "string",
+    State = "string",
+    Type = "string",
+    DeviceName = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Provides information to AWS about your VPN customer gateway device. The
 customer gateway is the appliance at your end of the VPN connection.

@@ -9,6 +9,9 @@ datasync_delete_task(TaskArn)
 \arguments{
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the task to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a task.
 }

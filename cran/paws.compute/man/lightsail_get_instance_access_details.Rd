@@ -12,6 +12,44 @@ lightsail_get_instance_access_details(instanceName, protocol)
 
 \item{protocol}{The protocol to use to connect to your instance. Defaults to \code{ssh}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  accessDetails = list(
+    certKey = "string",
+    expiresAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    ipAddress = "string",
+    password = "string",
+    passwordData = list(
+      ciphertext = "string",
+      keyPairName = "string"
+    ),
+    privateKey = "string",
+    protocol = "ssh"|"rdp",
+    instanceName = "string",
+    username = "string",
+    hostKeys = list(
+      list(
+        algorithm = "string",
+        publicKey = "string",
+        witnessedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        fingerprintSHA1 = "string",
+        fingerprintSHA256 = "string",
+        notValidBefore = as.POSIXct(
+          "2015-01-01"
+        ),
+        notValidAfter = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns temporary SSH keys you can use to connect to a specific virtual
 private server, or \emph{instance}.

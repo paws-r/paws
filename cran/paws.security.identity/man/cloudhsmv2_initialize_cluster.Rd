@@ -22,6 +22,13 @@ certificate. The certificate used to sign the HSM CSR must be directly
 available, and thus must be the root certificate. The certificate must
 be in PEM format and can contain a maximum of 5000 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+  StateMessage = "string"
+)
+}
+}
 \description{
 Claims an AWS CloudHSM cluster by submitting the cluster certificate
 issued by your issuing certificate authority (CA) and the CA's root

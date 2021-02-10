@@ -12,6 +12,9 @@ elasticbeanstalk_delete_environment_configuration(ApplicationName,
 
 \item{EnvironmentName}{[required] The name of the environment to delete the draft configuration from.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the draft configuration associated with the running environment.
 

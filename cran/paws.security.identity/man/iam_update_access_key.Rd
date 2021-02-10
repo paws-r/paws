@@ -12,7 +12,7 @@ iam_update_access_key(UserName, AccessKeyId, Status)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{AccessKeyId}{[required] The access key ID of the secret access key you want to update.
 
@@ -22,6 +22,9 @@ that can consist of any upper or lowercased letter or digit.}
 \item{Status}{[required] The status you want to assign to the secret access key. \code{Active} means
 that the key can be used for API calls to AWS, while \code{Inactive} means
 that the key cannot be used.}
+}
+\value{
+An empty list.
 }
 \description{
 Changes the status of the specified access key from Active to Inactive,

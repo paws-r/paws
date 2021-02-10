@@ -15,6 +15,24 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupVaultList = list(
+    list(
+      BackupVaultName = "string",
+      BackupVaultArn = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      EncryptionKeyArn = "string",
+      CreatorRequestId = "string",
+      NumberOfRecoveryPoints = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of recovery point storage containers along with
 information about them.

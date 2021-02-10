@@ -19,6 +19,33 @@ for the target group.}
 with a letter and must contain only ASCII letters, digits, and hyphens;
 it can't end with a hyphen or contain two consecutive hyphens.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBProxyTargetGroup = list(
+    DBProxyName = "string",
+    TargetGroupName = "string",
+    TargetGroupArn = "string",
+    IsDefault = TRUE|FALSE,
+    Status = "string",
+    ConnectionPoolConfig = list(
+      MaxConnectionsPercent = 123,
+      MaxIdleConnectionsPercent = 123,
+      ConnectionBorrowTimeout = 123,
+      SessionPinningFilters = list(
+        "string"
+      ),
+      InitQuery = "string"
+    ),
+    CreatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the properties of a \code{DBProxyTargetGroup}.
 }

@@ -15,6 +15,9 @@ update image permissions.}
 
 \item{ImagePermissions}{[required] The permissions for the image.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or updates permissions for the specified private image.
 }

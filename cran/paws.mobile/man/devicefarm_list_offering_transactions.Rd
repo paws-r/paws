@@ -12,6 +12,47 @@ devicefarm_list_offering_transactions(nextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  offeringTransactions = list(
+    list(
+      offeringStatus = list(
+        type = "PURCHASE"|"RENEW"|"SYSTEM",
+        offering = list(
+          id = "string",
+          description = "string",
+          type = "RECURRING",
+          platform = "ANDROID"|"IOS",
+          recurringCharges = list(
+            list(
+              cost = list(
+                amount = 123.0,
+                currencyCode = "USD"
+              ),
+              frequency = "MONTHLY"
+            )
+          )
+        ),
+        quantity = 123,
+        effectiveOn = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      transactionId = "string",
+      offeringPromotionId = "string",
+      createdOn = as.POSIXct(
+        "2015-01-01"
+      ),
+      cost = list(
+        amount = 123.0,
+        currencyCode = "USD"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of all historical purchases, renewals, and system renewal
 transactions for an AWS account. The list is paginated and ordered by a

@@ -9,6 +9,61 @@ lambda_get_event_source_mapping(UUID)
 \arguments{
 \item{UUID}{[required] The identifier of the event source mapping.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UUID = "string",
+  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
+  StartingPositionTimestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  BatchSize = 123,
+  MaximumBatchingWindowInSeconds = 123,
+  ParallelizationFactor = 123,
+  EventSourceArn = "string",
+  FunctionArn = "string",
+  LastModified = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastProcessingResult = "string",
+  State = "string",
+  StateTransitionReason = "string",
+  DestinationConfig = list(
+    OnSuccess = list(
+      Destination = "string"
+    ),
+    OnFailure = list(
+      Destination = "string"
+    )
+  ),
+  Topics = list(
+    "string"
+  ),
+  Queues = list(
+    "string"
+  ),
+  SourceAccessConfigurations = list(
+    list(
+      Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
+      URI = "string"
+    )
+  ),
+  SelfManagedEventSource = list(
+    Endpoints = list(
+      list(
+        "string"
+      )
+    )
+  ),
+  MaximumRecordAgeInSeconds = 123,
+  BisectBatchOnFunctionError = TRUE|FALSE,
+  MaximumRetryAttempts = 123,
+  TumblingWindowInSeconds = 123,
+  FunctionResponseTypes = list(
+    "ReportBatchItemFailures"
+  )
+)
+}
+}
 \description{
 Returns details about an event source mapping. You can get the
 identifier of a mapping from the output of

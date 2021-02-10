@@ -16,6 +16,24 @@ transfer_list_servers(MaxResults, NextToken)
 is returned in the output. You can then pass the \code{NextToken} parameter
 in a subsequent command to continue listing additional servers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Servers = list(
+    list(
+      Arn = "string",
+      Domain = "S3"|"EFS",
+      IdentityProviderType = "SERVICE_MANAGED"|"API_GATEWAY",
+      EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
+      LoggingRole = "string",
+      ServerId = "string",
+      State = "OFFLINE"|"ONLINE"|"STARTING"|"STOPPING"|"START_FAILED"|"STOP_FAILED",
+      UserCount = 123
+    )
+  )
+)
+}
+}
 \description{
 Lists the file transfer protocol-enabled servers that are associated
 with your AWS account.

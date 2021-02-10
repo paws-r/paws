@@ -9,6 +9,27 @@ neptune_delete_event_subscription(SubscriptionName)
 \arguments{
 \item{SubscriptionName}{[required] The name of the event notification subscription you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = "string",
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE,
+    EventSubscriptionArn = "string"
+  )
+)
+}
+}
 \description{
 Deletes an event notification subscription.
 }

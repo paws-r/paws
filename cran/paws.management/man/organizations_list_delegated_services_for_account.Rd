@@ -29,6 +29,20 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DelegatedServices = list(
+    list(
+      ServicePrincipal = "string",
+      DelegationEnabledDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the AWS services for which the specified account is a delegated
 administrator.

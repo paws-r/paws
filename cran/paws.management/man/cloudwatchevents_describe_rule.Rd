@@ -12,6 +12,21 @@ cloudwatchevents_describe_rule(Name, EventBusName)
 \item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
 this, the default event bus is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Arn = "string",
+  EventPattern = "string",
+  ScheduleExpression = "string",
+  State = "ENABLED"|"DISABLED",
+  Description = "string",
+  RoleArn = "string",
+  ManagedBy = "string",
+  EventBusName = "string",
+  CreatedBy = "string"
+)
+}
+}
 \description{
 Describes the specified rule.
 

@@ -13,6 +13,35 @@ in an export project operation.}
 
 \item{projectId}{[required] Unique project identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  details = list(
+    name = "string",
+    projectId = "string",
+    region = "string",
+    state = "NORMAL"|"SYNCING"|"IMPORTING",
+    createdDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    consoleUrl = "string",
+    resources = list(
+      list(
+        type = "string",
+        name = "string",
+        arn = "string",
+        feature = "string",
+        attributes = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Update an existing project.
 }

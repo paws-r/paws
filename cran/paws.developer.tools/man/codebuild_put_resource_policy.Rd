@@ -14,6 +14,12 @@ in the \emph{AWS CodeBuild User Guide}.}
 \item{resourceArn}{[required] The ARN of the \code{Project} or \code{ReportGroup} resource you want to associate
 with a resource policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceArn = "string"
+)
+}
+}
 \description{
 Stores a resource policy for the ARN of a \code{Project} or \code{ReportGroup}
 object.

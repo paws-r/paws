@@ -12,6 +12,9 @@ configservice_delete_resource_config(ResourceType, ResourceId)
 
 \item{ResourceId}{[required] Unique identifier of the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Records the configuration state for a custom resource that has been
 deleted. This API records a new ConfigurationItem with a ResourceDeleted

@@ -10,6 +10,36 @@ directconnect_describe_interconnects(interconnectId)
 \arguments{
 \item{interconnectId}{The ID of the interconnect.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  interconnects = list(
+    list(
+      interconnectId = "string",
+      interconnectName = "string",
+      interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+      region = "string",
+      location = "string",
+      bandwidth = "string",
+      loaIssueTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lagId = "string",
+      awsDevice = "string",
+      jumboFrameCapable = TRUE|FALSE,
+      awsDeviceV2 = "string",
+      hasLogicalRedundancy = "unknown"|"yes"|"no",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      providerName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the interconnects owned by the AWS account or only the specified
 interconnect.

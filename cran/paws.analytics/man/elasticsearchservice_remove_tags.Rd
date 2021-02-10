@@ -14,6 +14,9 @@ delete the specified tags.}
 \item{TagKeys}{[required] Specifies the \code{TagKey} list which you want to remove from the
 Elasticsearch domain.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified set of tags from the specified Elasticsearch
 domain.

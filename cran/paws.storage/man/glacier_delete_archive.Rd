@@ -17,6 +17,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{archiveId}{[required] The ID of the archive to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation deletes an archive from a vault. Subsequent requests to
 initiate a retrieval of this archive will fail. Archive retrievals that
@@ -57,7 +60,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 # The example deletes the archive specified by the archive ID.
 svc$delete_archive(
   accountId = "-",
-  archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5n...",
+  archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLH...",
   vaultName = "examplevault"
 )
 }

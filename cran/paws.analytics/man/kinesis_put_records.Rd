@@ -12,6 +12,21 @@ kinesis_put_records(Records, StreamName)
 
 \item{StreamName}{[required] The stream name associated with the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedRecordCount = 123,
+  Records = list(
+    list(
+      SequenceNumber = "string",
+      ShardId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  ),
+  EncryptionType = "NONE"|"KMS"
+)
+}
+}
 \description{
 Writes multiple data records into a Kinesis data stream in a single call
 (also referred to as a \code{\link[=kinesis_put_records]{put_records}} request).

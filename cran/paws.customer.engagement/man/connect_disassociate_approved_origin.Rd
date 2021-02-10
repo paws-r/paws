@@ -12,6 +12,9 @@ connect_disassociate_approved_origin(InstanceId, Origin)
 
 \item{Origin}{[required] The domain URL of the integrated application.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

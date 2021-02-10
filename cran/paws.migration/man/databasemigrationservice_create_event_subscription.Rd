@@ -40,6 +40,26 @@ values must be database instance IDs.}
 
 \item{Tags}{One or more tags to be assigned to the event subscription.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = "string",
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Creates an AWS DMS event notification subscription.
 

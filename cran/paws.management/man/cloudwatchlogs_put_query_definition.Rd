@@ -32,6 +32,12 @@ the updated definition will contain no log groups.}
 \item{queryString}{[required] The query string to use for this definition. For more information, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  queryDefinitionId = "string"
+)
+}
+}
 \description{
 Creates or updates a query definition for CloudWatch Logs Insights. For
 more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.

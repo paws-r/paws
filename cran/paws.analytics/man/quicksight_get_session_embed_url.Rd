@@ -42,6 +42,14 @@ OpenID Connect, or IAM federation
 Omit this parameter for users in the third group, IAM users and IAM
 role-based sessions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EmbedUrl = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Generates a session URL and authorization code that you can use to embed
 the Amazon QuickSight console in your web server code. Use

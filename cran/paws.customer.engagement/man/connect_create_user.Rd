@@ -12,7 +12,7 @@ connect_create_user(Username, Password, IdentityInfo, PhoneConfig,
 \item{Username}{[required] The user name for the account. For instances not using SAML for identity
 management, the user name can include up to 20 characters. If you are
 using SAML for identity management, the user name can include up to 64
-characters from [a-zA-Z0-9\\_-.\\@]+.}
+characters from [a-zA-Z0-9_-.\\@]+.}
 
 \item{Password}{The password for the user account. A password is required if you are
 using Amazon Connect for identity management. Otherwise, it is an error
@@ -43,6 +43,13 @@ management and include this parameter, an error is returned.}
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
 \item{Tags}{One or more tags.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  UserId = "string",
+  UserArn = "string"
+)
+}
 }
 \description{
 Creates a user account for the specified Amazon Connect instance.

@@ -14,6 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified network interface. You must detach the network
 interface before you can delete it.

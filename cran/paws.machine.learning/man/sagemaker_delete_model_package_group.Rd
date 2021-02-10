@@ -9,6 +9,9 @@ sagemaker_delete_model_package_group(ModelPackageGroupName)
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified model group.
 }

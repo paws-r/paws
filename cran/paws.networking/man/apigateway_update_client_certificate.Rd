@@ -14,6 +14,23 @@ updated.}
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  clientCertificateId = "string",
+  description = "string",
+  pemEncodedCertificate = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  expirationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Changes information about an ClientCertificate resource.
 }

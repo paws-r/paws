@@ -10,6 +10,17 @@ glue_get_registry(RegistryId)
 \item{RegistryId}{[required] This is a wrapper structure that may contain the registry name and
 Amazon Resource Name (ARN).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegistryName = "string",
+  RegistryArn = "string",
+  Description = "string",
+  Status = "AVAILABLE"|"DELETING",
+  CreatedTime = "string",
+  UpdatedTime = "string"
+)
+}
+}
 \description{
 Describes the specified registry in detail.
 }

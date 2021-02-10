@@ -19,6 +19,23 @@ specified is not the current version, the
 
 \item{VpcConfiguration}{[required] Description of the VPC to add to the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123,
+  VpcConfigurationDescription = list(
+    VpcConfigurationId = "string",
+    VpcId = "string",
+    SubnetIds = list(
+      "string"
+    ),
+    SecurityGroupIds = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds a Virtual Private Cloud (VPC) configuration to the application.
 Applications can use VPCs to store and access resources securely.

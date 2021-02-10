@@ -17,7 +17,7 @@ S3 console.}
 
 \item{Operation}{[required] The operation that you want this job to perform on each object listed in
 the manifest. For more information about the available operations, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html}{Operations}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-operations.html}{Operations}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Report}{[required] Configuration parameters for the optional job-completion report.}
@@ -41,10 +41,16 @@ operation on each object in the manifest.}
 \item{Tags}{A set of tags to associate with the S3 Batch Operations job. This is an
 optional parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 S3 Batch Operations performs large-scale Batch Operations on Amazon S3
 objects. Batch Operations can run a single operation or action on lists
-of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{S3 Batch Operations}
+of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 This operation creates an S3 Batch Operations job.

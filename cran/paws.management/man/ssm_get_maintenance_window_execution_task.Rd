@@ -13,6 +13,36 @@ ssm_get_maintenance_window_execution_task(WindowExecutionId, TaskId)
 \item{TaskId}{[required] The ID of the specific task execution in the maintenance window task
 that should be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowExecutionId = "string",
+  TaskExecutionId = "string",
+  TaskArn = "string",
+  ServiceRole = "string",
+  Type = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+  TaskParameters = list(
+    list(
+      list(
+        Values = list(
+          "string"
+        )
+      )
+    )
+  ),
+  Priority = 123,
+  MaxConcurrency = "string",
+  MaxErrors = "string",
+  Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+  StatusDetails = "string",
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves the details about a specific task run as part of a maintenance
 window execution.

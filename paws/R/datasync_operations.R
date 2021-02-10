@@ -23,6 +23,9 @@ NULL
 #'
 #' @param TaskExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the task execution to cancel.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_task_execution(
@@ -97,7 +100,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@.
+#' = . _ : / @@.
 #' @param VpcEndpointId The ID of the VPC (virtual private cloud) endpoint that the agent has
 #' access to. This is the client-side VPC endpoint, also called a
 #' PrivateLink. If you don't have a PrivateLink VPC endpoint, see [Creating
@@ -116,6 +119,14 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' these four network interfaces.
 #' @param SecurityGroupArns The ARNs of the security groups used to protect your data transfer task
 #' subnets. See CreateAgentRequest$SubnetArns.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AgentArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -201,6 +212,14 @@ datasync_create_agent <- function(ActivationKey, AgentName = NULL, Tags = NULL, 
 #' filter, and search for your resources. We recommend that you create a
 #' name tag for your location.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_location_efs(
@@ -267,6 +286,14 @@ datasync_create_location_efs <- function(Subdirectory = NULL, EfsFilesystemArn, 
 #' to.
 #' @param Password &#91;required&#93; The password of the user who has the permissions to access files and
 #' folders in the FSx for Windows file system.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -369,6 +396,14 @@ datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesys
 #' location. The value can be an empty string. We recommend using tags to
 #' name your resources.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_location_nfs(
@@ -451,6 +486,14 @@ datasync_create_location_nfs <- function(Subdirectory, ServerHostname, OnPremCon
 #' location. The value can be an empty string. We recommend using tags to
 #' name your resources.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_location_object_storage(
@@ -499,7 +542,7 @@ datasync_create_location_object_storage <- function(ServerHostname, ServerPort =
 #' Creates an endpoint for an Amazon S3 bucket.
 #' 
 #' For more information, see
-#' https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html\\#create-location-s3-cli
+#' https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html\#create-location-s3-cli
 #' in the *AWS DataSync User Guide*.
 #'
 #' @usage
@@ -528,6 +571,14 @@ datasync_create_location_object_storage <- function(ServerHostname, ServerPort =
 #' @param Tags The key-value pair that represents the tag that you want to add to the
 #' location. The value can be an empty string. We recommend using tags to
 #' name your resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -616,6 +667,14 @@ datasync_create_location_s3 <- function(Subdirectory = NULL, S3BucketArn, S3Stor
 #' @param Tags The key-value pair that represents the tag that you want to add to the
 #' location. The value can be an empty string. We recommend using tags to
 #' name your resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -712,6 +771,14 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' @param Tags The key-value pair that represents the tag that you want to add to the
 #' resource. The value can be an empty string.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TaskArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_task(
@@ -787,6 +854,9 @@ datasync_create_task <- function(SourceLocationArn, DestinationLocationArn, Clou
 #' [`list_agents`][datasync_list_agents] operation to return a list of
 #' agents for your account and AWS Region.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_agent(
@@ -824,6 +894,9 @@ datasync_delete_agent <- function(AgentArn) {
 #'
 #' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the location to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_location(
@@ -860,6 +933,9 @@ datasync_delete_location <- function(LocationArn) {
 #' datasync_delete_task(TaskArn)
 #'
 #' @param TaskArn &#91;required&#93; The Amazon Resource Name (ARN) of the task to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -902,6 +978,33 @@ datasync_delete_task <- function(TaskArn) {
 #'
 #' @param AgentArn &#91;required&#93; The Amazon Resource Name (ARN) of the agent to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AgentArn = "string",
+#'   Name = "string",
+#'   Status = "ONLINE"|"OFFLINE",
+#'   LastConnectionTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndpointType = "PUBLIC"|"PRIVATE_LINK"|"FIPS",
+#'   PrivateLinkConfig = list(
+#'     VpcEndpointId = "string",
+#'     PrivateLinkEndpoint = "string",
+#'     SubnetArns = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupArns = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_agent(
@@ -940,6 +1043,24 @@ datasync_describe_agent <- function(AgentArn) {
 #' datasync_describe_location_efs(LocationArn)
 #'
 #' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the EFS location to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string",
+#'   LocationUri = "string",
+#'   Ec2Config = list(
+#'     SubnetArn = "string",
+#'     SecurityGroupArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -981,6 +1102,23 @@ datasync_describe_location_efs <- function(LocationArn) {
 #' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the FSx for Windows location to
 #' describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string",
+#'   LocationUri = "string",
+#'   SecurityGroupArns = list(
+#'     "string"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   User = "string",
+#'   Domain = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_location_fsx_windows(
@@ -1017,6 +1155,26 @@ datasync_describe_location_fsx_windows <- function(LocationArn) {
 #' datasync_describe_location_nfs(LocationArn)
 #'
 #' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the NFS location to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string",
+#'   LocationUri = "string",
+#'   OnPremConfig = list(
+#'     AgentArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   MountOptions = list(
+#'     Version = "AUTOMATIC"|"NFS3"|"NFS4_0"|"NFS4_1"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1058,6 +1216,24 @@ datasync_describe_location_nfs <- function(LocationArn) {
 #' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the self-managed object storage server
 #' location that was described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string",
+#'   LocationUri = "string",
+#'   AccessKey = "string",
+#'   ServerPort = 123,
+#'   ServerProtocol = "HTTPS"|"HTTP",
+#'   AgentArns = list(
+#'     "string"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_location_object_storage(
@@ -1098,6 +1274,25 @@ datasync_describe_location_object_storage <- function(LocationArn) {
 #' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon S3 bucket location to
 #' describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string",
+#'   LocationUri = "string",
+#'   S3StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
+#'   S3Config = list(
+#'     BucketAccessRoleArn = "string"
+#'   ),
+#'   AgentArns = list(
+#'     "string"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_location_s3(
@@ -1137,6 +1332,26 @@ datasync_describe_location_s3 <- function(LocationArn) {
 #'
 #' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the SMB location to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocationArn = "string",
+#'   LocationUri = "string",
+#'   AgentArns = list(
+#'     "string"
+#'   ),
+#'   User = "string",
+#'   Domain = "string",
+#'   MountOptions = list(
+#'     Version = "AUTOMATIC"|"SMB2"|"SMB3"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_location_smb(
@@ -1174,6 +1389,55 @@ datasync_describe_location_smb <- function(LocationArn) {
 #'
 #' @param TaskArn &#91;required&#93; The Amazon Resource Name (ARN) of the task to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TaskArn = "string",
+#'   Status = "AVAILABLE"|"CREATING"|"QUEUED"|"RUNNING"|"UNAVAILABLE",
+#'   Name = "string",
+#'   CurrentTaskExecutionArn = "string",
+#'   SourceLocationArn = "string",
+#'   DestinationLocationArn = "string",
+#'   CloudWatchLogGroupArn = "string",
+#'   SourceNetworkInterfaceArns = list(
+#'     "string"
+#'   ),
+#'   DestinationNetworkInterfaceArns = list(
+#'     "string"
+#'   ),
+#'   Options = list(
+#'     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+#'     OverwriteMode = "ALWAYS"|"NEVER",
+#'     Atime = "NONE"|"BEST_EFFORT",
+#'     Mtime = "NONE"|"PRESERVE",
+#'     Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+#'     Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+#'     PreserveDeletedFiles = "PRESERVE"|"REMOVE",
+#'     PreserveDevices = "NONE"|"PRESERVE",
+#'     PosixPermissions = "NONE"|"PRESERVE",
+#'     BytesPerSecond = 123,
+#'     TaskQueueing = "ENABLED"|"DISABLED",
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER",
+#'     TransferMode = "CHANGED"|"ALL"
+#'   ),
+#'   Excludes = list(
+#'     list(
+#'       FilterType = "SIMPLE_PATTERN",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Schedule = list(
+#'     ScheduleExpression = "string"
+#'   ),
+#'   ErrorCode = "string",
+#'   ErrorDetail = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_task(
@@ -1210,6 +1474,61 @@ datasync_describe_task <- function(TaskArn) {
 #' datasync_describe_task_execution(TaskExecutionArn)
 #'
 #' @param TaskExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the task that is being executed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TaskExecutionArn = "string",
+#'   Status = "QUEUED"|"LAUNCHING"|"PREPARING"|"TRANSFERRING"|"VERIFYING"|"SUCCESS"|"ERROR",
+#'   Options = list(
+#'     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+#'     OverwriteMode = "ALWAYS"|"NEVER",
+#'     Atime = "NONE"|"BEST_EFFORT",
+#'     Mtime = "NONE"|"PRESERVE",
+#'     Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+#'     Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+#'     PreserveDeletedFiles = "PRESERVE"|"REMOVE",
+#'     PreserveDevices = "NONE"|"PRESERVE",
+#'     PosixPermissions = "NONE"|"PRESERVE",
+#'     BytesPerSecond = 123,
+#'     TaskQueueing = "ENABLED"|"DISABLED",
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER",
+#'     TransferMode = "CHANGED"|"ALL"
+#'   ),
+#'   Excludes = list(
+#'     list(
+#'       FilterType = "SIMPLE_PATTERN",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Includes = list(
+#'     list(
+#'       FilterType = "SIMPLE_PATTERN",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EstimatedFilesToTransfer = 123,
+#'   EstimatedBytesToTransfer = 123,
+#'   FilesTransferred = 123,
+#'   BytesWritten = 123,
+#'   BytesTransferred = 123,
+#'   Result = list(
+#'     PrepareDuration = 123,
+#'     PrepareStatus = "PENDING"|"SUCCESS"|"ERROR",
+#'     TotalDuration = 123,
+#'     TransferDuration = 123,
+#'     TransferStatus = "PENDING"|"SUCCESS"|"ERROR",
+#'     VerifyDuration = 123,
+#'     VerifyStatus = "PENDING"|"SUCCESS"|"ERROR",
+#'     ErrorCode = "string",
+#'     ErrorDetail = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1262,6 +1581,21 @@ datasync_describe_task_execution <- function(TaskExecutionArn) {
 #' @param NextToken An opaque string that indicates the position at which to begin the next
 #' list of agents.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Agents = list(
+#'     list(
+#'       AgentArn = "string",
+#'       Name = "string",
+#'       Status = "ONLINE"|"OFFLINE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_agents(
@@ -1311,6 +1645,20 @@ datasync_list_agents <- function(MaxResults = NULL, NextToken = NULL) {
 #' all tasks on a specific source location, you can use
 #' [`list_locations`][datasync_list_locations] with filter name
 #' `LocationType S3` and `Operator Equals`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Locations = list(
+#'     list(
+#'       LocationArn = "string",
+#'       LocationUri = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1362,6 +1710,20 @@ datasync_list_locations <- function(MaxResults = NULL, NextToken = NULL, Filters
 #' @param NextToken An opaque string that indicates the position at which to begin the next
 #' list of locations.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1403,6 +1765,20 @@ datasync_list_tags_for_resource <- function(ResourceArn, MaxResults = NULL, Next
 #' @param MaxResults The maximum number of executed tasks to list.
 #' @param NextToken An opaque string that indicates the position at which to begin the next
 #' list of the executed tasks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TaskExecutions = list(
+#'     list(
+#'       TaskExecutionArn = "string",
+#'       Status = "QUEUED"|"LAUNCHING"|"PREPARING"|"TRANSFERRING"|"VERIFYING"|"SUCCESS"|"ERROR"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1449,6 +1825,21 @@ datasync_list_task_executions <- function(TaskArn = NULL, MaxResults = NULL, Nex
 #' on a specific source location, you can use
 #' [`list_tasks`][datasync_list_tasks] with filter name `LocationId` and
 #' `Operator Equals` with the ARN for the location.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tasks = list(
+#'     list(
+#'       TaskArn = "string",
+#'       Status = "AVAILABLE"|"CREATING"|"QUEUED"|"RUNNING"|"UNAVAILABLE",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1510,6 +1901,14 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL, Filters = N
 #' consists of the patterns to include. The patterns are delimited by "|"
 #' (that is, a pipe). For example: `"/folder1|/folder2"`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TaskExecutionArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_task_execution(
@@ -1569,6 +1968,9 @@ datasync_start_task_execution <- function(TaskArn, OverrideOptions = NULL, Inclu
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to apply the tag to.
 #' @param Tags &#91;required&#93; The tags to apply.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1613,6 +2015,9 @@ datasync_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove the tag from.
 #' @param Keys &#91;required&#93; The keys in the key-value pair in the tag to remove.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1653,6 +2058,9 @@ datasync_untag_resource <- function(ResourceArn, Keys) {
 #'
 #' @param AgentArn &#91;required&#93; The Amazon Resource Name (ARN) of the agent to update.
 #' @param Name The name that you want to use to configure the agent.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1706,6 +2114,9 @@ datasync_update_agent <- function(AgentArn, Name = NULL) {
 #' @param Name The name of the task to update.
 #' @param CloudWatchLogGroupArn The Amazon Resource Name (ARN) of the resource name of the CloudWatch
 #' LogGroup.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1779,6 +2190,9 @@ datasync_update_task <- function(TaskArn, Options = NULL, Excludes = NULL, Sched
 #' @param TaskExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the specific task execution that is
 #' being updated.
 #' @param Options &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

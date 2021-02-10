@@ -13,6 +13,9 @@ get this from the response to any playback configuration request.}
 \item{TagKeys}{[required] A comma-separated list of the tag keys to remove from the playback
 configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from the specified playback configuration resource. You can
 specify one or more tags to remove.

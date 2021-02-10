@@ -15,6 +15,20 @@ For Hive compatibility, this name is entirely lowercase.}
 
 \item{TablesToDelete}{[required] A list of the table to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Errors = list(
+    list(
+      TableName = "string",
+      ErrorDetail = list(
+        ErrorCode = "string",
+        ErrorMessage = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes multiple tables at once.
 

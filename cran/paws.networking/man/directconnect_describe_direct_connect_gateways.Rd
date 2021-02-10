@@ -20,6 +20,22 @@ returned.}
 
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  directConnectGateways = list(
+    list(
+      directConnectGatewayId = "string",
+      directConnectGatewayName = "string",
+      amazonSideAsn = 123,
+      ownerAccount = "string",
+      directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
+      stateChangeError = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all your Direct Connect gateways or only the specified Direct
 Connect gateway. Deleted Direct Connect gateways are not returned.

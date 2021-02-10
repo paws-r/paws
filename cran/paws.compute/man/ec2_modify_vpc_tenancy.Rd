@@ -16,6 +16,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReturnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies the instance tenancy attribute of the specified VPC. You can
 change the instance tenancy attribute of a VPC to \code{default} only. You

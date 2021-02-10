@@ -11,6 +11,12 @@ cloudwatchlogs_delete_query_definition(queryDefinitionId)
 \code{\link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions}}
 to retrieve the IDs of your saved query definitions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  success = TRUE|FALSE
+)
+}
+}
 \description{
 Deletes a saved CloudWatch Logs Insights query definition. A query
 definition contains details about a saved CloudWatch Logs Insights

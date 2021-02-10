@@ -12,6 +12,9 @@ eventbridge_delete_partner_event_source(Name, Account)
 \item{Account}{[required] The AWS account ID of the AWS customer that the event source was created
 for.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation is used by SaaS partners to delete a partner event
 source. This operation is not used by AWS customers.

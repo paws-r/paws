@@ -31,6 +31,30 @@ in the \code{Marker} field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReservedNodeOfferings = list(
+    list(
+      ReservedNodeOfferingId = "string",
+      NodeType = "string",
+      Duration = 123,
+      FixedPrice = 123.0,
+      UsagePrice = 123.0,
+      CurrencyCode = "string",
+      OfferingType = "string",
+      RecurringCharges = list(
+        list(
+          RecurringChargeAmount = 123.0,
+          RecurringChargeFrequency = "string"
+        )
+      ),
+      ReservedNodeOfferingType = "Regular"|"Upgradable"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the available reserved node offerings by Amazon
 Redshift with their descriptions including the node type, the fixed and

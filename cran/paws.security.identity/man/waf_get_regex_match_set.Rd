@@ -12,6 +12,25 @@ waf_get_regex_match_set(RegexMatchSetId)
 \code{\link[=waf_create_regex_match_set]{create_regex_match_set}} and by
 \code{\link[=waf_list_regex_match_sets]{list_regex_match_sets}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegexMatchSet = list(
+    RegexMatchSetId = "string",
+    Name = "string",
+    RegexMatchTuples = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        RegexPatternSetId = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

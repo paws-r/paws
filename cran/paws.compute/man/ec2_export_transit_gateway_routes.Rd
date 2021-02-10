@@ -40,6 +40,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  S3Location = "string"
+)
+}
+}
 \description{
 Exports routes from the specified transit gateway route table to the
 specified S3 bucket. By default, all routes are exported. Alternatively,

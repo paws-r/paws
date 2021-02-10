@@ -10,6 +10,9 @@ codedeploy_delete_deployment_config(deploymentConfigName)
 \item{deploymentConfigName}{[required] The name of a deployment configuration associated with the IAM user or
 AWS account.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a deployment configuration.
 

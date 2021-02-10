@@ -35,6 +35,54 @@ timestamp.}
 \item{ByCreatedAfter}{Returns only recovery points that were created after the specified
 timestamp.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  RecoveryPoints = list(
+    list(
+      RecoveryPointArn = "string",
+      BackupVaultName = "string",
+      BackupVaultArn = "string",
+      SourceBackupVaultArn = "string",
+      ResourceArn = "string",
+      ResourceType = "string",
+      CreatedBy = list(
+        BackupPlanId = "string",
+        BackupPlanArn = "string",
+        BackupPlanVersion = "string",
+        BackupRuleId = "string"
+      ),
+      IamRoleArn = "string",
+      Status = "COMPLETED"|"PARTIAL"|"DELETING"|"EXPIRED",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompletionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      BackupSizeInBytes = 123,
+      CalculatedLifecycle = list(
+        MoveToColdStorageAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        DeleteAt = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      Lifecycle = list(
+        MoveToColdStorageAfterDays = 123,
+        DeleteAfterDays = 123
+      ),
+      EncryptionKeyArn = "string",
+      IsEncrypted = TRUE|FALSE,
+      LastRestoreTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns detailed information about the recovery points stored in a
 backup vault.

@@ -11,6 +11,14 @@ sns_get_endpoint_attributes(EndpointArn)
 \arguments{
 \item{EndpointArn}{[required] EndpointArn for GetEndpointAttributes input.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves the endpoint attributes for a device on one of the supported
 push notification services, such as GCM (Firebase Cloud Messaging) and

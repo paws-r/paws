@@ -18,6 +18,17 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VaultARN = "string",
+  VaultName = "string",
+  CreationDate = "string",
+  LastInventoryDate = "string",
+  NumberOfArchives = 123,
+  SizeInBytes = 123
+)
+}
+}
 \description{
 This operation returns information about a vault, including the vault's
 Amazon Resource Name (ARN), the date the vault was created, the number

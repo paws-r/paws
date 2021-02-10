@@ -30,6 +30,14 @@ NULL
 #' notification channel to add. The one supported notification channel is
 #' Amazon Simple Notification Service (Amazon SNS).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_notification_channel(
@@ -73,6 +81,17 @@ devopsguru_add_notification_channel <- function(Config) {
 #'
 #' @usage
 #' devopsguru_describe_account_health()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpenReactiveInsights = 123,
+#'   OpenProactiveInsights = 123,
+#'   MetricsAnalyzed = 123,
+#'   ResourceHours = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -121,6 +140,16 @@ devopsguru_describe_account_health <- function() {
 #' occurred before this day. If this is not specified, then the current day
 #' is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReactiveInsights = 123,
+#'   ProactiveInsights = 123,
+#'   MeanTimeToRecoverInMilliseconds = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_overview(
@@ -163,6 +192,101 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'
 #' @param Id &#91;required&#93; The ID of the anomaly.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProactiveAnomaly = list(
+#'     Id = "string",
+#'     Severity = "LOW"|"MEDIUM"|"HIGH",
+#'     Status = "ONGOING"|"CLOSED",
+#'     UpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AnomalyTimeRange = list(
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     PredictionTimeRange = list(
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     SourceDetails = list(
+#'       CloudWatchMetrics = list(
+#'         list(
+#'           MetricName = "string",
+#'           Namespace = "string",
+#'           Dimensions = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
+#'           Unit = "string",
+#'           Period = 123
+#'         )
+#'       )
+#'     ),
+#'     AssociatedInsightId = "string",
+#'     ResourceCollection = list(
+#'       CloudFormation = list(
+#'         StackNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Limit = 123.0
+#'   ),
+#'   ReactiveAnomaly = list(
+#'     Id = "string",
+#'     Severity = "LOW"|"MEDIUM"|"HIGH",
+#'     Status = "ONGOING"|"CLOSED",
+#'     AnomalyTimeRange = list(
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     SourceDetails = list(
+#'       CloudWatchMetrics = list(
+#'         list(
+#'           MetricName = "string",
+#'           Namespace = "string",
+#'           Dimensions = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
+#'           Unit = "string",
+#'           Period = 123
+#'         )
+#'       )
+#'     ),
+#'     AssociatedInsightId = "string",
+#'     ResourceCollection = list(
+#'       CloudFormation = list(
+#'         StackNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_anomaly(
@@ -199,6 +323,65 @@ devopsguru_describe_anomaly <- function(Id) {
 #' devopsguru_describe_insight(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the insight.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProactiveInsight = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Severity = "LOW"|"MEDIUM"|"HIGH",
+#'     Status = "ONGOING"|"CLOSED",
+#'     InsightTimeRange = list(
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     PredictionTimeRange = list(
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ResourceCollection = list(
+#'       CloudFormation = list(
+#'         StackNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     SsmOpsItemId = "string"
+#'   ),
+#'   ReactiveInsight = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Severity = "LOW"|"MEDIUM"|"HIGH",
+#'     Status = "ONGOING"|"CLOSED",
+#'     InsightTimeRange = list(
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ResourceCollection = list(
+#'       CloudFormation = list(
+#'         StackNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     SsmOpsItemId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -250,6 +433,24 @@ devopsguru_describe_insight <- function(Id) {
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFormation = list(
+#'     list(
+#'       StackName = "string",
+#'       Insight = list(
+#'         OpenProactiveInsights = 123,
+#'         OpenReactiveInsights = 123,
+#'         MeanTimeToRecoverInMilliseconds = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_resource_collection_health(
@@ -289,6 +490,18 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #'
 #' @usage
 #' devopsguru_describe_service_integration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceIntegration = list(
+#'     OpsCenter = list(
+#'       OptInStatus = "ENABLED"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -331,6 +544,21 @@ devopsguru_describe_service_integration <- function() {
 #' `CLOUD_FORMATION` for AWS CloudFormation stacks.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceCollection = list(
+#'     CloudFormation = list(
+#'       StackNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -379,6 +607,106 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' value.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProactiveAnomalies = list(
+#'     list(
+#'       Id = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AnomalyTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       PredictionTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       SourceDetails = list(
+#'         CloudWatchMetrics = list(
+#'           list(
+#'             MetricName = "string",
+#'             Namespace = "string",
+#'             Dimensions = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
+#'             Unit = "string",
+#'             Period = 123
+#'           )
+#'         )
+#'       ),
+#'       AssociatedInsightId = "string",
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       Limit = 123.0
+#'     )
+#'   ),
+#'   ReactiveAnomalies = list(
+#'     list(
+#'       Id = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       AnomalyTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       SourceDetails = list(
+#'         CloudWatchMetrics = list(
+#'           list(
+#'             MetricName = "string",
+#'             Namespace = "string",
+#'             Dimensions = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             Stat = "Sum"|"Average"|"SampleCount"|"Minimum"|"Maximum"|"p99"|"p90"|"p50",
+#'             Unit = "string",
+#'             Period = 123
+#'           )
+#'         )
+#'       ),
+#'       AssociatedInsightId = "string",
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -434,6 +762,40 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #' value.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Events = list(
+#'     list(
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       Id = "string",
+#'       Time = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EventSource = "string",
+#'       Name = "string",
+#'       DataSource = "AWS_CLOUD_TRAIL"|"AWS_CODE_DEPLOY",
+#'       EventClass = "INFRASTRUCTURE"|"DEPLOYMENT"|"SECURITY_CHANGE"|"CONFIG_CHANGE"|"SCHEMA_CHANGE",
+#'       Resources = list(
+#'         list(
+#'           Type = "string",
+#'           Name = "string",
+#'           Arn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -501,6 +863,68 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL)
 #' value.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       PredictionTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ReactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -572,6 +996,24 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Channels = list(
+#'     list(
+#'       Id = "string",
+#'       Config = list(
+#'         Sns = list(
+#'           TopicArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_notification_channels(
@@ -613,6 +1055,53 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Recommendations = list(
+#'     list(
+#'       Description = "string",
+#'       Link = "string",
+#'       Name = "string",
+#'       Reason = "string",
+#'       RelatedEvents = list(
+#'         list(
+#'           Name = "string",
+#'           Resources = list(
+#'             list(
+#'               Name = "string",
+#'               Type = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       RelatedAnomalies = list(
+#'         list(
+#'           Resources = list(
+#'             list(
+#'               Name = "string",
+#'               Type = "string"
+#'             )
+#'           ),
+#'           SourceDetails = list(
+#'             list(
+#'               CloudWatchMetrics = list(
+#'                 list(
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_recommendations(
@@ -651,6 +1140,9 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL) {
 #'
 #' @param InsightFeedback The feedback from customers is about the recommendations in this
 #' insight.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -693,6 +1185,9 @@ devopsguru_put_feedback <- function(InsightFeedback = NULL) {
 #' devopsguru_remove_notification_channel(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the notification channel to be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -747,6 +1242,68 @@ devopsguru_remove_notification_channel <- function(Id) {
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #' @param Type &#91;required&#93; The type of insights you are searching for (`REACTIVE` or `PROACTIVE`).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       PredictionTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ReactiveInsights = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Severity = "LOW"|"MEDIUM"|"HIGH",
+#'       Status = "ONGOING"|"CLOSED",
+#'       InsightTimeRange = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -816,6 +1373,9 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
 #' to the resource collection.
 #' @param ResourceCollection &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_resource_collection(
@@ -865,6 +1425,9 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
 #' @param ServiceIntegration &#91;required&#93; An `IntegratedServiceConfig` object used to specify the integrated
 #' service you want to update, and whether you want to update it to enabled
 #' or disabled.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

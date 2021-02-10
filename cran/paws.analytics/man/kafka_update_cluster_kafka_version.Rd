@@ -8,20 +8,24 @@ kafka_update_cluster_kafka_version(ClusterArn, ConfigurationInfo,
   CurrentVersion, TargetKafkaVersion)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The Amazon Resource Name (ARN) of the cluster to be updated.</p>}
+\item{ClusterArn}{[required] The Amazon Resource Name (ARN) of the cluster to be updated.}
 
-\item{ConfigurationInfo}{<p>The custom configuration that should be applied on the new version of cluster.</p>}
+\item{ConfigurationInfo}{The custom configuration that should be applied on the new version of
+cluster.}
 
-\item{CurrentVersion}{[required]
-<p>Current cluster version.</p>}
+\item{CurrentVersion}{[required] Current cluster version.}
 
-\item{TargetKafkaVersion}{[required]
-<p>Target Kafka version.</p>}
+\item{TargetKafkaVersion}{[required] Target Kafka version.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterArn = "string",
+  ClusterOperationArn = "string"
+)
+}
 }
 \description{
-\preformatted{        <p>Updates the Apache Kafka version for the cluster.</p>
-}
+Updates the Apache Kafka version for the cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$update_cluster_kafka_version(

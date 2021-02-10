@@ -27,6 +27,18 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{AllRegions}{Indicates whether to display all Regions, including Regions that are
 disabled for your account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Regions = list(
+    list(
+      Endpoint = "string",
+      RegionName = "string",
+      OptInStatus = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the Regions that are enabled for your account, or all Regions.
 

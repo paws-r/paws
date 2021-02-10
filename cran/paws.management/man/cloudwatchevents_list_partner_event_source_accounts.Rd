@@ -19,6 +19,24 @@ retrieves the next set of results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PartnerEventSourceAccounts = list(
+    list(
+      Account = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExpirationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      State = "PENDING"|"ACTIVE"|"DELETED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 An SaaS partner can use this operation to display the AWS account ID
 that a particular partner event source name is associated with. This

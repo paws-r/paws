@@ -17,6 +17,9 @@ to \code{Reviewing}
 \code{Reviewable}
 }}
 }
+\value{
+An empty list.
+}
 \description{
 The \code{\link[=mturk_update_hit_review_status]{update_hit_review_status}}
 operation updates the status of a HIT. If the status is Reviewable, this

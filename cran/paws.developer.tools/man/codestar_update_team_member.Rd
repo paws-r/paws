@@ -22,6 +22,14 @@ using the SSH public key associated with the user's profile. Even if
 this is set to True, the user must associate a public key with their
 profile before the user can access resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  userArn = "string",
+  projectRole = "string",
+  remoteAccessAllowed = TRUE|FALSE
+)
+}
+}
 \description{
 Updates a team member's attributes in an AWS CodeStar project. For
 example, you can change a team member's role in the project, or change

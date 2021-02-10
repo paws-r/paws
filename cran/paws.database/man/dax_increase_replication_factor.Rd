@@ -17,6 +17,65 @@ All nodes belonging to the cluster are placed in these Availability
 Zones. Use this parameter if you want to distribute the nodes across
 multiple AZs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Cluster = list(
+    ClusterName = "string",
+    Description = "string",
+    ClusterArn = "string",
+    TotalNodes = 123,
+    ActiveNodes = 123,
+    NodeType = "string",
+    Status = "string",
+    ClusterDiscoveryEndpoint = list(
+      Address = "string",
+      Port = 123
+    ),
+    NodeIdsToRemove = list(
+      "string"
+    ),
+    Nodes = list(
+      list(
+        NodeId = "string",
+        Endpoint = list(
+          Address = "string",
+          Port = 123
+        ),
+        NodeCreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        AvailabilityZone = "string",
+        NodeStatus = "string",
+        ParameterGroupStatus = "string"
+      )
+    ),
+    PreferredMaintenanceWindow = "string",
+    NotificationConfiguration = list(
+      TopicArn = "string",
+      TopicStatus = "string"
+    ),
+    SubnetGroup = "string",
+    SecurityGroups = list(
+      list(
+        SecurityGroupIdentifier = "string",
+        Status = "string"
+      )
+    ),
+    IamRoleArn = "string",
+    ParameterGroup = list(
+      ParameterGroupName = "string",
+      ParameterApplyStatus = "string",
+      NodeIdsToReboot = list(
+        "string"
+      )
+    ),
+    SSEDescription = list(
+      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+    )
+  )
+)
+}
+}
 \description{
 Adds one or more nodes to a DAX cluster.
 }

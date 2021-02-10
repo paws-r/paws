@@ -30,6 +30,30 @@ information on game servers using
 \code{\link[=gamelift_list_game_servers]{list_game_servers}} or
 \code{\link[=gamelift_claim_game_server]{claim_game_server}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameServer = list(
+    GameServerGroupName = "string",
+    GameServerGroupArn = "string",
+    GameServerId = "string",
+    InstanceId = "string",
+    ConnectionInfo = "string",
+    GameServerData = "string",
+    ClaimStatus = "CLAIMED",
+    UtilizationStatus = "AVAILABLE"|"UTILIZED",
+    RegistrationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastClaimTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastHealthCheckTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}

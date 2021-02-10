@@ -9,6 +9,12 @@ ec2_disable_vpc_classic_link_dns_support(VpcId)
 \arguments{
 \item{VpcId}{The ID of the VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
 resolve to public IP addresses when addressed between a linked

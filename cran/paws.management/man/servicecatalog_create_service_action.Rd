@@ -42,8 +42,8 @@ To reuse the provisioned product launch role, set to
 
 The list of parameters in JSON format.
 
-For example: \verb{\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\\\}\\\]} or
-\verb{\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TEXT_VALUE\\"\\\}\\\]}.
+For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or
+\verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TEXT_VALUE\\"\}]}.
 }}
 
 \item{Description}{The self-service action description.}
@@ -58,6 +58,22 @@ For example: \verb{\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\\
 \item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceActionDetail = list(
+    ServiceActionSummary = list(
+      Id = "string",
+      Name = "string",
+      Description = "string",
+      DefinitionType = "SSM_AUTOMATION"
+    ),
+    Definition = list(
+      "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a self-service action.

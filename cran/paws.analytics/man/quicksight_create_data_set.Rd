@@ -38,6 +38,17 @@ create.}
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the dataset.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  DataSetId = "string",
+  IngestionArn = "string",
+  IngestionId = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Creates a dataset.
 }

@@ -19,6 +19,9 @@ NULL
 #' package name.
 #' @param clientContextEncoding The encoding used for the client context.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_events(

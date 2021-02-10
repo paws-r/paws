@@ -24,6 +24,13 @@ and used for the update. The default is \code{true}.
 
 Valid Values: \code{true} | \code{false}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileShareARN = "string",
+  NotificationId = "string"
+)
+}
+}
 \description{
 Refreshes the cache for the specified file share. This operation finds
 objects in the Amazon S3 bucket that were added, removed, or replaced

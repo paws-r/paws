@@ -43,6 +43,9 @@ must not set it for any other \code{Pattern} setting.}
 protection group. You must set this when you set \code{Pattern} to
 \code{ARBITRARY} and you must not set it for any other \code{Pattern} setting.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a grouping of protected resources so they can be handled as a
 collective. This resource grouping improves the accuracy of detection

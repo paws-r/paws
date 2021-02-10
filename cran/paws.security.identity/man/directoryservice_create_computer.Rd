@@ -21,6 +21,21 @@ place the computer account in.}
 \item{ComputerAttributes}{An array of Attribute objects that contain any LDAP attributes to apply
 to the computer account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Computer = list(
+    ComputerId = "string",
+    ComputerName = "string",
+    ComputerAttributes = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an Active Directory computer object in the specified directory.
 }

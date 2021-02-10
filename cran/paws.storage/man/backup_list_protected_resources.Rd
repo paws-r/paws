@@ -16,6 +16,21 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Results = list(
+    list(
+      ResourceArn = "string",
+      ResourceType = "string",
+      LastBackupTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of resources successfully backed up by AWS Backup,
 including the time the resource was saved, an Amazon Resource Name (ARN)

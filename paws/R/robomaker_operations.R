@@ -14,6 +14,16 @@ NULL
 #' @param worlds &#91;required&#93; A list of Amazon Resource Names (arns) that correspond to worlds to
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   unprocessedWorlds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_worlds(
@@ -52,6 +62,127 @@ robomaker_batch_delete_worlds <- function(worlds) {
 #' robomaker_batch_describe_simulation_job(jobs)
 #'
 #' @param jobs &#91;required&#93; A list of Amazon Resource Names (ARNs) of simulation jobs to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobs = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+#'       lastStartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureBehavior = "Fail"|"Continue",
+#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'       failureReason = "string",
+#'       clientRequestToken = "string",
+#'       outputLocation = list(
+#'         s3Bucket = "string",
+#'         s3Prefix = "string"
+#'       ),
+#'       loggingConfig = list(
+#'         recordAllRosTopics = TRUE|FALSE
+#'       ),
+#'       maxJobDurationInSeconds = 123,
+#'       simulationTimeMillis = 123,
+#'       iamRole = "string",
+#'       robotApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       simulationApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           ),
+#'           worldConfigs = list(
+#'             list(
+#'               world = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       dataSources = list(
+#'         list(
+#'           name = "string",
+#'           s3Bucket = "string",
+#'           s3Keys = list(
+#'             list(
+#'               s3Key = "string",
+#'               etag = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       vpcConfig = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         vpcId = "string",
+#'         assignPublicIp = TRUE|FALSE
+#'       ),
+#'       networkInterface = list(
+#'         networkInterfaceId = "string",
+#'         privateIpAddress = "string",
+#'         publicIpAddress = "string"
+#'       ),
+#'       compute = list(
+#'         simulationUnitLimit = 123
+#'       )
+#'     )
+#'   ),
+#'   unprocessedJobs = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -92,6 +223,9 @@ robomaker_batch_describe_simulation_job <- function(jobs) {
 #'
 #' @param job &#91;required&#93; The deployment job ARN to cancel.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_deployment_job(
@@ -128,6 +262,9 @@ robomaker_cancel_deployment_job <- function(job) {
 #' robomaker_cancel_simulation_job(job)
 #'
 #' @param job &#91;required&#93; The simulation job ARN to cancel.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -168,6 +305,9 @@ robomaker_cancel_simulation_job <- function(job) {
 #'
 #' @param batch &#91;required&#93; The id of the batch to cancel.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_simulation_job_batch(
@@ -205,6 +345,9 @@ robomaker_cancel_simulation_job_batch <- function(batch) {
 #'
 #' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world export job to cancel.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_world_export_job(
@@ -241,6 +384,9 @@ robomaker_cancel_world_export_job <- function(job) {
 #' robomaker_cancel_world_generation_job(job)
 #'
 #' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world generator job to cancel.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -294,6 +440,49 @@ robomaker_cancel_world_generation_job <- function(job) {
 #' @param deploymentApplicationConfigs &#91;required&#93; The deployment application configuration.
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' deployment job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   fleet = "string",
+#'   status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+#'   deploymentApplicationConfigs = list(
+#'     list(
+#'       application = "string",
+#'       applicationVersion = "string",
+#'       launchConfig = list(
+#'         packageName = "string",
+#'         preLaunchFile = "string",
+#'         launchFile = "string",
+#'         postLaunchFile = "string",
+#'         environmentVariables = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failureReason = "string",
+#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   deploymentConfig = list(
+#'     concurrentDeploymentPercentage = 123,
+#'     failureThresholdPercentage = 123,
+#'     robotDeploymentTimeoutInSeconds = 123,
+#'     downloadConditionFile = list(
+#'       bucket = "string",
+#'       key = "string",
+#'       etag = "string"
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -365,6 +554,21 @@ robomaker_create_deployment_job <- function(deploymentConfig = NULL, clientReque
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' fleet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_fleet(
@@ -408,6 +612,23 @@ robomaker_create_fleet <- function(name, tags = NULL) {
 #' @param greengrassGroupId &#91;required&#93; The Greengrass group id.
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' robot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   greengrassGroupId = "string",
+#'   architecture = "X86_64"|"ARM64"|"ARMHF",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -456,6 +677,35 @@ robomaker_create_robot <- function(name, architecture, greengrassGroupId, tags =
 #' application.
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' robot application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   revisionId = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -512,6 +762,32 @@ robomaker_create_robot_application <- function(name, sources, robotSoftwareSuite
 #' value and it matches the latest revision ID, a new version will be
 #' created.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   revisionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_robot_application_version(
@@ -557,6 +833,43 @@ robomaker_create_robot_application_version <- function(application, currentRevis
 #' @param renderingEngine The rendering engine for the simulation application.
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' simulation application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   simulationSoftwareSuite = list(
+#'     name = "Gazebo"|"RosbagPlay",
+#'     version = "string"
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   renderingEngine = list(
+#'     name = "OGRE",
+#'     version = "string"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   revisionId = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -620,6 +933,40 @@ robomaker_create_simulation_application <- function(name, sources, simulationSof
 #' @param currentRevisionId The current revision id for the simulation application. If you provide a
 #' value and it matches the latest revision ID, a new version will be
 #' created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   simulationSoftwareSuite = list(
+#'     name = "Gazebo"|"RosbagPlay",
+#'     version = "string"
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   renderingEngine = list(
+#'     name = "OGRE",
+#'     version = "string"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   revisionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -697,6 +1044,113 @@ robomaker_create_simulation_application_version <- function(application, current
 #' These must belong to the same VPC. You must provide at least one
 #' security group and one subnet ID.
 #' @param compute Compute information for the simulation job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+#'   lastStartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureBehavior = "Fail"|"Continue",
+#'   failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'   clientRequestToken = "string",
+#'   outputLocation = list(
+#'     s3Bucket = "string",
+#'     s3Prefix = "string"
+#'   ),
+#'   loggingConfig = list(
+#'     recordAllRosTopics = TRUE|FALSE
+#'   ),
+#'   maxJobDurationInSeconds = 123,
+#'   simulationTimeMillis = 123,
+#'   iamRole = "string",
+#'   robotApplications = list(
+#'     list(
+#'       application = "string",
+#'       applicationVersion = "string",
+#'       launchConfig = list(
+#'         packageName = "string",
+#'         launchFile = "string",
+#'         environmentVariables = list(
+#'           "string"
+#'         ),
+#'         portForwardingConfig = list(
+#'           portMappings = list(
+#'             list(
+#'               jobPort = 123,
+#'               applicationPort = 123,
+#'               enableOnPublicIp = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         streamUI = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   simulationApplications = list(
+#'     list(
+#'       application = "string",
+#'       applicationVersion = "string",
+#'       launchConfig = list(
+#'         packageName = "string",
+#'         launchFile = "string",
+#'         environmentVariables = list(
+#'           "string"
+#'         ),
+#'         portForwardingConfig = list(
+#'           portMappings = list(
+#'             list(
+#'               jobPort = 123,
+#'               applicationPort = 123,
+#'               enableOnPublicIp = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         streamUI = TRUE|FALSE
+#'       ),
+#'       worldConfigs = list(
+#'         list(
+#'           world = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   dataSources = list(
+#'     list(
+#'       name = "string",
+#'       s3Bucket = "string",
+#'       s3Keys = list(
+#'         list(
+#'           s3Key = "string",
+#'           etag = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   vpcConfig = list(
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     securityGroups = list(
+#'       "string"
+#'     ),
+#'     vpcId = "string",
+#'     assignPublicIp = TRUE|FALSE
+#'   ),
+#'   compute = list(
+#'     simulationUnitLimit = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -829,6 +1283,28 @@ robomaker_create_simulation_job <- function(clientRequestToken = NULL, outputLoc
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' world export job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = "Pending"|"Running"|"Completed"|"Failed"|"Canceling"|"Canceled",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AccessDenied",
+#'   clientRequestToken = "string",
+#'   outputLocation = list(
+#'     s3Bucket = "string",
+#'     s3Prefix = "string"
+#'   ),
+#'   iamRole = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_world_export_job(
@@ -886,6 +1362,31 @@ robomaker_create_world_export_job <- function(clientRequestToken = NULL, worlds,
 #' @param worldTags A map that contains tag keys and tag values that are attached to the
 #' generated worlds.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = "Pending"|"Running"|"Completed"|"Failed"|"PartialFailed"|"Canceling"|"Canceled",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AllWorldGenerationFailed",
+#'   clientRequestToken = "string",
+#'   template = "string",
+#'   worldCount = list(
+#'     floorplanCount = 123,
+#'     interiorCountPerFloorplan = 123
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   worldTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_world_generation_job(
@@ -941,6 +1442,22 @@ robomaker_create_world_generation_job <- function(clientRequestToken = NULL, tem
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' world template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   clientRequestToken = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_world_template(
@@ -987,6 +1504,9 @@ robomaker_create_world_template <- function(clientRequestToken = NULL, name = NU
 #'
 #' @param fleet &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_fleet(
@@ -1023,6 +1543,9 @@ robomaker_delete_fleet <- function(fleet) {
 #' robomaker_delete_robot(robot)
 #'
 #' @param robot &#91;required&#93; The Amazon Resource Name (ARN) of the robot.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1061,6 +1584,9 @@ robomaker_delete_robot <- function(robot) {
 #'
 #' @param application &#91;required&#93; The Amazon Resource Name (ARN) of the the robot application.
 #' @param applicationVersion The version of the robot application to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1101,6 +1627,9 @@ robomaker_delete_robot_application <- function(application, applicationVersion =
 #' @param application &#91;required&#93; The application information for the simulation application to delete.
 #' @param applicationVersion The version of the simulation application to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_simulation_application(
@@ -1138,6 +1667,9 @@ robomaker_delete_simulation_application <- function(application, applicationVers
 #' robomaker_delete_world_template(template)
 #'
 #' @param template &#91;required&#93; The Amazon Resource Name (arn) of the world template you want to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1177,6 +1709,15 @@ robomaker_delete_world_template <- function(template) {
 #' @param fleet &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #' @param robot &#91;required&#93; The Amazon Resource Name (ARN) of the robot.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fleet = "string",
+#'   robot = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_robot(
@@ -1215,6 +1756,69 @@ robomaker_deregister_robot <- function(fleet, robot) {
 #'
 #' @param job &#91;required&#93; The Amazon Resource Name (ARN) of the deployment job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   fleet = "string",
+#'   status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+#'   deploymentConfig = list(
+#'     concurrentDeploymentPercentage = 123,
+#'     failureThresholdPercentage = 123,
+#'     robotDeploymentTimeoutInSeconds = 123,
+#'     downloadConditionFile = list(
+#'       bucket = "string",
+#'       key = "string",
+#'       etag = "string"
+#'     )
+#'   ),
+#'   deploymentApplicationConfigs = list(
+#'     list(
+#'       application = "string",
+#'       applicationVersion = "string",
+#'       launchConfig = list(
+#'         packageName = "string",
+#'         preLaunchFile = "string",
+#'         launchFile = "string",
+#'         postLaunchFile = "string",
+#'         environmentVariables = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failureReason = "string",
+#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   robotDeploymentSummary = list(
+#'     list(
+#'       arn = "string",
+#'       deploymentStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deploymentFinishTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+#'       progressDetail = list(
+#'         currentProgress = "Validating"|"DownloadingExtracting"|"ExecutingDownloadCondition"|"ExecutingPreLaunch"|"Launching"|"ExecutingPostLaunch"|"Finished",
+#'         percentDone = 123.0,
+#'         estimatedTimeRemainingSeconds = 123,
+#'         targetResource = "string"
+#'       ),
+#'       failureReason = "string",
+#'       failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError"
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_deployment_job(
@@ -1251,6 +1855,43 @@ robomaker_describe_deployment_job <- function(job) {
 #' robomaker_describe_fleet(fleet)
 #'
 #' @param fleet &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   arn = "string",
+#'   robots = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       fleetArn = "string",
+#'       status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+#'       greenGrassGroupId = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       architecture = "X86_64"|"ARM64"|"ARMHF",
+#'       lastDeploymentJob = "string",
+#'       lastDeploymentTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastDeploymentStatus = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+#'   lastDeploymentJob = "string",
+#'   lastDeploymentTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1289,6 +1930,29 @@ robomaker_describe_fleet <- function(fleet) {
 #'
 #' @param robot &#91;required&#93; The Amazon Resource Name (ARN) of the robot to be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   fleetArn = "string",
+#'   status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+#'   greengrassGroupId = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   architecture = "X86_64"|"ARM64"|"ARMHF",
+#'   lastDeploymentJob = "string",
+#'   lastDeploymentTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_robot(
@@ -1326,6 +1990,35 @@ robomaker_describe_robot <- function(robot) {
 #'
 #' @param application &#91;required&#93; The Amazon Resource Name (ARN) of the robot application.
 #' @param applicationVersion The version of the robot application to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   revisionId = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1367,6 +2060,43 @@ robomaker_describe_robot_application <- function(application, applicationVersion
 #' @param application &#91;required&#93; The application information for the simulation application.
 #' @param applicationVersion The version of the simulation application to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   simulationSoftwareSuite = list(
+#'     name = "Gazebo"|"RosbagPlay",
+#'     version = "string"
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   renderingEngine = list(
+#'     name = "OGRE",
+#'     version = "string"
+#'   ),
+#'   revisionId = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_simulation_application(
@@ -1405,6 +2135,120 @@ robomaker_describe_simulation_application <- function(application, applicationVe
 #'
 #' @param job &#91;required&#93; The Amazon Resource Name (ARN) of the simulation job to be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+#'   lastStartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureBehavior = "Fail"|"Continue",
+#'   failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'   failureReason = "string",
+#'   clientRequestToken = "string",
+#'   outputLocation = list(
+#'     s3Bucket = "string",
+#'     s3Prefix = "string"
+#'   ),
+#'   loggingConfig = list(
+#'     recordAllRosTopics = TRUE|FALSE
+#'   ),
+#'   maxJobDurationInSeconds = 123,
+#'   simulationTimeMillis = 123,
+#'   iamRole = "string",
+#'   robotApplications = list(
+#'     list(
+#'       application = "string",
+#'       applicationVersion = "string",
+#'       launchConfig = list(
+#'         packageName = "string",
+#'         launchFile = "string",
+#'         environmentVariables = list(
+#'           "string"
+#'         ),
+#'         portForwardingConfig = list(
+#'           portMappings = list(
+#'             list(
+#'               jobPort = 123,
+#'               applicationPort = 123,
+#'               enableOnPublicIp = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         streamUI = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   simulationApplications = list(
+#'     list(
+#'       application = "string",
+#'       applicationVersion = "string",
+#'       launchConfig = list(
+#'         packageName = "string",
+#'         launchFile = "string",
+#'         environmentVariables = list(
+#'           "string"
+#'         ),
+#'         portForwardingConfig = list(
+#'           portMappings = list(
+#'             list(
+#'               jobPort = 123,
+#'               applicationPort = 123,
+#'               enableOnPublicIp = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         streamUI = TRUE|FALSE
+#'       ),
+#'       worldConfigs = list(
+#'         list(
+#'           world = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   dataSources = list(
+#'     list(
+#'       name = "string",
+#'       s3Bucket = "string",
+#'       s3Keys = list(
+#'         list(
+#'           s3Key = "string",
+#'           etag = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   vpcConfig = list(
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     securityGroups = list(
+#'       "string"
+#'     ),
+#'     vpcId = "string",
+#'     assignPublicIp = TRUE|FALSE
+#'   ),
+#'   networkInterface = list(
+#'     networkInterfaceId = "string",
+#'     privateIpAddress = "string",
+#'     publicIpAddress = "string"
+#'   ),
+#'   compute = list(
+#'     simulationUnitLimit = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_simulation_job(
@@ -1441,6 +2285,237 @@ robomaker_describe_simulation_job <- function(job) {
 #' robomaker_describe_simulation_job_batch(batch)
 #'
 #' @param batch &#91;required&#93; The id of the batch to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = "Pending"|"InProgress"|"Failed"|"Completed"|"Canceled"|"Canceling"|"Completing"|"TimingOut"|"TimedOut",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   clientRequestToken = "string",
+#'   batchPolicy = list(
+#'     timeoutInSeconds = 123,
+#'     maxConcurrency = 123
+#'   ),
+#'   failureCode = "InternalServiceError",
+#'   failureReason = "string",
+#'   failedRequests = list(
+#'     list(
+#'       request = list(
+#'         outputLocation = list(
+#'           s3Bucket = "string",
+#'           s3Prefix = "string"
+#'         ),
+#'         loggingConfig = list(
+#'           recordAllRosTopics = TRUE|FALSE
+#'         ),
+#'         maxJobDurationInSeconds = 123,
+#'         iamRole = "string",
+#'         failureBehavior = "Fail"|"Continue",
+#'         useDefaultApplications = TRUE|FALSE,
+#'         robotApplications = list(
+#'           list(
+#'             application = "string",
+#'             applicationVersion = "string",
+#'             launchConfig = list(
+#'               packageName = "string",
+#'               launchFile = "string",
+#'               environmentVariables = list(
+#'                 "string"
+#'               ),
+#'               portForwardingConfig = list(
+#'                 portMappings = list(
+#'                   list(
+#'                     jobPort = 123,
+#'                     applicationPort = 123,
+#'                     enableOnPublicIp = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               streamUI = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         simulationApplications = list(
+#'           list(
+#'             application = "string",
+#'             applicationVersion = "string",
+#'             launchConfig = list(
+#'               packageName = "string",
+#'               launchFile = "string",
+#'               environmentVariables = list(
+#'                 "string"
+#'               ),
+#'               portForwardingConfig = list(
+#'                 portMappings = list(
+#'                   list(
+#'                     jobPort = 123,
+#'                     applicationPort = 123,
+#'                     enableOnPublicIp = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               streamUI = TRUE|FALSE
+#'             ),
+#'             worldConfigs = list(
+#'               list(
+#'                 world = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         dataSources = list(
+#'           list(
+#'             name = "string",
+#'             s3Bucket = "string",
+#'             s3Keys = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         vpcConfig = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           assignPublicIp = TRUE|FALSE
+#'         ),
+#'         compute = list(
+#'           simulationUnitLimit = 123
+#'         ),
+#'         tags = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureReason = "string",
+#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'       failedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   pendingRequests = list(
+#'     list(
+#'       outputLocation = list(
+#'         s3Bucket = "string",
+#'         s3Prefix = "string"
+#'       ),
+#'       loggingConfig = list(
+#'         recordAllRosTopics = TRUE|FALSE
+#'       ),
+#'       maxJobDurationInSeconds = 123,
+#'       iamRole = "string",
+#'       failureBehavior = "Fail"|"Continue",
+#'       useDefaultApplications = TRUE|FALSE,
+#'       robotApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       simulationApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           ),
+#'           worldConfigs = list(
+#'             list(
+#'               world = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       dataSources = list(
+#'         list(
+#'           name = "string",
+#'           s3Bucket = "string",
+#'           s3Keys = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       vpcConfig = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = TRUE|FALSE
+#'       ),
+#'       compute = list(
+#'         simulationUnitLimit = 123
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   createdRequests = list(
+#'     list(
+#'       arn = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+#'       simulationApplicationNames = list(
+#'         "string"
+#'       ),
+#'       robotApplicationNames = list(
+#'         "string"
+#'       ),
+#'       dataSourceNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1479,6 +2554,22 @@ robomaker_describe_simulation_job_batch <- function(batch) {
 #'
 #' @param world &#91;required&#93; The Amazon Resource Name (arn) of the world you want to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   generationJob = "string",
+#'   template = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_world(
@@ -1516,6 +2607,32 @@ robomaker_describe_world <- function(world) {
 #'
 #' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world export job to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = "Pending"|"Running"|"Completed"|"Failed"|"Canceling"|"Canceled",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AccessDenied",
+#'   failureReason = "string",
+#'   clientRequestToken = "string",
+#'   worlds = list(
+#'     "string"
+#'   ),
+#'   outputLocation = list(
+#'     s3Bucket = "string",
+#'     s3Prefix = "string"
+#'   ),
+#'   iamRole = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_world_export_job(
@@ -1552,6 +2669,48 @@ robomaker_describe_world_export_job <- function(job) {
 #' robomaker_describe_world_generation_job(job)
 #'
 #' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world generation job to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = "Pending"|"Running"|"Completed"|"Failed"|"PartialFailed"|"Canceling"|"Canceled",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AllWorldGenerationFailed",
+#'   failureReason = "string",
+#'   clientRequestToken = "string",
+#'   template = "string",
+#'   worldCount = list(
+#'     floorplanCount = 123,
+#'     interiorCountPerFloorplan = 123
+#'   ),
+#'   finishedWorldsSummary = list(
+#'     finishedCount = 123,
+#'     succeededWorlds = list(
+#'       "string"
+#'     ),
+#'     failureSummary = list(
+#'       totalFailureCount = 123,
+#'       failures = list(
+#'         list(
+#'           failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AllWorldGenerationFailed",
+#'           sampleFailureReason = "string",
+#'           failureCount = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   worldTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1591,6 +2750,25 @@ robomaker_describe_world_generation_job <- function(job) {
 #' @param template &#91;required&#93; The Amazon Resource Name (arn) of the world template you want to
 #' describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   clientRequestToken = "string",
+#'   name = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_world_template(
@@ -1628,6 +2806,14 @@ robomaker_describe_world_template <- function(template) {
 #'
 #' @param template The Amazon Resource Name (arn) of the world template.
 #' @param generationJob The Amazon Resource Name (arn) of the world generator job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   templateBody = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1689,6 +2875,51 @@ robomaker_get_world_template_body <- function(template = NULL, generationJob = N
 #' and 200. If this parameter is not used, then
 #' [`list_deployment_jobs`][robomaker_list_deployment_jobs] returns up to
 #' 200 results and a `nextToken` value if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deploymentJobs = list(
+#'     list(
+#'       arn = "string",
+#'       fleet = "string",
+#'       status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+#'       deploymentApplicationConfigs = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             preLaunchFile = "string",
+#'             launchFile = "string",
+#'             postLaunchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       deploymentConfig = list(
+#'         concurrentDeploymentPercentage = 123,
+#'         failureThresholdPercentage = 123,
+#'         robotDeploymentTimeoutInSeconds = 123,
+#'         downloadConditionFile = list(
+#'           bucket = "string",
+#'           key = "string",
+#'           etag = "string"
+#'         )
+#'       ),
+#'       failureReason = "string",
+#'       failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1759,6 +2990,28 @@ robomaker_list_deployment_jobs <- function(filters = NULL, nextToken = NULL, max
 #' The filter name `name` is supported. When filtering, you must use the
 #' complete value of the filtered item. You can use up to three filters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fleetDetails = list(
+#'     list(
+#'       name = "string",
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastDeploymentStatus = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+#'       lastDeploymentJob = "string",
+#'       lastDeploymentTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_fleets(
@@ -1827,6 +3080,28 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 #' 
 #' The filter name `name` is supported. When filtering, you must use the
 #' complete value of the filtered item. You can use up to three filters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   robotApplicationSummaries = list(
+#'     list(
+#'       name = "string",
+#'       arn = "string",
+#'       version = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       robotSoftwareSuite = list(
+#'         name = "ROS"|"ROS2",
+#'         version = "Kinetic"|"Melodic"|"Dashing"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1897,6 +3172,31 @@ robomaker_list_robot_applications <- function(versionQualifier = NULL, nextToken
 #' you are looking for items with the status `Registered` or the status
 #' `Available`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   robots = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       fleetArn = "string",
+#'       status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+#'       greenGrassGroupId = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       architecture = "X86_64"|"ARM64"|"ARMHF",
+#'       lastDeploymentJob = "string",
+#'       lastDeploymentTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_robots(
@@ -1966,6 +3266,32 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 #' The filter name `name` is supported. When filtering, you must use the
 #' complete value of the filtered item. You can use up to three filters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   simulationApplicationSummaries = list(
+#'     list(
+#'       name = "string",
+#'       arn = "string",
+#'       version = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       robotSoftwareSuite = list(
+#'         name = "ROS"|"ROS2",
+#'         version = "Kinetic"|"Melodic"|"Dashing"
+#'       ),
+#'       simulationSoftwareSuite = list(
+#'         name = "Gazebo"|"RosbagPlay",
+#'         version = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_simulation_applications(
@@ -2027,6 +3353,29 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 #' [`list_simulation_job_batches`][robomaker_list_simulation_job_batches]
 #' request with the returned `nextToken` value.
 #' @param filters Optional filters to limit results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   simulationJobBatchSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "Pending"|"InProgress"|"Failed"|"Completed"|"Canceled"|"Canceling"|"Completing"|"TimingOut"|"TimedOut",
+#'       failedRequestCount = 123,
+#'       pendingRequestCount = 123,
+#'       createdRequestCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2097,6 +3446,33 @@ robomaker_list_simulation_job_batches <- function(nextToken = NULL, maxResults =
 #' but they must be for the same named item. For example, if you are
 #' looking for items with the status `Preparing` or the status `Running`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   simulationJobSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+#'       simulationApplicationNames = list(
+#'         "string"
+#'       ),
+#'       robotApplicationNames = list(
+#'         "string"
+#'       ),
+#'       dataSourceNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_simulation_jobs(
@@ -2142,6 +3518,16 @@ robomaker_list_simulation_jobs <- function(nextToken = NULL, maxResults = NULL, 
 #' robomaker_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The AWS RoboMaker Amazon Resource Name (ARN) with tags to be listed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2197,6 +3583,26 @@ robomaker_list_tags_for_resource <- function(resourceArn) {
 #' to 100 results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results. You can use `generationJobId` and
 #' `templateId`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   worldExportJobSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       status = "Pending"|"Running"|"Completed"|"Failed"|"Canceling"|"Canceled",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       worlds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2259,6 +3665,30 @@ robomaker_list_world_export_jobs <- function(nextToken = NULL, maxResults = NULL
 #' @param filters Optional filters to limit results. You can use `status` and
 #' `templateId`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   worldGenerationJobSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       template = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "Pending"|"Running"|"Completed"|"Failed"|"PartialFailed"|"Canceling"|"Canceled",
+#'       worldCount = list(
+#'         floorplanCount = 123,
+#'         interiorCountPerFloorplan = 123
+#'       ),
+#'       succeededWorldCount = 123,
+#'       failedWorldCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_world_generation_jobs(
@@ -2320,6 +3750,26 @@ robomaker_list_world_generation_jobs <- function(nextToken = NULL, maxResults = 
 #' [`list_world_templates`][robomaker_list_world_templates] returns up to
 #' 100 results and a `nextToken` value if applicable.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   templateSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_world_templates(
@@ -2373,6 +3823,24 @@ robomaker_list_world_templates <- function(nextToken = NULL, maxResults = NULL) 
 #' `nextToken` value if applicable.
 #' @param filters Optional filters to limit results. You can use `status`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   worldSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       generationJob = "string",
+#'       template = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_worlds(
@@ -2420,6 +3888,15 @@ robomaker_list_worlds <- function(nextToken = NULL, maxResults = NULL, filters =
 #' @param fleet &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #' @param robot &#91;required&#93; The Amazon Resource Name (ARN) of the robot.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fleet = "string",
+#'   robot = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_robot(
@@ -2457,6 +3934,9 @@ robomaker_register_robot <- function(fleet, robot) {
 #' robomaker_restart_simulation_job(job)
 #'
 #' @param job &#91;required&#93; The Amazon Resource Name (ARN) of the simulation job.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2501,6 +3981,234 @@ robomaker_restart_simulation_job <- function(job) {
 #' @param createSimulationJobRequests &#91;required&#93; A list of simulation job requests to create in the batch.
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' deployment job batch.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = "Pending"|"InProgress"|"Failed"|"Completed"|"Canceled"|"Canceling"|"Completing"|"TimingOut"|"TimedOut",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   clientRequestToken = "string",
+#'   batchPolicy = list(
+#'     timeoutInSeconds = 123,
+#'     maxConcurrency = 123
+#'   ),
+#'   failureCode = "InternalServiceError",
+#'   failureReason = "string",
+#'   failedRequests = list(
+#'     list(
+#'       request = list(
+#'         outputLocation = list(
+#'           s3Bucket = "string",
+#'           s3Prefix = "string"
+#'         ),
+#'         loggingConfig = list(
+#'           recordAllRosTopics = TRUE|FALSE
+#'         ),
+#'         maxJobDurationInSeconds = 123,
+#'         iamRole = "string",
+#'         failureBehavior = "Fail"|"Continue",
+#'         useDefaultApplications = TRUE|FALSE,
+#'         robotApplications = list(
+#'           list(
+#'             application = "string",
+#'             applicationVersion = "string",
+#'             launchConfig = list(
+#'               packageName = "string",
+#'               launchFile = "string",
+#'               environmentVariables = list(
+#'                 "string"
+#'               ),
+#'               portForwardingConfig = list(
+#'                 portMappings = list(
+#'                   list(
+#'                     jobPort = 123,
+#'                     applicationPort = 123,
+#'                     enableOnPublicIp = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               streamUI = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         simulationApplications = list(
+#'           list(
+#'             application = "string",
+#'             applicationVersion = "string",
+#'             launchConfig = list(
+#'               packageName = "string",
+#'               launchFile = "string",
+#'               environmentVariables = list(
+#'                 "string"
+#'               ),
+#'               portForwardingConfig = list(
+#'                 portMappings = list(
+#'                   list(
+#'                     jobPort = 123,
+#'                     applicationPort = 123,
+#'                     enableOnPublicIp = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               streamUI = TRUE|FALSE
+#'             ),
+#'             worldConfigs = list(
+#'               list(
+#'                 world = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         dataSources = list(
+#'           list(
+#'             name = "string",
+#'             s3Bucket = "string",
+#'             s3Keys = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         vpcConfig = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           assignPublicIp = TRUE|FALSE
+#'         ),
+#'         compute = list(
+#'           simulationUnitLimit = 123
+#'         ),
+#'         tags = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureReason = "string",
+#'       failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+#'       failedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   pendingRequests = list(
+#'     list(
+#'       outputLocation = list(
+#'         s3Bucket = "string",
+#'         s3Prefix = "string"
+#'       ),
+#'       loggingConfig = list(
+#'         recordAllRosTopics = TRUE|FALSE
+#'       ),
+#'       maxJobDurationInSeconds = 123,
+#'       iamRole = "string",
+#'       failureBehavior = "Fail"|"Continue",
+#'       useDefaultApplications = TRUE|FALSE,
+#'       robotApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       simulationApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           ),
+#'           worldConfigs = list(
+#'             list(
+#'               world = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       dataSources = list(
+#'         list(
+#'           name = "string",
+#'           s3Bucket = "string",
+#'           s3Keys = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       vpcConfig = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = TRUE|FALSE
+#'       ),
+#'       compute = list(
+#'         simulationUnitLimit = 123
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   createdRequests = list(
+#'     list(
+#'       arn = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+#'       simulationApplicationNames = list(
+#'         "string"
+#'       ),
+#'       robotApplicationNames = list(
+#'         "string"
+#'       ),
+#'       dataSourceNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2639,6 +4347,46 @@ robomaker_start_simulation_job_batch <- function(clientRequestToken = NULL, batc
 #' idempotency of the request.
 #' @param fleet &#91;required&#93; The target fleet for the synchronization.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   fleet = "string",
+#'   status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+#'   deploymentConfig = list(
+#'     concurrentDeploymentPercentage = 123,
+#'     failureThresholdPercentage = 123,
+#'     robotDeploymentTimeoutInSeconds = 123,
+#'     downloadConditionFile = list(
+#'       bucket = "string",
+#'       key = "string",
+#'       etag = "string"
+#'     )
+#'   ),
+#'   deploymentApplicationConfigs = list(
+#'     list(
+#'       application = "string",
+#'       applicationVersion = "string",
+#'       launchConfig = list(
+#'         packageName = "string",
+#'         preLaunchFile = "string",
+#'         launchFile = "string",
+#'         postLaunchFile = "string",
+#'         environmentVariables = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failureReason = "string",
+#'   failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$sync_deployment_job(
@@ -2688,6 +4436,9 @@ robomaker_sync_deployment_job <- function(clientRequestToken, fleet) {
 #' @param tags &#91;required&#93; A map that contains tag keys and tag values that are attached to the
 #' resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2736,6 +4487,9 @@ robomaker_tag_resource <- function(resourceArn, tags) {
 #' @param tagKeys &#91;required&#93; A map that contains tag keys and tag values that will be unattached from
 #' the resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -2780,6 +4534,32 @@ robomaker_untag_resource <- function(resourceArn, tagKeys) {
 #' @param robotSoftwareSuite &#91;required&#93; The robot software suite (ROS distribution) used by the robot
 #' application.
 #' @param currentRevisionId The revision id for the robot application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   revisionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2836,6 +4616,40 @@ robomaker_update_robot_application <- function(application, sources, robotSoftwa
 #' @param robotSoftwareSuite &#91;required&#93; Information about the robot software suite (ROS distribution).
 #' @param renderingEngine The rendering engine for the simulation application.
 #' @param currentRevisionId The revision id for the robot application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   version = "string",
+#'   sources = list(
+#'     list(
+#'       s3Bucket = "string",
+#'       s3Key = "string",
+#'       etag = "string",
+#'       architecture = "X86_64"|"ARM64"|"ARMHF"
+#'     )
+#'   ),
+#'   simulationSoftwareSuite = list(
+#'     name = "Gazebo"|"RosbagPlay",
+#'     version = "string"
+#'   ),
+#'   robotSoftwareSuite = list(
+#'     name = "ROS"|"ROS2",
+#'     version = "Kinetic"|"Melodic"|"Dashing"
+#'   ),
+#'   renderingEngine = list(
+#'     name = "OGRE",
+#'     version = "string"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   revisionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2897,6 +4711,21 @@ robomaker_update_simulation_application <- function(application, sources, simula
 #' @param name The name of the template.
 #' @param templateBody The world template body.
 #' @param templateLocation The location of the world template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   name = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

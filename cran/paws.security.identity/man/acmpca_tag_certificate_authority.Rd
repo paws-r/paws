@@ -15,6 +15,9 @@ This must be of the form:
 
 \item{Tags}{[required] List of tags to be associated with the CA.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to your private CA. Tags are labels that you can
 use to identify and organize your AWS resources. Each tag consists of a

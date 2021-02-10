@@ -9,6 +9,24 @@ sagemaker_describe_image(ImageName)
 \arguments{
 \item{ImageName}{[required] The name of the image to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Description = "string",
+  DisplayName = "string",
+  FailureReason = "string",
+  ImageArn = "string",
+  ImageName = "string",
+  ImageStatus = "CREATING"|"CREATED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"DELETING"|"DELETE_FAILED",
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  RoleArn = "string"
+)
+}
+}
 \description{
 Describes a SageMaker image.
 }

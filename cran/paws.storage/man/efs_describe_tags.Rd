@@ -18,6 +18,19 @@ specifies to continue the list from where the previous call left off.}
 
 \item{FileSystemId}{[required] The ID of the file system whose tag set you want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Returns the tags associated with a file system. The order of tags
 returned in the response of one \code{\link[=efs_describe_tags]{describe_tags}}

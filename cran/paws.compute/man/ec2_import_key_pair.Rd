@@ -21,6 +21,20 @@ command line tools, base64 encoding is performed for you.}
 
 \item{TagSpecifications}{The tags to apply to the imported key pair.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyFingerprint = "string",
+  KeyName = "string",
+  KeyPairId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Imports the public key from an RSA key pair that you created with a
 third-party tool. Compare this with

@@ -9,6 +9,9 @@ chime_delete_voice_connector_group(VoiceConnectorGroupId)
 \arguments{
 \item{VoiceConnectorGroupId}{[required] The Amazon Chime Voice Connector group ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Amazon Chime Voice Connector group. Any
 \code{VoiceConnectorItems} and phone numbers associated with the group must

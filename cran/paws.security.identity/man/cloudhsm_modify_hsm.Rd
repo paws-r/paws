@@ -27,6 +27,12 @@ the new subnet.}
 \item{SyslogIp}{The new IP address for the syslog monitoring server. The AWS CloudHSM
 service only supports one syslog monitoring server.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HsmArn = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

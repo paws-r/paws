@@ -13,10 +13,35 @@ greengrass_list_bulk_deployment_detailed_reports(BulkDeploymentId,
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Deployments = list(
+    list(
+      CreatedAt = "string",
+      DeploymentArn = "string",
+      DeploymentId = "string",
+      DeploymentStatus = "string",
+      DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
+      ErrorDetails = list(
+        list(
+          DetailedErrorCode = "string",
+          DetailedErrorMessage = "string"
+        )
+      ),
+      ErrorMessage = "string",
+      GroupArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
-Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status.
+Gets a paginated list of the deployments that have been started in a
+bulk deployment operation, and their current deployment status.
 }
 \section{Request syntax}{
 \preformatted{svc$list_bulk_deployment_detailed_reports(

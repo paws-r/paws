@@ -29,6 +29,25 @@ to determine the source language.}
 \item{TargetLanguageCode}{[required] The language code requested for the language of the target text. The
 language must be a language supported by Amazon Translate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TranslatedText = "string",
+  SourceLanguageCode = "string",
+  TargetLanguageCode = "string",
+  AppliedTerminologies = list(
+    list(
+      Name = "string",
+      Terms = list(
+        list(
+          SourceText = "string",
+          TargetText = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Translates input text from the source language to the target language.
 For a list of available languages and language codes, see

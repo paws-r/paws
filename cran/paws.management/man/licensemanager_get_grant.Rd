@@ -11,6 +11,25 @@ licensemanager_get_grant(GrantArn, Version)
 
 \item{Version}{Grant version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Grant = list(
+    GrantArn = "string",
+    GrantName = "string",
+    ParentArn = "string",
+    LicenseArn = "string",
+    GranteePrincipalArn = "string",
+    HomeRegion = "string",
+    GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+    StatusReason = "string",
+    Version = "string",
+    GrantedOperations = list(
+      "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+    )
+  )
+)
+}
+}
 \description{
 Gets detailed information about the specified grant.
 }

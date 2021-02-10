@@ -21,6 +21,13 @@ catalog. For information, see \href{https://docs.aws.amazon.com/servicecatalog/l
 your AWS resource costs. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
 in the \emph{AWS General Reference Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProjectArn = "string",
+  ProjectId = "string"
+)
+}
+}
 \description{
 Creates a machine learning (ML) project that can contain one or more
 templates that set up an ML pipeline from training to deploying an

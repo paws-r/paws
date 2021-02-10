@@ -25,6 +25,33 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComplianceItems = list(
+    list(
+      ComplianceType = "string",
+      ResourceType = "string",
+      ResourceId = "string",
+      Id = "string",
+      Title = "string",
+      Status = "COMPLIANT"|"NON_COMPLIANT",
+      Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+      ExecutionSummary = list(
+        ExecutionTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        ExecutionId = "string",
+        ExecutionType = "string"
+      ),
+      Details = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 For a specified resource ID, this API action returns a list of
 compliance statuses for different resource types. Currently, you can

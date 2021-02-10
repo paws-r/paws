@@ -24,6 +24,15 @@ approximate number.}
 of an object is reflected in a subsequent read operation of that same
 object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Children = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a paginated list of child objects that are associated with a
 given object.

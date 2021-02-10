@@ -21,6 +21,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ConnectionEvents}{One or more events for the endpoint. Valid values are \code{Accept},
 \code{Connect}, \code{Delete}, and \code{Reject}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReturnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies a connection notification for VPC endpoint or VPC endpoint
 service. You can change the SNS topic for the notification, or the

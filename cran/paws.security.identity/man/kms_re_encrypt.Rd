@@ -115,6 +115,16 @@ asymmetric CMK.}
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CiphertextBlob = raw,
+  SourceKeyId = "string",
+  KeyId = "string",
+  SourceEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
+  DestinationEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+)
+}
+}
 \description{
 Decrypts ciphertext and then reencrypts it entirely within AWS KMS. You
 can use this operation to change the customer master key (CMK) under
@@ -131,7 +141,7 @@ was encrypted by using an AWS KMS CMK in an AWS KMS operation, such as
 ciphertext that was encrypted by using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks}{asymmetric CMK}
 outside of AWS KMS. However, it cannot decrypt ciphertext produced by
 other libraries, such as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
-or \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
+or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
 These libraries return a ciphertext format that is incompatible with AWS
 KMS.
 

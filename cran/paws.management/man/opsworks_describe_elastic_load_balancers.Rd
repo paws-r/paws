@@ -13,6 +13,30 @@ instances.}
 \item{LayerIds}{A list of layer IDs. The action describes the Elastic Load Balancing
 instances for the specified layers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ElasticLoadBalancers = list(
+    list(
+      ElasticLoadBalancerName = "string",
+      Region = "string",
+      DnsName = "string",
+      StackId = "string",
+      LayerId = "string",
+      VpcId = "string",
+      AvailabilityZones = list(
+        "string"
+      ),
+      SubnetIds = list(
+        "string"
+      ),
+      Ec2InstanceIds = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes a stack's Elastic Load Balancing instances.
 

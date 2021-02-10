@@ -18,6 +18,45 @@ one filter at a time.}
 \item{MaxResults}{The maximum number of results to return in each page. The default is
 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentClassificationJobPropertiesList = list(
+    list(
+      JobId = "string",
+      JobName = "string",
+      JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+      Message = "string",
+      SubmitTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DocumentClassifierArn = "string",
+      InputDataConfig = list(
+        S3Uri = "string",
+        InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+      ),
+      OutputDataConfig = list(
+        S3Uri = "string",
+        KmsKeyId = "string"
+      ),
+      DataAccessRoleArn = "string",
+      VolumeKmsKeyId = "string",
+      VpcConfig = list(
+        SecurityGroupIds = list(
+          "string"
+        ),
+        Subnets = list(
+          "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the documentation classification jobs that you have
 submitted.

@@ -50,6 +50,49 @@ these tag values in the request, Amazon Redshift returns a response with
 the security groups that have either or both of these tag values
 associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ClusterSecurityGroups = list(
+    list(
+      ClusterSecurityGroupName = "string",
+      Description = "string",
+      EC2SecurityGroups = list(
+        list(
+          Status = "string",
+          EC2SecurityGroupName = "string",
+          EC2SecurityGroupOwnerId = "string",
+          Tags = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          )
+        )
+      ),
+      IPRanges = list(
+        list(
+          Status = "string",
+          CIDRIP = "string",
+          Tags = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          )
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about Amazon Redshift security groups. If the name
 of a security group is specified, the response will contain only

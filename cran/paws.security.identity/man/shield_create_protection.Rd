@@ -26,6 +26,12 @@ The ARN should be in one of the following formats:
 \code{arn:aws:ec2:region:account-id:eip-allocation/allocation-id }
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProtectionId = "string"
+)
+}
+}
 \description{
 Enables AWS Shield Advanced for a specific AWS resource. The resource
 can be an Amazon CloudFront distribution, Elastic Load Balancing load

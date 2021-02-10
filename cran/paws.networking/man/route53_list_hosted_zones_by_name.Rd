@@ -36,6 +36,33 @@ the value of the \code{IsTruncated} element in the response is true, and the
 values of \code{NextDNSName} and \code{NextHostedZoneId} specify the first hosted
 zone in the next group of \code{maxitems} hosted zones.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HostedZones = list(
+    list(
+      Id = "string",
+      Name = "string",
+      CallerReference = "string",
+      Config = list(
+        Comment = "string",
+        PrivateZone = TRUE|FALSE
+      ),
+      ResourceRecordSetCount = 123,
+      LinkedService = list(
+        ServicePrincipal = "string",
+        Description = "string"
+      )
+    )
+  ),
+  DNSName = "string",
+  HostedZoneId = "string",
+  IsTruncated = TRUE|FALSE,
+  NextDNSName = "string",
+  NextHostedZoneId = "string",
+  MaxItems = "string"
+)
+}
+}
 \description{
 Retrieves a list of your hosted zones in lexicographic order. The
 response includes a \code{HostedZones} child element for each hosted zone
@@ -58,7 +85,7 @@ the domain name.
 \code{\link[=route53_list_hosted_zones_by_name]{list_hosted_zones_by_name}}
 alphabetizes it as:
 
-\verb{com.ex\\\\344mple.}
+\verb{com.ex\\344mple.}
 
 The labels are reversed and alphabetized using the escaped value. For
 more information about valid domain name formats, including

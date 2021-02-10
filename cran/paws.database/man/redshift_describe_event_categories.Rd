@@ -14,6 +14,26 @@ described event categories apply.
 Valid values: cluster, cluster-snapshot, cluster-parameter-group,
 cluster-security-group, and scheduled-action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventCategoriesMapList = list(
+    list(
+      SourceType = "string",
+      Events = list(
+        list(
+          EventId = "string",
+          EventCategories = list(
+            "string"
+          ),
+          EventDescription = "string",
+          Severity = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Displays a list of event categories for all event source types, or for a
 specified source type. For a list of the event categories and source

@@ -62,6 +62,13 @@ These tags can be updated or removed using the
 \code{\link[=batch_untag_resource]{untag_resource}} API operations. These tags
 don't propagate to the underlying compute resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  computeEnvironmentName = "string",
+  computeEnvironmentArn = "string"
+)
+}
+}
 \description{
 Creates an AWS Batch compute environment. You can create \code{MANAGED} or
 \code{UNMANAGED} compute environments. \code{MANAGED} compute environments can use

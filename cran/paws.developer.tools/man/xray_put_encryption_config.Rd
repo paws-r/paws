@@ -24,6 +24,16 @@ Omit this key if you set \code{Type} to \code{NONE}.}
 \item{Type}{[required] The type of encryption. Set to \code{KMS} to use your own key for encryption.
 Set to \code{NONE} for default encryption.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EncryptionConfig = list(
+    KeyId = "string",
+    Status = "UPDATING"|"ACTIVE",
+    Type = "NONE"|"KMS"
+  )
+)
+}
+}
 \description{
 Updates the encryption configuration for X-Ray data.
 }

@@ -28,6 +28,13 @@ Byte constraints: Minimum bytes of 12. Maximum bytes of 16.
 
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TargetARN = "string",
+  InitiatorName = "string"
+)
+}
+}
 \description{
 Updates the Challenge-Handshake Authentication Protocol (CHAP)
 credentials for a specified iSCSI target. By default, a gateway does not
@@ -55,7 +62,7 @@ svc$update_chap_credentials(
   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
   SecretToAuthenticateInitiator = "111111111111",
   SecretToAuthenticateTarget = "222222222222",
-  TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
+  TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
 )
 }
 

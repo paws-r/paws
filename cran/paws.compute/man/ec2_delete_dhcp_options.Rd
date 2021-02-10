@@ -14,6 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified set of DHCP options. You must disassociate the set
 of DHCP options before you can delete it. You can disassociate the set

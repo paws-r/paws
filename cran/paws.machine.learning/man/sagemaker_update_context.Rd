@@ -16,6 +16,12 @@ sagemaker_update_context(ContextName, Description, Properties,
 
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContextArn = "string"
+)
+}
+}
 \description{
 Updates a context.
 }

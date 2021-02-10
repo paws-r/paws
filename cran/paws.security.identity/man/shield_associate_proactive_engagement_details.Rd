@@ -21,6 +21,9 @@ them, retrieve the list using
 \code{\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings}}
 and then provide it here.}
 }
+\value{
+An empty list.
+}
 \description{
 Initializes proactive engagement and sets the list of contacts for the
 DDoS Response Team (DRT) to use. You must provide at least one phone

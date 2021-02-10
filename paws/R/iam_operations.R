@@ -27,6 +27,9 @@ NULL
 #' @param ClientID &#91;required&#93; The client ID (also known as audience) to add to the IAM OpenID Connect
 #' provider resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_client_id_to_open_id_connect_provider(
@@ -100,13 +103,16 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to add.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -159,13 +165,16 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param UserName &#91;required&#93; The name of the user to add.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -226,13 +235,16 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -298,13 +310,16 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -365,13 +380,16 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -432,13 +450,16 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of characters. That string can
-#' include almost any printable ASCII character from the space (``U+0020``)
-#' through the end of the ASCII character range (``U+00FF``). You can also
-#' include the tab (``U+0009``), line feed (``U+000A``), and carriage return
-#' (``U+000D``) characters. Any of these characters are valid in a password.
+#' include almost any printable ASCII character from the space (`\u0020`)
+#' through the end of the ASCII character range (`\u00FF`). You can also
+#' include the tab (`\u0009`), line feed (`\u000A`), and carriage return
+#' (`\u000D`) characters. Any of these characters are valid in a password.
 #' However, many tools, such as the AWS Management Console, might restrict
 #' the ability to type certain characters because they have special meaning
 #' within that tool.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -452,7 +473,7 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #' \dontrun{
 #' # The following command changes the password for the current IAM user.
 #' svc$change_password(
-#'   NewPassword = "]35d/\{pB9Fo9wJ",
+#'   NewPassword = "]35d/{pB9Fo9wJ",
 #'   OldPassword = "3s0K_;xh4~8XXI"
 #' )
 #' }
@@ -509,7 +530,23 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessKey = list(
+#'     UserName = "string",
+#'     AccessKeyId = "string",
+#'     Status = "Active"|"Inactive",
+#'     SecretAccessKey = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -564,6 +601,9 @@ iam_create_access_key <- function(UserName = NULL) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of lowercase letters, digits, and dashes. You cannot start or
 #' finish with a dash, nor can you have two dashes in a row.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -625,14 +665,30 @@ iam_create_account_alias <- function(AccountAlias) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param GroupName &#91;required&#93; The name of the group to create. Do not include the path in this value.
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
 #' create resources named both "MyResource" and "myresource".
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     Path = "string",
+#'     GroupName = "string",
+#'     GroupId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -690,7 +746,7 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Path The path to the instance profile. For more information about paths, see
 #' [IAM
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
@@ -703,9 +759,55 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceProfile = list(
+#'     Path = "string",
+#'     InstanceProfileName = "string",
+#'     InstanceProfileId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Roles = list(
+#'       list(
+#'         Path = "string",
+#'         RoleName = "string",
+#'         RoleId = "string",
+#'         Arn = "string",
+#'         CreateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AssumeRolePolicyDocument = "string",
+#'         Description = "string",
+#'         MaxSessionDuration = 123,
+#'         PermissionsBoundary = list(
+#'           PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'           PermissionsBoundaryArn = "string"
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         RoleLastUsed = list(
+#'           LastUsedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Region = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -764,20 +866,34 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Password &#91;required&#93; The new password for the user.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of characters. That string can
-#' include almost any printable ASCII character from the space (``U+0020``)
-#' through the end of the ASCII character range (``U+00FF``). You can also
-#' include the tab (``U+0009``), line feed (``U+000A``), and carriage return
-#' (``U+000D``) characters. Any of these characters are valid in a password.
+#' include almost any printable ASCII character from the space (`\u0020`)
+#' through the end of the ASCII character range (`\u00FF`). You can also
+#' include the tab (`\u0009`), line feed (`\u000A`), and carriage return
+#' (`\u000D`) characters. Any of these characters are valid in a password.
 #' However, many tools, such as the AWS Management Console, might restrict
 #' the ability to type certain characters because they have special meaning
 #' within that tool.
 #' @param PasswordResetRequired Specifies whether the user is required to set a new password on next
 #' sign-in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoginProfile = list(
+#'     UserName = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PasswordResetRequired = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -793,7 +909,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' # The following command changes IAM user Bob's password and sets the flag
 #' # that required Bob to change the password the next time he signs in.
 #' svc$create_login_profile(
-#'   Password = "h]6EszR\}vJ*m",
+#'   Password = "h]6EszR}vJ*m",
 #'   PasswordResetRequired = TRUE,
 #'   UserName = "Bob"
 #' )
@@ -896,6 +1012,14 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
 #' in the *IAM User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpenIDConnectProviderArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_open_id_connect_provider(
@@ -982,8 +1106,8 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param PolicyDocument &#91;required&#93; The JSON policy document that you want to use as the content for the new
 #' policy.
@@ -998,13 +1122,13 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param Description A friendly description of the policy.
 #' 
 #' Typically used to store information about the permissions defined in the
@@ -1012,6 +1136,30 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' 
 #' The policy description is immutable. After a value is assigned, it
 #' cannot be changed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = list(
+#'     PolicyName = "string",
+#'     PolicyId = "string",
+#'     Arn = "string",
+#'     Path = "string",
+#'     DefaultVersionId = "string",
+#'     AttachmentCount = 123,
+#'     PermissionsBoundaryUsageCount = 123,
+#'     IsAttachable = TRUE|FALSE,
+#'     Description = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1085,13 +1233,13 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param SetAsDefault Specifies whether to set this version as the policy's default version.
 #' 
 #' When this parameter is `true`, the new policy version becomes the
@@ -1102,6 +1250,21 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' Managed
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyVersion = list(
+#'     Document = "string",
+#'     VersionId = "string",
+#'     IsDefaultVersion = TRUE|FALSE,
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1158,8 +1321,8 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param RoleName &#91;required&#93; The name of the role to create.
 #' 
@@ -1179,13 +1342,13 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' 
 #' Upon success, the response includes the same trust policy in JSON
 #' format.
@@ -1217,6 +1380,41 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' If any one of the tags is invalid or if you exceed the allowed number of
 #' tags per role, then the entire request fails and the role is not
 #' created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Role = list(
+#'     Path = "string",
+#'     RoleName = "string",
+#'     RoleId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssumeRolePolicyDocument = "string",
+#'     Description = "string",
+#'     MaxSessionDuration = 123,
+#'     PermissionsBoundary = list(
+#'       PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'       PermissionsBoundaryArn = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     RoleLastUsed = list(
+#'       LastUsedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Region = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1317,7 +1515,15 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SAMLProviderArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1389,6 +1595,41 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name) {
 #' provide an optional suffix and the operation fails, try the operation
 #' again without the suffix.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Role = list(
+#'     Path = "string",
+#'     RoleName = "string",
+#'     RoleId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssumeRolePolicyDocument = "string",
+#'     Description = "string",
+#'     MaxSessionDuration = 123,
+#'     PermissionsBoundary = list(
+#'       PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'       PermissionsBoundaryArn = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     RoleLastUsed = list(
+#'       LastUsedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Region = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_service_linked_role(
@@ -1451,10 +1692,28 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param ServiceName &#91;required&#93; The name of the AWS service that is to be associated with the
 #' credentials. The service you specify here is the only service that can
 #' be accessed using these credentials.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceSpecificCredential = list(
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ServiceName = "string",
+#'     ServiceUserName = "string",
+#'     ServicePassword = "string",
+#'     ServiceSpecificCredentialId = "string",
+#'     UserName = "string",
+#'     Status = "Active"|"Inactive"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1508,8 +1767,8 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param UserName &#91;required&#93; The name of the user to create.
 #' 
@@ -1527,6 +1786,35 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' If any one of the tags is invalid or if you exceed the allowed number of
 #' tags per user, then the entire request fails and the user is not
 #' created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     Path = "string",
+#'     UserName = "string",
+#'     UserId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PasswordLastUsed = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PermissionsBoundary = list(
+#'       PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'       PermissionsBoundaryArn = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1608,8 +1896,8 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param VirtualMFADeviceName &#91;required&#93; The name of the virtual MFA device. Use with path to uniquely identify a
 #' virtual MFA device.
@@ -1617,7 +1905,44 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VirtualMFADevice = list(
+#'     SerialNumber = "string",
+#'     Base32StringSeed = raw,
+#'     QRCodePNG = raw,
+#'     User = list(
+#'       Path = "string",
+#'       UserName = "string",
+#'       UserId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PasswordLastUsed = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PermissionsBoundary = list(
+#'         PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'         PermissionsBoundaryArn = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     EnableDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1667,7 +1992,7 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param SerialNumber &#91;required&#93; The serial number that uniquely identifies the MFA device. For virtual
 #' MFA devices, the serial number is the device ARN.
 #' 
@@ -1675,6 +2000,9 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: =,.@@:/-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1723,13 +2051,16 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param AccessKeyId &#91;required&#93; The access key ID for the access key ID and secret access key you want
 #' to delete.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that can consist of any upper or lowercased letter or digit.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1787,6 +2118,9 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' consisting of lowercase letters, digits, and dashes. You cannot start or
 #' finish with a dash, nor can you have two dashes in a row.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_alias(
@@ -1834,6 +2168,9 @@ iam_delete_account_alias <- function(AccountAlias) {
 #'
 
 #'
+#' @return
+#' An empty list.
+#'
 
 #'
 #' @examples
@@ -1877,7 +2214,10 @@ iam_delete_account_password_policy <- function() {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1929,13 +2269,16 @@ iam_delete_group <- function(GroupName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name identifying the policy document to delete.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1997,7 +2340,10 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2058,7 +2404,10 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2116,6 +2465,9 @@ iam_delete_login_profile <- function(UserName) {
 #' resource ARNs by using the
 #' [`list_open_id_connect_providers`][iam_list_open_id_connect_providers]
 #' operation.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2187,6 +2539,9 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_policy(
@@ -2253,6 +2608,9 @@ iam_delete_policy <- function(PolicyArn) {
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_policy_version(
@@ -2301,7 +2659,10 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2353,6 +2714,9 @@ iam_delete_role <- function(RoleName) {
 #' @param RoleName &#91;required&#93; The name (friendly name, not ARN) of the IAM role from which you want to
 #' remove the permissions boundary.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_role_permissions_boundary(
@@ -2403,13 +2767,16 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the inline policy to delete from the specified IAM role.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2467,6 +2834,9 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #'
 #' @param SAMLProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_saml_provider(
@@ -2514,12 +2884,15 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that can consist of any upper or lowercased letter or digit.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2579,7 +2952,10 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2642,6 +3018,14 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #'
 #' @param RoleName &#91;required&#93; The name of the service-linked role to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletionTaskId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_service_linked_role(
@@ -2685,7 +3069,7 @@ iam_delete_service_linked_role <- function(RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential. You can get
 #' this value by calling
 #' [`list_service_specific_credentials`][iam_list_service_specific_credentials].
@@ -2693,6 +3077,9 @@ iam_delete_service_linked_role <- function(RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that can consist of any upper or lowercased letter or digit.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2741,12 +3128,15 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param CertificateId &#91;required&#93; The ID of the signing certificate to delete.
 #' 
 #' The format of this parameter, as described by its
 #' [regex](https://en.wikipedia.org/wiki/Regex) pattern, is a string of
 #' characters that can be upper- or lower-cased letters or digits.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2829,7 +3219,10 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2882,6 +3275,9 @@ iam_delete_user <- function(UserName) {
 #' @param UserName &#91;required&#93; The name (friendly name, not ARN) of the IAM user from which you want to
 #' remove the permissions boundary.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_user_permissions_boundary(
@@ -2932,13 +3328,16 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name identifying the policy document to delete.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2998,6 +3397,9 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: =,.@@:/-
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_virtual_mfa_device(
@@ -3054,13 +3456,16 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3110,13 +3515,16 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3166,13 +3574,16 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3219,7 +3630,7 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param SerialNumber &#91;required&#93; The serial number that uniquely identifies the MFA device. For virtual
 #' MFA devices, the serial number is the device ARN.
 #' 
@@ -3249,6 +3660,9 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' passwords (TOTP) expire after a short period of time. If this happens,
 #' you can [resync the
 #' device](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html).
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3292,6 +3706,15 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' iam_generate_credential_report()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   State = "STARTED"|"INPROGRESS"|"COMPLETE",
+#'   Description = "string"
+#' )
+#' ```
 #'
 
 #'
@@ -3465,6 +3888,14 @@ iam_generate_credential_report <- function() {
 #' This ID is used to generate information about when an account principal
 #' that is limited by the SCP attempted to access an AWS service.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_organizations_access_report(
@@ -3584,6 +4015,14 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' granularity, it generates service and action data. If you don't include
 #' this optional parameter, the operation generates service data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_service_last_accessed_details(
@@ -3637,6 +4076,21 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that can consist of any upper or lowercased letter or digit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserName = "string",
+#'   AccessKeyLastUsed = list(
+#'     LastUsedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ServiceName = "string",
+#'     Region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3708,6 +4162,184 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' the value of the `Marker` element in the response that you received to
 #' indicate where the next call should start.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserDetailList = list(
+#'     list(
+#'       Path = "string",
+#'       UserName = "string",
+#'       UserId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UserPolicyList = list(
+#'         list(
+#'           PolicyName = "string",
+#'           PolicyDocument = "string"
+#'         )
+#'       ),
+#'       GroupList = list(
+#'         "string"
+#'       ),
+#'       AttachedManagedPolicies = list(
+#'         list(
+#'           PolicyName = "string",
+#'           PolicyArn = "string"
+#'         )
+#'       ),
+#'       PermissionsBoundary = list(
+#'         PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'         PermissionsBoundaryArn = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   GroupDetailList = list(
+#'     list(
+#'       Path = "string",
+#'       GroupName = "string",
+#'       GroupId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       GroupPolicyList = list(
+#'         list(
+#'           PolicyName = "string",
+#'           PolicyDocument = "string"
+#'         )
+#'       ),
+#'       AttachedManagedPolicies = list(
+#'         list(
+#'           PolicyName = "string",
+#'           PolicyArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RoleDetailList = list(
+#'     list(
+#'       Path = "string",
+#'       RoleName = "string",
+#'       RoleId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssumeRolePolicyDocument = "string",
+#'       InstanceProfileList = list(
+#'         list(
+#'           Path = "string",
+#'           InstanceProfileName = "string",
+#'           InstanceProfileId = "string",
+#'           Arn = "string",
+#'           CreateDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Roles = list(
+#'             list(
+#'               Path = "string",
+#'               RoleName = "string",
+#'               RoleId = "string",
+#'               Arn = "string",
+#'               CreateDate = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               AssumeRolePolicyDocument = "string",
+#'               Description = "string",
+#'               MaxSessionDuration = 123,
+#'               PermissionsBoundary = list(
+#'                 PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'                 PermissionsBoundaryArn = "string"
+#'               ),
+#'               Tags = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               RoleLastUsed = list(
+#'                 LastUsedDate = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 Region = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       RolePolicyList = list(
+#'         list(
+#'           PolicyName = "string",
+#'           PolicyDocument = "string"
+#'         )
+#'       ),
+#'       AttachedManagedPolicies = list(
+#'         list(
+#'           PolicyName = "string",
+#'           PolicyArn = "string"
+#'         )
+#'       ),
+#'       PermissionsBoundary = list(
+#'         PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'         PermissionsBoundaryArn = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       RoleLastUsed = list(
+#'         LastUsedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Region = "string"
+#'       )
+#'     )
+#'   ),
+#'   Policies = list(
+#'     list(
+#'       PolicyName = "string",
+#'       PolicyId = "string",
+#'       Arn = "string",
+#'       Path = "string",
+#'       DefaultVersionId = "string",
+#'       AttachmentCount = 123,
+#'       PermissionsBoundaryUsageCount = 123,
+#'       IsAttachable = TRUE|FALSE,
+#'       Description = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PolicyVersionList = list(
+#'         list(
+#'           Document = "string",
+#'           VersionId = "string",
+#'           IsDefaultVersion = TRUE|FALSE,
+#'           CreateDate = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_account_authorization_details(
@@ -3750,6 +4382,25 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
 #' iam_get_account_password_policy()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PasswordPolicy = list(
+#'     MinimumPasswordLength = 123,
+#'     RequireSymbols = TRUE|FALSE,
+#'     RequireNumbers = TRUE|FALSE,
+#'     RequireUppercaseCharacters = TRUE|FALSE,
+#'     RequireLowercaseCharacters = TRUE|FALSE,
+#'     AllowUsersToChangePassword = TRUE|FALSE,
+#'     ExpirePasswords = TRUE|FALSE,
+#'     MaxPasswordAge = 123,
+#'     PasswordReusePrevention = 123,
+#'     HardExpiry = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -3796,6 +4447,16 @@ iam_get_account_password_policy <- function() {
 #' iam_get_account_summary()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SummaryMap = list(
+#'     123
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -3857,13 +4518,23 @@ iam_get_account_summary <- function() {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContextKeyNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3948,13 +4619,23 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContextKeyNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3999,6 +4680,18 @@ iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInp
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Content = raw,
+#'   ReportFormat = "text/csv",
+#'   GeneratedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -4035,7 +4728,7 @@ iam_get_credential_report <- function() {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -4049,6 +4742,48 @@ iam_get_credential_report <- function() {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     Path = "string",
+#'     GroupName = "string",
+#'     GroupId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Users = list(
+#'     list(
+#'       Path = "string",
+#'       UserName = "string",
+#'       UserId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PasswordLastUsed = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PermissionsBoundary = list(
+#'         PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'         PermissionsBoundaryArn = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4111,13 +4846,23 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupName = "string",
+#'   PolicyName = "string",
+#'   PolicyDocument = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4165,7 +4910,53 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceProfile = list(
+#'     Path = "string",
+#'     InstanceProfileName = "string",
+#'     InstanceProfileId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Roles = list(
+#'       list(
+#'         Path = "string",
+#'         RoleName = "string",
+#'         RoleId = "string",
+#'         Arn = "string",
+#'         CreateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AssumeRolePolicyDocument = "string",
+#'         Description = "string",
+#'         MaxSessionDuration = 123,
+#'         PermissionsBoundary = list(
+#'           PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'           PermissionsBoundaryArn = "string"
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         RoleLastUsed = list(
+#'           LastUsedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Region = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4219,7 +5010,21 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoginProfile = list(
+#'     UserName = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PasswordResetRequired = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4277,6 +5082,23 @@ iam_get_login_profile <- function(UserName) {
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Url = "string",
+#'   ClientIDList = list(
+#'     "string"
+#'   ),
+#'   ThumbprintList = list(
+#'     "string"
+#'   ),
+#'   CreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4360,6 +5182,40 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' key, the results are returned in alphabetical order. If you choose the
 #' time key, the results are sorted numerically by the date and time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   JobCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   JobCompletionDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NumberOfServicesAccessible = 123,
+#'   NumberOfServicesNotAccessed = 123,
+#'   AccessDetails = list(
+#'     list(
+#'       ServiceName = "string",
+#'       ServiceNamespace = "string",
+#'       Region = "string",
+#'       EntityPath = "string",
+#'       LastAuthenticatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TotalAuthenticatedEntities = 123
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string",
+#'   ErrorDetails = list(
+#'     Message = "string",
+#'     Code = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_organizations_access_report(
@@ -4433,6 +5289,30 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = list(
+#'     PolicyName = "string",
+#'     PolicyId = "string",
+#'     Arn = "string",
+#'     Path = "string",
+#'     DefaultVersionId = "string",
+#'     AttachmentCount = 123,
+#'     PermissionsBoundaryUsageCount = 123,
+#'     IsAttachable = TRUE|FALSE,
+#'     Description = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4512,6 +5392,21 @@ iam_get_policy <- function(PolicyArn) {
 #' and optionally followed by a period '.' and a string of letters and
 #' digits.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyVersion = list(
+#'     Document = "string",
+#'     VersionId = "string",
+#'     IsDefaultVersion = TRUE|FALSE,
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_policy_version(
@@ -4565,7 +5460,42 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Role = list(
+#'     Path = "string",
+#'     RoleName = "string",
+#'     RoleId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssumeRolePolicyDocument = "string",
+#'     Description = "string",
+#'     MaxSessionDuration = 123,
+#'     PermissionsBoundary = list(
+#'       PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'       PermissionsBoundaryArn = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     RoleLastUsed = list(
+#'       LastUsedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Region = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4638,13 +5568,23 @@ iam_get_role <- function(RoleName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoleName = "string",
+#'   PolicyName = "string",
+#'   PolicyDocument = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4695,6 +5635,20 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SAMLMetadataDocument = "string",
+#'   CreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ValidUntil = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_saml_provider(
@@ -4743,7 +5697,7 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
@@ -4752,6 +5706,23 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 #' @param Encoding &#91;required&#93; Specifies the public key encoding format to use in the response. To
 #' retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the
 #' public key in PEM format, use `PEM`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SSHPublicKey = list(
+#'     UserName = "string",
+#'     SSHPublicKeyId = "string",
+#'     Fingerprint = "string",
+#'     SSHPublicKeyBody = "string",
+#'     Status = "Active"|"Inactive",
+#'     UploadDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4804,7 +5775,30 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerCertificate = list(
+#'     ServerCertificateMetadata = list(
+#'       Path = "string",
+#'       ServerCertificateName = "string",
+#'       ServerCertificateId = "string",
+#'       Arn = "string",
+#'       UploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Expiration = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     CertificateBody = "string",
+#'     CertificateChain = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4914,6 +5908,49 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' the value of the `Marker` element in the response that you received to
 #' indicate where the next call should start.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   JobType = "SERVICE_LEVEL"|"ACTION_LEVEL",
+#'   JobCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ServicesLastAccessed = list(
+#'     list(
+#'       ServiceName = "string",
+#'       LastAuthenticated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ServiceNamespace = "string",
+#'       LastAuthenticatedEntity = "string",
+#'       LastAuthenticatedRegion = "string",
+#'       TotalAuthenticatedEntities = 123,
+#'       TrackedActionsLastAccessed = list(
+#'         list(
+#'           ActionName = "string",
+#'           LastAccessedEntity = "string",
+#'           LastAccessedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastAccessedRegion = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   JobCompletionDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string",
+#'   Error = list(
+#'     Message = "string",
+#'     Code = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_service_last_accessed_details(
@@ -5017,6 +6054,40 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' the value of the `Marker` element in the response that you received to
 #' indicate where the next call should start.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   JobCreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   JobCompletionDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EntityDetailsList = list(
+#'     list(
+#'       EntityInfo = list(
+#'         Arn = "string",
+#'         Name = "string",
+#'         Type = "USER"|"ROLE"|"GROUP",
+#'         Id = "string",
+#'         Path = "string"
+#'       ),
+#'       LastAuthenticated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string",
+#'   Error = list(
+#'     Message = "string",
+#'     Code = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_service_last_accessed_details_with_entities(
@@ -5077,6 +6148,25 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
 #' in the format
 #' `task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "SUCCEEDED"|"IN_PROGRESS"|"FAILED"|"NOT_STARTED",
+#'   Reason = list(
+#'     Reason = "string",
+#'     RoleUsageList = list(
+#'       list(
+#'         Region = "string",
+#'         Resources = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_service_linked_role_deletion_status(
@@ -5124,7 +6214,36 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #' user making the request. This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     Path = "string",
+#'     UserName = "string",
+#'     UserId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PasswordLastUsed = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PermissionsBoundary = list(
+#'       PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'       PermissionsBoundaryArn = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5193,13 +6312,23 @@ iam_get_user <- function(UserName = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document to get.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserName = "string",
+#'   PolicyName = "string",
+#'   PolicyDocument = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5257,7 +6386,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -5271,6 +6400,25 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessKeyMetadata = list(
+#'     list(
+#'       UserName = "string",
+#'       AccessKeyId = "string",
+#'       Status = "Active"|"Inactive",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5337,6 +6485,18 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAliases = list(
+#'     "string"
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_account_aliases(
@@ -5399,7 +6559,7 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
@@ -5407,8 +6567,8 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -5423,6 +6583,21 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachedPolicies = list(
+#'     list(
+#'       PolicyName = "string",
+#'       PolicyArn = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5481,7 +6656,7 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
@@ -5489,8 +6664,8 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -5505,6 +6680,21 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachedPolicies = list(
+#'     list(
+#'       PolicyName = "string",
+#'       PolicyArn = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5563,7 +6753,7 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PathPrefix The path prefix for filtering the results. This parameter is optional.
 #' If it is not included, it defaults to a slash (/), listing all policies.
 #' 
@@ -5571,8 +6761,8 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -5587,6 +6777,21 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachedPolicies = list(
+#'     list(
+#'       PolicyName = "string",
+#'       PolicyArn = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5658,8 +6863,8 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
@@ -5683,6 +6888,33 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyGroups = list(
+#'     list(
+#'       GroupName = "string",
+#'       GroupId = "string"
+#'     )
+#'   ),
+#'   PolicyUsers = list(
+#'     list(
+#'       UserName = "string",
+#'       UserId = "string"
+#'     )
+#'   ),
+#'   PolicyRoles = list(
+#'     list(
+#'       RoleName = "string",
+#'       RoleId = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5742,7 +6974,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -5756,6 +6988,18 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyNames = list(
+#'     "string"
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5815,8 +7059,8 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -5831,6 +7075,26 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       Path = "string",
+#'       GroupName = "string",
+#'       GroupId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5883,7 +7147,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -5897,6 +7161,26 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       Path = "string",
+#'       GroupName = "string",
+#'       GroupId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5959,8 +7243,8 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of
 #' characters consisting of either a forward slash (/) by itself or a
 #' string that must begin and end with forward slashes. In addition, it can
-#' contain any ASCII character from the ! (``U+0021``) through the DEL
-#' character (``U+007F``), including most punctuation characters, digits, and
+#' contain any ASCII character from the ! (`\u0021`) through the DEL
+#' character (`\u007F`), including most punctuation characters, digits, and
 #' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -5975,6 +7259,56 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceProfiles = list(
+#'     list(
+#'       Path = "string",
+#'       InstanceProfileName = "string",
+#'       InstanceProfileId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Roles = list(
+#'         list(
+#'           Path = "string",
+#'           RoleName = "string",
+#'           RoleId = "string",
+#'           Arn = "string",
+#'           CreateDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           AssumeRolePolicyDocument = "string",
+#'           Description = "string",
+#'           MaxSessionDuration = 123,
+#'           PermissionsBoundary = list(
+#'             PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'             PermissionsBoundaryArn = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           RoleLastUsed = list(
+#'             LastUsedDate = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Region = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6024,7 +7358,7 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6038,6 +7372,56 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceProfiles = list(
+#'     list(
+#'       Path = "string",
+#'       InstanceProfileName = "string",
+#'       InstanceProfileId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Roles = list(
+#'         list(
+#'           Path = "string",
+#'           RoleName = "string",
+#'           RoleId = "string",
+#'           Arn = "string",
+#'           CreateDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           AssumeRolePolicyDocument = "string",
+#'           Description = "string",
+#'           MaxSessionDuration = 123,
+#'           PermissionsBoundary = list(
+#'             PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'             PermissionsBoundaryArn = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           RoleLastUsed = list(
+#'             LastUsedDate = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Region = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6088,7 +7472,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6102,6 +7486,24 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MFADevices = list(
+#'     list(
+#'       UserName = "string",
+#'       SerialNumber = "string",
+#'       EnableDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6141,6 +7543,18 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #'
 #' @usage
 #' iam_list_open_id_connect_providers()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpenIDConnectProviderList = list(
+#'     list(
+#'       Arn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6213,8 +7627,8 @@ iam_list_open_id_connect_providers <- function() {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
@@ -6238,6 +7652,34 @@ iam_list_open_id_connect_providers <- function() {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policies = list(
+#'     list(
+#'       PolicyName = "string",
+#'       PolicyId = "string",
+#'       Arn = "string",
+#'       Path = "string",
+#'       DefaultVersionId = "string",
+#'       AttachmentCount = 123,
+#'       PermissionsBoundaryUsageCount = 123,
+#'       IsAttachable = TRUE|FALSE,
+#'       Description = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6337,6 +7779,29 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 #' in the *AWS General Reference*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PoliciesGrantingServiceAccess = list(
+#'     list(
+#'       ServiceNamespace = "string",
+#'       Policies = list(
+#'         list(
+#'           PolicyName = "string",
+#'           PolicyType = "INLINE"|"MANAGED",
+#'           PolicyArn = "string",
+#'           EntityType = "USER"|"ROLE"|"GROUP",
+#'           EntityName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_policies_granting_service_access(
@@ -6419,6 +7884,25 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Versions = list(
+#'     list(
+#'       Document = "string",
+#'       VersionId = "string",
+#'       IsDefaultVersion = TRUE|FALSE,
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_policy_versions(
@@ -6474,7 +7958,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6488,6 +7972,18 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyNames = list(
+#'     "string"
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6535,7 +8031,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' This parameter accepts (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that consist of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6550,6 +8046,21 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' that case, the `IsTruncated` response element returns `true`, and
 #' `Marker` contains a value to include in the subsequent call that tells
 #' the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6611,8 +8122,8 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -6627,6 +8138,45 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Roles = list(
+#'     list(
+#'       Path = "string",
+#'       RoleName = "string",
+#'       RoleId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssumeRolePolicyDocument = "string",
+#'       Description = "string",
+#'       MaxSessionDuration = 123,
+#'       PermissionsBoundary = list(
+#'         PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'         PermissionsBoundaryArn = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       RoleLastUsed = list(
+#'         LastUsedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Region = "string"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6667,6 +8217,24 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #'
 #' @usage
 #' iam_list_saml_providers()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SAMLProviderList = list(
+#'     list(
+#'       Arn = "string",
+#'       ValidUntil = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6720,7 +8288,7 @@ iam_list_saml_providers <- function() {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6734,6 +8302,25 @@ iam_list_saml_providers <- function() {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SSHPublicKeys = list(
+#'     list(
+#'       UserName = "string",
+#'       SSHPublicKeyId = "string",
+#'       Status = "Active"|"Inactive",
+#'       UploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6792,8 +8379,8 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
 #' (through its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a
 #' string of characters consisting of either a forward slash (/) by itself
 #' or a string that must begin and end with forward slashes. In addition,
-#' it can contain any ASCII character from the ! (``U+0021``) through the DEL
-#' character (``U+007F``), including most punctuation characters, digits, and
+#' it can contain any ASCII character from the ! (`\u0021`) through the DEL
+#' character (`\u007F`), including most punctuation characters, digits, and
 #' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -6808,6 +8395,29 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerCertificateMetadataList = list(
+#'     list(
+#'       Path = "string",
+#'       ServerCertificateName = "string",
+#'       ServerCertificateId = "string",
+#'       Arn = "string",
+#'       UploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Expiration = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6861,10 +8471,29 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param ServiceName Filters the returned results to only those for the specified AWS
 #' service. If not specified, then AWS returns service-specific credentials
 #' for all services.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceSpecificCredentials = list(
+#'     list(
+#'       UserName = "string",
+#'       Status = "Active"|"Inactive",
+#'       ServiceUserName = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ServiceSpecificCredentialId = "string",
+#'       ServiceName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6919,7 +8548,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -6933,6 +8562,26 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificates = list(
+#'     list(
+#'       UserName = "string",
+#'       CertificateId = "string",
+#'       CertificateBody = "string",
+#'       Status = "Active"|"Inactive",
+#'       UploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6998,7 +8647,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
@@ -7012,6 +8661,18 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyNames = list(
+#'     "string"
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7075,6 +8736,21 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' `Marker` contains a value to include in the subsequent call that tells
 #' the service where to continue from.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_user_tags(
@@ -7134,8 +8810,8 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of
 #' characters consisting of either a forward slash (/) by itself or a
 #' string that must begin and end with forward slashes. In addition, it can
-#' contain any ASCII character from the ! (``U+0021``) through the DEL
-#' character (``U+007F``), including most punctuation characters, digits, and
+#' contain any ASCII character from the ! (`\u0021`) through the DEL
+#' character (`\u007F`), including most punctuation characters, digits, and
 #' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -7150,6 +8826,39 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       Path = "string",
+#'       UserName = "string",
+#'       UserId = "string",
+#'       Arn = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PasswordLastUsed = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PermissionsBoundary = list(
+#'         PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'         PermissionsBoundaryArn = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7217,6 +8926,47 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' results available. In that case, the `IsTruncated` response element
 #' returns `true`, and `Marker` contains a value to include in the
 #' subsequent call that tells the service where to continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VirtualMFADevices = list(
+#'     list(
+#'       SerialNumber = "string",
+#'       Base32StringSeed = raw,
+#'       QRCodePNG = raw,
+#'       User = list(
+#'         Path = "string",
+#'         UserName = "string",
+#'         UserId = "string",
+#'         Arn = "string",
+#'         CreateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         PasswordLastUsed = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         PermissionsBoundary = list(
+#'           PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'           PermissionsBoundaryArn = "string"
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       EnableDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7288,13 +9038,13 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-.
+#' spaces. You can also include any of the following characters: _+=,.@@-.
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -7307,13 +9057,16 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7330,7 +9083,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' # named Admins.
 #' svc$put_group_policy(
 #'   GroupName = "Admins",
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"Action\":\"*...",
 #'   PolicyName = "AllPerms"
 #' )
 #' }
@@ -7382,6 +9135,9 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
 #' set the permissions boundary.
 #' @param PermissionsBoundary &#91;required&#93; The ARN of the policy that is used to set the permissions boundary for
 #' the role.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7454,13 +9210,13 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -7473,13 +9229,16 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7495,7 +9254,7 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' # The following command adds a permissions policy to the role named
 #' # Test-Role.
 #' svc$put_role_policy(
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"Action\":\"s...",
 #'   PolicyName = "S3AccessPolicy",
 #'   RoleName = "S3Access"
 #' )
@@ -7546,6 +9305,9 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
 #' set the permissions boundary.
 #' @param PermissionsBoundary &#91;required&#93; The ARN of the policy that is used to set the permissions boundary for
 #' the user.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7609,13 +9371,13 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyName &#91;required&#93; The name of the policy document.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy document.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -7628,13 +9390,16 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7649,7 +9414,7 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' \dontrun{
 #' # The following command attaches a policy to the IAM user named Bob.
 #' svc$put_user_policy(
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"Action\":\"*...",
 #'   PolicyName = "AllAccessPolicy",
 #'   UserName = "Bob"
 #' )
@@ -7705,6 +9470,9 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #' provider resource. For more information about client IDs, see
 #' [`create_open_id_connect_provider`][iam_create_open_id_connect_provider].
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_client_id_from_open_id_connect_provider(
@@ -7756,13 +9524,16 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param RoleName &#91;required&#93; The name of the role to remove.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7815,13 +9586,16 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param UserName &#91;required&#93; The name of the user to remove.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7880,12 +9654,30 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that can consist of any upper or lowercased letter or digit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceSpecificCredential = list(
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ServiceName = "string",
+#'     ServiceUserName = "string",
+#'     ServicePassword = "string",
+#'     ServiceSpecificCredentialId = "string",
+#'     UserName = "string",
+#'     Status = "Active"|"Inactive"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7936,19 +9728,22 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param SerialNumber &#91;required&#93; Serial number that uniquely identifies the MFA device.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param AuthenticationCode1 &#91;required&#93; An authentication code emitted by the device.
 #' 
 #' The format for this parameter is a sequence of six digits.
 #' @param AuthenticationCode2 &#91;required&#93; A subsequent authentication code emitted by the device.
 #' 
 #' The format for this parameter is a sequence of six digits.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8012,6 +9807,9 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' Managed
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html)
 #' in the *IAM User Guide*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8084,6 +9882,9 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
 #' For information, see [Activating and Deactivating STS in an AWS
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 #' in the *IAM User Guide*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8172,13 +9973,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param PermissionsBoundaryPolicyInputList The IAM permissions boundary policy to simulate. The permissions
 #' boundary sets the maximum permissions that an IAM entity can have. You
 #' can input only one permissions boundary when you pass a policy to this
@@ -8193,13 +9994,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated against each resource. Each operation must
 #' include the service identifier, such as `iam:CreateUser`. This operation
@@ -8233,13 +10034,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param ResourceOwner An ARN representing the AWS account ID that specifies the owner of any
 #' simulated resource that does not identify its owner in the resource ARN.
 #' Examples of resource ARNs include an S3 bucket or object. If
@@ -8319,6 +10120,77 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' receive a response indicating that the results are truncated. Set it to
 #' the value of the `Marker` element in the response that you received to
 #' indicate where the next call should start.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationResults = list(
+#'     list(
+#'       EvalActionName = "string",
+#'       EvalResourceName = "string",
+#'       EvalDecision = "allowed"|"explicitDeny"|"implicitDeny",
+#'       MatchedStatements = list(
+#'         list(
+#'           SourcePolicyId = "string",
+#'           SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+#'           StartPosition = list(
+#'             Line = 123,
+#'             Column = 123
+#'           ),
+#'           EndPosition = list(
+#'             Line = 123,
+#'             Column = 123
+#'           )
+#'         )
+#'       ),
+#'       MissingContextValues = list(
+#'         "string"
+#'       ),
+#'       OrganizationsDecisionDetail = list(
+#'         AllowedByOrganizations = TRUE|FALSE
+#'       ),
+#'       PermissionsBoundaryDecisionDetail = list(
+#'         AllowedByPermissionsBoundary = TRUE|FALSE
+#'       ),
+#'       EvalDecisionDetails = list(
+#'         "allowed"|"explicitDeny"|"implicitDeny"
+#'       ),
+#'       ResourceSpecificResults = list(
+#'         list(
+#'           EvalResourceName = "string",
+#'           EvalResourceDecision = "allowed"|"explicitDeny"|"implicitDeny",
+#'           MatchedStatements = list(
+#'             list(
+#'               SourcePolicyId = "string",
+#'               SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+#'               StartPosition = list(
+#'                 Line = 123,
+#'                 Column = 123
+#'               ),
+#'               EndPosition = list(
+#'                 Line = 123,
+#'                 Column = 123
+#'               )
+#'             )
+#'           ),
+#'           MissingContextValues = list(
+#'             "string"
+#'           ),
+#'           EvalDecisionDetails = list(
+#'             "allowed"|"explicitDeny"|"implicitDeny"
+#'           ),
+#'           PermissionsBoundaryDecisionDetail = list(
+#'             AllowedByPermissionsBoundary = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8436,13 +10308,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param PermissionsBoundaryPolicyInputList The IAM permissions boundary policy to simulate. The permissions
 #' boundary sets the maximum permissions that the entity can have. You can
 #' input only one permissions boundary when you pass a policy to this
@@ -8462,13 +10334,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated for each resource. Each operation must include
 #' the service identifier, such as `iam:CreateUser`.
@@ -8497,13 +10369,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param ResourceOwner An AWS account ID that specifies the owner of any simulated resource
 #' that does not identify its owner in the resource ARN. Examples of
 #' resource ARNs include an S3 bucket or object. If `ResourceOwner` is
@@ -8592,6 +10464,77 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' the value of the `Marker` element in the response that you received to
 #' indicate where the next call should start.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationResults = list(
+#'     list(
+#'       EvalActionName = "string",
+#'       EvalResourceName = "string",
+#'       EvalDecision = "allowed"|"explicitDeny"|"implicitDeny",
+#'       MatchedStatements = list(
+#'         list(
+#'           SourcePolicyId = "string",
+#'           SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+#'           StartPosition = list(
+#'             Line = 123,
+#'             Column = 123
+#'           ),
+#'           EndPosition = list(
+#'             Line = 123,
+#'             Column = 123
+#'           )
+#'         )
+#'       ),
+#'       MissingContextValues = list(
+#'         "string"
+#'       ),
+#'       OrganizationsDecisionDetail = list(
+#'         AllowedByOrganizations = TRUE|FALSE
+#'       ),
+#'       PermissionsBoundaryDecisionDetail = list(
+#'         AllowedByPermissionsBoundary = TRUE|FALSE
+#'       ),
+#'       EvalDecisionDetails = list(
+#'         "allowed"|"explicitDeny"|"implicitDeny"
+#'       ),
+#'       ResourceSpecificResults = list(
+#'         list(
+#'           EvalResourceName = "string",
+#'           EvalResourceDecision = "allowed"|"explicitDeny"|"implicitDeny",
+#'           MatchedStatements = list(
+#'             list(
+#'               SourcePolicyId = "string",
+#'               SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+#'               StartPosition = list(
+#'                 Line = 123,
+#'                 Column = 123
+#'               ),
+#'               EndPosition = list(
+#'                 Line = 123,
+#'                 Column = 123
+#'               )
+#'             )
+#'           ),
+#'           MissingContextValues = list(
+#'             "string"
+#'           ),
+#'           EvalDecisionDetails = list(
+#'             "allowed"|"explicitDeny"|"implicitDeny"
+#'           ),
+#'           PermissionsBoundaryDecisionDetail = list(
+#'             AllowedByPermissionsBoundary = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$simulate_principal_policy(
@@ -8674,7 +10617,6 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #' -   **Cost allocation** - Use tags to help track which individuals and
 #'     teams are using which AWS resources.
 #' 
-#' <!-- -->
 #' 
 #' -   Make sure that you have no invalid tags and that you do not exceed
 #'     the allowed number of tags per role. In either case, the entire
@@ -8696,10 +10638,13 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #' This parameter accepts (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that consist of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Tags &#91;required&#93; The list of tags that you want to attach to the role. Each tag consists
 #' of a key name and an associated value. You can specify this with a JSON
 #' string.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8779,7 +10724,6 @@ iam_tag_role <- function(RoleName, Tags) {
 #' -   **Cost allocation** - Use tags to help track which individuals and
 #'     teams are using which AWS resources.
 #' 
-#' <!-- -->
 #' 
 #' -   Make sure that you have no invalid tags and that you do not exceed
 #'     the allowed number of tags per role. In either case, the entire
@@ -8804,6 +10748,9 @@ iam_tag_role <- function(RoleName, Tags) {
 #' spaces. You can also include any of the following characters: =,.@@-
 #' @param Tags &#91;required&#93; The list of tags that you want to attach to the user. Each tag consists
 #' of a key name and an associated value.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8872,9 +10819,12 @@ iam_tag_user <- function(UserName, Tags) {
 #' This parameter accepts (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that consist of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param TagKeys &#91;required&#93; A list of key names as a simple array of strings. The tags with matching
 #' keys are removed from the specified role.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8937,6 +10887,9 @@ iam_untag_role <- function(RoleName, TagKeys) {
 #' spaces. You can also include any of the following characters: =,.@@-
 #' @param TagKeys &#91;required&#93; A list of key names as a simple array of strings. The tags with matching
 #' keys are removed from the specified user.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9006,7 +10959,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param AccessKeyId &#91;required&#93; The access key ID of the secret access key you want to update.
 #' 
 #' This parameter allows (through its [regex
@@ -9015,6 +10968,9 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' @param Status &#91;required&#93; The status you want to assign to the secret access key. `Active` means
 #' that the key can be used for API calls to AWS, while `Inactive` means
 #' that the key cannot be used.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9087,7 +11043,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @@ \\# $ % ^ & * ( ) \\_ + - = \[ \] \{ \} | '
+#' ! @@ \# $ % ^ & * ( ) _ + - = \[ \] \{ \} | '
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -9139,6 +11095,9 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' uses the default value of `false`. The result is that IAM users can
 #' change their passwords after they expire and continue to sign in as the
 #' user.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9203,7 +11162,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param PolicyDocument &#91;required&#93; The policy that grants an entity permission to assume the role.
 #' 
 #' You must provide policies in JSON format in IAM. However, for AWS
@@ -9216,13 +11175,16 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9237,7 +11199,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' # The following command updates the role trust policy for the role named
 #' # Test-Role:
 #' svc$update_assume_role_policy(
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Effect\":\"Allow\",...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Effect\":\"Allow\",\"Principal...",
 #'   RoleName = "S3AccessForEC2Instances"
 #' )
 #' }
@@ -9290,7 +11252,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param NewPath New path for the IAM group. Only include this if changing the group's
 #' path.
 #' 
@@ -9298,8 +11260,8 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewGroupName New name for the IAM group. Only include this if changing the group's
 #' name.
@@ -9307,6 +11269,9 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
 #' create resources named both "MyResource" and "myresource".
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9365,7 +11330,7 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param Password The new password for the specified IAM user.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
@@ -9373,13 +11338,13 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' 
 #' However, the format can be further restricted by the account
 #' administrator by setting a password policy on the AWS account. For more
@@ -9387,6 +11352,9 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' [`update_account_password_policy`][iam_update_account_password_policy].
 #' @param PasswordResetRequired Allows this new password to be used only once by requiring the specified
 #' IAM user to set a new password on next sign-in.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9469,6 +11437,9 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' IAM OpenID Connect provider. For more information, see
 #' [`create_open_id_connect_provider`][iam_create_open_id_connect_provider].
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_open_id_connect_provider_thumbprint(
@@ -9526,6 +11497,9 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_role(
@@ -9569,6 +11543,41 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
 #'
 #' @param RoleName &#91;required&#93; The name of the role that you want to modify.
 #' @param Description &#91;required&#93; The new description that you want to apply to the specified role.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Role = list(
+#'     Path = "string",
+#'     RoleName = "string",
+#'     RoleId = "string",
+#'     Arn = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssumeRolePolicyDocument = "string",
+#'     Description = "string",
+#'     MaxSessionDuration = 123,
+#'     PermissionsBoundary = list(
+#'       PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+#'       PermissionsBoundaryArn = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     RoleLastUsed = list(
+#'       LastUsedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Region = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9624,6 +11633,14 @@ iam_update_role_description <- function(RoleName, Description) {
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SAMLProviderArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_saml_provider(
@@ -9675,7 +11692,7 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param SSHPublicKeyId &#91;required&#93; The unique identifier for the SSH public key.
 #' 
 #' This parameter allows (through its [regex
@@ -9684,6 +11701,9 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 #' @param Status &#91;required&#93; The status to assign to the SSH public key. `Active` means that the key
 #' can be used for authentication with an AWS CodeCommit repository.
 #' `Inactive` means that the key cannot be used.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9751,7 +11771,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param NewPath The new path for the server certificate. Include this only if you are
 #' updating the server certificate's path.
 #' 
@@ -9759,8 +11779,8 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewServerCertificateName The new name for the server certificate. Include this only if you are
 #' updating the server certificate's name. The name of the certificate
@@ -9769,7 +11789,10 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9820,13 +11843,16 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' that can consist of any upper or lowercased letter or digit.
 #' @param Status &#91;required&#93; The status to be assigned to the service-specific credential.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9879,7 +11905,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param CertificateId &#91;required&#93; The ID of the signing certificate you want to update.
 #' 
 #' This parameter allows (through its [regex
@@ -9888,6 +11914,9 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @param Status &#91;required&#93; The status you want to assign to the certificate. `Active` means that
 #' the certificate can be used for API calls to AWS `Inactive` means that
 #' the certificate cannot be used.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -9957,7 +11986,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param NewPath New path for the IAM user. Include this parameter only if you're
 #' changing the user's path.
 #' 
@@ -9965,8 +11994,8 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewUserName New name for the user. Include this parameter only if you're changing
 #' the user's name.
@@ -9974,6 +12003,9 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
 #' create resources named both "MyResource" and "myresource".
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -10034,7 +12066,7 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param SSHPublicKeyBody &#91;required&#93; The SSH public key. The public key must be encoded in ssh-rsa format or
 #' PEM format. The minimum bit-length of the public key is 2048 bits. For
 #' example, you can generate a 2048-bit key, and the resulting PEM file is
@@ -10045,13 +12077,30 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SSHPublicKey = list(
+#'     UserName = "string",
+#'     SSHPublicKeyId = "string",
+#'     Fingerprint = "string",
+#'     SSHPublicKeyBody = "string",
+#'     Status = "Active"|"Inactive",
+#'     UploadDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10132,8 +12181,8 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (``U+0021``) through the DEL character
-#' (``U+007F``), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (`\u0021`) through the DEL character
+#' (`\u007F`), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' 
 #' If you are uploading a server certificate specifically for use with
@@ -10146,7 +12195,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param CertificateBody &#91;required&#93; The contents of the public key certificate in PEM-encoded format.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
@@ -10154,13 +12203,13 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param PrivateKey &#91;required&#93; The contents of the private key in PEM-encoded format.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
@@ -10168,13 +12217,13 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
 #' @param CertificateChain The contents of the certificate chain. This is typically a concatenation
 #' of the PEM-encoded public key certificates of the chain.
 #' 
@@ -10183,13 +12232,32 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerCertificateMetadata = list(
+#'     Path = "string",
+#'     ServerCertificateName = "string",
+#'     ServerCertificateId = "string",
+#'     Arn = "string",
+#'     UploadDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10207,9 +12275,9 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' # The following upload-server-certificate command uploads a server
 #' # certificate to your AWS account:
 #' svc$upload_server_certificate(
-#'   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----EN...",
+#'   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>...",
 #'   Path = "/company/servercerts/",
-#'   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA ...",
+#'   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----E...",
 #'   ServerCertificateName = "ProdServerCert"
 #' )
 #' }
@@ -10267,7 +12335,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
-#' spaces. You can also include any of the following characters: \\_+=,.@@-
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param CertificateBody &#91;required&#93; The contents of the signing certificate.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
@@ -10275,13 +12343,29 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (``U+0020``) through the end of the ASCII character range
+#'     (`\u0020`) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through ``U+00FF``)
+#'     character set (through `\u00FF`)
 #' 
-#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'     carriage return (``U+000D``)
+#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
+#'     carriage return (`\u000D`)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = list(
+#'     UserName = "string",
+#'     CertificateId = "string",
+#'     CertificateBody = "string",
+#'     Status = "Active"|"Inactive",
+#'     UploadDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

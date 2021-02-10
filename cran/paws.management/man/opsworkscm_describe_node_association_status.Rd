@@ -14,6 +14,18 @@ DisassociateNodeResponse.}
 
 \item{ServerName}{[required] The name of the server from which to disassociate the node.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NodeAssociationStatus = "SUCCESS"|"FAILED"|"IN_PROGRESS",
+  EngineAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the current status of an existing association or disassociation
 request.

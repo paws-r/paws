@@ -13,6 +13,9 @@ findings you want to archive.}
 
 \item{FindingIds}{[required] The IDs of the findings that you want to archive.}
 }
+\value{
+An empty list.
+}
 \description{
 Archives GuardDuty findings that are specified by the list of finding
 IDs.

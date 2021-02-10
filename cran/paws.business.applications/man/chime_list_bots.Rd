@@ -15,6 +15,29 @@ chime_list_bots(AccountId, MaxResults, NextToken)
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Bots = list(
+    list(
+      BotId = "string",
+      UserId = "string",
+      DisplayName = "string",
+      BotType = "ChatBot",
+      Disabled = TRUE|FALSE,
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      BotEmail = "string",
+      SecurityToken = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the bots associated with the administrator's Amazon Chime
 Enterprise account ID.

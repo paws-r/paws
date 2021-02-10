@@ -9,6 +9,9 @@ autoscaling_create_or_update_tags(Tags)
 \arguments{
 \item{Tags}{[required] One or more tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or updates tags for the specified Auto Scaling group.
 

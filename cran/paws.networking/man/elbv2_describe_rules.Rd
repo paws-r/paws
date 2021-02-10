@@ -16,6 +16,121 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rules = list(
+    list(
+      RuleArn = "string",
+      Priority = "string",
+      Conditions = list(
+        list(
+          Field = "string",
+          Values = list(
+            "string"
+          ),
+          HostHeaderConfig = list(
+            Values = list(
+              "string"
+            )
+          ),
+          PathPatternConfig = list(
+            Values = list(
+              "string"
+            )
+          ),
+          HttpHeaderConfig = list(
+            HttpHeaderName = "string",
+            Values = list(
+              "string"
+            )
+          ),
+          QueryStringConfig = list(
+            Values = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          ),
+          HttpRequestMethodConfig = list(
+            Values = list(
+              "string"
+            )
+          ),
+          SourceIpConfig = list(
+            Values = list(
+              "string"
+            )
+          )
+        )
+      ),
+      Actions = list(
+        list(
+          Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+          TargetGroupArn = "string",
+          AuthenticateOidcConfig = list(
+            Issuer = "string",
+            AuthorizationEndpoint = "string",
+            TokenEndpoint = "string",
+            UserInfoEndpoint = "string",
+            ClientId = "string",
+            ClientSecret = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+            UseExistingClientSecret = TRUE|FALSE
+          ),
+          AuthenticateCognitoConfig = list(
+            UserPoolArn = "string",
+            UserPoolClientId = "string",
+            UserPoolDomain = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+          ),
+          Order = 123,
+          RedirectConfig = list(
+            Protocol = "string",
+            Port = "string",
+            Host = "string",
+            Path = "string",
+            Query = "string",
+            StatusCode = "HTTP_301"|"HTTP_302"
+          ),
+          FixedResponseConfig = list(
+            MessageBody = "string",
+            StatusCode = "string",
+            ContentType = "string"
+          ),
+          ForwardConfig = list(
+            TargetGroups = list(
+              list(
+                TargetGroupArn = "string",
+                Weight = 123
+              )
+            ),
+            TargetGroupStickinessConfig = list(
+              Enabled = TRUE|FALSE,
+              DurationSeconds = 123
+            )
+          )
+        )
+      ),
+      IsDefault = TRUE|FALSE
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the specified rules or the rules for the specified listener.
 You must specify either a listener or one or more rules.
@@ -37,7 +152,7 @@ You must specify either a listener or one or more rules.
 # This example describes the specified rule.
 svc$describe_rules(
   RuleArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-ba..."
   )
 )
 }

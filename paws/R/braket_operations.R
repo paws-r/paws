@@ -14,6 +14,15 @@ NULL
 #' @param clientToken &#91;required&#93; The client token associated with the request.
 #' @param quantumTaskArn &#91;required&#93; The ARN of the task to cancel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cancellationStatus = "CANCELLING"|"CANCELLED",
+#'   quantumTaskArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_quantum_task(
@@ -61,6 +70,14 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #' @param shots &#91;required&#93; The number of shots to use for the task.
 #' @param tags Tags to be added to the quantum task you're creating.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   quantumTaskArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_quantum_task(
@@ -107,6 +124,19 @@ braket_create_quantum_task <- function(action, clientToken, deviceArn, devicePar
 #'
 #' @param deviceArn &#91;required&#93; The ARN of the device to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deviceArn = "string",
+#'   deviceCapabilities = "string",
+#'   deviceName = "string",
+#'   deviceStatus = "ONLINE"|"OFFLINE",
+#'   deviceType = "QPU"|"SIMULATOR",
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_device(
@@ -144,6 +174,30 @@ braket_get_device <- function(deviceArn) {
 #'
 #' @param quantumTaskArn &#91;required&#93; the ARN of the task to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   deviceArn = "string",
+#'   deviceParameters = "string",
+#'   endedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureReason = "string",
+#'   outputS3Bucket = "string",
+#'   outputS3Directory = "string",
+#'   quantumTaskArn = "string",
+#'   shots = 123,
+#'   status = "CREATED"|"QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_quantum_task(
@@ -180,6 +234,16 @@ braket_get_quantum_task <- function(quantumTaskArn) {
 #' braket_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` for the resource whose tags to display.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -221,6 +285,23 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #' @param nextToken A token used for pagination of results returned in the response. Use the
 #' token returned from the previous request continue results where the
 #' previous request ended.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   devices = list(
+#'     list(
+#'       deviceArn = "string",
+#'       deviceName = "string",
+#'       deviceStatus = "ONLINE"|"OFFLINE",
+#'       deviceType = "QPU"|"SIMULATOR",
+#'       providerName = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -272,6 +353,33 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 #' token returned from the previous request continue results where the
 #' previous request ended.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   quantumTasks = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deviceArn = "string",
+#'       endedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       outputS3Bucket = "string",
+#'       outputS3Directory = "string",
+#'       quantumTaskArn = "string",
+#'       shots = 123,
+#'       status = "CREATED"|"QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_quantum_tasks(
@@ -320,6 +428,9 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` of the resource to which a tag will be added.
 #' @param tags &#91;required&#93; Specify the tags to add to the resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -361,6 +472,9 @@ braket_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` for the resource from which to remove the
 #' tags.
 #' @param tagKeys &#91;required&#93; pecify the keys for the tags to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

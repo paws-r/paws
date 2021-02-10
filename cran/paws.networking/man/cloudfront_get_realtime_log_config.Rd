@@ -12,6 +12,28 @@ cloudfront_get_realtime_log_config(Name, ARN)
 \item{ARN}{The Amazon Resource Name (ARN) of the real-time log configuration to
 get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RealtimeLogConfig = list(
+    ARN = "string",
+    Name = "string",
+    SamplingRate = 123,
+    EndPoints = list(
+      list(
+        StreamType = "string",
+        KinesisStreamConfig = list(
+          RoleARN = "string",
+          StreamARN = "string"
+        )
+      )
+    ),
+    Fields = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets a real-time log configuration.
 

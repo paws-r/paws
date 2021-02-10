@@ -14,13 +14,24 @@ queries only for public hosted zones.}
 \item{CloudWatchLogsLogGroupArn}{[required] The Amazon Resource Name (ARN) for the log group that you want to Amazon
 Route 53 to send query logs to. This is the format of the ARN:
 
-arn:aws:logs:\emph{region}:\emph{account-id}:log-group:\emph{log\\_group\\_name}
+arn:aws:logs:\emph{region}:\emph{account-id}:log-group:\emph{log_group_name}
 
 To get the ARN for a log group, you can use the CloudWatch console, the
 \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html}{DescribeLogGroups}
 API action, the
 \href{https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html}{describe-log-groups}
 command, or the applicable command in one of the AWS SDKs.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  QueryLoggingConfig = list(
+    Id = "string",
+    HostedZoneId = "string",
+    CloudWatchLogsLogGroupArn = "string"
+  ),
+  Location = "string"
+)
+}
 }
 \description{
 Creates a configuration for DNS query logging. After you create a query

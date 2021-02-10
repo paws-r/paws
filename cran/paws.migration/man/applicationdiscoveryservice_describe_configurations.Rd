@@ -9,6 +9,16 @@ applicationdiscoveryservice_describe_configurations(configurationIds)
 \arguments{
 \item{configurationIds}{[required] One or more configuration IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  configurations = list(
+    list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves attributes for a list of configuration item IDs.
 

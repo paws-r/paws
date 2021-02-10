@@ -51,6 +51,48 @@ parameter.}
 
 \item{TagSpecifications}{The tags to assign to the VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Vpc = list(
+    CidrBlock = "string",
+    DhcpOptionsId = "string",
+    State = "pending"|"available",
+    VpcId = "string",
+    OwnerId = "string",
+    InstanceTenancy = "default"|"dedicated"|"host",
+    Ipv6CidrBlockAssociationSet = list(
+      list(
+        AssociationId = "string",
+        Ipv6CidrBlock = "string",
+        Ipv6CidrBlockState = list(
+          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+          StatusMessage = "string"
+        ),
+        NetworkBorderGroup = "string",
+        Ipv6Pool = "string"
+      )
+    ),
+    CidrBlockAssociationSet = list(
+      list(
+        AssociationId = "string",
+        CidrBlock = "string",
+        CidrBlockState = list(
+          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+          StatusMessage = "string"
+        )
+      )
+    ),
+    IsDefault = TRUE|FALSE,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 can create uses a /28 netmask (16 IPv4 addresses), and the largest uses

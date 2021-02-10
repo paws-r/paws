@@ -26,11 +26,11 @@ in the \emph{AWS Certificate Manager User Guide}.
 Certificates with the following cryptographic algorithms and key sizes
 are supported:
 \itemize{
-\item 2048-bit RSA (RSA\\_2048)
-\item 4096-bit RSA (RSA\\_4096)
-\item Elliptic Prime Curve 256 bit (EC\\_prime256v1)
-\item Elliptic Prime Curve 384 bit (EC\\_secp384r1)
-\item Elliptic Prime Curve 521 bit (EC\\_secp521r1)
+\item 2048-bit RSA (RSA_2048)
+\item 4096-bit RSA (RSA_4096)
+\item Elliptic Prime Curve 256 bit (EC_prime256v1)
+\item Elliptic Prime Curve 384 bit (EC_secp384r1)
+\item Elliptic Prime Curve 521 bit (EC_secp521r1)
 }
 
 The certificate must be a valid SSL/TLS X.509 version 3 certificate with
@@ -109,6 +109,12 @@ If \code{Protocol} is set only to \code{SFTP}, the \code{EndpointType} can be se
 server.}
 
 \item{Tags}{Key-value pairs that can be used to group and search for servers.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerId = "string"
+)
+}
 }
 \description{
 Instantiates an autoscaling virtual server based on the selected file

@@ -11,7 +11,7 @@ iam_list_role_tags(RoleName, Marker, MaxItems)
 
 This parameter accepts (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that consist of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
@@ -28,6 +28,19 @@ might return fewer results, even when more results are available. In
 that case, the \code{IsTruncated} response element returns \code{true}, and
 \code{Marker} contains a value to include in the subsequent call that tells
 the service where to continue from.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
 }
 \description{
 Lists the tags that are attached to the specified role. The returned

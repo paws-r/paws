@@ -14,6 +14,9 @@ disassociate the tags with the keys in the \code{TagKeys} input parameter.}
 keys are disassociated from the resource specified by the \code{ResourceArn}
 input parameter.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates a resource from a list of tags. The resource is identified
 by the \code{ResourceArn} input parameter. The tags are identified by the

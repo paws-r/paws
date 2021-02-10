@@ -9,6 +9,9 @@ chime_delete_phone_number(PhoneNumberId)
 \arguments{
 \item{PhoneNumberId}{[required] The phone number ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Moves the specified phone number into the \strong{Deletion queue}. A phone
 number must be disassociated from any users or Amazon Chime Voice

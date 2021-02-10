@@ -22,6 +22,17 @@ servicecatalog_list_budgets_for_resource(AcceptLanguage, ResourceId,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Budgets = list(
+    list(
+      BudgetName = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists all the budgets associated to the specified resource.
 }

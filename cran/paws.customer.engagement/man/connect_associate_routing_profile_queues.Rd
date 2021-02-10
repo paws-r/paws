@@ -14,6 +14,9 @@ connect_associate_routing_profile_queues(InstanceId, RoutingProfileId,
 
 \item{QueueConfigs}{[required] The queues to associate with this routing profile.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a set of queues with a routing profile.
 }

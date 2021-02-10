@@ -16,6 +16,9 @@ NULL
 #'
 #' @param SkillId &#91;required&#93; The unique identifier of the skill.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$approve_skill(
@@ -54,6 +57,9 @@ alexaforbusiness_approve_skill <- function(SkillId) {
 #'
 #' @param ContactArn &#91;required&#93; The ARN of the contact to associate with an address book.
 #' @param AddressBookArn &#91;required&#93; The ARN of the address book with which to associate the contact.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -94,6 +100,9 @@ alexaforbusiness_associate_contact_with_address_book <- function(ContactArn, Add
 #'
 #' @param DeviceArn &#91;required&#93; The device ARN.
 #' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile to associate with a device.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -137,6 +146,9 @@ alexaforbusiness_associate_device_with_network_profile <- function(DeviceArn, Ne
 #' @param DeviceArn The ARN of the device to associate to a room. Required.
 #' @param RoomArn The ARN of the room with which to associate the device. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_device_with_room(
@@ -176,6 +188,9 @@ alexaforbusiness_associate_device_with_room <- function(DeviceArn = NULL, RoomAr
 #'
 #' @param SkillGroupArn The ARN of the skill group to associate with a room. Required.
 #' @param RoomArn The ARN of the room with which to associate the skill group. Required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -217,6 +232,9 @@ alexaforbusiness_associate_skill_group_with_room <- function(SkillGroupArn = NUL
 #' @param SkillGroupArn The ARN of the skill group to associate the skill to. Required.
 #' @param SkillId &#91;required&#93; The unique identifier of the skill.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_skill_with_skill_group(
@@ -256,6 +274,9 @@ alexaforbusiness_associate_skill_with_skill_group <- function(SkillGroupArn = NU
 #' alexaforbusiness_associate_skill_with_users(SkillId)
 #'
 #' @param SkillId &#91;required&#93; The private skill ID you want to make available to enrolled users.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -297,6 +318,14 @@ alexaforbusiness_associate_skill_with_users <- function(SkillId) {
 #' @param Description The description of the address book.
 #' @param ClientRequestToken A unique, user-specified identifier for the request that ensures
 #' idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AddressBookArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -351,6 +380,14 @@ alexaforbusiness_create_address_book <- function(Name, Description = NULL, Clien
 #' only be delivered one time when the API is called.
 #' @param ClientRequestToken The client request token.
 #' @param Tags The tags for the business report schedule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScheduleArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -411,6 +448,14 @@ alexaforbusiness_create_business_report_schedule <- function(ScheduleName = NULL
 #' @param PSTNDialIn The information for PSTN conferencing.
 #' @param MeetingSetting &#91;required&#93; The meeting settings for the conference provider.
 #' @param ClientRequestToken The request token of the client.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConferenceProviderArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -477,6 +522,14 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #' @param ClientRequestToken A unique, user-specified identifier for this request that ensures
 #' idempotency.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContactArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_contact(
@@ -534,6 +587,14 @@ alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastN
 #' @param ClientRequestToken &#91;required&#93; A unique, user-specified identifier for the request that ensures
 #' idempotency.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayGroupArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_gateway_group(
@@ -576,10 +637,10 @@ alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, Clie
 #' @param NetworkProfileName &#91;required&#93; The name of the network profile associated with a device.
 #' @param Description Detailed information about a device's network profile.
 #' @param Ssid &#91;required&#93; The SSID of the Wi-Fi network.
-#' @param SecurityType &#91;required&#93; The security type of the Wi-Fi network. This can be WPA2\\_ENTERPRISE,
-#' WPA2\\_PSK, WPA\\_PSK, WEP, or OPEN.
+#' @param SecurityType &#91;required&#93; The security type of the Wi-Fi network. This can be WPA2_ENTERPRISE,
+#' WPA2_PSK, WPA_PSK, WEP, or OPEN.
 #' @param EapMethod The authentication standard that is used in the EAP framework.
-#' Currently, EAP\\_TLS is supported.
+#' Currently, EAP_TLS is supported.
 #' @param CurrentPassword The current password of the Wi-Fi network.
 #' @param NextPassword The next, or subsequent, password of the Wi-Fi network. This password is
 #' asynchronously transmitted to the device and is used when the password
@@ -591,6 +652,14 @@ alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, Clie
 #' your devices and used to trust your authentication server during EAP
 #' negotiation.
 #' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkProfileArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -655,6 +724,14 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 #' @param PSTNEnabled Whether PSTN calling is enabled.
 #' @param MeetingRoomConfiguration The meeting room settings of a room profile.
 #' @param Tags The tags for the profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -734,6 +811,14 @@ alexaforbusiness_create_profile <- function(ProfileName, Timezone, Address, Dist
 #' idempotency.
 #' @param Tags The tags for the room.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoomArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_room(
@@ -785,6 +870,14 @@ alexaforbusiness_create_room <- function(RoomName, Description = NULL, ProfileAr
 #' @param ClientRequestToken A unique, user-specified identifier for this request that ensures
 #' idempotency.
 #' @param Tags The tags for the skill group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SkillGroupArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -838,6 +931,14 @@ alexaforbusiness_create_skill_group <- function(SkillGroupName, Description = NU
 #' idempotency.
 #' @param Tags The tags for the user.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_user(
@@ -885,6 +986,9 @@ alexaforbusiness_create_user <- function(UserId, FirstName = NULL, LastName = NU
 #'
 #' @param AddressBookArn &#91;required&#93; The ARN of the address book to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_address_book(
@@ -924,6 +1028,9 @@ alexaforbusiness_delete_address_book <- function(AddressBookArn) {
 #'
 #' @param ScheduleArn &#91;required&#93; The ARN of the business report schedule.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_business_report_schedule(
@@ -960,6 +1067,9 @@ alexaforbusiness_delete_business_report_schedule <- function(ScheduleArn) {
 #' alexaforbusiness_delete_conference_provider(ConferenceProviderArn)
 #'
 #' @param ConferenceProviderArn &#91;required&#93; The ARN of the conference provider.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -998,6 +1108,9 @@ alexaforbusiness_delete_conference_provider <- function(ConferenceProviderArn) {
 #'
 #' @param ContactArn &#91;required&#93; The ARN of the contact to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_contact(
@@ -1034,6 +1147,9 @@ alexaforbusiness_delete_contact <- function(ContactArn) {
 #' alexaforbusiness_delete_device(DeviceArn)
 #'
 #' @param DeviceArn &#91;required&#93; The ARN of the device for which to request details.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1078,6 +1194,9 @@ alexaforbusiness_delete_device <- function(DeviceArn) {
 #' @param DeviceArn &#91;required&#93; The ARN of the device.
 #' @param DeviceUsageType &#91;required&#93; The type of usage data to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_device_usage_data(
@@ -1116,6 +1235,9 @@ alexaforbusiness_delete_device_usage_data <- function(DeviceArn, DeviceUsageType
 #'
 #' @param GatewayGroupArn &#91;required&#93; The ARN of the gateway group to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_gateway_group(
@@ -1152,6 +1274,9 @@ alexaforbusiness_delete_gateway_group <- function(GatewayGroupArn) {
 #' alexaforbusiness_delete_network_profile(NetworkProfileArn)
 #'
 #' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile associated with a device.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1190,6 +1315,9 @@ alexaforbusiness_delete_network_profile <- function(NetworkProfileArn) {
 #'
 #' @param ProfileArn The ARN of the room profile to delete. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_profile(
@@ -1226,6 +1354,9 @@ alexaforbusiness_delete_profile <- function(ProfileArn = NULL) {
 #' alexaforbusiness_delete_room(RoomArn)
 #'
 #' @param RoomArn The ARN of the room to delete. Required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1271,6 +1402,9 @@ alexaforbusiness_delete_room <- function(RoomArn = NULL) {
 #' details.
 #' @param ParameterKey &#91;required&#93; The room skill parameter key for which to remove details.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_room_skill_parameter(
@@ -1311,6 +1445,9 @@ alexaforbusiness_delete_room_skill_parameter <- function(RoomArn = NULL, SkillId
 #' @param SkillId &#91;required&#93; The unique identifier of a skill.
 #' @param RoomArn The room that the skill is authorized for.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_skill_authorization(
@@ -1349,6 +1486,9 @@ alexaforbusiness_delete_skill_authorization <- function(SkillId, RoomArn = NULL)
 #'
 #' @param SkillGroupArn The ARN of the skill group to delete. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_skill_group(
@@ -1386,6 +1526,9 @@ alexaforbusiness_delete_skill_group <- function(SkillGroupArn = NULL) {
 #'
 #' @param UserArn The ARN of the user to delete in the organization. Required.
 #' @param EnrollmentId &#91;required&#93; The ARN of the user's enrollment in the organization. Required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1427,6 +1570,9 @@ alexaforbusiness_delete_user <- function(UserArn = NULL, EnrollmentId) {
 #' @param ContactArn &#91;required&#93; The ARN of the contact to disassociate from an address book.
 #' @param AddressBookArn &#91;required&#93; The ARN of the address from which to disassociate the contact.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_contact_from_address_book(
@@ -1467,6 +1613,9 @@ alexaforbusiness_disassociate_contact_from_address_book <- function(ContactArn, 
 #'
 #' @param DeviceArn The ARN of the device to disassociate from a room. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_device_from_room(
@@ -1505,6 +1654,9 @@ alexaforbusiness_disassociate_device_from_room <- function(DeviceArn = NULL) {
 #'
 #' @param SkillGroupArn The unique identifier of a skill. Required.
 #' @param SkillId &#91;required&#93; The ARN of a skill group to associate to a skill.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1545,6 +1697,9 @@ alexaforbusiness_disassociate_skill_from_skill_group <- function(SkillGroupArn =
 #' alexaforbusiness_disassociate_skill_from_users(SkillId)
 #'
 #' @param SkillId &#91;required&#93; The private skill ID you want to make unavailable for enrolled users.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1587,6 +1742,9 @@ alexaforbusiness_disassociate_skill_from_users <- function(SkillId) {
 #' @param RoomArn The ARN of the room from which the skill group is to be disassociated.
 #' Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_skill_group_from_room(
@@ -1625,6 +1783,9 @@ alexaforbusiness_disassociate_skill_group_from_room <- function(SkillGroupArn = 
 #'
 #' @param RoomArn &#91;required&#93; The room that the appliances are associated with.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$forget_smart_home_appliances(
@@ -1662,6 +1823,18 @@ alexaforbusiness_forget_smart_home_appliances <- function(RoomArn) {
 #'
 #' @param AddressBookArn &#91;required&#93; The ARN of the address book for which to request details.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AddressBook = list(
+#'     AddressBookArn = "string",
+#'     Name = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_address_book(
@@ -1697,6 +1870,16 @@ alexaforbusiness_get_address_book <- function(AddressBookArn) {
 #' @usage
 #' alexaforbusiness_get_conference_preference()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Preference = list(
+#'     DefaultConferenceProviderArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_conference_preference()
@@ -1731,6 +1914,31 @@ alexaforbusiness_get_conference_preference <- function() {
 #' alexaforbusiness_get_conference_provider(ConferenceProviderArn)
 #'
 #' @param ConferenceProviderArn &#91;required&#93; The ARN of the newly created conference provider.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConferenceProvider = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     Type = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
+#'     IPDialIn = list(
+#'       Endpoint = "string",
+#'       CommsProtocol = "SIP"|"SIPS"|"H323"
+#'     ),
+#'     PSTNDialIn = list(
+#'       CountryCode = "string",
+#'       PhoneNumber = "string",
+#'       OneClickIdDelay = "string",
+#'       OneClickPinDelay = "string"
+#'     ),
+#'     MeetingSetting = list(
+#'       RequirePin = "YES"|"NO"|"OPTIONAL"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1769,6 +1977,32 @@ alexaforbusiness_get_conference_provider <- function(ConferenceProviderArn) {
 #'
 #' @param ContactArn &#91;required&#93; The ARN of the contact for which to request details.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Contact = list(
+#'     ContactArn = "string",
+#'     DisplayName = "string",
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     PhoneNumber = "string",
+#'     PhoneNumbers = list(
+#'       list(
+#'         Number = "string",
+#'         Type = "MOBILE"|"WORK"|"HOME"
+#'       )
+#'     ),
+#'     SipAddresses = list(
+#'       list(
+#'         Uri = "string",
+#'         Type = "WORK"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_contact(
@@ -1805,6 +2039,42 @@ alexaforbusiness_get_contact <- function(ContactArn) {
 #' alexaforbusiness_get_device(DeviceArn)
 #'
 #' @param DeviceArn The ARN of the device for which to request details. Required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Device = list(
+#'     DeviceArn = "string",
+#'     DeviceSerialNumber = "string",
+#'     DeviceType = "string",
+#'     DeviceName = "string",
+#'     SoftwareVersion = "string",
+#'     MacAddress = "string",
+#'     RoomArn = "string",
+#'     DeviceStatus = "READY"|"PENDING"|"WAS_OFFLINE"|"DEREGISTERED"|"FAILED",
+#'     DeviceStatusInfo = list(
+#'       DeviceStatusDetails = list(
+#'         list(
+#'           Feature = "BLUETOOTH"|"VOLUME"|"NOTIFICATIONS"|"LISTS"|"SKILLS"|"NETWORK_PROFILE"|"SETTINGS"|"ALL",
+#'           Code = "DEVICE_SOFTWARE_UPDATE_NEEDED"|"DEVICE_WAS_OFFLINE"|"CREDENTIALS_ACCESS_FAILURE"|"TLS_VERSION_MISMATCH"|"ASSOCIATION_REJECTION"|"AUTHENTICATION_FAILURE"|"DHCP_FAILURE"|"INTERNET_UNAVAILABLE"|"DNS_FAILURE"|"UNKNOWN_FAILURE"|"CERTIFICATE_ISSUING_LIMIT_EXCEEDED"|"INVALID_CERTIFICATE_AUTHORITY"|"NETWORK_PROFILE_NOT_FOUND"|"INVALID_PASSWORD_STATE"|"PASSWORD_NOT_FOUND"|"PASSWORD_MANAGER_ACCESS_DENIED"|"CERTIFICATE_AUTHORITY_ACCESS_DENIED"
+#'         )
+#'       ),
+#'       ConnectionStatus = "ONLINE"|"OFFLINE",
+#'       ConnectionStatusUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     NetworkProfileInfo = list(
+#'       NetworkProfileArn = "string",
+#'       CertificateArn = "string",
+#'       CertificateExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1843,6 +2113,20 @@ alexaforbusiness_get_device <- function(DeviceArn = NULL) {
 #'
 #' @param GatewayArn &#91;required&#93; The ARN of the gateway to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Gateway = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     GatewayGroupArn = "string",
+#'     SoftwareVersion = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_gateway(
@@ -1879,6 +2163,18 @@ alexaforbusiness_get_gateway <- function(GatewayArn) {
 #' alexaforbusiness_get_gateway_group(GatewayGroupArn)
 #'
 #' @param GatewayGroupArn &#91;required&#93; The ARN of the gateway group to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayGroup = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1917,6 +2213,18 @@ alexaforbusiness_get_gateway_group <- function(GatewayGroupArn) {
 #' @usage
 #' alexaforbusiness_get_invitation_configuration()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationName = "string",
+#'   ContactEmail = "string",
+#'   PrivateSkillIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_invitation_configuration()
@@ -1951,6 +2259,27 @@ alexaforbusiness_get_invitation_configuration <- function() {
 #' alexaforbusiness_get_network_profile(NetworkProfileArn)
 #'
 #' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile associated with a device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkProfile = list(
+#'     NetworkProfileArn = "string",
+#'     NetworkProfileName = "string",
+#'     Description = "string",
+#'     Ssid = "string",
+#'     SecurityType = "OPEN"|"WEP"|"WPA_PSK"|"WPA2_PSK"|"WPA2_ENTERPRISE",
+#'     EapMethod = "EAP_TLS",
+#'     CurrentPassword = "string",
+#'     NextPassword = "string",
+#'     CertificateAuthorityArn = "string",
+#'     TrustAnchors = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1989,6 +2318,46 @@ alexaforbusiness_get_network_profile <- function(NetworkProfileArn) {
 #'
 #' @param ProfileArn The ARN of the room profile for which to request details. Required.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Profile = list(
+#'     ProfileArn = "string",
+#'     ProfileName = "string",
+#'     IsDefault = TRUE|FALSE,
+#'     Address = "string",
+#'     Timezone = "string",
+#'     DistanceUnit = "METRIC"|"IMPERIAL",
+#'     TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
+#'     WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+#'     Locale = "string",
+#'     SetupModeDisabled = TRUE|FALSE,
+#'     MaxVolumeLimit = 123,
+#'     PSTNEnabled = TRUE|FALSE,
+#'     AddressBookArn = "string",
+#'     MeetingRoomConfiguration = list(
+#'       RoomUtilizationMetricsEnabled = TRUE|FALSE,
+#'       EndOfMeetingReminder = list(
+#'         ReminderAtMinutes = list(
+#'           123
+#'         ),
+#'         ReminderType = "ANNOUNCEMENT_TIME_CHECK"|"ANNOUNCEMENT_VARIABLE_TIME_LEFT"|"CHIME"|"KNOCK",
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       InstantBooking = list(
+#'         DurationInMinutes = 123,
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       RequireCheckIn = list(
+#'         ReleaseAfterMinutes = 123,
+#'         Enabled = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_profile(
@@ -2025,6 +2394,20 @@ alexaforbusiness_get_profile <- function(ProfileArn = NULL) {
 #' alexaforbusiness_get_room(RoomArn)
 #'
 #' @param RoomArn The ARN of the room for which to request details. Required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Room = list(
+#'     RoomArn = "string",
+#'     RoomName = "string",
+#'     Description = "string",
+#'     ProviderCalendarId = "string",
+#'     ProfileArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2067,6 +2450,17 @@ alexaforbusiness_get_room <- function(RoomArn = NULL) {
 #' Required.
 #' @param ParameterKey &#91;required&#93; The room skill parameter key for which to get details. Required.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoomSkillParameter = list(
+#'     ParameterKey = "string",
+#'     ParameterValue = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_room_skill_parameter(
@@ -2105,6 +2499,18 @@ alexaforbusiness_get_room_skill_parameter <- function(RoomArn = NULL, SkillId, P
 #' alexaforbusiness_get_skill_group(SkillGroupArn)
 #'
 #' @param SkillGroupArn The ARN of the skill group for which to get details. Required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SkillGroup = list(
+#'     SkillGroupArn = "string",
+#'     SkillGroupName = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2148,6 +2554,41 @@ alexaforbusiness_get_skill_group <- function(SkillGroupArn = NULL) {
 #' call.
 #' @param MaxResults The maximum number of schedules listed in the call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BusinessReportSchedules = list(
+#'     list(
+#'       ScheduleArn = "string",
+#'       ScheduleName = "string",
+#'       S3BucketName = "string",
+#'       S3KeyPrefix = "string",
+#'       Format = "CSV"|"CSV_ZIP",
+#'       ContentRange = list(
+#'         Interval = "ONE_DAY"|"ONE_WEEK"|"THIRTY_DAYS"
+#'       ),
+#'       Recurrence = list(
+#'         StartDate = "string"
+#'       ),
+#'       LastBusinessReport = list(
+#'         Status = "RUNNING"|"SUCCEEDED"|"FAILED",
+#'         FailureCode = "ACCESS_DENIED"|"NO_SUCH_BUCKET"|"INTERNAL_FAILURE",
+#'         S3Location = list(
+#'           Path = "string",
+#'           BucketName = "string"
+#'         ),
+#'         DeliveryTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DownloadUrl = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_business_report_schedules(
@@ -2187,6 +2628,34 @@ alexaforbusiness_list_business_report_schedules <- function(NextToken = NULL, Ma
 #' @param NextToken The tokens used for pagination.
 #' @param MaxResults The maximum number of conference providers to be returned, per paginated
 #' calls.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConferenceProviders = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       Type = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
+#'       IPDialIn = list(
+#'         Endpoint = "string",
+#'         CommsProtocol = "SIP"|"SIPS"|"H323"
+#'       ),
+#'       PSTNDialIn = list(
+#'         CountryCode = "string",
+#'         PhoneNumber = "string",
+#'         OneClickIdDelay = "string",
+#'         OneClickPinDelay = "string"
+#'       ),
+#'       MeetingSetting = list(
+#'         RequirePin = "YES"|"NO"|"OPTIONAL"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2242,6 +2711,23 @@ alexaforbusiness_list_conference_providers <- function(NextToken = NULL, MaxResu
 #' a token is included in the response so that the remaining results can be
 #' retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceEvents = list(
+#'     list(
+#'       Type = "CONNECTION_STATUS"|"DEVICE_STATUS",
+#'       Value = "string",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_device_events(
@@ -2286,6 +2772,21 @@ alexaforbusiness_list_device_events <- function(DeviceArn, EventType = NULL, Nex
 #' @param MaxResults The maximum number of gateway group summaries to return. The default is
 #' 50.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayGroups = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_gateway_groups(
@@ -2328,6 +2829,23 @@ alexaforbusiness_list_gateway_groups <- function(NextToken = NULL, MaxResults = 
 #' @param GatewayGroupArn The gateway group ARN for which to list gateways.
 #' @param NextToken The token used to paginate though multiple pages of gateway summaries.
 #' @param MaxResults The maximum number of gateway summaries to return. The default is 50.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Gateways = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       GatewayGroupArn = "string",
+#'       SoftwareVersion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2378,6 +2896,23 @@ alexaforbusiness_list_gateways <- function(GatewayGroupArn = NULL, NextToken = N
 #' results exist than the specified `MaxResults` value, a token is included
 #' in the response so that the remaining results can be retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SkillSummaries = list(
+#'     list(
+#'       SkillId = "string",
+#'       SkillName = "string",
+#'       SupportsLinking = TRUE|FALSE,
+#'       EnablementType = "ENABLED"|"PENDING",
+#'       SkillType = "PUBLIC"|"PRIVATE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_skills(
@@ -2419,6 +2954,20 @@ alexaforbusiness_list_skills <- function(SkillGroupArn = NULL, EnablementType = 
 #'
 #' @param NextToken The tokens used for pagination.
 #' @param MaxResults The maximum number of categories returned, per paginated calls.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CategoryList = list(
+#'     list(
+#'       CategoryId = 123,
+#'       CategoryName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2462,6 +3011,53 @@ alexaforbusiness_list_skills_store_categories <- function(NextToken = NULL, MaxR
 #' @param NextToken The tokens used for pagination.
 #' @param MaxResults The maximum number of skills returned per paginated calls.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SkillsStoreSkills = list(
+#'     list(
+#'       SkillId = "string",
+#'       SkillName = "string",
+#'       ShortDescription = "string",
+#'       IconUrl = "string",
+#'       SampleUtterances = list(
+#'         "string"
+#'       ),
+#'       SkillDetails = list(
+#'         ProductDescription = "string",
+#'         InvocationPhrase = "string",
+#'         ReleaseDate = "string",
+#'         EndUserLicenseAgreement = "string",
+#'         GenericKeywords = list(
+#'           "string"
+#'         ),
+#'         BulletPoints = list(
+#'           "string"
+#'         ),
+#'         NewInThisVersionBulletPoints = list(
+#'           "string"
+#'         ),
+#'         SkillTypes = list(
+#'           "string"
+#'         ),
+#'         Reviews = list(
+#'           "string"
+#'         ),
+#'         DeveloperInfo = list(
+#'           DeveloperName = "string",
+#'           PrivacyPolicy = "string",
+#'           Email = "string",
+#'           Url = "string"
+#'         )
+#'       ),
+#'       SupportsLinking = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_skills_store_skills_by_category(
@@ -2503,6 +3099,21 @@ alexaforbusiness_list_skills_store_skills_by_category <- function(CategoryId, Ne
 #' @param RoomArn &#91;required&#93; The room that the appliances are associated with.
 #' @param MaxResults The maximum number of appliances to be returned, per paginated calls.
 #' @param NextToken The tokens used for pagination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SmartHomeAppliances = list(
+#'     list(
+#'       FriendlyName = "string",
+#'       Description = "string",
+#'       ManufacturerName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2550,6 +3161,20 @@ alexaforbusiness_list_smart_home_appliances <- function(RoomArn, MaxResults = NU
 #' results exist than the specified `MaxResults` value, a token is included
 #' in the response so that the remaining results can be retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags(
@@ -2590,6 +3215,9 @@ alexaforbusiness_list_tags <- function(Arn, NextToken = NULL, MaxResults = NULL)
 #' alexaforbusiness_put_conference_preference(ConferencePreference)
 #'
 #' @param ConferencePreference &#91;required&#93; The conference preference of a specific conference provider.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2637,6 +3265,9 @@ alexaforbusiness_put_conference_preference <- function(ConferencePreference) {
 #' @param PrivateSkillIds The list of private skill IDs that you want to recommend to the user to
 #' enable in the invitation.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_invitation_configuration(
@@ -2682,6 +3313,9 @@ alexaforbusiness_put_invitation_configuration <- function(OrganizationName, Cont
 #' @param RoomArn The ARN of the room associated with the room skill parameter. Required.
 #' @param SkillId &#91;required&#93; The ARN of the skill associated with the room skill parameter. Required.
 #' @param RoomSkillParameter &#91;required&#93; The updated room skill parameter. Required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2732,6 +3366,9 @@ alexaforbusiness_put_room_skill_parameter <- function(RoomArn = NULL, SkillId, R
 #' authorization.
 #' @param SkillId &#91;required&#93; The unique identifier of a skill.
 #' @param RoomArn The room that the skill is authorized for.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2787,6 +3424,14 @@ alexaforbusiness_put_skill_authorization <- function(AuthorizationResult, SkillI
 #' creates a new product on Amazon's Developer Console.
 #' @param RoomArn The ARN of the room with which to associate your AVS device.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_avs_device(
@@ -2832,6 +3477,9 @@ alexaforbusiness_register_avs_device <- function(ClientId, UserCode, ProductId, 
 #'
 #' @param SkillId &#91;required&#93; The unique identifier of the skill.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_skill(
@@ -2872,6 +3520,21 @@ alexaforbusiness_reject_skill <- function(SkillId) {
 #' @param UserId &#91;required&#93; The ARN of the user. Required.
 #' @param SkillId &#91;required&#93; The ARN of the skill that was requested. Required.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoomArn = "string",
+#'   RoomName = "string",
+#'   RoomSkillParameters = list(
+#'     list(
+#'       ParameterKey = "string",
+#'       ParameterValue = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$resolve_room(
@@ -2911,6 +3574,9 @@ alexaforbusiness_resolve_room <- function(UserId, SkillId) {
 #' @param UserArn The ARN of the user for whom to revoke an enrollment invitation.
 #' Required.
 #' @param EnrollmentId The ARN of the enrollment invitation to revoke. Required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2962,6 +3628,22 @@ alexaforbusiness_revoke_invitation <- function(UserArn = NULL, EnrollmentId = NU
 #' @param MaxResults The maximum number of results to include in the response. If more
 #' results exist than the specified MaxResults value, a token is included
 #' in the response so that the remaining results can be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AddressBooks = list(
+#'     list(
+#'       AddressBookArn = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3028,6 +3710,36 @@ alexaforbusiness_search_address_books <- function(Filters = NULL, SortCriteria =
 #' @param MaxResults The maximum number of results to include in the response. If more
 #' results exist than the specified MaxResults value, a token is included
 #' in the response so that the remaining results can be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Contacts = list(
+#'     list(
+#'       ContactArn = "string",
+#'       DisplayName = "string",
+#'       FirstName = "string",
+#'       LastName = "string",
+#'       PhoneNumber = "string",
+#'       PhoneNumbers = list(
+#'         list(
+#'           Number = "string",
+#'           Type = "MOBILE"|"WORK"|"HOME"
+#'         )
+#'       ),
+#'       SipAddresses = list(
+#'         list(
+#'           Uri = "string",
+#'           Type = "WORK"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3097,6 +3809,45 @@ alexaforbusiness_search_contacts <- function(Filters = NULL, SortCriteria = NULL
 #' DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
 #' NetworkProfileArn, Feature, and FailureCode.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Devices = list(
+#'     list(
+#'       DeviceArn = "string",
+#'       DeviceSerialNumber = "string",
+#'       DeviceType = "string",
+#'       DeviceName = "string",
+#'       SoftwareVersion = "string",
+#'       MacAddress = "string",
+#'       DeviceStatus = "READY"|"PENDING"|"WAS_OFFLINE"|"DEREGISTERED"|"FAILED",
+#'       NetworkProfileArn = "string",
+#'       NetworkProfileName = "string",
+#'       RoomArn = "string",
+#'       RoomName = "string",
+#'       DeviceStatusInfo = list(
+#'         DeviceStatusDetails = list(
+#'           list(
+#'             Feature = "BLUETOOTH"|"VOLUME"|"NOTIFICATIONS"|"LISTS"|"SKILLS"|"NETWORK_PROFILE"|"SETTINGS"|"ALL",
+#'             Code = "DEVICE_SOFTWARE_UPDATE_NEEDED"|"DEVICE_WAS_OFFLINE"|"CREDENTIALS_ACCESS_FAILURE"|"TLS_VERSION_MISMATCH"|"ASSOCIATION_REJECTION"|"AUTHENTICATION_FAILURE"|"DHCP_FAILURE"|"INTERNET_UNAVAILABLE"|"DNS_FAILURE"|"UNKNOWN_FAILURE"|"CERTIFICATE_ISSUING_LIMIT_EXCEEDED"|"INVALID_CERTIFICATE_AUTHORITY"|"NETWORK_PROFILE_NOT_FOUND"|"INVALID_PASSWORD_STATE"|"PASSWORD_NOT_FOUND"|"PASSWORD_MANAGER_ACCESS_DENIED"|"CERTIFICATE_AUTHORITY_ACCESS_DENIED"
+#'           )
+#'         ),
+#'         ConnectionStatus = "ONLINE"|"OFFLINE",
+#'         ConnectionStatusUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_devices(
@@ -3161,6 +3912,26 @@ alexaforbusiness_search_devices <- function(NextToken = NULL, MaxResults = NULL,
 #' filters are NetworkProfileName, Ssid, and SecurityType.
 #' @param SortCriteria The sort order to use to list the specified set of network profiles.
 #' Valid sort criteria includes NetworkProfileName, Ssid, and SecurityType.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkProfiles = list(
+#'     list(
+#'       NetworkProfileArn = "string",
+#'       NetworkProfileName = "string",
+#'       Description = "string",
+#'       Ssid = "string",
+#'       SecurityType = "OPEN"|"WEP"|"WPA_PSK"|"WPA2_PSK"|"WPA2_ENTERPRISE",
+#'       EapMethod = "EAP_TLS",
+#'       CertificateAuthorityArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3227,6 +3998,28 @@ alexaforbusiness_search_network_profiles <- function(NextToken = NULL, MaxResult
 #' @param SortCriteria The sort order to use in listing the specified set of room profiles.
 #' Supported sort keys are ProfileName and Address.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Profiles = list(
+#'     list(
+#'       ProfileArn = "string",
+#'       ProfileName = "string",
+#'       IsDefault = TRUE|FALSE,
+#'       Address = "string",
+#'       Timezone = "string",
+#'       DistanceUnit = "METRIC"|"IMPERIAL",
+#'       TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
+#'       WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+#'       Locale = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_profiles(
@@ -3292,6 +4085,25 @@ alexaforbusiness_search_profiles <- function(NextToken = NULL, MaxResults = NULL
 #' @param SortCriteria The sort order to use in listing the specified set of rooms. The
 #' supported sort keys are RoomName and ProfileName.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rooms = list(
+#'     list(
+#'       RoomArn = "string",
+#'       RoomName = "string",
+#'       Description = "string",
+#'       ProviderCalendarId = "string",
+#'       ProfileArn = "string",
+#'       ProfileName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_rooms(
@@ -3356,6 +4168,22 @@ alexaforbusiness_search_rooms <- function(NextToken = NULL, MaxResults = NULL, F
 #' supported filter key is SkillGroupName.
 #' @param SortCriteria The sort order to use in listing the specified set of skill groups. The
 #' supported sort key is SkillGroupName.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SkillGroups = list(
+#'     list(
+#'       SkillGroupArn = "string",
+#'       SkillGroupName = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3425,6 +4253,25 @@ alexaforbusiness_search_skill_groups <- function(NextToken = NULL, MaxResults = 
 #' Supported sort keys are UserId, FirstName, LastName, Email, and
 #' EnrollmentStatus.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       UserArn = "string",
+#'       FirstName = "string",
+#'       LastName = "string",
+#'       Email = "string",
+#'       EnrollmentStatus = "INITIALIZED"|"PENDING"|"REGISTERED"|"DISASSOCIATING"|"DEREGISTERING",
+#'       EnrollmentId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TotalCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_users(
@@ -3487,6 +4334,14 @@ alexaforbusiness_search_users <- function(NextToken = NULL, MaxResults = NULL, F
 #' doesn't occur within this time, the announcement is not delivered.
 #' @param ClientRequestToken &#91;required&#93; The unique, user-specified identifier for the request that ensures
 #' idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnnouncementArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3556,6 +4411,9 @@ alexaforbusiness_send_announcement <- function(RoomFilters, Content, TimeToLiveI
 #'
 #' @param UserArn The ARN of the user to whom to send an invitation. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_invitation(
@@ -3612,6 +4470,9 @@ alexaforbusiness_send_invitation <- function(UserArn = NULL) {
 #' @param DeviceArn The ARN of the device to sync. Required.
 #' @param Features &#91;required&#93; Request structure to start the device sync. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_device_sync(
@@ -3655,6 +4516,9 @@ alexaforbusiness_start_device_sync <- function(RoomArn = NULL, DeviceArn = NULL,
 #'
 #' @param RoomArn &#91;required&#93; The room where smart home appliance discovery was initiated.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_smart_home_appliance_discovery(
@@ -3693,6 +4557,9 @@ alexaforbusiness_start_smart_home_appliance_discovery <- function(RoomArn) {
 #' @param Arn &#91;required&#93; The ARN of the resource to which to add metadata tags. Required.
 #' @param Tags &#91;required&#93; The tags to be added to the specified resource. Do not provide system
 #' tags. Required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3739,6 +4606,9 @@ alexaforbusiness_tag_resource <- function(Arn, Tags) {
 #' @param TagKeys &#91;required&#93; The tags to be removed from the specified resource. Do not provide
 #' system tags. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -3780,6 +4650,9 @@ alexaforbusiness_untag_resource <- function(Arn, TagKeys) {
 #' @param AddressBookArn &#91;required&#93; The ARN of the room to update.
 #' @param Name The updated name of the room.
 #' @param Description The updated description of the room.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3829,6 +4702,9 @@ alexaforbusiness_update_address_book <- function(AddressBookArn, Name = NULL, De
 #' @param ScheduleName The name identifier of the schedule.
 #' @param Recurrence The recurrence of the reports.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_business_report_schedule(
@@ -3877,6 +4753,9 @@ alexaforbusiness_update_business_report_schedule <- function(ScheduleArn, S3Buck
 #' @param IPDialIn The IP endpoint and protocol for calling.
 #' @param PSTNDialIn The information for PSTN conferencing.
 #' @param MeetingSetting &#91;required&#93; The meeting settings for the conference provider.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3939,6 +4818,9 @@ alexaforbusiness_update_conference_provider <- function(ConferenceProviderArn, C
 #' @param PhoneNumbers The list of phone numbers for the contact.
 #' @param SipAddresses The list of SIP addresses for the contact.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_contact(
@@ -3993,6 +4875,9 @@ alexaforbusiness_update_contact <- function(ContactArn, DisplayName = NULL, Firs
 #' @param DeviceArn The ARN of the device to update. Required.
 #' @param DeviceName The updated device name. Required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_device(
@@ -4037,6 +4922,9 @@ alexaforbusiness_update_device <- function(DeviceArn = NULL, DeviceName = NULL) 
 #' @param SoftwareVersion The updated software version of the gateway. The gateway automatically
 #' updates its software version during normal operation.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_gateway(
@@ -4080,6 +4968,9 @@ alexaforbusiness_update_gateway <- function(GatewayArn, Name = NULL, Description
 #' @param GatewayGroupArn &#91;required&#93; The ARN of the gateway group to update.
 #' @param Name The updated name of the gateway group.
 #' @param Description The updated description of the gateway group.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4133,6 +5024,9 @@ alexaforbusiness_update_gateway_group <- function(GatewayGroupArn, Name = NULL, 
 #' @param TrustAnchors The root certificate(s) of your authentication server that will be
 #' installed on your devices and used to trust your authentication server
 #' during EAP negotiation.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4195,6 +5089,9 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 #' @param MaxVolumeLimit The updated maximum volume limit for the room profile.
 #' @param PSTNEnabled Whether the PSTN setting of the room profile is enabled.
 #' @param MeetingRoomConfiguration The updated meeting room settings of a room profile.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4267,6 +5164,9 @@ alexaforbusiness_update_profile <- function(ProfileArn = NULL, ProfileName = NUL
 #' @param ProviderCalendarId The updated provider calendar ARN for the room.
 #' @param ProfileArn The updated profile ARN for the room.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_room(
@@ -4310,6 +5210,9 @@ alexaforbusiness_update_room <- function(RoomArn = NULL, RoomName = NULL, Descri
 #' @param SkillGroupArn The ARN of the skill group to update.
 #' @param SkillGroupName The updated name for the skill group.
 #' @param Description The updated description for the skill group.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

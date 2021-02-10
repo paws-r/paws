@@ -83,6 +83,12 @@ email sending events.}
 \item{ConfigurationSetName}{The name of the configuration set to use when you send an email using
 \code{\link[=ses_send_email]{send_email}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageId = "string"
+)
+}
+}
 \description{
 Composes an email message and immediately queues it for sending. In
 order to send email using the \code{\link[=ses_send_email]{send_email}} operation,
@@ -182,7 +188,7 @@ svc$send_email(
     Body = list(
       Html = list(
         Charset = "UTF-8",
-        Data = "This message body contains HTML formatting. It can, for example, contain lin..."
+        Data = "This message body contains HTML formatting. It can, for example, cont..."
       ),
       Text = list(
         Charset = "UTF-8",

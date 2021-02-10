@@ -27,6 +27,9 @@ If you omit this parameter, we delete all user-defined tags for the
 specified resources. We do not delete AWS-generated tags (tags that have
 the \verb{aws:} prefix).}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified set of tags from the specified set of resources.
 

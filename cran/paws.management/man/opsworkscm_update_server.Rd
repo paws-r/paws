@@ -19,6 +19,48 @@ backups. Automated backups are enabled by default.}
 
 \item{PreferredBackupWindow}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Server = list(
+    AssociatePublicIpAddress = TRUE|FALSE,
+    BackupRetentionCount = 123,
+    ServerName = "string",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    CloudFormationStackArn = "string",
+    CustomDomain = "string",
+    DisableAutomatedBackup = TRUE|FALSE,
+    Endpoint = "string",
+    Engine = "string",
+    EngineModel = "string",
+    EngineAttributes = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    ),
+    EngineVersion = "string",
+    InstanceProfileArn = "string",
+    InstanceType = "string",
+    KeyPair = "string",
+    MaintenanceStatus = "SUCCESS"|"FAILED",
+    PreferredMaintenanceWindow = "string",
+    PreferredBackupWindow = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    ServiceRoleArn = "string",
+    Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+    StatusReason = "string",
+    SubnetIds = list(
+      "string"
+    ),
+    ServerArn = "string"
+  )
+)
+}
+}
 \description{
 Updates settings for a server.
 

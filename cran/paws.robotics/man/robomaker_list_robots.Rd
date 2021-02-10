@@ -32,6 +32,29 @@ three filters, but they must be for the same named item. For example, if
 you are looking for items with the status \code{Registered} or the status
 \code{Available}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  robots = list(
+    list(
+      arn = "string",
+      name = "string",
+      fleetArn = "string",
+      status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+      greenGrassGroupId = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      architecture = "X86_64"|"ARM64"|"ARMHF",
+      lastDeploymentJob = "string",
+      lastDeploymentTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of robots. You can optionally provide filters to retrieve
 specific robots.

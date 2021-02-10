@@ -13,6 +13,12 @@ instance the attachment belongs to.}
 
 \item{attachments}{[required] Any attachments associated with the state change request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  acknowledgment = "string"
+)
+}
+}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent.

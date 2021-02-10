@@ -6,6 +6,14 @@
 \usage{
 alexaforbusiness_get_conference_preference()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Preference = list(
+    DefaultConferenceProviderArn = "string"
+  )
+)
+}
+}
 \description{
 Retrieves the existing conference preferences.
 }

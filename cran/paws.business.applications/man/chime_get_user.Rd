@@ -12,6 +12,33 @@ chime_get_user(AccountId, UserId)
 
 \item{UserId}{[required] The user ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    UserId = "string",
+    AccountId = "string",
+    PrimaryEmail = "string",
+    PrimaryProvisionedNumber = "string",
+    DisplayName = "string",
+    LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+    UserType = "PrivateUser"|"SharedDevice",
+    UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+    UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+    RegisteredOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    InvitedOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    AlexaForBusinessMetadata = list(
+      IsAlexaForBusinessEnabled = TRUE|FALSE,
+      AlexaForBusinessRoomArn = "string"
+    ),
+    PersonalPIN = "string"
+  )
+)
+}
+}
 \description{
 Retrieves details for the specified user ID, such as primary email
 address, license type, and personal meeting PIN.

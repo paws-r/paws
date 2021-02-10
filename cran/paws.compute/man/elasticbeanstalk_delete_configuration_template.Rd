@@ -12,6 +12,9 @@ elasticbeanstalk_delete_configuration_template(ApplicationName,
 
 \item{TemplateName}{[required] The name of the configuration template to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified configuration template.
 

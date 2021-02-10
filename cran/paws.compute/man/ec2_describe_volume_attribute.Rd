@@ -16,6 +16,21 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoEnableIO = list(
+    Value = TRUE|FALSE
+  ),
+  ProductCodes = list(
+    list(
+      ProductCodeId = "string",
+      ProductCodeType = "devpay"|"marketplace"
+    )
+  ),
+  VolumeId = "string"
+)
+}
+}
 \description{
 Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.

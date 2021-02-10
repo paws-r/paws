@@ -25,6 +25,41 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentIdentifiers = list(
+    list(
+      Name = "string",
+      Owner = "string",
+      VersionName = "string",
+      PlatformTypes = list(
+        "Windows"|"Linux"
+      ),
+      DocumentVersion = "string",
+      DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+      SchemaVersion = "string",
+      DocumentFormat = "YAML"|"JSON"|"TEXT",
+      TargetType = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      Requires = list(
+        list(
+          Name = "string",
+          Version = "string"
+        )
+      ),
+      ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+      Author = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns all Systems Manager (SSM) documents in the current AWS account
 and Region. You can limit the results of this request by using a filter.

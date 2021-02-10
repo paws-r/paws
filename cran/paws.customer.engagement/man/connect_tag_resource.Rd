@@ -12,6 +12,9 @@ connect_tag_resource(resourceArn, tags)
 \item{tags}{[required] One or more tags. For example, \{ "tags": \{"key1":"value1",
 "key2":"value2"\} \}.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds the specified tags to the specified resource.
 

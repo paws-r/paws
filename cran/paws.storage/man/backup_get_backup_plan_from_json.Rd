@@ -9,6 +9,48 @@ backup_get_backup_plan_from_json(BackupPlanTemplateJson)
 \arguments{
 \item{BackupPlanTemplateJson}{[required] A customer-supplied backup plan document in JSON format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupPlan = list(
+    BackupPlanName = "string",
+    Rules = list(
+      list(
+        RuleName = "string",
+        TargetBackupVaultName = "string",
+        ScheduleExpression = "string",
+        StartWindowMinutes = 123,
+        CompletionWindowMinutes = 123,
+        Lifecycle = list(
+          MoveToColdStorageAfterDays = 123,
+          DeleteAfterDays = 123
+        ),
+        RecoveryPointTags = list(
+          "string"
+        ),
+        RuleId = "string",
+        CopyActions = list(
+          list(
+            Lifecycle = list(
+              MoveToColdStorageAfterDays = 123,
+              DeleteAfterDays = 123
+            ),
+            DestinationBackupVaultArn = "string"
+          )
+        )
+      )
+    ),
+    AdvancedBackupSettings = list(
+      list(
+        ResourceType = "string",
+        BackupOptions = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a valid JSON document specifying a backup plan or an error.
 }

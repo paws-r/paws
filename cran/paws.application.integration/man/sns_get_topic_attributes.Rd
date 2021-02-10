@@ -9,6 +9,14 @@ sns_get_topic_attributes(TopicArn)
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic whose properties you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns all of the properties of a topic. Topic properties returned
 might differ based on the authorization of the user.

@@ -18,6 +18,16 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Default: disabled (\code{false})}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceId = "string",
+  Output = "string",
+  Timestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets the console output for the specified instance. For Linux instances,
 the instance console output displays the exact console output that would

@@ -8,20 +8,58 @@ mediaconnect_update_flow_entitlement(Description, Encryption,
   EntitlementArn, EntitlementStatus, FlowArn, Subscribers)
 }
 \arguments{
-\item{Description}{A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.}
+\item{Description}{A description of the entitlement. This description appears only on the
+AWS Elemental MediaConnect console and will not be seen by the
+subscriber or end user.}
 
-\item{Encryption}{The type of encryption that will be used on the output associated with this entitlement.}
+\item{Encryption}{The type of encryption that will be used on the output associated with
+this entitlement.}
 
 \item{EntitlementArn}{[required] The ARN of the entitlement that you want to update.}
 
-\item{EntitlementStatus}{An indication of whether you want to enable the entitlement to allow access, or disable it to stop streaming content to the subscriber’s flow temporarily. If you don’t specify the entitlementStatus field in your request, MediaConnect leaves the value unchanged.}
+\item{EntitlementStatus}{An indication of whether you want to enable the entitlement to allow
+access, or disable it to stop streaming content to the subscriber’s flow
+temporarily. If you don’t specify the entitlementStatus field in your
+request, MediaConnect leaves the value unchanged.}
 
-\item{FlowArn}{[required] The flow that is associated with the entitlement that you want to update.}
+\item{FlowArn}{[required] The flow that is associated with the entitlement that you want to
+update.}
 
-\item{Subscribers}{The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source.}
+\item{Subscribers}{The AWS account IDs that you want to share your content with. The
+receiving accounts (subscribers) will be allowed to create their own
+flow using your content as the source.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Entitlement = list(
+    DataTransferSubscriberFeePercent = 123,
+    Description = "string",
+    Encryption = list(
+      Algorithm = "aes128"|"aes192"|"aes256",
+      ConstantInitializationVector = "string",
+      DeviceId = "string",
+      KeyType = "speke"|"static-key",
+      Region = "string",
+      ResourceId = "string",
+      RoleArn = "string",
+      SecretArn = "string",
+      Url = "string"
+    ),
+    EntitlementArn = "string",
+    EntitlementStatus = "ENABLED"|"DISABLED",
+    Name = "string",
+    Subscribers = list(
+      "string"
+    )
+  ),
+  FlowArn = "string"
+)
+}
 }
 \description{
-You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.
+You can change an entitlement's description, subscribers, and
+encryption. If you change the subscribers, the service will remove the
+outputs that are are used by the subscribers that are removed.
 }
 \section{Request syntax}{
 \preformatted{svc$update_flow_entitlement(

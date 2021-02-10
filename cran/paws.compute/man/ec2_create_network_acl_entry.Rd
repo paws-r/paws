@@ -51,6 +51,9 @@ processed in ascending order by rule number.
 Constraints: Positive integer from 1 to 32766. The range 32767 to 65535
 is reserved for internal use.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates an entry (a rule) in a network ACL with the specified rule
 number. Each network ACL has a set of numbered ingress rules and a

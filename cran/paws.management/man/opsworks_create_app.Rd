@@ -53,6 +53,12 @@ it will cause an exception with the message, "Environment: is too large
 If you have specified one or more environment variables, you cannot
 modify the stack's Chef version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppId = "string"
+)
+}
+}
 \description{
 Creates an app for a specified stack. For more information, see
 \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html}{Creating Apps}.

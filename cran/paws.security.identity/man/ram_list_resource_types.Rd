@@ -13,6 +13,18 @@ ram_list_resource_types(nextToken, maxResults)
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceTypes = list(
+    list(
+      resourceType = "string",
+      serviceName = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the shareable resource types supported by AWS RAM.
 }

@@ -7,6 +7,13 @@ account, and also the number of Snow devices your account has in use}
 \usage{
 snowball_get_snowball_usage()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnowballLimit = 123,
+  SnowballsInUse = 123
+)
+}
+}
 \description{
 Returns information about the Snow Family service limit for your
 account, and also the number of Snow devices your account has in use.

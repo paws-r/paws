@@ -16,6 +16,19 @@ tags, only these tags will be applied to the destination backup. If you
 do not specify tags, the service copies tags from the source backup to
 the destination backup.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DestinationBackup = list(
+    CreateTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    SourceRegion = "string",
+    SourceBackup = "string",
+    SourceCluster = "string"
+  )
+)
+}
+}
 \description{
 Copy an AWS CloudHSM cluster backup to a different region.
 }

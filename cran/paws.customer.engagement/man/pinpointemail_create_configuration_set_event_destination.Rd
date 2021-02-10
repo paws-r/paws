@@ -16,6 +16,9 @@ set.}
 
 \item{EventDestination}{[required] An object that defines the event destination.}
 }
+\value{
+An empty list.
+}
 \description{
 Create an event destination. In Amazon Pinpoint, \emph{events} include
 message sends, deliveries, opens, clicks, bounces, and complaints.

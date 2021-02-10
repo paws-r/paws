@@ -33,6 +33,41 @@ supports CloudFormation stack IDs.}
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecordDetail = list(
+    RecordId = "string",
+    ProvisionedProductName = "string",
+    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProvisionedProductType = "string",
+    RecordType = "string",
+    ProvisionedProductId = "string",
+    ProductId = "string",
+    ProvisioningArtifactId = "string",
+    PathId = "string",
+    RecordErrors = list(
+      list(
+        Code = "string",
+        Description = "string"
+      )
+    ),
+    RecordTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    LaunchRoleArn = "string"
+  )
+)
+}
+}
 \description{
 Requests the import of a resource as a Service Catalog provisioned
 product that is associated to a Service Catalog product and provisioning

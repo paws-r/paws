@@ -14,6 +14,15 @@ glue_list_dev_endpoints(NextToken, MaxResults, Tags)
 
 \item{Tags}{Specifies to return only these tagged resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DevEndpointNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the names of all \code{DevEndpoint} resources in this AWS account,
 or the resources with the specified tag. This operation allows you to

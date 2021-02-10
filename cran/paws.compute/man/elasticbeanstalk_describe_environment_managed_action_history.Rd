@@ -16,6 +16,28 @@ elasticbeanstalk_describe_environment_managed_action_history(
 
 \item{MaxItems}{The maximum number of items to return for a single request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ManagedActionHistoryItems = list(
+    list(
+      ActionId = "string",
+      ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
+      ActionDescription = "string",
+      FailureType = "UpdateCancelled"|"CancellationFailed"|"RollbackFailed"|"RollbackSuccessful"|"InternalFailure"|"InvalidEnvironmentState"|"PermissionsError",
+      Status = "Completed"|"Failed"|"Unknown",
+      FailureDescription = "string",
+      ExecutedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FinishedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists an environment's completed and failed managed actions.
 }

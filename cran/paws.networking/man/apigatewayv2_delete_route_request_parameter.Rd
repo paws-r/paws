@@ -14,6 +14,9 @@ apigatewayv2_delete_route_request_parameter(ApiId, RequestParameterKey,
 
 \item{RouteId}{[required] The route ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a route request parameter.
 }

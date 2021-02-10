@@ -21,6 +21,23 @@ servicecatalog_list_resources_for_tag_option(TagOptionId, ResourceType,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceDetails = list(
+    list(
+      Id = "string",
+      ARN = "string",
+      Name = "string",
+      Description = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  PageToken = "string"
+)
+}
+}
 \description{
 Lists the resources associated with the specified TagOption.
 }

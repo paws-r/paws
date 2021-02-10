@@ -17,6 +17,42 @@ only set one filter at a time.}
 \item{MaxResults}{The maximum number of results to return in each page. The default is
 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComprehendMedicalAsyncJobPropertiesList = list(
+    list(
+      JobId = "string",
+      JobName = "string",
+      JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+      Message = "string",
+      SubmitTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExpirationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      InputDataConfig = list(
+        S3Bucket = "string",
+        S3Key = "string"
+      ),
+      OutputDataConfig = list(
+        S3Bucket = "string",
+        S3Key = "string"
+      ),
+      LanguageCode = "en",
+      DataAccessRoleArn = "string",
+      ManifestFilePath = "string",
+      KMSKey = "string",
+      ModelVersion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of InferICD10CM jobs that you have submitted.
 }

@@ -39,6 +39,22 @@ copy or restore the DB snapshot. If you specify \code{all}, an AWS account
 whose account ID is explicitly added to the \code{restore} attribute can
 still copy or restore the manual DB snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSnapshotAttributesResult = list(
+    DBSnapshotIdentifier = "string",
+    DBSnapshotAttributes = list(
+      list(
+        AttributeName = "string",
+        AttributeValues = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds an attribute and values to, or removes an attribute and values
 from, a manual DB snapshot.

@@ -17,6 +17,9 @@ none is supplied, the AWS account ID is used by default.}
 
 \item{ColumnName}{[required] The name of the column.}
 }
+\value{
+An empty list.
+}
 \description{
 Retrieves table statistics of columns.
 

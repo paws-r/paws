@@ -17,6 +17,37 @@ describing virtual tapes.}
 \item{Limit}{Specifies that the number of virtual tapes described be limited to the
 specified number.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeArchives = list(
+    list(
+      TapeARN = "string",
+      TapeBarcode = "string",
+      TapeCreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      TapeSizeInBytes = 123,
+      CompletionTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      RetrievedTo = "string",
+      TapeStatus = "string",
+      TapeUsedInBytes = 123,
+      KMSKey = "string",
+      PoolId = "string",
+      Worm = TRUE|FALSE,
+      RetentionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      PoolEntryDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a description of specified virtual tapes in the virtual tape
 shelf (VTS). This operation is only supported in the tape gateway type.

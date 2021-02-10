@@ -12,17 +12,8 @@ ec2_get_coip_pool_usage(PoolId, Filters, MaxResults, NextToken, DryRun)
 \item{Filters}{The filters. The following are the possible values:
 \itemize{
 \item \code{coip-address-usage.allocation-id}
-}<!-- -->
-
-\itemize{
 \item \code{coip-address-usage.aws-account-id}
-}<!-- -->
-
-\itemize{
 \item \code{coip-address-usage.aws-service}
-}<!-- -->
-
-\itemize{
 \item \code{coip-address-usage.co-ip}
 }}
 
@@ -36,6 +27,21 @@ value.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CoipPoolId = "string",
+  CoipAddressUsages = list(
+    list(
+      AllocationId = "string",
+      AwsAccountId = "string",
+      AwsService = "string",
+      CoIp = "string"
+    )
+  ),
+  LocalGatewayRouteTableId = "string"
+)
+}
 }
 \description{
 Describes the allocations from the specified customer-owned address

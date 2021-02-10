@@ -14,6 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified customer gateway. You must delete the VPN
 connection before you can delete the customer gateway.

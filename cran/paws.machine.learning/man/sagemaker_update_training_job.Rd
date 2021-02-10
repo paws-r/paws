@@ -18,6 +18,12 @@ profiling, and storage paths.}
 \item{ProfilerRuleConfigurations}{Configuration information for Debugger rules for profiling system and
 framework metrics.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrainingJobArn = "string"
+)
+}
+}
 \description{
 Update a model training job to request a new Debugger profiling
 configuration.

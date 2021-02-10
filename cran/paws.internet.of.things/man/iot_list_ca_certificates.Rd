@@ -13,6 +13,22 @@ iot_list_ca_certificates(pageSize, marker, ascendingOrder)
 
 \item{ascendingOrder}{Determines the order of the results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificates = list(
+    list(
+      certificateArn = "string",
+      certificateId = "string",
+      status = "ACTIVE"|"INACTIVE",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Lists the CA certificates registered for your AWS account.
 

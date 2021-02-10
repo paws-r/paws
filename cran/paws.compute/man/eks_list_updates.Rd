@@ -30,6 +30,15 @@ returned \code{nextToken} value. This value can be between 1 and 100. If you
 don't use this parameter, \code{\link[=eks_list_updates]{list_updates}} returns up
 to 100 results and a \code{nextToken} value if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  updateIds = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the updates associated with an Amazon EKS cluster or managed node
 group in your AWS account, in the specified Region.

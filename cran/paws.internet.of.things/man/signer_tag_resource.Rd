@@ -11,6 +11,9 @@ signer_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] One or more tags to be associated with the signing profile.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to a signing profile. Tags are labels that you can
 use to identify and organize your AWS resources. Each tag consists of a

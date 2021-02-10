@@ -11,6 +11,30 @@ iot_describe_audit_suppression(checkName, resourceIdentifier)
 
 \item{resourceIdentifier}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  checkName = "string",
+  resourceIdentifier = list(
+    deviceCertificateId = "string",
+    caCertificateId = "string",
+    cognitoIdentityPoolId = "string",
+    clientId = "string",
+    policyVersionIdentifier = list(
+      policyName = "string",
+      policyVersionId = "string"
+    ),
+    account = "string",
+    iamRoleArn = "string",
+    roleAliasArn = "string"
+  ),
+  expirationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  suppressIndefinitely = TRUE|FALSE,
+  description = "string"
+)
+}
+}
 \description{
 Gets information about a Device Defender audit suppression.
 }

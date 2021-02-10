@@ -11,6 +11,17 @@ elbv2_modify_target_group_attributes(TargetGroupArn, Attributes)
 
 \item{Attributes}{[required] The attributes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the specified attributes of the specified target group.
 }
@@ -38,7 +49,7 @@ svc$modify_target_group_attributes(
       Value = "600"
     )
   ),
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
 )
 }
 

@@ -23,6 +23,12 @@ the number of requests exceeds the \code{RateLimit} and the other predicates
 specified in the rule are also met, AWS WAF triggers the action that is
 specified for this rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

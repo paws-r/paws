@@ -14,6 +14,12 @@ new tapes.}
 
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Updates the automatic tape creation policy of a gateway. Use this to
 update the policy with a new set of automatic tape creation rules. This

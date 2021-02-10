@@ -25,6 +25,33 @@ associated with the specified account ID.}
 
 \item{ByStatus}{Returns only restore jobs associated with the specified job status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RestoreJobs = list(
+    list(
+      AccountId = "string",
+      RestoreJobId = "string",
+      RecoveryPointArn = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompletionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "PENDING"|"RUNNING"|"COMPLETED"|"ABORTED"|"FAILED",
+      StatusMessage = "string",
+      PercentDone = "string",
+      BackupSizeInBytes = 123,
+      IamRoleArn = "string",
+      ExpectedCompletionTimeMinutes = 123,
+      CreatedResourceArn = "string",
+      ResourceType = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of jobs that AWS Backup initiated to restore a saved
 resource, including metadata about the recovery process.

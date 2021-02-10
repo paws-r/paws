@@ -50,20 +50,20 @@ The following service-owned \code{TemplateArn} values are supported by ACM
 Private CA:
 \itemize{
 \item arn:aws:acm-pca:::template/CodeSigningCertificate/V1
-\item arn:aws:acm-pca:::template/CodeSigningCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/CodeSigningCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/EndEntityCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/EndEntityCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/EndEntityClientAuthCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate/V1
-\item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/EndEntityServerAuthCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/OCSPSigningCertificate/V1
-\item arn:aws:acm-pca:::template/OCSPSigningCertificate\\_CSRPassthrough/V1
+\item arn:aws:acm-pca:::template/OCSPSigningCertificate_CSRPassthrough/V1
 \item arn:aws:acm-pca:::template/RootCACertificate/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen0/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen1/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen2/V1
-\item arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen3/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
 }
 
 For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html}{Using Templates}.}
@@ -85,6 +85,12 @@ idempotency token within 5 minutes, ACM Private CA recognizes that you
 are requesting only one certificate and will issue only one. If you
 change the idempotency token for each call, PCA recognizes that you are
 requesting multiple certificates.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateArn = "string"
+)
+}
 }
 \description{
 Uses your private certificate authority (CA), or one that has been

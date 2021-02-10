@@ -17,6 +17,12 @@ both objects reside. For more information, see arns.}
 
 \item{LinkName}{[required] The link name with which the child object is attached to the parent.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttachedObjectIdentifier = "string"
+)
+}
+}
 \description{
 Attaches an existing object to another object. An object can be accessed
 in two ways:

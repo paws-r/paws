@@ -41,6 +41,12 @@ This value can be any of the following:
 If encrypted is \emph{true} but a KMS key ID is not specified, the customer's
 default KMS key for Amazon EBS is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  replicationJobId = "string"
+)
+}
+}
 \description{
 Creates a replication job. The replication job schedules periodic
 replication runs to replicate your server to AWS. Each replication run

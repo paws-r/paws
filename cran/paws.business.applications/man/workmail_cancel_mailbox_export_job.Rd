@@ -13,6 +13,9 @@ workmail_cancel_mailbox_export_job(ClientToken, JobId, OrganizationId)
 
 \item{OrganizationId}{[required] The organization ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels a mailbox export job.
 

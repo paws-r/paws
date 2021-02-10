@@ -11,6 +11,9 @@ greengrass_update_connector_definition(ConnectorDefinitionId, Name)
 
 \item{Name}{The name of the definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a connector definition.
 }

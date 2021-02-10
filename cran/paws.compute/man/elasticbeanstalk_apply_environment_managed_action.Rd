@@ -14,6 +14,15 @@ elasticbeanstalk_apply_environment_managed_action(EnvironmentName,
 
 \item{ActionId}{[required] The action ID of the scheduled managed action to execute.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionId = "string",
+  ActionDescription = "string",
+  ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
+  Status = "string"
+)
+}
+}
 \description{
 Applies a scheduled managed action immediately. A managed action can be
 applied only if its status is \code{Scheduled}. Get the status and action ID

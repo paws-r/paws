@@ -25,6 +25,9 @@ get the version, call either the
 current value. The maximum value for this parameter is 87600 (ten
 years).}
 }
+\value{
+An empty list.
+}
 \description{
 Increases or decreases the stream's data retention period by the value
 that you specify. To indicate whether you want to increase or decrease

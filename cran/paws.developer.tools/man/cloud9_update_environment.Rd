@@ -13,6 +13,9 @@ cloud9_update_environment(environmentId, name, description)
 
 \item{description}{Any new or replacement description for the environment.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the settings of an existing AWS Cloud9 development environment.
 }

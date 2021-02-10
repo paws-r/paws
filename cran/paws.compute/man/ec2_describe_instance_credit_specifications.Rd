@@ -32,6 +32,18 @@ parameter and the instance IDs parameter in the same call.}
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceCreditSpecifications = list(
+    list(
+      InstanceId = "string",
+      CpuCredits = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the credit option for CPU usage of the specified burstable
 performance instances. The credit options are \code{standard} and

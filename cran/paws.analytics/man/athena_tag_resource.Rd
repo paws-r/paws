@@ -13,6 +13,9 @@ which tags are to be added.}
 \item{Tags}{[required] A collection of one or more tags, separated by commas, to be added to an
 Athena workgroup or data catalog resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to an Athena resource. A tag is a label that you
 assign to a resource. In Athena, a resource can be a workgroup or data
@@ -24,7 +27,7 @@ workgroups or data catalogs in your account. For best practices, see
 \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{Tagging Best Practices}.
 Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values
 can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
-numbers representable in UTF-8, and the following characters: + - = . \\_
+numbers representable in UTF-8, and the following characters: + - = . _
 : / @. Tag keys and values are case-sensitive. Tag keys must be unique
 per resource. If you specify more than one tag, separate them by commas.
 }

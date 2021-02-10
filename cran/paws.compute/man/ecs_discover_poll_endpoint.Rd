@@ -18,6 +18,13 @@ For example,
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to
 which the container instance belongs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  endpoint = "string",
+  telemetryEndpoint = "string"
+)
+}
+}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent.

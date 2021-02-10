@@ -9,6 +9,57 @@ cloudfront_create_cache_policy(CachePolicyConfig)
 \arguments{
 \item{CachePolicyConfig}{[required] A cache policy configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CachePolicy = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CachePolicyConfig = list(
+      Comment = "string",
+      Name = "string",
+      DefaultTTL = 123,
+      MaxTTL = 123,
+      MinTTL = 123,
+      ParametersInCacheKeyAndForwardedToOrigin = list(
+        EnableAcceptEncodingGzip = TRUE|FALSE,
+        EnableAcceptEncodingBrotli = TRUE|FALSE,
+        HeadersConfig = list(
+          HeaderBehavior = "none"|"whitelist",
+          Headers = list(
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          )
+        ),
+        CookiesConfig = list(
+          CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+          Cookies = list(
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          )
+        ),
+        QueryStringsConfig = list(
+          QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+          QueryStrings = list(
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  Location = "string",
+  ETag = "string"
+)
+}
+}
 \description{
 Creates a cache policy.
 

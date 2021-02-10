@@ -32,6 +32,12 @@ The sum of all UsageAllocation quantities must equal the UsageQuantity
 of the MeterUsage request, and each UsageAllocation must have a unique
 set of tags (include no tags).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MeteringRecordId = "string"
+)
+}
+}
 \description{
 API to emit metering records. For identical requests, the API is
 idempotent. It simply returns the metering record ID.

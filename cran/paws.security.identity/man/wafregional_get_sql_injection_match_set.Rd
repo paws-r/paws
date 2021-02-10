@@ -13,6 +13,24 @@ to get. \code{SqlInjectionMatchSetId} is returned by
 and by
 \code{\link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SqlInjectionMatchSet = list(
+    SqlInjectionMatchSetId = "string",
+    Name = "string",
+    SqlInjectionMatchTuples = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

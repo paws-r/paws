@@ -11,6 +11,12 @@ directoryservice_reject_shared_directory(SharedDirectoryId)
 \item{SharedDirectoryId}{[required] Identifier of the shared directory in the directory consumer account.
 This identifier is different for each directory owner account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SharedDirectoryId = "string"
+)
+}
+}
 \description{
 Rejects a directory sharing request that was sent from the directory
 owner account.

@@ -9,6 +9,57 @@ elasticbeanstalk_describe_platform_version(PlatformArn)
 \arguments{
 \item{PlatformArn}{The ARN of the platform version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlatformDescription = list(
+    PlatformArn = "string",
+    PlatformOwner = "string",
+    PlatformName = "string",
+    PlatformVersion = "string",
+    SolutionStackName = "string",
+    PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
+    DateCreated = as.POSIXct(
+      "2015-01-01"
+    ),
+    DateUpdated = as.POSIXct(
+      "2015-01-01"
+    ),
+    PlatformCategory = "string",
+    Description = "string",
+    Maintainer = "string",
+    OperatingSystemName = "string",
+    OperatingSystemVersion = "string",
+    ProgrammingLanguages = list(
+      list(
+        Name = "string",
+        Version = "string"
+      )
+    ),
+    Frameworks = list(
+      list(
+        Name = "string",
+        Version = "string"
+      )
+    ),
+    CustomAmiList = list(
+      list(
+        VirtualizationType = "string",
+        ImageId = "string"
+      )
+    ),
+    SupportedTierList = list(
+      "string"
+    ),
+    SupportedAddonList = list(
+      "string"
+    ),
+    PlatformLifecycleState = "string",
+    PlatformBranchName = "string",
+    PlatformBranchLifecycleState = "string"
+  )
+)
+}
+}
 \description{
 Describes a platform version. Provides full details. Compare to
 \code{\link[=elasticbeanstalk_list_platform_versions]{list_platform_versions}},

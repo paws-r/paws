@@ -13,6 +13,20 @@ firehose_put_record_batch(DeliveryStreamName, Records)
 
 \item{Records}{[required] One or more records.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedPutCount = 123,
+  Encrypted = TRUE|FALSE,
+  RequestResponses = list(
+    list(
+      RecordId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Writes multiple data records into a delivery stream in a single call,
 which can achieve higher throughput per producer than when writing
@@ -35,7 +49,7 @@ data, website clickstream data, and so on.
 
 Kinesis Data Firehose buffers records before delivering them to the
 destination. To disambiguate the data blobs at the destination, a common
-solution is to use delimiters in the data, such as a newline (\verb{\\\\n}) or
+solution is to use delimiters in the data, such as a newline (\verb{\\n}) or
 some other character unique within the data. This allows the consumer
 application to parse individual data items when reading the data from
 the destination.

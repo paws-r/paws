@@ -14,6 +14,9 @@ must be of the form:
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
+\value{
+An empty list.
+}
 \description{
 Renews an eligable ACM certificate. At this time, only exported private
 certificates can be renewed with this operation. In order to renew your

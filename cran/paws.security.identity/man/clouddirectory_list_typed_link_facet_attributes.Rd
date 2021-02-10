@@ -18,6 +18,37 @@ more information, see arns.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Name = "string",
+      Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+      DefaultValue = list(
+        StringValue = "string",
+        BinaryValue = raw,
+        BooleanValue = TRUE|FALSE,
+        NumberValue = "string",
+        DatetimeValue = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      IsImmutable = TRUE|FALSE,
+      Rules = list(
+        list(
+          Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+          Parameters = list(
+            "string"
+          )
+        )
+      ),
+      RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a paginated list of all attribute definitions for a particular
 TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.

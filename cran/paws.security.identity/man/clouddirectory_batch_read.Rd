@@ -16,6 +16,258 @@ For more information, see arns.}
 of an object is reflected in a subsequent read operation of that same
 object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Responses = list(
+    list(
+      SuccessfulResponse = list(
+        ListObjectAttributes = list(
+          Attributes = list(
+            list(
+              Key = list(
+                SchemaArn = "string",
+                FacetName = "string",
+                Name = "string"
+              ),
+              Value = list(
+                StringValue = "string",
+                BinaryValue = raw,
+                BooleanValue = TRUE|FALSE,
+                NumberValue = "string",
+                DatetimeValue = as.POSIXct(
+                  "2015-01-01"
+                )
+              )
+            )
+          ),
+          NextToken = "string"
+        ),
+        ListObjectChildren = list(
+          Children = list(
+            "string"
+          ),
+          NextToken = "string"
+        ),
+        GetObjectInformation = list(
+          SchemaFacets = list(
+            list(
+              SchemaArn = "string",
+              FacetName = "string"
+            )
+          ),
+          ObjectIdentifier = "string"
+        ),
+        GetObjectAttributes = list(
+          Attributes = list(
+            list(
+              Key = list(
+                SchemaArn = "string",
+                FacetName = "string",
+                Name = "string"
+              ),
+              Value = list(
+                StringValue = "string",
+                BinaryValue = raw,
+                BooleanValue = TRUE|FALSE,
+                NumberValue = "string",
+                DatetimeValue = as.POSIXct(
+                  "2015-01-01"
+                )
+              )
+            )
+          )
+        ),
+        ListAttachedIndices = list(
+          IndexAttachments = list(
+            list(
+              IndexedAttributes = list(
+                list(
+                  Key = list(
+                    SchemaArn = "string",
+                    FacetName = "string",
+                    Name = "string"
+                  ),
+                  Value = list(
+                    StringValue = "string",
+                    BinaryValue = raw,
+                    BooleanValue = TRUE|FALSE,
+                    NumberValue = "string",
+                    DatetimeValue = as.POSIXct(
+                      "2015-01-01"
+                    )
+                  )
+                )
+              ),
+              ObjectIdentifier = "string"
+            )
+          ),
+          NextToken = "string"
+        ),
+        ListObjectParentPaths = list(
+          PathToObjectIdentifiersList = list(
+            list(
+              Path = "string",
+              ObjectIdentifiers = list(
+                "string"
+              )
+            )
+          ),
+          NextToken = "string"
+        ),
+        ListObjectPolicies = list(
+          AttachedPolicyIds = list(
+            "string"
+          ),
+          NextToken = "string"
+        ),
+        ListPolicyAttachments = list(
+          ObjectIdentifiers = list(
+            "string"
+          ),
+          NextToken = "string"
+        ),
+        LookupPolicy = list(
+          PolicyToPathList = list(
+            list(
+              Path = "string",
+              Policies = list(
+                list(
+                  PolicyId = "string",
+                  ObjectIdentifier = "string",
+                  PolicyType = "string"
+                )
+              )
+            )
+          ),
+          NextToken = "string"
+        ),
+        ListIndex = list(
+          IndexAttachments = list(
+            list(
+              IndexedAttributes = list(
+                list(
+                  Key = list(
+                    SchemaArn = "string",
+                    FacetName = "string",
+                    Name = "string"
+                  ),
+                  Value = list(
+                    StringValue = "string",
+                    BinaryValue = raw,
+                    BooleanValue = TRUE|FALSE,
+                    NumberValue = "string",
+                    DatetimeValue = as.POSIXct(
+                      "2015-01-01"
+                    )
+                  )
+                )
+              ),
+              ObjectIdentifier = "string"
+            )
+          ),
+          NextToken = "string"
+        ),
+        ListOutgoingTypedLinks = list(
+          TypedLinkSpecifiers = list(
+            list(
+              TypedLinkFacet = list(
+                SchemaArn = "string",
+                TypedLinkName = "string"
+              ),
+              SourceObjectReference = list(
+                Selector = "string"
+              ),
+              TargetObjectReference = list(
+                Selector = "string"
+              ),
+              IdentityAttributeValues = list(
+                list(
+                  AttributeName = "string",
+                  Value = list(
+                    StringValue = "string",
+                    BinaryValue = raw,
+                    BooleanValue = TRUE|FALSE,
+                    NumberValue = "string",
+                    DatetimeValue = as.POSIXct(
+                      "2015-01-01"
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          NextToken = "string"
+        ),
+        ListIncomingTypedLinks = list(
+          LinkSpecifiers = list(
+            list(
+              TypedLinkFacet = list(
+                SchemaArn = "string",
+                TypedLinkName = "string"
+              ),
+              SourceObjectReference = list(
+                Selector = "string"
+              ),
+              TargetObjectReference = list(
+                Selector = "string"
+              ),
+              IdentityAttributeValues = list(
+                list(
+                  AttributeName = "string",
+                  Value = list(
+                    StringValue = "string",
+                    BinaryValue = raw,
+                    BooleanValue = TRUE|FALSE,
+                    NumberValue = "string",
+                    DatetimeValue = as.POSIXct(
+                      "2015-01-01"
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          NextToken = "string"
+        ),
+        GetLinkAttributes = list(
+          Attributes = list(
+            list(
+              Key = list(
+                SchemaArn = "string",
+                FacetName = "string",
+                Name = "string"
+              ),
+              Value = list(
+                StringValue = "string",
+                BinaryValue = raw,
+                BooleanValue = TRUE|FALSE,
+                NumberValue = "string",
+                DatetimeValue = as.POSIXct(
+                  "2015-01-01"
+                )
+              )
+            )
+          )
+        ),
+        ListObjectParents = list(
+          ParentLinks = list(
+            list(
+              ObjectIdentifier = "string",
+              LinkName = "string"
+            )
+          ),
+          NextToken = "string"
+        )
+      ),
+      ExceptionResponse = list(
+        Type = "ValidationException"|"InvalidArnException"|"ResourceNotFoundException"|"InvalidNextTokenException"|"AccessDeniedException"|"NotNodeException"|"FacetValidationException"|"CannotListParentOfRootException"|"NotIndexException"|"NotPolicyException"|"DirectoryNotEnabledException"|"LimitExceededException"|"InternalServiceException",
+        Message = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Performs all the read operations in a batch.
 }

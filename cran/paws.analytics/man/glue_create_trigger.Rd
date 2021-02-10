@@ -35,6 +35,12 @@ created. True is not supported for \code{ON_DEMAND} triggers.}
 the trigger. For more information about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
 the developer guide.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Creates a new trigger.
 }

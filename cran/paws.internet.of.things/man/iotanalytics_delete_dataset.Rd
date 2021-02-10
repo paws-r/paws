@@ -9,6 +9,9 @@ iotanalytics_delete_dataset(datasetName)
 \arguments{
 \item{datasetName}{[required] The name of the data set to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified dataset.
 

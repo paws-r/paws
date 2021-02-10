@@ -19,8 +19,25 @@ importexport_update_job(JobId, Manifest, JobType, ValidateOnly,
 
 \item{APIVersion}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Success = TRUE|FALSE,
+  WarningMessage = "string",
+  ArtifactList = list(
+    list(
+      Description = "string",
+      URL = "string"
+    )
+  )
+)
+}
+}
 \description{
-You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
+You use this operation to change the parameters specified in the
+original manifest file by supplying a new manifest file. The manifest
+file attached to this request replaces the original manifest file. You
+can only use the operation after a CreateJob request but before the data
+transfer starts and you can only use it on jobs you own.
 }
 \section{Request syntax}{
 \preformatted{svc$update_job(

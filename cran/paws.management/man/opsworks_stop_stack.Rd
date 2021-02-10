@@ -9,6 +9,9 @@ opsworks_stop_stack(StackId)
 \arguments{
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a specified stack.
 

@@ -31,6 +31,18 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationNodes = list(
+    list(
+      Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
+      Value = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists the organization nodes that have access to the specified
 portfolio. This API can only be called by the management account in the

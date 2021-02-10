@@ -14,6 +14,25 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ReservedInstancesIds}{[required] The IDs of the Reserved Instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SuccessfulQueuedPurchaseDeletions = list(
+    list(
+      ReservedInstancesId = "string"
+    )
+  ),
+  FailedQueuedPurchaseDeletions = list(
+    list(
+      Error = list(
+        Code = "reserved-instances-id-invalid"|"reserved-instances-not-in-queued-state"|"unexpected-error",
+        Message = "string"
+      ),
+      ReservedInstancesId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes the queued purchases for the specified Reserved Instances.
 }

@@ -12,6 +12,54 @@ comprehendmedical_infer_rx_norm(Text)
 \item{Text}{[required] The input text used for analysis. The input for InferRxNorm is a string
 from 1 to 10000 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Entities = list(
+    list(
+      Id = 123,
+      Text = "string",
+      Category = "MEDICATION",
+      Type = "BRAND_NAME"|"GENERIC_NAME",
+      Score = 123.0,
+      BeginOffset = 123,
+      EndOffset = 123,
+      Attributes = list(
+        list(
+          Type = "DOSAGE"|"DURATION"|"FORM"|"FREQUENCY"|"RATE"|"ROUTE_OR_MODE"|"STRENGTH",
+          Score = 123.0,
+          RelationshipScore = 123.0,
+          Id = 123,
+          BeginOffset = 123,
+          EndOffset = 123,
+          Text = "string",
+          Traits = list(
+            list(
+              Name = "NEGATION",
+              Score = 123.0
+            )
+          )
+        )
+      ),
+      Traits = list(
+        list(
+          Name = "NEGATION",
+          Score = 123.0
+        )
+      ),
+      RxNormConcepts = list(
+        list(
+          Description = "string",
+          Code = "string",
+          Score = 123.0
+        )
+      )
+    )
+  ),
+  PaginationToken = "string",
+  ModelVersion = "string"
+)
+}
+}
 \description{
 InferRxNorm detects medications as entities listed in a patient record
 and links to the normalized concept identifiers in the RxNorm database

@@ -16,6 +16,13 @@ connect_create_use_case(InstanceId, IntegrationAssociationId,
 \item{UseCaseType}{[required] The type of use case to associate to the AppIntegration association.
 Each AppIntegration association can have only one of each use case type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UseCaseId = "string",
+  UseCaseArn = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

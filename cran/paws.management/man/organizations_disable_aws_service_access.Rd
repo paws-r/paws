@@ -12,6 +12,9 @@ organizations_disable_aws_service_access(ServicePrincipal)
 disable integration with your organization. This is typically in the
 form of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables the integration of an AWS service (the service that is
 specified by \code{ServicePrincipal}) with AWS Organizations. When you

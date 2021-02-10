@@ -10,7 +10,7 @@ pinpoint_get_push_template(TemplateName, Version)
 \arguments{
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
-characters can be alphanumeric characters, underscores (\\_), or hyphens
+characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
 
 \item{Version}{The unique identifier for the version of the message template to update,
@@ -34,6 +34,74 @@ parameter isn't used or is set to false.
 \item For a delete operation, deletes the template, including all versions
 of the template.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PushNotificationTemplateResponse = list(
+    ADM = list(
+      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
+      Body = "string",
+      ImageIconUrl = "string",
+      ImageUrl = "string",
+      RawContent = "string",
+      SmallImageIconUrl = "string",
+      Sound = "string",
+      Title = "string",
+      Url = "string"
+    ),
+    APNS = list(
+      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
+      Body = "string",
+      MediaUrl = "string",
+      RawContent = "string",
+      Sound = "string",
+      Title = "string",
+      Url = "string"
+    ),
+    Arn = "string",
+    Baidu = list(
+      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
+      Body = "string",
+      ImageIconUrl = "string",
+      ImageUrl = "string",
+      RawContent = "string",
+      SmallImageIconUrl = "string",
+      Sound = "string",
+      Title = "string",
+      Url = "string"
+    ),
+    CreationDate = "string",
+    Default = list(
+      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
+      Body = "string",
+      Sound = "string",
+      Title = "string",
+      Url = "string"
+    ),
+    DefaultSubstitutions = "string",
+    GCM = list(
+      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
+      Body = "string",
+      ImageIconUrl = "string",
+      ImageUrl = "string",
+      RawContent = "string",
+      SmallImageIconUrl = "string",
+      Sound = "string",
+      Title = "string",
+      Url = "string"
+    ),
+    LastModifiedDate = "string",
+    RecommenderId = "string",
+    tags = list(
+      "string"
+    ),
+    TemplateDescription = "string",
+    TemplateName = "string",
+    TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+    Version = "string"
+  )
+)
+}
 }
 \description{
 Retrieves the content and settings of a message template for messages

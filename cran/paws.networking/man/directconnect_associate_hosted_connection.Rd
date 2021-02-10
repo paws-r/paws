@@ -13,6 +13,35 @@ directconnect_associate_hosted_connection(connectionId,
 
 \item{parentConnectionId}{[required] The ID of the interconnect or the LAG.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ownerAccount = "string",
+  connectionId = "string",
+  connectionName = "string",
+  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+  region = "string",
+  location = "string",
+  bandwidth = "string",
+  vlan = 123,
+  partnerName = "string",
+  loaIssueTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  lagId = "string",
+  awsDevice = "string",
+  jumboFrameCapable = TRUE|FALSE,
+  awsDeviceV2 = "string",
+  hasLogicalRedundancy = "unknown"|"yes"|"no",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  providerName = "string"
+)
+}
+}
 \description{
 Associates a hosted connection and its virtual interfaces with a link
 aggregation group (LAG) or interconnect. If the target interconnect or

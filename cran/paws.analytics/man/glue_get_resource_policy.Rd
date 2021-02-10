@@ -11,6 +11,19 @@ glue_get_resource_policy(ResourceArn)
 retrieved. For more information about AWS Glue resource ARNs, see the
 \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id}{AWS Glue ARN string pattern}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyInJson = "string",
+  PolicyHash = "string",
+  CreateTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  UpdateTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves a specified resource policy.
 }

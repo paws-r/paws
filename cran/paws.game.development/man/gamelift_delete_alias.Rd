@@ -10,6 +10,9 @@ gamelift_delete_alias(AliasId)
 \item{AliasId}{[required] A unique identifier of the alias that you want to delete. You can use
 either the alias ID or ARN value.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an alias. This operation removes all record of the alias. Game
 clients attempting to access a server process using the deleted alias

@@ -13,6 +13,16 @@ more information, see arns.}
 
 \item{Name}{[required] The name of the facet to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Facet = list(
+    Name = "string",
+    ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX",
+    FacetStyle = "STATIC"|"DYNAMIC"
+  )
+)
+}
+}
 \description{
 Gets details of the Facet, such as facet name, attributes, Rules, or
 \code{ObjectType}. You can call this on all kinds of schema facets --

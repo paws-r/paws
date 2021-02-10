@@ -22,6 +22,12 @@ Valid values: \code{true} | \code{false}}
 \code{ResetAllParameters} is \code{false}, you must specify the name of at least
 one parameter to reset.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CacheParameterGroupName = "string"
+)
+}
+}
 \description{
 Modifies the parameters of a cache parameter group to the engine or
 system default value. You can reset specific parameters by submitting a

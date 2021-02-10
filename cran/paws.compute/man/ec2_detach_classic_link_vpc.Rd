@@ -16,6 +16,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC to which the instance is linked.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
 instance has been unlinked, the VPC security groups are no longer

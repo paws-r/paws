@@ -14,6 +14,9 @@ group does not match the expected version specified in the request, the
 \code{\link[=iot_delete_billing_group]{delete_billing_group}} request is rejected
 with a \code{VersionConflictException}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the billing group.
 }

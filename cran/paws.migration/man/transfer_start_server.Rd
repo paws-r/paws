@@ -10,6 +10,9 @@ transfer_start_server(ServerId)
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for a server that you start.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the state of a file transfer protocol-enabled server from
 \code{OFFLINE} to \code{ONLINE}. It has no impact on a server that is already

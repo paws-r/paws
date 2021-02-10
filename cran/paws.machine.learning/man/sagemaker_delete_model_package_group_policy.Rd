@@ -9,6 +9,9 @@ sagemaker_delete_model_package_group_policy(ModelPackageGroupName)
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group for which to delete the policy.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a model group resource policy.
 }

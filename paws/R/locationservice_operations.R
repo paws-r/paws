@@ -23,6 +23,9 @@ NULL
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to be associated with a geofence
 #' collection.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_tracker_consumer(
@@ -64,6 +67,22 @@ locationservice_associate_tracker_consumer <- function(ConsumerArn, TrackerName)
 #'
 #' @param CollectionName &#91;required&#93; The geofence collection storing the geofences to be deleted.
 #' @param GeofenceIds &#91;required&#93; The batch of geofences to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       Error = list(
+#'         Code = "AccessDeniedError"|"ConflictError"|"InternalServerError"|"ResourceNotFoundError"|"ThrottlingError"|"ValidationError",
+#'         Message = "string"
+#'       ),
+#'       GeofenceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -109,6 +128,25 @@ locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
 #' against its geofences.
 #' @param DevicePositionUpdates &#91;required&#93; Contains device details for each device to be evaluated against the
 #' given geofence collection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       DeviceId = "string",
+#'       Error = list(
+#'         Code = "AccessDeniedError"|"ConflictError"|"InternalServerError"|"ResourceNotFoundError"|"ThrottlingError"|"ValidationError",
+#'         Message = "string"
+#'       ),
+#'       SampleTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -164,6 +202,36 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 #'     `device-ids=DeviceId1&device-ids=DeviceId2`
 #' @param TrackerName &#91;required&#93; The tracker resource retrieving the device position.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DevicePositions = list(
+#'     list(
+#'       DeviceId = "string",
+#'       Position = list(
+#'         123.0
+#'       ),
+#'       ReceivedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SampleTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       DeviceId = "string",
+#'       Error = list(
+#'         Code = "AccessDeniedError"|"ConflictError"|"InternalServerError"|"ResourceNotFoundError"|"ThrottlingError"|"ValidationError",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_device_position(
@@ -204,6 +272,33 @@ locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
 #'
 #' @param CollectionName &#91;required&#93; The geofence collection storing the geofences.
 #' @param Entries &#91;required&#93; The batch of geofences to be stored in a geofence collection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       Error = list(
+#'         Code = "AccessDeniedError"|"ConflictError"|"InternalServerError"|"ResourceNotFoundError"|"ThrottlingError"|"ValidationError",
+#'         Message = "string"
+#'       ),
+#'       GeofenceId = "string"
+#'     )
+#'   ),
+#'   Successes = list(
+#'     list(
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       GeofenceId = "string",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -262,6 +357,25 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to update.
 #' @param Updates &#91;required&#93; Contains the position update details for each device.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       DeviceId = "string",
+#'       Error = list(
+#'         Code = "AccessDeniedError"|"ConflictError"|"InternalServerError"|"ResourceNotFoundError"|"ThrottlingError"|"ValidationError",
+#'         Message = "string"
+#'       ),
+#'       SampleTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_update_device_position(
@@ -314,7 +428,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' Requirements:
 #' 
 #' -   Contain only alphanumeric characters (A–Z, a–z, 0-9), hyphens (-),
-#'     and underscores (\\_).
+#'     and underscores (_).
 #' 
 #' -   Must be a unique geofence collection name.
 #' 
@@ -335,6 +449,18 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' For additional details and restrictions on each pricing plan option, see
 #' the [Amazon Location Service pricing
 #' page](https://aws.amazon.com/location/pricing/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CollectionArn = "string",
+#'   CollectionName = "string",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -389,7 +515,7 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' Requirements:
 #' 
 #' -   Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens
-#'     (-), and underscores (\\_).
+#'     (-), and underscores (_).
 #' 
 #' -   Must be a unique map resource name.
 #' 
@@ -409,6 +535,18 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' For additional details and restrictions on each pricing plan option, see
 #' the [Amazon Location Service pricing
 #' page](https://aws.amazon.com/location/pricing/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MapArn = "string",
+#'   MapName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -472,7 +610,7 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #' Requirements:
 #' 
 #' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-)
-#'     and underscores (\\_) ).
+#'     and underscores (_) ).
 #' 
 #' -   Must be a unique Place index resource name.
 #' 
@@ -492,6 +630,18 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #' For additional details and restrictions on each pricing plan option, see
 #' the [Amazon Location Service pricing
 #' page](https://aws.amazon.com/location/pricing/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   IndexArn = "string",
+#'   IndexName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -557,11 +707,23 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' Requirements:
 #' 
 #' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-)
-#'     and underscores (\\_).
+#'     and underscores (_).
 #' 
 #' -   Must be a unique tracker resource name.
 #' 
 #' -   No spaces allowed. For example, `ExampleTracker`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TrackerArn = "string",
+#'   TrackerName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -606,6 +768,9 @@ locationservice_create_tracker <- function(Description = NULL, PricingPlan, Trac
 #'
 #' @param CollectionName &#91;required&#93; The name of the geofence collection to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_geofence_collection(
@@ -647,6 +812,9 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 #'
 #' @param MapName &#91;required&#93; The name of the map resource to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_map(
@@ -686,6 +854,9 @@ locationservice_delete_map <- function(MapName) {
 #' locationservice_delete_place_index(IndexName)
 #'
 #' @param IndexName &#91;required&#93; The name of the Place index resource to be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -729,6 +900,9 @@ locationservice_delete_place_index <- function(IndexName) {
 #'
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_tracker(
@@ -765,6 +939,22 @@ locationservice_delete_tracker <- function(TrackerName) {
 #' locationservice_describe_geofence_collection(CollectionName)
 #'
 #' @param CollectionName &#91;required&#93; The name of the geofence collection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CollectionArn = "string",
+#'   CollectionName = "string",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -803,6 +993,26 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
 #'
 #' @param MapName &#91;required&#93; The name of the map resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configuration = list(
+#'     Style = "string"
+#'   ),
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSource = "string",
+#'   Description = "string",
+#'   MapArn = "string",
+#'   MapName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_map(
@@ -840,6 +1050,26 @@ locationservice_describe_map <- function(MapName) {
 #'
 #' @param IndexName &#91;required&#93; The name of the Place index resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSource = "string",
+#'   DataSourceConfiguration = list(
+#'     IntendedUse = "SingleUse"|"Storage"
+#'   ),
+#'   Description = "string",
+#'   IndexArn = "string",
+#'   IndexName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_place_index(
@@ -876,6 +1106,22 @@ locationservice_describe_place_index <- function(IndexName) {
 #' locationservice_describe_tracker(TrackerName)
 #'
 #' @param TrackerName &#91;required&#93; The name of the tracker resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   TrackerArn = "string",
+#'   TrackerName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -926,6 +1172,9 @@ locationservice_describe_tracker <- function(TrackerName) {
 #'     `arn:partition:service:region:account-id:resource-type:resource-id`
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to be dissociated from the consumer.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_tracker_consumer(
@@ -966,6 +1215,23 @@ locationservice_disassociate_tracker_consumer <- function(ConsumerArn, TrackerNa
 #'
 #' @param DeviceId &#91;required&#93; The device whose position you want to retreieve.
 #' @param TrackerName &#91;required&#93; The tracker resource receiving the position update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceId = "string",
+#'   Position = list(
+#'     123.0
+#'   ),
+#'   ReceivedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SampleTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1028,6 +1294,28 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' @param TrackerName &#91;required&#93; The tracker resource receiving the request for the device position
 #' history.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DevicePositions = list(
+#'     list(
+#'       DeviceId = "string",
+#'       Position = list(
+#'         123.0
+#'       ),
+#'       ReceivedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SampleTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_device_position_history(
@@ -1074,6 +1362,30 @@ locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusi
 #' @param CollectionName &#91;required&#93; The geofence collection storing the target geofence.
 #' @param GeofenceId &#91;required&#93; The geofence you're retrieving details for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   GeofenceId = "string",
+#'   Geometry = list(
+#'     Polygon = list(
+#'       list(
+#'         list(
+#'           123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Status = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_geofence(
@@ -1116,6 +1428,15 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' contain 256 characters. For example, 0-255 includes all characters from
 #' range `U+0000` to `00FF`. Must be aligned to multiples of 256.
 #' @param MapName &#91;required&#93; The map resource associated with the glyph ﬁle.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Blob = raw,
+#'   ContentType = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1171,6 +1492,15 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, MapName)
 #' -   `sprites@@2x.json` for high pixel density displays
 #' @param MapName &#91;required&#93; The map resource associated with the sprite ﬁle.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Blob = raw,
+#'   ContentType = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_map_sprites(
@@ -1213,6 +1543,15 @@ locationservice_get_map_sprites <- function(FileName, MapName) {
 #' locationservice_get_map_style_descriptor(MapName)
 #'
 #' @param MapName &#91;required&#93; The map resource to retrieve the style descriptor from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Blob = raw,
+#'   ContentType = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1261,6 +1600,15 @@ locationservice_get_map_style_descriptor <- function(MapName) {
 #' @param Y &#91;required&#93; The Y axis value for the map tile.
 #' @param Z &#91;required&#93; The zoom value for the map tile.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Blob = raw,
+#'   ContentType = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_map_tile(
@@ -1307,6 +1655,26 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
 #' 
 #' Default value: `null`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       CollectionName = "string",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_geofence_collections(
@@ -1348,6 +1716,35 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #' response. If no token is provided, the default page is the first page.
 #' 
 #' Default value: `null`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       GeofenceId = "string",
+#'       Geometry = list(
+#'         Polygon = list(
+#'           list(
+#'             list(
+#'               123.0
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Status = "string",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1393,6 +1790,27 @@ locationservice_list_geofences <- function(CollectionName, NextToken = NULL) {
 #' 
 #' Default value: `null`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataSource = "string",
+#'       Description = "string",
+#'       MapName = "string",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_maps(
@@ -1437,6 +1855,27 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 #' response. If no token is provided, the default page is the first page.
 #' 
 #' Default value: `null`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataSource = "string",
+#'       Description = "string",
+#'       IndexName = "string",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1487,6 +1926,17 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
 #' @param TrackerName &#91;required&#93; The tracker resource whose associated geofence collections you want to
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConsumerArns = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tracker_consumers(
@@ -1532,6 +1982,26 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
 #' 
 #' Default value: `null`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       TrackerName = "string",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_trackers(
@@ -1575,6 +2045,20 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param CollectionName &#91;required&#93; The geofence collection to store the geofence in.
 #' @param GeofenceId &#91;required&#93; An identifier for the geofence. For example, `ExampleGeofence-1`.
 #' @param Geometry &#91;required&#93; Contains the polygon details to specify the position of the geofence.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   GeofenceId = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1645,6 +2129,40 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' -   The second position is the Y coordinate, or latitude.
 #' 
 #' For example, `position=xLongitude&position=yLatitude` .
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       Place = list(
+#'         AddressNumber = "string",
+#'         Country = "string",
+#'         Geometry = list(
+#'           Point = list(
+#'             123.0
+#'           )
+#'         ),
+#'         Label = "string",
+#'         Municipality = "string",
+#'         Neighborhood = "string",
+#'         PostalCode = "string",
+#'         Region = "string",
+#'         Street = "string",
+#'         SubRegion = "string"
+#'       )
+#'     )
+#'   ),
+#'   Summary = list(
+#'     DataSource = "string",
+#'     MaxResults = 123,
+#'     Position = list(
+#'       123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1749,6 +2267,50 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' The default: `50`
 #' @param Text &#91;required&#93; The address, name, city, or region to be used in the search. In
 #' free-form text format. For example, `123 Any Street`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       Place = list(
+#'         AddressNumber = "string",
+#'         Country = "string",
+#'         Geometry = list(
+#'           Point = list(
+#'             123.0
+#'           )
+#'         ),
+#'         Label = "string",
+#'         Municipality = "string",
+#'         Neighborhood = "string",
+#'         PostalCode = "string",
+#'         Region = "string",
+#'         Street = "string",
+#'         SubRegion = "string"
+#'       )
+#'     )
+#'   ),
+#'   Summary = list(
+#'     BiasPosition = list(
+#'       123.0
+#'     ),
+#'     DataSource = "string",
+#'     FilterBBox = list(
+#'       123.0
+#'     ),
+#'     FilterCountries = list(
+#'       "string"
+#'     ),
+#'     MaxResults = 123,
+#'     ResultBBox = list(
+#'       123.0
+#'     ),
+#'     Text = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -20,6 +20,67 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficMirrorFilter = list(
+    TrafficMirrorFilterId = "string",
+    IngressFilterRules = list(
+      list(
+        TrafficMirrorFilterRuleId = "string",
+        TrafficMirrorFilterId = "string",
+        TrafficDirection = "ingress"|"egress",
+        RuleNumber = 123,
+        RuleAction = "accept"|"reject",
+        Protocol = 123,
+        DestinationPortRange = list(
+          FromPort = 123,
+          ToPort = 123
+        ),
+        SourcePortRange = list(
+          FromPort = 123,
+          ToPort = 123
+        ),
+        DestinationCidrBlock = "string",
+        SourceCidrBlock = "string",
+        Description = "string"
+      )
+    ),
+    EgressFilterRules = list(
+      list(
+        TrafficMirrorFilterRuleId = "string",
+        TrafficMirrorFilterId = "string",
+        TrafficDirection = "ingress"|"egress",
+        RuleNumber = 123,
+        RuleAction = "accept"|"reject",
+        Protocol = 123,
+        DestinationPortRange = list(
+          FromPort = 123,
+          ToPort = 123
+        ),
+        SourcePortRange = list(
+          FromPort = 123,
+          ToPort = 123
+        ),
+        DestinationCidrBlock = "string",
+        SourceCidrBlock = "string",
+        Description = "string"
+      )
+    ),
+    NetworkServices = list(
+      "amazon-dns"
+    ),
+    Description = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  ),
+  ClientToken = "string"
+)
+}
+}
 \description{
 Creates a Traffic Mirror filter.
 

@@ -39,6 +39,26 @@ Constraints:
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificates = list(
+    list(
+      CertificateIdentifier = "string",
+      CertificateType = "string",
+      Thumbprint = "string",
+      ValidFrom = as.POSIXct(
+        "2015-01-01"
+      ),
+      ValidTill = as.POSIXct(
+        "2015-01-01"
+      ),
+      CertificateArn = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of certificate authority (CA) certificates provided by
 Amazon DocumentDB for this AWS account.

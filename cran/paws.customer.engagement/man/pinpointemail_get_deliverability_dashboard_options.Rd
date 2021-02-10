@@ -7,6 +7,44 @@ for your Amazon Pinpoint account}
 \usage{
 pinpointemail_get_deliverability_dashboard_options()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardEnabled = TRUE|FALSE,
+  SubscriptionExpiryDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  AccountStatus = "ACTIVE"|"PENDING_EXPIRATION"|"DISABLED",
+  ActiveSubscribedDomains = list(
+    list(
+      Domain = "string",
+      SubscriptionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      InboxPlacementTrackingOption = list(
+        Global = TRUE|FALSE,
+        TrackedIsps = list(
+          "string"
+        )
+      )
+    )
+  ),
+  PendingExpirationSubscribedDomains = list(
+    list(
+      Domain = "string",
+      SubscriptionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      InboxPlacementTrackingOption = list(
+        Global = TRUE|FALSE,
+        TrackedIsps = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieve information about the status of the Deliverability dashboard
 for your Amazon Pinpoint account. When the Deliverability dashboard is

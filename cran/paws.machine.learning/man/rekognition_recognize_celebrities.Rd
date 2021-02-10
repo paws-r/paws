@@ -15,6 +15,74 @@ If you are using an AWS SDK to call Amazon Rekognition, you might not
 need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CelebrityFaces = list(
+    list(
+      Urls = list(
+        "string"
+      ),
+      Name = "string",
+      Id = "string",
+      Face = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        Confidence = 123.0,
+        Landmarks = list(
+          list(
+            Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+            X = 123.0,
+            Y = 123.0
+          )
+        ),
+        Pose = list(
+          Roll = 123.0,
+          Yaw = 123.0,
+          Pitch = 123.0
+        ),
+        Quality = list(
+          Brightness = 123.0,
+          Sharpness = 123.0
+        )
+      ),
+      MatchConfidence = 123.0
+    )
+  ),
+  UnrecognizedFaces = list(
+    list(
+      BoundingBox = list(
+        Width = 123.0,
+        Height = 123.0,
+        Left = 123.0,
+        Top = 123.0
+      ),
+      Confidence = 123.0,
+      Landmarks = list(
+        list(
+          Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+          X = 123.0,
+          Y = 123.0
+        )
+      ),
+      Pose = list(
+        Roll = 123.0,
+        Yaw = 123.0,
+        Pitch = 123.0
+      ),
+      Quality = list(
+        Brightness = 123.0,
+        Sharpness = 123.0
+      )
+    )
+  ),
+  OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
+)
+}
+}
 \description{
 Returns an array of celebrities recognized in the input image. For more
 information, see Recognizing Celebrities in the Amazon Rekognition

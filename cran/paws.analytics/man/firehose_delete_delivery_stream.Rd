@@ -21,6 +21,9 @@ Data Firehose keeps retrying the delete operation.
 
 The default value is false.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a delivery stream and its data.
 

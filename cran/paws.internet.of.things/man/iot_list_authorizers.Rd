@@ -15,6 +15,18 @@ iot_list_authorizers(pageSize, marker, ascendingOrder, status)
 
 \item{status}{The status of the list authorizers request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authorizers = list(
+    list(
+      authorizerName = "string",
+      authorizerArn = "string"
+    )
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Lists the authorizers registered in your account.
 }

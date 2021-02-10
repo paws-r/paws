@@ -13,6 +13,9 @@ directoryservice_disable_client_authentication(DirectoryId, Type)
 \item{Type}{[required] The type of client authentication to disable. Currently, only the
 parameter, \code{SmartCard} is supported.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables alternative client authentication methods for the specified
 directory.

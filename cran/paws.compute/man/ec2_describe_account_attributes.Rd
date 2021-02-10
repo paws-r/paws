@@ -14,6 +14,21 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountAttributes = list(
+    list(
+      AttributeName = "string",
+      AttributeValues = list(
+        list(
+          AttributeValue = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes attributes of your AWS account. The following are the
 supported account attributes:

@@ -11,6 +11,9 @@ chime_delete_voice_connector_emergency_calling_configuration(
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the emergency calling configuration details from the specified
 Amazon Chime Voice Connector.

@@ -20,6 +20,43 @@ workforce name.}
 
 \item{MaxResults}{The maximum number of workforces returned in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Workforces = list(
+    list(
+      WorkforceName = "string",
+      WorkforceArn = "string",
+      LastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      SourceIpConfig = list(
+        Cidrs = list(
+          "string"
+        )
+      ),
+      SubDomain = "string",
+      CognitoConfig = list(
+        UserPool = "string",
+        ClientId = "string"
+      ),
+      OidcConfig = list(
+        ClientId = "string",
+        Issuer = "string",
+        AuthorizationEndpoint = "string",
+        TokenEndpoint = "string",
+        UserInfoEndpoint = "string",
+        LogoutEndpoint = "string",
+        JwksUri = "string"
+      ),
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Use this operation to list all private and vendor workforces in an AWS
 Region. Note that you can only have one private workforce per AWS

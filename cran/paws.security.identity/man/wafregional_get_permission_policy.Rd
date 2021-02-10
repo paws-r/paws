@@ -10,6 +10,12 @@ wafregional_get_permission_policy(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the RuleGroup for which you want to
 get the policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

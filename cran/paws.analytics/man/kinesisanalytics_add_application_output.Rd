@@ -25,6 +25,9 @@ a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis
 Firehose delivery stream, or an AWS Lambda function), and record the
 formation to use when writing to the destination.}
 }
+\value{
+An empty list.
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

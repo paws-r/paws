@@ -29,6 +29,9 @@ action in the \emph{AWS Certificate Manager API Reference}.}
 
 \item{RevocationReason}{[required] Specifies why you revoked the certificate.}
 }
+\value{
+An empty list.
+}
 \description{
 Revokes a certificate that was issued inside ACM Private CA. If you
 enable a certificate revocation list (CRL) when you create or update

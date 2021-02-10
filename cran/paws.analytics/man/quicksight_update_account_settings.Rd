@@ -19,6 +19,13 @@ associated with the default namespace.}
 \item{NotificationEmail}{The email address that you want QuickSight to send notifications to
 regarding your AWS account or QuickSight subscription.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates the Amazon QuickSight settings in your AWS account.
 }

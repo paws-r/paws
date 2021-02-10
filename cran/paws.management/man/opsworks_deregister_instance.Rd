@@ -9,6 +9,9 @@ opsworks_deregister_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deregister a registered Amazon EC2 or on-premises instance. This action
 removes the instance from the stack and returns it to your control. This

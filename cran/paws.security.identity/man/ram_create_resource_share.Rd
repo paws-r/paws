@@ -29,6 +29,33 @@ idempotency of the request.}
 do not specify an ARN for the permission, AWS RAM automatically attaches
 the default version of the permission for each resource type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceShare = list(
+    resourceShareArn = "string",
+    name = "string",
+    owningAccountId = "string",
+    allowExternalPrincipals = TRUE|FALSE,
+    status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
+    statusMessage = "string",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    creationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
+  ),
+  clientToken = "string"
+)
+}
+}
 \description{
 Creates a resource share.
 }

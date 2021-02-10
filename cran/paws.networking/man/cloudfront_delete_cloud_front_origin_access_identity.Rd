@@ -12,6 +12,9 @@ cloudfront_delete_cloud_front_origin_access_identity(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header you received from a previous \code{GET} or
 \code{PUT} request. For example: \code{E2QWRUHAPOMQZL}.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete an origin access identity.
 }

@@ -22,6 +22,14 @@ is mapped to the amr claim of the JWT token.}
 
 \item{ClientToken}{[required] Idempotency token, valid for 10 minutes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TokenId = "string",
+  TokenType = "REFRESH_TOKEN",
+  Token = "string"
+)
+}
+}
 \description{
 Creates a long-lived token.
 

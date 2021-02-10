@@ -10,6 +10,24 @@ iot1clickdevicesservice_describe_device(DeviceId)
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceDescription = list(
+    Arn = "string",
+    Attributes = list(
+      "string"
+    ),
+    DeviceId = "string",
+    Enabled = TRUE|FALSE,
+    RemainingLife = 123.0,
+    Type = "string",
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Given a device ID, returns a DescribeDeviceResponse object describing
 the details of the device.

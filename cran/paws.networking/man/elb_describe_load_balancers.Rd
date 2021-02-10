@@ -15,6 +15,89 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call (a number from 1
 to 400). The default is 400.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBalancerDescriptions = list(
+    list(
+      LoadBalancerName = "string",
+      DNSName = "string",
+      CanonicalHostedZoneName = "string",
+      CanonicalHostedZoneNameID = "string",
+      ListenerDescriptions = list(
+        list(
+          Listener = list(
+            Protocol = "string",
+            LoadBalancerPort = 123,
+            InstanceProtocol = "string",
+            InstancePort = 123,
+            SSLCertificateId = "string"
+          ),
+          PolicyNames = list(
+            "string"
+          )
+        )
+      ),
+      Policies = list(
+        AppCookieStickinessPolicies = list(
+          list(
+            PolicyName = "string",
+            CookieName = "string"
+          )
+        ),
+        LBCookieStickinessPolicies = list(
+          list(
+            PolicyName = "string",
+            CookieExpirationPeriod = 123
+          )
+        ),
+        OtherPolicies = list(
+          "string"
+        )
+      ),
+      BackendServerDescriptions = list(
+        list(
+          InstancePort = 123,
+          PolicyNames = list(
+            "string"
+          )
+        )
+      ),
+      AvailabilityZones = list(
+        "string"
+      ),
+      Subnets = list(
+        "string"
+      ),
+      VPCId = "string",
+      Instances = list(
+        list(
+          InstanceId = "string"
+        )
+      ),
+      HealthCheck = list(
+        Target = "string",
+        Interval = 123,
+        Timeout = 123,
+        UnhealthyThreshold = 123,
+        HealthyThreshold = 123
+      ),
+      SourceSecurityGroup = list(
+        OwnerAlias = "string",
+        GroupName = "string"
+      ),
+      SecurityGroups = list(
+        "string"
+      ),
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Scheme = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the specified the load balancers. If no load balancers are
 specified, the call describes all of your load balancers.

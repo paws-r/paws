@@ -13,6 +13,38 @@ iot_list_topic_rule_destinations(maxResults, nextToken)
 previous response; otherwise \strong{null} to receive the first set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  destinationSummaries = list(
+    list(
+      arn = "string",
+      status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      statusReason = "string",
+      httpUrlSummary = list(
+        confirmationUrl = "string"
+      ),
+      vpcDestinationSummary = list(
+        subnetIds = list(
+          "string"
+        ),
+        securityGroups = list(
+          "string"
+        ),
+        vpcId = "string",
+        roleArn = "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all the topic rule destinations in your AWS account.
 }

@@ -12,6 +12,20 @@ pinpointemail_create_email_identity(EmailIdentity, Tags)
 \item{Tags}{An array of objects that define the tags (keys and values) that you want
 to associate with the email identity.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+  VerifiedForSendingStatus = TRUE|FALSE,
+  DkimAttributes = list(
+    SigningEnabled = TRUE|FALSE,
+    Status = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
+    Tokens = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Verifies an email identity for use with Amazon Pinpoint. In Amazon
 Pinpoint, an identity is an email address or domain that you use when

@@ -14,7 +14,7 @@ elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
 \item{Protocol}{The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-and TCP\\_UDP. You can’t specify the UDP or TCP\\_UDP protocol if
+and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if
 dual-stack mode is enabled. You cannot specify a protocol for a Gateway
 Load Balancer.}
 
@@ -49,6 +49,89 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Tags}{The tags to assign to the listener.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Listeners = list(
+    list(
+      ListenerArn = "string",
+      LoadBalancerArn = "string",
+      Port = 123,
+      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      Certificates = list(
+        list(
+          CertificateArn = "string",
+          IsDefault = TRUE|FALSE
+        )
+      ),
+      SslPolicy = "string",
+      DefaultActions = list(
+        list(
+          Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+          TargetGroupArn = "string",
+          AuthenticateOidcConfig = list(
+            Issuer = "string",
+            AuthorizationEndpoint = "string",
+            TokenEndpoint = "string",
+            UserInfoEndpoint = "string",
+            ClientId = "string",
+            ClientSecret = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+            UseExistingClientSecret = TRUE|FALSE
+          ),
+          AuthenticateCognitoConfig = list(
+            UserPoolArn = "string",
+            UserPoolClientId = "string",
+            UserPoolDomain = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+          ),
+          Order = 123,
+          RedirectConfig = list(
+            Protocol = "string",
+            Port = "string",
+            Host = "string",
+            Path = "string",
+            Query = "string",
+            StatusCode = "HTTP_301"|"HTTP_302"
+          ),
+          FixedResponseConfig = list(
+            MessageBody = "string",
+            StatusCode = "string",
+            ContentType = "string"
+          ),
+          ForwardConfig = list(
+            TargetGroups = list(
+              list(
+                TargetGroupArn = "string",
+                Weight = 123
+              )
+            ),
+            TargetGroupStickinessConfig = list(
+              Enabled = TRUE|FALSE,
+              DurationSeconds = 123
+            )
+          )
+        )
+      ),
+      AlpnPolicy = list(
+        "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Creates a listener for the specified Application Load Balancer, Network
@@ -157,11 +240,11 @@ settings, each call succeeds.
 svc$create_listener(
   DefaultActions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
       Type = "forward"
     )
   ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
   Port = 80L,
   Protocol = "HTTP"
 )
@@ -181,11 +264,11 @@ svc$create_listener(
   ),
   DefaultActions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
       Type = "forward"
     )
   ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
   Port = 443L,
   Protocol = "HTTPS",
   SslPolicy = "ELBSecurityPolicy-2015-05"

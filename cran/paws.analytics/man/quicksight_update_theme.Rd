@@ -24,6 +24,17 @@ of the version in \code{VersionDescription}.}
 
 \item{Configuration}{The theme configuration, which contains the theme display properties.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThemeId = "string",
+  Arn = "string",
+  VersionArn = "string",
+  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Updates a theme.
 }

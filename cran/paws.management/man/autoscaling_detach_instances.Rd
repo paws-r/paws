@@ -15,6 +15,29 @@ autoscaling_detach_instances(InstanceIds, AutoScalingGroupName,
 \item{ShouldDecrementDesiredCapacity}{[required] Indicates whether the Auto Scaling group decrements the desired capacity
 value by the number of instances detached.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Activities = list(
+    list(
+      ActivityId = "string",
+      AutoScalingGroupName = "string",
+      Description = "string",
+      Cause = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+      StatusMessage = "string",
+      Progress = 123,
+      Details = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes one or more instances from the specified Auto Scaling group.
 

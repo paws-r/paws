@@ -11,6 +11,9 @@ cognitoidentityprovider_delete_user_pool_client(UserPoolId, ClientId)
 
 \item{ClientId}{[required] The app client ID of the app associated with the user pool.}
 }
+\value{
+An empty list.
+}
 \description{
 Allows the developer to delete the user pool client.
 }

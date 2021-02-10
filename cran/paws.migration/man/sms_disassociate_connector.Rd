@@ -9,6 +9,9 @@ sms_disassociate_connector(connectorId)
 \arguments{
 \item{connectorId}{[required] The ID of the connector.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the specified connector from AWS SMS.
 

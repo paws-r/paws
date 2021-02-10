@@ -9,6 +9,17 @@ licensemanager_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the tags for the specified license configuration.
 }

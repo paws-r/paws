@@ -49,6 +49,9 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the specified user's attributes, including developer attributes,
 as an administrator. Works on any user.

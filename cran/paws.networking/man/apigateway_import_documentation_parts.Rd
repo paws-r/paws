@@ -22,6 +22,17 @@ default value is \code{false}.}
 documentation parts. To import from an OpenAPI file, this is a JSON
 object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ids = list(
+    "string"
+  ),
+  warnings = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Import documentation parts
 }

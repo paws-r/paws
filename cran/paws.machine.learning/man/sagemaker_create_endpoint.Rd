@@ -20,6 +20,12 @@ preserved and must be matched in .}
 resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointArn = "string"
+)
+}
+}
 \description{
 Creates an endpoint using the endpoint configuration specified in the
 request. Amazon SageMaker uses the endpoint to provision resources and
@@ -29,7 +35,7 @@ deploy models. You create the endpoint configuration with the
 Use this API to deploy models using Amazon SageMaker hosting services.
 
 For an example that calls this method when deploying a model to Amazon
-SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
+SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
 
 You must not delete an \code{EndpointConfig} that is in use by an endpoint
 that is live or while the \code{\link[=sagemaker_update_endpoint]{update_endpoint}}
@@ -85,17 +91,24 @@ operations, add the following policies to the role.
 following Action elements manually into the JSON file of the IAM
 role:
 
-\verb{"Action": \\\["sagemaker:CreateEndpoint", "sagemaker:CreateEndpointConfig"\\\]}
+\verb{"Action": ["sagemaker:CreateEndpoint", "sagemaker:CreateEndpointConfig"]}
 
-\verb{"Resource": \\\[}
+\verb{"Resource": [}
 
 \code{"arn:aws:sagemaker:region:account-id:endpoint/endpointName"}
 
 \code{"arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName"}
 
-\verb{\\\]}
+\verb{]}
 
 For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html}{Amazon SageMaker API Permissions: Actions, Permissions, and Resources Reference}.
+}
+
+[`\preformatted{`"arn:aws:sagemaker:region:account-id:endpoint/endpointName"`
+
+`"arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName"`
+
+`]: R:\%60\%0A\%0A\%20\%20\%20\%20\%60\%22arn:aws:sagemaker:region:account-id:endpoint/endpointName\%22\%60\%0A\%0A\%20\%20\%20\%20\%60\%22arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName\%22\%60\%0A\%0A\%20\%20\%20\%20\%60
 }
 }
 \section{Request syntax}{

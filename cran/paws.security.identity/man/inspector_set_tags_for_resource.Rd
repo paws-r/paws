@@ -13,6 +13,9 @@ inspector_set_tags_for_resource(resourceArn, tags)
 \item{tags}{A collection of key and value pairs that you want to set to the
 assessment template.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets tags (key and value pairs) to the assessment template that is
 specified by the ARN of the assessment template.
@@ -35,7 +38,7 @@ specified by the ARN of the assessment template.
 # Sets tags (key and value pairs) to the assessment template that is
 # specified by the ARN of the assessment template.
 svc$set_tags_for_resource(
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2...",
+  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/...",
   tags = list(
     list(
       key = "Example",

@@ -9,6 +9,9 @@ cloudwatchlogs_delete_resource_policy(policyName)
 \arguments{
 \item{policyName}{The name of the policy to be revoked. This parameter is required.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a resource policy from this account. This revokes the access of
 the identities in that policy to put log events to this account.

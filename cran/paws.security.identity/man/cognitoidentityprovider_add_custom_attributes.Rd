@@ -13,6 +13,9 @@ attributes.}
 
 \item{CustomAttributes}{[required] An array of custom attributes, such as Mutable and Name.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds additional user attributes to the user pool schema.
 }

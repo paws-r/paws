@@ -28,7 +28,7 @@ The following are the punctuation characters that \emph{can} be included in
 the generated password if you don't explicitly exclude them with
 \code{ExcludeCharacters} or \code{ExcludePunctuation}:
 
-\verb{! \\" # $ \% & \\' ( ) * + , - . / : ; < = > ? @ \\\[ \\\\ \\\] ^ _ \\` \\\{ | \\\} ~}}
+\verb{! \\" # $ \% & \\' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ \\` \{ | \} ~}}
 
 \item{ExcludeUppercase}{Specifies that the generated password should not include uppercase
 letters. The default if you do not include this switch parameter is that
@@ -46,6 +46,12 @@ space character is not included.}
 include at least one of every allowed character type. The default value
 is \code{True} and the operation requires at least one of every character
 type.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RandomPassword = "string"
+)
+}
 }
 \description{
 Generates a random password of the specified complexity. This operation

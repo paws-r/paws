@@ -15,6 +15,9 @@ server, user, or role.}
 for resources by type. You can attach this metadata to user accounts for
 any purpose.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches a key-value pair to a resource, as identified by its Amazon
 Resource Name (ARN). Resources are users, servers, roles, and other

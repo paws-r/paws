@@ -23,6 +23,9 @@ To get the key ID and key ARN for a CMK, use
 
 \item{Description}{[required] New description for the CMK.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the description of a customer master key (CMK). To see the
 description of a CMK, use \code{\link[=kms_describe_key]{describe_key}}.

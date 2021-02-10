@@ -14,6 +14,9 @@ pinpoint_untag_resource(ResourceArn, TagKeys)
 append the tagKeys parameter and argument for each additional tag to
 remove, separated by an ampersand (&).}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags (keys and values) from an application,
 campaign, message template, or segment.

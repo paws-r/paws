@@ -9,6 +9,9 @@ apigatewayv2_delete_cors_configuration(ApiId)
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a CORS configuration.
 }

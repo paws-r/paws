@@ -15,6 +15,9 @@ key group’s \code{ETag} value. To get the \code{ETag}, use
 \code{\link[=cloudfront_get_key_group]{get_key_group}} or
 \code{\link[=cloudfront_get_key_group_config]{get_key_group_config}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a key group.
 

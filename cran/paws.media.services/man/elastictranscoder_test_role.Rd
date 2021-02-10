@@ -19,6 +19,15 @@ files to. The action attempts to read from this bucket.}
 \item{Topics}{[required] The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
 topics that you want the action to send a test notification to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Success = "string",
+  Messages = list(
+    "string"
+  )
+)
+}
+}
 \description{
 The TestRole operation tests the IAM role used to create the pipeline.
 

@@ -18,7 +18,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -27,7 +27,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
@@ -77,6 +77,49 @@ parts in this object.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeleteMarker = TRUE|FALSE,
+  AcceptRanges = "string",
+  Expiration = "string",
+  Restore = "string",
+  ArchiveStatus = "ARCHIVE_ACCESS"|"DEEP_ARCHIVE_ACCESS",
+  LastModified = as.POSIXct(
+    "2015-01-01"
+  ),
+  ContentLength = 123,
+  ETag = "string",
+  MissingMeta = 123,
+  VersionId = "string",
+  CacheControl = "string",
+  ContentDisposition = "string",
+  ContentEncoding = "string",
+  ContentLanguage = "string",
+  ContentType = "string",
+  Expires = as.POSIXct(
+    "2015-01-01"
+  ),
+  WebsiteRedirectLocation = "string",
+  ServerSideEncryption = "AES256"|"aws:kms",
+  Metadata = list(
+    "string"
+  ),
+  SSECustomerAlgorithm = "string",
+  SSECustomerKeyMD5 = "string",
+  SSEKMSKeyId = "string",
+  BucketKeyEnabled = TRUE|FALSE,
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
+  RequestCharged = "requester",
+  ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA",
+  PartsCount = 123,
+  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
+  ObjectLockRetainUntilDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ObjectLockLegalHoldStatus = "ON"|"OFF"
+)
+}
+}
 \description{
 The HEAD operation retrieves metadata from an object without returning
 the object itself. This operation is useful if you're only interested in
@@ -97,7 +140,7 @@ use the following headers:
 \item x-amz-server-side-encryption-customer-key-MD5
 }
 
-For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}.
+For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}.
 
 Encryption request headers, like \code{x-amz-server-side-encryption}, should
 not be sent for GET requests if your object uses server-side encryption
@@ -133,7 +176,7 @@ For more information about conditional requests, see \href{https://tools.ietf.or
 \strong{Permissions}
 
 You need the \code{s3:GetObject} permission for this operation. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
 If the object you request does not exist, the error Amazon S3 returns
 depends on whether you also have the s3:ListBucket permission.
 \itemize{

@@ -18,6 +18,28 @@ need to be unique.}
 \item{RoutingStrategy}{The routing configuration, including routing type and fleet target, for
 the alias.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Alias = list(
+    AliasId = "string",
+    Name = "string",
+    AliasArn = "string",
+    Description = "string",
+    RoutingStrategy = list(
+      Type = "SIMPLE"|"TERMINAL",
+      FleetId = "string",
+      Message = "string"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates properties for an alias. To update properties, specify the alias
 ID to be updated and provide the information to be changed. To reassign

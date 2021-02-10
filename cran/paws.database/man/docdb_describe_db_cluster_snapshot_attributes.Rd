@@ -11,6 +11,22 @@ docdb_describe_db_cluster_snapshot_attributes(
 \arguments{
 \item{DBClusterSnapshotIdentifier}{[required] The identifier for the cluster snapshot to describe the attributes for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshotAttributesResult = list(
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterSnapshotAttributes = list(
+      list(
+        AttributeName = "string",
+        AttributeValues = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of cluster snapshot attribute names and values for a
 manual DB cluster snapshot.

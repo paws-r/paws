@@ -9,6 +9,12 @@ codedeploy_delete_git_hub_account_token(tokenName)
 \arguments{
 \item{tokenName}{The name of the GitHub account connection to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tokenName = "string"
+)
+}
+}
 \description{
 Deletes a GitHub account connection.
 }

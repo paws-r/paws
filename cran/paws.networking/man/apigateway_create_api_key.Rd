@@ -27,8 +27,31 @@ key.}
 SaaS Marketplace.}
 
 \item{tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  value = "string",
+  name = "string",
+  customerId = "string",
+  description = "string",
+  enabled = TRUE|FALSE,
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  stageKeys = list(
+    "string"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Create an ApiKey resource.<div class="seeAlso">

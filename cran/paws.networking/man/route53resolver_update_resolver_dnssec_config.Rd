@@ -14,6 +14,17 @@ DNSSEC validation status for.}
 The value can be \code{ENABLE} or \code{DISABLE}. Be aware that it can take time
 for a validation status change to be completed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverDNSSECConfig = list(
+    Id = "string",
+    OwnerId = "string",
+    ResourceId = "string",
+    ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+  )
+)
+}
+}
 \description{
 Updates an existing DNSSEC validation configuration. If there is no
 existing DNSSEC validation configuration, one is created.

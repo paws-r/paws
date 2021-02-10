@@ -20,6 +20,27 @@ the ID of the last invalidation batch on that page.}
 \item{MaxItems}{The maximum number of invalidation batches that you want in the response
 body.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InvalidationList = list(
+    Marker = "string",
+    NextMarker = "string",
+    MaxItems = 123,
+    IsTruncated = TRUE|FALSE,
+    Quantity = 123,
+    Items = list(
+      list(
+        Id = "string",
+        CreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        Status = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists invalidation batches.
 }

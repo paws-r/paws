@@ -16,6 +16,9 @@ spaces. You can also include any of the following characters: =,.@-}
 \item{Tags}{[required] The list of tags that you want to attach to the user. Each tag consists
 of a key name and an associated value.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to an IAM user. If a tag with the same key name
 already exists, then that tag is overwritten with the new value.
@@ -37,9 +40,6 @@ to use tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/
 in the \emph{IAM User Guide}.
 \item \strong{Cost allocation} - Use tags to help track which individuals and
 teams are using which AWS resources.
-}<!-- -->
-
-\itemize{
 \item Make sure that you have no invalid tags and that you do not exceed
 the allowed number of tags per role. In either case, the entire
 request fails and \emph{no} tags are added to the role.

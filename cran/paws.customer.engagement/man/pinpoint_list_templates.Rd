@@ -24,6 +24,29 @@ those templates whose names begin with the value that you specify.}
 are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
 the results, don't include this parameter in your request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplatesResponse = list(
+    Item = list(
+      list(
+        Arn = "string",
+        CreationDate = "string",
+        DefaultSubstitutions = "string",
+        LastModifiedDate = "string",
+        tags = list(
+          "string"
+        ),
+        TemplateDescription = "string",
+        TemplateName = "string",
+        TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+        Version = "string"
+      )
+    ),
+    NextToken = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about all the message templates that are
 associated with your Amazon Pinpoint account.

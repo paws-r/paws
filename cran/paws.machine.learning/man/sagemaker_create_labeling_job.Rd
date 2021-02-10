@@ -47,7 +47,7 @@ following format. Identify the labels you want to use by replacing
 
 \code{ "document-version": "2018-11-28"}
 
-\verb{ "labels": \\\[}
+\verb{ "labels": [}
 
 \verb{ \\\{}
 
@@ -69,9 +69,33 @@ following format. Identify the labels you want to use by replacing
 
 \verb{ \\\}}
 
-\verb{ \\\]}
+\verb{ ]}
 
-\verb{\\\}}}
+\verb{\\\}}
+
+[`
+
+\verb{ \\\{}
+
+\code{ "label": "label_1"}
+
+\verb{ \\\},}
+
+\verb{ \\\{}
+
+\code{ "label": "label_2"}
+
+\verb{ \\\},}
+
+\code{ ...}
+
+\verb{ \\\{}
+
+\code{ "label": "label_n"}
+
+\verb{ \\\}}
+
+` ]: R:\%60\%0A\%0A\%60\%20\%5C\%5C\%7B\%60\%0A\%0A\%60\%20\%22label\%22:\%20\%22label_1\%22\%60\%0A\%0A\%60\%20\%5C\%5C\%7D,\%60\%0A\%0A\%60\%20\%5C\%5C\%7B\%60\%0A\%0A\%60\%20\%22label\%22:\%20\%22label_2\%22\%60\%0A\%0A\%60\%20\%5C\%5C\%7D,\%60\%0A\%0A\%60\%20...\%60\%0A\%0A\%60\%20\%5C\%5C\%7B\%60\%0A\%0A\%60\%20\%22label\%22:\%20\%22label_n\%22\%60\%0A\%0A\%60\%20\%5C\%5C\%7D\%60\%0A\%0A\%60\%20}
 
 \item{StoppingConditions}{A set of conditions for stopping the labeling job. If any of the
 conditions are met, the job is automatically stopped. You can use these
@@ -85,6 +109,12 @@ count).}
 
 \item{Tags}{An array of key/value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  LabelingJobArn = "string"
+)
+}
 }
 \description{
 Creates a job that uses workers to label the data objects in your input

@@ -14,6 +14,64 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConversionTasks = list(
+    list(
+      ConversionTaskId = "string",
+      ExpirationTime = "string",
+      ImportInstance = list(
+        Description = "string",
+        InstanceId = "string",
+        Platform = "Windows",
+        Volumes = list(
+          list(
+            AvailabilityZone = "string",
+            BytesConverted = 123,
+            Description = "string",
+            Image = list(
+              Checksum = "string",
+              Format = "VMDK"|"RAW"|"VHD",
+              ImportManifestUrl = "string",
+              Size = 123
+            ),
+            Status = "string",
+            StatusMessage = "string",
+            Volume = list(
+              Id = "string",
+              Size = 123
+            )
+          )
+        )
+      ),
+      ImportVolume = list(
+        AvailabilityZone = "string",
+        BytesConverted = 123,
+        Description = "string",
+        Image = list(
+          Checksum = "string",
+          Format = "VMDK"|"RAW"|"VHD",
+          ImportManifestUrl = "string",
+          Size = 123
+        ),
+        Volume = list(
+          Id = "string",
+          Size = 123
+        )
+      ),
+      State = "active"|"cancelling"|"cancelled"|"completed",
+      StatusMessage = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified conversion tasks or all your conversion tasks.
 For more information, see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.

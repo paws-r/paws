@@ -16,6 +16,24 @@ and groups.}
 
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SessionMappings = list(
+    list(
+      StudioId = "string",
+      IdentityId = "string",
+      IdentityName = "string",
+      IdentityType = "USER"|"GROUP",
+      SessionPolicyArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

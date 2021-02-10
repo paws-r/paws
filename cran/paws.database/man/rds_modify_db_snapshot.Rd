@@ -39,6 +39,56 @@ The same option group considerations apply when upgrading a DB snapshot
 as when upgrading a DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG}{Option group considerations}
 in the \emph{Amazon RDS User Guide.}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSnapshot = list(
+    DBSnapshotIdentifier = "string",
+    DBInstanceIdentifier = "string",
+    SnapshotCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Engine = "string",
+    AllocatedStorage = 123,
+    Status = "string",
+    Port = 123,
+    AvailabilityZone = "string",
+    VpcId = "string",
+    InstanceCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    EngineVersion = "string",
+    LicenseModel = "string",
+    SnapshotType = "string",
+    Iops = 123,
+    OptionGroupName = "string",
+    PercentProgress = 123,
+    SourceRegion = "string",
+    SourceDBSnapshotIdentifier = "string",
+    StorageType = "string",
+    TdeCredentialArn = "string",
+    Encrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    DBSnapshotArn = "string",
+    Timezone = "string",
+    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+    ProcessorFeatures = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    ),
+    DbiResourceId = "string",
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates a manual DB snapshot with a new engine version. The snapshot can
 be encrypted or unencrypted, but not shared or public.

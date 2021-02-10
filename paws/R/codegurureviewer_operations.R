@@ -51,6 +51,32 @@ NULL
 #'     value is the same as using an empty string. Like tag keys, tag
 #'     values are case sensitive.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryAssociation = list(
+#'     AssociationId = "string",
+#'     AssociationArn = "string",
+#'     ConnectionArn = "string",
+#'     Name = "string",
+#'     Owner = "string",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated",
+#'     StateReason = "string",
+#'     LastUpdatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_repository(
@@ -126,6 +152,44 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #' @param ClientRequestToken Amazon CodeGuru Reviewer uses this value to prevent the accidental
 #' creation of duplicate code reviews if there are failures and retries.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CodeReview = list(
+#'     Name = "string",
+#'     CodeReviewArn = "string",
+#'     RepositoryName = "string",
+#'     Owner = "string",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     State = "Completed"|"Pending"|"Failed"|"Deleting",
+#'     StateReason = "string",
+#'     CreatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Type = "PullRequest"|"RepositoryAnalysis",
+#'     PullRequestId = "string",
+#'     SourceCodeType = list(
+#'       CommitDiff = list(
+#'         SourceCommit = "string",
+#'         DestinationCommit = "string"
+#'       ),
+#'       RepositoryHead = list(
+#'         BranchName = "string"
+#'       )
+#'     ),
+#'     AssociationArn = "string",
+#'     Metrics = list(
+#'       MeteredLinesOfCodeCount = 123,
+#'       FindingsCount = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_code_review(
@@ -175,6 +239,44 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
 #' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
 #' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CodeReview = list(
+#'     Name = "string",
+#'     CodeReviewArn = "string",
+#'     RepositoryName = "string",
+#'     Owner = "string",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     State = "Completed"|"Pending"|"Failed"|"Deleting",
+#'     StateReason = "string",
+#'     CreatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Type = "PullRequest"|"RepositoryAnalysis",
+#'     PullRequestId = "string",
+#'     SourceCodeType = list(
+#'       CommitDiff = list(
+#'         SourceCommit = "string",
+#'         DestinationCommit = "string"
+#'       ),
+#'       RepositoryHead = list(
+#'         BranchName = "string"
+#'       )
+#'     ),
+#'     AssociationArn = "string",
+#'     Metrics = list(
+#'       MeteredLinesOfCodeCount = 123,
+#'       FindingsCount = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -226,6 +328,27 @@ codegurureviewer_describe_code_review <- function(CodeReviewArn) {
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying)
 #' in the *AWS Identity and Access Management User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommendationFeedback = list(
+#'     CodeReviewArn = "string",
+#'     RecommendationId = "string",
+#'     Reactions = list(
+#'       "ThumbsUp"|"ThumbsDown"
+#'     ),
+#'     UserId = "string",
+#'     CreatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_recommendation_feedback(
@@ -273,6 +396,32 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryAssociation = list(
+#'     AssociationId = "string",
+#'     AssociationArn = "string",
+#'     ConnectionArn = "string",
+#'     Name = "string",
+#'     Owner = "string",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated",
+#'     StateReason = "string",
+#'     LastUpdatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_repository_association(
@@ -316,6 +465,32 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryAssociation = list(
+#'     AssociationId = "string",
+#'     AssociationArn = "string",
+#'     ConnectionArn = "string",
+#'     Name = "string",
+#'     Owner = "string",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated",
+#'     StateReason = "string",
+#'     LastUpdatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedTimeStamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_repository(
@@ -355,11 +530,11 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #'   RepositoryNames, Type, MaxResults, NextToken)
 #'
 #' @param ProviderTypes List of provider types for filtering that needs to be applied before
-#' displaying the result. For example, `providerTypes=\\[GitHub\\]` lists
-#' code reviews from GitHub.
+#' displaying the result. For example, `providerTypes=[GitHub]` lists code
+#' reviews from GitHub.
 #' @param States List of states for filtering that needs to be applied before displaying
-#' the result. For example, `states=\\[Pending\\]` lists code reviews in
-#' the Pending state.
+#' the result. For example, `states=[Pending]` lists code reviews in the
+#' Pending state.
 #' 
 #' The valid code review states are:
 #' 
@@ -379,6 +554,36 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #' nextToken is a unique pagination token for each page. Make the call
 #' again using the returned token to retrieve the next page. Keep all other
 #' arguments unchanged.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CodeReviewSummaries = list(
+#'     list(
+#'       Name = "string",
+#'       CodeReviewArn = "string",
+#'       RepositoryName = "string",
+#'       Owner = "string",
+#'       ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'       State = "Completed"|"Pending"|"Failed"|"Deleting",
+#'       CreatedTimeStamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTimeStamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Type = "PullRequest"|"RepositoryAnalysis",
+#'       PullRequestId = "string",
+#'       MetricsSummary = list(
+#'         MeteredLinesOfCodeCount = 123,
+#'         FindingsCount = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -450,6 +655,23 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
 #' in the *AWS Identity and Access Management User Guide*.
 #' @param RecommendationIds Used to query the recommendation feedback for a given recommendation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommendationFeedbackSummaries = list(
+#'     list(
+#'       RecommendationId = "string",
+#'       Reactions = list(
+#'         "ThumbsUp"|"ThumbsDown"
+#'       ),
+#'       UserId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_recommendation_feedback(
@@ -500,6 +722,23 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
 #' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
 #' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommendationSummaries = list(
+#'     list(
+#'       FilePath = "string",
+#'       RecommendationId = "string",
+#'       StartLine = 123,
+#'       EndLine = 123,
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -612,6 +851,28 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' Treat this token as an opaque identifier that is only used to retrieve
 #' the next items in a list and not for other programmatic purposes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryAssociationSummaries = list(
+#'     list(
+#'       AssociationArn = "string",
+#'       ConnectionArn = "string",
+#'       LastUpdatedTimeStamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssociationId = "string",
+#'       Name = "string",
+#'       Owner = "string",
+#'       ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'       State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_repository_associations(
@@ -668,6 +929,16 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
 #' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -713,6 +984,9 @@ codegurureviewer_list_tags_for_resource <- function(resourceArn) {
 #' recommendations and then to collect the feedback.
 #' @param Reactions &#91;required&#93; List for storing reactions. Reactions are utf-8 text code for emojis. If
 #' you send an empty list it clears all your feedback.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -769,6 +1043,9 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
 #'     value is the same as using an empty string. Like tag keys, tag
 #'     values are case sensitive.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -814,6 +1091,9 @@ codegurureviewer_tag_resource <- function(resourceArn, Tags) {
 #' .
 #' @param TagKeys &#91;required&#93; A list of the keys for each tag you want to remove from an associated
 #' repository.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

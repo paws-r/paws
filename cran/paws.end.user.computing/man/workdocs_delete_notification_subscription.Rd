@@ -12,6 +12,9 @@ workdocs_delete_notification_subscription(SubscriptionId,
 
 \item{OrganizationId}{[required] The ID of the organization.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified subscription from the specified organization.
 }

@@ -14,6 +14,9 @@ Amazon Pinpoint account.}
 \item{DestinationPoolName}{[required] The name of the IP pool that you want to add the dedicated IP address
 to. You have to specify an IP pool that already exists.}
 }
+\value{
+An empty list.
+}
 \description{
 Move a dedicated IP address to an existing dedicated IP pool.
 

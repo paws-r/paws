@@ -30,7 +30,7 @@ servicecatalog_create_product(AcceptLanguage, Name, Owner, Description,
 
 \item{SupportUrl}{The contact URL for product support.
 
-\verb{^https?:\\\\/\\\\// }/ is the pattern used to validate SupportUrl.}
+\verb{^https?:\\/\\// }/ is the pattern used to validate SupportUrl.}
 
 \item{ProductType}{[required] The type of product.}
 
@@ -41,6 +41,48 @@ servicecatalog_create_product(AcceptLanguage, Name, Owner, Description,
 \item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ProductViewDetail = list(
+    ProductViewSummary = list(
+      Id = "string",
+      ProductId = "string",
+      Name = "string",
+      Owner = "string",
+      ShortDescription = "string",
+      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+      Distributor = "string",
+      HasDefaultPath = TRUE|FALSE,
+      SupportEmail = "string",
+      SupportDescription = "string",
+      SupportUrl = "string"
+    ),
+    Status = "AVAILABLE"|"CREATING"|"FAILED",
+    ProductARN = "string",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  ProvisioningArtifactDetail = list(
+    Id = "string",
+    Name = "string",
+    Description = "string",
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Active = TRUE|FALSE,
+    Guidance = "DEFAULT"|"DEPRECATED"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a product.

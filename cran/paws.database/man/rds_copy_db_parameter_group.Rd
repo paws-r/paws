@@ -36,6 +36,17 @@ Example: \code{my-db-parameter-group}}
 
 \item{Tags}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBParameterGroup = list(
+    DBParameterGroupName = "string",
+    DBParameterGroupFamily = "string",
+    Description = "string",
+    DBParameterGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Copies the specified DB parameter group.
 }

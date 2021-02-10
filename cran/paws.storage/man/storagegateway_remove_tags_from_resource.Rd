@@ -13,6 +13,12 @@ tags from.}
 \item{TagKeys}{[required] The keys of the tags you want to remove from the specified resource. A
 tag is composed of a key-value pair.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceARN = "string"
+)
+}
+}
 \description{
 Removes one or more tags from the specified resource. This operation is
 supported in storage gateways of all types.

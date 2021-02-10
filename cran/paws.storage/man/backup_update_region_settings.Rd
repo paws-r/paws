@@ -10,6 +10,9 @@ backup_update_region_settings(ResourceTypeOptInPreference)
 \item{ResourceTypeOptInPreference}{Updates the list of services along with the opt-in preferences for the
 Region.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the current service opt-in settings for the Region. If
 service-opt-in is enabled for a service, AWS Backup tries to protect

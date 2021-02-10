@@ -62,6 +62,25 @@ If any one of the tags is invalid or if you exceed the allowed number of
 tags for an account, then the entire request fails and the account is
 not created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CreateAccountStatus = list(
+    Id = "string",
+    AccountName = "string",
+    State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+    RequestedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CompletedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    AccountId = "string",
+    GovCloudAccountId = "string",
+    FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+  )
+)
+}
+}
 \description{
 Creates an AWS account that is automatically a member of the
 organization whose credentials made the request. This is an asynchronous

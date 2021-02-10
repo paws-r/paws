@@ -19,6 +19,31 @@ cognitoidentityprovider_update_identity_provider(UserPoolId,
 
 \item{IdpIdentifiers}{A list of identity provider identifiers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityProvider = list(
+    UserPoolId = "string",
+    ProviderName = "string",
+    ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+    ProviderDetails = list(
+      "string"
+    ),
+    AttributeMapping = list(
+      "string"
+    ),
+    IdpIdentifiers = list(
+      "string"
+    ),
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates identity provider information for a user pool.
 }

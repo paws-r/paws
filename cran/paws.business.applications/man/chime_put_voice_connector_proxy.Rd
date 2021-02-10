@@ -21,6 +21,19 @@ chime_put_voice_connector_proxy(VoiceConnectorId,
 \item{Disabled}{When true, stops proxy sessions from being created on the specified
 Amazon Chime Voice Connector.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Proxy = list(
+    DefaultSessionExpiryMinutes = 123,
+    Disabled = TRUE|FALSE,
+    FallBackPhoneNumber = "string",
+    PhoneNumberCountries = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Puts the specified proxy configuration to the specified Amazon Chime
 Voice Connector.

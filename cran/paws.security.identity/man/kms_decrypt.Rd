@@ -3,13 +3,7 @@
 \name{kms_decrypt}
 \alias{kms_decrypt}
 \title{Decrypts ciphertext that was encrypted by a AWS KMS customer master key
-(CMK) using any of the following operations: - Encrypt - GenerateDataKey
-\itemize{
-\item GenerateDataKeyPair - GenerateDataKeyWithoutPlaintext -
-GenerateDataKeyPairWithoutPlaintext You can use this operation to
-decrypt ciphertext that was encrypted under a symmetric or asymmetric
-CMK
-}}
+(CMK) using any of the following operations:}
 \usage{
 kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens, KeyId,
   EncryptionAlgorithm)
@@ -75,6 +69,14 @@ This parameter is required only when the ciphertext was encrypted under
 an asymmetric CMK. The default value, \code{SYMMETRIC_DEFAULT}, represents
 the only supported algorithm that is valid for symmetric CMKs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyId = "string",
+  Plaintext = raw,
+  EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+)
+}
+}
 \description{
 Decrypts ciphertext that was encrypted by a AWS KMS customer master key
 (CMK) using any of the following operations:
@@ -97,7 +99,7 @@ The Decrypt operation also decrypts ciphertext that was encrypted
 outside of AWS KMS by the public key in an AWS KMS asymmetric CMK.
 However, it cannot decrypt ciphertext produced by other libraries, such
 as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
-or \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
+or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
 These libraries return a ciphertext format that is incompatible with AWS
 KMS.
 

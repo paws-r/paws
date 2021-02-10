@@ -46,6 +46,35 @@ Values: ERROR, INFO}
 \item{Enabled}{A Boolean value indicating if the subscription is enabled. \code{true}
 indicates the subscription is enabled}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Severity = "string",
+    Enabled = TRUE|FALSE,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies an existing Amazon Redshift event notification subscription.
 }

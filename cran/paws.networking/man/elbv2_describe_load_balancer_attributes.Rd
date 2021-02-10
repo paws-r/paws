@@ -10,6 +10,17 @@ elbv2_describe_load_balancer_attributes(LoadBalancerArn)
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the attributes for the specified Application Load Balancer,
 Network Load Balancer, or Gateway Load Balancer.
@@ -35,7 +46,7 @@ in the \emph{Gateway Load Balancers Guide}
 \dontrun{
 # This example describes the attributes of the specified load balancer.
 svc$describe_load_balancer_attributes(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
 )
 }
 

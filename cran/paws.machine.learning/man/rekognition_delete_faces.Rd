@@ -11,6 +11,14 @@ rekognition_delete_faces(CollectionId, FaceIds)
 
 \item{FaceIds}{[required] An array of face IDs to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeletedFaces = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Deletes faces from a collection. You specify a collection ID and an
 array of face IDs to remove from the collection.

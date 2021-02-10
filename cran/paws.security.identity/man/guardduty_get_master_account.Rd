@@ -10,6 +10,17 @@ guardduty_get_master_account(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Master = list(
+    AccountId = "string",
+    InvitationId = "string",
+    RelationshipStatus = "string",
+    InvitedAt = "string"
+  )
+)
+}
+}
 \description{
 Provides the details for the GuardDuty administrator account associated
 with the current GuardDuty member account.

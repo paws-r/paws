@@ -16,6 +16,24 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IntegrationAssociationSummaryList = list(
+    list(
+      IntegrationAssociationId = "string",
+      IntegrationAssociationArn = "string",
+      InstanceId = "string",
+      IntegrationType = "EVENT",
+      IntegrationArn = "string",
+      SourceApplicationUrl = "string",
+      SourceApplicationName = "string",
+      SourceType = "SALESFORCE"|"ZENDESK"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

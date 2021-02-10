@@ -33,6 +33,12 @@ the number of seconds since January 1, 1970, 00:00:00 UTC.}
 string uses the \code{fields} command, only the specified fields and their
 values are returned. The default is 1000.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  queryId = "string"
+)
+}
+}
 \description{
 Schedules a query of a log group using CloudWatch Logs Insights. You
 specify the log group and time range to query and the query string to

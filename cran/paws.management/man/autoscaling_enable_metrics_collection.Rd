@@ -38,6 +38,9 @@ If you omit this parameter, all metrics are enabled.}
 \item{Granularity}{[required] The granularity to associate with the metrics to collect. The only valid
 value is \verb{1Minute}.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables group metrics for the specified Auto Scaling group. For more
 information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html}{Monitoring CloudWatch metrics for your Auto Scaling groups and instances}

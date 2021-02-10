@@ -12,6 +12,9 @@ chime_update_global_settings(BusinessCalling, VoiceConnector)
 
 \item{VoiceConnector}{[required] The Amazon Chime Voice Connector settings.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates global settings for the administrator's AWS account, such as
 Amazon Chime Business Calling and Amazon Chime Voice Connector settings.

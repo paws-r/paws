@@ -33,6 +33,13 @@ For the cli-input-json file use format: "tags":
 \item{signingDisabled}{Specifies whether AWS IoT validates the token signature in an
 authorization request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authorizerName = "string",
+  authorizerArn = "string"
+)
+}
+}
 \description{
 Creates an authorizer.
 }

@@ -10,6 +10,9 @@ databasemigrationservice_delete_replication_subnet_group(
 \arguments{
 \item{ReplicationSubnetGroupIdentifier}{[required] The subnet group name of the replication instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a subnet group.
 }

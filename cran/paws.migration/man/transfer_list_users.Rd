@@ -19,6 +19,23 @@ returned in the output. You can then pass in a subsequent command to the
 \item{ServerId}{[required] A system-assigned unique identifier for a server that has users assigned
 to it.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  ServerId = "string",
+  Users = list(
+    list(
+      Arn = "string",
+      HomeDirectory = "string",
+      HomeDirectoryType = "PATH"|"LOGICAL",
+      Role = "string",
+      SshPublicKeyCount = 123,
+      UserName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the users for a file transfer protocol-enabled server that you
 specify by passing the \code{ServerId} parameter.

@@ -9,6 +9,9 @@ glue_stop_crawler(Name)
 \arguments{
 \item{Name}{[required] Name of the crawler to stop.}
 }
+\value{
+An empty list.
+}
 \description{
 If the specified crawler is running, stops the crawl.
 }

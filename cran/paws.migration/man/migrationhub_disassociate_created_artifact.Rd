@@ -20,6 +20,9 @@ instance, RDS instance, etc.)}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates a created artifact of an AWS resource with a migration
 task performed by a migration tool that was previously associated. This

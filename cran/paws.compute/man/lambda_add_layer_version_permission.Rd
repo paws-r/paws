@@ -28,6 +28,13 @@ specified organization.}
 this option to avoid modifying a policy that has changed since you last
 read it.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Statement = "string",
+  RevisionId = "string"
+)
+}
+}
 \description{
 Adds permissions to the resource-based policy of a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
 Use this action to grant layer usage permission to other accounts. You

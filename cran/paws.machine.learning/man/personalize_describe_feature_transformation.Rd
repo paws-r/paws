@@ -10,6 +10,25 @@ personalize_describe_feature_transformation(featureTransformationArn)
 \item{featureTransformationArn}{[required] The Amazon Resource Name (ARN) of the feature transformation to
 describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  featureTransformation = list(
+    name = "string",
+    featureTransformationArn = "string",
+    defaultParameters = list(
+      "string"
+    ),
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    status = "string"
+  )
+)
+}
+}
 \description{
 Describes the given feature transformation.
 }

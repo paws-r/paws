@@ -13,6 +13,21 @@ machinelearning_predict(MLModelId, Record, PredictEndpoint)
 
 \item{PredictEndpoint}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Prediction = list(
+    predictedLabel = "string",
+    predictedValue = 123.0,
+    predictedScores = list(
+      123.0
+    ),
+    details = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Generates a prediction for the observation using the specified
 \verb{ML Model}.

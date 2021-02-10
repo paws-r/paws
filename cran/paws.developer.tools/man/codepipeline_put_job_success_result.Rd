@@ -29,6 +29,9 @@ by the job worker.}
 available to a downstream action configuration. \code{outputVariables} can be
 included only when there is no continuation token on the request.}
 }
+\value{
+An empty list.
+}
 \description{
 Represents the success of a job as returned to the pipeline by a job
 worker. Used for custom actions only.

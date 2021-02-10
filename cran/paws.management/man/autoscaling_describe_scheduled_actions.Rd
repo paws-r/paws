@@ -28,6 +28,32 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScheduledUpdateGroupActions = list(
+    list(
+      AutoScalingGroupName = "string",
+      ScheduledActionName = "string",
+      ScheduledActionARN = "string",
+      Time = as.POSIXct(
+        "2015-01-01"
+      ),
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Recurrence = "string",
+      MinSize = 123,
+      MaxSize = 123,
+      DesiredCapacity = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the actions scheduled for your Auto Scaling group that haven't
 run or that have not reached their end time. To describe the actions

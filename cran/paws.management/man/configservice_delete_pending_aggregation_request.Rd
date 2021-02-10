@@ -13,6 +13,9 @@ configservice_delete_pending_aggregation_request(RequesterAccountId,
 
 \item{RequesterAwsRegion}{[required] The region requesting to aggregate data.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes pending authorization requests for a specified aggregator
 account in a specified region.

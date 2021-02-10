@@ -76,6 +76,12 @@ automatically.
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Creates stack instances for the specified accounts, within the specified
 Regions. A stack instance refers to a stack in a specific account and

@@ -28,6 +28,12 @@ Service (AWS KMS) key that encrypts the exported mailbox content.}
 
 \item{S3Prefix}{[required] The S3 bucket prefix.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Starts a mailbox export job to export MIME-format email messages and
 calendar items from the specified mailbox to the specified Amazon Simple

@@ -11,6 +11,9 @@ elasticsearchservice_add_tags(ARN, TagList)
 
 \item{TagList}{[required] List of \code{Tag} that need to be added for the Elasticsearch domain.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches tags to an existing Elasticsearch domain. Tags are a set of
 case-sensitive key value pairs. An Elasticsearch domain may have up to

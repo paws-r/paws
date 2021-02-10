@@ -9,6 +9,19 @@ devicefarm_get_project(arn)
 \arguments{
 \item{arn}{[required] The project's ARN.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  project = list(
+    arn = "string",
+    name = "string",
+    defaultJobTimeoutMinutes = 123,
+    created = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a project.
 }
@@ -23,7 +36,7 @@ Gets information about a project.
 \dontrun{
 # The following example gets information about a specific project.
 svc$get_project(
-  arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAM..."
+  arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12..."
 )
 }
 

@@ -32,6 +32,95 @@ request.}
 
 \item{completed}{The state of the jobs to return. You can specify \code{true} or \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobList = list(
+    list(
+      JobId = "string",
+      JobDescription = "string",
+      Action = "ArchiveRetrieval"|"InventoryRetrieval"|"Select",
+      ArchiveId = "string",
+      VaultARN = "string",
+      CreationDate = "string",
+      Completed = TRUE|FALSE,
+      StatusCode = "InProgress"|"Succeeded"|"Failed",
+      StatusMessage = "string",
+      ArchiveSizeInBytes = 123,
+      InventorySizeInBytes = 123,
+      SNSTopic = "string",
+      CompletionDate = "string",
+      SHA256TreeHash = "string",
+      ArchiveSHA256TreeHash = "string",
+      RetrievalByteRange = "string",
+      Tier = "string",
+      InventoryRetrievalParameters = list(
+        Format = "string",
+        StartDate = "string",
+        EndDate = "string",
+        Limit = "string",
+        Marker = "string"
+      ),
+      JobOutputPath = "string",
+      SelectParameters = list(
+        InputSerialization = list(
+          csv = list(
+            FileHeaderInfo = "USE"|"IGNORE"|"NONE",
+            Comments = "string",
+            QuoteEscapeCharacter = "string",
+            RecordDelimiter = "string",
+            FieldDelimiter = "string",
+            QuoteCharacter = "string"
+          )
+        ),
+        ExpressionType = "SQL",
+        Expression = "string",
+        OutputSerialization = list(
+          csv = list(
+            QuoteFields = "ALWAYS"|"ASNEEDED",
+            QuoteEscapeCharacter = "string",
+            RecordDelimiter = "string",
+            FieldDelimiter = "string",
+            QuoteCharacter = "string"
+          )
+        )
+      ),
+      OutputLocation = list(
+        S3 = list(
+          BucketName = "string",
+          Prefix = "string",
+          Encryption = list(
+            EncryptionType = "aws:kms"|"AES256",
+            KMSKeyId = "string",
+            KMSContext = "string"
+          ),
+          CannedACL = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
+          AccessControlList = list(
+            list(
+              Grantee = list(
+                Type = "AmazonCustomerByEmail"|"CanonicalUser"|"Group",
+                DisplayName = "string",
+                URI = "string",
+                ID = "string",
+                EmailAddress = "string"
+              ),
+              Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+            )
+          ),
+          Tagging = list(
+            "string"
+          ),
+          UserMetadata = list(
+            "string"
+          ),
+          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 This operation lists jobs for a vault, including jobs that are
 in-progress and jobs that have recently finished. The List Job operation

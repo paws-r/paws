@@ -10,6 +10,9 @@ ses_delete_custom_verification_email_template(TemplateName)
 \item{TemplateName}{[required] The name of the custom verification email template that you want to
 delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing custom verification email template.
 

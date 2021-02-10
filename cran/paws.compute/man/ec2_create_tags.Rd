@@ -22,6 +22,9 @@ request into smaller batches.}
 tag to have a value, specify the parameter with no value, and we set the
 value to an empty string.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or overwrites only the specified tags for the specified Amazon EC2
 resource or resources. When you specify an existing tag key, the value

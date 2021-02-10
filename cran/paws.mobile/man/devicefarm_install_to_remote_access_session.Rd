@@ -13,6 +13,25 @@ you are requesting information.}
 
 \item{appArn}{[required] The ARN of the app about which you are requesting information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  appUpload = list(
+    arn = "string",
+    name = "string",
+    created = as.POSIXct(
+      "2015-01-01"
+    ),
+    type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+    status = "INITIALIZED"|"PROCESSING"|"SUCCEEDED"|"FAILED",
+    url = "string",
+    metadata = "string",
+    contentType = "string",
+    message = "string",
+    category = "CURATED"|"PRIVATE"
+  )
+)
+}
+}
 \description{
 Installs an application to the device in a remote access session. For
 Android applications, the file must be in .apk format. For iOS
@@ -32,7 +51,7 @@ applications, the file must be in .ipa format.
 # remote access session.
 svc$install_to_remote_access_session(
   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
-  remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-1..."
+  remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE..."
 )
 }
 

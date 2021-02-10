@@ -12,11 +12,20 @@ pinpoint_update_template_active_version(TemplateActiveVersionRequest,
 
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
-characters can be alphanumeric characters, underscores (\\_), or hyphens
+characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
 
 \item{TemplateType}{[required] The type of channel that the message template is designed for. Valid
 values are: EMAIL, PUSH, SMS, and VOICE.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageBody = list(
+    Message = "string",
+    RequestID = "string"
+  )
+)
+}
 }
 \description{
 Changes the status of a specific version of a message template to

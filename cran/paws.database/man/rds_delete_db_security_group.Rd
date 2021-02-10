@@ -19,6 +19,9 @@ Constraints:
 \item Must not be "Default"
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a DB security group.
 

@@ -17,6 +17,28 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Attribute}{[required] The AFI attribute.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FpgaImageAttribute = list(
+    FpgaImageId = "string",
+    Name = "string",
+    Description = "string",
+    LoadPermissions = list(
+      list(
+        UserId = "string",
+        Group = "all"
+      )
+    ),
+    ProductCodes = list(
+      list(
+        ProductCodeId = "string",
+        ProductCodeType = "devpay"|"marketplace"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified attribute of the specified Amazon FPGA Image
 (AFI).

@@ -37,6 +37,23 @@ or 3). For example, specify 31536000 for one year.}
 
 \item{OfferingId}{The ID of the reservation offering.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  OfferingSet = list(
+    list(
+      CurrencyCode = "USD",
+      Duration = 123,
+      HourlyPrice = "string",
+      InstanceFamily = "string",
+      OfferingId = "string",
+      PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
+      UpfrontPrice = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the Dedicated Host reservations that are available to
 purchase.

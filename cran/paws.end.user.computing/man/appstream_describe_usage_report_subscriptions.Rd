@@ -12,6 +12,27 @@ appstream_describe_usage_report_subscriptions(MaxResults, NextToken)
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UsageReportSubscriptions = list(
+    list(
+      S3BucketName = "string",
+      Schedule = "DAILY",
+      LastGeneratedReportDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      SubscriptionErrors = list(
+        list(
+          ErrorCode = "RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
+          ErrorMessage = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list that describes one or more usage report subscriptions.
 }

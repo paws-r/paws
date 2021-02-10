@@ -8,7 +8,7 @@ gamelift_tag_resource(ResourceARN, Tags)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name
-(\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN})
+(\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html}{ARN})
 that is assigned to and uniquely identifies the GameLift resource that
 you want to assign tags to. GameLift resource ARNs are included in the
 data object for the resource, which can be retrieved by calling a List
@@ -18,6 +18,9 @@ or Describe operation for the resource type.}
 Tags are developer-defined and structured as key-value pairs. The
 maximum tag limit may be lower than stated. See \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 for actual tagging limits.}
+}
+\value{
+An empty list.
 }
 \description{
 Assigns a tag to a GameLift resource. AWS resource tags provide an

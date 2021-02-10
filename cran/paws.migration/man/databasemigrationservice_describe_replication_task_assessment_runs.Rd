@@ -24,6 +24,33 @@ results can be retrieved.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReplicationTaskAssessmentRuns = list(
+    list(
+      ReplicationTaskAssessmentRunArn = "string",
+      ReplicationTaskArn = "string",
+      Status = "string",
+      ReplicationTaskAssessmentRunCreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      AssessmentProgress = list(
+        IndividualAssessmentCount = 123,
+        IndividualAssessmentCompletedCount = 123
+      ),
+      LastFailureMessage = "string",
+      ServiceAccessRoleArn = "string",
+      ResultLocationBucket = "string",
+      ResultLocationFolder = "string",
+      ResultEncryptionMode = "string",
+      ResultKmsKeyArn = "string",
+      AssessmentRunName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a paginated list of premigration assessment runs based on filter
 settings.

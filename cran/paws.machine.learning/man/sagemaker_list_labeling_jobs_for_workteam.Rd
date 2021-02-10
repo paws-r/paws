@@ -33,6 +33,28 @@ contains the specified string.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LabelingJobSummaryList = list(
+    list(
+      LabelingJobName = "string",
+      JobReferenceCode = "string",
+      WorkRequesterAccountId = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LabelCounters = list(
+        HumanLabeled = 123,
+        PendingHuman = 123,
+        Total = 123
+      ),
+      NumberOfHumanWorkersPerDataObject = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of labeling jobs assigned to a specified work team.
 }

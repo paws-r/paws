@@ -8,13 +8,38 @@ mediapackage_list_harvest_jobs(IncludeChannelId, IncludeStatus,
   MaxResults, NextToken)
 }
 \arguments{
-\item{IncludeChannelId}{When specified, the request will return only HarvestJobs associated with the given Channel ID.}
+\item{IncludeChannelId}{When specified, the request will return only HarvestJobs associated with
+the given Channel ID.}
 
-\item{IncludeStatus}{When specified, the request will return only HarvestJobs in the given status.}
+\item{IncludeStatus}{When specified, the request will return only HarvestJobs in the given
+status.}
 
 \item{MaxResults}{The upper bound on the number of records to return.}
 
 \item{NextToken}{A token used to resume pagination from the end of a previous request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  HarvestJobs = list(
+    list(
+      Arn = "string",
+      ChannelId = "string",
+      CreatedAt = "string",
+      EndTime = "string",
+      Id = "string",
+      OriginEndpointId = "string",
+      S3Destination = list(
+        BucketName = "string",
+        ManifestKey = "string",
+        RoleArn = "string"
+      ),
+      StartTime = "string",
+      Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns a collection of HarvestJob records.

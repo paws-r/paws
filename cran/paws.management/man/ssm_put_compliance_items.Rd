@@ -43,6 +43,9 @@ specific association. The association must be configured with
 
 This attribute is only valid for association compliance.}
 }
+\value{
+An empty list.
+}
 \description{
 Registers a compliance type and other compliance details on a designated
 resource. This action lets you register custom compliance details with a

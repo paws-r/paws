@@ -33,6 +33,15 @@ token to the call. To get all of the items in the list, keep calling
 this operation with each subsequent next token that is returned, until
 no more next tokens are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  projects = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets a list of projects that are shared with other AWS accounts or
 users.

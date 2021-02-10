@@ -13,6 +13,24 @@ amplify_create_webhook(appId, branchName, description)
 
 \item{description}{The description for a webhook.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  webhook = list(
+    webhookArn = "string",
+    webhookId = "string",
+    webhookUrl = "string",
+    branchName = "string",
+    description = "string",
+    createTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    updateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a new webhook on an Amplify app.
 }

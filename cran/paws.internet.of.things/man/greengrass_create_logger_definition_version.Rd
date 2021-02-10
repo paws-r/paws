@@ -14,6 +14,15 @@ greengrass_create_logger_definition_version(AmznClientToken,
 
 \item{Loggers}{A list of loggers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
+}
 \description{
 Creates a version of a logger definition that has already been defined.
 }

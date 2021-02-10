@@ -12,6 +12,12 @@ storagegateway_delete_volume(VolumeARN)
 \code{\link[=storagegateway_list_volumes]{list_volumes}} operation to return a list
 of gateway volumes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string"
+)
+}
+}
 \description{
 Deletes the specified storage volume that you previously created using
 the
@@ -46,7 +52,7 @@ storage volume you want to delete.
 # Deletes the specified gateway volume that you previously created using
 # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
 svc$delete_volume(
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 )
 }
 

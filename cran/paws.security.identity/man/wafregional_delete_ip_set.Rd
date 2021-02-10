@@ -14,6 +14,12 @@ returned by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

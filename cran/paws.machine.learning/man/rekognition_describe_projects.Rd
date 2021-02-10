@@ -17,6 +17,21 @@ next set of results.}
 value you can specify is 100. If you specify a value greater than 100, a
 ValidationException error occurs. The default value is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProjectDescriptions = list(
+    list(
+      ProjectArn = "string",
+      CreationTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "CREATING"|"CREATED"|"DELETING"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists and gets information about your Amazon Rekognition Custom Labels
 projects.

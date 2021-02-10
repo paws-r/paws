@@ -21,6 +21,15 @@ Manager to return for this request. If you have more IDs than the number
 that you specify for \code{MaxResults}, the response includes a \code{NextToken}
 value that you can use to get another batch of member account IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MemberAccounts = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a \code{MemberAccounts} object that lists the member accounts in the
 administrator's AWS organization.

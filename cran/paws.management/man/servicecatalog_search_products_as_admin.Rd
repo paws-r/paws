@@ -32,6 +32,34 @@ results, use null.}
 
 \item{ProductSource}{Access level of the source of the product.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProductViewDetails = list(
+    list(
+      ProductViewSummary = list(
+        Id = "string",
+        ProductId = "string",
+        Name = "string",
+        Owner = "string",
+        ShortDescription = "string",
+        Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+        Distributor = "string",
+        HasDefaultPath = TRUE|FALSE,
+        SupportEmail = "string",
+        SupportDescription = "string",
+        SupportUrl = "string"
+      ),
+      Status = "AVAILABLE"|"CREATING"|"FAILED",
+      ProductARN = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Gets information about the products for the specified portfolio or all
 products.

@@ -15,6 +15,21 @@ specific action type.}
 
 \item{nextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actionIdentifiers = list(
+    list(
+      actionName = "string",
+      actionArn = "string",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a list of all mitigation actions that match the specified filter
 criteria.

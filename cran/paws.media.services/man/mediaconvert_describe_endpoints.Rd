@@ -8,14 +8,31 @@ your account API endpoint}
 mediaconvert_describe_endpoints(MaxResults, Mode, NextToken)
 }
 \arguments{
-\item{MaxResults}{Optional. Max number of endpoints, up to twenty, that will be returned at one time.}
+\item{MaxResults}{Optional. Max number of endpoints, up to twenty, that will be returned
+at one time.}
 
-\item{Mode}{Optional field, defaults to DEFAULT. Specify DEFAULT for this operation to return your endpoints if any exist, or to create an endpoint for you and return it if one doesn't already exist. Specify GET_ONLY to return your endpoints if any exist, or an empty list if none exist.}
+\item{Mode}{Optional field, defaults to DEFAULT. Specify DEFAULT for this operation
+to return your endpoints if any exist, or to create an endpoint for you
+and return it if one doesn't already exist. Specify GET_ONLY to return
+your endpoints if any exist, or an empty list if none exist.}
 
-\item{NextToken}{Use this string, provided with the response to a previous request, to request the next batch of endpoints.}
+\item{NextToken}{Use this string, provided with the response to a previous request, to
+request the next batch of endpoints.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Endpoints = list(
+    list(
+      Url = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
-Send an request with an empty body to the regional API endpoint to get your account API endpoint.
+Send an request with an empty body to the regional API endpoint to get
+your account API endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_endpoints(

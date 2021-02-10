@@ -11,6 +11,9 @@ kinesis_add_tags_to_stream(StreamName, Tags)
 
 \item{Tags}{[required] A set of up to 10 key-value pairs to use to create the tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or updates tags for the specified Kinesis data stream. Each time
 you invoke this operation, you can specify up to 10 tags. If you want to

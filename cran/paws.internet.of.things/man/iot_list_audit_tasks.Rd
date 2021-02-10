@@ -16,15 +16,28 @@ retained results in an "InvalidRequestException".}
 \item{endTime}{[required] The end of the time period.}
 
 \item{taskType}{A filter to limit the output to the specified type of audit: can be one
-of "ON\\_DEMAND\\_AUDIT\\\emph{TASK" or "SCHEDULED\\}\\_AUDIT\\_TASK".}
+of "ON_DEMAND_AUDIT_TASK" or "SCHEDULED__AUDIT_TASK".}
 
 \item{taskStatus}{A filter to limit the output to audits with the specified completion
-status: can be one of "IN\\_PROGRESS", "COMPLETED", "FAILED", or
+status: can be one of "IN_PROGRESS", "COMPLETED", "FAILED", or
 "CANCELED".}
 
 \item{nextToken}{The token for the next set of results.}
 
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  tasks = list(
+    list(
+      taskId = "string",
+      taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
+      taskType = "ON_DEMAND_AUDIT_TASK"|"SCHEDULED_AUDIT_TASK"
+    )
+  ),
+  nextToken = "string"
+)
+}
 }
 \description{
 Lists the Device Defender audits that have been performed during a given

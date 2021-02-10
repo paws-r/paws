@@ -23,6 +23,40 @@ was truncated, include the \code{NextToken} to fetch the next set of jobs.}
 \item{MaxResults}{The maximum number of jobs to return in the response. If there are fewer
 results in the list, this response contains only the actual results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+  NextToken = "string",
+  TranscriptionJobSummaries = list(
+    list(
+      TranscriptionJobName = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompletionTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+      TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+      FailureReason = "string",
+      OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
+      ContentRedaction = list(
+        RedactionType = "PII",
+        RedactionOutput = "redacted"|"redacted_and_unredacted"
+      ),
+      ModelSettings = list(
+        LanguageModelName = "string"
+      ),
+      IdentifyLanguage = TRUE|FALSE,
+      IdentifiedLanguageScore = 123.0
+    )
+  )
+)
+}
+}
 \description{
 Lists transcription jobs with the specified status.
 }

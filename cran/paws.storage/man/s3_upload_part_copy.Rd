@@ -20,7 +20,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -29,12 +29,12 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{CopySource}{[required] Specifies the source object for the copy operation. You specify the
 value in one of two formats, depending on whether you want to access the
-source object through an \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{access point}:
+source object through an \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{access point}:
 \itemize{
 \item For objects not accessed through an access point, specify the name
 of the source bucket and key of the source object, separated by a
@@ -129,6 +129,24 @@ fail with an HTTP \verb{403 (Access Denied)} error.}
 is owned by a different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CopySourceVersionId = "string",
+  CopyPartResult = list(
+    ETag = "string",
+    LastModified = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  ServerSideEncryption = "AES256"|"aws:kms",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKeyMD5 = "string",
+  SSEKMSKeyId = "string",
+  BucketKeyEnabled = TRUE|FALSE,
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Uploads a part by copying data from an existing object as data source.
 You specify the data source by adding the request header
@@ -136,8 +154,8 @@ You specify the data source by adding the request header
 request header \code{x-amz-copy-source-range} in your request.
 
 The minimum allowable part size for a multipart upload is 5 MB. For more
-information about multipart upload limits, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/qfacts.html}{Quick Facts} in
-the \emph{Amazon Simple Storage Service Developer Guide}.
+information about multipart upload limits, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html}{Quick Facts}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Instead of using an existing object as part data, you might use the
 \code{\link[=s3_upload_part]{upload_part}} operation and provide data in your
@@ -151,13 +169,13 @@ request.
 For more information about using the
 \code{\link[=s3_upload_part_copy]{upload_part_copy}} operation, see the following:
 \itemize{
-\item For conceptual information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}
+\item For conceptual information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 \item For information about permissions required to use the multipart
-upload API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}
+upload API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 \item For information about copying objects using a single atomic
-operation vs. the multipart upload, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectOperations.html}{Operations on Objects}
+operation vs. the multipart upload, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html}{Operations on Objects}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 \item For information about using server-side encryption with
 customer-provided encryption keys with the UploadPartCopy operation,
@@ -278,7 +296,7 @@ svc$upload_part_copy(
   CopySource = "/bucketname/sourceobjectkey",
   Key = "examplelargeobject",
   PartNumber = "1",
-  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP..."
+  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI..."
 )
 
 # The following example uploads a part of a multipart upload by copying a
@@ -289,7 +307,7 @@ svc$upload_part_copy(
   CopySourceRange = "bytes=1-100000",
   Key = "examplelargeobject",
   PartNumber = "2",
-  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP..."
+  UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI..."
 )
 }
 

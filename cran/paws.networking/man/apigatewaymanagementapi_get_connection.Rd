@@ -9,6 +9,21 @@ apigatewaymanagementapi_get_connection(ConnectionId)
 \arguments{
 \item{ConnectionId}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConnectedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  Identity = list(
+    SourceIp = "string",
+    UserAgent = "string"
+  ),
+  LastActiveAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Get information about the connection with the provided id.
 }

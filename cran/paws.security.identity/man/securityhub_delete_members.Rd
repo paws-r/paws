@@ -9,6 +9,17 @@ securityhub_delete_members(AccountIds)
 \arguments{
 \item{AccountIds}{[required] The list of account IDs for the member accounts to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      ProcessingResult = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes the specified member accounts from Security Hub.
 

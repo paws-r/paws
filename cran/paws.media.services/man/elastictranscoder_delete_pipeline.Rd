@@ -9,6 +9,9 @@ elastictranscoder_delete_pipeline(Id)
 \arguments{
 \item{Id}{[required] The identifier of the pipeline that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 The DeletePipeline operation removes a pipeline.
 

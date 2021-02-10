@@ -13,6 +13,27 @@ iot1clickprojects_list_projects(nextToken, maxResults)
 \item{maxResults}{The maximum number of results to return per request. If not set, a
 default value of 100 is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  projects = list(
+    list(
+      arn = "string",
+      projectName = "string",
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      updatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      tags = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the AWS IoT 1-Click project(s) associated with your AWS account
 and region.

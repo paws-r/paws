@@ -23,19 +23,38 @@ resources that it depends on.
 \code{\link[=lexmodelbuildingservice_start_import]{start_import}} operation should
 take when there is an existing resource with the same name.
 \itemize{
-\item FAIL\\_ON\\_CONFLICT - The import operation is stopped on the first
+\item FAIL_ON_CONFLICT - The import operation is stopped on the first
 conflict between a resource in the import file and an existing
 resource. The name of the resource causing the conflict is in the
 \code{failureReason} field of the response to the
 \code{\link[=lexmodelbuildingservice_get_import]{get_import}} operation.
 
-OVERWRITE\\_LATEST - The import operation proceeds even if there is a
+OVERWRITE_LATEST - The import operation proceeds even if there is a
 conflict with an existing resource. The $LASTEST version of the
 existing resource is overwritten with the data from the import file.
 }}
 
 \item{tags}{A list of tags to add to the imported bot. You can only add tags when
 you import a bot, you can't add tags to an intent or slot type.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
+  importId = "string",
+  importStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
 }
 \description{
 Starts a job to import a resource to Amazon Lex.

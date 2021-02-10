@@ -16,6 +16,27 @@ Pass null if this is the first call.}
 
 \item{Limit}{The maximum number of items to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaExtensionsInfo = list(
+    list(
+      DirectoryId = "string",
+      SchemaExtensionId = "string",
+      Description = "string",
+      SchemaExtensionStatus = "Initializing"|"CreatingSnapshot"|"UpdatingSchema"|"Replicating"|"CancelInProgress"|"RollbackInProgress"|"Cancelled"|"Failed"|"Completed",
+      SchemaExtensionStatusReason = "string",
+      StartDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all schema extensions applied to a Microsoft AD Directory.
 }

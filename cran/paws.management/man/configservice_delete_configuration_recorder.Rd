@@ -12,6 +12,9 @@ the name of your configuration recorder by using the
 \code{\link[=configservice_describe_configuration_recorders]{describe_configuration_recorders}}
 action.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the configuration recorder.
 

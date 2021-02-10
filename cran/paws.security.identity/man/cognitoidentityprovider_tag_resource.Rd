@@ -11,6 +11,9 @@ cognitoidentityprovider_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] The tags to assign to the user pool.}
 }
+\value{
+An empty list.
+}
 \description{
 Assigns a set of tags to an Amazon Cognito user pool. A tag is a label
 that you can use to categorize and manage user pools in different ways,

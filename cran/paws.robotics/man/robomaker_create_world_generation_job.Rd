@@ -22,6 +22,29 @@ world generator job.}
 \item{worldTags}{A map that contains tag keys and tag values that are attached to the
 generated worlds.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  status = "Pending"|"Running"|"Completed"|"Failed"|"PartialFailed"|"Canceling"|"Canceled",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  failureCode = "InternalServiceError"|"LimitExceeded"|"ResourceNotFound"|"RequestThrottled"|"InvalidInput"|"AllWorldGenerationFailed",
+  clientRequestToken = "string",
+  template = "string",
+  worldCount = list(
+    floorplanCount = 123,
+    interiorCountPerFloorplan = 123
+  ),
+  tags = list(
+    "string"
+  ),
+  worldTags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates worlds using the specified template.
 }

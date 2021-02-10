@@ -11,6 +11,9 @@ glue_delete_resource_policy(PolicyHashCondition, ResourceArn)
 
 \item{ResourceArn}{The ARN of the AWS Glue resource for the resource policy to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified policy.
 }

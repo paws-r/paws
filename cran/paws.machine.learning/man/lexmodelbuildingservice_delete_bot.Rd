@@ -9,6 +9,9 @@ lexmodelbuildingservice_delete_bot(name)
 \arguments{
 \item{name}{[required] The name of the bot. The name is case sensitive.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes all versions of the bot, including the \verb{$LATEST} version. To
 delete a specific version of the bot, use the

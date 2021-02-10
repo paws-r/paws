@@ -9,6 +9,27 @@ cloud9_describe_environments(environmentIds)
 \arguments{
 \item{environmentIds}{[required] The IDs of individual environments to get information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  environments = list(
+    list(
+      id = "string",
+      name = "string",
+      description = "string",
+      type = "ssh"|"ec2",
+      connectionType = "CONNECT_SSH"|"CONNECT_SSM",
+      arn = "string",
+      ownerArn = "string",
+      lifecycle = list(
+        status = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
+        reason = "string",
+        failureResource = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about AWS Cloud9 development environments.
 }

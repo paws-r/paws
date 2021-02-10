@@ -13,6 +13,18 @@ servicecatalog_update_tag_option(Id, Value, Active)
 
 \item{Active}{The updated active state.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagOptionDetail = list(
+    Key = "string",
+    Value = "string",
+    Active = TRUE|FALSE,
+    Id = "string",
+    Owner = "string"
+  )
+)
+}
+}
 \description{
 Updates the specified TagOption.
 }

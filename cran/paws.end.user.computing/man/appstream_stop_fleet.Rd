@@ -9,6 +9,9 @@ appstream_stop_fleet(Name)
 \arguments{
 \item{Name}{[required] The name of the fleet.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops the specified fleet.
 }

@@ -9,6 +9,52 @@ mediatailor_get_playback_configuration(Name)
 \arguments{
 \item{Name}{[required] The identifier for the playback configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AdDecisionServerUrl = "string",
+  AvailSuppression = list(
+    Mode = "OFF"|"BEHIND_LIVE_EDGE",
+    Value = "string"
+  ),
+  Bumper = list(
+    EndUrl = "string",
+    StartUrl = "string"
+  ),
+  CdnConfiguration = list(
+    AdSegmentUrlPrefix = "string",
+    ContentSegmentUrlPrefix = "string"
+  ),
+  DashConfiguration = list(
+    ManifestEndpointPrefix = "string",
+    MpdLocation = "string",
+    OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
+  ),
+  HlsConfiguration = list(
+    ManifestEndpointPrefix = "string"
+  ),
+  LivePreRollConfiguration = list(
+    AdDecisionServerUrl = "string",
+    MaxDurationSeconds = 123
+  ),
+  ManifestProcessingRules = list(
+    AdMarkerPassthrough = list(
+      Enabled = TRUE|FALSE
+    )
+  ),
+  Name = "string",
+  PersonalizationThresholdSeconds = 123,
+  PlaybackConfigurationArn = "string",
+  PlaybackEndpointPrefix = "string",
+  SessionInitializationEndpointPrefix = "string",
+  SlateAdUrl = "string",
+  Tags = list(
+    "string"
+  ),
+  TranscodeProfileName = "string",
+  VideoContentSourceUrl = "string"
+)
+}
+}
 \description{
 Returns the playback configuration for the specified name.
 }

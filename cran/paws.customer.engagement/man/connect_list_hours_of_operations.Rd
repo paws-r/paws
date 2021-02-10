@@ -16,6 +16,19 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HoursOfOperationSummaryList = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides information about the hours of operation for the specified
 Amazon Connect instance.

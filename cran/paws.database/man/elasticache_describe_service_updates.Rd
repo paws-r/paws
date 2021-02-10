@@ -19,6 +19,34 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ServiceUpdates = list(
+    list(
+      ServiceUpdateName = "string",
+      ServiceUpdateReleaseDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceUpdateEndDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceUpdateSeverity = "critical"|"important"|"medium"|"low",
+      ServiceUpdateRecommendedApplyByDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceUpdateStatus = "available"|"cancelled"|"expired",
+      ServiceUpdateDescription = "string",
+      ServiceUpdateType = "security-update",
+      Engine = "string",
+      EngineVersion = "string",
+      AutoUpdateAfterRecommendedApplyByDate = TRUE|FALSE,
+      EstimatedUpdateTime = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns details of the service updates
 }

@@ -25,6 +25,46 @@ EFS file system.}
 \item{FileSystemId}{(Optional) ID of the file system whose description you want to retrieve
 (String).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  FileSystems = list(
+    list(
+      OwnerId = "string",
+      CreationToken = "string",
+      FileSystemId = "string",
+      FileSystemArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+      Name = "string",
+      NumberOfMountTargets = 123,
+      SizeInBytes = list(
+        Value = 123,
+        Timestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        ValueInIA = 123,
+        ValueInStandard = 123
+      ),
+      PerformanceMode = "generalPurpose"|"maxIO",
+      Encrypted = TRUE|FALSE,
+      KmsKeyId = "string",
+      ThroughputMode = "bursting"|"provisioned",
+      ProvisionedThroughputInMibps = 123.0,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Returns the description of a specific Amazon EFS file system if either
 the file system \code{CreationToken} or the \code{FileSystemId} is provided.

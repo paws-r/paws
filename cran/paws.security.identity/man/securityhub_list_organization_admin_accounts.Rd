@@ -15,6 +15,18 @@ operation, set the value of this parameter to \code{NULL}. For subsequent
 calls to the operation, to continue listing data, set the value of this
 parameter to the value returned from the previous response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AdminAccounts = list(
+    list(
+      AccountId = "string",
+      Status = "ENABLED"|"DISABLE_IN_PROGRESS"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the Security Hub administrator accounts. Can only be called by the
 organization management account.

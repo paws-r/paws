@@ -11,6 +11,9 @@ appstream_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The tag keys for the tags to disassociate.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates one or more specified tags from the specified AppStream
 2.0 resource.

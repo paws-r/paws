@@ -14,6 +14,18 @@ applicationinsights_describe_log_pattern(ResourceGroupName,
 
 \item{PatternName}{[required] The name of the log pattern.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceGroupName = "string",
+  LogPattern = list(
+    PatternSetName = "string",
+    PatternName = "string",
+    Pattern = "string",
+    Rank = 123
+  )
+)
+}
+}
 \description{
 Describe a specific log pattern from a \code{LogPatternSet}.
 }

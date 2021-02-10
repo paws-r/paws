@@ -22,6 +22,21 @@ value.}
 
 \item{SpotFleetRequestId}{[required] The ID of the Spot Fleet request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActiveInstances = list(
+    list(
+      InstanceId = "string",
+      InstanceType = "string",
+      SpotInstanceRequestId = "string",
+      InstanceHealth = "healthy"|"unhealthy"
+    )
+  ),
+  NextToken = "string",
+  SpotFleetRequestId = "string"
+)
+}
+}
 \description{
 Describes the running instances for the specified Spot Fleet.
 }

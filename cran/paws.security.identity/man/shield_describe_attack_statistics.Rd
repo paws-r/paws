@@ -8,6 +8,35 @@ regardless of whether you've defined Shield protections for them}
 \usage{
 shield_describe_attack_statistics()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TimeRange = list(
+    FromInclusive = as.POSIXct(
+      "2015-01-01"
+    ),
+    ToExclusive = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  DataItems = list(
+    list(
+      AttackVolume = list(
+        BitsPerSecond = list(
+          Max = 123.0
+        ),
+        PacketsPerSecond = list(
+          Max = 123.0
+        ),
+        RequestsPerSecond = list(
+          Max = 123.0
+        )
+      ),
+      AttackCount = 123
+    )
+  )
+)
+}
+}
 \description{
 Provides information about the number and type of attacks AWS Shield has
 detected in the last year for all resources that belong to your account,

@@ -9,6 +9,12 @@ mediastore_get_container_policy(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string"
+)
+}
+}
 \description{
 Retrieves the access policy for the specified container. For information
 about the data that is included in an access policy, see the \href{https://docs.aws.amazon.com/iam/index.html}{AWS Identity and Access Management User Guide}.

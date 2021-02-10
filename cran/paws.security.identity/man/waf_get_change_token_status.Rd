@@ -11,6 +11,12 @@ waf_get_change_token_status(ChangeToken)
 was previously returned in the
 \code{\link[=waf_get_change_token]{get_change_token}} response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeTokenStatus = "PROVISIONED"|"PENDING"|"INSYNC"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

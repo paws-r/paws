@@ -18,6 +18,27 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TerminateInstances}{[required] Indicates whether to terminate instances for a Spot Fleet request if it
 is canceled successfully.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SuccessfulFleetRequests = list(
+    list(
+      CurrentSpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
+      PreviousSpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
+      SpotFleetRequestId = "string"
+    )
+  ),
+  UnsuccessfulFleetRequests = list(
+    list(
+      Error = list(
+        Code = "fleetRequestIdDoesNotExist"|"fleetRequestIdMalformed"|"fleetRequestNotInCancellableState"|"unexpectedError",
+        Message = "string"
+      ),
+      SpotFleetRequestId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Cancels the specified Spot Fleet requests.
 

@@ -20,6 +20,29 @@ value in the \code{Marker} field of the response. You can retrieve the next
 set of response records by providing the returned marker value in the
 \code{Marker} parameter and retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MaintenanceTracks = list(
+    list(
+      MaintenanceTrackName = "string",
+      DatabaseVersion = "string",
+      UpdateTargets = list(
+        list(
+          MaintenanceTrackName = "string",
+          DatabaseVersion = "string",
+          SupportedOperations = list(
+            list(
+              OperationName = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of all the available maintenance tracks.
 }

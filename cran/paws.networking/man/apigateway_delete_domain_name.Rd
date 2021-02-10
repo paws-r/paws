@@ -9,6 +9,9 @@ apigateway_delete_domain_name(domainName)
 \arguments{
 \item{domainName}{[required] [Required] The name of the DomainName resource to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the DomainName resource.
 }

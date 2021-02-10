@@ -34,6 +34,14 @@ underscore characters.}
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContactId = "string",
+  ParticipantId = "string",
+  ParticipantToken = "string"
+)
+}
+}
 \description{
 Initiates a contact flow to start a new chat for the customer. Response
 of this API provides a token required to obtain credentials from the
@@ -44,7 +52,7 @@ When a new chat contact is successfully created, clients need to
 subscribe to the participant’s connection for the created chat within 5
 minutes. This is achieved by invoking
 \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection}
-with WEBSOCKET and CONNECTION\\_CREDENTIALS.
+with WEBSOCKET and CONNECTION_CREDENTIALS.
 
 A 429 error occurs in two situations:
 \itemize{

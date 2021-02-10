@@ -9,6 +9,35 @@ elb_describe_load_balancer_attributes(LoadBalancerName)
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBalancerAttributes = list(
+    CrossZoneLoadBalancing = list(
+      Enabled = TRUE|FALSE
+    ),
+    AccessLog = list(
+      Enabled = TRUE|FALSE,
+      S3BucketName = "string",
+      EmitInterval = 123,
+      S3BucketPrefix = "string"
+    ),
+    ConnectionDraining = list(
+      Enabled = TRUE|FALSE,
+      Timeout = 123
+    ),
+    ConnectionSettings = list(
+      IdleTimeout = 123
+    ),
+    AdditionalAttributes = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the attributes for the specified load balancer.
 }

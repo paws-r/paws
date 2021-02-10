@@ -19,6 +19,35 @@ more information, see Images in the Amazon Rekognition developer guide.}
 \item{Filters}{Optional parameters that let you set the criteria that the text must
 meet to be included in your response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TextDetections = list(
+    list(
+      DetectedText = "string",
+      Type = "LINE"|"WORD",
+      Id = 123,
+      ParentId = 123,
+      Confidence = 123.0,
+      Geometry = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        Polygon = list(
+          list(
+            X = 123.0,
+            Y = 123.0
+          )
+        )
+      )
+    )
+  ),
+  TextModelVersion = "string"
+)
+}
+}
 \description{
 Detects text in the input image and converts it into machine-readable
 text.

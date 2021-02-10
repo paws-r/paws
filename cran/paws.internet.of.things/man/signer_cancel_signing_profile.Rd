@@ -9,6 +9,9 @@ signer_cancel_signing_profile(profileName)
 \arguments{
 \item{profileName}{[required] The name of the signing profile to be canceled.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the state of an \code{ACTIVE} signing profile to \code{CANCELED}. A
 canceled profile is still viewable with the

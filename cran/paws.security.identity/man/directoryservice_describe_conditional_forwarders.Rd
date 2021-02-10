@@ -15,6 +15,20 @@ forwarders.}
 to get the list of associated conditional forwarders. If this member is
 null, all conditional forwarders are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConditionalForwarders = list(
+    list(
+      RemoteDomainName = "string",
+      DnsIpAddrs = list(
+        "string"
+      ),
+      ReplicationScope = "Domain"
+    )
+  )
+)
+}
+}
 \description{
 Obtains information about the conditional forwarders for this account.
 

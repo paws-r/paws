@@ -18,6 +18,38 @@ type has a different checksum, Amazon Lex returns a
 version. If you don't specify a checksum, Amazon Lex publishes the
 \verb{$LATEST} version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  description = "string",
+  enumerationValues = list(
+    list(
+      value = "string",
+      synonyms = list(
+        "string"
+      )
+    )
+  ),
+  lastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  version = "string",
+  checksum = "string",
+  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
+  parentSlotTypeSignature = "string",
+  slotTypeConfigurations = list(
+    list(
+      regexConfiguration = list(
+        pattern = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new version of a slot type based on the \verb{$LATEST} version of
 the specified slot type. If the \verb{$LATEST} version of this resource has

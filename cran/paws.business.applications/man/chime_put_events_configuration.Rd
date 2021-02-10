@@ -17,6 +17,16 @@ chime_put_events_configuration(AccountId, BotId,
 
 \item{LambdaFunctionArn}{Lambda function ARN that allows the bot to receive outgoing events.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventsConfiguration = list(
+    BotId = "string",
+    OutboundEventsHTTPSEndpoint = "string",
+    LambdaFunctionArn = "string"
+  )
+)
+}
+}
 \description{
 Creates an events configuration that allows a bot to receive outgoing
 events sent by Amazon Chime. Choose either an HTTPS endpoint or a Lambda

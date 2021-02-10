@@ -176,6 +176,9 @@ or a number equal to or greater than 86,400 seconds (1 day). For more
 information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html}{Replacing Auto Scaling instances based on maximum instance lifetime}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 \strong{We strongly recommend using a launch template when calling this
 operation to ensure full functionality for Amazon EC2 Auto Scaling and
@@ -314,7 +317,7 @@ svc$create_auto_scaling_group(
   MaxSize = 3L,
   MinSize = 1L,
   TargetGroupARNs = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
   ),
   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 )

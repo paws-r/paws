@@ -21,6 +21,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeregisteredMulticastGroupMembers = list(
+    TransitGatewayMulticastDomainId = "string",
+    DeregisteredNetworkInterfaceIds = list(
+      "string"
+    ),
+    GroupIpAddress = "string"
+  )
+)
+}
+}
 \description{
 Deregisters the specified members (network interfaces) from the transit
 gateway multicast group.

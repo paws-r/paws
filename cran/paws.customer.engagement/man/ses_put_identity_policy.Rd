@@ -25,6 +25,9 @@ alphanumeric characters, dashes, and underscores.}
 For information about the syntax of sending authorization policies, see
 the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html}{Amazon SES Developer Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or updates a sending authorization policy for the specified
 identity (an email address or a domain).
@@ -53,7 +56,7 @@ You can execute this operation no more than once per second.
 # identity:
 svc$put_identity_policy(
   Identity = "example.com",
-  Policy = "\{\"Version\":\"2008-10-17\",\"Statement\":[\{\"Sid\":\"stmt1469123904194\",...",
+  Policy = "\{"Version":"2008-10-17","Statement":[\{"Sid":"stmt1469123904194","Effect":...",
   PolicyName = "MyPolicy"
 )
 }

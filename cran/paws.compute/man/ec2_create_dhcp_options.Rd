@@ -16,6 +16,31 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DhcpOptions = list(
+    DhcpConfigurations = list(
+      list(
+        Key = "string",
+        Values = list(
+          list(
+            Value = "string"
+          )
+        )
+      )
+    ),
+    DhcpOptionsId = "string",
+    OwnerId = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a set of DHCP options for your VPC. After creating the set, you
 must associate it with the VPC, causing all existing and new instances

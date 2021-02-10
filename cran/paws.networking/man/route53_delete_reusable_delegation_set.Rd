@@ -9,6 +9,9 @@ route53_delete_reusable_delegation_set(Id)
 \arguments{
 \item{Id}{[required] The ID of the reusable delegation set that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a reusable delegation set.
 

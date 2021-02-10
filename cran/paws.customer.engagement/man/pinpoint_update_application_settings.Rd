@@ -13,6 +13,30 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{WriteApplicationSettingsRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationSettingsResource = list(
+    ApplicationId = "string",
+    CampaignHook = list(
+      LambdaFunctionName = "string",
+      Mode = "DELIVERY"|"FILTER",
+      WebUrl = "string"
+    ),
+    LastModifiedDate = "string",
+    Limits = list(
+      Daily = 123,
+      MaximumDuration = 123,
+      MessagesPerSecond = 123,
+      Total = 123
+    ),
+    QuietTime = list(
+      End = "string",
+      Start = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the settings for an application.
 }

@@ -9,7 +9,12 @@ mq_delete_user(BrokerId, Username)
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
-\item{Username}{[required] The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
+\item{Username}{[required] The username of the ActiveMQ user. This value can contain only
+alphanumeric characters, dashes, periods, underscores, and tildes (- .
+_ ~). This value must be 2-100 characters long.}
+}
+\value{
+An empty list.
 }
 \description{
 Deletes an ActiveMQ user.

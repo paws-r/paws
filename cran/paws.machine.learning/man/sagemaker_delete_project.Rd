@@ -9,6 +9,9 @@ sagemaker_delete_project(ProjectName)
 \arguments{
 \item{ProjectName}{[required] The name of the project to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete the specified project.
 }

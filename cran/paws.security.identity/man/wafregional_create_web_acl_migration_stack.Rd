@@ -29,6 +29,12 @@ the migration. Set this to true to ignore unsupported entities in the
 web ACL during the migration. Otherwise, if AWS WAF encounters
 unsupported entities, it stops the process and throws an exception.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  S3ObjectUrl = "string"
+)
+}
+}
 \description{
 Creates an AWS CloudFormation WAFV2 template for the specified web ACL
 in the specified Amazon S3 bucket. Then, in CloudFormation, you create a

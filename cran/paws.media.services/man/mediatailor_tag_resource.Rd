@@ -13,6 +13,9 @@ get this from the response to any playback configuration request.}
 \item{Tags}{[required] A comma-separated list of tag key:value pairs. For example: \{ "Key1":
 "Value1", "Key2": "Value2" \}}
 }
+\value{
+An empty list.
+}
 \description{
 Adds tags to the specified playback configuration resource. You can
 specify one or more tags to add.

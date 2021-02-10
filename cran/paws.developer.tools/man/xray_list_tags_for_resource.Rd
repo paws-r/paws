@@ -14,6 +14,18 @@ xray_list_tags_for_resource(ResourceARN, NextToken)
 \code{NextToken} value returned with the current page of results as the value
 of this parameter to get the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of tags that are applied to the specified AWS X-Ray group
 or sampling rule.

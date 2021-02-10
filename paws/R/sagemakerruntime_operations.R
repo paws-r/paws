@@ -84,6 +84,17 @@ NULL
 #' [Capture
 #' Data](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Body = raw,
+#'   ContentType = "string",
+#'   InvokedProductionVariant = "string",
+#'   CustomAttributes = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$invoke_endpoint(

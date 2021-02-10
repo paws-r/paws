@@ -13,6 +13,29 @@ elasticache_create_user_group(UserGroupId, Engine, UserIds)
 
 \item{UserIds}{The list of user IDs that belong to the user group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserGroupId = "string",
+  Status = "string",
+  Engine = "string",
+  UserIds = list(
+    "string"
+  ),
+  PendingChanges = list(
+    UserIdsToRemove = list(
+      "string"
+    ),
+    UserIdsToAdd = list(
+      "string"
+    )
+  ),
+  ReplicationGroups = list(
+    "string"
+  ),
+  ARN = "string"
+)
+}
+}
 \description{
 For Redis engine version 6.x onwards: Creates a Redis user group. For
 more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}

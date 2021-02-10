@@ -43,6 +43,30 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficMirrorFilterRule = list(
+    TrafficMirrorFilterRuleId = "string",
+    TrafficMirrorFilterId = "string",
+    TrafficDirection = "ingress"|"egress",
+    RuleNumber = 123,
+    RuleAction = "accept"|"reject",
+    Protocol = 123,
+    DestinationPortRange = list(
+      FromPort = 123,
+      ToPort = 123
+    ),
+    SourcePortRange = list(
+      FromPort = 123,
+      ToPort = 123
+    ),
+    DestinationCidrBlock = "string",
+    SourceCidrBlock = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Modifies the specified Traffic Mirror rule.
 

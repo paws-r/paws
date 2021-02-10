@@ -13,6 +13,36 @@ this call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Accelerators = list(
+    list(
+      AcceleratorArn = "string",
+      Name = "string",
+      IpAddressType = "IPV4",
+      Enabled = TRUE|FALSE,
+      IpSets = list(
+        list(
+          IpFamily = "string",
+          IpAddresses = list(
+            "string"
+          )
+        )
+      ),
+      DnsName = "string",
+      Status = "DEPLOYED"|"IN_PROGRESS",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the accelerators for an AWS account.
 }

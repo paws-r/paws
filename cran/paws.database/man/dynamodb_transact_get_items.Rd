@@ -16,6 +16,66 @@ contains a \code{Get} structure.}
 and a value of \code{NONE} prevents that information from being returned. No
 other value is valid.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConsumedCapacity = list(
+    list(
+      TableName = "string",
+      CapacityUnits = 123.0,
+      ReadCapacityUnits = 123.0,
+      WriteCapacityUnits = 123.0,
+      Table = list(
+        ReadCapacityUnits = 123.0,
+        WriteCapacityUnits = 123.0,
+        CapacityUnits = 123.0
+      ),
+      LocalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      ),
+      GlobalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      )
+    )
+  ),
+  Responses = list(
+    list(
+      Item = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 \code{\link[=dynamodb_transact_get_items]{transact_get_items}} is a synchronous
 operation that atomically retrieves multiple items from one or more

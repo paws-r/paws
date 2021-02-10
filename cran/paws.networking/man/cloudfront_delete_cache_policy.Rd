@@ -17,6 +17,9 @@ the cache policy’s \code{ETag} value, which you can get using
 \code{\link[=cloudfront_get_cache_policy]{get_cache_policy}}, or
 \code{\link[=cloudfront_get_cache_policy_config]{get_cache_policy_config}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a cache policy.
 

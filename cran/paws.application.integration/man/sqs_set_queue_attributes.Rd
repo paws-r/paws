@@ -156,6 +156,9 @@ For more information about high throughput for FIFO queues, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{Preview: High throughput for FIFO queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the value of one or more queue attributes. When you change a
 queue's attributes, the change can take up to 60 seconds for most of the

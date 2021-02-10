@@ -55,6 +55,27 @@ those in the next log stream, and so on. The default is false.
 the value is assumed to be true. The response from this operation always
 interleaves events from multiple log streams within a log group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  events = list(
+    list(
+      logStreamName = "string",
+      timestamp = 123,
+      message = "string",
+      ingestionTime = 123,
+      eventId = "string"
+    )
+  ),
+  searchedLogStreams = list(
+    list(
+      logStreamName = "string",
+      searchedCompletely = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists log events from the specified log group. You can list all the log
 events or filter the results using a filter pattern, a time range, and

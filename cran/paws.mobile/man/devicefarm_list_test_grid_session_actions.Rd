@@ -14,6 +14,23 @@ devicefarm_list_test_grid_session_actions(sessionArn, maxResult,
 
 \item{nextToken}{Pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actions = list(
+    list(
+      action = "string",
+      started = as.POSIXct(
+        "2015-01-01"
+      ),
+      duration = 123,
+      statusCode = "string",
+      requestMethod = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the actions taken in a TestGridSession.
 }

@@ -78,6 +78,12 @@ Valid Values: \code{true} | \code{false}}
 
 \item{NotificationPolicy}{The notification policy of the file share.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileShareARN = "string"
+)
+}
+}
 \description{
 Updates a Network File System (NFS) file share. This operation is only
 supported in the file gateway type.

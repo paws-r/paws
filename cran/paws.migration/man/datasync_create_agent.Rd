@@ -31,7 +31,7 @@ manage, filter, and search for your agents.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \\_ : / @.}
+= . _ : / @.}
 
 \item{VpcEndpointId}{The ID of the VPC (virtual private cloud) endpoint that the agent has
 access to. This is the client-side VPC endpoint, also called a
@@ -51,6 +51,12 @@ these four network interfaces.}
 
 \item{SecurityGroupArns}{The ARNs of the security groups used to protect your data transfer task
 subnets. See CreateAgentRequest$SubnetArns.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AgentArn = "string"
+)
+}
 }
 \description{
 Activates an AWS DataSync agent that you have deployed on your host. The

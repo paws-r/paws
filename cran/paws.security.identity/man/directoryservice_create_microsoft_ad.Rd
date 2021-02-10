@@ -34,6 +34,12 @@ console \verb{Directory Details} page after the directory is created.}
 
 \item{Tags}{The tags to be assigned to the AWS Managed Microsoft AD directory.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryId = "string"
+)
+}
+}
 \description{
 Creates a Microsoft AD directory in the AWS Cloud. For more information,
 see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{AWS Managed Microsoft AD}

@@ -122,6 +122,61 @@ Automatic language identification is disabled by default. You receive a
 collection of audio files. Automatic language identification chooses a
 language that best matches the source audio from that list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TranscriptionJob = list(
+    TranscriptionJobName = "string",
+    TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+    LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+    MediaSampleRateHertz = 123,
+    MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+    Media = list(
+      MediaFileUri = "string"
+    ),
+    Transcript = list(
+      TranscriptFileUri = "string",
+      RedactedTranscriptFileUri = "string"
+    ),
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CompletionTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FailureReason = "string",
+    Settings = list(
+      VocabularyName = "string",
+      ShowSpeakerLabels = TRUE|FALSE,
+      MaxSpeakerLabels = 123,
+      ChannelIdentification = TRUE|FALSE,
+      ShowAlternatives = TRUE|FALSE,
+      MaxAlternatives = 123,
+      VocabularyFilterName = "string",
+      VocabularyFilterMethod = "remove"|"mask"
+    ),
+    ModelSettings = list(
+      LanguageModelName = "string"
+    ),
+    JobExecutionSettings = list(
+      AllowDeferredExecution = TRUE|FALSE,
+      DataAccessRoleArn = "string"
+    ),
+    ContentRedaction = list(
+      RedactionType = "PII",
+      RedactionOutput = "redacted"|"redacted_and_unredacted"
+    ),
+    IdentifyLanguage = TRUE|FALSE,
+    LanguageOptions = list(
+      "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"
+    ),
+    IdentifiedLanguageScore = 123.0
+  )
+)
+}
+}
 \description{
 Starts an asynchronous job to transcribe speech to text.
 }

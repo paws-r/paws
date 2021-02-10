@@ -7,6 +7,23 @@ request}
 \usage{
 s3_list_buckets()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Buckets = list(
+    list(
+      Name = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Owner = list(
+    DisplayName = "string",
+    ID = "string"
+  )
+)
+}
+}
 \description{
 Returns a list of all buckets owned by the authenticated sender of the
 request.

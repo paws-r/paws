@@ -32,6 +32,9 @@ object.}
 \item{ForwardingAddressId}{The updated ID for the forwarding address for a cluster. This field is
 not supported in most regions.}
 }
+\value{
+An empty list.
+}
 \description{
 While a cluster's \code{ClusterState} value is in the \code{AwaitingQuorum} state,
 you can update some of the information associated with a cluster. Once

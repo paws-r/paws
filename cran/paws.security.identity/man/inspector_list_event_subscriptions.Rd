@@ -20,6 +20,26 @@ previous response to continue listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  subscriptions = list(
+    list(
+      resourceArn = "string",
+      topicArn = "string",
+      eventSubscriptions = list(
+        list(
+          event = "ASSESSMENT_RUN_STARTED"|"ASSESSMENT_RUN_COMPLETED"|"ASSESSMENT_RUN_STATE_CHANGED"|"FINDING_REPORTED"|"OTHER",
+          subscribedAt = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all the event subscriptions for the assessment template that is
 specified by the ARN of the assessment template. For more information,
@@ -41,7 +61,7 @@ see \code{\link[=inspector_subscribe_to_event]{subscribe_to_event}} and
 # specified by the ARN of the assessment template.
 svc$list_event_subscriptions(
   maxResults = 123L,
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2..."
+  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/..."
 )
 }
 

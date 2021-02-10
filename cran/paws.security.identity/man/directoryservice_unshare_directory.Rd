@@ -14,6 +14,12 @@ to stop sharing.}
 \item{UnshareTarget}{[required] Identifier for the directory consumer account with whom the directory
 has to be unshared.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SharedDirectoryId = "string"
+)
+}
+}
 \description{
 Stops the directory sharing between the directory owner and consumer
 accounts.

@@ -13,6 +13,9 @@ appsync_delete_resolver(apiId, typeName, fieldName)
 
 \item{fieldName}{[required] The resolver field name.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a \code{Resolver} object.
 }

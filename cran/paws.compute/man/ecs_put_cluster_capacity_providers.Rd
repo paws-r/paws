@@ -52,6 +52,62 @@ To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
 are available to all accounts and only need to be associated with a
 cluster to be used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cluster = list(
+    clusterArn = "string",
+    clusterName = "string",
+    status = "string",
+    registeredContainerInstancesCount = 123,
+    runningTasksCount = 123,
+    pendingTasksCount = 123,
+    activeServicesCount = 123,
+    statistics = list(
+      list(
+        name = "string",
+        value = "string"
+      )
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    settings = list(
+      list(
+        name = "containerInsights",
+        value = "string"
+      )
+    ),
+    capacityProviders = list(
+      "string"
+    ),
+    defaultCapacityProviderStrategy = list(
+      list(
+        capacityProvider = "string",
+        weight = 123,
+        base = 123
+      )
+    ),
+    attachments = list(
+      list(
+        id = "string",
+        type = "string",
+        status = "string",
+        details = list(
+          list(
+            name = "string",
+            value = "string"
+          )
+        )
+      )
+    ),
+    attachmentsStatus = "string"
+  )
+)
+}
+}
 \description{
 Modifies the available capacity providers and the default capacity
 provider strategy for a cluster.
@@ -71,7 +127,7 @@ When creating a service or running a task on a cluster, if no capacity
 provider or launch type is specified, then the cluster's default
 capacity provider strategy is used. It is recommended to define a
 default capacity provider strategy for your cluster, however you may
-specify an empty array (\verb{\\\[\\\]}) to bypass defining a default strategy.
+specify an empty array (\verb{[]}) to bypass defining a default strategy.
 }
 \section{Request syntax}{
 \preformatted{svc$put_cluster_capacity_providers(

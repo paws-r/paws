@@ -11,6 +11,23 @@ elb_describe_load_balancer_policies(LoadBalancerName, PolicyNames)
 
 \item{PolicyNames}{The names of the policies.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyDescriptions = list(
+    list(
+      PolicyName = "string",
+      PolicyTypeName = "string",
+      PolicyAttributeDescriptions = list(
+        list(
+          AttributeName = "string",
+          AttributeValue = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified policies.
 

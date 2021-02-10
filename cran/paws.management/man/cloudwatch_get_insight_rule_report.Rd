@@ -53,6 +53,47 @@ period represented by that data point.
 \item{OrderBy}{Determines what statistic to use to rank the contributors. Valid values
 are SUM and MAXIMUM.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyLabels = list(
+    "string"
+  ),
+  AggregationStatistic = "string",
+  AggregateValue = 123.0,
+  ApproximateUniqueCount = 123,
+  Contributors = list(
+    list(
+      Keys = list(
+        "string"
+      ),
+      ApproximateAggregateValue = 123.0,
+      Datapoints = list(
+        list(
+          Timestamp = as.POSIXct(
+            "2015-01-01"
+          ),
+          ApproximateValue = 123.0
+        )
+      )
+    )
+  ),
+  MetricDatapoints = list(
+    list(
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UniqueContributors = 123.0,
+      MaxContributorValue = 123.0,
+      SampleCount = 123.0,
+      Average = 123.0,
+      Sum = 123.0,
+      Minimum = 123.0,
+      Maximum = 123.0
+    )
+  )
+)
+}
+}
 \description{
 This operation returns the time series data collected by a Contributor
 Insights rule. The data includes the identity and number of contributors

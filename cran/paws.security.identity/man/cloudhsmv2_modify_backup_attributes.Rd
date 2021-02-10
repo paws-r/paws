@@ -15,6 +15,35 @@ policy for the cluster. \code{True} exempts a backup from the retention
 policy. \code{False} means the service applies the backup retention policy
 defined at the cluster.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Backup = list(
+    BackupId = "string",
+    BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
+    ClusterId = "string",
+    CreateTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CopyTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    NeverExpires = TRUE|FALSE,
+    SourceRegion = "string",
+    SourceBackup = "string",
+    SourceCluster = "string",
+    DeleteTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies attributes for AWS CloudHSM backup.
 }

@@ -11,6 +11,23 @@ wafregional_get_rule(RuleId)
 \code{\link[=wafregional_create_rule]{create_rule}} and by
 \code{\link[=wafregional_list_rules]{list_rules}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rule = list(
+    RuleId = "string",
+    Name = "string",
+    MetricName = "string",
+    Predicates = list(
+      list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

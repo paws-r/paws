@@ -12,6 +12,15 @@ must be greater than 10 else it wont be honored.}
 
 \item{NextToken}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ElasticsearchVersions = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all supported Elasticsearch versions
 }

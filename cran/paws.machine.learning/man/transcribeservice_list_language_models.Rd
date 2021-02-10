@@ -24,6 +24,33 @@ previous request was truncated.}
 there are fewer results in the list, the response contains only the
 actual results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Models = list(
+    list(
+      ModelName = "string",
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LanguageCode = "en-US",
+      BaseModelName = "NarrowBand"|"WideBand",
+      ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
+      UpgradeAvailability = TRUE|FALSE,
+      FailureReason = "string",
+      InputDataConfig = list(
+        S3Uri = "string",
+        TuningDataS3Uri = "string",
+        DataAccessRoleArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Provides more information about the custom language models you've
 created. You can use the information in this list to find a specific

@@ -15,6 +15,21 @@ specify a registry, the default registry is assumed.}
 
 \item{imageId}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  imageId = list(
+    imageDigest = "string",
+    imageTag = "string"
+  ),
+  imageScanStatus = list(
+    status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+    description = "string"
+  )
+)
+}
+}
 \description{
 Starts an image vulnerability scan. An image scan can only be started
 once per day on an individual image. This limit includes if an image was

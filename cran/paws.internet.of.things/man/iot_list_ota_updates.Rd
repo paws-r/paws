@@ -13,6 +13,21 @@ iot_list_ota_updates(maxResults, nextToken, otaUpdateStatus)
 
 \item{otaUpdateStatus}{The OTA update job status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  otaUpdates = list(
+    list(
+      otaUpdateId = "string",
+      otaUpdateArn = "string",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists OTA updates.
 }

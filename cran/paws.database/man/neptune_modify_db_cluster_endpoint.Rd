@@ -20,6 +20,25 @@ group.}
 group. All other eligible instances are reachable through the custom
 endpoint. Only relevant if the list of static members is empty.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterEndpointIdentifier = "string",
+  DBClusterIdentifier = "string",
+  DBClusterEndpointResourceIdentifier = "string",
+  Endpoint = "string",
+  Status = "string",
+  EndpointType = "string",
+  CustomEndpointType = "string",
+  StaticMembers = list(
+    "string"
+  ),
+  ExcludedMembers = list(
+    "string"
+  ),
+  DBClusterEndpointArn = "string"
+)
+}
+}
 \description{
 Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
 }

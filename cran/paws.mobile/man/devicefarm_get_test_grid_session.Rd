@@ -16,6 +16,23 @@ devicefarm_get_test_grid_session(projectArn, sessionId, sessionArn)
 
 \item{sessionArn}{An ARN that uniquely identifies a TestGridSession.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  testGridSession = list(
+    arn = "string",
+    status = "ACTIVE"|"CLOSED"|"ERRORED",
+    created = as.POSIXct(
+      "2015-01-01"
+    ),
+    ended = as.POSIXct(
+      "2015-01-01"
+    ),
+    billingMinutes = 123.0,
+    seleniumProperties = "string"
+  )
+)
+}
+}
 \description{
 A session is an instance of a browser created through a
 \code{RemoteWebDriver} with the URL from CreateTestGridUrlResult$url. You can

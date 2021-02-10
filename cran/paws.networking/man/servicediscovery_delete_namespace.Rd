@@ -9,6 +9,12 @@ servicediscovery_delete_namespace(Id)
 \arguments{
 \item{Id}{[required] The ID of the namespace that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Deletes a namespace from the current account. If the namespace still
 contains one or more services, the request fails.

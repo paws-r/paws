@@ -17,6 +17,9 @@ cognitoidentity_unlink_developer_identity(IdentityId, IdentityPoolId,
 \item{DeveloperUserIdentifier}{[required] A unique ID used by your backend authentication process to identify a
 user.}
 }
+\value{
+An empty list.
+}
 \description{
 Unlinks a \code{DeveloperUserIdentifier} from an existing identity. Unlinked
 developer users will be considered new identities next time they are

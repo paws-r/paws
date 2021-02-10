@@ -14,6 +14,12 @@ cloudhsm_modify_hapg(HapgArn, Label, PartitionSerialList)
 \item{PartitionSerialList}{The list of partition serial numbers to make members of the
 high-availability partition group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HapgArn = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

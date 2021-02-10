@@ -20,6 +20,20 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Route = list(
+    DestinationCidrBlock = "string",
+    LocalGatewayVirtualInterfaceGroupId = "string",
+    Type = "static"|"propagated",
+    State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
+    LocalGatewayRouteTableId = "string",
+    LocalGatewayRouteTableArn = "string",
+    OwnerId = "string"
+  )
+)
+}
+}
 \description{
 Creates a static route for the specified local gateway route table.
 }

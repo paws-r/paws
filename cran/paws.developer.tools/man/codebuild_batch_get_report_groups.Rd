@@ -9,6 +9,44 @@ codebuild_batch_get_report_groups(reportGroupArns)
 \arguments{
 \item{reportGroupArns}{[required] An array of report group ARNs that identify the report groups to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  reportGroups = list(
+    list(
+      arn = "string",
+      name = "string",
+      type = "TEST"|"CODE_COVERAGE",
+      exportConfig = list(
+        exportConfigType = "S3"|"NO_EXPORT",
+        s3Destination = list(
+          bucket = "string",
+          path = "string",
+          packaging = "ZIP"|"NONE",
+          encryptionKey = "string",
+          encryptionDisabled = TRUE|FALSE
+        )
+      ),
+      created = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastModified = as.POSIXct(
+        "2015-01-01"
+      ),
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      status = "ACTIVE"|"DELETING"
+    )
+  ),
+  reportGroupsNotFound = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns an array of report groups.
 }

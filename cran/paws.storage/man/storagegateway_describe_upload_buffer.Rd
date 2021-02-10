@@ -9,6 +9,17 @@ storagegateway_describe_upload_buffer(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  ),
+  UploadBufferUsedInBytes = 123,
+  UploadBufferAllocatedInBytes = 123
+)
+}
+}
 \description{
 Returns information about the upload buffer of a gateway. This operation
 is supported for the stored volume, cached volume, and tape gateway

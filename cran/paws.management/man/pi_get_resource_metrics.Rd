@@ -58,6 +58,37 @@ included in the response so that the remaining results can be retrieved.}
 parameter is specified, the response includes only records beyond the
 token, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AlignedStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  AlignedEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Identifier = "string",
+  MetricList = list(
+    list(
+      Key = list(
+        Metric = "string",
+        Dimensions = list(
+          "string"
+        )
+      ),
+      DataPoints = list(
+        list(
+          Timestamp = as.POSIXct(
+            "2015-01-01"
+          ),
+          Value = 123.0
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieve Performance Insights metrics for a set of data sources, over a
 time period. You can provide specific dimension groups and dimensions,

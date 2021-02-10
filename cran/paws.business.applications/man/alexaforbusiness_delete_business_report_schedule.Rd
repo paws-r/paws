@@ -10,6 +10,9 @@ alexaforbusiness_delete_business_report_schedule(ScheduleArn)
 \arguments{
 \item{ScheduleArn}{[required] The ARN of the business report schedule.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the recurring report delivery schedule with the specified
 schedule ARN.

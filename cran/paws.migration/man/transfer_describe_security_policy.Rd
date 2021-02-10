@@ -11,6 +11,27 @@ transfer_describe_security_policy(SecurityPolicyName)
 \item{SecurityPolicyName}{[required] Specifies the name of the security policy that is attached to the
 server.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityPolicy = list(
+    Fips = TRUE|FALSE,
+    SecurityPolicyName = "string",
+    SshCiphers = list(
+      "string"
+    ),
+    SshKexs = list(
+      "string"
+    ),
+    SshMacs = list(
+      "string"
+    ),
+    TlsCiphers = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the security policy that is attached to your file transfer
 protocol-enabled server. The response contains a description of the

@@ -30,6 +30,30 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationExecutionTargets = list(
+    list(
+      AssociationId = "string",
+      AssociationVersion = "string",
+      ExecutionId = "string",
+      ResourceId = "string",
+      ResourceType = "string",
+      Status = "string",
+      DetailedStatus = "string",
+      LastExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      OutputSource = list(
+        OutputSourceId = "string",
+        OutputSourceType = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Use this API action to view information about a specific execution of a
 specific association.

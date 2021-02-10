@@ -9,6 +9,9 @@ sagemaker_stop_transform_job(TransformJobName)
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job to stop.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a transform job.
 

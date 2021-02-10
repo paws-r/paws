@@ -10,6 +10,9 @@ cloudwatchlogs_disassociate_kms_key(logGroupName)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the associated AWS Key Management Service (AWS KMS)
 customer master key (CMK) from the specified log group.

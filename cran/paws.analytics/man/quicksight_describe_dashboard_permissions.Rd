@@ -12,6 +12,23 @@ describing permissions for.}
 
 \item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardId = "string",
+  DashboardArn = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Describes read and write permissions for a dashboard.
 }

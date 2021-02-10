@@ -11,6 +11,17 @@ cloud9_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
 to get the tags for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of the tags associated with an AWS Cloud9 development
 environment.

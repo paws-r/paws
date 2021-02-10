@@ -41,6 +41,36 @@ is to be enabled (true | false).
 \item{MaxResults}{The maximum number of results (up to a limit of 500) to be returned in a
 paginated request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumesModifications = list(
+    list(
+      VolumeId = "string",
+      ModificationState = "modifying"|"optimizing"|"completed"|"failed",
+      StatusMessage = "string",
+      TargetSize = 123,
+      TargetIops = 123,
+      TargetVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+      TargetThroughput = 123,
+      TargetMultiAttachEnabled = TRUE|FALSE,
+      OriginalSize = 123,
+      OriginalIops = 123,
+      OriginalVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+      OriginalThroughput = 123,
+      OriginalMultiAttachEnabled = TRUE|FALSE,
+      Progress = 123,
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the most recent volume modification request for the specified
 EBS volumes.

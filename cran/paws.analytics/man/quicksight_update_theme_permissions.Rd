@@ -16,6 +16,23 @@ quicksight_update_theme_permissions(AwsAccountId, ThemeId,
 
 \item{RevokePermissions}{A list of resource permissions to be revoked from the theme.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThemeId = "string",
+  ThemeArn = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates the resource permissions for a theme. Permissions apply to the
 action to grant or revoke permissions on, for example

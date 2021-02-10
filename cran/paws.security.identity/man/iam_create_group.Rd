@@ -16,8 +16,8 @@ slash (/).
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{GroupName}{[required] The name of the group to create. Do not include the path in this value.
@@ -25,6 +25,20 @@ lowercased letters.}
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
 create resources named both "MyResource" and "myresource".}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    Path = "string",
+    GroupName = "string",
+    GroupId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new group.

@@ -20,6 +20,18 @@ previous call.)}
 
 \item{Limit}{The maximum number of items to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Groups = list(
+    list(
+      Id = "string",
+      Name = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Describes the groups specified by the query. Groups are defined by the
 underlying Active Directory.

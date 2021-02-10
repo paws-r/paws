@@ -32,6 +32,12 @@ on your behalf. For example,
 and organize a flow definition. Each tag consists of a key and a value,
 both of which you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowDefinitionArn = "string"
+)
+}
+}
 \description{
 Creates a flow definition.
 }

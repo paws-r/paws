@@ -9,6 +9,9 @@ cloudwatchlogs_cancel_export_task(taskId)
 \arguments{
 \item{taskId}{[required] The ID of the export task.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels the specified export task.
 

@@ -19,6 +19,27 @@ streams, provide this token in your next request.}
 Currently, you can specify only the prefix of a stream name as a
 condition.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamInfoList = list(
+    list(
+      DeviceName = "string",
+      StreamName = "string",
+      StreamARN = "string",
+      MediaType = "string",
+      KmsKeyId = "string",
+      Version = "string",
+      Status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DataRetentionInHours = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of \code{StreamInfo} objects. Each object describes a
 stream. To retrieve only streams that satisfy a specific condition, you

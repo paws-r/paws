@@ -12,6 +12,9 @@ assigned to.}
 
 \item{TagKeys}{[required] The keys of the tags to remove from the user pool.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified tags from an Amazon Cognito identity pool. You can
 use this action up to 5 times per second, per account

@@ -18,6 +18,23 @@ console. You can't use
 \code{\link[=route53_get_health_check_last_failure_reason]{get_health_check_last_failure_reason}}
 for a calculated health check.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HealthCheckObservations = list(
+    list(
+      Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1",
+      IPAddress = "string",
+      StatusReport = list(
+        Status = "string",
+        CheckedTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the reason that a specified health check failed most recently.
 }

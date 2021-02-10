@@ -6,6 +6,14 @@
 \usage{
 autoscaling_describe_termination_policy_types()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TerminationPolicyTypes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes the termination policies supported by Amazon EC2 Auto Scaling.
 

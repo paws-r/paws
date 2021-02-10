@@ -14,6 +14,15 @@ iot_create_provisioning_template_version(templateName, templateBody,
 
 \item{setAsDefault}{Sets a fleet provision template version as the default version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  templateArn = "string",
+  templateName = "string",
+  versionId = 123,
+  isDefaultVersion = TRUE|FALSE
+)
+}
+}
 \description{
 Creates a new version of a fleet provisioning template.
 }

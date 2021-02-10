@@ -28,6 +28,106 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to apply to the VPN connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpnConnection = list(
+    CustomerGatewayConfiguration = "string",
+    CustomerGatewayId = "string",
+    Category = "string",
+    State = "pending"|"available"|"deleting"|"deleted",
+    Type = "ipsec.1",
+    VpnConnectionId = "string",
+    VpnGatewayId = "string",
+    TransitGatewayId = "string",
+    Options = list(
+      EnableAcceleration = TRUE|FALSE,
+      StaticRoutesOnly = TRUE|FALSE,
+      LocalIpv4NetworkCidr = "string",
+      RemoteIpv4NetworkCidr = "string",
+      LocalIpv6NetworkCidr = "string",
+      RemoteIpv6NetworkCidr = "string",
+      TunnelInsideIpVersion = "ipv4"|"ipv6",
+      TunnelOptions = list(
+        list(
+          OutsideIpAddress = "string",
+          TunnelInsideCidr = "string",
+          TunnelInsideIpv6Cidr = "string",
+          PreSharedKey = "string",
+          Phase1LifetimeSeconds = 123,
+          Phase2LifetimeSeconds = 123,
+          RekeyMarginTimeSeconds = 123,
+          RekeyFuzzPercentage = 123,
+          ReplayWindowSize = 123,
+          DpdTimeoutSeconds = 123,
+          DpdTimeoutAction = "string",
+          Phase1EncryptionAlgorithms = list(
+            list(
+              Value = "string"
+            )
+          ),
+          Phase2EncryptionAlgorithms = list(
+            list(
+              Value = "string"
+            )
+          ),
+          Phase1IntegrityAlgorithms = list(
+            list(
+              Value = "string"
+            )
+          ),
+          Phase2IntegrityAlgorithms = list(
+            list(
+              Value = "string"
+            )
+          ),
+          Phase1DHGroupNumbers = list(
+            list(
+              Value = 123
+            )
+          ),
+          Phase2DHGroupNumbers = list(
+            list(
+              Value = 123
+            )
+          ),
+          IkeVersions = list(
+            list(
+              Value = "string"
+            )
+          ),
+          StartupAction = "string"
+        )
+      )
+    ),
+    Routes = list(
+      list(
+        DestinationCidrBlock = "string",
+        Source = "Static",
+        State = "pending"|"available"|"deleting"|"deleted"
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    VgwTelemetry = list(
+      list(
+        AcceptedRouteCount = 123,
+        LastStatusChange = as.POSIXct(
+          "2015-01-01"
+        ),
+        OutsideIpAddress = "string",
+        Status = "UP"|"DOWN",
+        StatusMessage = "string",
+        CertificateArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a VPN connection between an existing virtual private gateway or
 transit gateway and a customer gateway. The supported connection type is

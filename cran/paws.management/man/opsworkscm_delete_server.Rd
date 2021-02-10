@@ -10,6 +10,9 @@ opsworkscm_delete_server(ServerName)
 \arguments{
 \item{ServerName}{[required] The ID of the server to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the server and the underlying AWS CloudFormation stacks
 (including the server's EC2 instance). When you run this command, the

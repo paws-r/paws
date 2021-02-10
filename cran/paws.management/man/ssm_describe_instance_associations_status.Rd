@@ -17,6 +17,34 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceAssociationStatusInfos = list(
+    list(
+      AssociationId = "string",
+      Name = "string",
+      DocumentVersion = "string",
+      AssociationVersion = "string",
+      InstanceId = "string",
+      ExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "string",
+      DetailedStatus = "string",
+      ExecutionSummary = "string",
+      ErrorCode = "string",
+      OutputUrl = list(
+        S3OutputUrl = list(
+          OutputUrl = "string"
+        )
+      ),
+      AssociationName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 The status of the associations for the instance(s).
 }

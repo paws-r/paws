@@ -14,6 +14,55 @@ apigatewayv2_get_stages(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      AccessLogSettings = list(
+        DestinationArn = "string",
+        Format = "string"
+      ),
+      ApiGatewayManaged = TRUE|FALSE,
+      AutoDeploy = TRUE|FALSE,
+      ClientCertificateId = "string",
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DefaultRouteSettings = list(
+        DataTraceEnabled = TRUE|FALSE,
+        DetailedMetricsEnabled = TRUE|FALSE,
+        LoggingLevel = "ERROR"|"INFO"|"OFF",
+        ThrottlingBurstLimit = 123,
+        ThrottlingRateLimit = 123.0
+      ),
+      DeploymentId = "string",
+      Description = "string",
+      LastDeploymentStatusMessage = "string",
+      LastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      RouteSettings = list(
+        list(
+          DataTraceEnabled = TRUE|FALSE,
+          DetailedMetricsEnabled = TRUE|FALSE,
+          LoggingLevel = "ERROR"|"INFO"|"OFF",
+          ThrottlingBurstLimit = 123,
+          ThrottlingRateLimit = 123.0
+        )
+      ),
+      StageName = "string",
+      StageVariables = list(
+        "string"
+      ),
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets the Stages for an API.
 }

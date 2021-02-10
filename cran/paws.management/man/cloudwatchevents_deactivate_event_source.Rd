@@ -10,6 +10,9 @@ cloudwatchevents_deactivate_event_source(Name)
 \arguments{
 \item{Name}{[required] The name of the partner event source to deactivate.}
 }
+\value{
+An empty list.
+}
 \description{
 You can use this operation to temporarily stop receiving events from the
 specified partner event source. The matching event bus is not deleted.

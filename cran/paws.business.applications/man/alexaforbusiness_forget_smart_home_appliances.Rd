@@ -9,6 +9,9 @@ alexaforbusiness_forget_smart_home_appliances(RoomArn)
 \arguments{
 \item{RoomArn}{[required] The room that the appliances are associated with.}
 }
+\value{
+An empty list.
+}
 \description{
 Forgets smart home appliances associated to a room.
 }

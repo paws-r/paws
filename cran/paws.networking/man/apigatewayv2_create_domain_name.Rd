@@ -16,6 +16,38 @@ apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations,
 
 \item{Tags}{The collection of tags associated with a domain name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiMappingSelectionExpression = "string",
+  DomainName = "string",
+  DomainNameConfigurations = list(
+    list(
+      ApiGatewayDomainName = "string",
+      CertificateArn = "string",
+      CertificateName = "string",
+      CertificateUploadDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DomainNameStatus = "AVAILABLE"|"UPDATING",
+      DomainNameStatusMessage = "string",
+      EndpointType = "REGIONAL"|"EDGE",
+      HostedZoneId = "string",
+      SecurityPolicy = "TLS_1_0"|"TLS_1_2"
+    )
+  ),
+  MutualTlsAuthentication = list(
+    TruststoreUri = "string",
+    TruststoreVersion = "string",
+    TruststoreWarnings = list(
+      "string"
+    )
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a domain name.
 }

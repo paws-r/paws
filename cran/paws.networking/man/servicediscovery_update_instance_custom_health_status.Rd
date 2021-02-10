@@ -16,6 +16,9 @@ health check that you want to change the status for.}
 
 \item{Status}{[required] The new status of the instance, \code{HEALTHY} or \code{UNHEALTHY}.}
 }
+\value{
+An empty list.
+}
 \description{
 Submits a request to change the health status of a custom health check
 to healthy or unhealthy.

@@ -11,6 +11,9 @@ appsync_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] A \code{TagMap} object.}
 }
+\value{
+An empty list.
+}
 \description{
 Tags a resource with user-supplied tags.
 }

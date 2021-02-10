@@ -12,7 +12,7 @@ iam_deactivate_mfa_device(UserName, SerialNumber)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
@@ -20,6 +20,9 @@ MFA devices, the serial number is the device ARN.
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@:/-}
+}
+\value{
+An empty list.
 }
 \description{
 Deactivates the specified MFA device and removes it from association

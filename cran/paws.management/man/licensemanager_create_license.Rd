@@ -35,6 +35,14 @@ a borrow configuration for workloads with offline usage.}
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseArn = "string",
+  Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
+  Version = "string"
+)
+}
+}
 \description{
 Creates a license.
 }

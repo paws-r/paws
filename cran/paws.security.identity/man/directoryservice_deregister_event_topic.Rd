@@ -14,6 +14,9 @@ send messages to the specified SNS topic.}
 \item{TopicName}{[required] The name of the SNS topic from which to remove the directory as a
 publisher.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified directory as a publisher to the specified SNS
 topic.

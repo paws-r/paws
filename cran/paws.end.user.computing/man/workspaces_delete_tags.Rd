@@ -13,6 +13,9 @@ access control groups, and connection aliases.}
 
 \item{TagKeys}{[required] The tag keys.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified tags from the specified WorkSpaces resource.
 }

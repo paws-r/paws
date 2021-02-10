@@ -12,6 +12,9 @@ CloudTrail logs AWS API calls. The format of a trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
+\value{
+An empty list.
+}
 \description{
 Starts the recording of AWS API calls and log file delivery for a trail.
 For a trail that is enabled in all regions, this operation must be

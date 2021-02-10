@@ -20,6 +20,37 @@ NULL
 #' This snapshot identifier is included in the share URL when a project is
 #' exported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   details = list(
+#'     name = "string",
+#'     projectId = "string",
+#'     region = "string",
+#'     state = "NORMAL"|"SYNCING"|"IMPORTING",
+#'     createdDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     consoleUrl = "string",
+#'     resources = list(
+#'       list(
+#'         type = "string",
+#'         name = "string",
+#'         arn = "string",
+#'         feature = "string",
+#'         attributes = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_project(
@@ -60,6 +91,35 @@ mobile_create_project <- function(name = NULL, region = NULL, contents = NULL, s
 #'
 #' @param projectId &#91;required&#93; Unique project identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deletedResources = list(
+#'     list(
+#'       type = "string",
+#'       name = "string",
+#'       arn = "string",
+#'       feature = "string",
+#'       attributes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   orphanedResources = list(
+#'     list(
+#'       type = "string",
+#'       name = "string",
+#'       arn = "string",
+#'       feature = "string",
+#'       attributes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -96,6 +156,23 @@ mobile_delete_project <- function(projectId) {
 #' mobile_describe_bundle(bundleId)
 #'
 #' @param bundleId &#91;required&#93; Unique bundle identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   details = list(
+#'     bundleId = "string",
+#'     title = "string",
+#'     version = "string",
+#'     description = "string",
+#'     iconUrl = "string",
+#'     availablePlatforms = list(
+#'       "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -136,6 +213,37 @@ mobile_describe_bundle <- function(bundleId) {
 #' @param syncFromResources If set to true, causes AWS Mobile Hub to synchronize information from
 #' other services, e.g., update state of AWS CloudFormation stacks in the
 #' AWS Mobile Hub project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   details = list(
+#'     name = "string",
+#'     projectId = "string",
+#'     region = "string",
+#'     state = "NORMAL"|"SYNCING"|"IMPORTING",
+#'     createdDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     consoleUrl = "string",
+#'     resources = list(
+#'       list(
+#'         type = "string",
+#'         name = "string",
+#'         arn = "string",
+#'         feature = "string",
+#'         attributes = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -181,6 +289,14 @@ mobile_describe_project <- function(projectId, syncFromResources = NULL) {
 #' @param projectId Unique project identifier.
 #' @param platform Developer desktop or target application platform.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   downloadUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_bundle(
@@ -224,6 +340,16 @@ mobile_export_bundle <- function(bundleId, projectId = NULL, platform = NULL) {
 #'
 #' @param projectId &#91;required&#93; Unique project identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   downloadUrl = "string",
+#'   shareUrl = "string",
+#'   snapshotId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_project(
@@ -263,6 +389,26 @@ mobile_export_project <- function(projectId) {
 #' @param nextToken Pagination token. Set to null to start listing bundles from start. If
 #' non-null pagination token is returned in a result, then pass its value
 #' in here in another request to list more bundles.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   bundleList = list(
+#'     list(
+#'       bundleId = "string",
+#'       title = "string",
+#'       version = "string",
+#'       description = "string",
+#'       iconUrl = "string",
+#'       availablePlatforms = list(
+#'         "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -305,6 +451,20 @@ mobile_list_bundles <- function(maxResults = NULL, nextToken = NULL) {
 #' non-null pagination token is returned in a result, then pass its value
 #' in here in another request to list more projects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projects = list(
+#'     list(
+#'       name = "string",
+#'       projectId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_projects(
@@ -345,6 +505,37 @@ mobile_list_projects <- function(maxResults = NULL, nextToken = NULL) {
 #' This should be the contents of the file downloaded from the URL provided
 #' in an export project operation.
 #' @param projectId &#91;required&#93; Unique project identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   details = list(
+#'     name = "string",
+#'     projectId = "string",
+#'     region = "string",
+#'     state = "NORMAL"|"SYNCING"|"IMPORTING",
+#'     createdDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     consoleUrl = "string",
+#'     resources = list(
+#'       list(
+#'         type = "string",
+#'         name = "string",
+#'         arn = "string",
+#'         feature = "string",
+#'         attributes = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

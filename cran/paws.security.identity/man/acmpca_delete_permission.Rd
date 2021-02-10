@@ -21,6 +21,9 @@ At this time, the only valid service principal is \code{acm.amazonaws.com}}
 
 \item{SourceAccount}{The AWS account that calls this action.}
 }
+\value{
+An empty list.
+}
 \description{
 Revokes permissions on a private CA granted to the AWS Certificate
 Manager (ACM) service principal (acm.amazonaws.com).

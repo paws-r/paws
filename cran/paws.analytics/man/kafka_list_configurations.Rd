@@ -7,14 +7,42 @@
 kafka_list_configurations(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{<p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>}
+\item{MaxResults}{The maximum number of results to return in the response. If there are
+more results, the response includes a NextToken parameter.}
 
-\item{NextToken}{<p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
-To get the next batch, provide this token in your next request.</p>}
+\item{NextToken}{The paginated results marker. When the result of the operation is
+truncated, the call returns NextToken in the response. To get the next
+batch, provide this token in your next request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Configurations = list(
+    list(
+      Arn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string",
+      KafkaVersions = list(
+        "string"
+      ),
+      LatestRevision = list(
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        Description = "string",
+        Revision = 123
+      ),
+      Name = "string",
+      State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
-\preformatted{        <p>Returns a list of all the MSK configurations in this Region.</p>
-}
+Returns a list of all the MSK configurations in this Region.
 }
 \section{Request syntax}{
 \preformatted{svc$list_configurations(

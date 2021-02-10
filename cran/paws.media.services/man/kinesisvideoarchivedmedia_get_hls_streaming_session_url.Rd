@@ -169,6 +169,12 @@ The maximum value of 1,000 fragments corresponds to more than 16 minutes
 of video on streams with 1-second fragments, and more than 2 1/2 hours
 of video on streams with 10-second fragments.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HLSStreamingSessionURL = "string"
+)
+}
+}
 \description{
 Retrieves an HTTP Live Streaming (HLS) URL for the stream. You can then
 open the URL in a browser or media player to view the stream contents.

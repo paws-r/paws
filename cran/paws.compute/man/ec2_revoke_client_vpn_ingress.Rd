@@ -23,6 +23,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = list(
+    Code = "authorizing"|"active"|"failed"|"revoking",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Removes an ingress authorization rule from a Client VPN endpoint.
 }

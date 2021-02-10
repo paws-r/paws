@@ -6,6 +6,9 @@
 \usage{
 servicecatalog_enable_aws_organizations_access()
 }
+\value{
+An empty list.
+}
 \description{
 Enable portfolio sharing feature through AWS Organizations. This API
 will allow Service Catalog to receive updates on your organization in

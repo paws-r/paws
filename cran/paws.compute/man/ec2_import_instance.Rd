@@ -22,6 +22,62 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Platform}{[required] The instance operating system.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConversionTask = list(
+    ConversionTaskId = "string",
+    ExpirationTime = "string",
+    ImportInstance = list(
+      Description = "string",
+      InstanceId = "string",
+      Platform = "Windows",
+      Volumes = list(
+        list(
+          AvailabilityZone = "string",
+          BytesConverted = 123,
+          Description = "string",
+          Image = list(
+            Checksum = "string",
+            Format = "VMDK"|"RAW"|"VHD",
+            ImportManifestUrl = "string",
+            Size = 123
+          ),
+          Status = "string",
+          StatusMessage = "string",
+          Volume = list(
+            Id = "string",
+            Size = 123
+          )
+        )
+      )
+    ),
+    ImportVolume = list(
+      AvailabilityZone = "string",
+      BytesConverted = 123,
+      Description = "string",
+      Image = list(
+        Checksum = "string",
+        Format = "VMDK"|"RAW"|"VHD",
+        ImportManifestUrl = "string",
+        Size = 123
+      ),
+      Volume = list(
+        Id = "string",
+        Size = 123
+      )
+    ),
+    State = "active"|"cancelling"|"cancelled"|"completed",
+    StatusMessage = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an import instance task using metadata from the specified disk
 image. \code{\link[=ec2_import_instance]{import_instance}} only supports

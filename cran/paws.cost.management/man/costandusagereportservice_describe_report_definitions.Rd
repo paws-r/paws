@@ -12,6 +12,31 @@ costandusagereportservice_describe_report_definitions(MaxResults,
 
 \item{NextToken}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReportDefinitions = list(
+    list(
+      ReportName = "string",
+      TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
+      Format = "textORcsv"|"Parquet",
+      Compression = "ZIP"|"GZIP"|"Parquet",
+      AdditionalSchemaElements = list(
+        "RESOURCES"
+      ),
+      S3Bucket = "string",
+      S3Prefix = "string",
+      S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
+      AdditionalArtifacts = list(
+        "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
+      ),
+      RefreshClosedReports = TRUE|FALSE,
+      ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the AWS Cost and Usage reports available to this account.
 }

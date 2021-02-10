@@ -25,6 +25,37 @@ identical to the ones specified in the initial request.
 
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationVersions = list(
+    list(
+      ApplicationVersionArn = "string",
+      ApplicationName = "string",
+      Description = "string",
+      VersionLabel = "string",
+      SourceBuildInformation = list(
+        SourceType = "Git"|"Zip",
+        SourceRepository = "CodeCommit"|"S3",
+        SourceLocation = "string"
+      ),
+      BuildArn = "string",
+      SourceBundle = list(
+        S3Bucket = "string",
+        S3Key = "string"
+      ),
+      DateCreated = as.POSIXct(
+        "2015-01-01"
+      ),
+      DateUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieve a list of application versions.
 }

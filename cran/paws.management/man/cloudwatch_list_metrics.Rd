@@ -29,6 +29,24 @@ specify. There is a low probability that the returned results include
 metrics with last published data as much as 40 minutes more than the
 specified time interval.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metrics = list(
+    list(
+      Namespace = "string",
+      MetricName = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the specified metrics. You can use the returned metrics with
 \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or

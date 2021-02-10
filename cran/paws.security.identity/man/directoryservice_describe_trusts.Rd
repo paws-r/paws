@@ -23,6 +23,33 @@ is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Trusts = list(
+    list(
+      DirectoryId = "string",
+      TrustId = "string",
+      RemoteDomainName = "string",
+      TrustType = "Forest"|"External",
+      TrustDirection = "One-Way: Outgoing"|"One-Way: Incoming"|"Two-Way",
+      TrustState = "Creating"|"Created"|"Verifying"|"VerifyFailed"|"Verified"|"Updating"|"UpdateFailed"|"Updated"|"Deleting"|"Deleted"|"Failed",
+      CreatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StateLastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrustStateReason = "string",
+      SelectiveAuth = "Enabled"|"Disabled"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Obtains information about the trust relationships for this account.
 

@@ -11,6 +11,56 @@ glue_get_jobs(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum size of the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Jobs = list(
+    list(
+      Name = "string",
+      Description = "string",
+      LogUri = "string",
+      Role = "string",
+      CreatedOn = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedOn = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExecutionProperty = list(
+        MaxConcurrentRuns = 123
+      ),
+      Command = list(
+        Name = "string",
+        ScriptLocation = "string",
+        PythonVersion = "string"
+      ),
+      DefaultArguments = list(
+        "string"
+      ),
+      NonOverridableArguments = list(
+        "string"
+      ),
+      Connections = list(
+        Connections = list(
+          "string"
+        )
+      ),
+      MaxRetries = 123,
+      AllocatedCapacity = 123,
+      Timeout = 123,
+      MaxCapacity = 123.0,
+      WorkerType = "Standard"|"G.1X"|"G.2X",
+      NumberOfWorkers = 123,
+      SecurityConfiguration = "string",
+      NotificationProperty = list(
+        NotifyDelayAfter = 123
+      ),
+      GlueVersion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all current job definitions.
 }

@@ -19,6 +19,17 @@ eventbridge_create_archive(ArchiveName, EventSourceArn, Description,
 \item{RetentionDays}{The number of days to retain events for. Default value is 0. If set to
 0, events are retained indefinitely}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ArchiveArn = "string",
+  State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+  StateReason = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates an archive of events with the specified settings. When you
 create an archive, incoming events might not immediately start being

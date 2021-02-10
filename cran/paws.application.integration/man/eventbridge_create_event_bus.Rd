@@ -21,6 +21,12 @@ event source that the new event bus will be matched with.}
 
 \item{Tags}{Tags to associate with the event bus.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventBusArn = "string"
+)
+}
+}
 \description{
 Creates a new event bus within your account. This can be a custom event
 bus which you can use to receive events from your custom applications

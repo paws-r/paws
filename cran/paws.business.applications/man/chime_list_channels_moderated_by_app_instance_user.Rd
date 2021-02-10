@@ -15,6 +15,26 @@ chime_list_channels_moderated_by_app_instance_user(AppInstanceUserArn,
 \item{NextToken}{The token returned from previous API requests until the number of
 channels moderated by the user is reached.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Channels = list(
+    list(
+      ChannelSummary = list(
+        Name = "string",
+        ChannelArn = "string",
+        Mode = "UNRESTRICTED"|"RESTRICTED",
+        Privacy = "PUBLIC"|"PRIVATE",
+        Metadata = "string",
+        LastMessageTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 A list of the channels moderated by an app instance user.
 }

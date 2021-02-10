@@ -10,6 +10,15 @@ resourcegroups_get_tags(Arn)
 \arguments{
 \item{Arn}{[required] The ARN of the resource group whose tags you want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of tags that are associated with a resource group,
 specified by an ARN.

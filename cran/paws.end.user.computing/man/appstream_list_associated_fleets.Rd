@@ -13,6 +13,15 @@ appstream_list_associated_fleets(StackName, NextToken)
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Names = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the name of the fleet that is associated with the specified
 stack.

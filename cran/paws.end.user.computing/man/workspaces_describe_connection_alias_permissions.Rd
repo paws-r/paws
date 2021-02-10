@@ -16,6 +16,19 @@ provide this token to receive the next set of results.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AliasId = "string",
+  ConnectionAliasPermissions = list(
+    list(
+      SharedAccountId = "string",
+      AllowAssociation = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the permissions that the owner of a connection alias has
 granted to another AWS account for the specified connection alias. For

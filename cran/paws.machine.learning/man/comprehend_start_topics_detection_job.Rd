@@ -42,6 +42,13 @@ either of the following formats:
 (VPC) containing the resources you are using for your topic detection
 job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+)
+}
+}
 \description{
 Starts an asynchronous topic detection job. Use the
 \code{DescribeTopicDetectionJob} operation to track the status of a job.

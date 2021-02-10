@@ -42,6 +42,30 @@ Default: Describes all your internet gateways.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InternetGateways = list(
+    list(
+      Attachments = list(
+        list(
+          State = "attaching"|"attached"|"detaching"|"detached",
+          VpcId = "string"
+        )
+      ),
+      InternetGatewayId = "string",
+      OwnerId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your internet gateways.
 }

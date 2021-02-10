@@ -21,6 +21,32 @@ from a previous call.)}
 \item{Filters}{One or more filters to limit the type of sessions returned by the
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Sessions = list(
+    list(
+      SessionId = "string",
+      Target = "string",
+      Status = "Connected"|"Connecting"|"Disconnected"|"Terminated"|"Terminating"|"Failed",
+      StartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DocumentName = "string",
+      Owner = "string",
+      Details = "string",
+      OutputUrl = list(
+        S3OutputUrl = "string",
+        CloudWatchOutputUrl = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of all active sessions (both connected and
 disconnected) or terminated sessions from the past 30 days.

@@ -27,6 +27,15 @@ The available protocols are:
 
 \item{UserPassword}{The password of the user account to be tested.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Response = "string",
+  StatusCode = 123,
+  Message = "string",
+  Url = "string"
+)
+}
+}
 \description{
 If the \code{IdentityProviderType} of a file transfer protocol-enabled server
 is \code{API_Gateway}, tests whether your API Gateway is set up successfully.

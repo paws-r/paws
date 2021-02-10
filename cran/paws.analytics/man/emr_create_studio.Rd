@@ -51,6 +51,13 @@ key-value pairs that consist of a required key string with a maximum of
 128 characters, and an optional value string with a maximum of 256
 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StudioId = "string",
+  Url = "string"
+)
+}
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

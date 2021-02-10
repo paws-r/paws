@@ -18,6 +18,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a set of DHCP options (that you've previously created) with
 the specified VPC, or associates no DHCP options with the VPC.

@@ -53,6 +53,12 @@ For more information about obtaining the OIDC provider's thumbprint, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
 in the \emph{IAM User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OpenIDConnectProviderArn = "string"
+)
+}
+}
 \description{
 Creates an IAM entity to describe an identity provider (IdP) that
 supports \href{https://openid.net/connect/}{OpenID Connect (OIDC)}.

@@ -13,6 +13,15 @@ codestar_list_tags_for_project(id, nextToken, maxResults)
 
 \item{maxResults}{Reserved for future use.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the tags for a project.
 }

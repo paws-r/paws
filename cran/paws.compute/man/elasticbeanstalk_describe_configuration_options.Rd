@@ -28,6 +28,33 @@ describe.}
 
 \item{Options}{If specified, restricts the descriptions to only the specified options.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SolutionStackName = "string",
+  PlatformArn = "string",
+  Options = list(
+    list(
+      Namespace = "string",
+      Name = "string",
+      DefaultValue = "string",
+      ChangeSeverity = "string",
+      UserDefined = TRUE|FALSE,
+      ValueType = "Scalar"|"List",
+      ValueOptions = list(
+        "string"
+      ),
+      MinValue = 123,
+      MaxValue = 123,
+      MaxLength = 123,
+      Regex = list(
+        Pattern = "string",
+        Label = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the configuration options that are used in a particular
 configuration template or environment, or that a specified solution

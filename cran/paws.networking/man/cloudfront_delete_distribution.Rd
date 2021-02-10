@@ -12,6 +12,9 @@ cloudfront_delete_distribution(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header that you received when you disabled the
 distribution. For example: \code{E2QWRUHAPOMQZL}.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete a distribution.
 }

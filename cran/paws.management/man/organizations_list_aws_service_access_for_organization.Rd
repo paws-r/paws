@@ -26,6 +26,20 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EnabledServicePrincipals = list(
+    list(
+      ServicePrincipal = "string",
+      DateEnabled = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the AWS services that you enabled to integrate with
 your organization. After a service on this list creates the resources

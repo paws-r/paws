@@ -156,6 +156,9 @@ all scaling activities that involve scheduled actions are suspended.
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspending and Resuming Scaling}
 in the \emph{Application Auto Scaling User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Registers or updates a scalable target.
 

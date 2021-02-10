@@ -53,10 +53,10 @@ Remote debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/develope
 \item INTERACTIVE: You can interact with the iOS device by viewing,
 touching, and rotating the screen. You cannot run XCUITest
 framework-based tests in this mode.
-\item NO\\_VIDEO: You are connected to the device, but cannot interact with
+\item NO_VIDEO: You are connected to the device, but cannot interact with
 it or view the screen. This mode has the fastest test execution
 speed. You can run XCUITest framework-based tests in this mode.
-\item VIDEO\\_ONLY: You can view the screen, but cannot touch or rotate it.
+\item VIDEO_ONLY: You can view the screen, but cannot touch or rotate it.
 You can run XCUITest framework-based tests and watch the screen in
 this mode.
 }}
@@ -66,6 +66,93 @@ app again. For public devices, Device Farm always signs your apps again.
 
 For more information on how Device Farm modifies your uploads during
 tests, see \href{https://aws.amazon.com/device-farm/faqs/}{Do you modify my app?}}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  remoteAccessSession = list(
+    arn = "string",
+    name = "string",
+    created = as.POSIXct(
+      "2015-01-01"
+    ),
+    status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+    result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+    message = "string",
+    started = as.POSIXct(
+      "2015-01-01"
+    ),
+    stopped = as.POSIXct(
+      "2015-01-01"
+    ),
+    device = list(
+      arn = "string",
+      name = "string",
+      manufacturer = "string",
+      model = "string",
+      modelId = "string",
+      formFactor = "PHONE"|"TABLET",
+      platform = "ANDROID"|"IOS",
+      os = "string",
+      cpu = list(
+        frequency = "string",
+        architecture = "string",
+        clock = 123.0
+      ),
+      resolution = list(
+        width = 123,
+        height = 123
+      ),
+      heapSize = 123,
+      memory = 123,
+      image = "string",
+      carrier = "string",
+      radio = "string",
+      remoteAccessEnabled = TRUE|FALSE,
+      remoteDebugEnabled = TRUE|FALSE,
+      fleetType = "string",
+      fleetName = "string",
+      instances = list(
+        list(
+          arn = "string",
+          deviceArn = "string",
+          labels = list(
+            "string"
+          ),
+          status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+          udid = "string",
+          instanceProfile = list(
+            arn = "string",
+            packageCleanup = TRUE|FALSE,
+            excludeAppPackagesFromCleanup = list(
+              "string"
+            ),
+            rebootAfterUse = TRUE|FALSE,
+            name = "string",
+            description = "string"
+          )
+        )
+      ),
+      availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+    ),
+    instanceArn = "string",
+    remoteDebugEnabled = TRUE|FALSE,
+    remoteRecordEnabled = TRUE|FALSE,
+    remoteRecordAppArn = "string",
+    hostAddress = "string",
+    clientId = "string",
+    billingMethod = "METERED"|"UNMETERED",
+    deviceMinutes = list(
+      total = 123.0,
+      metered = 123.0,
+      unmetered = 123.0
+    ),
+    endpoint = "string",
+    deviceUdid = "string",
+    interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
+    skipAppResign = TRUE|FALSE
+  )
+)
+}
 }
 \description{
 Specifies and starts a remote access session.

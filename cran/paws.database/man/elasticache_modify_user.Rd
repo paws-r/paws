@@ -18,6 +18,24 @@ elasticache_modify_user(UserId, AccessString, AppendAccessString,
 
 \item{NoPasswordRequired}{Indicates no password is required for the user.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserId = "string",
+  UserName = "string",
+  Status = "string",
+  Engine = "string",
+  AccessString = "string",
+  UserGroupIds = list(
+    "string"
+  ),
+  Authentication = list(
+    Type = "password"|"no-password",
+    PasswordCount = 123
+  ),
+  ARN = "string"
+)
+}
+}
 \description{
 Changes user password(s) and/or access string.
 }

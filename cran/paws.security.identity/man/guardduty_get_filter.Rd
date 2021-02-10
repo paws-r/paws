@@ -11,6 +11,44 @@ guardduty_get_filter(DetectorId, FilterName)
 
 \item{FilterName}{[required] The name of the filter you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Description = "string",
+  Action = "NOOP"|"ARCHIVE",
+  Rank = 123,
+  FindingCriteria = list(
+    Criterion = list(
+      list(
+        Eq = list(
+          "string"
+        ),
+        Neq = list(
+          "string"
+        ),
+        Gt = 123,
+        Gte = 123,
+        Lt = 123,
+        Lte = 123,
+        Equals = list(
+          "string"
+        ),
+        NotEquals = list(
+          "string"
+        ),
+        GreaterThan = 123,
+        GreaterThanOrEqual = 123,
+        LessThan = 123,
+        LessThanOrEqual = 123
+      )
+    )
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns the details of the filter specified by the filter name.
 }

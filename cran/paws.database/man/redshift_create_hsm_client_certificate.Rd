@@ -16,6 +16,21 @@ keys.}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HsmClientCertificate = list(
+    HsmClientCertificateIdentifier = "string",
+    HsmClientCertificatePublicKey = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an HSM client certificate that an Amazon Redshift cluster will
 use to connect to the client's HSM in order to store and retrieve the

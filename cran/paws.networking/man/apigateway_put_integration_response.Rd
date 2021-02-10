@@ -26,10 +26,10 @@ method response from the back end. The key is a method response header
 parameter name and the mapped value is an integration response header
 value, a static value enclosed within a pair of single quotes, or a JSON
 expression from the integration response body. The mapping key must
-match the pattern of \verb{method.response.header.\\\{name\\\}}, where \code{name} is a
+match the pattern of \verb{method.response.header.\{name\}}, where \code{name} is a
 valid and unique header name. The mapped non-static value must match the
-pattern of \verb{integration.response.header.\\\{name\\\}} or
-\verb{integration.response.body.\\\{JSON-expression\\\}}, where \code{name} must be a
+pattern of \verb{integration.response.header.\{name\}} or
+\verb{integration.response.body.\{JSON-expression\}}, where \code{name} must be a
 valid and unique response header name and \code{JSON-expression} a valid JSON
 expression without the \code{$} prefix.}
 
@@ -48,6 +48,20 @@ a Base64-encoded string.
 If this property is not defined, the response payload will be passed
 through from the integration response to the method response without
 modification.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  statusCode = "string",
+  selectionPattern = "string",
+  responseParameters = list(
+    "string"
+  ),
+  responseTemplates = list(
+    "string"
+  ),
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+)
+}
 }
 \description{
 Represents a put integration.

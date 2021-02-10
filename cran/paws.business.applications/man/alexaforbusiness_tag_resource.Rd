@@ -12,6 +12,9 @@ alexaforbusiness_tag_resource(Arn, Tags)
 \item{Tags}{[required] The tags to be added to the specified resource. Do not provide system
 tags. Required.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds metadata tags to a specified resource.
 }

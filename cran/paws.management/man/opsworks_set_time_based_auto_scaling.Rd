@@ -12,6 +12,9 @@ opsworks_set_time_based_auto_scaling(InstanceId, AutoScalingSchedule)
 
 \item{AutoScalingSchedule}{An \code{AutoScalingSchedule} with the instance schedule.}
 }
+\value{
+An empty list.
+}
 \description{
 Specify the time-based auto scaling configuration for a specified
 instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.

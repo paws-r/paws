@@ -61,6 +61,9 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Allows a user to enter a confirmation code to reset a forgotten
 password.

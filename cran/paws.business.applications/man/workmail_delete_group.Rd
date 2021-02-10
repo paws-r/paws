@@ -11,6 +11,9 @@ workmail_delete_group(OrganizationId, GroupId)
 
 \item{GroupId}{[required] The identifier of the group to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a group from Amazon WorkMail.
 }

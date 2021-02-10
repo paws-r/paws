@@ -13,14 +13,22 @@ iot_cancel_job(jobId, reasonCode, comment, force)
 
 \item{comment}{An optional comment string describing why the job was canceled.}
 
-\item{force}{(Optional) If \code{true} job executions with status "IN\\_PROGRESS" and
+\item{force}{(Optional) If \code{true} job executions with status "IN_PROGRESS" and
 "QUEUED" are canceled, otherwise only job executions with status
 "QUEUED" are canceled. The default is \code{false}.
 
-Canceling a job which is "IN\\_PROGRESS", will cause a device which is
+Canceling a job which is "IN_PROGRESS", will cause a device which is
 executing the job to be unable to update the job execution status. Use
 caution and ensure that each device executing a job which is canceled is
 able to recover to a valid state.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  jobArn = "string",
+  jobId = "string",
+  description = "string"
+)
+}
 }
 \description{
 Cancels a job.

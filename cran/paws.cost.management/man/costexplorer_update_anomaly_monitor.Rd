@@ -11,6 +11,12 @@ costexplorer_update_anomaly_monitor(MonitorArn, MonitorName)
 
 \item{MonitorName}{The new name for the cost anomaly monitor.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitorArn = "string"
+)
+}
+}
 \description{
 Updates an existing cost anomaly monitor. The changes made are applied
 going forward, and does not change anomalies detected in the past.

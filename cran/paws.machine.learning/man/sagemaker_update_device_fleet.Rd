@@ -16,6 +16,9 @@ sagemaker_update_device_fleet(DeviceFleetName, RoleArn, Description,
 
 \item{OutputConfig}{[required] Output configuration for storing sample data collected by the fleet.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a fleet of devices.
 }

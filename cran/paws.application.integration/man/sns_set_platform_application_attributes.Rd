@@ -41,6 +41,9 @@ write access to use CloudWatch Logs on your behalf.
 successfully delivered messages.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the attributes of the platform application object for the supported
 push notification services, such as APNS and GCM (Firebase Cloud

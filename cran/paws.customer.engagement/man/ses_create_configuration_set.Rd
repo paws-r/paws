@@ -9,6 +9,9 @@ ses_create_configuration_set(ConfigurationSet)
 \arguments{
 \item{ConfigurationSet}{[required] A data structure that contains the name of the configuration set.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a configuration set.
 

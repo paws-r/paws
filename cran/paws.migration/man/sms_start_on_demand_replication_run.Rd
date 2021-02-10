@@ -11,6 +11,12 @@ sms_start_on_demand_replication_run(replicationJobId, description)
 
 \item{description}{The description of the replication run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  replicationRunId = "string"
+)
+}
+}
 \description{
 Starts an on-demand replication run for the specified replication job.
 This replication run starts immediately. This replication run is in

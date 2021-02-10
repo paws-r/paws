@@ -29,6 +29,18 @@ rank. And a \code{High} severity pattern translates to a \verb{250,000} rank. Ra
 values less than \code{1} or greater than \verb{1,000,000} are reserved for
 AWS-provided patterns.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LogPattern = list(
+    PatternSetName = "string",
+    PatternName = "string",
+    Pattern = "string",
+    Rank = 123
+  ),
+  ResourceGroupName = "string"
+)
+}
+}
 \description{
 Adds an log pattern to a \code{LogPatternSet}.
 }

@@ -25,6 +25,9 @@ autoscaling_suspend_processes(AutoScalingGroupName, ScalingProcesses)
 
 If you omit this parameter, all processes are specified.}
 }
+\value{
+An empty list.
+}
 \description{
 Suspends the specified auto scaling processes, or all processes, for the
 specified Auto Scaling group.

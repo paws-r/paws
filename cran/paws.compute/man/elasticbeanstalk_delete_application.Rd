@@ -14,6 +14,9 @@ elasticbeanstalk_delete_application(ApplicationName,
 \item{TerminateEnvByForce}{When set to true, running environments will be terminated before
 deleting the application.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified application along with all associated versions and
 configurations. The application versions will not be deleted from your

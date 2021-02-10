@@ -18,6 +18,9 @@ with results.}
 \item{result}{The result of the activity task. It is a free form string that is
 implementation specific.}
 }
+\value{
+An empty list.
+}
 \description{
 Used by workers to tell the service that the ActivityTask identified by
 the \code{taskToken} completed successfully with a \code{result} (if provided).

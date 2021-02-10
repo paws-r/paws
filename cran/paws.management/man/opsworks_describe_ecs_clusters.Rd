@@ -27,6 +27,20 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EcsClusters = list(
+    list(
+      EcsClusterArn = "string",
+      EcsClusterName = "string",
+      StackId = "string",
+      RegisteredAt = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes Amazon ECS clusters that are registered with a stack. If you
 specify only a stack ID, you can use the \code{MaxResults} and \code{NextToken}

@@ -16,6 +16,23 @@ that have names that start with the prefix you specify.}
 
 \item{nextToken}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  queryDefinitions = list(
+    list(
+      queryDefinitionId = "string",
+      name = "string",
+      queryString = "string",
+      lastModified = 123,
+      logGroupNames = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 This operation returns a paginated list of your saved CloudWatch Logs
 Insights query definitions.

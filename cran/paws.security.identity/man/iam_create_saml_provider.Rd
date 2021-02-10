@@ -22,7 +22,13 @@ in the \emph{IAM User Guide}}
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SAMLProviderArn = "string"
+)
+}
 }
 \description{
 Creates an IAM resource that describes an identity provider (IdP) that

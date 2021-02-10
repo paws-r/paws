@@ -19,6 +19,30 @@ up to 50 results.}
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSessionQueues = list(
+    list(
+      Name = "string",
+      GameSessionQueueArn = "string",
+      TimeoutInSeconds = 123,
+      PlayerLatencyPolicies = list(
+        list(
+          MaximumIndividualPlayerLatencyMilliseconds = 123,
+          PolicyDurationSeconds = 123
+        )
+      ),
+      Destinations = list(
+        list(
+          DestinationArn = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the properties for one or more game session queues. When
 requesting multiple queues, use the pagination parameters to retrieve

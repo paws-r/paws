@@ -16,6 +16,43 @@ policy is not attached to a cache behavior, you can get the identifier
 using
 \code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OriginRequestPolicyConfig = list(
+    Comment = "string",
+    Name = "string",
+    HeadersConfig = list(
+      HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+      Headers = list(
+        Quantity = 123,
+        Items = list(
+          "string"
+        )
+      )
+    ),
+    CookiesConfig = list(
+      CookieBehavior = "none"|"whitelist"|"all",
+      Cookies = list(
+        Quantity = 123,
+        Items = list(
+          "string"
+        )
+      )
+    ),
+    QueryStringsConfig = list(
+      QueryStringBehavior = "none"|"whitelist"|"all",
+      QueryStrings = list(
+        Quantity = 123,
+        Items = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Gets an origin request policy configuration.
 

@@ -25,6 +25,12 @@ group related jobs and identify them in the completion notification.}
 \item{Filters}{Optional parameters that let you set criteria the text must meet to be
 included in your response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Starts asynchronous detection of text in a stored video.
 

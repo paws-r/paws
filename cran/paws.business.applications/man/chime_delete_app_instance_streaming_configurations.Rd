@@ -9,6 +9,9 @@ chime_delete_app_instance_streaming_configurations(AppInstanceArn)
 \arguments{
 \item{AppInstanceArn}{[required] The ARN of the streaming configurations being deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the streaming configurations of an app instance.
 }

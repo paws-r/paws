@@ -10,6 +10,12 @@ worklink_describe_audit_stream_configuration(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuditStreamArn = "string"
+)
+}
+}
 \description{
 Describes the configuration for delivering audit streams to the customer
 account.

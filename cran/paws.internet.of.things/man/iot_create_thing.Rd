@@ -19,9 +19,17 @@ the old thing.}
 \item{attributePayload}{The attribute payload, which consists of up to three name/value pairs in
 a JSON document. For example:
 
-\verb{\\\{\\"attributes\\":\\\{\\"string1\\":\\"string2\\"\\\}\\\}}}
+\verb{\{\\"attributes\\":\{\\"string1\\":\\"string2\\"\}\}}}
 
 \item{billingGroupName}{The name of the billing group the thing will be added to.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  thingName = "string",
+  thingArn = "string",
+  thingId = "string"
+)
+}
 }
 \description{
 Creates a thing record in the registry. If this call is made multiple

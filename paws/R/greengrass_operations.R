@@ -6,13 +6,24 @@ NULL
 #' Associates a role with a group
 #'
 #' @description
-#' Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services. The role's permissions should allow Greengrass core Lambda functions to perform actions against the cloud.
+#' Associates a role with a group. Your Greengrass core will use the role
+#' to access AWS cloud services. The role's permissions should allow
+#' Greengrass core Lambda functions to perform actions against the cloud.
 #'
 #' @usage
 #' greengrass_associate_role_to_group(GroupId, RoleArn)
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
-#' @param RoleArn &#91;required&#93; The ARN of the role you wish to associate with this group. The existence of the role is not validated.
+#' @param RoleArn &#91;required&#93; The ARN of the role you wish to associate with this group. The existence
+#' of the role is not validated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociatedAt = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -45,12 +56,24 @@ greengrass_associate_role_to_group <- function(GroupId, RoleArn) {
 #' Associates a role with your account
 #'
 #' @description
-#' Associates a role with your account. AWS IoT Greengrass will use the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
+#' Associates a role with your account. AWS IoT Greengrass will use the
+#' role to access your Lambda functions and AWS IoT resources. This is
+#' necessary for deployments to succeed. The role must have at least
+#' minimum permissions in the policy
+#' ''AWSGreengrassResourceAccessRolePolicy''.
 #'
 #' @usage
 #' greengrass_associate_service_role_to_account(RoleArn)
 #'
 #' @param RoleArn &#91;required&#93; The ARN of the service role you wish to associate with your account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociatedAt = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -82,7 +105,9 @@ greengrass_associate_service_role_to_account <- function(RoleArn) {
 #' Creates a connector definition
 #'
 #' @description
-#' Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
+#' Creates a connector definition. You may provide the initial version of
+#' the connector definition now or use ''CreateConnectorDefinitionVersion''
+#' at a later time.
 #'
 #' @usage
 #' greengrass_create_connector_definition(AmznClientToken, InitialVersion,
@@ -92,6 +117,20 @@ greengrass_associate_service_role_to_account <- function(RoleArn) {
 #' @param InitialVersion Information about the initial version of the connector definition.
 #' @param Name The name of the connector definition.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -139,7 +178,8 @@ greengrass_create_connector_definition <- function(AmznClientToken = NULL, Initi
 #' defined
 #'
 #' @description
-#' Creates a version of a connector definition which has already been defined.
+#' Creates a version of a connector definition which has already been
+#' defined.
 #'
 #' @usage
 #' greengrass_create_connector_definition_version(AmznClientToken,
@@ -147,7 +187,19 @@ greengrass_create_connector_definition <- function(AmznClientToken = NULL, Initi
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
-#' @param Connectors A list of references to connectors in this version, with their corresponding configuration settings.
+#' @param Connectors A list of references to connectors in this version, with their
+#' corresponding configuration settings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -189,7 +241,9 @@ greengrass_create_connector_definition_version <- function(AmznClientToken = NUL
 #' Creates a core definition
 #'
 #' @description
-#' Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
+#' Creates a core definition. You may provide the initial version of the
+#' core definition now or use ''CreateCoreDefinitionVersion'' at a later
+#' time. Greengrass groups must each contain exactly one Greengrass core.
 #'
 #' @usage
 #' greengrass_create_core_definition(AmznClientToken, InitialVersion, Name,
@@ -199,6 +253,20 @@ greengrass_create_connector_definition_version <- function(AmznClientToken = NUL
 #' @param InitialVersion Information about the initial version of the core definition.
 #' @param Name The name of the core definition.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -244,7 +312,8 @@ greengrass_create_core_definition <- function(AmznClientToken = NULL, InitialVer
 #' Creates a version of a core definition that has already been defined
 #'
 #' @description
-#' Creates a version of a core definition that has already been defined. Greengrass groups must each contain exactly one Greengrass core.
+#' Creates a version of a core definition that has already been defined.
+#' Greengrass groups must each contain exactly one Greengrass core.
 #'
 #' @usage
 #' greengrass_create_core_definition_version(AmznClientToken,
@@ -253,6 +322,17 @@ greengrass_create_core_definition <- function(AmznClientToken = NULL, InitialVer
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param CoreDefinitionId &#91;required&#93; The ID of the core definition.
 #' @param Cores A list of cores in the core definition version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -293,7 +373,8 @@ greengrass_create_core_definition_version <- function(AmznClientToken = NULL, Co
 #' Creates a deployment
 #'
 #' @description
-#' Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the ''X-Amzn-Client-Token'' token and the request parameters.
+#' Creates a deployment. ''CreateDeployment'' requests are idempotent with
+#' respect to the ''X-Amzn-Client-Token'' token and the request parameters.
 #'
 #' @usage
 #' greengrass_create_deployment(AmznClientToken, DeploymentId,
@@ -301,9 +382,19 @@ greengrass_create_core_definition_version <- function(AmznClientToken = NULL, Co
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param DeploymentId The ID of the deployment if you wish to redeploy a previous deployment.
-#' @param DeploymentType &#91;required&#93; The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
+#' @param DeploymentType &#91;required&#93; The type of deployment. When used for ''CreateDeployment'', only
+#' ''NewDeployment'' and ''Redeployment'' are valid.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param GroupVersionId The ID of the group version to be deployed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeploymentArn = "string",
+#'   DeploymentId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -339,7 +430,9 @@ greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = 
 #' Creates a device definition
 #'
 #' @description
-#' Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.
+#' Creates a device definition. You may provide the initial version of the
+#' device definition now or use ''CreateDeviceDefinitionVersion'' at a
+#' later time.
 #'
 #' @usage
 #' greengrass_create_device_definition(AmznClientToken, InitialVersion,
@@ -349,6 +442,20 @@ greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = 
 #' @param InitialVersion Information about the initial version of the device definition.
 #' @param Name The name of the device definition.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -404,6 +511,17 @@ greengrass_create_device_definition <- function(AmznClientToken = NULL, InitialV
 #' @param DeviceDefinitionId &#91;required&#93; The ID of the device definition.
 #' @param Devices A list of devices in the definition version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_device_definition_version(
@@ -444,7 +562,11 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #' functions and their configurations to be used in a group
 #'
 #' @description
-#' Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.
+#' Creates a Lambda function definition which contains a list of Lambda
+#' functions and their configurations to be used in a group. You can create
+#' an initial version of the definition by providing a list of Lambda
+#' functions and their configurations now, or use
+#' ''CreateFunctionDefinitionVersion'' later.
 #'
 #' @usage
 #' greengrass_create_function_definition(AmznClientToken, InitialVersion,
@@ -454,6 +576,20 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #' @param InitialVersion Information about the initial version of the function definition.
 #' @param Name The name of the function definition.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -534,16 +670,30 @@ greengrass_create_function_definition <- function(AmznClientToken = NULL, Initia
 #' defined
 #'
 #' @description
-#' Creates a version of a Lambda function definition that has already been defined.
+#' Creates a version of a Lambda function definition that has already been
+#' defined.
 #'
 #' @usage
 #' greengrass_create_function_definition_version(AmznClientToken,
 #'   DefaultConfig, FunctionDefinitionId, Functions)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
-#' @param DefaultConfig The default configuration that applies to all Lambda functions in this function definition version. Individual Lambda functions can override these settings.
+#' @param DefaultConfig The default configuration that applies to all Lambda functions in this
+#' function definition version. Individual Lambda functions can override
+#' these settings.
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
 #' @param Functions A list of Lambda functions in this function definition version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -618,7 +768,11 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #' Creates a group
 #'
 #' @description
-#' Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
+#' Creates a group. You may provide the initial version of the group or use
+#' ''CreateGroupVersion'' at a later time. Tip: You can use the
+#' ''gg_group_setup'' package
+#' (https://github.com/awslabs/aws-greengrass-group-setup) as a library or
+#' command-line application to create and deploy Greengrass groups.
 #'
 #' @usage
 #' greengrass_create_group(AmznClientToken, InitialVersion, Name, tags)
@@ -627,6 +781,20 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #' @param InitialVersion Information about the initial version of the group.
 #' @param Name The name of the group.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -671,13 +839,22 @@ greengrass_create_group <- function(AmznClientToken = NULL, InitialVersion = NUL
 #' Creates a CA for the group
 #'
 #' @description
-#' Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
+#' Creates a CA for the group. If a CA already exists, it will rotate the
+#' existing CA.
 #'
 #' @usage
 #' greengrass_create_group_certificate_authority(AmznClientToken, GroupId)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupCertificateAuthorityArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -729,6 +906,17 @@ greengrass_create_group_certificate_authority <- function(AmznClientToken = NULL
 #' @param ResourceDefinitionVersionArn The ARN of the resource definition version for this group.
 #' @param SubscriptionDefinitionVersionArn The ARN of the subscription definition version for this group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_group_version(
@@ -767,7 +955,9 @@ greengrass_create_group_version <- function(AmznClientToken = NULL, ConnectorDef
 #' Creates a logger definition
 #'
 #' @description
-#' Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.
+#' Creates a logger definition. You may provide the initial version of the
+#' logger definition now or use ''CreateLoggerDefinitionVersion'' at a
+#' later time.
 #'
 #' @usage
 #' greengrass_create_logger_definition(AmznClientToken, InitialVersion,
@@ -777,6 +967,20 @@ greengrass_create_group_version <- function(AmznClientToken = NULL, ConnectorDef
 #' @param InitialVersion Information about the initial version of the logger definition.
 #' @param Name The name of the logger definition.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -833,6 +1037,17 @@ greengrass_create_logger_definition <- function(AmznClientToken = NULL, InitialV
 #' @param LoggerDefinitionId &#91;required&#93; The ID of the logger definition.
 #' @param Loggers A list of loggers.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_logger_definition_version(
@@ -874,7 +1089,10 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #' used in a group
 #'
 #' @description
-#' Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
+#' Creates a resource definition which contains a list of resources to be
+#' used in a group. You can create an initial version of the definition by
+#' providing a list of resources now, or use
+#' ''CreateResourceDefinitionVersion'' later.
 #'
 #' @usage
 #' greengrass_create_resource_definition(AmznClientToken, InitialVersion,
@@ -884,6 +1102,20 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #' @param InitialVersion Information about the initial version of the resource definition.
 #' @param Name The name of the resource definition.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -966,7 +1198,8 @@ greengrass_create_resource_definition <- function(AmznClientToken = NULL, Initia
 #' Creates a version of a resource definition that has already been defined
 #'
 #' @description
-#' Creates a version of a resource definition that has already been defined.
+#' Creates a version of a resource definition that has already been
+#' defined.
 #'
 #' @usage
 #' greengrass_create_resource_definition_version(AmznClientToken,
@@ -975,6 +1208,17 @@ greengrass_create_resource_definition <- function(AmznClientToken = NULL, Initia
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param ResourceDefinitionId &#91;required&#93; The ID of the resource definition.
 #' @param Resources A list of resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1053,7 +1297,11 @@ greengrass_create_resource_definition_version <- function(AmznClientToken = NULL
 #' IoT thing group
 #'
 #' @description
-#' Creates a software update for a core or group of cores (specified as an IoT thing group.) Use this to update the OTA Agent as well as the Greengrass core software. It makes use of the IoT Jobs feature which provides additional commands to manage a Greengrass core software update job.
+#' Creates a software update for a core or group of cores (specified as an
+#' IoT thing group.) Use this to update the OTA Agent as well as the
+#' Greengrass core software. It makes use of the IoT Jobs feature which
+#' provides additional commands to manage a Greengrass core software update
+#' job.
 #'
 #' @usage
 #' greengrass_create_software_update_job(AmznClientToken, S3UrlSignerRole,
@@ -1067,6 +1315,16 @@ greengrass_create_resource_definition_version <- function(AmznClientToken = NULL
 #' @param UpdateTargets &#91;required&#93; 
 #' @param UpdateTargetsArchitecture &#91;required&#93; 
 #' @param UpdateTargetsOperatingSystem &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IotJobArn = "string",
+#'   IotJobId = "string",
+#'   PlatformSoftwareVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1106,7 +1364,9 @@ greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlS
 #' Creates a subscription definition
 #'
 #' @description
-#' Creates a subscription definition. You may provide the initial version of the subscription definition now or use ''CreateSubscriptionDefinitionVersion'' at a later time.
+#' Creates a subscription definition. You may provide the initial version
+#' of the subscription definition now or use
+#' ''CreateSubscriptionDefinitionVersion'' at a later time.
 #'
 #' @usage
 #' greengrass_create_subscription_definition(AmznClientToken,
@@ -1116,6 +1376,20 @@ greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlS
 #' @param InitialVersion Information about the initial version of the subscription definition.
 #' @param Name The name of the subscription definition.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1162,7 +1436,8 @@ greengrass_create_subscription_definition <- function(AmznClientToken = NULL, In
 #' defined
 #'
 #' @description
-#' Creates a version of a subscription definition which has already been defined.
+#' Creates a version of a subscription definition which has already been
+#' defined.
 #'
 #' @usage
 #' greengrass_create_subscription_definition_version(AmznClientToken,
@@ -1171,6 +1446,17 @@ greengrass_create_subscription_definition <- function(AmznClientToken = NULL, In
 #' @param AmznClientToken A client token used to correlate requests and responses.
 #' @param SubscriptionDefinitionId &#91;required&#93; The ID of the subscription definition.
 #' @param Subscriptions A list of subscriptions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1218,6 +1504,9 @@ greengrass_create_subscription_definition_version <- function(AmznClientToken = 
 #'
 #' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connector_definition(
@@ -1254,6 +1543,9 @@ greengrass_delete_connector_definition <- function(ConnectorDefinitionId) {
 #' greengrass_delete_core_definition(CoreDefinitionId)
 #'
 #' @param CoreDefinitionId &#91;required&#93; The ID of the core definition.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1292,6 +1584,9 @@ greengrass_delete_core_definition <- function(CoreDefinitionId) {
 #'
 #' @param DeviceDefinitionId &#91;required&#93; The ID of the device definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_device_definition(
@@ -1328,6 +1623,9 @@ greengrass_delete_device_definition <- function(DeviceDefinitionId) {
 #' greengrass_delete_function_definition(FunctionDefinitionId)
 #'
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1366,6 +1664,9 @@ greengrass_delete_function_definition <- function(FunctionDefinitionId) {
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_group(
@@ -1402,6 +1703,9 @@ greengrass_delete_group <- function(GroupId) {
 #' greengrass_delete_logger_definition(LoggerDefinitionId)
 #'
 #' @param LoggerDefinitionId &#91;required&#93; The ID of the logger definition.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1440,6 +1744,9 @@ greengrass_delete_logger_definition <- function(LoggerDefinitionId) {
 #'
 #' @param ResourceDefinitionId &#91;required&#93; The ID of the resource definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource_definition(
@@ -1476,6 +1783,9 @@ greengrass_delete_resource_definition <- function(ResourceDefinitionId) {
 #' greengrass_delete_subscription_definition(SubscriptionDefinitionId)
 #'
 #' @param SubscriptionDefinitionId &#91;required&#93; The ID of the subscription definition.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1514,6 +1824,14 @@ greengrass_delete_subscription_definition <- function(SubscriptionDefinitionId) 
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisassociatedAt = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_role_from_group(
@@ -1544,10 +1862,19 @@ greengrass_disassociate_role_from_group <- function(GroupId) {
 #' Disassociates the service role from your account
 #'
 #' @description
-#' Disassociates the service role from your account. Without a service role, deployments will not work.
+#' Disassociates the service role from your account. Without a service
+#' role, deployments will not work.
 #'
 #' @usage
 #' greengrass_disassociate_service_role_from_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisassociatedAt = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1583,6 +1910,15 @@ greengrass_disassociate_service_role_from_account <- function() {
 #' greengrass_get_associated_role(GroupId)
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociatedAt = "string",
+#'   RoleArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1621,6 +1957,30 @@ greengrass_get_associated_role <- function(GroupId) {
 #'
 #' @param BulkDeploymentId &#91;required&#93; The ID of the bulk deployment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BulkDeploymentMetrics = list(
+#'     InvalidInputRecords = 123,
+#'     RecordsProcessed = 123,
+#'     RetryAttempts = 123
+#'   ),
+#'   BulkDeploymentStatus = "Initializing"|"Running"|"Completed"|"Stopping"|"Stopped"|"Failed",
+#'   CreatedAt = "string",
+#'   ErrorDetails = list(
+#'     list(
+#'       DetailedErrorCode = "string",
+#'       DetailedErrorMessage = "string"
+#'     )
+#'   ),
+#'   ErrorMessage = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_bulk_deployment_status(
@@ -1657,6 +2017,22 @@ greengrass_get_bulk_deployment_status <- function(BulkDeploymentId) {
 #' greengrass_get_connectivity_info(ThingName)
 #'
 #' @param ThingName &#91;required&#93; The thing name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectivityInfo = list(
+#'     list(
+#'       HostAddress = "string",
+#'       Id = "string",
+#'       Metadata = "string",
+#'       PortNumber = 123
+#'     )
+#'   ),
+#'   Message = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1695,6 +2071,23 @@ greengrass_get_connectivity_info <- function(ThingName) {
 #'
 #' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_connector_definition(
@@ -1726,15 +2119,47 @@ greengrass_get_connector_definition <- function(ConnectorDefinitionId) {
 #' the connectors that the version contains
 #'
 #' @description
-#' Retrieves information about a connector definition version, including the connectors that the version contains. Connectors are prebuilt modules that interact with local infrastructure, device protocols, AWS, and other cloud services.
+#' Retrieves information about a connector definition version, including
+#' the connectors that the version contains. Connectors are prebuilt
+#' modules that interact with local infrastructure, device protocols, AWS,
+#' and other cloud services.
 #'
 #' @usage
 #' greengrass_get_connector_definition_version(ConnectorDefinitionId,
 #'   ConnectorDefinitionVersionId, NextToken)
 #'
 #' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
-#' @param ConnectorDefinitionVersionId &#91;required&#93; The ID of the connector definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListConnectorDefinitionVersions'' requests. If the version is the last one that was associated with a connector definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param ConnectorDefinitionVersionId &#91;required&#93; The ID of the connector definition version. This value maps to the
+#' ''Version'' property of the corresponding ''VersionInformation'' object,
+#' which is returned by ''ListConnectorDefinitionVersions'' requests. If
+#' the version is the last one that was associated with a connector
+#' definition, the value also maps to the ''LatestVersion'' property of the
+#' corresponding ''DefinitionInformation'' object.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     Connectors = list(
+#'       list(
+#'         ConnectorArn = "string",
+#'         Id = "string",
+#'         Parameters = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   NextToken = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1775,6 +2200,23 @@ greengrass_get_connector_definition_version <- function(ConnectorDefinitionId, C
 #'
 #' @param CoreDefinitionId &#91;required&#93; The ID of the core definition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_core_definition(
@@ -1812,7 +2254,34 @@ greengrass_get_core_definition <- function(CoreDefinitionId) {
 #'   CoreDefinitionVersionId)
 #'
 #' @param CoreDefinitionId &#91;required&#93; The ID of the core definition.
-#' @param CoreDefinitionVersionId &#91;required&#93; The ID of the core definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListCoreDefinitionVersions'' requests. If the version is the last one that was associated with a core definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
+#' @param CoreDefinitionVersionId &#91;required&#93; The ID of the core definition version. This value maps to the
+#' ''Version'' property of the corresponding ''VersionInformation'' object,
+#' which is returned by ''ListCoreDefinitionVersions'' requests. If the
+#' version is the last one that was associated with a core definition, the
+#' value also maps to the ''LatestVersion'' property of the corresponding
+#' ''DefinitionInformation'' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     Cores = list(
+#'       list(
+#'         CertificateArn = "string",
+#'         Id = "string",
+#'         SyncShadow = TRUE|FALSE,
+#'         ThingArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   NextToken = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1853,6 +2322,23 @@ greengrass_get_core_definition_version <- function(CoreDefinitionId, CoreDefinit
 #' @param DeploymentId &#91;required&#93; The ID of the deployment.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeploymentStatus = "string",
+#'   DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
+#'   ErrorDetails = list(
+#'     list(
+#'       DetailedErrorCode = "string",
+#'       DetailedErrorMessage = "string"
+#'     )
+#'   ),
+#'   ErrorMessage = "string",
+#'   UpdatedAt = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_deployment_status(
@@ -1891,6 +2377,23 @@ greengrass_get_deployment_status <- function(DeploymentId, GroupId) {
 #'
 #' @param DeviceDefinitionId &#91;required&#93; The ID of the device definition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_device_definition(
@@ -1928,8 +2431,36 @@ greengrass_get_device_definition <- function(DeviceDefinitionId) {
 #'   DeviceDefinitionVersionId, NextToken)
 #'
 #' @param DeviceDefinitionId &#91;required&#93; The ID of the device definition.
-#' @param DeviceDefinitionVersionId &#91;required&#93; The ID of the device definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListDeviceDefinitionVersions'' requests. If the version is the last one that was associated with a device definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param DeviceDefinitionVersionId &#91;required&#93; The ID of the device definition version. This value maps to the
+#' ''Version'' property of the corresponding ''VersionInformation'' object,
+#' which is returned by ''ListDeviceDefinitionVersions'' requests. If the
+#' version is the last one that was associated with a device definition,
+#' the value also maps to the ''LatestVersion'' property of the
+#' corresponding ''DefinitionInformation'' object.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     Devices = list(
+#'       list(
+#'         CertificateArn = "string",
+#'         Id = "string",
+#'         SyncShadow = TRUE|FALSE,
+#'         ThingArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   NextToken = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1964,12 +2495,30 @@ greengrass_get_device_definition_version <- function(DeviceDefinitionId, DeviceD
 #' creation time and latest version
 #'
 #' @description
-#' Retrieves information about a Lambda function definition, including its creation time and latest version.
+#' Retrieves information about a Lambda function definition, including its
+#' creation time and latest version.
 #'
 #' @usage
 #' greengrass_get_function_definition(FunctionDefinitionId)
 #'
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2003,15 +2552,79 @@ greengrass_get_function_definition <- function(FunctionDefinitionId) {
 #' configurations
 #'
 #' @description
-#' Retrieves information about a Lambda function definition version, including which Lambda functions are included in the version and their configurations.
+#' Retrieves information about a Lambda function definition version,
+#' including which Lambda functions are included in the version and their
+#' configurations.
 #'
 #' @usage
 #' greengrass_get_function_definition_version(FunctionDefinitionId,
 #'   FunctionDefinitionVersionId, NextToken)
 #'
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
-#' @param FunctionDefinitionVersionId &#91;required&#93; The ID of the function definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListFunctionDefinitionVersions'' requests. If the version is the last one that was associated with a function definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param FunctionDefinitionVersionId &#91;required&#93; The ID of the function definition version. This value maps to the
+#' ''Version'' property of the corresponding ''VersionInformation'' object,
+#' which is returned by ''ListFunctionDefinitionVersions'' requests. If the
+#' version is the last one that was associated with a function definition,
+#' the value also maps to the ''LatestVersion'' property of the
+#' corresponding ''DefinitionInformation'' object.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     DefaultConfig = list(
+#'       Execution = list(
+#'         IsolationMode = "GreengrassContainer"|"NoContainer",
+#'         RunAs = list(
+#'           Gid = 123,
+#'           Uid = 123
+#'         )
+#'       )
+#'     ),
+#'     Functions = list(
+#'       list(
+#'         FunctionArn = "string",
+#'         FunctionConfiguration = list(
+#'           EncodingType = "binary"|"json",
+#'           Environment = list(
+#'             AccessSysfs = TRUE|FALSE,
+#'             Execution = list(
+#'               IsolationMode = "GreengrassContainer"|"NoContainer",
+#'               RunAs = list(
+#'                 Gid = 123,
+#'                 Uid = 123
+#'               )
+#'             ),
+#'             ResourceAccessPolicies = list(
+#'               list(
+#'                 Permission = "ro"|"rw",
+#'                 ResourceId = "string"
+#'               )
+#'             ),
+#'             Variables = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ExecArgs = "string",
+#'           Executable = "string",
+#'           MemorySize = 123,
+#'           Pinned = TRUE|FALSE,
+#'           Timeout = 123
+#'         ),
+#'         Id = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   NextToken = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2052,6 +2665,23 @@ greengrass_get_function_definition_version <- function(FunctionDefinitionId, Fun
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_group(
@@ -2082,7 +2712,8 @@ greengrass_get_group <- function(GroupId) {
 #' Retreives the CA associated with a group
 #'
 #' @description
-#' Retreives the CA associated with a group. Returns the public key of the CA.
+#' Retreives the CA associated with a group. Returns the public key of the
+#' CA.
 #'
 #' @usage
 #' greengrass_get_group_certificate_authority(CertificateAuthorityId,
@@ -2090,6 +2721,16 @@ greengrass_get_group <- function(GroupId) {
 #'
 #' @param CertificateAuthorityId &#91;required&#93; The ID of the certificate authority.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupCertificateAuthorityArn = "string",
+#'   GroupCertificateAuthorityId = "string",
+#'   PemEncodedCertificate = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2129,6 +2770,16 @@ greengrass_get_group_certificate_authority <- function(CertificateAuthorityId, G
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateAuthorityExpiryInMilliseconds = "string",
+#'   CertificateExpiryInMilliseconds = "string",
+#'   GroupId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_group_certificate_configuration(
@@ -2165,7 +2816,31 @@ greengrass_get_group_certificate_configuration <- function(GroupId) {
 #' greengrass_get_group_version(GroupId, GroupVersionId)
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
-#' @param GroupVersionId &#91;required&#93; The ID of the group version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListGroupVersions'' requests. If the version is the last one that was associated with a group, the value also maps to the ''LatestVersion'' property of the corresponding ''GroupInformation'' object.
+#' @param GroupVersionId &#91;required&#93; The ID of the group version. This value maps to the ''Version'' property
+#' of the corresponding ''VersionInformation'' object, which is returned by
+#' ''ListGroupVersions'' requests. If the version is the last one that was
+#' associated with a group, the value also maps to the ''LatestVersion''
+#' property of the corresponding ''GroupInformation'' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     ConnectorDefinitionVersionArn = "string",
+#'     CoreDefinitionVersionArn = "string",
+#'     DeviceDefinitionVersionArn = "string",
+#'     FunctionDefinitionVersionArn = "string",
+#'     LoggerDefinitionVersionArn = "string",
+#'     ResourceDefinitionVersionArn = "string",
+#'     SubscriptionDefinitionVersionArn = "string"
+#'   ),
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2205,6 +2880,23 @@ greengrass_get_group_version <- function(GroupId, GroupVersionId) {
 #'
 #' @param LoggerDefinitionId &#91;required&#93; The ID of the logger definition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_logger_definition(
@@ -2242,8 +2934,36 @@ greengrass_get_logger_definition <- function(LoggerDefinitionId) {
 #'   LoggerDefinitionVersionId, NextToken)
 #'
 #' @param LoggerDefinitionId &#91;required&#93; The ID of the logger definition.
-#' @param LoggerDefinitionVersionId &#91;required&#93; The ID of the logger definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListLoggerDefinitionVersions'' requests. If the version is the last one that was associated with a logger definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param LoggerDefinitionVersionId &#91;required&#93; The ID of the logger definition version. This value maps to the
+#' ''Version'' property of the corresponding ''VersionInformation'' object,
+#' which is returned by ''ListLoggerDefinitionVersions'' requests. If the
+#' version is the last one that was associated with a logger definition,
+#' the value also maps to the ''LatestVersion'' property of the
+#' corresponding ''DefinitionInformation'' object.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     Loggers = list(
+#'       list(
+#'         Component = "GreengrassSystem"|"Lambda",
+#'         Id = "string",
+#'         Level = "DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
+#'         Space = 123,
+#'         Type = "FileSystem"|"AWSCloudWatch"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2278,12 +2998,30 @@ greengrass_get_logger_definition_version <- function(LoggerDefinitionId, LoggerD
 #' creation time and latest version
 #'
 #' @description
-#' Retrieves information about a resource definition, including its creation time and latest version.
+#' Retrieves information about a resource definition, including its
+#' creation time and latest version.
 #'
 #' @usage
 #' greengrass_get_resource_definition(ResourceDefinitionId)
 #'
 #' @param ResourceDefinitionId &#91;required&#93; The ID of the resource definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2316,14 +3054,78 @@ greengrass_get_resource_definition <- function(ResourceDefinitionId) {
 #' which resources are included in the version
 #'
 #' @description
-#' Retrieves information about a resource definition version, including which resources are included in the version.
+#' Retrieves information about a resource definition version, including
+#' which resources are included in the version.
 #'
 #' @usage
 #' greengrass_get_resource_definition_version(ResourceDefinitionId,
 #'   ResourceDefinitionVersionId)
 #'
 #' @param ResourceDefinitionId &#91;required&#93; The ID of the resource definition.
-#' @param ResourceDefinitionVersionId &#91;required&#93; The ID of the resource definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListResourceDefinitionVersions'' requests. If the version is the last one that was associated with a resource definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
+#' @param ResourceDefinitionVersionId &#91;required&#93; The ID of the resource definition version. This value maps to the
+#' ''Version'' property of the corresponding ''VersionInformation'' object,
+#' which is returned by ''ListResourceDefinitionVersions'' requests. If the
+#' version is the last one that was associated with a resource definition,
+#' the value also maps to the ''LatestVersion'' property of the
+#' corresponding ''DefinitionInformation'' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     Resources = list(
+#'       list(
+#'         Id = "string",
+#'         Name = "string",
+#'         ResourceDataContainer = list(
+#'           LocalDeviceResourceData = list(
+#'             GroupOwnerSetting = list(
+#'               AutoAddGroupOwner = TRUE|FALSE,
+#'               GroupOwner = "string"
+#'             ),
+#'             SourcePath = "string"
+#'           ),
+#'           LocalVolumeResourceData = list(
+#'             DestinationPath = "string",
+#'             GroupOwnerSetting = list(
+#'               AutoAddGroupOwner = TRUE|FALSE,
+#'               GroupOwner = "string"
+#'             ),
+#'             SourcePath = "string"
+#'           ),
+#'           S3MachineLearningModelResourceData = list(
+#'             DestinationPath = "string",
+#'             OwnerSetting = list(
+#'               GroupOwner = "string",
+#'               GroupPermission = "ro"|"rw"
+#'             ),
+#'             S3Uri = "string"
+#'           ),
+#'           SageMakerMachineLearningModelResourceData = list(
+#'             DestinationPath = "string",
+#'             OwnerSetting = list(
+#'               GroupOwner = "string",
+#'               GroupPermission = "ro"|"rw"
+#'             ),
+#'             SageMakerJobArn = "string"
+#'           ),
+#'           SecretsManagerSecretResourceData = list(
+#'             ARN = "string",
+#'             AdditionalStagingLabelsToDownload = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2361,6 +3163,15 @@ greengrass_get_resource_definition_version <- function(ResourceDefinitionId, Res
 #' @usage
 #' greengrass_get_service_role_for_account()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociatedAt = "string",
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_service_role_for_account()
@@ -2395,6 +3206,23 @@ greengrass_get_service_role_for_account <- function() {
 #' greengrass_get_subscription_definition(SubscriptionDefinitionId)
 #'
 #' @param SubscriptionDefinitionId &#91;required&#93; The ID of the subscription definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Id = "string",
+#'   LastUpdatedTimestamp = "string",
+#'   LatestVersion = "string",
+#'   LatestVersionArn = "string",
+#'   Name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2432,9 +3260,37 @@ greengrass_get_subscription_definition <- function(SubscriptionDefinitionId) {
 #' greengrass_get_subscription_definition_version(NextToken,
 #'   SubscriptionDefinitionId, SubscriptionDefinitionVersionId)
 #'
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
 #' @param SubscriptionDefinitionId &#91;required&#93; The ID of the subscription definition.
-#' @param SubscriptionDefinitionVersionId &#91;required&#93; The ID of the subscription definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListSubscriptionDefinitionVersions'' requests. If the version is the last one that was associated with a subscription definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
+#' @param SubscriptionDefinitionVersionId &#91;required&#93; The ID of the subscription definition version. This value maps to the
+#' ''Version'' property of the corresponding ''VersionInformation'' object,
+#' which is returned by ''ListSubscriptionDefinitionVersions'' requests. If
+#' the version is the last one that was associated with a subscription
+#' definition, the value also maps to the ''LatestVersion'' property of the
+#' corresponding ''DefinitionInformation'' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreationTimestamp = "string",
+#'   Definition = list(
+#'     Subscriptions = list(
+#'       list(
+#'         Id = "string",
+#'         Source = "string",
+#'         Subject = "string",
+#'         Target = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   NextToken = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2475,6 +3331,19 @@ greengrass_get_subscription_definition_version <- function(NextToken = NULL, Sub
 #'
 #' @param ThingName &#91;required&#93; The thing name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuntimeConfiguration = list(
+#'     TelemetryConfiguration = list(
+#'       ConfigurationSyncStatus = "InSync"|"OutOfSync",
+#'       Telemetry = "On"|"Off"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_thing_runtime_configuration(
@@ -2506,7 +3375,8 @@ greengrass_get_thing_runtime_configuration <- function(ThingName) {
 #' bulk deployment operation, and their current deployment status
 #'
 #' @description
-#' Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status.
+#' Gets a paginated list of the deployments that have been started in a
+#' bulk deployment operation, and their current deployment status.
 #'
 #' @usage
 #' greengrass_list_bulk_deployment_detailed_reports(BulkDeploymentId,
@@ -2514,7 +3384,33 @@ greengrass_get_thing_runtime_configuration <- function(ThingName) {
 #'
 #' @param BulkDeploymentId &#91;required&#93; The ID of the bulk deployment.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Deployments = list(
+#'     list(
+#'       CreatedAt = "string",
+#'       DeploymentArn = "string",
+#'       DeploymentId = "string",
+#'       DeploymentStatus = "string",
+#'       DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
+#'       ErrorDetails = list(
+#'         list(
+#'           DetailedErrorCode = "string",
+#'           DetailedErrorMessage = "string"
+#'         )
+#'       ),
+#'       ErrorMessage = "string",
+#'       GroupArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2554,7 +3450,23 @@ greengrass_list_bulk_deployment_detailed_reports <- function(BulkDeploymentId, M
 #' greengrass_list_bulk_deployments(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BulkDeployments = list(
+#'     list(
+#'       BulkDeploymentArn = "string",
+#'       BulkDeploymentId = "string",
+#'       CreatedAt = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2588,7 +3500,10 @@ greengrass_list_bulk_deployments <- function(MaxResults = NULL, NextToken = NULL
 #' connectors
 #'
 #' @description
-#' Lists the versions of a connector definition, which are containers for connectors. Connectors run on the Greengrass core and contain built-in integration with local infrastructure, device protocols, AWS, and other cloud services.
+#' Lists the versions of a connector definition, which are containers for
+#' connectors. Connectors run on the Greengrass core and contain built-in
+#' integration with local infrastructure, device protocols, AWS, and other
+#' cloud services.
 #'
 #' @usage
 #' greengrass_list_connector_definition_versions(ConnectorDefinitionId,
@@ -2596,7 +3511,24 @@ greengrass_list_bulk_deployments <- function(MaxResults = NULL, NextToken = NULL
 #'
 #' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2636,7 +3568,30 @@ greengrass_list_connector_definition_versions <- function(ConnectorDefinitionId,
 #' greengrass_list_connector_definitions(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Definitions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2677,7 +3632,24 @@ greengrass_list_connector_definitions <- function(MaxResults = NULL, NextToken =
 #'
 #' @param CoreDefinitionId &#91;required&#93; The ID of the core definition.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2717,7 +3689,30 @@ greengrass_list_core_definition_versions <- function(CoreDefinitionId, MaxResult
 #' greengrass_list_core_definitions(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Definitions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2757,7 +3752,25 @@ greengrass_list_core_definitions <- function(MaxResults = NULL, NextToken = NULL
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Deployments = list(
+#'     list(
+#'       CreatedAt = "string",
+#'       DeploymentArn = "string",
+#'       DeploymentId = "string",
+#'       DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
+#'       GroupArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2799,7 +3812,24 @@ greengrass_list_deployments <- function(GroupId, MaxResults = NULL, NextToken = 
 #'
 #' @param DeviceDefinitionId &#91;required&#93; The ID of the device definition.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2839,7 +3869,30 @@ greengrass_list_device_definition_versions <- function(DeviceDefinitionId, MaxRe
 #' greengrass_list_device_definitions(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Definitions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2880,7 +3933,24 @@ greengrass_list_device_definitions <- function(MaxResults = NULL, NextToken = NU
 #'
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2920,7 +3990,30 @@ greengrass_list_function_definition_versions <- function(FunctionDefinitionId, M
 #' greengrass_list_function_definitions(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Definitions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2960,6 +4053,19 @@ greengrass_list_function_definitions <- function(MaxResults = NULL, NextToken = 
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupCertificateAuthorities = list(
+#'     list(
+#'       GroupCertificateAuthorityArn = "string",
+#'       GroupCertificateAuthorityId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_group_certificate_authorities(
@@ -2997,7 +4103,24 @@ greengrass_list_group_certificate_authorities <- function(GroupId) {
 #'
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3037,7 +4160,27 @@ greengrass_list_group_versions <- function(GroupId, MaxResults = NULL, NextToken
 #' greengrass_list_groups(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3078,7 +4221,24 @@ greengrass_list_groups <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param LoggerDefinitionId &#91;required&#93; The ID of the logger definition.
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3118,7 +4278,30 @@ greengrass_list_logger_definition_versions <- function(LoggerDefinitionId, MaxRe
 #' greengrass_list_logger_definitions(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Definitions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3158,8 +4341,25 @@ greengrass_list_logger_definitions <- function(MaxResults = NULL, NextToken = NU
 #'   ResourceDefinitionId)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
 #' @param ResourceDefinitionId &#91;required&#93; The ID of the resource definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3199,7 +4399,30 @@ greengrass_list_resource_definition_versions <- function(MaxResults = NULL, Next
 #' greengrass_list_resource_definitions(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Definitions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3239,8 +4462,25 @@ greengrass_list_resource_definitions <- function(MaxResults = NULL, NextToken = 
 #'   SubscriptionDefinitionId)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
 #' @param SubscriptionDefinitionId &#91;required&#93; The ID of the subscription definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3280,7 +4520,30 @@ greengrass_list_subscription_definition_versions <- function(MaxResults = NULL, 
 #' greengrass_list_subscription_definitions(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to be returned per request.
-#' @param NextToken The token for the next set of results, or ''null'' if there are no additional results.
+#' @param NextToken The token for the next set of results, or ''null'' if there are no
+#' additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Definitions = list(
+#'     list(
+#'       Arn = "string",
+#'       CreationTimestamp = "string",
+#'       Id = "string",
+#'       LastUpdatedTimestamp = "string",
+#'       LatestVersion = "string",
+#'       LatestVersionArn = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3319,6 +4582,16 @@ greengrass_list_subscription_definitions <- function(MaxResults = NULL, NextToke
 #' greengrass_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3359,6 +4632,15 @@ greengrass_list_tags_for_resource <- function(ResourceArn) {
 #' @param Force If true, performs a best-effort only core reset.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeploymentArn = "string",
+#'   DeploymentId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_deployments(
@@ -3391,16 +4673,38 @@ greengrass_reset_deployments <- function(AmznClientToken = NULL, Force = NULL, G
 #' Deploys multiple groups in one operation
 #'
 #' @description
-#' Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of group versions. Each group version deployment will be triggered with an adaptive rate that has a fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the request parameters.
+#' Deploys multiple groups in one operation. This action starts the bulk
+#' deployment of a specified set of group versions. Each group version
+#' deployment will be triggered with an adaptive rate that has a fixed
+#' upper limit. We recommend that you include an ''X-Amzn-Client-Token''
+#' token in every ''StartBulkDeployment'' request. These requests are
+#' idempotent with respect to the token and the request parameters.
 #'
 #' @usage
 #' greengrass_start_bulk_deployment(AmznClientToken, ExecutionRoleArn,
 #'   InputFileUri, tags)
 #'
 #' @param AmznClientToken A client token used to correlate requests and responses.
-#' @param ExecutionRoleArn &#91;required&#93; The ARN of the execution role to associate with the bulk deployment operation. This IAM role must allow the ''greengrass:CreateDeployment'' action for all group versions that are listed in the input file. This IAM role must have access to the S3 bucket containing the input file.
-#' @param InputFileUri &#91;required&#93; The URI of the input file contained in the S3 bucket. The execution role must have ''getObject'' permissions on this bucket to access the input file. The input file is a JSON-serialized, line delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment type. This file must be less than 100 MB. Currently, AWS IoT Greengrass supports only ''NewDeployment'' deployment types.
+#' @param ExecutionRoleArn &#91;required&#93; The ARN of the execution role to associate with the bulk deployment
+#' operation. This IAM role must allow the ''greengrass:CreateDeployment''
+#' action for all group versions that are listed in the input file. This
+#' IAM role must have access to the S3 bucket containing the input file.
+#' @param InputFileUri &#91;required&#93; The URI of the input file contained in the S3 bucket. The execution role
+#' must have ''getObject'' permissions on this bucket to access the input
+#' file. The input file is a JSON-serialized, line delimited file with
+#' UTF-8 encoding that provides a list of group and version IDs and the
+#' deployment type. This file must be less than 100 MB. Currently, AWS IoT
+#' Greengrass supports only ''NewDeployment'' deployment types.
 #' @param tags Tag(s) to add to the new resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BulkDeploymentArn = "string",
+#'   BulkDeploymentId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3437,12 +4741,19 @@ greengrass_start_bulk_deployment <- function(AmznClientToken = NULL, ExecutionRo
 #' Stops the execution of a bulk deployment
 #'
 #' @description
-#' Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending deployments.
+#' Stops the execution of a bulk deployment. This action returns a status
+#' of ''Stopping'' until the deployment is stopped. You cannot start a new
+#' bulk deployment while a previous deployment is in the ''Stopping''
+#' state. This action doesn't rollback completed deployments or cancel
+#' pending deployments.
 #'
 #' @usage
 #' greengrass_stop_bulk_deployment(BulkDeploymentId)
 #'
 #' @param BulkDeploymentId &#91;required&#93; The ID of the bulk deployment.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3474,13 +4785,19 @@ greengrass_stop_bulk_deployment <- function(BulkDeploymentId) {
 #' Adds tags to a Greengrass resource
 #'
 #' @description
-#' Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
+#' Adds tags to a Greengrass resource. Valid resources are 'Group',
+#' 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition',
+#' 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition',
+#' 'ResourceDefinition', and 'BulkDeployment'.
 #'
 #' @usage
 #' greengrass_tag_resource(ResourceArn, tags)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3523,6 +4840,9 @@ greengrass_tag_resource <- function(ResourceArn, tags = NULL) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; An array of tag keys to delete
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -3556,13 +4876,24 @@ greengrass_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates the connectivity information for the core
 #'
 #' @description
-#' Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.
+#' Updates the connectivity information for the core. Any devices that
+#' belong to the group which has this core will receive this information in
+#' order to find the location of the core and connect to it.
 #'
 #' @usage
 #' greengrass_update_connectivity_info(ConnectivityInfo, ThingName)
 #'
 #' @param ConnectivityInfo A list of connectivity info.
 #' @param ThingName &#91;required&#93; The thing name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3610,6 +4941,9 @@ greengrass_update_connectivity_info <- function(ConnectivityInfo = NULL, ThingNa
 #' @param ConnectorDefinitionId &#91;required&#93; The ID of the connector definition.
 #' @param Name The name of the definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_connector_definition(
@@ -3648,6 +4982,9 @@ greengrass_update_connector_definition <- function(ConnectorDefinitionId, Name =
 #'
 #' @param CoreDefinitionId &#91;required&#93; The ID of the core definition.
 #' @param Name The name of the definition.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3688,6 +5025,9 @@ greengrass_update_core_definition <- function(CoreDefinitionId, Name = NULL) {
 #' @param DeviceDefinitionId &#91;required&#93; The ID of the device definition.
 #' @param Name The name of the definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_device_definition(
@@ -3726,6 +5066,9 @@ greengrass_update_device_definition <- function(DeviceDefinitionId, Name = NULL)
 #'
 #' @param FunctionDefinitionId &#91;required&#93; The ID of the Lambda function definition.
 #' @param Name The name of the definition.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3766,6 +5109,9 @@ greengrass_update_function_definition <- function(FunctionDefinitionId, Name = N
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
 #' @param Name The name of the definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_group(
@@ -3803,8 +5149,19 @@ greengrass_update_group <- function(GroupId, Name = NULL) {
 #' greengrass_update_group_certificate_configuration(
 #'   CertificateExpiryInMilliseconds, GroupId)
 #'
-#' @param CertificateExpiryInMilliseconds The amount of time remaining before the certificate expires, in milliseconds.
+#' @param CertificateExpiryInMilliseconds The amount of time remaining before the certificate expires, in
+#' milliseconds.
 #' @param GroupId &#91;required&#93; The ID of the Greengrass group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateAuthorityExpiryInMilliseconds = "string",
+#'   CertificateExpiryInMilliseconds = "string",
+#'   GroupId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3845,6 +5202,9 @@ greengrass_update_group_certificate_configuration <- function(CertificateExpiryI
 #' @param LoggerDefinitionId &#91;required&#93; The ID of the logger definition.
 #' @param Name The name of the definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_logger_definition(
@@ -3883,6 +5243,9 @@ greengrass_update_logger_definition <- function(LoggerDefinitionId, Name = NULL)
 #'
 #' @param Name The name of the definition.
 #' @param ResourceDefinitionId &#91;required&#93; The ID of the resource definition.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3924,6 +5287,9 @@ greengrass_update_resource_definition <- function(Name = NULL, ResourceDefinitio
 #' @param Name The name of the definition.
 #' @param SubscriptionDefinitionId &#91;required&#93; The ID of the subscription definition.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_subscription_definition(
@@ -3963,6 +5329,9 @@ greengrass_update_subscription_definition <- function(Name = NULL, SubscriptionD
 #'
 #' @param TelemetryConfiguration Configuration for telemetry service.
 #' @param ThingName &#91;required&#93; The thing name.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

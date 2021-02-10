@@ -15,6 +15,18 @@ configuration.}
 
 \item{NextToken}{Token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseSpecifications = list(
+    list(
+      LicenseConfigurationArn = "string",
+      AmiAssociationScope = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the license configurations for the specified resource.
 }

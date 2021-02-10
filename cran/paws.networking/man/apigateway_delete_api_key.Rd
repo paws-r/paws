@@ -9,6 +9,9 @@ apigateway_delete_api_key(apiKey)
 \arguments{
 \item{apiKey}{[required] [Required] The identifier of the ApiKey resource to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the ApiKey resource.
 }

@@ -31,6 +31,12 @@ define, so that you can publish email sending events.}
 \item{ConfigurationSetName}{The name of the configuration set that you want to use when sending the
 email.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageId = "string"
+)
+}
+}
 \description{
 Sends an email message. You can use the Amazon Pinpoint Email API to
 send two types of messages:

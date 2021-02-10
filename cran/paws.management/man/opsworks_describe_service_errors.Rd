@@ -20,6 +20,21 @@ descriptions of the errors associated with the specified instance.}
 descriptions of the specified errors. Otherwise, it returns a
 description of every error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceErrors = list(
+    list(
+      ServiceErrorId = "string",
+      StackId = "string",
+      InstanceId = "string",
+      Type = "string",
+      Message = "string",
+      CreatedAt = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes AWS OpsWorks Stacks service errors.
 

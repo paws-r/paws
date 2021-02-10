@@ -13,6 +13,9 @@ lexmodelbuildingservice_delete_intent_version(name, version)
 version of the intent. To delete the \verb{$LATEST} version, use the
 \code{\link[=lexmodelbuildingservice_delete_intent]{delete_intent}} operation.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specific version of an intent. To delete all versions of a
 intent, use the \code{\link[=lexmodelbuildingservice_delete_intent]{delete_intent}}

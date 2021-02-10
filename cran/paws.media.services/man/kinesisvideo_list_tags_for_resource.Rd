@@ -15,6 +15,15 @@ request to fetch the next batch of tags.}
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the signaling channel for which you
 want to list tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of tags associated with the specified signaling channel.
 }

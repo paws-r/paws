@@ -16,6 +16,9 @@ where both objects reside. For more information, see arns.}
 \item{ObjectReference}{[required] Reference that identifies the object whose policy object will be
 detached.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches a policy from an object.
 }

@@ -19,6 +19,12 @@ or delete from a RegexPatternSet.}
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
@@ -38,7 +44,7 @@ For more information, see RegexPatternSet.
 }
 
 For example, you can create a \code{RegexPatternString} such as
-\verb{B\\\[a@\\\]dB\\\[o0\\\]t}. AWS WAF will match this \code{RegexPatternString} to:
+\verb{B[a@]dB[o0]t}. AWS WAF will match this \code{RegexPatternString} to:
 \itemize{
 \item BadBot
 \item BadB0t

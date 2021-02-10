@@ -9,6 +9,9 @@ autoscaling_delete_tags(Tags)
 \arguments{
 \item{Tags}{[required] One or more tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified tags.
 }

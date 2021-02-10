@@ -15,6 +15,17 @@ want to get an endpoint.}
 \item{SingleMasterChannelEndpointConfiguration}{A structure containing the endpoint configuration for the
 \code{SINGLE_MASTER} channel type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceEndpointList = list(
+    list(
+      Protocol = "WSS"|"HTTPS",
+      ResourceEndpoint = "string"
+    )
+  )
+)
+}
+}
 \description{
 Provides an endpoint for the specified signaling channel to send and
 receive messages. This API uses the

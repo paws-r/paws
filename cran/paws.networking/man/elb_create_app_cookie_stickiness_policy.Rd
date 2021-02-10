@@ -17,6 +17,9 @@ the set of policies for this load balancer.}
 
 \item{CookieName}{[required] The name of the application cookie used for stickiness.}
 }
+\value{
+An empty list.
+}
 \description{
 Generates a stickiness policy with sticky session lifetimes that follow
 that of an application-generated cookie. This policy can be associated

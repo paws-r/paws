@@ -11,6 +11,9 @@ apigateway_delete_model(restApiId, modelName)
 
 \item{modelName}{[required] [Required] The name of the model to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a model.
 }

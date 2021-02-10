@@ -55,6 +55,16 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeDeliveryDetails = list(
+    Destination = "string",
+    DeliveryMedium = "SMS"|"EMAIL",
+    AttributeName = "string"
+  )
+)
+}
+}
 \description{
 Resends the confirmation (for confirmation of registration) to a
 specific user in the user pool.

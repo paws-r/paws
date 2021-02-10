@@ -9,6 +9,9 @@ sms_delete_app_validation_configuration(appId)
 \arguments{
 \item{appId}{[required] The ID of the application.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the validation configuration for the specified application.
 }

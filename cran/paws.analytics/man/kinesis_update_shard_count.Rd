@@ -25,6 +25,14 @@ value to less than 500 shards.
 
 \item{ScalingType}{[required] The scaling type. Uniform scaling creates shards of equal size.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamName = "string",
+  CurrentShardCount = 123,
+  TargetShardCount = 123
+)
+}
+}
 \description{
 Updates the shard count of the specified stream to the specified number
 of shards.

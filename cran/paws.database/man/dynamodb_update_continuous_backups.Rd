@@ -13,6 +13,23 @@ dynamodb_update_continuous_backups(TableName,
 
 \item{PointInTimeRecoverySpecification}{[required] Represents the settings used to enable point in time recovery.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContinuousBackupsDescription = list(
+    ContinuousBackupsStatus = "ENABLED"|"DISABLED",
+    PointInTimeRecoveryDescription = list(
+      PointInTimeRecoveryStatus = "ENABLED"|"DISABLED",
+      EarliestRestorableDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LatestRestorableDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 \code{\link[=dynamodb_update_continuous_backups]{update_continuous_backups}}
 enables or disables point in time recovery for the specified table. A

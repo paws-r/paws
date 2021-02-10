@@ -16,6 +16,9 @@ where the updated typed link resides. For more information, see arns or
 
 \item{AttributeUpdates}{[required] The attributes update structure.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a given typed link’s attributes. Attributes to be updated must
 not contribute to the typed link’s identity, as defined by its

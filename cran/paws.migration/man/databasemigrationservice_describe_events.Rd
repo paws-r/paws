@@ -38,6 +38,25 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Events = list(
+    list(
+      SourceIdentifier = "string",
+      SourceType = "replication-instance",
+      Message = "string",
+      EventCategories = list(
+        "string"
+      ),
+      Date = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists events for a given source identifier and source type. You can also
 specify a start and end time. For more information on AWS DMS events,

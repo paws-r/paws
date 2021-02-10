@@ -13,6 +13,22 @@ dax_update_subnet_group(SubnetGroupName, Description, SubnetIds)
 
 \item{SubnetIds}{A list of subnet IDs in the subnet group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SubnetGroup = list(
+    SubnetGroupName = "string",
+    Description = "string",
+    VpcId = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies an existing subnet group.
 }

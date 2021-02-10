@@ -14,6 +14,23 @@ limit of 20 ARNs. The format of a trail ARN is:
 
 \item{NextToken}{Reserved for future use.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceTagList = list(
+    list(
+      ResourceId = "string",
+      TagsList = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the tags for the trail in the current region.
 }

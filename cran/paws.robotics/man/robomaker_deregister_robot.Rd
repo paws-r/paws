@@ -11,6 +11,13 @@ robomaker_deregister_robot(fleet, robot)
 
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  fleet = "string",
+  robot = "string"
+)
+}
+}
 \description{
 Deregisters a robot.
 }

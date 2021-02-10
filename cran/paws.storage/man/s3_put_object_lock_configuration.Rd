@@ -27,6 +27,12 @@ SDKs, this field is calculated automatically.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Places an Object Lock configuration on the specified bucket. The rule
 specified in the Object Lock configuration will be applied by default to
@@ -37,7 +43,7 @@ at the same time.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html}{Locking Objects}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}
 }
 }
 \section{Request syntax}{

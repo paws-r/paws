@@ -10,6 +10,22 @@ apigateway_get_vpc_link(vpcLinkId)
 \item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration
 to reference this VpcLink.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  targetArns = list(
+    "string"
+  ),
+  status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
+  statusMessage = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets a specified VPC link under the caller's account in a region.
 }

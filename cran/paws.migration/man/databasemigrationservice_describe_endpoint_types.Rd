@@ -25,6 +25,21 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  SupportedEndpointTypes = list(
+    list(
+      EngineName = "string",
+      SupportsCDC = TRUE|FALSE,
+      EndpointType = "source"|"target",
+      ReplicationInstanceEngineMinimumVersion = "string",
+      EngineDisplayName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about the type of endpoints available.
 }

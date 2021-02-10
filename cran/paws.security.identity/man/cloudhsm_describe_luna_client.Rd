@@ -11,6 +11,16 @@ cloudhsm_describe_luna_client(ClientArn, CertificateFingerprint)
 
 \item{CertificateFingerprint}{The certificate fingerprint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientArn = "string",
+  Certificate = "string",
+  CertificateFingerprint = "string",
+  LastModifiedTimestamp = "string",
+  Label = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

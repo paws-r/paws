@@ -11,6 +11,15 @@ glue_create_security_configuration(Name, EncryptionConfiguration)
 
 \item{EncryptionConfiguration}{[required] The encryption configuration for the new security configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  CreatedTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a new security configuration. A security configuration is a set
 of security properties that can be used by AWS Glue. You can use a

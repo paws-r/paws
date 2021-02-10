@@ -23,6 +23,9 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
+\value{
+An empty list.
+}
 \description{
 This API operation deletes an Amazon S3 on Outposts bucket policy. To
 delete an S3 bucket policy, see
@@ -35,7 +38,7 @@ are using an identity other than the root user of the AWS account that
 owns the bucket, the calling identity must have the
 \code{s3-outposts:DeleteBucketPolicy} permissions on the specified Outposts
 bucket and belong to the bucket owner's account to use this operation.
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 If you don't have

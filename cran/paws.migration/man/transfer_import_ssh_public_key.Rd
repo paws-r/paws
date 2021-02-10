@@ -15,6 +15,14 @@ transfer_import_ssh_public_key(ServerId, SshPublicKeyBody, UserName)
 
 \item{UserName}{[required] The name of the user account that is assigned to one or more servers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerId = "string",
+  SshPublicKeyId = "string",
+  UserName = "string"
+)
+}
+}
 \description{
 Adds a Secure Shell (SSH) public key to a user account identified by a
 \code{UserName} value assigned to the specific file transfer protocol-enabled

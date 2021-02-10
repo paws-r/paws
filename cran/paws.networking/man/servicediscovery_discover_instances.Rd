@@ -21,7 +21,7 @@ you don't specify a value for \code{MaxResults}, AWS Cloud Map returns up to
 100 instances.}
 
 \item{QueryParameters}{Filters to scope the results based on custom attributes for the
-instance. For example, \verb{\\\{version=v1, az=1a\\\}}. Only instances that match
+instance. For example, \verb{\{version=v1, az=1a\}}. Only instances that match
 all the specified key-value pairs will be returned.}
 
 \item{OptionalParameters}{Opportunistic filters to scope the results based on custom attributes.
@@ -31,6 +31,22 @@ Otherwise, these filters are ignored and only instances that match the
 filters specified in the \code{QueryParameters} parameter are returned.}
 
 \item{HealthStatus}{The health status of the instances that you want to discover.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = list(
+    list(
+      InstanceId = "string",
+      NamespaceName = "string",
+      ServiceName = "string",
+      HealthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+      Attributes = list(
+        "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Discovers registered instances for a specified namespace and service.

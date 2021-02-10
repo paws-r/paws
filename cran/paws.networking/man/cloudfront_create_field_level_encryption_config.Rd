@@ -10,6 +10,48 @@ cloudfront_create_field_level_encryption_config(
 \arguments{
 \item{FieldLevelEncryptionConfig}{[required] The request to create a new field-level encryption configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldLevelEncryption = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FieldLevelEncryptionConfig = list(
+      CallerReference = "string",
+      Comment = "string",
+      QueryArgProfileConfig = list(
+        ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+        QueryArgProfiles = list(
+          Quantity = 123,
+          Items = list(
+            list(
+              QueryArg = "string",
+              ProfileId = "string"
+            )
+          )
+        )
+      ),
+      ContentTypeProfileConfig = list(
+        ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+        ContentTypeProfiles = list(
+          Quantity = 123,
+          Items = list(
+            list(
+              Format = "URLEncoded",
+              ProfileId = "string",
+              ContentType = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  Location = "string",
+  ETag = "string"
+)
+}
+}
 \description{
 Create a new field-level encryption configuration.
 }

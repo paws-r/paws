@@ -15,6 +15,19 @@ previous call.)}
 
 \item{Limit}{The maximum number of items to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Subscriptions = list(
+    list(
+      SubscriptionId = "string",
+      EndPoint = "string",
+      Protocol = "HTTPS"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists the specified notification subscriptions.
 }

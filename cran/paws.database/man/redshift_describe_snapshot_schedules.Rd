@@ -30,6 +30,39 @@ value, a value is returned in a \code{marker} field of the response. You can
 retrieve the next set of records by retrying the command with the
 returned \code{marker} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnapshotSchedules = list(
+    list(
+      ScheduleDefinitions = list(
+        "string"
+      ),
+      ScheduleIdentifier = "string",
+      ScheduleDescription = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      NextInvocations = list(
+        as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      AssociatedClusterCount = 123,
+      AssociatedClusters = list(
+        list(
+          ClusterIdentifier = "string",
+          ScheduleAssociationState = "MODIFYING"|"ACTIVE"|"FAILED"
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of snapshot schedules.
 }

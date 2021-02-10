@@ -12,6 +12,9 @@ sms_notify_app_validation_output(appId, notificationContext)
 
 \item{notificationContext}{The notification information.}
 }
+\value{
+An empty list.
+}
 \description{
 Provides information to AWS SMS about whether application validation is
 successful.

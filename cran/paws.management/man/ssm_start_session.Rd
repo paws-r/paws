@@ -18,6 +18,14 @@ name is provided, a shell to the instance is launched by default.}
 
 \item{Parameters}{Reserved for future use.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SessionId = "string",
+  TokenValue = "string",
+  StreamUrl = "string"
+)
+}
+}
 \description{
 Initiates a connection to a target (for example, an instance) for a
 Session Manager session. Returns a URL and token that can be used to

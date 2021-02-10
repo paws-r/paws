@@ -16,6 +16,9 @@ provided, the AWS account ID is used by default.}
 \item{FunctionInput}{[required] A \code{FunctionInput} object that defines the function to create in the Data
 Catalog.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new function definition in the Data Catalog.
 }

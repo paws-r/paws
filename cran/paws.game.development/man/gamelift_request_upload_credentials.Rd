@@ -11,6 +11,22 @@ gamelift_request_upload_credentials(BuildId)
 \item{BuildId}{[required] A unique identifier for a build to get credentials for. You can use
 either the build ID or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UploadCredentials = list(
+    AccessKeyId = "string",
+    SecretAccessKey = "string",
+    SessionToken = "string"
+  ),
+  StorageLocation = list(
+    Bucket = "string",
+    Key = "string",
+    RoleArn = "string",
+    ObjectVersion = "string"
+  )
+)
+}
+}
 \description{
 Retrieves a fresh set of credentials for use when uploading a new set of
 game build files to Amazon GameLift's Amazon S3. This is done as part of

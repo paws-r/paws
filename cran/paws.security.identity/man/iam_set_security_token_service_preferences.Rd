@@ -17,6 +17,9 @@ longer and might affect systems where you temporarily store tokens.
 For information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating STS in an AWS Region}
 in the \emph{IAM User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the specified version of the global endpoint token as the token
 version used for the AWS account.

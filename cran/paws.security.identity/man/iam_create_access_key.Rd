@@ -12,7 +12,21 @@ iam_create_access_key(UserName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessKey = list(
+    UserName = "string",
+    AccessKeyId = "string",
+    Status = "Active"|"Inactive",
+    SecretAccessKey = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new AWS secret access key and corresponding AWS access key ID

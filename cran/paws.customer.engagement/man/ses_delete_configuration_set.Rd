@@ -9,6 +9,9 @@ ses_delete_configuration_set(ConfigurationSetName)
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a configuration set. Configuration sets enable you to publish
 email sending events. For information about using configuration sets,

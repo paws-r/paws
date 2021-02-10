@@ -12,6 +12,9 @@ connect_update_user_hierarchy_structure(HierarchyStructure, InstanceId)
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the user hierarchy structure: add, remove, and rename user
 hierarchy levels.

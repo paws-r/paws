@@ -15,6 +15,9 @@ directoryservice_enable_client_authentication(DirectoryId, Type)
 requires that you enable Kerberos Constrained Delegation for the Service
 User to the LDAP service in the on-premises AD.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables alternative client authentication methods for the specified
 directory.

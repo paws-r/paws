@@ -12,6 +12,9 @@ supported for directories.}
 
 \item{TagKeys}{[required] Keys of the tag that need to be removed from the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 An API operation for removing tags from a resource.
 }

@@ -14,6 +14,9 @@ tags from.}
 
 \item{TagKeyList}{[required] A list of the keys of the tags that you want to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags from a stream. In the request, specify only a
 tag key or keys; don't specify the value. If you specify a tag key that

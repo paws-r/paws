@@ -19,7 +19,21 @@ results.}
 
 \item{QuickConnectTypes}{The type of quick connect. In the Amazon Connect console, when you
 create a quick connect, you are prompted to assign one of the following
-types: Agent (USER), External (PHONE\\_NUMBER), or Queue (QUEUE).}
+types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE).}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  QuickConnectSummaryList = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      QuickConnectType = "USER"|"QUEUE"|"PHONE_NUMBER"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to

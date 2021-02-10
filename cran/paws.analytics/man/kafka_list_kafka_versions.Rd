@@ -7,13 +7,27 @@
 kafka_list_kafka_versions(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{<p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>}
+\item{MaxResults}{The maximum number of results to return in the response. If there are
+more results, the response includes a NextToken parameter.}
 
-\item{NextToken}{<p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. To get the next batch, provide this token in your next request.</p>}
+\item{NextToken}{The paginated results marker. When the result of the operation is
+truncated, the call returns NextToken in the response. To get the next
+batch, provide this token in your next request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  KafkaVersions = list(
+    list(
+      Version = "string",
+      Status = "ACTIVE"|"DEPRECATED"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
-\preformatted{        <p>Returns a list of Kafka versions.</p>
-}
+Returns a list of Kafka versions.
 }
 \section{Request syntax}{
 \preformatted{svc$list_kafka_versions(

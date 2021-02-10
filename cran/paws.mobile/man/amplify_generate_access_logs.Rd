@@ -18,6 +18,12 @@ inclusive of the end time.}
 
 \item{appId}{[required] The unique ID for an Amplify app.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  logUrl = "string"
+)
+}
+}
 \description{
 Returns the website access logs for a specific time range using a
 presigned URL.

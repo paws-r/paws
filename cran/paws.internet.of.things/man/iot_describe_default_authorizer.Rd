@@ -6,6 +6,28 @@
 \usage{
 iot_describe_default_authorizer()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authorizerDescription = list(
+    authorizerName = "string",
+    authorizerArn = "string",
+    authorizerFunctionArn = "string",
+    tokenKeyName = "string",
+    tokenSigningPublicKeys = list(
+      "string"
+    ),
+    status = "ACTIVE"|"INACTIVE",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    signingDisabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Describes the default authorizer.
 }

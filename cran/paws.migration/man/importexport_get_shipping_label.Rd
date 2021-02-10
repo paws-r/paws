@@ -34,8 +34,16 @@ importexport_get_shipping_label(jobIds, name, company, phoneNumber,
 
 \item{APIVersion}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ShippingLabelURL = "string",
+  Warning = "string"
+)
+}
+}
 \description{
-This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
+This operation generates a pre-paid UPS shipping label that you will use
+to ship your device to AWS for processing.
 }
 \section{Request syntax}{
 \preformatted{svc$get_shipping_label(

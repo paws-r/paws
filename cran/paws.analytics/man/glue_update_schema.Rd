@@ -25,6 +25,14 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 
 \item{Description}{The new description for the schema.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArn = "string",
+  SchemaName = "string",
+  RegistryName = "string"
+)
+}
+}
 \description{
 Updates the description, compatibility setting, or version checkpoint
 for a schema set.

@@ -9,6 +9,12 @@ clouddirectory_delete_directory(DirectoryArn)
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryArn = "string"
+)
+}
+}
 \description{
 Deletes a directory. Only disabled directories can be deleted. A deleted
 directory cannot be undone. Exercise extreme caution when deleting

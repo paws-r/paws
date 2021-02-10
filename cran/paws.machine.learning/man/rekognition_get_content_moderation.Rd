@@ -27,6 +27,33 @@ unsafe content labels.}
 each label group, the array element are sorted by detection confidence.
 The default sort is by \code{TIMESTAMP}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+  StatusMessage = "string",
+  VideoMetadata = list(
+    Codec = "string",
+    DurationMillis = 123,
+    Format = "string",
+    FrameRate = 123.0,
+    FrameHeight = 123,
+    FrameWidth = 123
+  ),
+  ModerationLabels = list(
+    list(
+      Timestamp = 123,
+      ModerationLabel = list(
+        Confidence = 123.0,
+        Name = "string",
+        ParentName = "string"
+      )
+    )
+  ),
+  NextToken = "string",
+  ModerationModelVersion = "string"
+)
+}
+}
 \description{
 Gets the unsafe content analysis results for a Amazon Rekognition Video
 analysis started by

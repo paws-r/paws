@@ -7,7 +7,23 @@
 cognitosync_get_bulk_publish_details(IdentityPoolId)
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPoolId = "string",
+  BulkPublishStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  BulkPublishCompleteTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  BulkPublishStatus = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+  FailureMessage = "string"
+)
+}
 }
 \description{
 Get the status of the last BulkPublish operation for an identity pool.

@@ -43,6 +43,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceId = "string",
+  InstanceMetadataOptions = list(
+    State = "pending"|"applied",
+    HttpTokens = "optional"|"required",
+    HttpPutResponseHopLimit = 123,
+    HttpEndpoint = "disabled"|"enabled"
+  )
+)
+}
+}
 \description{
 Modify the instance metadata parameters on a running or stopped
 instance. When you modify the parameters on a stopped instance, they are

@@ -15,6 +15,17 @@ cannot be returned in one response.}
 \item{maxResults}{The maximum amount of data that can be contained in a single set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resources = list(
+    list(
+      id = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists resources associated with a project in AWS CodeStar.
 }

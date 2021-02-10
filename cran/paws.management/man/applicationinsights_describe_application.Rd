@@ -9,6 +9,19 @@ applicationinsights_describe_application(ResourceGroupName)
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationInfo = list(
+    ResourceGroupName = "string",
+    LifeCycle = "string",
+    OpsItemSNSTopicArn = "string",
+    OpsCenterEnabled = TRUE|FALSE,
+    CWEMonitorEnabled = TRUE|FALSE,
+    Remarks = "string"
+  )
+)
+}
+}
 \description{
 Describes the application.
 }

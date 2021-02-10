@@ -19,6 +19,9 @@ unique within the set of policies for this load balancer.}
 
 \item{PolicyAttributes}{The policy attributes.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a policy with the specified attributes for the specified load
 balancer.
@@ -64,7 +67,7 @@ svc$create_load_balancer_policy(
   PolicyAttributes = list(
     list(
       AttributeName = "PublicKey",
-      AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjhFWBpMlg..."
+      AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjh..."
     )
   ),
   PolicyName = "my-PublicKey-policy",

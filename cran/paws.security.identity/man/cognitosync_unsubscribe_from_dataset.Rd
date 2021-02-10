@@ -19,6 +19,9 @@ Cognito. The ID of the pool to which this identity belongs.}
 
 \item{DeviceId}{[required] The unique ID generated for this device by Cognito.}
 }
+\value{
+An empty list.
+}
 \description{
 Unsubscribes from receiving notifications when a dataset is modified by
 another device.

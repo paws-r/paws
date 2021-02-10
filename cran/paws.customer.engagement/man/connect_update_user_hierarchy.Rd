@@ -13,6 +13,9 @@ connect_update_user_hierarchy(HierarchyGroupId, UserId, InstanceId)
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Assigns the specified hierarchy group to the specified user.
 }

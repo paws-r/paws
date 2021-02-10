@@ -15,6 +15,27 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayRouteTable = list(
+    TransitGatewayRouteTableId = "string",
+    TransitGatewayId = "string",
+    State = "pending"|"available"|"deleting"|"deleted",
+    DefaultAssociationRouteTable = TRUE|FALSE,
+    DefaultPropagationRouteTable = TRUE|FALSE,
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes the specified transit gateway route table. You must disassociate
 the route table from any transit gateway route tables before you can

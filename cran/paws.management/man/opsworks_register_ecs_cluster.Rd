@@ -11,6 +11,12 @@ opsworks_register_ecs_cluster(EcsClusterArn, StackId)
 
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EcsClusterArn = "string"
+)
+}
+}
 \description{
 Registers a specified Amazon ECS cluster with a stack. You can register
 only one cluster with a stack. A cluster can be registered with only one

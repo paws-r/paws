@@ -12,6 +12,9 @@ contains the certificate ID.)}
 
 \item{setAsActive}{Specifies whether the certificate is active.}
 }
+\value{
+An empty list.
+}
 \description{
 Accepts a pending certificate transfer. The default state of the
 certificate is INACTIVE.

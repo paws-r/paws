@@ -23,6 +23,19 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackInstances = list(
+    list(
+      Account = "string",
+      Region = "string",
+      StackInstanceStatus = "CURRENT"|"OUTDATED"|"INOPERABLE"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Returns summary information about stack instances that are associated
 with the specified \code{CFN_STACKSET} type provisioned product. You can

@@ -34,14 +34,15 @@ incoming request parameters. Specify JWT to use JSON Web Tokens
 \item{AuthorizerUri}{The authorizer's Uniform Resource Identifier (URI). For REQUEST
 authorizers, this must be a well-formed Lambda function URI, for
 example,
-arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
+arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account_id\}:function:\{lambda_function_name\}/invocations.
 In general, the URI has this form:
-arn:aws:apigateway:\{region\}:lambda:path/\{service\\_api\} , where \{region\}
-is the same as the region hosting the Lambda function, path indicates
-that the remaining substring in the URI should be treated as the path to
-the resource, including the initial /. For Lambda functions, this is
-usually of the form /2015-03-31/functions/[FunctionARN]/invocations.
-Supported only for REQUEST authorizers.}
+arn:aws:apigateway:\{region\}:lambda:path/\{service_api\} , where
+\{region\} is the same as the region hosting the Lambda function, path
+indicates that the remaining substring in the URI should be treated as
+the path to the resource, including the initial /. For Lambda functions,
+this is usually of the form
+/2015-03-31/functions/[FunctionARN]/invocations. Supported only for
+REQUEST authorizers.}
 
 \item{EnableSimpleResponses}{Specifies whether a Lambda authorizer returns a response in a simple
 format. By default, a Lambda authorizer must return an IAM policy. If
@@ -77,6 +78,29 @@ $request.header.Authorization.}
 authorizer type. Supported only for HTTP APIs.}
 
 \item{Name}{[required] The name of the authorizer.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthorizerCredentialsArn = "string",
+  AuthorizerId = "string",
+  AuthorizerPayloadFormatVersion = "string",
+  AuthorizerResultTtlInSeconds = 123,
+  AuthorizerType = "REQUEST"|"JWT",
+  AuthorizerUri = "string",
+  EnableSimpleResponses = TRUE|FALSE,
+  IdentitySource = list(
+    "string"
+  ),
+  IdentityValidationExpression = "string",
+  JwtConfiguration = list(
+    Audience = list(
+      "string"
+    ),
+    Issuer = "string"
+  ),
+  Name = "string"
+)
+}
 }
 \description{
 Creates an Authorizer for an API.

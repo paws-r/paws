@@ -16,6 +16,26 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocalGatewayRouteTableVpcAssociation = list(
+    LocalGatewayRouteTableVpcAssociationId = "string",
+    LocalGatewayRouteTableId = "string",
+    LocalGatewayRouteTableArn = "string",
+    LocalGatewayId = "string",
+    VpcId = "string",
+    OwnerId = "string",
+    State = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes the specified association between a VPC and local gateway route
 table.

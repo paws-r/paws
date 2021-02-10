@@ -17,6 +17,9 @@ password.}
 
 \item{Permanent}{\code{True} if the password is permanent, \code{False} if it is temporary.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the specified user's password in a user pool as an administrator.
 Works on any user.

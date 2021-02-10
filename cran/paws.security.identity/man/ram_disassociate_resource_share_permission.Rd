@@ -15,6 +15,13 @@ ram_disassociate_resource_share_permission(resourceShareArn,
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  returnValue = TRUE|FALSE,
+  clientToken = "string"
+)
+}
+}
 \description{
 Disassociates an AWS RAM permission from a resource share.
 }

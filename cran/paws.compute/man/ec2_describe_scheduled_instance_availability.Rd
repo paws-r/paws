@@ -43,6 +43,39 @@ schedule is 100 hours.}
 
 \item{Recurrence}{[required] The schedule recurrence.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  ScheduledInstanceAvailabilitySet = list(
+    list(
+      AvailabilityZone = "string",
+      AvailableInstanceCount = 123,
+      FirstSlotStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      HourlyPrice = "string",
+      InstanceType = "string",
+      MaxTermDurationInDays = 123,
+      MinTermDurationInDays = 123,
+      NetworkPlatform = "string",
+      Platform = "string",
+      PurchaseToken = "string",
+      Recurrence = list(
+        Frequency = "string",
+        Interval = 123,
+        OccurrenceDaySet = list(
+          123
+        ),
+        OccurrenceRelativeToEnd = TRUE|FALSE,
+        OccurrenceUnit = "string"
+      ),
+      SlotDurationInHours = 123,
+      TotalScheduledInstanceHours = 123
+    )
+  )
+)
+}
+}
 \description{
 Finds available schedules that meet the specified criteria.
 

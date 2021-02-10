@@ -30,6 +30,12 @@ bucket.}
 \item{ObjectLockEnabledForBucket}{Specifies whether you want S3 Object Lock to be enabled for the new
 bucket.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Location = "string"
+)
+}
+}
 \description{
 Creates a new S3 bucket. To create a bucket, you must register with
 Amazon S3 and have a valid AWS Access Key ID to authenticate requests.
@@ -37,7 +43,7 @@ Anonymous requests are never allowed to create buckets. By creating the
 bucket, you become the bucket owner.
 
 Not every string is an acceptable bucket name. For information about
-bucket naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html}{Working with Amazon S3 buckets}.
+bucket naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html}{Working with Amazon S3 buckets}.
 
 If you want to create an Amazon S3 on Outposts bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html}{Create Bucket}.
 
@@ -46,7 +52,7 @@ You can optionally specify a Region in the request body. You might
 choose a Region to optimize latency, minimize costs, or address
 regulatory requirements. For example, if you reside in Europe, you will
 probably find it advantageous to create buckets in the Europe (Ireland)
-Region. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro}{Accessing a bucket}.
+Region. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html#access-bucket-intro}{Accessing a bucket}.
 
 If you send your create bucket request to the \code{s3.amazonaws.com}
 endpoint, the request goes to the us-east-1 Region. Accordingly, the
@@ -54,7 +60,7 @@ signature calculations in Signature Version 4 must use us-east-1 as the
 Region, even if the location constraint in the request specifies another
 Region where the bucket is to be created. If you create a bucket in a
 Region other than US East (N. Virginia), your application must be able
-to handle 307 redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html}{Virtual hosting of buckets}.
+to handle 307 redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html}{Virtual hosting of buckets}.
 
 When creating a bucket using this operation, you can optionally specify
 the accounts or groups that should be granted specific permissions on
@@ -64,12 +70,12 @@ using the request headers.
 \item Specify a canned ACL using the \code{x-amz-acl} request header. Amazon S3
 supports a set of predefined ACLs, known as \emph{canned ACLs}. Each
 canned ACL has a predefined set of grantees and permissions. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.
 \item Specify access permissions explicitly using the \code{x-amz-grant-read},
 \code{x-amz-grant-write}, \code{x-amz-grant-read-acp},
 \code{x-amz-grant-write-acp}, and \code{x-amz-grant-full-control} headers.
 These headers map to the set of permissions Amazon S3 supports in an
-ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access control list (ACL) overview}.
+ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access control list (ACL) overview}.
 
 You specify each grantee as a type=value pair, where the type is one
 of the following:

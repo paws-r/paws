@@ -10,6 +10,12 @@ gamelift_validate_matchmaking_rule_set(RuleSetBody)
 \item{RuleSetBody}{[required] A collection of matchmaking rules to validate, formatted as a JSON
 string.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Valid = TRUE|FALSE
+)
+}
+}
 \description{
 Validates the syntax of a matchmaking rule or rule set. This operation
 checks that the rule set is using syntactically correct JSON and that it

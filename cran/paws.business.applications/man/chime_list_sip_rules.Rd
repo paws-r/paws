@@ -14,6 +14,34 @@ chime_list_sip_rules(SipMediaApplicationId, MaxResults, NextToken)
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipRules = list(
+    list(
+      SipRuleId = "string",
+      Name = "string",
+      Disabled = TRUE|FALSE,
+      TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+      TriggerValue = "string",
+      TargetApplications = list(
+        list(
+          SipMediaApplicationId = "string",
+          Priority = 123,
+          AwsRegion = "string"
+        )
+      ),
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the SIP rules under the administrator's AWS account.
 }

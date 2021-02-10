@@ -30,6 +30,21 @@ the function name, it is limited to 64 characters in length.}
 \item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing}{routing configuration}
 of the alias.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AliasArn = "string",
+  Name = "string",
+  FunctionVersion = "string",
+  Description = "string",
+  RoutingConfig = list(
+    AdditionalVersionWeights = list(
+      123.0
+    )
+  ),
+  RevisionId = "string"
+)
+}
+}
 \description{
 Creates an
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}

@@ -165,6 +165,9 @@ Valid Values: \code{default} | \code{dedicated}}
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds}{Configuring the Instance Metadata Options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a launch configuration.
 

@@ -36,6 +36,23 @@ points, then the response will include a continuation token in the
 \code{NextToken} field that you can use to retrieve the next page of access
 points.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessPointList = list(
+    list(
+      Name = "string",
+      NetworkOrigin = "Internet"|"VPC",
+      VpcConfiguration = list(
+        VpcId = "string"
+      ),
+      Bucket = "string",
+      AccessPointArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the access points currently associated with the
 specified bucket. You can retrieve up to 1000 access points per call. If

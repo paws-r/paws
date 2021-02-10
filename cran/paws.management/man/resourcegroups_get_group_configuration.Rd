@@ -10,6 +10,41 @@ resourcegroups_get_group_configuration(Group)
 \arguments{
 \item{Group}{The name or the ARN of the resource group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupConfiguration = list(
+    Configuration = list(
+      list(
+        Type = "string",
+        Parameters = list(
+          list(
+            Name = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      )
+    ),
+    ProposedConfiguration = list(
+      list(
+        Type = "string",
+        Parameters = list(
+          list(
+            Name = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      )
+    ),
+    Status = "UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+    FailureReason = "string"
+  )
+)
+}
+}
 \description{
 Returns the service configuration associated with the specified resource
 group. For details about the service configuration syntax, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.

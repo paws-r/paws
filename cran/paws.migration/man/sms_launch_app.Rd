@@ -9,6 +9,9 @@ sms_launch_app(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+An empty list.
+}
 \description{
 Launches the specified application as a stack in AWS CloudFormation.
 }

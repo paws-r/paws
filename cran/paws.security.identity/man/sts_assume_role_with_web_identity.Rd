@@ -112,6 +112,27 @@ a \code{SessionDuration} parameter that specifies the maximum length of the
 console session. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html}{Creating a URL that Enables Federated Users to Access the AWS Management Console}
 in the \emph{IAM User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Credentials = list(
+    AccessKeyId = "string",
+    SecretAccessKey = "string",
+    SessionToken = "string",
+    Expiration = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  SubjectFromWebIdentityToken = "string",
+  AssumedRoleUser = list(
+    AssumedRoleId = "string",
+    Arn = "string"
+  ),
+  PackedPolicySize = 123,
+  Provider = "string",
+  Audience = "string"
+)
+}
+}
 \description{
 Returns a set of temporary security credentials for users who have been
 authenticated in a mobile or web application with a web identity
@@ -281,11 +302,11 @@ Amazon S3.
 # 
 svc$assume_role_with_web_identity(
   DurationSeconds = 3600L,
-  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
+  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
   ProviderId = "www.amazon.com",
   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",
   RoleSessionName = "app1",
-  WebIdentityToken = "Atza\%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKD..."
+  WebIdentityToken = "Atza\%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJ..."
 )
 }
 

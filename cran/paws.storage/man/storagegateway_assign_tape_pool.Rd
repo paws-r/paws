@@ -28,6 +28,12 @@ calls from the console.
 
 Valid values: \code{TRUE} | \code{FALSE}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeARN = "string"
+)
+}
+}
 \description{
 Assigns a tape to a tape pool for archiving. The tape assigned to a pool
 is archived in the S3 storage class that is associated with the pool.

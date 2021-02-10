@@ -21,6 +21,9 @@ servicecatalog_associate_principal_with_portfolio(AcceptLanguage,
 
 \item{PrincipalType}{[required] The principal type. The supported value is \code{IAM}.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates the specified principal ARN with the specified portfolio.
 }

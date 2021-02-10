@@ -18,6 +18,18 @@ Config uses the default.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the tags for AWS Config resource.
 }

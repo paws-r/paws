@@ -11,6 +11,29 @@ chime_describe_channel_membership(ChannelArn, MemberArn)
 
 \item{MemberArn}{[required] The ARN of the member.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelMembership = list(
+    InvitedBy = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    Type = "DEFAULT"|"HIDDEN",
+    Member = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    ChannelArn = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns the full details of a user's channel membership.
 }

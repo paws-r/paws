@@ -7,6 +7,16 @@ user's account}
 \usage{
 elasticsearchservice_list_domain_names()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainNames = list(
+    list(
+      DomainName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the name of all Elasticsearch domains owned by the current
 user's account.

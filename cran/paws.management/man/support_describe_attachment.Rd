@@ -10,6 +10,15 @@ support_describe_attachment(attachmentId)
 \item{attachmentId}{[required] The ID of the attachment to return. Attachment IDs are returned by the
 \code{\link[=support_describe_communications]{describe_communications}} operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  attachment = list(
+    fileName = "string",
+    data = raw
+  )
+)
+}
+}
 \description{
 Returns the attachment that has the specified ID. Attachments can
 include screenshots, error logs, or other files that describe your

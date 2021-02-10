@@ -30,6 +30,14 @@ NULL
 #' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_domain_transfer_from_another_aws_account(
@@ -82,6 +90,14 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which you want to cancel the transfer to
 #' another AWS account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -148,6 +164,14 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' Names](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
 #' @param IdnLangCode Reserved for future use.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Availability = "AVAILABLE"|"AVAILABLE_RESERVED"|"AVAILABLE_PREORDER"|"UNAVAILABLE"|"UNAVAILABLE_PREMIUM"|"UNAVAILABLE_RESTRICTED"|"RESERVED"|"DONT_KNOW"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$check_domain_availability(
@@ -206,6 +230,16 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' authorization code to transfer the domain, the code that you got from
 #' the current registrar for the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Transferability = list(
+#'     Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$check_domain_transferability(
@@ -248,6 +282,9 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
 #' @param DomainName &#91;required&#93; The domain for which you want to delete one or more tags.
 #' @param TagsToDelete &#91;required&#93; A list of tag keys to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_tags_for_domain(
@@ -289,6 +326,9 @@ route53domains_delete_tags_for_domain <- function(DomainName, TagsToDelete) {
 #' route53domains_disable_domain_auto_renew(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to disable automatic renewal for.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -333,6 +373,14 @@ route53domains_disable_domain_auto_renew <- function(DomainName) {
 #' route53domains_disable_domain_transfer_lock(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to remove the transfer lock for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -382,6 +430,9 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to enable automatic renewal for.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_domain_auto_renew(
@@ -423,6 +474,14 @@ route53domains_enable_domain_auto_renew <- function(DomainName) {
 #' route53domains_enable_domain_transfer_lock(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to set the transfer lock for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -472,6 +531,15 @@ route53domains_enable_domain_transfer_lock <- function(DomainName) {
 #' @param domainName The name of the domain for which you want to know whether the registrant
 #' contact has confirmed that the email address is valid.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainName = "string",
+#'   status = "PENDING"|"DONE"|"EXPIRED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_contact_reachability_status(
@@ -511,6 +579,109 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #' route53domains_get_domain_detail(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get detailed information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   Nameservers = list(
+#'     list(
+#'       Name = "string",
+#'       GlueIps = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AutoRenew = TRUE|FALSE,
+#'   AdminContact = list(
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
+#'     OrganizationName = "string",
+#'     AddressLine1 = "string",
+#'     AddressLine2 = "string",
+#'     City = "string",
+#'     State = "string",
+#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
+#'     ZipCode = "string",
+#'     PhoneNumber = "string",
+#'     Email = "string",
+#'     Fax = "string",
+#'     ExtraParams = list(
+#'       list(
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   RegistrantContact = list(
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
+#'     OrganizationName = "string",
+#'     AddressLine1 = "string",
+#'     AddressLine2 = "string",
+#'     City = "string",
+#'     State = "string",
+#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
+#'     ZipCode = "string",
+#'     PhoneNumber = "string",
+#'     Email = "string",
+#'     Fax = "string",
+#'     ExtraParams = list(
+#'       list(
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   TechContact = list(
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
+#'     OrganizationName = "string",
+#'     AddressLine1 = "string",
+#'     AddressLine2 = "string",
+#'     City = "string",
+#'     State = "string",
+#'     CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
+#'     ZipCode = "string",
+#'     PhoneNumber = "string",
+#'     Email = "string",
+#'     Fax = "string",
+#'     ExtraParams = list(
+#'       list(
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   AdminPrivacy = TRUE|FALSE,
+#'   RegistrantPrivacy = TRUE|FALSE,
+#'   TechPrivacy = TRUE|FALSE,
+#'   RegistrarName = "string",
+#'   WhoIsServer = "string",
+#'   RegistrarUrl = "string",
+#'   AbuseContactEmail = "string",
+#'   AbuseContactPhone = "string",
+#'   RegistryDomainId = "string",
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ExpirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Reseller = "string",
+#'   DnsSec = "string",
+#'   StatusList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -582,6 +753,19 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' determine whether the domain is available, you can call
 #' `checkDomainAvailability` for each suggestion.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuggestionsList = list(
+#'     list(
+#'       DomainName = "string",
+#'       Availability = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_domain_suggestions(
@@ -624,6 +808,21 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #' @param OperationId &#91;required&#93; The identifier for the operation for which you want to get the status.
 #' Route 53 returned the identifier in the response to the original
 #' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string",
+#'   Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
+#'   Message = "string",
+#'   DomainName = "string",
+#'   Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+#'   SubmittedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -674,6 +873,24 @@ route53domains_get_operation_detail <- function(OperationId) {
 #' @param MaxItems Number of domains to be returned.
 #' 
 #' Default: 20
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Domains = list(
+#'     list(
+#'       DomainName = "string",
+#'       AutoRenew = TRUE|FALSE,
+#'       TransferLock = TRUE|FALSE,
+#'       Expiry = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextPageMarker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -729,6 +946,24 @@ route53domains_list_domains <- function(Marker = NULL, MaxItems = NULL) {
 #' 
 #' Default: 20
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Operations = list(
+#'     list(
+#'       OperationId = "string",
+#'       Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
+#'       Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+#'       SubmittedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextPageMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_operations(
@@ -774,6 +1009,19 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
 #' route53domains_list_tags_for_domain(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The domain for which you want to get a list of tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -916,6 +1164,14 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Default: `true`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_domain(
@@ -1036,6 +1292,14 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_domain_transfer_from_another_aws_account(
@@ -1093,6 +1357,14 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
 #' @param CurrentExpiryYear &#91;required&#93; The year when the registration for the domain is set to expire. This
 #' value must match the current expiration date for the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$renew_domain(
@@ -1139,6 +1411,16 @@ route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, Curr
 #' @param domainName The name of the domain for which you want Route 53 to resend a
 #' confirmation email to the registrant contact.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainName = "string",
+#'   emailAddress = "string",
+#'   isAlreadyVerified = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$resend_contact_reachability_email(
@@ -1176,6 +1458,14 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
 #' route53domains_retrieve_domain_auth_code(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get an authorization code for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthCode = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1314,6 +1604,14 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' technical contact.
 #' 
 #' Default: `true`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1462,6 +1760,15 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' @param AccountId &#91;required&#93; The account ID of the AWS account that you want to transfer the domain
 #' to, for example, `111122223333`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string",
+#'   Password = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$transfer_domain_to_another_aws_account(
@@ -1510,6 +1817,14 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @param AdminContact Provides detailed contact information.
 #' @param RegistrantContact Provides detailed contact information.
 #' @param TechContact Provides detailed contact information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1652,6 +1967,14 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' `false`, WHOIS queries return the information that you entered for the
 #' technical contact.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_domain_contact_privacy(
@@ -1704,6 +2027,14 @@ route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivac
 #' @param FIAuthKey The authorization key for .fi domains
 #' @param Nameservers &#91;required&#93; A list of new name servers for the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_domain_nameservers(
@@ -1755,6 +2086,9 @@ route53domains_update_domain_nameservers <- function(DomainName, FIAuthKey = NUL
 #' @param TagsToUpdate A list of the tag keys and values that you want to add or update. If you
 #' specify a key that already exists, the corresponding value will be
 #' replaced.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1818,6 +2152,25 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 #' @param MaxItems The number of billing records to be returned.
 #' 
 #' Default: 20
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextPageMarker = "string",
+#'   BillingRecords = list(
+#'     list(
+#'       DomainName = "string",
+#'       Operation = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+#'       InvoiceId = "string",
+#'       BillDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Price = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

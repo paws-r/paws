@@ -13,6 +13,9 @@ running. Use either the GameServerGroup name or ARN value.}
 
 \item{GameServerId}{[required] A custom string that uniquely identifies the game server to deregister.}
 }
+\value{
+An empty list.
+}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}

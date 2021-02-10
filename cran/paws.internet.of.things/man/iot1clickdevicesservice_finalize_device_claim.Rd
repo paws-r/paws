@@ -10,8 +10,14 @@ iot1clickdevicesservice_finalize_device_claim(DeviceId, Tags)
 \item{DeviceId}{[required] The unique identifier of the device.}
 
 \item{Tags}{A collection of key/value pairs defining the resource tags. For example,
-\{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more information,
-see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}.}
+\{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more
+information, see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  State = "string"
+)
+}
 }
 \description{
 Given a device ID, finalizes the claim request for the associated

@@ -27,6 +27,21 @@ value.}
 \item \code{instance-type} - The instance type.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActiveInstances = list(
+    list(
+      InstanceId = "string",
+      InstanceType = "string",
+      SpotInstanceRequestId = "string",
+      InstanceHealth = "healthy"|"unhealthy"
+    )
+  ),
+  NextToken = "string",
+  FleetId = "string"
+)
+}
+}
 \description{
 Describes the running instances for the specified EC2 Fleet.
 }

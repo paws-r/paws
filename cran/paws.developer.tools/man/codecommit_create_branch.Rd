@@ -13,6 +13,9 @@ codecommit_create_branch(repositoryName, branchName, commitId)
 
 \item{commitId}{[required] The ID of the commit to point the new branch to.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a branch in a repository and points the branch to a commit.
 

@@ -20,7 +20,88 @@ value is a list of comma-separated strings. Currently, the request
 supports only retrieval of the embedded Method resources this way. The
 query parameter value must be a single-valued list and contain the
 \code{"methods"} string. For example,
-\verb{GET /restapis/\\\{restapi_id\\\}/resources?embed=methods}.}
+\code{GET /restapis/{restapi_id}/resources?embed=methods}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      parentId = "string",
+      pathPart = "string",
+      path = "string",
+      resourceMethods = list(
+        list(
+          httpMethod = "string",
+          authorizationType = "string",
+          authorizerId = "string",
+          apiKeyRequired = TRUE|FALSE,
+          requestValidatorId = "string",
+          operationName = "string",
+          requestParameters = list(
+            TRUE|FALSE
+          ),
+          requestModels = list(
+            "string"
+          ),
+          methodResponses = list(
+            list(
+              statusCode = "string",
+              responseParameters = list(
+                TRUE|FALSE
+              ),
+              responseModels = list(
+                "string"
+              )
+            )
+          ),
+          methodIntegration = list(
+            type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+            httpMethod = "string",
+            uri = "string",
+            connectionType = "INTERNET"|"VPC_LINK",
+            connectionId = "string",
+            credentials = "string",
+            requestParameters = list(
+              "string"
+            ),
+            requestTemplates = list(
+              "string"
+            ),
+            passthroughBehavior = "string",
+            contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+            timeoutInMillis = 123,
+            cacheNamespace = "string",
+            cacheKeyParameters = list(
+              "string"
+            ),
+            integrationResponses = list(
+              list(
+                statusCode = "string",
+                selectionPattern = "string",
+                responseParameters = list(
+                  "string"
+                ),
+                responseTemplates = list(
+                  "string"
+                ),
+                contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+              )
+            ),
+            tlsConfig = list(
+              insecureSkipVerification = TRUE|FALSE
+            )
+          ),
+          authorizationScopes = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Lists information about a collection of Resource resources.

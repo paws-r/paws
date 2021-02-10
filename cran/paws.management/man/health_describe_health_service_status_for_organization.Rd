@@ -7,6 +7,12 @@ Health to work with your organization}
 \usage{
 health_describe_health_service_status_for_organization()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  healthServiceAccessStatusForOrganization = "string"
+)
+}
+}
 \description{
 This operation provides status information on enabling or disabling AWS
 Health to work with your organization. To call this operation, you must

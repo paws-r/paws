@@ -37,6 +37,28 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomerGateways = list(
+    list(
+      BgpAsn = "string",
+      CustomerGatewayId = "string",
+      IpAddress = "string",
+      CertificateArn = "string",
+      State = "string",
+      Type = "string",
+      DeviceName = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes one or more of your VPN customer gateways.
 

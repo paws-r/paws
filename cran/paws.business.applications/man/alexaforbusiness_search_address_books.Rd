@@ -24,6 +24,20 @@ specified by MaxResults.}
 results exist than the specified MaxResults value, a token is included
 in the response so that the remaining results can be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AddressBooks = list(
+    list(
+      AddressBookArn = "string",
+      Name = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string",
+  TotalCount = 123
+)
+}
+}
 \description{
 Searches address books and lists the ones that meet a set of filter and
 sort criteria.

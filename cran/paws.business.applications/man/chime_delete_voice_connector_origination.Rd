@@ -10,6 +10,9 @@ chime_delete_voice_connector_origination(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the origination settings for the specified Amazon Chime Voice
 Connector.

@@ -6,6 +6,12 @@
 \usage{
 servicequotas_get_association_for_service_quota_template()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceQuotaTemplateAssociationStatus = "ASSOCIATED"|"DISASSOCIATED"
+)
+}
+}
 \description{
 Retrieves the status of the association for the quota request template.
 }

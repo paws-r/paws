@@ -16,6 +16,19 @@ the list of tags.}
 \item{Limit}{Specifies that the list of tags returned be limited to the specified
 number of items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceARN = "string",
+  Marker = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the tags that have been added to the specified resource. This
 operation is supported in storage gateways of all types.

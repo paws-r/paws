@@ -13,6 +13,9 @@ NULL
 #'
 #' @param Name &#91;required&#93; The identifier for the playback configuration.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_playback_configuration(
@@ -49,6 +52,54 @@ mediatailor_delete_playback_configuration <- function(Name) {
 #' mediatailor_get_playback_configuration(Name)
 #'
 #' @param Name &#91;required&#93; The identifier for the playback configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdDecisionServerUrl = "string",
+#'   AvailSuppression = list(
+#'     Mode = "OFF"|"BEHIND_LIVE_EDGE",
+#'     Value = "string"
+#'   ),
+#'   Bumper = list(
+#'     EndUrl = "string",
+#'     StartUrl = "string"
+#'   ),
+#'   CdnConfiguration = list(
+#'     AdSegmentUrlPrefix = "string",
+#'     ContentSegmentUrlPrefix = "string"
+#'   ),
+#'   DashConfiguration = list(
+#'     ManifestEndpointPrefix = "string",
+#'     MpdLocation = "string",
+#'     OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
+#'   ),
+#'   HlsConfiguration = list(
+#'     ManifestEndpointPrefix = "string"
+#'   ),
+#'   LivePreRollConfiguration = list(
+#'     AdDecisionServerUrl = "string",
+#'     MaxDurationSeconds = 123
+#'   ),
+#'   ManifestProcessingRules = list(
+#'     AdMarkerPassthrough = list(
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   Name = "string",
+#'   PersonalizationThresholdSeconds = 123,
+#'   PlaybackConfigurationArn = "string",
+#'   PlaybackEndpointPrefix = "string",
+#'   SessionInitializationEndpointPrefix = "string",
+#'   SlateAdUrl = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   TranscodeProfileName = "string",
+#'   VideoContentSourceUrl = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -95,6 +146,55 @@ mediatailor_get_playback_configuration <- function(Name) {
 #' @param NextToken Pagination token returned by the GET list request when results exceed
 #' the maximum allowed. Use the token to fetch the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       AdDecisionServerUrl = "string",
+#'       AvailSuppression = list(
+#'         Mode = "OFF"|"BEHIND_LIVE_EDGE",
+#'         Value = "string"
+#'       ),
+#'       Bumper = list(
+#'         EndUrl = "string",
+#'         StartUrl = "string"
+#'       ),
+#'       CdnConfiguration = list(
+#'         AdSegmentUrlPrefix = "string",
+#'         ContentSegmentUrlPrefix = "string"
+#'       ),
+#'       DashConfiguration = list(
+#'         ManifestEndpointPrefix = "string",
+#'         MpdLocation = "string",
+#'         OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
+#'       ),
+#'       HlsConfiguration = list(
+#'         ManifestEndpointPrefix = "string"
+#'       ),
+#'       ManifestProcessingRules = list(
+#'         AdMarkerPassthrough = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       Name = "string",
+#'       PlaybackConfigurationArn = "string",
+#'       PlaybackEndpointPrefix = "string",
+#'       SessionInitializationEndpointPrefix = "string",
+#'       SlateAdUrl = "string",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       TranscodeProfileName = "string",
+#'       PersonalizationThresholdSeconds = 123,
+#'       VideoContentSourceUrl = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_playback_configurations(
@@ -135,6 +235,16 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the playback configuration. You can
 #' get this from the response to any playback configuration request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -211,6 +321,54 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' @param VideoContentSourceUrl The URL prefix for the master playlist for the stream, minus the asset
 #' ID. The maximum length is 512 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdDecisionServerUrl = "string",
+#'   AvailSuppression = list(
+#'     Mode = "OFF"|"BEHIND_LIVE_EDGE",
+#'     Value = "string"
+#'   ),
+#'   Bumper = list(
+#'     EndUrl = "string",
+#'     StartUrl = "string"
+#'   ),
+#'   CdnConfiguration = list(
+#'     AdSegmentUrlPrefix = "string",
+#'     ContentSegmentUrlPrefix = "string"
+#'   ),
+#'   DashConfiguration = list(
+#'     ManifestEndpointPrefix = "string",
+#'     MpdLocation = "string",
+#'     OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
+#'   ),
+#'   HlsConfiguration = list(
+#'     ManifestEndpointPrefix = "string"
+#'   ),
+#'   LivePreRollConfiguration = list(
+#'     AdDecisionServerUrl = "string",
+#'     MaxDurationSeconds = 123
+#'   ),
+#'   ManifestProcessingRules = list(
+#'     AdMarkerPassthrough = list(
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   Name = "string",
+#'   PersonalizationThresholdSeconds = 123,
+#'   PlaybackConfigurationArn = "string",
+#'   PlaybackEndpointPrefix = "string",
+#'   SessionInitializationEndpointPrefix = "string",
+#'   SlateAdUrl = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   TranscodeProfileName = "string",
+#'   VideoContentSourceUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_playback_configuration(
@@ -285,6 +443,9 @@ mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, A
 #' @param Tags &#91;required&#93; A comma-separated list of tag key:value pairs. For example: \{ "Key1":
 #' "Value1", "Key2": "Value2" \}
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -328,6 +489,9 @@ mediatailor_tag_resource <- function(ResourceArn, Tags) {
 #' get this from the response to any playback configuration request.
 #' @param TagKeys &#91;required&#93; A comma-separated list of the tag keys to remove from the playback
 #' configuration.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

@@ -23,6 +23,29 @@ the volumes associated with the specified RAID array.}
 the specified volumes. Otherwise, it returns a description of every
 volume.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Volumes = list(
+    list(
+      VolumeId = "string",
+      Ec2VolumeId = "string",
+      Name = "string",
+      RaidArrayId = "string",
+      InstanceId = "string",
+      Status = "string",
+      Size = 123,
+      Device = "string",
+      MountPoint = "string",
+      Region = "string",
+      AvailabilityZone = "string",
+      VolumeType = "string",
+      Iops = 123,
+      Encrypted = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes an instance's Amazon EBS volumes.
 

@@ -16,6 +16,12 @@ source.}
 \item{Account}{[required] The AWS account ID that is permitted to create a matching partner event
 bus for this partner event source.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSourceArn = "string"
+)
+}
+}
 \description{
 Called by an SaaS partner to create a partner event source. This
 operation is not used by AWS customers.
@@ -36,12 +42,12 @@ Partner event source names follow this format:
 
 \code{partner_name/event_namespace/event_name}
 
-\emph{partner\\_name} is determined during partner registration and identifies
-the partner to AWS customers. \emph{event\\_namespace} is determined by the
+\emph{partner_name} is determined during partner registration and identifies
+the partner to AWS customers. \emph{event_namespace} is determined by the
 partner and is a way for the partner to categorize their events.
-\emph{event\\_name} is determined by the partner, and should uniquely identify
+\emph{event_name} is determined by the partner, and should uniquely identify
 an event-generating resource within the partner system. The combination
-of \emph{event\\_namespace} and \emph{event\\_name} should help AWS customers decide
+of \emph{event_namespace} and \emph{event_name} should help AWS customers decide
 whether to create an event bus to receive these events.
 }
 \section{Request syntax}{

@@ -22,8 +22,16 @@ a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \\_ : / @. The maximum length of a tag's key is 128 characters, and
+= . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SnapshotId = "string",
+  VolumeARN = "string",
+  VolumeRecoveryPointTime = "string"
+)
+}
 }
 \description{
 Initiates a snapshot of a gateway from a volume recovery point. This
@@ -70,7 +78,7 @@ in the \emph{Amazon Elastic Compute Cloud API Reference}.
 # Initiates a snapshot of a gateway from a volume recovery point.
 svc$create_snapshot_from_volume_recovery_point(
   SnapshotDescription = "My root volume snapshot as of 2017-06-30T10:10:10.000Z",
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 )
 }
 

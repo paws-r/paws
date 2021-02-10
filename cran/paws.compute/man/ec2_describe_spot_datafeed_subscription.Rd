@@ -12,6 +12,21 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SpotDatafeedSubscription = list(
+    Bucket = "string",
+    Fault = list(
+      Code = "string",
+      Message = "string"
+    ),
+    OwnerId = "string",
+    Prefix = "string",
+    State = "Active"|"Inactive"
+  )
+)
+}
+}
 \description{
 Describes the data feed for Spot Instances. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed}

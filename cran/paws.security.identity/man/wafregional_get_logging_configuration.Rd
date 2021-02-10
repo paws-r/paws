@@ -10,6 +10,23 @@ wafregional_get_logging_configuration(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL for which you want to get
 the LoggingConfiguration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoggingConfiguration = list(
+    ResourceArn = "string",
+    LogDestinationConfigs = list(
+      "string"
+    ),
+    RedactedFields = list(
+      list(
+        Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+        Data = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

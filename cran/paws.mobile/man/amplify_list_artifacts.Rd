@@ -19,6 +19,18 @@ in here to list more artifacts.}
 
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  artifacts = list(
+    list(
+      artifactFileName = "string",
+      artifactId = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of artifacts for a specified app, branch, and job.
 }

@@ -11,6 +11,9 @@ cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
 
 \item{Username}{[required] The user name of the user you wish to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a user as an administrator. Works on any user.
 

@@ -31,6 +31,28 @@ returned in a single call.}
 results are returned in ascending alphabetical order of the \code{name} of
 the workflow types.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  typeInfos = list(
+    list(
+      workflowType = list(
+        name = "string",
+        version = "string"
+      ),
+      status = "REGISTERED"|"DEPRECATED",
+      description = "string",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      deprecationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns information about workflow types in the specified domain. The
 results may be split into multiple pages that can be retrieved by making

@@ -30,6 +30,38 @@ operation. If the number of results is larger than the number that you
 specify in this parameter, the response includes a \code{NextToken} element,
 which you can use to obtain additional results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainDeliverabilityCampaigns = list(
+    list(
+      CampaignId = "string",
+      ImageUrl = "string",
+      Subject = "string",
+      FromAddress = "string",
+      SendingIps = list(
+        "string"
+      ),
+      FirstSeenDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastSeenDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      InboxCount = 123,
+      SpamCount = 123,
+      ReadRate = 123.0,
+      DeleteRate = 123.0,
+      ReadDeleteRate = 123.0,
+      ProjectedVolume = 123,
+      Esps = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieve deliverability data for all the campaigns that used a specific
 domain to send email during a specified time range. This data is

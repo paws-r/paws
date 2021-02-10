@@ -204,6 +204,59 @@ Transcoder adds to the Amazon S3 bucket.
 the thumbnails that it stores in your Amazon S3 bucket.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Pipeline = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string",
+    Status = "string",
+    InputBucket = "string",
+    OutputBucket = "string",
+    Role = "string",
+    AwsKmsKeyArn = "string",
+    Notifications = list(
+      Progressing = "string",
+      Completed = "string",
+      Warning = "string",
+      Error = "string"
+    ),
+    ContentConfig = list(
+      Bucket = "string",
+      StorageClass = "string",
+      Permissions = list(
+        list(
+          GranteeType = "string",
+          Grantee = "string",
+          Access = list(
+            "string"
+          )
+        )
+      )
+    ),
+    ThumbnailConfig = list(
+      Bucket = "string",
+      StorageClass = "string",
+      Permissions = list(
+        list(
+          GranteeType = "string",
+          Grantee = "string",
+          Access = list(
+            "string"
+          )
+        )
+      )
+    )
+  ),
+  Warnings = list(
+    list(
+      Code = "string",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 The CreatePipeline operation creates a pipeline with settings that you
 specify.

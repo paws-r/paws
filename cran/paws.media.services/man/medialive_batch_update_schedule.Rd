@@ -13,6 +13,245 @@ medialive_batch_update_schedule(ChannelId, Creates, Deletes)
 
 \item{Deletes}{Schedule actions to delete from the schedule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Creates = list(
+    ScheduleActions = list(
+      list(
+        ActionName = "string",
+        ScheduleActionSettings = list(
+          HlsId3SegmentTaggingSettings = list(
+            Tag = "string"
+          ),
+          HlsTimedMetadataSettings = list(
+            Id3 = "string"
+          ),
+          InputPrepareSettings = list(
+            InputAttachmentNameReference = "string",
+            InputClippingSettings = list(
+              InputTimecodeSource = "ZEROBASED"|"EMBEDDED",
+              StartTimecode = list(
+                Timecode = "string"
+              ),
+              StopTimecode = list(
+                LastFrameClippingBehavior = "EXCLUDE_LAST_FRAME"|"INCLUDE_LAST_FRAME",
+                Timecode = "string"
+              )
+            ),
+            UrlPath = list(
+              "string"
+            )
+          ),
+          InputSwitchSettings = list(
+            InputAttachmentNameReference = "string",
+            InputClippingSettings = list(
+              InputTimecodeSource = "ZEROBASED"|"EMBEDDED",
+              StartTimecode = list(
+                Timecode = "string"
+              ),
+              StopTimecode = list(
+                LastFrameClippingBehavior = "EXCLUDE_LAST_FRAME"|"INCLUDE_LAST_FRAME",
+                Timecode = "string"
+              )
+            ),
+            UrlPath = list(
+              "string"
+            )
+          ),
+          PauseStateSettings = list(
+            Pipelines = list(
+              list(
+                PipelineId = "PIPELINE_0"|"PIPELINE_1"
+              )
+            )
+          ),
+          Scte35ReturnToNetworkSettings = list(
+            SpliceEventId = 123
+          ),
+          Scte35SpliceInsertSettings = list(
+            Duration = 123,
+            SpliceEventId = 123
+          ),
+          Scte35TimeSignalSettings = list(
+            Scte35Descriptors = list(
+              list(
+                Scte35DescriptorSettings = list(
+                  SegmentationDescriptorScte35DescriptorSettings = list(
+                    DeliveryRestrictions = list(
+                      ArchiveAllowedFlag = "ARCHIVE_NOT_ALLOWED"|"ARCHIVE_ALLOWED",
+                      DeviceRestrictions = "NONE"|"RESTRICT_GROUP0"|"RESTRICT_GROUP1"|"RESTRICT_GROUP2",
+                      NoRegionalBlackoutFlag = "REGIONAL_BLACKOUT"|"NO_REGIONAL_BLACKOUT",
+                      WebDeliveryAllowedFlag = "WEB_DELIVERY_NOT_ALLOWED"|"WEB_DELIVERY_ALLOWED"
+                    ),
+                    SegmentNum = 123,
+                    SegmentationCancelIndicator = "SEGMENTATION_EVENT_NOT_CANCELED"|"SEGMENTATION_EVENT_CANCELED",
+                    SegmentationDuration = 123,
+                    SegmentationEventId = 123,
+                    SegmentationTypeId = 123,
+                    SegmentationUpid = "string",
+                    SegmentationUpidType = 123,
+                    SegmentsExpected = 123,
+                    SubSegmentNum = 123,
+                    SubSegmentsExpected = 123
+                  )
+                )
+              )
+            )
+          ),
+          StaticImageActivateSettings = list(
+            Duration = 123,
+            FadeIn = 123,
+            FadeOut = 123,
+            Height = 123,
+            Image = list(
+              PasswordParam = "string",
+              Uri = "string",
+              Username = "string"
+            ),
+            ImageX = 123,
+            ImageY = 123,
+            Layer = 123,
+            Opacity = 123,
+            Width = 123
+          ),
+          StaticImageDeactivateSettings = list(
+            FadeOut = 123,
+            Layer = 123
+          )
+        ),
+        ScheduleActionStartSettings = list(
+          FixedModeScheduleActionStartSettings = list(
+            Time = "string"
+          ),
+          FollowModeScheduleActionStartSettings = list(
+            FollowPoint = "END"|"START",
+            ReferenceActionName = "string"
+          ),
+          ImmediateModeScheduleActionStartSettings = list()
+        )
+      )
+    )
+  ),
+  Deletes = list(
+    ScheduleActions = list(
+      list(
+        ActionName = "string",
+        ScheduleActionSettings = list(
+          HlsId3SegmentTaggingSettings = list(
+            Tag = "string"
+          ),
+          HlsTimedMetadataSettings = list(
+            Id3 = "string"
+          ),
+          InputPrepareSettings = list(
+            InputAttachmentNameReference = "string",
+            InputClippingSettings = list(
+              InputTimecodeSource = "ZEROBASED"|"EMBEDDED",
+              StartTimecode = list(
+                Timecode = "string"
+              ),
+              StopTimecode = list(
+                LastFrameClippingBehavior = "EXCLUDE_LAST_FRAME"|"INCLUDE_LAST_FRAME",
+                Timecode = "string"
+              )
+            ),
+            UrlPath = list(
+              "string"
+            )
+          ),
+          InputSwitchSettings = list(
+            InputAttachmentNameReference = "string",
+            InputClippingSettings = list(
+              InputTimecodeSource = "ZEROBASED"|"EMBEDDED",
+              StartTimecode = list(
+                Timecode = "string"
+              ),
+              StopTimecode = list(
+                LastFrameClippingBehavior = "EXCLUDE_LAST_FRAME"|"INCLUDE_LAST_FRAME",
+                Timecode = "string"
+              )
+            ),
+            UrlPath = list(
+              "string"
+            )
+          ),
+          PauseStateSettings = list(
+            Pipelines = list(
+              list(
+                PipelineId = "PIPELINE_0"|"PIPELINE_1"
+              )
+            )
+          ),
+          Scte35ReturnToNetworkSettings = list(
+            SpliceEventId = 123
+          ),
+          Scte35SpliceInsertSettings = list(
+            Duration = 123,
+            SpliceEventId = 123
+          ),
+          Scte35TimeSignalSettings = list(
+            Scte35Descriptors = list(
+              list(
+                Scte35DescriptorSettings = list(
+                  SegmentationDescriptorScte35DescriptorSettings = list(
+                    DeliveryRestrictions = list(
+                      ArchiveAllowedFlag = "ARCHIVE_NOT_ALLOWED"|"ARCHIVE_ALLOWED",
+                      DeviceRestrictions = "NONE"|"RESTRICT_GROUP0"|"RESTRICT_GROUP1"|"RESTRICT_GROUP2",
+                      NoRegionalBlackoutFlag = "REGIONAL_BLACKOUT"|"NO_REGIONAL_BLACKOUT",
+                      WebDeliveryAllowedFlag = "WEB_DELIVERY_NOT_ALLOWED"|"WEB_DELIVERY_ALLOWED"
+                    ),
+                    SegmentNum = 123,
+                    SegmentationCancelIndicator = "SEGMENTATION_EVENT_NOT_CANCELED"|"SEGMENTATION_EVENT_CANCELED",
+                    SegmentationDuration = 123,
+                    SegmentationEventId = 123,
+                    SegmentationTypeId = 123,
+                    SegmentationUpid = "string",
+                    SegmentationUpidType = 123,
+                    SegmentsExpected = 123,
+                    SubSegmentNum = 123,
+                    SubSegmentsExpected = 123
+                  )
+                )
+              )
+            )
+          ),
+          StaticImageActivateSettings = list(
+            Duration = 123,
+            FadeIn = 123,
+            FadeOut = 123,
+            Height = 123,
+            Image = list(
+              PasswordParam = "string",
+              Uri = "string",
+              Username = "string"
+            ),
+            ImageX = 123,
+            ImageY = 123,
+            Layer = 123,
+            Opacity = 123,
+            Width = 123
+          ),
+          StaticImageDeactivateSettings = list(
+            FadeOut = 123,
+            Layer = 123
+          )
+        ),
+        ScheduleActionStartSettings = list(
+          FixedModeScheduleActionStartSettings = list(
+            Time = "string"
+          ),
+          FollowModeScheduleActionStartSettings = list(
+            FollowPoint = "END"|"START",
+            ReferenceActionName = "string"
+          ),
+          ImmediateModeScheduleActionStartSettings = list()
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Update a channel schedule
 }

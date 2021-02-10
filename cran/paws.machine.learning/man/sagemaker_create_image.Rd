@@ -20,6 +20,12 @@ SageMaker to perform tasks on your behalf.}
 
 \item{Tags}{A list of tags to apply to the image.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageArn = "string"
+)
+}
+}
 \description{
 Creates a custom SageMaker image. A SageMaker image is a set of image
 versions. Each image version represents a container image stored in

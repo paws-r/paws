@@ -20,6 +20,9 @@ is changed. This parameter is returned by the
 \item{VisibilityTimeout}{[required] The new value for the message's visibility timeout (in seconds). Values
 range: \code{0} to \code{43200}. Maximum: 12 hours.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the visibility timeout of a specified message in a queue to a
 new value. The default visibility timeout for a message is 30 seconds.

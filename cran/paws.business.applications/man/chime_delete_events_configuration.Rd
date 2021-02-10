@@ -12,6 +12,9 @@ chime_delete_events_configuration(AccountId, BotId)
 
 \item{BotId}{[required] The bot ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the events configuration that allows a bot to receive outgoing
 events.

@@ -10,6 +10,12 @@ storagegateway_start_availability_monitor_test(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Start a test that verifies that the specified gateway is configured for
 High Availability monitoring in your host environment. This request only

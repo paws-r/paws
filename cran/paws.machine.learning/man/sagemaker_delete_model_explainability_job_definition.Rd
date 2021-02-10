@@ -9,6 +9,9 @@ sagemaker_delete_model_explainability_job_definition(JobDefinitionName)
 \arguments{
 \item{JobDefinitionName}{[required] The name of the model explainability job definition to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an Amazon SageMaker model explainability job definition.
 }

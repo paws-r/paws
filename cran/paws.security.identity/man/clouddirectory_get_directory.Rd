@@ -9,6 +9,19 @@ clouddirectory_get_directory(DirectoryArn)
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Directory = list(
+    Name = "string",
+    DirectoryArn = "string",
+    State = "ENABLED"|"DISABLED"|"DELETED",
+    CreationDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves metadata about a directory.
 }

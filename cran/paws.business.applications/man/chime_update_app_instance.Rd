@@ -13,6 +13,12 @@ chime_update_app_instance(AppInstanceArn, Name, Metadata)
 
 \item{Metadata}{The metadata that you want to change.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceArn = "string"
+)
+}
+}
 \description{
 Updates \code{AppInstance} metadata.
 }

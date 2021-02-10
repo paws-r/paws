@@ -68,6 +68,63 @@ includes the health status for running instances only.
 
 Default: \code{false}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceStatuses = list(
+    list(
+      AvailabilityZone = "string",
+      OutpostArn = "string",
+      Events = list(
+        list(
+          InstanceEventId = "string",
+          Code = "instance-reboot"|"system-reboot"|"system-maintenance"|"instance-retirement"|"instance-stop",
+          Description = "string",
+          NotAfter = as.POSIXct(
+            "2015-01-01"
+          ),
+          NotBefore = as.POSIXct(
+            "2015-01-01"
+          ),
+          NotBeforeDeadline = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      ),
+      InstanceId = "string",
+      InstanceState = list(
+        Code = 123,
+        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+      ),
+      InstanceStatus = list(
+        Details = list(
+          list(
+            ImpairedSince = as.POSIXct(
+              "2015-01-01"
+            ),
+            Name = "reachability",
+            Status = "passed"|"failed"|"insufficient-data"|"initializing"
+          )
+        ),
+        Status = "ok"|"impaired"|"insufficient-data"|"not-applicable"|"initializing"
+      ),
+      SystemStatus = list(
+        Details = list(
+          list(
+            ImpairedSince = as.POSIXct(
+              "2015-01-01"
+            ),
+            Name = "reachability",
+            Status = "passed"|"failed"|"insufficient-data"|"initializing"
+          )
+        ),
+        Status = "ok"|"impaired"|"insufficient-data"|"not-applicable"|"initializing"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the status of the specified instances or all of your
 instances. By default, only running instances are described, unless you

@@ -12,6 +12,60 @@ devicefarm_get_offering_status(nextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  current = list(
+    list(
+      type = "PURCHASE"|"RENEW"|"SYSTEM",
+      offering = list(
+        id = "string",
+        description = "string",
+        type = "RECURRING",
+        platform = "ANDROID"|"IOS",
+        recurringCharges = list(
+          list(
+            cost = list(
+              amount = 123.0,
+              currencyCode = "USD"
+            ),
+            frequency = "MONTHLY"
+          )
+        )
+      ),
+      quantity = 123,
+      effectiveOn = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextPeriod = list(
+    list(
+      type = "PURCHASE"|"RENEW"|"SYSTEM",
+      offering = list(
+        id = "string",
+        description = "string",
+        type = "RECURRING",
+        platform = "ANDROID"|"IOS",
+        recurringCharges = list(
+          list(
+            cost = list(
+              amount = 123.0,
+              currencyCode = "USD"
+            ),
+            frequency = "MONTHLY"
+          )
+        )
+      ),
+      quantity = 123,
+      effectiveOn = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the current status and future status of all offerings purchased by
 an AWS account. The response indicates how many offerings are currently

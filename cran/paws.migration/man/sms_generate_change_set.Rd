@@ -12,6 +12,15 @@ sms_generate_change_set(appId, changesetFormat)
 
 \item{changesetFormat}{The format for the change set.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  s3Location = list(
+    bucket = "string",
+    key = "string"
+  )
+)
+}
+}
 \description{
 Generates a target change set for a currently launched stack and writes
 it to an Amazon S3 object in the customer’s Amazon S3 bucket.

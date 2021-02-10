@@ -22,6 +22,9 @@ configuration. If the load falls below these thresholds for a specified
 amount of time, AWS OpsWorks Stacks stops a specified number of
 instances.}
 }
+\value{
+An empty list.
+}
 \description{
 Specify the load-based auto scaling configuration for a specified layer.
 For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.

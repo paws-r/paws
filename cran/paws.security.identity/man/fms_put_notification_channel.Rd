@@ -14,6 +14,9 @@ notifications from AWS Firewall Manager.}
 \item{SnsRoleName}{[required] The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to
 record AWS Firewall Manager activity.}
 }
+\value{
+An empty list.
+}
 \description{
 Designates the IAM role and Amazon Simple Notification Service (SNS)
 topic that AWS Firewall Manager uses to record SNS logs.

@@ -17,6 +17,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Attribute}{The attribute.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Resets the specified attribute of the specified Amazon FPGA Image (AFI)
 to its default value. You can only reset the load permission attribute.

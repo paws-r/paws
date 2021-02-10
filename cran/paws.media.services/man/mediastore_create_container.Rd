@@ -18,7 +18,23 @@ anything that you want. Typically, the tag key represents a category
 (such as "environment") and the tag value represents a specific value
 within that category (such as "test," "development," or "production").
 You can add up to 50 tags to each container. For more information about
-tagging, including naming and usage conventions, see \href{https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html}{Tagging Resources in MediaStore}.}
+tagging, including naming and usage conventions, see Tagging Resources
+in MediaStore.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Container = list(
+    Endpoint = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ARN = "string",
+    Name = "string",
+    Status = "ACTIVE"|"CREATING"|"DELETING",
+    AccessLoggingEnabled = TRUE|FALSE
+  )
+)
+}
 }
 \description{
 Creates a storage container to hold objects. A container is similar to a

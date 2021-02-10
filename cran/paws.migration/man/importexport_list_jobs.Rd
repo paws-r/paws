@@ -13,8 +13,28 @@ importexport_list_jobs(MaxJobs, Marker, APIVersion)
 
 \item{APIVersion}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Jobs = list(
+    list(
+      JobId = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      IsCanceled = TRUE|FALSE,
+      JobType = "Import"|"Export"
+    )
+  ),
+  IsTruncated = TRUE|FALSE
+)
+}
+}
 \description{
-This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
+This operation returns the jobs associated with the requester. AWS
+Import/Export lists the jobs in reverse chronological order based on the
+date of creation. For example if Job Test1 was created 2009Dec30 and
+Test2 was created 2010Feb05, the ListJobs operation would return Test2
+followed by Test1.
 }
 \section{Request syntax}{
 \preformatted{svc$list_jobs(

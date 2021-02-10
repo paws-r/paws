@@ -16,6 +16,36 @@ real-time log configurations in the list that occur after the marker. To
 get the next page of the list, set this field’s value to the value of
 \code{NextMarker} from the current page’s response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RealtimeLogConfigs = list(
+    MaxItems = 123,
+    Items = list(
+      list(
+        ARN = "string",
+        Name = "string",
+        SamplingRate = 123,
+        EndPoints = list(
+          list(
+            StreamType = "string",
+            KinesisStreamConfig = list(
+              RoleARN = "string",
+              StreamARN = "string"
+            )
+          )
+        ),
+        Fields = list(
+          "string"
+        )
+      )
+    ),
+    IsTruncated = TRUE|FALSE,
+    Marker = "string",
+    NextMarker = "string"
+  )
+)
+}
+}
 \description{
 Gets a list of real-time log configurations.
 

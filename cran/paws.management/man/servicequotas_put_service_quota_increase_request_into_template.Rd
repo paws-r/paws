@@ -16,6 +16,21 @@ servicequotas_put_service_quota_increase_request_into_template(
 
 \item{DesiredValue}{[required] The new, increased value for the quota.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceQuotaIncreaseRequestInTemplate = list(
+    ServiceCode = "string",
+    ServiceName = "string",
+    QuotaCode = "string",
+    QuotaName = "string",
+    DesiredValue = 123.0,
+    AwsRegion = "string",
+    Unit = "string",
+    GlobalQuota = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Adds a quota increase request to your quota request template.
 }

@@ -23,6 +23,70 @@ can specify the latest version of the template by providing the keyword
 \verb{$LATEST} in the \code{AliasName} parameter. The keyword \verb{$PUBLISHED} doesn't
 apply to templates.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Template = list(
+    Arn = "string",
+    Name = "string",
+    Version = list(
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Errors = list(
+        list(
+          Type = "SOURCE_NOT_FOUND"|"DATA_SET_NOT_FOUND"|"INTERNAL_FAILURE"|"ACCESS_DENIED",
+          Message = "string"
+        )
+      ),
+      VersionNumber = 123,
+      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+      DataSetConfigurations = list(
+        list(
+          Placeholder = "string",
+          DataSetSchema = list(
+            ColumnSchemaList = list(
+              list(
+                Name = "string",
+                DataType = "string",
+                GeographicRole = "string"
+              )
+            )
+          ),
+          ColumnGroupSchemaList = list(
+            list(
+              Name = "string",
+              ColumnGroupColumnSchemaList = list(
+                list(
+                  Name = "string"
+                )
+              )
+            )
+          )
+        )
+      ),
+      Description = "string",
+      SourceEntityArn = "string",
+      ThemeArn = "string",
+      Sheets = list(
+        list(
+          SheetId = "string",
+          Name = "string"
+        )
+      )
+    ),
+    TemplateId = "string",
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Describes a template's metadata.
 }

@@ -43,7 +43,7 @@ contains up to eight healthy records.
 \link[=servicediscovery_create_http_namespace]{create_http_namespace} \tab Creates an HTTP namespace\cr
 \link[=servicediscovery_create_private_dns_namespace]{create_private_dns_namespace} \tab Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC\cr
 \link[=servicediscovery_create_public_dns_namespace]{create_public_dns_namespace} \tab Creates a public namespace based on DNS, which will be visible on the internet\cr
-\link[=servicediscovery_create_service]{create_service} \tab Creates a service, which defines the configuration for the following entities: - For public and private DNS namespaces, one of the following combinations of DNS records in Amazon Route 53: - A - AAAA - A and AAAA - SRV - CNAME - Optionally, a health check After you create the service, you can submit a RegisterInstance request, and AWS Cloud Map uses the values in the configuration to create the specified entities\cr
+\link[=servicediscovery_create_service]{create_service} \tab Creates a service, which defines the configuration for the following entities:\cr
 \link[=servicediscovery_delete_namespace]{delete_namespace} \tab Deletes a namespace from the current account\cr
 \link[=servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr
 \link[=servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance\cr
@@ -62,7 +62,7 @@ contains up to eight healthy records.
 \link[=servicediscovery_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
 \link[=servicediscovery_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 \link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status} \tab Submits a request to change the health status of a custom health check to healthy or unhealthy\cr
-\link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations: - Update the TTL setting for existing DnsRecords configurations - Add, update, or delete HealthCheckConfig for a specified service You can't add, update, or delete a HealthCheckCustomConfig configuration
+\link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:
 }
 }
 

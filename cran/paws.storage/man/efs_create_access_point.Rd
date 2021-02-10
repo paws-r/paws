@@ -28,6 +28,39 @@ settings when a client connects to an access point. When specifying a
 \code{RootDirectory}, you need to provide the \code{Path}, and the \code{CreationInfo}
 is optional.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientToken = "string",
+  Name = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  AccessPointId = "string",
+  AccessPointArn = "string",
+  FileSystemId = "string",
+  PosixUser = list(
+    Uid = 123,
+    Gid = 123,
+    SecondaryGids = list(
+      123
+    )
+  ),
+  RootDirectory = list(
+    Path = "string",
+    CreationInfo = list(
+      OwnerUid = 123,
+      OwnerGid = 123,
+      Permissions = "string"
+    )
+  ),
+  OwnerId = "string",
+  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+)
+}
+}
 \description{
 Creates an EFS access point. An access point is an application-specific
 view into an EFS file system that applies an operating system user and

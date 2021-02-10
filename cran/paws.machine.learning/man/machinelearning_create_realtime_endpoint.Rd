@@ -9,6 +9,20 @@ machinelearning_create_realtime_endpoint(MLModelId)
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MLModelId = "string",
+  RealtimeEndpointInfo = list(
+    PeakRequestsPerSecond = 123,
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndpointUrl = "string",
+    EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
+  )
+)
+}
+}
 \description{
 Creates a real-time endpoint for the \code{MLModel}. The endpoint contains
 the URI of the \code{MLModel}; that is, the location to send real-time

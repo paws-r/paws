@@ -21,6 +21,142 @@ Supported resource types are: \verb{AWS::EC2::Instance},
 \verb{AWS::EC2::NetworkInterface}, \verb{AWS::EC2::SecurityGroup},
 \verb{AWS::NetworkFirewall::FirewallPolicy}, and \verb{AWS::EC2::Subnet}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ViolationDetail = list(
+    PolicyId = "string",
+    MemberAccount = "string",
+    ResourceId = "string",
+    ResourceType = "string",
+    ResourceViolations = list(
+      list(
+        AwsVPCSecurityGroupViolation = list(
+          ViolationTarget = "string",
+          ViolationTargetDescription = "string",
+          PartialMatches = list(
+            list(
+              Reference = "string",
+              TargetViolationReasons = list(
+                "string"
+              )
+            )
+          ),
+          PossibleSecurityGroupRemediationActions = list(
+            list(
+              RemediationActionType = "REMOVE"|"MODIFY",
+              Description = "string",
+              RemediationResult = list(
+                IPV4Range = "string",
+                IPV6Range = "string",
+                PrefixListId = "string",
+                Protocol = "string",
+                FromPort = 123,
+                ToPort = 123
+              ),
+              IsDefaultAction = TRUE|FALSE
+            )
+          )
+        ),
+        AwsEc2NetworkInterfaceViolation = list(
+          ViolationTarget = "string",
+          ViolatingSecurityGroups = list(
+            "string"
+          )
+        ),
+        AwsEc2InstanceViolation = list(
+          ViolationTarget = "string",
+          AwsEc2NetworkInterfaceViolations = list(
+            list(
+              ViolationTarget = "string",
+              ViolatingSecurityGroups = list(
+                "string"
+              )
+            )
+          )
+        ),
+        NetworkFirewallMissingFirewallViolation = list(
+          ViolationTarget = "string",
+          VPC = "string",
+          AvailabilityZone = "string",
+          TargetViolationReason = "string"
+        ),
+        NetworkFirewallMissingSubnetViolation = list(
+          ViolationTarget = "string",
+          VPC = "string",
+          AvailabilityZone = "string",
+          TargetViolationReason = "string"
+        ),
+        NetworkFirewallMissingExpectedRTViolation = list(
+          ViolationTarget = "string",
+          VPC = "string",
+          AvailabilityZone = "string",
+          CurrentRouteTable = "string",
+          ExpectedRouteTable = "string"
+        ),
+        NetworkFirewallPolicyModifiedViolation = list(
+          ViolationTarget = "string",
+          CurrentPolicyDescription = list(
+            StatelessRuleGroups = list(
+              list(
+                RuleGroupName = "string",
+                ResourceId = "string",
+                Priority = 123
+              )
+            ),
+            StatelessDefaultActions = list(
+              "string"
+            ),
+            StatelessFragmentDefaultActions = list(
+              "string"
+            ),
+            StatelessCustomActions = list(
+              "string"
+            ),
+            StatefulRuleGroups = list(
+              list(
+                RuleGroupName = "string",
+                ResourceId = "string"
+              )
+            )
+          ),
+          ExpectedPolicyDescription = list(
+            StatelessRuleGroups = list(
+              list(
+                RuleGroupName = "string",
+                ResourceId = "string",
+                Priority = 123
+              )
+            ),
+            StatelessDefaultActions = list(
+              "string"
+            ),
+            StatelessFragmentDefaultActions = list(
+              "string"
+            ),
+            StatelessCustomActions = list(
+              "string"
+            ),
+            StatefulRuleGroups = list(
+              list(
+                RuleGroupName = "string",
+                ResourceId = "string"
+              )
+            )
+          )
+        )
+      )
+    ),
+    ResourceTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    ResourceDescription = "string"
+  )
+)
+}
+}
 \description{
 Retrieves violations for a resource based on the specified AWS Firewall
 Manager policy and AWS account.

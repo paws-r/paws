@@ -12,6 +12,9 @@ item or items to.}
 
 \item{items}{[required] A list of item data.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more items to an Items dataset. For more information see
 importing-items.

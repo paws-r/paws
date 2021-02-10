@@ -9,6 +9,9 @@ codepipeline_delete_pipeline(name)
 \arguments{
 \item{name}{[required] The name of the pipeline to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified pipeline.
 }

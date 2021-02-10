@@ -16,6 +16,12 @@ route53domains_update_domain_contact(DomainName, AdminContact,
 
 \item{TechContact}{Provides detailed contact information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 This operation updates the contact information for a particular domain.
 You must specify information for at least one contact: registrant,

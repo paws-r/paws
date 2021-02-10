@@ -9,6 +9,13 @@ iot_set_default_authorizer(authorizerName)
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authorizerName = "string",
+  authorizerArn = "string"
+)
+}
+}
 \description{
 Sets the default authorizer. This will be used if a websocket connection
 is made without specifying an authorizer.

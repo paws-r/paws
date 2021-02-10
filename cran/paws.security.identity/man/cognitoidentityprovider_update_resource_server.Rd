@@ -16,6 +16,22 @@ cognitoidentityprovider_update_resource_server(UserPoolId, Identifier,
 
 \item{Scopes}{The scope values to be set for the resource server.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceServer = list(
+    UserPoolId = "string",
+    Identifier = "string",
+    Name = "string",
+    Scopes = list(
+      list(
+        ScopeName = "string",
+        ScopeDescription = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates the name and scopes of resource server. All other fields are
 read-only.

@@ -140,6 +140,25 @@ resources.
 statistical calculation.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"BurstCapacityTime"|"BurstCapacityPercentage",
+  metricData = list(
+    list(
+      average = 123.0,
+      maximum = 123.0,
+      minimum = 123.0,
+      sampleCount = 123.0,
+      sum = 123.0,
+      timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+    )
+  )
+)
+}
+}
 \description{
 Returns the data points for the specified Amazon Lightsail instance
 metric, given an instance name.

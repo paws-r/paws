@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_restore_object}
 \alias{s3_restore_object}
-\title{Restores an archived copy of an object back into Amazon S3 This action
-is not supported by Amazon S3 on Outposts}
+\title{Restores an archived copy of an object back into Amazon S3}
 \usage{
 s3_restore_object(Bucket, Key, VersionId, RestoreRequest, RequestPayer,
   ExpectedBucketOwner)
@@ -16,7 +15,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -25,7 +24,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] Object key for which the operation was initiated.}
@@ -39,6 +38,13 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 \item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestCharged = "requester",
+  RestoreOutputPath = "string"
+)
+}
 }
 \description{
 Restores an archived copy of an object back into Amazon S3
@@ -54,8 +60,8 @@ This action performs the following types of requests:
 To use this operation, you must have permissions to perform the
 \code{s3:RestoreObject} action. The bucket owner has this permission by
 default and can grant this permission to others. For more information
-about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
+about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Querying Archives with Select Requests}
@@ -65,7 +71,7 @@ objects. The archived objects that are being queried by the select
 request must be formatted as uncompressed comma-separated values (CSV)
 files. You can run queries and custom analytics on your archived data
 without having to restore your data to a hotter Amazon S3 tier. For an
-overview about select requests, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/querying-glacier-archives.html}{Querying Archived Objects}
+overview about select requests, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/querying-glacier-archives.html}{Querying Archived Objects}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When making a select request, do the following:
@@ -76,16 +82,16 @@ contains the archive object that is being queried. The AWS account
 that initiates the job must have permissions to write to the S3
 bucket. You can specify the storage class and encryption for the
 output objects stored in the bucket. For more information about
-output, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/querying-glacier-archives.html}{Querying Archived Objects}
+output, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/querying-glacier-archives.html}{Querying Archived Objects}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 For more information about the \code{S3} structure in the request body,
 see the following:
 \itemize{
 \item \code{\link[=s3_put_object]{put_object}}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Managing Access with ACLs}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Managing Access with ACLs}
 in the \emph{Amazon Simple Storage Service Developer Guide}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 }
 \item Define the SQL expression for the \code{SELECT} type of restoration for
@@ -111,7 +117,7 @@ mix ordinal positions with header column names.
 }
 
 For more information about using SQL with S3 Glacier Select restore, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When making a select request, you can also do the following:
@@ -186,19 +192,19 @@ are free for objects stored in S3 Intelligent-Tiering.
 }
 
 For more information about archive retrieval options and provisioned
-capacity for \code{Expedited} data access, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html}{Restoring Archived Objects}
+capacity for \code{Expedited} data access, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html}{Restoring Archived Objects}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 You can use Amazon S3 restore speed upgrade to change the restore speed
 to a faster speed while it is in progress. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html#restoring-objects-upgrade-tier.title.html}{Upgrading the speed of an in-progress restore}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html#restoring-objects-upgrade-tier.title.html}{Upgrading the speed of an in-progress restore}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 To get the status of object restoration, you can send a \code{HEAD} request.
 Operations return the \code{x-amz-restore} header, which provides information
 about the restoration status, in the response. You can use Amazon S3
 event notifications to notify you when a restore is initiated or
-completed. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Configuring Amazon S3 Event Notifications}
+completed. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html}{Configuring Amazon S3 Event Notifications}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 After restoring an archived object, you can update the restoration
@@ -215,7 +221,7 @@ copy for 10 days, but the object is scheduled to expire in 3 days,
 Amazon S3 deletes the object in 3 days. For more information about
 lifecycle configuration, see
 \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Responses}
@@ -256,7 +262,7 @@ retrievals.)}
 \itemize{
 \item \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
 \item \code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 }
 }

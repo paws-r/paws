@@ -9,6 +9,9 @@ iot_update_event_configurations(eventConfigurations)
 \arguments{
 \item{eventConfigurations}{The new event configuration values.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the event configurations.
 }

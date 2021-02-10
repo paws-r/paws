@@ -9,6 +9,9 @@ route53_delete_health_check(HealthCheckId)
 \arguments{
 \item{HealthCheckId}{[required] The ID of the health check that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a health check.
 

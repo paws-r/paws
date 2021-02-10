@@ -19,6 +19,9 @@ The ARN should be in one of the following formats:
 \verb{arn:aws:apigateway:region::/restapis/api-id/stages/stage-name }
 }}
 }
+\value{
+An empty list.
+}
 \description{
 This is \strong{AWS WAF Classic Regional} documentation. For more
 information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

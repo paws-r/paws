@@ -10,6 +10,39 @@ cloudfront_create_field_level_encryption_profile(
 \arguments{
 \item{FieldLevelEncryptionProfileConfig}{[required] The request to create a field-level encryption profile.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldLevelEncryptionProfile = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FieldLevelEncryptionProfileConfig = list(
+      Name = "string",
+      CallerReference = "string",
+      Comment = "string",
+      EncryptionEntities = list(
+        Quantity = 123,
+        Items = list(
+          list(
+            PublicKeyId = "string",
+            ProviderId = "string",
+            FieldPatterns = list(
+              Quantity = 123,
+              Items = list(
+                "string"
+              )
+            )
+          )
+        )
+      )
+    )
+  ),
+  Location = "string",
+  ETag = "string"
+)
+}
+}
 \description{
 Create a field-level encryption profile.
 }

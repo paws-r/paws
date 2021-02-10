@@ -9,6 +9,28 @@ iot_describe_provisioning_template(templateName)
 \arguments{
 \item{templateName}{[required] The name of the fleet provisioning template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  templateArn = "string",
+  templateName = "string",
+  description = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  defaultVersionId = 123,
+  templateBody = "string",
+  enabled = TRUE|FALSE,
+  provisioningRoleArn = "string",
+  preProvisioningHook = list(
+    payloadVersion = "string",
+    targetArn = "string"
+  )
+)
+}
+}
 \description{
 Returns information about a fleet provisioning template.
 }

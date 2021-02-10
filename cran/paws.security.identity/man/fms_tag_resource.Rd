@@ -13,6 +13,9 @@ applications lists, and protocols lists.}
 
 \item{TagList}{[required] The tags to add to the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to an AWS resource.
 }

@@ -23,6 +23,12 @@ determines what actions a user can take in an AWS CodeStar project.}
 \item{remoteAccessAllowed}{Whether the team member is allowed to use an SSH public/private key pair
 to remotely access project resources, for example Amazon EC2 instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  clientRequestToken = "string"
+)
+}
+}
 \description{
 Adds an IAM user to the team for an AWS CodeStar project.
 }

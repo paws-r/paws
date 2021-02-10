@@ -17,6 +17,9 @@ Must match the name of an existing \code{DBSubnetGroup}. Must not be default.
 
 Example: \code{mySubnetgroup}}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a subnet group.
 

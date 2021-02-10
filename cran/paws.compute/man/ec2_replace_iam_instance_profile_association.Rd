@@ -12,6 +12,23 @@ ec2_replace_iam_instance_profile_association(IamInstanceProfile,
 
 \item{AssociationId}{[required] The ID of the existing IAM instance profile association.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IamInstanceProfileAssociation = list(
+    AssociationId = "string",
+    InstanceId = "string",
+    IamInstanceProfile = list(
+      Arn = "string",
+      Id = "string"
+    ),
+    State = "associating"|"associated"|"disassociating"|"disassociated",
+    Timestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Replaces an IAM instance profile for the specified running instance. You
 can use this action to change the IAM instance profile that's associated

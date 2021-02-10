@@ -26,7 +26,7 @@ resources that are currently associated with the specified tag.
 \item If you \emph{don't} specify a TagFilter, the response includes all
 resources that were ever associated with tags. Resources that
 currently don't have associated tags are shown with an empty tag
-set, like this: \verb{"Tags": \\\[\\\]}.
+set, like this: \verb{"Tags": []}.
 \item If you specify more than one filter in a single request, the
 response returns only those resources that satisfy all specified
 filters.
@@ -36,15 +36,16 @@ values for that key.
 \item If you don't specify any values for a key, the response returns
 resources that are tagged with that key irrespective of the value.
 
-For example, for filters: filter1 = \{key1, \{value1\}\}, filter2 =
-\{key2, \{value2,value3,value4\}\} , filter3 = \{key3\}:
+For example, for filters: filter1 = \{key1, \{value1\}\},
+filter2 = \{key2, \{value2,value3,value4\}\} , filter3 =
+\{key3\}:
 \itemize{
 \item GetResources( \{filter1\} ) returns resources tagged with
 key1=value1
 \item GetResources( \{filter2\} ) returns resources tagged with
 key2=value2 or key2=value3 or key2=value4
-\item GetResources( \{filter3\} ) returns resources tagged with any tag
-containing key3 as its tag key, irrespective of its value
+\item GetResources( \{filter3\} ) returns resources tagged with any
+tag containing key3 as its tag key, irrespective of its value
 \item GetResources( \{filter1,filter2,filter3\} ) returns resources
 tagged with ( key1=value1) and ( key2=value2 or key2=value3 or
 key2=value4) and (key3, irrespective of the value)
@@ -77,18 +78,19 @@ You can set \code{TagsPerPage} to a minimum of 100 items and the maximum of
 500 items.}
 
 \item{ResourceTypeFilters}{The constraints on the resources that you want returned. The format of
-each resource type is \verb{service\\\[:resourceType\\\]}. For example,
-specifying a resource type of \code{ec2} returns all Amazon EC2 resources
-(which includes EC2 instances). Specifying a resource type of
-\code{ec2:instance} returns only EC2 instances.
+each resource type is \verb{service[:resourceType]}. For example, specifying
+a resource type of \code{ec2} returns all Amazon EC2 resources (which
+includes EC2 instances). Specifying a resource type of \code{ec2:instance}
+returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
 embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
 General Reference} for the following:
 \itemize{
-\item For a list of service name strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
-\item For resource type strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax}{Example ARNs}.
-\item For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.
+\item For a list of service name strings, see AWS Service Namespaces.
+\item For resource type strings, see Example ARNs.
+\item For more information about ARNs, see Amazon Resource Names (ARNs)
+and AWS Service Namespaces.
 }
 
 You can specify multiple resource types by using an array. The array can
@@ -105,6 +107,32 @@ information on noncompliant resources only.
 
 You can use this parameter only if the \code{IncludeComplianceDetails}
 parameter is also set to \code{true}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PaginationToken = "string",
+  ResourceTagMappingList = list(
+    list(
+      ResourceARN = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      ComplianceDetails = list(
+        NoncompliantKeys = list(
+          "string"
+        ),
+        KeysWithNoncompliantValues = list(
+          "string"
+        ),
+        ComplianceStatus = TRUE|FALSE
+      )
+    )
+  )
+)
+}
 }
 \description{
 Returns all the tagged or previously tagged resources that are located

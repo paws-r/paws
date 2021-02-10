@@ -13,6 +13,9 @@ kinesisanalyticsv2_delete_application(ApplicationName, CreateTimestamp)
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get this value.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified application. Kinesis Data Analytics halts
 application execution and deletes the application.

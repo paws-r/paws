@@ -24,6 +24,26 @@ Example: \code{mySubnetgroup}}
 
 \item{Tags}{One or more tags to be assigned to the subnet group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationSubnetGroup = list(
+    ReplicationSubnetGroupIdentifier = "string",
+    ReplicationSubnetGroupDescription = "string",
+    VpcId = "string",
+    SubnetGroupStatus = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = list(
+          Name = "string"
+        ),
+        SubnetStatus = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a replication subnet group given a list of the subnet IDs in a
 VPC.

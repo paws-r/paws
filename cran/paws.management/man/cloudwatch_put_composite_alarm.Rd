@@ -27,7 +27,7 @@ Region.}
 \item{AlarmRule}{[required] An expression that specifies which other alarms are to be evaluated to
 determine this composite alarm's state. For each alarm that you
 reference, you designate a function that specifies whether that alarm
-needs to be in ALARM state, OK state, or INSUFFICIENT\\_DATA state. You
+needs to be in ALARM state, OK state, or INSUFFICIENT_DATA state. You
 can use operators (AND, OR and NOT) to combine multiple functions in a
 single expression. You can use parenthesis to logically group the
 functions in your expression.
@@ -42,7 +42,7 @@ ALARM state.
 \item \code{OK("alarm-name or alarm-ARN")} is TRUE if the named alarm is in OK
 state.
 \item \code{INSUFFICIENT_DATA("alarm-name or alarm-ARN")} is TRUE if the named
-alarm is in INSUFFICIENT\\_DATA state.
+alarm is in INSUFFICIENT_DATA state.
 \item \code{TRUE} always evaluates to TRUE.
 \item \code{FALSE} always evaluates to FALSE.
 }
@@ -95,6 +95,9 @@ associate as many as 50 tags with an alarm.
 Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions, by granting a user permission to
 access or change only resources with certain tag values.}
+}
+\value{
+An empty list.
 }
 \description{
 Creates or updates a \emph{composite alarm}. When you create a composite

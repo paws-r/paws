@@ -11,6 +11,9 @@ configservice_put_configuration_recorder(ConfigurationRecorder)
 \item{ConfigurationRecorder}{[required] The configuration recorder object that records each configuration change
 made to the resources.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new configuration recorder to record the selected resource
 configurations.

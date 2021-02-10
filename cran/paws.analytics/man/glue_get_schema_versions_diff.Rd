@@ -24,6 +24,12 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 
 \item{SchemaDiffType}{[required] Refers to \code{SYNTAX_DIFF}, which is the currently supported diff type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Diff = "string"
+)
+}
+}
 \description{
 Fetches the schema version difference in the specified difference type
 between two stored schema versions in the Schema Registry.

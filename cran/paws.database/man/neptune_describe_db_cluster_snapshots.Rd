@@ -89,6 +89,42 @@ You can share a manual DB cluster snapshot as public by using the
 \code{\link[=neptune_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
 API action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBClusterSnapshots = list(
+    list(
+      AvailabilityZones = list(
+        "string"
+      ),
+      DBClusterSnapshotIdentifier = "string",
+      DBClusterIdentifier = "string",
+      SnapshotCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Engine = "string",
+      AllocatedStorage = 123,
+      Status = "string",
+      Port = 123,
+      VpcId = "string",
+      ClusterCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      MasterUsername = "string",
+      EngineVersion = "string",
+      LicenseModel = "string",
+      SnapshotType = "string",
+      PercentProgress = 123,
+      StorageEncrypted = TRUE|FALSE,
+      KmsKeyId = "string",
+      DBClusterSnapshotArn = "string",
+      SourceDBClusterSnapshotArn = "string",
+      IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns information about DB cluster snapshots. This API action supports
 pagination.

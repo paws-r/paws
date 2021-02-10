@@ -28,6 +28,20 @@ operation.}
 
 \item{InputProcessingConfiguration}{[required] The InputProcessingConfiguration to add to the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123,
+  InputId = "string",
+  InputProcessingConfigurationDescription = list(
+    InputLambdaProcessorDescription = list(
+      ResourceARN = "string",
+      RoleARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
 Analytics application. An input processor pre-processes records on the

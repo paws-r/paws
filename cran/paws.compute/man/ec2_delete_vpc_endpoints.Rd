@@ -14,6 +14,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcEndpointIds}{[required] One or more VPC endpoint IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Unsuccessful = list(
+    list(
+      Error = list(
+        Code = "string",
+        Message = "string"
+      ),
+      ResourceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more specified VPC endpoints. Deleting a gateway endpoint
 also deletes the endpoint routes in the route tables that were

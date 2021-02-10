@@ -15,6 +15,62 @@ specified, it will override the \code{containerInsights} value set with
 \code{\link[=ecs_put_account_setting]{put_account_setting}} or
 \code{\link[=ecs_put_account_setting_default]{put_account_setting_default}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cluster = list(
+    clusterArn = "string",
+    clusterName = "string",
+    status = "string",
+    registeredContainerInstancesCount = 123,
+    runningTasksCount = 123,
+    pendingTasksCount = 123,
+    activeServicesCount = 123,
+    statistics = list(
+      list(
+        name = "string",
+        value = "string"
+      )
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    settings = list(
+      list(
+        name = "containerInsights",
+        value = "string"
+      )
+    ),
+    capacityProviders = list(
+      "string"
+    ),
+    defaultCapacityProviderStrategy = list(
+      list(
+        capacityProvider = "string",
+        weight = 123,
+        base = 123
+      )
+    ),
+    attachments = list(
+      list(
+        id = "string",
+        type = "string",
+        status = "string",
+        details = list(
+          list(
+            name = "string",
+            value = "string"
+          )
+        )
+      )
+    ),
+    attachmentsStatus = "string"
+  )
+)
+}
+}
 \description{
 Modifies the settings to use for a cluster.
 }

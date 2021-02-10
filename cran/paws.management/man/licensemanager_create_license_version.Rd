@@ -38,6 +38,14 @@ idempotency of the request.}
 
 \item{SourceVersion}{Current version of the license.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseArn = "string",
+  Version = "string",
+  Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED"
+)
+}
+}
 \description{
 Creates a new version of the specified license.
 }

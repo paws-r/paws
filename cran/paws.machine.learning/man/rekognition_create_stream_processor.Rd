@@ -28,6 +28,12 @@ attributes to detect.}
 
 \item{RoleArn}{[required] ARN of the IAM role that allows access to the stream processor.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamProcessorArn = "string"
+)
+}
+}
 \description{
 Creates an Amazon Rekognition stream processor that you can use to
 detect and recognize faces in a streaming video.

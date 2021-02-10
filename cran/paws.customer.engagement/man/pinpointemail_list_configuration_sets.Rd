@@ -18,6 +18,15 @@ the number of results is larger than the number you specified in this
 parameter, then the response includes a \code{NextToken} element, which you
 can use to obtain additional results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigurationSets = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all of the configuration sets associated with your Amazon Pinpoint
 account in the current region.

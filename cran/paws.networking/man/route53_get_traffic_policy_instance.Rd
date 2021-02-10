@@ -10,6 +10,22 @@ route53_get_traffic_policy_instance(Id)
 \item{Id}{[required] The ID of the traffic policy instance that you want to get information
 about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicyInstance = list(
+    Id = "string",
+    HostedZoneId = "string",
+    Name = "string",
+    TTL = 123,
+    State = "string",
+    Message = "string",
+    TrafficPolicyId = "string",
+    TrafficPolicyVersion = 123,
+    TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+  )
+)
+}
+}
 \description{
 Gets information about a specified traffic policy instance.
 

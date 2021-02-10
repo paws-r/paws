@@ -34,6 +34,33 @@ want to list.
 If you specify more than one filter, a namespace must match all filters
 to be returned by \code{\link[=servicediscovery_list_namespaces]{list_namespaces}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Namespaces = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Type = "DNS_PUBLIC"|"DNS_PRIVATE"|"HTTP",
+      Description = "string",
+      ServiceCount = 123,
+      Properties = list(
+        DnsProperties = list(
+          HostedZoneId = "string"
+        ),
+        HttpProperties = list(
+          HttpName = "string"
+        )
+      ),
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists summary information about the namespaces that were created by the
 current AWS account.

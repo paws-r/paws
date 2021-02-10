@@ -16,6 +16,9 @@ s3control_put_storage_lens_configuration_tagging(ConfigId, AccountId,
 
 You can set up to a maximum of 50 tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Put or replace tags on an existing Amazon S3 Storage Lens configuration.
 For more information about S3 Storage Lens, see Working with Amazon S3
@@ -23,7 +26,7 @@ Storage Lens in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 To use this action, you must have permission to perform the
 \code{s3:PutStorageLensConfigurationTagging} action. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html#storage_lens_IAM}{Setting permissions to use Amazon S3 Storage Lens}
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html#storage_lens_IAM}{Setting permissions to use Amazon S3 Storage Lens}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{

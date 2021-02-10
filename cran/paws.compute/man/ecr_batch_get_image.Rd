@@ -24,6 +24,33 @@ Valid values: \code{application/vnd.docker.distribution.manifest.v1+json} |
 \code{application/vnd.docker.distribution.manifest.v2+json} |
 \code{application/vnd.oci.image.manifest.v1+json}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  images = list(
+    list(
+      registryId = "string",
+      repositoryName = "string",
+      imageId = list(
+        imageDigest = "string",
+        imageTag = "string"
+      ),
+      imageManifest = "string",
+      imageManifestMediaType = "string"
+    )
+  ),
+  failures = list(
+    list(
+      imageId = list(
+        imageDigest = "string",
+        imageTag = "string"
+      ),
+      failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError",
+      failureReason = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets detailed information for an image. Images are specified with either
 an \code{imageTag} or \code{imageDigest}.

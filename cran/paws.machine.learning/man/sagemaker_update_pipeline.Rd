@@ -18,6 +18,12 @@ sagemaker_update_pipeline(PipelineName, PipelineDisplayName,
 
 \item{RoleArn}{The Amazon Resource Name (ARN) that the pipeline uses to execute.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineArn = "string"
+)
+}
+}
 \description{
 Updates a pipeline.
 }

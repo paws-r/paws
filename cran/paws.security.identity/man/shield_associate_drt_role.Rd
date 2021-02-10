@@ -17,6 +17,9 @@ request, you must attach the AWSShieldDRTAccessPolicy managed policy to
 this role. For more information see Attaching and Detaching IAM
 Policies.}
 }
+\value{
+An empty list.
+}
 \description{
 Authorizes the DDoS Response Team (DRT), using the specified role, to
 access your AWS account to assist with DDoS attack mitigation during

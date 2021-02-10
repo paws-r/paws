@@ -10,6 +10,20 @@ apigateway_update_account(patchOperations)
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cloudwatchRoleArn = "string",
+  throttleSettings = list(
+    burstLimit = 123,
+    rateLimit = 123.0
+  ),
+  features = list(
+    "string"
+  ),
+  apiKeyVersion = "string"
+)
+}
+}
 \description{
 Changes information about the current Account resource.
 }

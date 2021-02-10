@@ -11,6 +11,13 @@ licensemanager_delete_license(LicenseArn, SourceVersion)
 
 \item{SourceVersion}{[required] Current version of the license.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "PENDING_DELETE"|"DELETED",
+  DeletionDate = "string"
+)
+}
+}
 \description{
 Deletes the specified license.
 }

@@ -132,6 +132,14 @@ NULL
 #' 
 #' You can specify up to 50 tags when creating a delivery stream.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliveryStreamARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_delivery_stream(
@@ -604,6 +612,9 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #' 
 #' The default value is false.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_delivery_stream(
@@ -660,6 +671,448 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' @param ExclusiveStartDestinationId The ID of the destination to start returning the destination
 #' information. Kinesis Data Firehose supports one destination per delivery
 #' stream.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliveryStreamDescription = list(
+#'     DeliveryStreamName = "string",
+#'     DeliveryStreamARN = "string",
+#'     DeliveryStreamStatus = "CREATING"|"CREATING_FAILED"|"DELETING"|"DELETING_FAILED"|"ACTIVE",
+#'     FailureDescription = list(
+#'       Type = "RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
+#'       Details = "string"
+#'     ),
+#'     DeliveryStreamEncryptionConfiguration = list(
+#'       KeyARN = "string",
+#'       KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK",
+#'       Status = "ENABLED"|"ENABLING"|"ENABLING_FAILED"|"DISABLED"|"DISABLING"|"DISABLING_FAILED",
+#'       FailureDescription = list(
+#'         Type = "RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
+#'         Details = "string"
+#'       )
+#'     ),
+#'     DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
+#'     VersionId = "string",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Source = list(
+#'       KinesisStreamSourceDescription = list(
+#'         KinesisStreamARN = "string",
+#'         RoleARN = "string",
+#'         DeliveryStartTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         DestinationId = "string",
+#'         S3DestinationDescription = list(
+#'           RoleARN = "string",
+#'           BucketARN = "string",
+#'           Prefix = "string",
+#'           ErrorOutputPrefix = "string",
+#'           BufferingHints = list(
+#'             SizeInMBs = 123,
+#'             IntervalInSeconds = 123
+#'           ),
+#'           CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'           EncryptionConfiguration = list(
+#'             NoEncryptionConfig = "NoEncryption",
+#'             KMSEncryptionConfig = list(
+#'               AWSKMSKeyARN = "string"
+#'             )
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           )
+#'         ),
+#'         ExtendedS3DestinationDescription = list(
+#'           RoleARN = "string",
+#'           BucketARN = "string",
+#'           Prefix = "string",
+#'           ErrorOutputPrefix = "string",
+#'           BufferingHints = list(
+#'             SizeInMBs = 123,
+#'             IntervalInSeconds = 123
+#'           ),
+#'           CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'           EncryptionConfiguration = list(
+#'             NoEncryptionConfig = "NoEncryption",
+#'             KMSEncryptionConfig = list(
+#'               AWSKMSKeyARN = "string"
+#'             )
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "Lambda",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3BackupMode = "Disabled"|"Enabled",
+#'           S3BackupDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           ),
+#'           DataFormatConversionConfiguration = list(
+#'             SchemaConfiguration = list(
+#'               RoleARN = "string",
+#'               CatalogId = "string",
+#'               DatabaseName = "string",
+#'               TableName = "string",
+#'               Region = "string",
+#'               VersionId = "string"
+#'             ),
+#'             InputFormatConfiguration = list(
+#'               Deserializer = list(
+#'                 OpenXJsonSerDe = list(
+#'                   ConvertDotsInJsonKeysToUnderscores = TRUE|FALSE,
+#'                   CaseInsensitive = TRUE|FALSE,
+#'                   ColumnToJsonKeyMappings = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 HiveJsonSerDe = list(
+#'                   TimestampFormats = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             OutputFormatConfiguration = list(
+#'               Serializer = list(
+#'                 ParquetSerDe = list(
+#'                   BlockSizeBytes = 123,
+#'                   PageSizeBytes = 123,
+#'                   Compression = "UNCOMPRESSED"|"GZIP"|"SNAPPY",
+#'                   EnableDictionaryCompression = TRUE|FALSE,
+#'                   MaxPaddingBytes = 123,
+#'                   WriterVersion = "V1"|"V2"
+#'                 ),
+#'                 OrcSerDe = list(
+#'                   StripeSizeBytes = 123,
+#'                   BlockSizeBytes = 123,
+#'                   RowIndexStride = 123,
+#'                   EnablePadding = TRUE|FALSE,
+#'                   PaddingTolerance = 123.0,
+#'                   Compression = "NONE"|"ZLIB"|"SNAPPY",
+#'                   BloomFilterColumns = list(
+#'                     "string"
+#'                   ),
+#'                   BloomFilterFalsePositiveProbability = 123.0,
+#'                   DictionaryKeyThreshold = 123.0,
+#'                   FormatVersion = "V0_11"|"V0_12"
+#'                 )
+#'               )
+#'             ),
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         RedshiftDestinationDescription = list(
+#'           RoleARN = "string",
+#'           ClusterJDBCURL = "string",
+#'           CopyCommand = list(
+#'             DataTableName = "string",
+#'             DataTableColumns = "string",
+#'             CopyOptions = "string"
+#'           ),
+#'           Username = "string",
+#'           RetryOptions = list(
+#'             DurationInSeconds = 123
+#'           ),
+#'           S3DestinationDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "Lambda",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           S3BackupMode = "Disabled"|"Enabled",
+#'           S3BackupDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           )
+#'         ),
+#'         ElasticsearchDestinationDescription = list(
+#'           RoleARN = "string",
+#'           DomainARN = "string",
+#'           ClusterEndpoint = "string",
+#'           IndexName = "string",
+#'           TypeName = "string",
+#'           IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
+#'           BufferingHints = list(
+#'             IntervalInSeconds = 123,
+#'             SizeInMBs = 123
+#'           ),
+#'           RetryOptions = list(
+#'             DurationInSeconds = 123
+#'           ),
+#'           S3BackupMode = "FailedDocumentsOnly"|"AllDocuments",
+#'           S3DestinationDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "Lambda",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           ),
+#'           VpcConfigurationDescription = list(
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             RoleARN = "string",
+#'             SecurityGroupIds = list(
+#'               "string"
+#'             ),
+#'             VpcId = "string"
+#'           )
+#'         ),
+#'         SplunkDestinationDescription = list(
+#'           HECEndpoint = "string",
+#'           HECEndpointType = "Raw"|"Event",
+#'           HECToken = "string",
+#'           HECAcknowledgmentTimeoutInSeconds = 123,
+#'           RetryOptions = list(
+#'             DurationInSeconds = 123
+#'           ),
+#'           S3BackupMode = "FailedEventsOnly"|"AllEvents",
+#'           S3DestinationDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "Lambda",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           )
+#'         ),
+#'         HttpEndpointDestinationDescription = list(
+#'           EndpointConfiguration = list(
+#'             Url = "string",
+#'             Name = "string"
+#'           ),
+#'           BufferingHints = list(
+#'             SizeInMBs = 123,
+#'             IntervalInSeconds = 123
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           ),
+#'           RequestConfiguration = list(
+#'             ContentEncoding = "NONE"|"GZIP",
+#'             CommonAttributes = list(
+#'               list(
+#'                 AttributeName = "string",
+#'                 AttributeValue = "string"
+#'               )
+#'             )
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "Lambda",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RoleARN = "string",
+#'           RetryOptions = list(
+#'             DurationInSeconds = 123
+#'           ),
+#'           S3BackupMode = "FailedDataOnly"|"AllData",
+#'           S3DestinationDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     HasMoreDestinations = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -725,6 +1178,17 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 #' with the delivery stream whose name comes alphabetically immediately
 #' after the name you specify in `ExclusiveStartDeliveryStreamName`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliveryStreamNames = list(
+#'     "string"
+#'   ),
+#'   HasMoreDeliveryStreams = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_delivery_streams(
@@ -773,6 +1237,20 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 #' number of tags associated with the delivery stream, `HasMoreTags` is set
 #' to `true` in the response. To list additional tags, set
 #' `ExclusiveStartTagKey` to the last key in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   HasMoreTags = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -829,7 +1307,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' 
 #' Kinesis Data Firehose buffers records before delivering them to the
 #' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (``\\n``) or
+#' solution is to use delimiters in the data, such as a newline (`\n`) or
 #' some other character unique within the data. This allows the consumer
 #' application to parse individual data items when reading the data from
 #' the destination.
@@ -857,6 +1335,15 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param Record &#91;required&#93; The record.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordId = "string",
+#'   Encrypted = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -915,7 +1402,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' 
 #' Kinesis Data Firehose buffers records before delivering them to the
 #' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (``\\n``) or
+#' solution is to use delimiters in the data, such as a newline (`\n`) or
 #' some other character unique within the data. This allows the consumer
 #' application to parse individual data items when reading the data from
 #' the destination.
@@ -968,6 +1455,22 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param Records &#91;required&#93; One or more records.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedPutCount = 123,
+#'   Encrypted = TRUE|FALSE,
+#'   RequestResponses = list(
+#'     list(
+#'       RecordId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1066,6 +1569,9 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' @param DeliveryStreamEncryptionConfigurationInput Used to specify the type and Amazon Resource Name (ARN) of the KMS key
 #' needed for Server-Side Encryption (SSE).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_delivery_stream_encryption(
@@ -1138,6 +1644,9 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to disable
 #' server-side encryption (SSE).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_delivery_stream_encryption(
@@ -1187,6 +1696,9 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream to which you want to add the tags.
 #' @param Tags &#91;required&#93; A set of key-value pairs to use to create the tags.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1238,6 +1750,9 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param TagKeys &#91;required&#93; A list of tag keys. Each corresponding tag is removed from the delivery
 #' stream.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1330,6 +1845,9 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param ElasticsearchDestinationUpdate Describes an update for a destination in Amazon ES.
 #' @param SplunkDestinationUpdate Describes an update for a destination in Splunk.
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

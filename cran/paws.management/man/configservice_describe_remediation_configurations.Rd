@@ -10,6 +10,43 @@ configservice_describe_remediation_configurations(ConfigRuleNames)
 \item{ConfigRuleNames}{[required] A list of AWS Config rule names of remediation configurations for which
 you want details.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RemediationConfigurations = list(
+    list(
+      ConfigRuleName = "string",
+      TargetType = "SSM_DOCUMENT",
+      TargetId = "string",
+      TargetVersion = "string",
+      Parameters = list(
+        list(
+          ResourceValue = list(
+            Value = "RESOURCE_ID"
+          ),
+          StaticValue = list(
+            Values = list(
+              "string"
+            )
+          )
+        )
+      ),
+      ResourceType = "string",
+      Automatic = TRUE|FALSE,
+      ExecutionControls = list(
+        SsmControls = list(
+          ConcurrentExecutionRatePercentage = 123,
+          ErrorPercentage = 123
+        )
+      ),
+      MaximumAutomaticAttempts = 123,
+      RetryAttemptSeconds = 123,
+      Arn = "string",
+      CreatedByService = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the details of one or more remediation configurations.
 }

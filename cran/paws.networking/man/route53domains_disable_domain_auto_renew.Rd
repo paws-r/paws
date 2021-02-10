@@ -10,6 +10,9 @@ route53domains_disable_domain_auto_renew(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to disable automatic renewal for.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation disables automatic renewal of domain registration for the
 specified domain.

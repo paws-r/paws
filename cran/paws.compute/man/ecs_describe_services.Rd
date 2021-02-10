@@ -20,6 +20,223 @@ describe in a single operation.}
 \code{TAGS} is specified, the tags are included in the response. If this
 field is omitted, tags are not included in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  services = list(
+    list(
+      serviceArn = "string",
+      serviceName = "string",
+      clusterArn = "string",
+      loadBalancers = list(
+        list(
+          targetGroupArn = "string",
+          loadBalancerName = "string",
+          containerName = "string",
+          containerPort = 123
+        )
+      ),
+      serviceRegistries = list(
+        list(
+          registryArn = "string",
+          port = 123,
+          containerName = "string",
+          containerPort = 123
+        )
+      ),
+      status = "string",
+      desiredCount = 123,
+      runningCount = 123,
+      pendingCount = 123,
+      launchType = "EC2"|"FARGATE",
+      capacityProviderStrategy = list(
+        list(
+          capacityProvider = "string",
+          weight = 123,
+          base = 123
+        )
+      ),
+      platformVersion = "string",
+      taskDefinition = "string",
+      deploymentConfiguration = list(
+        deploymentCircuitBreaker = list(
+          enable = TRUE|FALSE,
+          rollback = TRUE|FALSE
+        ),
+        maximumPercent = 123,
+        minimumHealthyPercent = 123
+      ),
+      taskSets = list(
+        list(
+          id = "string",
+          taskSetArn = "string",
+          serviceArn = "string",
+          clusterArn = "string",
+          startedBy = "string",
+          externalId = "string",
+          status = "string",
+          taskDefinition = "string",
+          computedDesiredCount = 123,
+          pendingCount = 123,
+          runningCount = 123,
+          createdAt = as.POSIXct(
+            "2015-01-01"
+          ),
+          updatedAt = as.POSIXct(
+            "2015-01-01"
+          ),
+          launchType = "EC2"|"FARGATE",
+          capacityProviderStrategy = list(
+            list(
+              capacityProvider = "string",
+              weight = 123,
+              base = 123
+            )
+          ),
+          platformVersion = "string",
+          networkConfiguration = list(
+            awsvpcConfiguration = list(
+              subnets = list(
+                "string"
+              ),
+              securityGroups = list(
+                "string"
+              ),
+              assignPublicIp = "ENABLED"|"DISABLED"
+            )
+          ),
+          loadBalancers = list(
+            list(
+              targetGroupArn = "string",
+              loadBalancerName = "string",
+              containerName = "string",
+              containerPort = 123
+            )
+          ),
+          serviceRegistries = list(
+            list(
+              registryArn = "string",
+              port = 123,
+              containerName = "string",
+              containerPort = 123
+            )
+          ),
+          scale = list(
+            value = 123.0,
+            unit = "PERCENT"
+          ),
+          stabilityStatus = "STEADY_STATE"|"STABILIZING",
+          stabilityStatusAt = as.POSIXct(
+            "2015-01-01"
+          ),
+          tags = list(
+            list(
+              key = "string",
+              value = "string"
+            )
+          )
+        )
+      ),
+      deployments = list(
+        list(
+          id = "string",
+          status = "string",
+          taskDefinition = "string",
+          desiredCount = 123,
+          pendingCount = 123,
+          runningCount = 123,
+          failedTasks = 123,
+          createdAt = as.POSIXct(
+            "2015-01-01"
+          ),
+          updatedAt = as.POSIXct(
+            "2015-01-01"
+          ),
+          capacityProviderStrategy = list(
+            list(
+              capacityProvider = "string",
+              weight = 123,
+              base = 123
+            )
+          ),
+          launchType = "EC2"|"FARGATE",
+          platformVersion = "string",
+          networkConfiguration = list(
+            awsvpcConfiguration = list(
+              subnets = list(
+                "string"
+              ),
+              securityGroups = list(
+                "string"
+              ),
+              assignPublicIp = "ENABLED"|"DISABLED"
+            )
+          ),
+          rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
+          rolloutStateReason = "string"
+        )
+      ),
+      roleArn = "string",
+      events = list(
+        list(
+          id = "string",
+          createdAt = as.POSIXct(
+            "2015-01-01"
+          ),
+          message = "string"
+        )
+      ),
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      placementConstraints = list(
+        list(
+          type = "distinctInstance"|"memberOf",
+          expression = "string"
+        )
+      ),
+      placementStrategy = list(
+        list(
+          type = "random"|"spread"|"binpack",
+          field = "string"
+        )
+      ),
+      networkConfiguration = list(
+        awsvpcConfiguration = list(
+          subnets = list(
+            "string"
+          ),
+          securityGroups = list(
+            "string"
+          ),
+          assignPublicIp = "ENABLED"|"DISABLED"
+        )
+      ),
+      healthCheckGracePeriodSeconds = 123,
+      schedulingStrategy = "REPLICA"|"DAEMON",
+      deploymentController = list(
+        type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
+      ),
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      createdBy = "string",
+      enableECSManagedTags = TRUE|FALSE,
+      propagateTags = "TASK_DEFINITION"|"SERVICE"
+    )
+  ),
+  failures = list(
+    list(
+      arn = "string",
+      reason = "string",
+      detail = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified services running in your cluster.
 }

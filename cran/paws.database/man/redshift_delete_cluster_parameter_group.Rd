@@ -15,6 +15,9 @@ Constraints:
 \item Cannot delete a default cluster parameter group.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified Amazon Redshift parameter group.
 

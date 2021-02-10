@@ -12,6 +12,20 @@ securityhub_batch_import_findings(Findings)
 follow the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html}{AWS Security Finding Format}.
 Maximum of 100 findings per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedCount = 123,
+  SuccessCount = 123,
+  FailedFindings = list(
+    list(
+      Id = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Imports security findings generated from an integrated third-party
 product into Security Hub. This action is requested by the integrated

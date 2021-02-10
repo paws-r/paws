@@ -19,12 +19,12 @@ including \code{2017-05-01}.}
 \item{GroupBy}{You can group the data by the following attributes:
 \itemize{
 \item AZ
-\item CACHE\\_ENGINE
-\item DATABASE\\_ENGINE
-\item DEPLOYMENT\\_OPTION
-\item INSTANCE\\_TYPE
-\item LINKED\\_ACCOUNT
-\item OPERATING\\_SYSTEM
+\item CACHE_ENGINE
+\item DATABASE_ENGINE
+\item DEPLOYMENT_OPTION
+\item INSTANCE_TYPE
+\item LINKED_ACCOUNT
+\item OPERATING_SYSTEM
 \item PLATFORM
 \item REGION
 \item TENANCY
@@ -44,12 +44,12 @@ operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 dimensions:
 \itemize{
 \item AZ
-\item CACHE\\_ENGINE
-\item DATABASE\\_ENGINE
-\item DEPLOYMENT\\_OPTION
-\item INSTANCE\\_TYPE
-\item LINKED\\_ACCOUNT
-\item OPERATING\\_SYSTEM
+\item CACHE_ENGINE
+\item DATABASE_ENGINE
+\item DEPLOYMENT_OPTION
+\item INSTANCE_TYPE
+\item LINKED_ACCOUNT
+\item OPERATING_SYSTEM
 \item PLATFORM
 \item REGION
 \item SERVICE
@@ -100,6 +100,78 @@ more objects are available, in the response, AWS provides a
 NextPageToken value that you can use in a subsequent call to get the
 next batch of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CoveragesByTime = list(
+    list(
+      TimePeriod = list(
+        Start = "string",
+        End = "string"
+      ),
+      Groups = list(
+        list(
+          Attributes = list(
+            "string"
+          ),
+          Coverage = list(
+            CoverageHours = list(
+              OnDemandHours = "string",
+              ReservedHours = "string",
+              TotalRunningHours = "string",
+              CoverageHoursPercentage = "string"
+            ),
+            CoverageNormalizedUnits = list(
+              OnDemandNormalizedUnits = "string",
+              ReservedNormalizedUnits = "string",
+              TotalRunningNormalizedUnits = "string",
+              CoverageNormalizedUnitsPercentage = "string"
+            ),
+            CoverageCost = list(
+              OnDemandCost = "string"
+            )
+          )
+        )
+      ),
+      Total = list(
+        CoverageHours = list(
+          OnDemandHours = "string",
+          ReservedHours = "string",
+          TotalRunningHours = "string",
+          CoverageHoursPercentage = "string"
+        ),
+        CoverageNormalizedUnits = list(
+          OnDemandNormalizedUnits = "string",
+          ReservedNormalizedUnits = "string",
+          TotalRunningNormalizedUnits = "string",
+          CoverageNormalizedUnitsPercentage = "string"
+        ),
+        CoverageCost = list(
+          OnDemandCost = "string"
+        )
+      )
+    )
+  ),
+  Total = list(
+    CoverageHours = list(
+      OnDemandHours = "string",
+      ReservedHours = "string",
+      TotalRunningHours = "string",
+      CoverageHoursPercentage = "string"
+    ),
+    CoverageNormalizedUnits = list(
+      OnDemandNormalizedUnits = "string",
+      ReservedNormalizedUnits = "string",
+      TotalRunningNormalizedUnits = "string",
+      CoverageNormalizedUnitsPercentage = "string"
+    ),
+    CoverageCost = list(
+      OnDemandCost = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Retrieves the reservation coverage for your account. This enables you to
 see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
@@ -110,12 +182,12 @@ Cost Categories, and nested expressions. For any time period, you can
 filter data about reservation usage by the following dimensions:
 \itemize{
 \item AZ
-\item CACHE\\_ENGINE
-\item DATABASE\\_ENGINE
-\item DEPLOYMENT\\_OPTION
-\item INSTANCE\\_TYPE
-\item LINKED\\_ACCOUNT
-\item OPERATING\\_SYSTEM
+\item CACHE_ENGINE
+\item DATABASE_ENGINE
+\item DEPLOYMENT_OPTION
+\item INSTANCE_TYPE
+\item LINKED_ACCOUNT
+\item OPERATING_SYSTEM
 \item PLATFORM
 \item REGION
 \item SERVICE

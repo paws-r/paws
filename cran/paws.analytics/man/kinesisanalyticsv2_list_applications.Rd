@@ -13,6 +13,21 @@ kinesisanalyticsv2_list_applications(Limit, NextToken)
 value to retrieve the next set of results. For more information about
 pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html}{Using the AWS Command Line Interface's Pagination Options}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationSummaries = list(
+    list(
+      ApplicationName = "string",
+      ApplicationARN = "string",
+      ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+      ApplicationVersionId = 123,
+      RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of Kinesis Data Analytics applications in your account.
 For each application, the response includes the application name, Amazon

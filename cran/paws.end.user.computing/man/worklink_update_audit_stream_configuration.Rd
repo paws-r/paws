@@ -12,6 +12,9 @@ worklink_update_audit_stream_configuration(FleetArn, AuditStreamArn)
 \item{AuditStreamArn}{The ARN of the Amazon Kinesis data stream that receives the audit
 events.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the audit stream configuration for the fleet.
 }

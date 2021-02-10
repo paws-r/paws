@@ -19,6 +19,14 @@ can use the following OpenSSL command to decrypt a private key:
 
 \verb{openssl rsa -in encrypted_key.pem -out decrypted_key.pem}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = "string",
+  CertificateChain = "string",
+  PrivateKey = "string"
+)
+}
+}
 \description{
 Exports a private certificate issued by a private certificate authority
 (CA) for use anywhere. The exported file contains the certificate, the

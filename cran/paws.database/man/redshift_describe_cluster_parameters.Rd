@@ -37,6 +37,25 @@ in the \code{Marker} field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      ApplyType = "static"|"dynamic",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a detailed list of parameters contained within the specified
 Amazon Redshift parameter group. For each parameter the response

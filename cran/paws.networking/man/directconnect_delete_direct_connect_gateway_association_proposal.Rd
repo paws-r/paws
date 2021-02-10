@@ -11,6 +11,33 @@ directconnect_delete_direct_connect_gateway_association_proposal(
 \arguments{
 \item{proposalId}{[required] The ID of the proposal.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  directConnectGatewayAssociationProposal = list(
+    proposalId = "string",
+    directConnectGatewayId = "string",
+    directConnectGatewayOwnerAccount = "string",
+    proposalState = "requested"|"accepted"|"deleted",
+    associatedGateway = list(
+      id = "string",
+      type = "virtualPrivateGateway"|"transitGateway",
+      ownerAccount = "string",
+      region = "string"
+    ),
+    existingAllowedPrefixesToDirectConnectGateway = list(
+      list(
+        cidr = "string"
+      )
+    ),
+    requestedAllowedPrefixesToDirectConnectGateway = list(
+      list(
+        cidr = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes the association proposal request between the specified Direct
 Connect gateway and virtual private gateway or transit gateway.

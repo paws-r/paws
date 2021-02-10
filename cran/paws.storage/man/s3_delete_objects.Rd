@@ -16,7 +16,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -25,7 +25,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Delete}{[required] Container for the request.}
@@ -44,6 +44,28 @@ permissions to perform this operation.}
 \item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Deleted = list(
+    list(
+      Key = "string",
+      VersionId = "string",
+      DeleteMarker = TRUE|FALSE,
+      DeleteMarkerVersionId = "string"
+    )
+  ),
+  RequestCharged = "requester",
+  Errors = list(
+    list(
+      Key = "string",
+      VersionId = "string",
+      Code = "string",
+      Message = "string"
+    )
+  )
+)
+}
 }
 \description{
 This operation enables you to delete multiple objects from a bucket
@@ -72,7 +94,7 @@ If you do not provide one, the entire request will fail, even if there
 are non-versioned objects you are trying to delete. If you provide an
 invalid token, whether there are versioned keys in the request or not,
 the entire Multi-Object Delete request will fail. For information about
-MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete}{MFA Delete}.
+MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html#MultiFactorAuthenticationDelete}{MFA Delete}.
 
 Finally, the Content-MD5 header is required for all Multi-Object Delete
 requests. Amazon S3 uses the header value to ensure that your request

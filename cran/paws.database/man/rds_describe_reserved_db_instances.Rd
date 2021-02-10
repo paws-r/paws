@@ -56,6 +56,39 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReservedDBInstances = list(
+    list(
+      ReservedDBInstanceId = "string",
+      ReservedDBInstancesOfferingId = "string",
+      DBInstanceClass = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Duration = 123,
+      FixedPrice = 123.0,
+      UsagePrice = 123.0,
+      CurrencyCode = "string",
+      DBInstanceCount = 123,
+      ProductDescription = "string",
+      OfferingType = "string",
+      MultiAZ = TRUE|FALSE,
+      State = "string",
+      RecurringCharges = list(
+        list(
+          RecurringChargeAmount = 123.0,
+          RecurringChargeFrequency = "string"
+        )
+      ),
+      ReservedDBInstanceArn = "string",
+      LeaseId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about reserved DB instances for this account, or
 about a specified reserved DB instance.

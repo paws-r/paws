@@ -13,6 +13,14 @@ elb_disable_availability_zones_for_load_balancer(LoadBalancerName,
 
 \item{AvailabilityZones}{[required] The Availability Zones.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AvailabilityZones = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Removes the specified Availability Zones from the set of Availability
 Zones for the specified load balancer in EC2-Classic or a default VPC.

@@ -14,8 +14,12 @@ medialive_transfer_input_device(InputDeviceId, TargetCustomerId,
 
 \item{TransferMessage}{An optional message for the recipient. Maximum 280 characters.}
 }
+\value{
+An empty list.
+}
 \description{
-Start an input device transfer to another AWS account. After you make the request, the other account must accept or reject the transfer.
+Start an input device transfer to another AWS account. After you make
+the request, the other account must accept or reject the transfer.
 }
 \section{Request syntax}{
 \preformatted{svc$transfer_input_device(

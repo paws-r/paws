@@ -13,6 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of lowercase letters, digits, and dashes. You cannot start or
 finish with a dash, nor can you have two dashes in a row.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates an alias for your AWS account. For information about using an
 AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an Alias for Your AWS Account ID}

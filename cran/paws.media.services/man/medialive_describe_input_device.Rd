@@ -9,6 +9,49 @@ medialive_describe_input_device(InputDeviceId)
 \arguments{
 \item{InputDeviceId}{[required] The unique ID of this input device. For example, hd-123456789abcdef.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  ConnectionState = "DISCONNECTED"|"CONNECTED",
+  DeviceSettingsSyncState = "SYNCED"|"SYNCING",
+  DeviceUpdateStatus = "UP_TO_DATE"|"NOT_UP_TO_DATE",
+  HdDeviceSettings = list(
+    ActiveInput = "HDMI"|"SDI",
+    ConfiguredInput = "AUTO"|"HDMI"|"SDI",
+    DeviceState = "IDLE"|"STREAMING",
+    Framerate = 123.0,
+    Height = 123,
+    MaxBitrate = 123,
+    ScanType = "INTERLACED"|"PROGRESSIVE",
+    Width = 123
+  ),
+  Id = "string",
+  MacAddress = "string",
+  Name = "string",
+  NetworkSettings = list(
+    DnsAddresses = list(
+      "string"
+    ),
+    Gateway = "string",
+    IpAddress = "string",
+    IpScheme = "STATIC"|"DHCP",
+    SubnetMask = "string"
+  ),
+  SerialNumber = "string",
+  Type = "HD",
+  UhdDeviceSettings = list(
+    ActiveInput = "HDMI"|"SDI",
+    ConfiguredInput = "AUTO"|"HDMI"|"SDI",
+    DeviceState = "IDLE"|"STREAMING",
+    Framerate = 123.0,
+    Height = 123,
+    MaxBitrate = 123,
+    ScanType = "INTERLACED"|"PROGRESSIVE",
+    Width = 123
+  )
+)
+}
+}
 \description{
 Gets the details for the input device
 }

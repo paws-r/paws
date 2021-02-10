@@ -78,6 +78,9 @@ NULL
 #' [`delete_message_batch`][sqs_delete_message_batch], and
 #' [`change_message_visibility_batch`][sqs_change_message_visibility_batch].
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_permission(
@@ -189,6 +192,9 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' @param VisibilityTimeout &#91;required&#93; The new value for the message's visibility timeout (in seconds). Values
 #' range: `0` to `43200`. Maximum: 12 hours.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$change_message_visibility(
@@ -249,6 +255,26 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 #' Queue URLs and names are case-sensitive.
 #' @param Entries &#91;required&#93; A list of receipt handles of the messages for which the visibility
 #' timeout must be changed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     list(
+#'       Id = "string"
+#'     )
+#'   ),
+#'   Failed = list(
+#'     list(
+#'       Id = "string",
+#'       SenderFault = TRUE|FALSE,
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -558,6 +584,14 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueueUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_queue(
@@ -625,6 +659,9 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
 #' Queue URLs and names are case-sensitive.
 #' @param ReceiptHandle &#91;required&#93; The receipt handle associated with the message to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_message(
@@ -679,6 +716,26 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param Entries &#91;required&#93; A list of receipt handles for the messages to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     list(
+#'       Id = "string"
+#'     )
+#'   ),
+#'   Failed = list(
+#'     list(
+#'       Id = "string",
+#'       SenderFault = TRUE|FALSE,
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -743,6 +800,9 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to delete.
 #' 
 #' Queue URLs and names are case-sensitive.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -940,6 +1000,16 @@ sqs_delete_queue <- function(QueueUrl) {
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_queue_attributes(
@@ -993,6 +1063,14 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param QueueOwnerAWSAccountId The AWS account ID of the account that created the queue.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueueUrl = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1056,6 +1134,17 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' to 1000. You must set `MaxResults` to receive a value for `NextToken` in
 #' the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   queueUrls = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_dead_letter_source_queues(
@@ -1102,6 +1191,16 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
 #' sqs_list_queue_tags(QueueUrl)
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the queue.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1163,6 +1262,17 @@ sqs_list_queue_tags <- function(QueueUrl) {
 #' to 1000. You must set `MaxResults` to receive a value for `NextToken` in
 #' the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueueUrls = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_queues(
@@ -1218,6 +1328,9 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
 #' action deletes messages.
 #' 
 #' Queue URLs and names are case-sensitive.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1442,12 +1555,44 @@ sqs_purge_queue <- function(QueueUrl) {
 #' The maximum length of `ReceiveRequestAttemptId` is 128 characters.
 #' `ReceiveRequestAttemptId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~ ``).
 #' 
 #' For best practices of using `ReceiveRequestAttemptId`, see [Using the
 #' ReceiveRequestAttemptId Request
 #' Parameter](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Messages = list(
+#'     list(
+#'       MessageId = "string",
+#'       ReceiptHandle = "string",
+#'       MD5OfBody = "string",
+#'       Body = "string",
+#'       Attributes = list(
+#'         "string"
+#'       ),
+#'       MD5OfMessageAttributes = "string",
+#'       MessageAttributes = list(
+#'         list(
+#'           StringValue = "string",
+#'           BinaryValue = raw,
+#'           StringListValues = list(
+#'             "string"
+#'           ),
+#'           BinaryListValues = list(
+#'             raw
+#'           ),
+#'           DataType = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1515,6 +1660,9 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #' Queue URLs and names are case-sensitive.
 #' @param Label &#91;required&#93; The identification of the permission to remove. This is the label added
 #' using the [`add_permission`][sqs_add_permission] action.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1649,7 +1797,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' The maximum length of `MessageDeduplicationId` is 128 characters.
 #' `MessageDeduplicationId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~ ``).
 #' 
 #' For best practices of using `MessageDeduplicationId`, see [Using the
 #' MessageDeduplicationId
@@ -1675,7 +1823,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' The length of `MessageGroupId` is 128 characters. Valid values:
 #' alphanumeric characters and punctuation
-#' `` (!\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
 #' 
 #' For best practices of using `MessageGroupId`, see [Using the
 #' MessageGroupId
@@ -1684,6 +1832,18 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' `MessageGroupId` is required for FIFO queues. You can't use it for
 #' Standard queues.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MD5OfMessageBody = "string",
+#'   MD5OfMessageAttributes = "string",
+#'   MD5OfMessageSystemAttributes = "string",
+#'   MessageId = "string",
+#'   SequenceNumber = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1786,6 +1946,31 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param Entries &#91;required&#93; A list of ` SendMessageBatchRequestEntry ` items.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     list(
+#'       Id = "string",
+#'       MessageId = "string",
+#'       MD5OfMessageBody = "string",
+#'       MD5OfMessageAttributes = "string",
+#'       MD5OfMessageSystemAttributes = "string",
+#'       SequenceNumber = "string"
+#'     )
+#'   ),
+#'   Failed = list(
+#'     list(
+#'       Id = "string",
+#'       SenderFault = TRUE|FALSE,
+#'       Code = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2043,6 +2228,9 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_queue_attributes(
@@ -2108,6 +2296,9 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #' @param QueueUrl &#91;required&#93; The URL of the queue.
 #' @param Tags &#91;required&#93; The list of tags to be added to the specified queue.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_queue(
@@ -2156,6 +2347,9 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the queue.
 #' @param TagKeys &#91;required&#93; The list of tags to be removed from the specified queue.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

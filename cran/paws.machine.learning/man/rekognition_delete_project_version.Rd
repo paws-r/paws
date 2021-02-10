@@ -10,6 +10,12 @@ rekognition_delete_project_version(ProjectVersionArn)
 \item{ProjectVersionArn}{[required] The Amazon Resource Name (ARN) of the model version that you want to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
+)
+}
+}
 \description{
 Deletes an Amazon Rekognition Custom Labels model.
 

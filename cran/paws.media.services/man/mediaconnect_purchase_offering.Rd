@@ -11,10 +11,40 @@ mediaconnect_purchase_offering(OfferingArn, ReservationName, Start)
 
 \item{ReservationName}{[required] The name that you want to use for the reservation.}
 
-\item{Start}{[required] The date and time that you want the reservation to begin, in Coordinated Universal Time (UTC). You can specify any date and time between 12:00am on the first day of the current month to the current time on today's date, inclusive. Specify the start in a 24-hour notation. Use the following format: YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.}
+\item{Start}{[required] The date and time that you want the reservation to begin, in Coordinated
+Universal Time (UTC). You can specify any date and time between 12:00am
+on the first day of the current month to the current time on today's
+date, inclusive. Specify the start in a 24-hour notation. Use the
+following format: YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal
+characters. For example, to specify 11:30pm on March 5, 2020, enter
+2020-03-05T23:30:00Z.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Reservation = list(
+    CurrencyCode = "string",
+    Duration = 123,
+    DurationUnits = "MONTHS",
+    End = "string",
+    OfferingArn = "string",
+    OfferingDescription = "string",
+    PricePerUnit = "string",
+    PriceUnits = "HOURLY",
+    ReservationArn = "string",
+    ReservationName = "string",
+    ReservationState = "ACTIVE"|"EXPIRED"|"PROCESSING"|"CANCELED",
+    ResourceSpecification = list(
+      ReservedBitrate = 123,
+      ResourceType = "Mbps_Outbound_Bandwidth"
+    ),
+    Start = "string"
+  )
+)
+}
 }
 \description{
-Submits a request to purchase an offering. If you already have an active reservation, you can't purchase another offering.
+Submits a request to purchase an offering. If you already have an active
+reservation, you can't purchase another offering.
 }
 \section{Request syntax}{
 \preformatted{svc$purchase_offering(

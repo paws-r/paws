@@ -12,6 +12,9 @@ simpledb_batch_delete_attributes(DomainName, Items)
 
 \item{Items}{[required] A list of items on which to perform the operation.}
 }
+\value{
+An empty list.
+}
 \description{
 Performs multiple DeleteAttributes operations in a single call, which
 reduces round trips and latencies. This enables Amazon SimpleDB to

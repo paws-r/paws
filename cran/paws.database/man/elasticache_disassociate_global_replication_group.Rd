@@ -17,6 +17,39 @@ Datastore}
 \item{ReplicationGroupRegion}{[required] The AWS region of secondary cluster you wish to remove from the Global
 Datastore}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalReplicationGroup = list(
+    GlobalReplicationGroupId = "string",
+    GlobalReplicationGroupDescription = "string",
+    Status = "string",
+    CacheNodeType = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    Members = list(
+      list(
+        ReplicationGroupId = "string",
+        ReplicationGroupRegion = "string",
+        Role = "string",
+        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+        Status = "string"
+      )
+    ),
+    ClusterEnabled = TRUE|FALSE,
+    GlobalNodeGroups = list(
+      list(
+        GlobalNodeGroupId = "string",
+        Slots = "string"
+      )
+    ),
+    AuthTokenEnabled = TRUE|FALSE,
+    TransitEncryptionEnabled = TRUE|FALSE,
+    AtRestEncryptionEnabled = TRUE|FALSE,
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Remove a secondary cluster from the Global Datastore using the Global
 Datastore name. The secondary cluster will no longer receive updates

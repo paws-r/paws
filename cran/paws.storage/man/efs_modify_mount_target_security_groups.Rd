@@ -11,6 +11,9 @@ efs_modify_mount_target_security_groups(MountTargetId, SecurityGroups)
 
 \item{SecurityGroups}{An array of up to five VPC security group IDs.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the set of security groups in effect for a mount target.
 

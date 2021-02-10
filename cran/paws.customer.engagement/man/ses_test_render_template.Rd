@@ -14,6 +14,12 @@ ses_test_render_template(TemplateName, TemplateData)
 a JSON object, typically consisting of key-value pairs in which the keys
 correspond to replacement tags in the email template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RenderedTemplate = "string"
+)
+}
+}
 \description{
 Creates a preview of the MIME content of an email when provided with a
 template and a set of replacement data.

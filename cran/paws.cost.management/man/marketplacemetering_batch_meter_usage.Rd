@@ -15,6 +15,57 @@ UsageRecords at a time.}
 The product code should be the same as the one used during the
 publishing of a new product.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Results = list(
+    list(
+      UsageRecord = list(
+        Timestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        CustomerIdentifier = "string",
+        Dimension = "string",
+        Quantity = 123,
+        UsageAllocations = list(
+          list(
+            AllocatedUsageQuantity = 123,
+            Tags = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          )
+        )
+      ),
+      MeteringRecordId = "string",
+      Status = "Success"|"CustomerNotSubscribed"|"DuplicateRecord"
+    )
+  ),
+  UnprocessedRecords = list(
+    list(
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      CustomerIdentifier = "string",
+      Dimension = "string",
+      Quantity = 123,
+      UsageAllocations = list(
+        list(
+          AllocatedUsageQuantity = 123,
+          Tags = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 BatchMeterUsage is called from a SaaS application listed on the AWS
 Marketplace to post metering records for a set of customers.

@@ -9,6 +9,9 @@ alexaforbusiness_delete_gateway_group(GatewayGroupArn)
 \arguments{
 \item{GatewayGroupArn}{[required] The ARN of the gateway group to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a gateway group.
 }

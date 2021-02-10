@@ -12,6 +12,41 @@ robomaker_describe_simulation_application(application,
 
 \item{applicationVersion}{The version of the simulation application to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  version = "string",
+  sources = list(
+    list(
+      s3Bucket = "string",
+      s3Key = "string",
+      etag = "string",
+      architecture = "X86_64"|"ARM64"|"ARMHF"
+    )
+  ),
+  simulationSoftwareSuite = list(
+    name = "Gazebo"|"RosbagPlay",
+    version = "string"
+  ),
+  robotSoftwareSuite = list(
+    name = "ROS"|"ROS2",
+    version = "Kinetic"|"Melodic"|"Dashing"
+  ),
+  renderingEngine = list(
+    name = "OGRE",
+    version = "string"
+  ),
+  revisionId = "string",
+  lastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a simulation application.
 }

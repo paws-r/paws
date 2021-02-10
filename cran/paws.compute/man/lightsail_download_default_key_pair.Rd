@@ -6,6 +6,13 @@
 \usage{
 lightsail_download_default_key_pair()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  publicKeyBase64 = "string",
+  privateKeyBase64 = "string"
+)
+}
+}
 \description{
 Downloads the default SSH key pair from the user's account.
 }

@@ -59,6 +59,32 @@ string.}
 \item{AdditionalCodeRepositoryEquals}{A filter that returns only notebook instances with associated with the
 specified git repository.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  NotebookInstances = list(
+    list(
+      NotebookInstanceName = "string",
+      NotebookInstanceArn = "string",
+      NotebookInstanceStatus = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
+      Url = "string",
+      InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      NotebookInstanceLifecycleConfigName = "string",
+      DefaultCodeRepository = "string",
+      AdditionalCodeRepositories = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the Amazon SageMaker notebook instances in the
 requester's account in an AWS Region.

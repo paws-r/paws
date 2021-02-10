@@ -13,6 +13,35 @@ appmesh_describe_mesh(meshName, meshOwner)
 not your own, then it's the ID of the account that shared the mesh with
 your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  mesh = list(
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    spec = list(
+      egressFilter = list(
+        type = "ALLOW_ALL"|"DROP_ALL"
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    )
+  )
+)
+}
+}
 \description{
 Describes an existing service mesh.
 }

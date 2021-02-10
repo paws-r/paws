@@ -18,6 +18,52 @@ between 1 and 50. The default value is 50.}
 
 \item{NextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScalingPlanResources = list(
+    list(
+      ScalingPlanName = "string",
+      ScalingPlanVersion = 123,
+      ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
+      ResourceId = "string",
+      ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
+      ScalingPolicies = list(
+        list(
+          PolicyName = "string",
+          PolicyType = "TargetTrackingScaling",
+          TargetTrackingConfiguration = list(
+            PredefinedScalingMetricSpecification = list(
+              PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
+              ResourceLabel = "string"
+            ),
+            CustomizedScalingMetricSpecification = list(
+              MetricName = "string",
+              Namespace = "string",
+              Dimensions = list(
+                list(
+                  Name = "string",
+                  Value = "string"
+                )
+              ),
+              Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+              Unit = "string"
+            ),
+            TargetValue = 123.0,
+            DisableScaleIn = TRUE|FALSE,
+            ScaleOutCooldown = 123,
+            ScaleInCooldown = 123,
+            EstimatedInstanceWarmup = 123
+          )
+        )
+      ),
+      ScalingStatusCode = "Inactive"|"PartiallyActive"|"Active",
+      ScalingStatusMessage = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the scalable resources in the specified scaling plan.
 }

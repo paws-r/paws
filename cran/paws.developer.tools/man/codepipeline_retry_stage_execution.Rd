@@ -18,7 +18,13 @@ the \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}} action to
 retrieve the current pipelineExecutionId of the failed stage}
 
 \item{retryMode}{[required] The scope of the retry attempt. Currently, the only supported value is
-FAILED\\_ACTIONS.}
+FAILED_ACTIONS.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineExecutionId = "string"
+)
+}
 }
 \description{
 Resumes the pipeline execution by retrying the last failed actions in a

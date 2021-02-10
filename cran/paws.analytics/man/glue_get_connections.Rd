@@ -24,6 +24,39 @@ the connection properties.}
 
 \item{MaxResults}{The maximum number of connections to return in one response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConnectionList = list(
+    list(
+      Name = "string",
+      Description = "string",
+      ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
+      MatchCriteria = list(
+        "string"
+      ),
+      ConnectionProperties = list(
+        "string"
+      ),
+      PhysicalConnectionRequirements = list(
+        SubnetId = "string",
+        SecurityGroupIdList = list(
+          "string"
+        ),
+        AvailabilityZone = "string"
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedBy = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of connection definitions from the Data Catalog.
 }

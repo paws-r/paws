@@ -14,6 +14,14 @@ quicksight_delete_iam_policy_assignment(AwsAccountId, AssignmentName,
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssignmentName = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Deletes an existing IAM policy assignment.
 }

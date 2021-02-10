@@ -19,6 +19,27 @@ operation.}
 certificate. If the override is removed, the default certificate is the
 system default.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = list(
+    CertificateIdentifier = "string",
+    CertificateType = "string",
+    Thumbprint = "string",
+    ValidFrom = as.POSIXct(
+      "2015-01-01"
+    ),
+    ValidTill = as.POSIXct(
+      "2015-01-01"
+    ),
+    CertificateArn = "string",
+    CustomerOverride = TRUE|FALSE,
+    CustomerOverrideValidTill = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Override the system-default Secure Sockets Layer/Transport Layer
 Security (SSL/TLS) certificate for Amazon RDS for new DB instances

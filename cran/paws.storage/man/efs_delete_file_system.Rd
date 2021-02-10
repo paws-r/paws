@@ -9,6 +9,9 @@ efs_delete_file_system(FileSystemId)
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a file system, permanently severing access to its contents. Upon
 return, the file system no longer exists and you can't access any

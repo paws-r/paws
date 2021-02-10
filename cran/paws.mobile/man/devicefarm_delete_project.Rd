@@ -10,6 +10,9 @@ devicefarm_delete_project(arn)
 \item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm project to
 delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an AWS Device Farm project, given the project ARN.
 

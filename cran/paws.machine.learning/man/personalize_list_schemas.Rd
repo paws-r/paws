@@ -13,6 +13,24 @@ schemas (if they exist).}
 
 \item{maxResults}{The maximum number of schemas to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  schemas = list(
+    list(
+      name = "string",
+      schemaArn = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the list of schemas associated with the account. The response
 provides the properties for each schema, including the Amazon Resource

@@ -17,6 +17,9 @@ you cannot add device template names to the project. However, for a
 given \code{placementTemplate}, you can update the associated
 \code{callbackOverrides} for the device definition using this API.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a project associated with your AWS account and region. With the
 exception of device template names, you can pass just the values that

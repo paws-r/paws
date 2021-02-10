@@ -23,6 +23,30 @@ is \code{100} and the maximum value is \code{100}.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Activities = list(
+    list(
+      ActivityId = "string",
+      AutoScalingGroupName = "string",
+      Description = "string",
+      Cause = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+      StatusMessage = "string",
+      Progress = 123,
+      Details = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more scaling activities for the specified Auto Scaling
 group.

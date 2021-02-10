@@ -18,6 +18,9 @@ details.}
 
 \item{failureDetails}{[required] Represents information about failure details.}
 }
+\value{
+An empty list.
+}
 \description{
 Represents the failure of a third party job as returned to the pipeline
 by a job worker. Used for partner actions only.

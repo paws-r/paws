@@ -21,6 +21,22 @@ update resource record sets for the specified traffic policy instance.}
 to update resource record sets for the specified traffic policy
 instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicyInstance = list(
+    Id = "string",
+    HostedZoneId = "string",
+    Name = "string",
+    TTL = 123,
+    State = "string",
+    Message = "string",
+    TrafficPolicyId = "string",
+    TrafficPolicyVersion = 123,
+    TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+  )
+)
+}
+}
 \description{
 Updates the resource record sets in a specified hosted zone that were
 created based on the settings in a specified traffic policy version.

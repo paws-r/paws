@@ -36,6 +36,9 @@ using \code{CustomerOwnedIpv4Pool}.}
 You must set this value when you specify \code{true} for
 \code{MapCustomerOwnedIpOnLaunch}.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies a subnet attribute. You can only modify one attribute at a
 time.

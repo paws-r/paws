@@ -11,6 +11,9 @@ apigatewayv2_delete_deployment(ApiId, DeploymentId)
 
 \item{DeploymentId}{[required] The deployment ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Deployment.
 }

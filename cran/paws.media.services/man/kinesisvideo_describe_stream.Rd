@@ -11,6 +11,24 @@ kinesisvideo_describe_stream(StreamName, StreamARN)
 
 \item{StreamARN}{The Amazon Resource Name (ARN) of the stream.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamInfo = list(
+    DeviceName = "string",
+    StreamName = "string",
+    StreamARN = "string",
+    MediaType = "string",
+    KmsKeyId = "string",
+    Version = "string",
+    Status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    DataRetentionInHours = 123
+  )
+)
+}
+}
 \description{
 Returns the most current information about the specified stream. You
 must specify either the \code{StreamName} or the \code{StreamARN}.

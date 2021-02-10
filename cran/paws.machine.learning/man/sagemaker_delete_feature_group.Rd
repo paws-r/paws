@@ -11,6 +11,9 @@ sagemaker_delete_feature_group(FeatureGroupName)
 \item{FeatureGroupName}{[required] The name of the \code{FeatureGroup} you want to delete. The name must be
 unique within an AWS Region in an AWS account.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete the \code{FeatureGroup} and any data that was written to the
 \code{OnlineStore} of the \code{FeatureGroup}. Data cannot be accessed from the

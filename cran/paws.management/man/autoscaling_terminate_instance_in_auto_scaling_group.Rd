@@ -14,6 +14,27 @@ autoscaling_terminate_instance_in_auto_scaling_group(InstanceId,
 \item{ShouldDecrementDesiredCapacity}{[required] Indicates whether terminating the instance also decrements the size of
 the Auto Scaling group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Activity = list(
+    ActivityId = "string",
+    AutoScalingGroupName = "string",
+    Description = "string",
+    Cause = "string",
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+    StatusMessage = "string",
+    Progress = 123,
+    Details = "string"
+  )
+)
+}
+}
 \description{
 Terminates the specified instance and optionally adjusts the desired
 group size.

@@ -78,7 +78,7 @@ If you omit this parameter, the flow log is created using the default
 format. If you specify this parameter, you must specify at least one
 field.
 
-Specify the fields using the \verb{$\\\{field-id\\\}} format, separated by spaces.
+Specify the fields using the \verb{$\{field-id\}} format, separated by spaces.
 For the AWS CLI, use single quotation marks (' ') to surround the
 parameter value.}
 
@@ -93,6 +93,24 @@ the aggregation interval is always 60 seconds or less, regardless of the
 value that you specify.
 
 Default: 600}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientToken = "string",
+  FlowLogIds = list(
+    "string"
+  ),
+  Unsuccessful = list(
+    list(
+      Error = list(
+        Code = "string",
+        Message = "string"
+      ),
+      ResourceId = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates one or more flow logs to capture information about IP traffic

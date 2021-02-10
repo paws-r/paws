@@ -49,6 +49,129 @@ schema in the table's attribute definition.
 that were modified during the operation are returned in the response. If
 set to \code{NONE} (the default), no statistics are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedItems = list(
+    list(
+      list(
+        PutRequest = list(
+          Item = list(
+            list(
+              S = "string",
+              N = "string",
+              B = raw,
+              SS = list(
+                "string"
+              ),
+              NS = list(
+                "string"
+              ),
+              BS = list(
+                raw
+              ),
+              M = list(
+                list()
+              ),
+              L = list(
+                list()
+              ),
+              NULL = TRUE|FALSE,
+              BOOL = TRUE|FALSE
+            )
+          )
+        ),
+        DeleteRequest = list(
+          Key = list(
+            list(
+              S = "string",
+              N = "string",
+              B = raw,
+              SS = list(
+                "string"
+              ),
+              NS = list(
+                "string"
+              ),
+              BS = list(
+                raw
+              ),
+              M = list(
+                list()
+              ),
+              L = list(
+                list()
+              ),
+              NULL = TRUE|FALSE,
+              BOOL = TRUE|FALSE
+            )
+          )
+        )
+      )
+    )
+  ),
+  ItemCollectionMetrics = list(
+    list(
+      list(
+        ItemCollectionKey = list(
+          list(
+            S = "string",
+            N = "string",
+            B = raw,
+            SS = list(
+              "string"
+            ),
+            NS = list(
+              "string"
+            ),
+            BS = list(
+              raw
+            ),
+            M = list(
+              list()
+            ),
+            L = list(
+              list()
+            ),
+            NULL = TRUE|FALSE,
+            BOOL = TRUE|FALSE
+          )
+        ),
+        SizeEstimateRangeGB = list(
+          123.0
+        )
+      )
+    )
+  ),
+  ConsumedCapacity = list(
+    list(
+      TableName = "string",
+      CapacityUnits = 123.0,
+      ReadCapacityUnits = 123.0,
+      WriteCapacityUnits = 123.0,
+      Table = list(
+        ReadCapacityUnits = 123.0,
+        WriteCapacityUnits = 123.0,
+        CapacityUnits = 123.0
+      ),
+      LocalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      ),
+      GlobalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 The \code{\link[=dynamodb_batch_write_item]{batch_write_item}} operation puts or
 deletes multiple items in one or more tables. A single call to

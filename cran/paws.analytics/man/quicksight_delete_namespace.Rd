@@ -13,6 +13,13 @@ namespace from.}
 
 \item{Namespace}{[required] The namespace that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Deletes a namespace and the users and groups that are associated with
 the namespace. This is an asynchronous process. Assets including

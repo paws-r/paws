@@ -14,6 +14,9 @@ addresses that are associated with your Amazon Pinpoint account in the
 current AWS Region. Set to \code{true} to enable the automatic warm-up
 feature, or set to \code{false} to disable it.}
 }
+\value{
+An empty list.
+}
 \description{
 Enable or disable the automatic warm-up feature for dedicated IP
 addresses.

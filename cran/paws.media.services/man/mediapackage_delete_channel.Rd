@@ -9,6 +9,9 @@ mediapackage_delete_channel(Id)
 \arguments{
 \item{Id}{[required] The ID of the Channel to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing Channel.
 }

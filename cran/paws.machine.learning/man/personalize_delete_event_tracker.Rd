@@ -9,6 +9,9 @@ personalize_delete_event_tracker(eventTrackerArn)
 \arguments{
 \item{eventTrackerArn}{[required] The Amazon Resource Name (ARN) of the event tracker to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the event tracker. Does not delete the event-interactions
 dataset from the associated dataset group. For more information on event

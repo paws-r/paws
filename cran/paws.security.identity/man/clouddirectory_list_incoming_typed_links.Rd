@@ -29,6 +29,40 @@ facet, not the order in which they are supplied to any API calls.}
 
 \item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LinkSpecifiers = list(
+    list(
+      TypedLinkFacet = list(
+        SchemaArn = "string",
+        TypedLinkName = "string"
+      ),
+      SourceObjectReference = list(
+        Selector = "string"
+      ),
+      TargetObjectReference = list(
+        Selector = "string"
+      ),
+      IdentityAttributeValues = list(
+        list(
+          AttributeName = "string",
+          Value = list(
+            StringValue = "string",
+            BinaryValue = raw,
+            BooleanValue = TRUE|FALSE,
+            NumberValue = "string",
+            DatetimeValue = as.POSIXct(
+              "2015-01-01"
+            )
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a paginated list of all the incoming TypedLinkSpecifier
 information for an object. It also supports filtering by typed link

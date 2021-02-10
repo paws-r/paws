@@ -9,6 +9,9 @@ codebuild_delete_project(name)
 \arguments{
 \item{name}{[required] The name of the build project.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a build project. When you delete a project, its builds are not
 deleted.

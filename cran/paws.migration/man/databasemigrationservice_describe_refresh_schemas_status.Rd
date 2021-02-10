@@ -10,6 +10,20 @@ databasemigrationservice_describe_refresh_schemas_status(EndpointArn)
 \item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the
 endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RefreshSchemasStatus = list(
+    EndpointArn = "string",
+    ReplicationInstanceArn = "string",
+    Status = "successful"|"failed"|"refreshing",
+    LastRefreshDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastFailureMessage = "string"
+  )
+)
+}
+}
 \description{
 Returns the status of the RefreshSchemas operation.
 }

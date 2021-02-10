@@ -14,6 +14,21 @@ chime_list_channel_moderators(ChannelArn, MaxResults, NextToken)
 \item{NextToken}{The token passed by previous API calls until all requested moderators
 are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  NextToken = "string",
+  ChannelModerators = list(
+    list(
+      Moderator = list(
+        Arn = "string",
+        Name = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists all the moderators for a channel.
 }

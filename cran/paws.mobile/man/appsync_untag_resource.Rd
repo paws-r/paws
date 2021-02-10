@@ -11,6 +11,9 @@ appsync_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] A list of \code{TagKey} objects.}
 }
+\value{
+An empty list.
+}
 \description{
 Untags a resource.
 }

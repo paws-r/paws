@@ -21,6 +21,19 @@ returned, the response does not contain a pagination token value.}
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
 inclusive.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  eventTypes = list(
+    list(
+      service = "string",
+      code = "string",
+      category = "issue"|"accountNotification"|"scheduledChange"|"investigation"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the event types that meet the specified filter criteria. If no
 filter criteria are specified, all event types are returned, in no

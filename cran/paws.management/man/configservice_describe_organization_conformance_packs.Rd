@@ -17,6 +17,32 @@ is 100.}
 \item{NextToken}{The nextToken string returned on a previous page that you use to get the
 next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationConformancePacks = list(
+    list(
+      OrganizationConformancePackName = "string",
+      OrganizationConformancePackArn = "string",
+      DeliveryS3Bucket = "string",
+      DeliveryS3KeyPrefix = "string",
+      ConformancePackInputParameters = list(
+        list(
+          ParameterName = "string",
+          ParameterValue = "string"
+        )
+      ),
+      ExcludedAccounts = list(
+        "string"
+      ),
+      LastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of organization conformance packs.
 

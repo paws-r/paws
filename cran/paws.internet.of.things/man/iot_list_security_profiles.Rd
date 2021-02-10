@@ -17,6 +17,18 @@ dimension. Cannot be used with \code{metricName}}
 
 \item{metricName}{The name of the custom metric. Cannot be used with \code{dimensionName}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  securityProfileIdentifiers = list(
+    list(
+      name = "string",
+      arn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the Device Defender security profiles you've created. You can
 filter security profiles by dimension or custom metric.

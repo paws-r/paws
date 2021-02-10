@@ -9,6 +9,14 @@ worklink_describe_identity_provider_configuration(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityProviderType = "SAML",
+  ServiceProviderSamlMetadata = "string",
+  IdentityProviderSamlMetadata = "string"
+)
+}
+}
 \description{
 Describes the identity provider configuration of the specified fleet.
 }

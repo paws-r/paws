@@ -11,6 +11,9 @@ cloudwatchlogs_untag_log_group(logGroupName, tags)
 
 \item{tags}{[required] The tag keys. The corresponding tags are removed from the log group.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified tags from the specified log group.
 

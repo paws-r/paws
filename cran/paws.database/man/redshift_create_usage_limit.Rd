@@ -31,6 +31,24 @@ UsageLimit.}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UsageLimitId = "string",
+  ClusterIdentifier = "string",
+  FeatureType = "spectrum"|"concurrency-scaling",
+  LimitType = "time"|"data-scanned",
+  Amount = 123,
+  Period = "daily"|"weekly"|"monthly",
+  BreachAction = "log"|"emit-metric"|"disable",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a usage limit for a specified Amazon Redshift feature on a
 cluster. The usage limit is identified by the returned usage limit

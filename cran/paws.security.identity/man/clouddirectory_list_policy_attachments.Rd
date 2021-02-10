@@ -22,6 +22,15 @@ approximate number.}
 of an object is reflected in a subsequent read operation of that same
 object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ObjectIdentifiers = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns all of the \code{ObjectIdentifiers} to which a given policy is
 attached.

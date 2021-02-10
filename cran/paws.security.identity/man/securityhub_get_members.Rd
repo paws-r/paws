@@ -11,6 +11,31 @@ securityhub_get_members(AccountIds)
 \item{AccountIds}{[required] The list of account IDs for the Security Hub member accounts to return
 the details for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Members = list(
+    list(
+      AccountId = "string",
+      Email = "string",
+      MasterId = "string",
+      MemberStatus = "string",
+      InvitedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      ProcessingResult = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the details for the Security Hub member accounts for the
 specified account IDs.

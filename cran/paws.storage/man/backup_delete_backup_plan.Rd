@@ -9,6 +9,17 @@ backup_delete_backup_plan(BackupPlanId)
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupPlanId = "string",
+  BackupPlanArn = "string",
+  DeletionDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  VersionId = "string"
+)
+}
+}
 \description{
 Deletes a backup plan. A backup plan can only be deleted after all
 associated selections of resources have been deleted. Deleting a backup

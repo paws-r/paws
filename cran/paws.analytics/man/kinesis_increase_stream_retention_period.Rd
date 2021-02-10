@@ -15,6 +15,9 @@ kinesis_increase_stream_retention_period(StreamName,
 \item{RetentionPeriodHours}{[required] The new retention period of the stream, in hours. Must be more than the
 current retention period.}
 }
+\value{
+An empty list.
+}
 \description{
 Increases the Kinesis data stream's retention period, which is the
 length of time data records are accessible after they are added to the

@@ -28,7 +28,7 @@ The value can be in date, checkpoint, or LSN/SCN format.
 Date Example: --cdc-start-position “2018-03-08T12:12:12”
 
 Checkpoint Example: --cdc-start-position
-"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#*\\#0\\#93"
+"checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
 
 LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 
@@ -42,10 +42,62 @@ more information, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-“server\\_time:2018-02-09T12:12:12”
+“server_time:2018-02-09T12:12:12”
 
-Commit time example: --cdc-stop-position “commit\\_time:
+Commit time example: --cdc-stop-position “commit_time:
 2018-02-09T12:12:12 “}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationTask = list(
+    ReplicationTaskIdentifier = "string",
+    SourceEndpointArn = "string",
+    TargetEndpointArn = "string",
+    ReplicationInstanceArn = "string",
+    MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+    TableMappings = "string",
+    ReplicationTaskSettings = "string",
+    Status = "string",
+    LastFailureMessage = "string",
+    StopReason = "string",
+    ReplicationTaskCreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ReplicationTaskStartDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CdcStartPosition = "string",
+    CdcStopPosition = "string",
+    RecoveryCheckpoint = "string",
+    ReplicationTaskArn = "string",
+    ReplicationTaskStats = list(
+      FullLoadProgressPercent = 123,
+      ElapsedTimeMillis = 123,
+      TablesLoaded = 123,
+      TablesLoading = 123,
+      TablesQueued = 123,
+      TablesErrored = 123,
+      FreshStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      StartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      StopDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      FullLoadStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      FullLoadFinishDate = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    TaskData = "string",
+    TargetReplicationInstanceArn = "string"
+  )
+)
+}
 }
 \description{
 Starts the replication task.

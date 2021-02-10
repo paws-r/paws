@@ -23,6 +23,24 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Route = list(
+    DestinationCidrBlock = "string",
+    PrefixListId = "string",
+    TransitGatewayAttachments = list(
+      list(
+        ResourceId = "string",
+        TransitGatewayAttachmentId = "string",
+        ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering"
+      )
+    ),
+    Type = "static"|"propagated",
+    State = "pending"|"active"|"blackhole"|"deleting"|"deleted"
+  )
+)
+}
+}
 \description{
 Creates a static route for the specified transit gateway route table.
 }

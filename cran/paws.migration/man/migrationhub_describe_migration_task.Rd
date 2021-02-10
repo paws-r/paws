@@ -14,6 +14,29 @@ migrationhub_describe_migration_task(ProgressUpdateStream,
 \item{MigrationTaskName}{[required] The identifier given to the MigrationTask. \emph{Do not store personal data
 in this field.}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MigrationTask = list(
+    ProgressUpdateStream = "string",
+    MigrationTaskName = "string",
+    Task = list(
+      Status = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+      StatusDetail = "string",
+      ProgressPercent = 123
+    ),
+    UpdateDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ResourceAttributeList = list(
+      list(
+        Type = "IPV4_ADDRESS"|"IPV6_ADDRESS"|"MAC_ADDRESS"|"FQDN"|"VM_MANAGER_ID"|"VM_MANAGED_OBJECT_REFERENCE"|"VM_NAME"|"VM_PATH"|"BIOS_ID"|"MOTHERBOARD_SERIAL_NUMBER",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves a list of all attributes associated with a specific migration
 task.

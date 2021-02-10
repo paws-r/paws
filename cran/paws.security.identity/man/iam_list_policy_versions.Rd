@@ -30,6 +30,23 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Versions = list(
+    list(
+      Document = "string",
+      VersionId = "string",
+      IsDefaultVersion = TRUE|FALSE,
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Lists information about the versions of the specified managed policy,
 including the version that is currently set as the policy's default

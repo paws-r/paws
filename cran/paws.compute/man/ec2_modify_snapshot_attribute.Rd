@@ -26,6 +26,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or removes permission settings for the specified snapshot. You may
 add or remove specified AWS account IDs from a snapshot's list of create

@@ -11,6 +11,9 @@ greengrass_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] An array of tag keys to delete}
 }
+\value{
+An empty list.
+}
 \description{
 Remove resource tags from a Greengrass Resource.
 }

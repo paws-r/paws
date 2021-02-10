@@ -33,6 +33,42 @@ want to list services for.
 If you specify more than one filter, an operation must match all filters
 to be returned by \code{\link[=servicediscovery_list_services]{list_services}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Services = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Description = "string",
+      InstanceCount = 123,
+      DnsConfig = list(
+        NamespaceId = "string",
+        RoutingPolicy = "MULTIVALUE"|"WEIGHTED",
+        DnsRecords = list(
+          list(
+            Type = "SRV"|"A"|"AAAA"|"CNAME",
+            TTL = 123
+          )
+        )
+      ),
+      HealthCheckConfig = list(
+        Type = "HTTP"|"HTTPS"|"TCP",
+        ResourcePath = "string",
+        FailureThreshold = 123
+      ),
+      HealthCheckCustomConfig = list(
+        FailureThreshold = 123
+      ),
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists summary information for all the services that are associated with
 one or more specified namespaces.

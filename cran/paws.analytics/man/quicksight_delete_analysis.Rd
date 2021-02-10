@@ -21,6 +21,18 @@ value is 30.}
 immediately delete the analysis, add the \code{ForceDeleteWithoutRecovery}
 option. You can't restore an analysis after it's deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = 123,
+  Arn = "string",
+  AnalysisId = "string",
+  DeletionTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  RequestId = "string"
+)
+}
+}
 \description{
 Deletes an analysis from Amazon QuickSight. You can optionally include a
 recovery window during which you can restore the analysis. If you don't

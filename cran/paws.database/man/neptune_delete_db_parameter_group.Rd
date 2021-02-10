@@ -16,6 +16,9 @@ Constraints:
 \item Cannot be associated with any DB instances
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted
 can't be associated with any DB instances.

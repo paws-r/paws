@@ -14,6 +14,12 @@ sagemaker_update_endpoint_weights_and_capacities(EndpointName,
 
 \item{DesiredWeightsAndCapacities}{[required] An object that provides new capacity and weight values for a variant.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointArn = "string"
+)
+}
+}
 \description{
 Updates variant weight of one or more variants associated with an
 existing endpoint, or capacity of one variant associated with an

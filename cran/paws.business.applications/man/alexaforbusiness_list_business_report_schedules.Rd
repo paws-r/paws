@@ -12,6 +12,39 @@ call.}
 
 \item{MaxResults}{The maximum number of schedules listed in the call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BusinessReportSchedules = list(
+    list(
+      ScheduleArn = "string",
+      ScheduleName = "string",
+      S3BucketName = "string",
+      S3KeyPrefix = "string",
+      Format = "CSV"|"CSV_ZIP",
+      ContentRange = list(
+        Interval = "ONE_DAY"|"ONE_WEEK"|"THIRTY_DAYS"
+      ),
+      Recurrence = list(
+        StartDate = "string"
+      ),
+      LastBusinessReport = list(
+        Status = "RUNNING"|"SUCCEEDED"|"FAILED",
+        FailureCode = "ACCESS_DENIED"|"NO_SUCH_BUCKET"|"INTERNAL_FAILURE",
+        S3Location = list(
+          Path = "string",
+          BucketName = "string"
+        ),
+        DeliveryTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        DownloadUrl = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the details of the schedules that a user configured. A download
 URL of the report associated with each schedule is returned every time

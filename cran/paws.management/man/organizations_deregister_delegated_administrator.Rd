@@ -20,6 +20,9 @@ AWS service from the member account. If the specified service is the
 only service for which the member account is a delegated administrator,
 the operation also revokes Organizations read action permissions.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified member AWS account as a delegated administrator
 for the specified AWS service.

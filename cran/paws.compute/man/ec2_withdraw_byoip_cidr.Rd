@@ -15,6 +15,17 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ByoipCidr = list(
+    Cidr = "string",
+    Description = "string",
+    StatusMessage = "string",
+    State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+  )
+)
+}
+}
 \description{
 Stops advertising an address range that is provisioned as an address
 pool.

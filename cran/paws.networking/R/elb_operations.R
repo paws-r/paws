@@ -23,6 +23,9 @@ NULL
 #' @param LoadBalancerNames &#91;required&#93; The name of the load balancer. You can specify one load balancer only.
 #' @param Tags &#91;required&#93; The tags.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_tags(
@@ -98,6 +101,16 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
 #' @param SecurityGroups &#91;required&#93; The IDs of the security groups to associate with the load balancer. Note
 #' that you cannot specify the name of the security group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityGroups = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$apply_security_groups_to_load_balancer(
@@ -160,6 +173,16 @@ elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, Securit
 #' @param Subnets &#91;required&#93; The IDs of the subnets to add. You can add only one subnet per
 #' Availability Zone.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subnets = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_load_balancer_to_subnets(
@@ -218,6 +241,20 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param HealthCheck &#91;required&#93; The configuration information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthCheck = list(
+#'     Target = "string",
+#'     Interval = 123,
+#'     Timeout = 123,
+#'     UnhealthyThreshold = 123,
+#'     HealthyThreshold = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -302,6 +339,9 @@ elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
 #' the set of policies for this load balancer.
 #' @param CookieName &#91;required&#93; The name of the application cookie used for stickiness.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_app_cookie_stickiness_policy(
@@ -380,6 +420,9 @@ elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName
 #' stale. If you do not specify this parameter, the default value is 0,
 #' which indicates that the sticky session should last for the duration of
 #' the browser session.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -488,6 +531,14 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' Classic Load
 #' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
 #' in the *Classic Load Balancers Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DNSName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -669,6 +720,9 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Listeners &#91;required&#93; The listeners.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_load_balancer_listeners(
@@ -759,6 +813,9 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #' [`describe_load_balancer_policy_types`][elb_describe_load_balancer_policy_types].
 #' @param PolicyAttributes The policy attributes.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_load_balancer_policy(
@@ -796,7 +853,7 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #'   PolicyAttributes = list(
 #'     list(
 #'       AttributeName = "PublicKey",
-#'       AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjhFWBpMlg..."
+#'       AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjh..."
 #'     )
 #'   ),
 #'   PolicyName = "my-PublicKey-policy",
@@ -858,6 +915,9 @@ elb_create_load_balancer_policy <- function(LoadBalancerName, PolicyName, Policy
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_load_balancer(
@@ -903,6 +963,9 @@ elb_delete_load_balancer <- function(LoadBalancerName) {
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param LoadBalancerPorts &#91;required&#93; The client port numbers of the listeners.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -957,6 +1020,9 @@ elb_delete_load_balancer_listeners <- function(LoadBalancerName, LoadBalancerPor
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param PolicyName &#91;required&#93; The name of the policy.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1015,6 +1081,18 @@ elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Instances &#91;required&#93; The IDs of the instances.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = list(
+#'     list(
+#'       InstanceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1080,6 +1158,20 @@ elb_deregister_instances_from_load_balancer <- function(LoadBalancerName, Instan
 #' previous call.)
 #' @param PageSize The maximum number of results to return with this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Limits = list(
+#'     list(
+#'       Name = "string",
+#'       Max = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_limits(
@@ -1124,6 +1216,21 @@ elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Instances The IDs of the instances.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceStates = list(
+#'     list(
+#'       InstanceId = "string",
+#'       State = "string",
+#'       ReasonCode = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1175,6 +1282,37 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
 #' elb_describe_load_balancer_attributes(LoadBalancerName)
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoadBalancerAttributes = list(
+#'     CrossZoneLoadBalancing = list(
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     AccessLog = list(
+#'       Enabled = TRUE|FALSE,
+#'       S3BucketName = "string",
+#'       EmitInterval = 123,
+#'       S3BucketPrefix = "string"
+#'     ),
+#'     ConnectionDraining = list(
+#'       Enabled = TRUE|FALSE,
+#'       Timeout = 123
+#'     ),
+#'     ConnectionSettings = list(
+#'       IdleTimeout = 123
+#'     ),
+#'     AdditionalAttributes = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1229,6 +1367,25 @@ elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
 #'
 #' @param LoadBalancerName The name of the load balancer.
 #' @param PolicyNames The names of the policies.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyDescriptions = list(
+#'     list(
+#'       PolicyName = "string",
+#'       PolicyTypeName = "string",
+#'       PolicyAttributeDescriptions = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeValue = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1299,6 +1456,28 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
 #' @param PolicyTypeNames The names of the policy types. If no names are specified, describes all
 #' policy types defined by Elastic Load Balancing.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyTypeDescriptions = list(
+#'     list(
+#'       PolicyTypeName = "string",
+#'       Description = "string",
+#'       PolicyAttributeTypeDescriptions = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeType = "string",
+#'           Description = "string",
+#'           DefaultValue = "string",
+#'           Cardinality = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_load_balancer_policy_types(
@@ -1353,6 +1532,91 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
 #' @param PageSize The maximum number of results to return with this call (a number from 1
 #' to 400). The default is 400.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoadBalancerDescriptions = list(
+#'     list(
+#'       LoadBalancerName = "string",
+#'       DNSName = "string",
+#'       CanonicalHostedZoneName = "string",
+#'       CanonicalHostedZoneNameID = "string",
+#'       ListenerDescriptions = list(
+#'         list(
+#'           Listener = list(
+#'             Protocol = "string",
+#'             LoadBalancerPort = 123,
+#'             InstanceProtocol = "string",
+#'             InstancePort = 123,
+#'             SSLCertificateId = "string"
+#'           ),
+#'           PolicyNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       Policies = list(
+#'         AppCookieStickinessPolicies = list(
+#'           list(
+#'             PolicyName = "string",
+#'             CookieName = "string"
+#'           )
+#'         ),
+#'         LBCookieStickinessPolicies = list(
+#'           list(
+#'             PolicyName = "string",
+#'             CookieExpirationPeriod = 123
+#'           )
+#'         ),
+#'         OtherPolicies = list(
+#'           "string"
+#'         )
+#'       ),
+#'       BackendServerDescriptions = list(
+#'         list(
+#'           InstancePort = 123,
+#'           PolicyNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       ),
+#'       VPCId = "string",
+#'       Instances = list(
+#'         list(
+#'           InstanceId = "string"
+#'         )
+#'       ),
+#'       HealthCheck = list(
+#'         Target = "string",
+#'         Interval = 123,
+#'         Timeout = 123,
+#'         UnhealthyThreshold = 123,
+#'         HealthyThreshold = 123
+#'       ),
+#'       SourceSecurityGroup = list(
+#'         OwnerAlias = "string",
+#'         GroupName = "string"
+#'       ),
+#'       SecurityGroups = list(
+#'         "string"
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Scheme = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_load_balancers(
@@ -1403,6 +1667,24 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
 #' elb_describe_tags(LoadBalancerNames)
 #'
 #' @param LoadBalancerNames &#91;required&#93; The names of the load balancers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagDescriptions = list(
+#'     list(
+#'       LoadBalancerName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1460,6 +1742,16 @@ elb_describe_tags <- function(LoadBalancerNames) {
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Subnets &#91;required&#93; The IDs of the subnets.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subnets = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1531,6 +1823,16 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param AvailabilityZones &#91;required&#93; The Availability Zones.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AvailabilityZones = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_availability_zones_for_load_balancer(
@@ -1596,6 +1898,16 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param AvailabilityZones &#91;required&#93; The Availability Zones. These must be in the same region as the load
 #' balancer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AvailabilityZones = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1671,6 +1983,38 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param LoadBalancerAttributes &#91;required&#93; The attributes for the load balancer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoadBalancerName = "string",
+#'   LoadBalancerAttributes = list(
+#'     CrossZoneLoadBalancing = list(
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     AccessLog = list(
+#'       Enabled = TRUE|FALSE,
+#'       S3BucketName = "string",
+#'       EmitInterval = 123,
+#'       S3BucketPrefix = "string"
+#'     ),
+#'     ConnectionDraining = list(
+#'       Enabled = TRUE|FALSE,
+#'       Timeout = 123
+#'     ),
+#'     ConnectionSettings = list(
+#'       IdleTimeout = 123
+#'     ),
+#'     AdditionalAttributes = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1786,6 +2130,18 @@ elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAt
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Instances &#91;required&#93; The IDs of the instances.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = list(
+#'     list(
+#'       InstanceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_instances_with_load_balancer(
@@ -1843,6 +2199,9 @@ elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instance
 #' @param LoadBalancerNames &#91;required&#93; The name of the load balancer. You can specify a maximum of one load
 #' balancer name.
 #' @param Tags &#91;required&#93; The list of tag keys to remove.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1913,6 +2272,9 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param LoadBalancerPort &#91;required&#93; The port that uses the specified SSL certificate.
 #' @param SSLCertificateId &#91;required&#93; The Amazon Resource Name (ARN) of the SSL certificate.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1990,6 +2352,9 @@ elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, Loa
 #' @param PolicyNames &#91;required&#93; The names of the policies. If the list is empty, then all current
 #' polices are removed from the EC2 instance.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_load_balancer_policies_for_backend_server(
@@ -2062,6 +2427,9 @@ elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, 
 #' @param PolicyNames &#91;required&#93; The names of the policies. This list must include all policies to be
 #' enabled. If you omit a policy that is currently enabled, it is disabled.
 #' If the list is empty, all current policies are disabled.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

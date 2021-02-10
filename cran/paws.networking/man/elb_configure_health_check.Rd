@@ -12,6 +12,18 @@ elb_configure_health_check(LoadBalancerName, HealthCheck)
 
 \item{HealthCheck}{[required] The configuration information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HealthCheck = list(
+    Target = "string",
+    Interval = 123,
+    Timeout = 123,
+    UnhealthyThreshold = 123,
+    HealthyThreshold = 123
+  )
+)
+}
+}
 \description{
 Specifies the health check settings to use when evaluating the health
 state of your EC2 instances.

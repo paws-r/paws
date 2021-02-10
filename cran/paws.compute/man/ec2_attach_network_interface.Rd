@@ -23,6 +23,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 network cards. The primary network interface must be assigned to network
 card index 0. The default is network card index 0.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttachmentId = "string",
+  NetworkCardIndex = 123
+)
+}
+}
 \description{
 Attaches a network interface to an instance.
 }

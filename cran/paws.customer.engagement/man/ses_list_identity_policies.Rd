@@ -16,6 +16,14 @@ using its Amazon Resource Name (ARN). Examples: \code{user@example.com},
 
 To successfully call this API, you must own the identity.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyNames = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of sending authorization policies that are attached to
 the given identity (an email address or a domain). This API returns only

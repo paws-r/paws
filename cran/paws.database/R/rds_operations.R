@@ -26,6 +26,9 @@ NULL
 #' associated with. For the list of supported feature names, see
 #' DBEngineVersion.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_role_to_db_cluster(
@@ -74,6 +77,9 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName
 #' @param FeatureName &#91;required&#93; The name of the feature for the DB instance that the IAM role is to be
 #' associated with. For the list of supported feature names, see
 #' DBEngineVersion.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -139,6 +145,29 @@ rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureNa
 #' -   If the source type is a DB cluster snapshot, a
 #'     `DBClusterSnapshotIdentifier` value must be supplied.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_source_identifier_to_subscription(
@@ -186,6 +215,9 @@ rds_add_source_identifier_to_subscription <- function(SubscriptionName, SourceId
 #' [Constructing an RDS Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 #' @param Tags &#91;required&#93; The tags to be assigned to the Amazon RDS resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -251,6 +283,32 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
 #' 
 #' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
 #'     requests.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourcePendingMaintenanceActions = list(
+#'     ResourceIdentifier = "string",
+#'     PendingMaintenanceActionDetails = list(
+#'       list(
+#'         Action = "string",
+#'         AutoAppliedAfterDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ForcedApplyDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         OptInStatus = "string",
+#'         CurrentApplyDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Description = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -321,6 +379,34 @@ rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction
 #' acceptable value. For VPC DB security groups, `EC2SecurityGroupId` must
 #' be provided. Otherwise, `EC2SecurityGroupOwnerId` and either
 #' `EC2SecurityGroupName` or `EC2SecurityGroupId` must be provided.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSecurityGroup = list(
+#'     OwnerId = "string",
+#'     DBSecurityGroupName = "string",
+#'     DBSecurityGroupDescription = "string",
+#'     VpcId = "string",
+#'     EC2SecurityGroups = list(
+#'       list(
+#'         Status = "string",
+#'         EC2SecurityGroupName = "string",
+#'         EC2SecurityGroupId = "string",
+#'         EC2SecurityGroupOwnerId = "string"
+#'       )
+#'     ),
+#'     IPRanges = list(
+#'       list(
+#'         Status = "string",
+#'         CIDRIP = "string"
+#'       )
+#'     ),
+#'     DBSecurityGroupArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -406,6 +492,25 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
 #' is disabled and *BacktrackTo* is set to a timestamp earlier than the
 #' earliest backtrack time, an error occurs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterIdentifier = "string",
+#'   BacktrackIdentifier = "string",
+#'   BacktrackTo = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   BacktrackedFrom = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   BacktrackRequestCreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$backtrack_db_cluster(
@@ -450,6 +555,36 @@ rds_backtrack_db_cluster <- function(DBClusterIdentifier, BacktrackTo, Force = N
 #' rds_cancel_export_task(ExportTaskIdentifier)
 #'
 #' @param ExportTaskIdentifier &#91;required&#93; The identifier of the snapshot export task to cancel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportTaskIdentifier = "string",
+#'   SourceArn = "string",
+#'   ExportOnly = list(
+#'     "string"
+#'   ),
+#'   SnapshotTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TaskStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TaskEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   S3Bucket = "string",
+#'   S3Prefix = "string",
+#'   IamRoleArn = "string",
+#'   KmsKeyId = "string",
+#'   Status = "string",
+#'   PercentProgress = 123,
+#'   TotalExtractedDataInGB = 123,
+#'   FailureCause = "string",
+#'   WarningMessage = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -524,6 +659,19 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 #' Example: `my-cluster-param-group1`
 #' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied DB cluster parameter group.
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterParameterGroup = list(
+#'     DBClusterParameterGroupName = "string",
+#'     DBParameterGroupFamily = "string",
+#'     Description = "string",
+#'     DBClusterParameterGroupArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -759,6 +907,47 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' @param Tags 
 #' @param SourceRegion The ID of the region that contains the snapshot to be copied.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterSnapshot = list(
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     DBClusterSnapshotIdentifier = "string",
+#'     DBClusterIdentifier = "string",
+#'     SnapshotCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Engine = "string",
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     VpcId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     SnapshotType = "string",
+#'     PercentProgress = 123,
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DBClusterSnapshotArn = "string",
+#'     SourceDBClusterSnapshotArn = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_db_cluster_snapshot(
@@ -833,6 +1022,19 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #' Example: `my-db-parameter-group`
 #' @param TargetDBParameterGroupDescription &#91;required&#93; A description for the copied DB parameter group.
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBParameterGroup = list(
+#'     DBParameterGroupName = "string",
+#'     DBParameterGroupFamily = "string",
+#'     Description = "string",
+#'     DBParameterGroupArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1022,6 +1224,58 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' Example: `rds-caz-aiqhTgQv`.
 #' @param SourceRegion The ID of the region that contains the snapshot to be copied.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSnapshot = list(
+#'     DBSnapshotIdentifier = "string",
+#'     DBInstanceIdentifier = "string",
+#'     SnapshotCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Engine = "string",
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     AvailabilityZone = "string",
+#'     VpcId = "string",
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     SnapshotType = "string",
+#'     Iops = 123,
+#'     OptionGroupName = "string",
+#'     PercentProgress = 123,
+#'     SourceRegion = "string",
+#'     SourceDBSnapshotIdentifier = "string",
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     Encrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DBSnapshotArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DbiResourceId = "string",
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_db_snapshot(
@@ -1092,6 +1346,57 @@ rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIde
 #' @param TargetOptionGroupDescription &#91;required&#93; The description for the copied option group.
 #' @param Tags 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OptionGroup = list(
+#'     OptionGroupName = "string",
+#'     OptionGroupDescription = "string",
+#'     EngineName = "string",
+#'     MajorEngineVersion = "string",
+#'     Options = list(
+#'       list(
+#'         OptionName = "string",
+#'         OptionDescription = "string",
+#'         Persistent = TRUE|FALSE,
+#'         Permanent = TRUE|FALSE,
+#'         Port = 123,
+#'         OptionVersion = "string",
+#'         OptionSettings = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string",
+#'             DefaultValue = "string",
+#'             Description = "string",
+#'             ApplyType = "string",
+#'             DataType = "string",
+#'             AllowedValues = "string",
+#'             IsModifiable = TRUE|FALSE,
+#'             IsCollection = TRUE|FALSE
+#'           )
+#'         ),
+#'         DBSecurityGroupMemberships = list(
+#'           list(
+#'             DBSecurityGroupName = "string",
+#'             Status = "string"
+#'           )
+#'         ),
+#'         VpcSecurityGroupMemberships = list(
+#'           list(
+#'             VpcSecurityGroupId = "string",
+#'             Status = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
+#'     VpcId = "string",
+#'     OptionGroupArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_option_group(
@@ -1153,6 +1458,26 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' custom AZ receives the network traffic.
 #' 
 #' Specify this parameter only if `ExistingVpnId` isn't specified.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomAvailabilityZone = list(
+#'     CustomAvailabilityZoneId = "string",
+#'     CustomAvailabilityZoneName = "string",
+#'     CustomAvailabilityZoneStatus = "string",
+#'     VpnDetails = list(
+#'       VpnId = "string",
+#'       VpnTunnelOriginatorIP = "string",
+#'       VpnGatewayIp = "string",
+#'       VpnPSK = "string",
+#'       VpnName = "string",
+#'       VpnState = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1267,17 +1592,17 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' To list all of the available engine versions for `aurora` (for MySQL
 #' 5.6-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-mysql` (for
 #' MySQL 5.7-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-postgresql`,
 #' use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' **Aurora MySQL**
 #' 
@@ -1518,6 +1843,141 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' operations for secondary clusters.
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_db_cluster(
@@ -1620,6 +2080,27 @@ rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPerio
 #' group. All other eligible instances are reachable through the custom
 #' endpoint. Only relevant if the list of static members is empty.
 #' @param Tags The tags to be assigned to the Amazon RDS resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterEndpointIdentifier = "string",
+#'   DBClusterIdentifier = "string",
+#'   DBClusterEndpointResourceIdentifier = "string",
+#'   Endpoint = "string",
+#'   Status = "string",
+#'   EndpointType = "string",
+#'   CustomEndpointType = "string",
+#'   StaticMembers = list(
+#'     "string"
+#'   ),
+#'   ExcludedMembers = list(
+#'     "string"
+#'   ),
+#'   DBClusterEndpointArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1728,6 +2209,19 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' @param Description &#91;required&#93; The description for the DB cluster parameter group.
 #' @param Tags Tags to assign to the DB cluster parameter group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterParameterGroup = list(
+#'     DBClusterParameterGroupName = "string",
+#'     DBParameterGroupFamily = "string",
+#'     Description = "string",
+#'     DBClusterParameterGroupArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_db_cluster_parameter_group(
@@ -1798,6 +2292,47 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
 #' 
 #' Example: `my-cluster1`
 #' @param Tags The tags to be assigned to the DB cluster snapshot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterSnapshot = list(
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     DBClusterSnapshotIdentifier = "string",
+#'     DBClusterIdentifier = "string",
+#'     SnapshotCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Engine = "string",
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     VpcId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     SnapshotType = "string",
+#'     PercentProgress = 123,
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DBClusterSnapshotArn = "string",
+#'     SourceDBClusterSnapshotArn = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2591,6 +3126,197 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
 #' in the *AWS Outposts User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_db_instance(
@@ -3030,6 +3756,197 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' of the DB instance.
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_db_instance_read_replica(
@@ -3152,11 +4069,24 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #' To list all of the available parameter group families, use the following
 #' command:
 #' 
-#' `aws rds describe-db-engine-versions --query "DBEngineVersions\\[\\].DBParameterGroupFamily"`
+#' `aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily"`
 #' 
 #' The output contains duplicates.
 #' @param Description &#91;required&#93; The description for the DB parameter group.
 #' @param Tags Tags to assign to the DB parameter group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBParameterGroup = list(
+#'     DBParameterGroupName = "string",
+#'     DBParameterGroupFamily = "string",
+#'     Description = "string",
+#'     DBParameterGroupArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3232,6 +4162,45 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 #' safeguard any sensitive information that appears in the logs.
 #' @param Tags An optional set of key-value pairs to associate arbitrary data of your
 #' choosing with the proxy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxy = list(
+#'     DBProxyName = "string",
+#'     DBProxyArn = "string",
+#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
+#'     EngineFamily = "string",
+#'     VpcSecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     VpcSubnetIds = list(
+#'       "string"
+#'     ),
+#'     Auth = list(
+#'       list(
+#'         Description = "string",
+#'         UserName = "string",
+#'         AuthScheme = "SECRETS",
+#'         SecretArn = "string",
+#'         IAMAuth = "DISABLED"|"REQUIRED"
+#'       )
+#'     ),
+#'     RoleArn = "string",
+#'     Endpoint = "string",
+#'     RequireTLS = TRUE|FALSE,
+#'     IdleClientTimeout = 123,
+#'     DebugLogging = TRUE|FALSE,
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3316,6 +4285,34 @@ rds_create_db_proxy <- function(DBProxyName, EngineFamily, Auth, RoleArn, VpcSub
 #' @param DBSecurityGroupDescription &#91;required&#93; The description for the DB security group.
 #' @param Tags Tags to assign to the DB security group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSecurityGroup = list(
+#'     OwnerId = "string",
+#'     DBSecurityGroupName = "string",
+#'     DBSecurityGroupDescription = "string",
+#'     VpcId = "string",
+#'     EC2SecurityGroups = list(
+#'       list(
+#'         Status = "string",
+#'         EC2SecurityGroupName = "string",
+#'         EC2SecurityGroupId = "string",
+#'         EC2SecurityGroupOwnerId = "string"
+#'       )
+#'     ),
+#'     IPRanges = list(
+#'       list(
+#'         Status = "string",
+#'         CIDRIP = "string"
+#'       )
+#'     ),
+#'     DBSecurityGroupArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_db_security_group(
@@ -3380,6 +4377,58 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #' -   Must match the identifier of an existing DBInstance.
 #' @param Tags 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSnapshot = list(
+#'     DBSnapshotIdentifier = "string",
+#'     DBInstanceIdentifier = "string",
+#'     SnapshotCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Engine = "string",
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     AvailabilityZone = "string",
+#'     VpcId = "string",
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     SnapshotType = "string",
+#'     Iops = 123,
+#'     OptionGroupName = "string",
+#'     PercentProgress = 123,
+#'     SourceRegion = "string",
+#'     SourceDBSnapshotIdentifier = "string",
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     Encrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DBSnapshotArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DbiResourceId = "string",
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_db_snapshot(
@@ -3434,6 +4483,32 @@ rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, T
 #' @param DBSubnetGroupDescription &#91;required&#93; The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 Subnet IDs for the DB subnet group.
 #' @param Tags Tags to assign to the DB subnet group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSubnetGroup = list(
+#'     DBSubnetGroupName = "string",
+#'     DBSubnetGroupDescription = "string",
+#'     VpcId = "string",
+#'     SubnetGroupStatus = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetIdentifier = "string",
+#'         SubnetAvailabilityZone = list(
+#'           Name = "string"
+#'         ),
+#'         SubnetOutpost = list(
+#'           Arn = "string"
+#'         ),
+#'         SubnetStatus = "string"
+#'       )
+#'     ),
+#'     DBSubnetGroupArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3558,6 +4633,29 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' created but not active.
 #' @param Tags 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_event_subscription(
@@ -3633,6 +4731,34 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 #' global database cluster you are creating.
 #' @param StorageEncrypted The storage encryption setting for the new global database cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE,
+#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_global_cluster(
@@ -3693,6 +4819,57 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #' @param OptionGroupDescription &#91;required&#93; The description of the option group.
 #' @param Tags Tags to assign to the option group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OptionGroup = list(
+#'     OptionGroupName = "string",
+#'     OptionGroupDescription = "string",
+#'     EngineName = "string",
+#'     MajorEngineVersion = "string",
+#'     Options = list(
+#'       list(
+#'         OptionName = "string",
+#'         OptionDescription = "string",
+#'         Persistent = TRUE|FALSE,
+#'         Permanent = TRUE|FALSE,
+#'         Port = 123,
+#'         OptionVersion = "string",
+#'         OptionSettings = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string",
+#'             DefaultValue = "string",
+#'             Description = "string",
+#'             ApplyType = "string",
+#'             DataType = "string",
+#'             AllowedValues = "string",
+#'             IsModifiable = TRUE|FALSE,
+#'             IsCollection = TRUE|FALSE
+#'           )
+#'         ),
+#'         DBSecurityGroupMemberships = list(
+#'           list(
+#'             DBSecurityGroupName = "string",
+#'             Status = "string"
+#'           )
+#'         ),
+#'         VpcSecurityGroupMemberships = list(
+#'           list(
+#'             VpcSecurityGroupId = "string",
+#'             Status = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
+#'     VpcId = "string",
+#'     OptionGroupArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_option_group(
@@ -3744,6 +4921,26 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' rds_delete_custom_availability_zone(CustomAvailabilityZoneId)
 #'
 #' @param CustomAvailabilityZoneId &#91;required&#93; The custom AZ identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomAvailabilityZone = list(
+#'     CustomAvailabilityZoneId = "string",
+#'     CustomAvailabilityZoneName = "string",
+#'     CustomAvailabilityZoneStatus = "string",
+#'     VpnDetails = list(
+#'       VpnId = "string",
+#'       VpnTunnelOriginatorIP = "string",
+#'       VpnGatewayIp = "string",
+#'       VpnPSK = "string",
+#'       VpnName = "string",
+#'       VpnState = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3820,6 +5017,141 @@ rds_delete_custom_availability_zone <- function(CustomAvailabilityZoneId) {
 #' 
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_db_cluster(
@@ -3863,6 +5195,27 @@ rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL,
 #'
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier associated with the custom endpoint. This parameter is
 #' stored as a lowercase string.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterEndpointIdentifier = "string",
+#'   DBClusterIdentifier = "string",
+#'   DBClusterEndpointResourceIdentifier = "string",
+#'   Endpoint = "string",
+#'   Status = "string",
+#'   EndpointType = "string",
+#'   CustomEndpointType = "string",
+#'   StaticMembers = list(
+#'     "string"
+#'   ),
+#'   ExcludedMembers = list(
+#'     "string"
+#'   ),
+#'   DBClusterEndpointArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3916,6 +5269,9 @@ rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' 
 #' -   Can't be associated with any DB clusters.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_db_cluster_parameter_group(
@@ -3964,6 +5320,47 @@ rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
 #' 
 #' Constraints: Must be the name of an existing DB cluster snapshot in the
 #' `available` state.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterSnapshot = list(
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     DBClusterSnapshotIdentifier = "string",
+#'     DBClusterIdentifier = "string",
+#'     SnapshotCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Engine = "string",
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     VpcId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     SnapshotType = "string",
+#'     PercentProgress = 123,
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DBClusterSnapshotArn = "string",
+#'     SourceDBClusterSnapshotArn = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4071,6 +5468,197 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' The default is to remove automated backups immediately after the DB
 #' instance is deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_db_instance(
@@ -4117,6 +5705,54 @@ rds_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NUL
 #' @param DBInstanceAutomatedBackupsArn The Amazon Resource Name (ARN) of the automated backups to delete, for
 #' example,
 #' `arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstanceAutomatedBackup = list(
+#'     DBInstanceArn = "string",
+#'     DbiResourceId = "string",
+#'     Region = "string",
+#'     DBInstanceIdentifier = "string",
+#'     RestoreWindow = list(
+#'       EarliestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     AvailabilityZone = "string",
+#'     VpcId = "string",
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupName = "string",
+#'     TdeCredentialArn = "string",
+#'     Encrypted = TRUE|FALSE,
+#'     StorageType = "string",
+#'     KmsKeyId = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     BackupRetentionPeriod = 123,
+#'     DBInstanceAutomatedBackupsArn = "string",
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4165,6 +5801,9 @@ rds_delete_db_instance_automated_backup <- function(DbiResourceId = NULL, DBInst
 #' 
 #' -   Can't be associated with any DB instances
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_db_parameter_group(
@@ -4201,6 +5840,45 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
 #' rds_delete_db_proxy(DBProxyName)
 #'
 #' @param DBProxyName &#91;required&#93; The name of the DB proxy to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxy = list(
+#'     DBProxyName = "string",
+#'     DBProxyArn = "string",
+#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
+#'     EngineFamily = "string",
+#'     VpcSecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     VpcSubnetIds = list(
+#'       "string"
+#'     ),
+#'     Auth = list(
+#'       list(
+#'         Description = "string",
+#'         UserName = "string",
+#'         AuthScheme = "SECRETS",
+#'         SecretArn = "string",
+#'         IAMAuth = "DISABLED"|"REQUIRED"
+#'       )
+#'     ),
+#'     RoleArn = "string",
+#'     Endpoint = "string",
+#'     RequireTLS = TRUE|FALSE,
+#'     IdleClientTimeout = 123,
+#'     DebugLogging = TRUE|FALSE,
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4254,6 +5932,9 @@ rds_delete_db_proxy <- function(DBProxyName) {
 #' 
 #' -   Must not be "Default"
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_db_security_group(
@@ -4296,6 +5977,58 @@ rds_delete_db_security_group <- function(DBSecurityGroupName) {
 #' 
 #' Constraints: Must be the name of an existing DB snapshot in the
 #' `available` state.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSnapshot = list(
+#'     DBSnapshotIdentifier = "string",
+#'     DBInstanceIdentifier = "string",
+#'     SnapshotCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Engine = "string",
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     AvailabilityZone = "string",
+#'     VpcId = "string",
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     SnapshotType = "string",
+#'     Iops = 123,
+#'     OptionGroupName = "string",
+#'     PercentProgress = 123,
+#'     SourceRegion = "string",
+#'     SourceDBSnapshotIdentifier = "string",
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     Encrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DBSnapshotArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DbiResourceId = "string",
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4346,6 +6079,9 @@ rds_delete_db_snapshot <- function(DBSnapshotIdentifier) {
 #' 
 #' Example: `mySubnetgroup`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_db_subnet_group(
@@ -4382,6 +6118,29 @@ rds_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' rds_delete_event_subscription(SubscriptionName)
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the RDS event notification subscription you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4423,6 +6182,34 @@ rds_delete_event_subscription <- function(SubscriptionName) {
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global database cluster being deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE,
+#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_global_cluster(
@@ -4462,6 +6249,23 @@ rds_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #'
 #' @param InstallationMediaId &#91;required&#93; The installation medium ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstallationMediaId = "string",
+#'   CustomAvailabilityZoneId = "string",
+#'   Engine = "string",
+#'   EngineVersion = "string",
+#'   EngineInstallationMediaPath = "string",
+#'   OSInstallationMediaPath = "string",
+#'   Status = "string",
+#'   FailureCause = list(
+#'     Message = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_installation_media(
@@ -4500,6 +6304,9 @@ rds_delete_installation_media <- function(InstallationMediaId) {
 #' @param OptionGroupName &#91;required&#93; The name of the option group to be deleted.
 #' 
 #' You can't delete default option groups.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4544,6 +6351,9 @@ rds_delete_option_group <- function(OptionGroupName) {
 #' @param TargetGroupName The identifier of the `DBProxyTargetGroup`.
 #' @param DBInstanceIdentifiers One or more DB instance identifiers.
 #' @param DBClusterIdentifiers One or more DB cluster identifiers.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4591,6 +6401,20 @@ rds_deregister_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL,
 #'
 #' @usage
 #' rds_describe_account_attributes()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountQuotas = list(
+#'     list(
+#'       AccountQuotaName = "string",
+#'       Used = 123,
+#'       Max = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4648,6 +6472,32 @@ rds_describe_account_attributes <- function() {
 #' [`describe_certificates`][rds_describe_certificates] request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificates = list(
+#'     list(
+#'       CertificateIdentifier = "string",
+#'       CertificateType = "string",
+#'       Thumbprint = "string",
+#'       ValidFrom = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ValidTill = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CertificateArn = "string",
+#'       CustomerOverride = TRUE|FALSE,
+#'       CustomerOverrideValidTill = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4716,6 +6566,29 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 #' [`describe_custom_availability_zones`][rds_describe_custom_availability_zones]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   CustomAvailabilityZones = list(
+#'     list(
+#'       CustomAvailabilityZoneId = "string",
+#'       CustomAvailabilityZoneName = "string",
+#'       CustomAvailabilityZoneStatus = "string",
+#'       VpnDetails = list(
+#'         VpnId = "string",
+#'         VpnTunnelOriginatorIP = "string",
+#'         VpnGatewayIp = "string",
+#'         VpnPSK = "string",
+#'         VpnName = "string",
+#'         VpnState = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4824,6 +6697,30 @@ rds_describe_custom_availability_zones <- function(CustomAvailabilityZoneId = NU
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBClusterBacktracks = list(
+#'     list(
+#'       DBClusterIdentifier = "string",
+#'       BacktrackIdentifier = "string",
+#'       BacktrackTo = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       BacktrackedFrom = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       BacktrackRequestCreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_cluster_backtracks(
@@ -4901,6 +6798,32 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBClusterEndpoints = list(
+#'     list(
+#'       DBClusterEndpointIdentifier = "string",
+#'       DBClusterIdentifier = "string",
+#'       DBClusterEndpointResourceIdentifier = "string",
+#'       Endpoint = "string",
+#'       Status = "string",
+#'       EndpointType = "string",
+#'       CustomEndpointType = "string",
+#'       StaticMembers = list(
+#'         "string"
+#'       ),
+#'       ExcludedMembers = list(
+#'         "string"
+#'       ),
+#'       DBClusterEndpointArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_cluster_endpoints(
@@ -4976,6 +6899,22 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
 #' [`describe_db_cluster_parameter_groups`][rds_describe_db_cluster_parameter_groups]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBClusterParameterGroups = list(
+#'     list(
+#'       DBClusterParameterGroupName = "string",
+#'       DBParameterGroupFamily = "string",
+#'       Description = "string",
+#'       DBClusterParameterGroupArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5054,6 +6993,31 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parameters = list(
+#'     list(
+#'       ParameterName = "string",
+#'       ParameterValue = "string",
+#'       Description = "string",
+#'       Source = "string",
+#'       ApplyType = "string",
+#'       DataType = "string",
+#'       AllowedValues = "string",
+#'       IsModifiable = TRUE|FALSE,
+#'       MinimumEngineVersion = "string",
+#'       ApplyMethod = "immediate"|"pending-reboot",
+#'       SupportedEngineModes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_cluster_parameters(
@@ -5120,6 +7084,24 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to describe the attributes
 #' for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterSnapshotAttributesResult = list(
+#'     DBClusterSnapshotIdentifier = "string",
+#'     DBClusterSnapshotAttributes = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeValues = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5251,6 +7233,50 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
 #' API action.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBClusterSnapshots = list(
+#'     list(
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       DBClusterSnapshotIdentifier = "string",
+#'       DBClusterIdentifier = "string",
+#'       SnapshotCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Engine = "string",
+#'       AllocatedStorage = 123,
+#'       Status = "string",
+#'       Port = 123,
+#'       VpcId = "string",
+#'       ClusterCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MasterUsername = "string",
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       SnapshotType = "string",
+#'       PercentProgress = 123,
+#'       StorageEncrypted = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       DBClusterSnapshotArn = "string",
+#'       SourceDBClusterSnapshotArn = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       TagList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_cluster_snapshots(
@@ -5337,6 +7363,144 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #' marker, up to the value specified by `MaxRecords`.
 #' @param IncludeShared Optional Boolean parameter that specifies whether the output includes
 #' information about clusters shared from other AWS accounts.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBClusters = list(
+#'     list(
+#'       AllocatedStorage = 123,
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       BackupRetentionPeriod = 123,
+#'       CharacterSetName = "string",
+#'       DatabaseName = "string",
+#'       DBClusterIdentifier = "string",
+#'       DBClusterParameterGroup = "string",
+#'       DBSubnetGroup = "string",
+#'       Status = "string",
+#'       PercentProgress = "string",
+#'       EarliestRestorableTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Endpoint = "string",
+#'       ReaderEndpoint = "string",
+#'       CustomEndpoints = list(
+#'         "string"
+#'       ),
+#'       MultiAZ = TRUE|FALSE,
+#'       Engine = "string",
+#'       EngineVersion = "string",
+#'       LatestRestorableTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Port = 123,
+#'       MasterUsername = "string",
+#'       DBClusterOptionGroupMemberships = list(
+#'         list(
+#'           DBClusterOptionGroupName = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       PreferredBackupWindow = "string",
+#'       PreferredMaintenanceWindow = "string",
+#'       ReplicationSourceIdentifier = "string",
+#'       ReadReplicaIdentifiers = list(
+#'         "string"
+#'       ),
+#'       DBClusterMembers = list(
+#'         list(
+#'           DBInstanceIdentifier = "string",
+#'           IsClusterWriter = TRUE|FALSE,
+#'           DBClusterParameterGroupStatus = "string",
+#'           PromotionTier = 123
+#'         )
+#'       ),
+#'       VpcSecurityGroups = list(
+#'         list(
+#'           VpcSecurityGroupId = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       HostedZoneId = "string",
+#'       StorageEncrypted = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       DbClusterResourceId = "string",
+#'       DBClusterArn = "string",
+#'       AssociatedRoles = list(
+#'         list(
+#'           RoleArn = "string",
+#'           Status = "string",
+#'           FeatureName = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       CloneGroupId = "string",
+#'       ClusterCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EarliestBacktrackTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       BacktrackWindow = 123,
+#'       BacktrackConsumedChangeRecords = 123,
+#'       EnabledCloudwatchLogsExports = list(
+#'         "string"
+#'       ),
+#'       Capacity = 123,
+#'       EngineMode = "string",
+#'       ScalingConfigurationInfo = list(
+#'         MinCapacity = 123,
+#'         MaxCapacity = 123,
+#'         AutoPause = TRUE|FALSE,
+#'         SecondsUntilAutoPause = 123,
+#'         TimeoutAction = "string"
+#'       ),
+#'       DeletionProtection = TRUE|FALSE,
+#'       HttpEndpointEnabled = TRUE|FALSE,
+#'       ActivityStreamMode = "sync"|"async",
+#'       ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'       ActivityStreamKmsKeyId = "string",
+#'       ActivityStreamKinesisStreamName = "string",
+#'       CopyTagsToSnapshot = TRUE|FALSE,
+#'       CrossAccountClone = TRUE|FALSE,
+#'       DomainMemberships = list(
+#'         list(
+#'           Domain = "string",
+#'           Status = "string",
+#'           FQDN = "string",
+#'           IAMRoleName = "string"
+#'         )
+#'       ),
+#'       TagList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'       GlobalWriteForwardingRequested = TRUE|FALSE,
+#'       PendingModifiedValues = list(
+#'         PendingCloudwatchLogsExports = list(
+#'           LogTypesToEnable = list(
+#'             "string"
+#'           ),
+#'           LogTypesToDisable = list(
+#'             "string"
+#'           )
+#'         ),
+#'         DBClusterIdentifier = "string",
+#'         MasterUserPassword = "string",
+#'         IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'         EngineVersion = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5425,6 +7589,67 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' @param IncludeAll A value that indicates whether to include engine versions that aren't
 #' available in the list. The default is to list only available engine
 #' versions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBEngineVersions = list(
+#'     list(
+#'       Engine = "string",
+#'       EngineVersion = "string",
+#'       DBParameterGroupFamily = "string",
+#'       DBEngineDescription = "string",
+#'       DBEngineVersionDescription = "string",
+#'       DefaultCharacterSet = list(
+#'         CharacterSetName = "string",
+#'         CharacterSetDescription = "string"
+#'       ),
+#'       SupportedCharacterSets = list(
+#'         list(
+#'           CharacterSetName = "string",
+#'           CharacterSetDescription = "string"
+#'         )
+#'       ),
+#'       SupportedNcharCharacterSets = list(
+#'         list(
+#'           CharacterSetName = "string",
+#'           CharacterSetDescription = "string"
+#'         )
+#'       ),
+#'       ValidUpgradeTarget = list(
+#'         list(
+#'           Engine = "string",
+#'           EngineVersion = "string",
+#'           Description = "string",
+#'           AutoUpgrade = TRUE|FALSE,
+#'           IsMajorVersionUpgrade = TRUE|FALSE
+#'         )
+#'       ),
+#'       SupportedTimezones = list(
+#'         list(
+#'           TimezoneName = "string"
+#'         )
+#'       ),
+#'       ExportableLogTypes = list(
+#'         "string"
+#'       ),
+#'       SupportsLogExportsToCloudwatchLogs = TRUE|FALSE,
+#'       SupportsReadReplica = TRUE|FALSE,
+#'       SupportedEngineModes = list(
+#'         "string"
+#'       ),
+#'       SupportedFeatureNames = list(
+#'         "string"
+#'       ),
+#'       Status = "string",
+#'       SupportsParallelQuery = TRUE|FALSE,
+#'       SupportsGlobalDatabases = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5527,6 +7752,57 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #' example,
 #' `arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBInstanceAutomatedBackups = list(
+#'     list(
+#'       DBInstanceArn = "string",
+#'       DbiResourceId = "string",
+#'       Region = "string",
+#'       DBInstanceIdentifier = "string",
+#'       RestoreWindow = list(
+#'         EarliestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LatestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       AllocatedStorage = 123,
+#'       Status = "string",
+#'       Port = 123,
+#'       AvailabilityZone = "string",
+#'       VpcId = "string",
+#'       InstanceCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MasterUsername = "string",
+#'       Engine = "string",
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       OptionGroupName = "string",
+#'       TdeCredentialArn = "string",
+#'       Encrypted = TRUE|FALSE,
+#'       StorageType = "string",
+#'       KmsKeyId = "string",
+#'       Timezone = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       BackupRetentionPeriod = 123,
+#'       DBInstanceAutomatedBackupsArn = "string",
+#'       DBInstanceAutomatedBackupsReplications = list(
+#'         list(
+#'           DBInstanceAutomatedBackupsArn = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_instance_automated_backups(
@@ -5622,6 +7898,200 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBInstances = list(
+#'     list(
+#'       DBInstanceIdentifier = "string",
+#'       DBInstanceClass = "string",
+#'       Engine = "string",
+#'       DBInstanceStatus = "string",
+#'       MasterUsername = "string",
+#'       DBName = "string",
+#'       Endpoint = list(
+#'         Address = "string",
+#'         Port = 123,
+#'         HostedZoneId = "string"
+#'       ),
+#'       AllocatedStorage = 123,
+#'       InstanceCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PreferredBackupWindow = "string",
+#'       BackupRetentionPeriod = 123,
+#'       DBSecurityGroups = list(
+#'         list(
+#'           DBSecurityGroupName = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       VpcSecurityGroups = list(
+#'         list(
+#'           VpcSecurityGroupId = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       DBParameterGroups = list(
+#'         list(
+#'           DBParameterGroupName = "string",
+#'           ParameterApplyStatus = "string"
+#'         )
+#'       ),
+#'       AvailabilityZone = "string",
+#'       DBSubnetGroup = list(
+#'         DBSubnetGroupName = "string",
+#'         DBSubnetGroupDescription = "string",
+#'         VpcId = "string",
+#'         SubnetGroupStatus = "string",
+#'         Subnets = list(
+#'           list(
+#'             SubnetIdentifier = "string",
+#'             SubnetAvailabilityZone = list(
+#'               Name = "string"
+#'             ),
+#'             SubnetOutpost = list(
+#'               Arn = "string"
+#'             ),
+#'             SubnetStatus = "string"
+#'           )
+#'         ),
+#'         DBSubnetGroupArn = "string"
+#'       ),
+#'       PreferredMaintenanceWindow = "string",
+#'       PendingModifiedValues = list(
+#'         DBInstanceClass = "string",
+#'         AllocatedStorage = 123,
+#'         MasterUserPassword = "string",
+#'         Port = 123,
+#'         BackupRetentionPeriod = 123,
+#'         MultiAZ = TRUE|FALSE,
+#'         EngineVersion = "string",
+#'         LicenseModel = "string",
+#'         Iops = 123,
+#'         DBInstanceIdentifier = "string",
+#'         StorageType = "string",
+#'         CACertificateIdentifier = "string",
+#'         DBSubnetGroupName = "string",
+#'         PendingCloudwatchLogsExports = list(
+#'           LogTypesToEnable = list(
+#'             "string"
+#'           ),
+#'           LogTypesToDisable = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ProcessorFeatures = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'       ),
+#'       LatestRestorableTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       AutoMinorVersionUpgrade = TRUE|FALSE,
+#'       ReadReplicaSourceDBInstanceIdentifier = "string",
+#'       ReadReplicaDBInstanceIdentifiers = list(
+#'         "string"
+#'       ),
+#'       ReadReplicaDBClusterIdentifiers = list(
+#'         "string"
+#'       ),
+#'       ReplicaMode = "open-read-only"|"mounted",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       OptionGroupMemberships = list(
+#'         list(
+#'           OptionGroupName = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       CharacterSetName = "string",
+#'       NcharCharacterSetName = "string",
+#'       SecondaryAvailabilityZone = "string",
+#'       PubliclyAccessible = TRUE|FALSE,
+#'       StatusInfos = list(
+#'         list(
+#'           StatusType = "string",
+#'           Normal = TRUE|FALSE,
+#'           Status = "string",
+#'           Message = "string"
+#'         )
+#'       ),
+#'       StorageType = "string",
+#'       TdeCredentialArn = "string",
+#'       DbInstancePort = 123,
+#'       DBClusterIdentifier = "string",
+#'       StorageEncrypted = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       DbiResourceId = "string",
+#'       CACertificateIdentifier = "string",
+#'       DomainMemberships = list(
+#'         list(
+#'           Domain = "string",
+#'           Status = "string",
+#'           FQDN = "string",
+#'           IAMRoleName = "string"
+#'         )
+#'       ),
+#'       CopyTagsToSnapshot = TRUE|FALSE,
+#'       MonitoringInterval = 123,
+#'       EnhancedMonitoringResourceArn = "string",
+#'       MonitoringRoleArn = "string",
+#'       PromotionTier = 123,
+#'       DBInstanceArn = "string",
+#'       Timezone = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       PerformanceInsightsEnabled = TRUE|FALSE,
+#'       PerformanceInsightsKMSKeyId = "string",
+#'       PerformanceInsightsRetentionPeriod = 123,
+#'       EnabledCloudwatchLogsExports = list(
+#'         "string"
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DeletionProtection = TRUE|FALSE,
+#'       AssociatedRoles = list(
+#'         list(
+#'           RoleArn = "string",
+#'           FeatureName = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       ListenerEndpoint = list(
+#'         Address = "string",
+#'         Port = 123,
+#'         HostedZoneId = "string"
+#'       ),
+#'       MaxAllocatedStorage = 123,
+#'       TagList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DBInstanceAutomatedBackupsReplications = list(
+#'         list(
+#'           DBInstanceAutomatedBackupsArn = "string"
+#'         )
+#'       ),
+#'       CustomerOwnedIpEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_instances(
@@ -5688,6 +8158,21 @@ rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NUL
 #' @param Marker The pagination token provided in the previous request. If this parameter
 #' is specified the response includes only records beyond the marker, up to
 #' MaxRecords.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DescribeDBLogFiles = list(
+#'     list(
+#'       LogFileName = "string",
+#'       LastWritten = 123,
+#'       Size = 123
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5760,6 +8245,22 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBParameterGroups = list(
+#'     list(
+#'       DBParameterGroupName = "string",
+#'       DBParameterGroupFamily = "string",
+#'       Description = "string",
+#'       DBParameterGroupArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_parameter_groups(
@@ -5830,6 +8331,31 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parameters = list(
+#'     list(
+#'       ParameterName = "string",
+#'       ParameterValue = "string",
+#'       Description = "string",
+#'       Source = "string",
+#'       ApplyType = "string",
+#'       DataType = "string",
+#'       AllowedValues = "string",
+#'       IsModifiable = TRUE|FALSE,
+#'       MinimumEngineVersion = "string",
+#'       ApplyMethod = "immediate"|"pending-reboot",
+#'       SupportedEngineModes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_parameters(
@@ -5889,6 +8415,48 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxies = list(
+#'     list(
+#'       DBProxyName = "string",
+#'       DBProxyArn = "string",
+#'       Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
+#'       EngineFamily = "string",
+#'       VpcSecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       VpcSubnetIds = list(
+#'         "string"
+#'       ),
+#'       Auth = list(
+#'         list(
+#'           Description = "string",
+#'           UserName = "string",
+#'           AuthScheme = "SECRETS",
+#'           SecretArn = "string",
+#'           IAMAuth = "DISABLED"|"REQUIRED"
+#'         )
+#'       ),
+#'       RoleArn = "string",
+#'       Endpoint = "string",
+#'       RequireTLS = TRUE|FALSE,
+#'       IdleClientTimeout = 123,
+#'       DebugLogging = TRUE|FALSE,
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5953,6 +8521,38 @@ rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker =
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TargetGroups = list(
+#'     list(
+#'       DBProxyName = "string",
+#'       TargetGroupName = "string",
+#'       TargetGroupArn = "string",
+#'       IsDefault = TRUE|FALSE,
+#'       Status = "string",
+#'       ConnectionPoolConfig = list(
+#'         MaxConnectionsPercent = 123,
+#'         MaxIdleConnectionsPercent = 123,
+#'         ConnectionBorrowTimeout = 123,
+#'         SessionPinningFilters = list(
+#'           "string"
+#'         ),
+#'         InitQuery = "string"
+#'       ),
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_proxy_target_groups(
@@ -6015,6 +8615,29 @@ rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = N
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Targets = list(
+#'     list(
+#'       TargetArn = "string",
+#'       Endpoint = "string",
+#'       TrackedClusterId = "string",
+#'       RdsResourceId = "string",
+#'       Port = 123,
+#'       Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
+#'       TargetHealth = list(
+#'         State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
+#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
+#'         Description = "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6080,6 +8703,37 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBSecurityGroups = list(
+#'     list(
+#'       OwnerId = "string",
+#'       DBSecurityGroupName = "string",
+#'       DBSecurityGroupDescription = "string",
+#'       VpcId = "string",
+#'       EC2SecurityGroups = list(
+#'         list(
+#'           Status = "string",
+#'           EC2SecurityGroupName = "string",
+#'           EC2SecurityGroupId = "string",
+#'           EC2SecurityGroupOwnerId = "string"
+#'         )
+#'       ),
+#'       IPRanges = list(
+#'         list(
+#'           Status = "string",
+#'           CIDRIP = "string"
+#'         )
+#'       ),
+#'       DBSecurityGroupArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_security_groups(
@@ -6141,6 +8795,24 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #' rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
 #'
 #' @param DBSnapshotIdentifier &#91;required&#93; The identifier for the DB snapshot to describe the attributes for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSnapshotAttributesResult = list(
+#'     DBSnapshotIdentifier = "string",
+#'     DBSnapshotAttributes = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeValues = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6274,6 +8946,61 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' [`modify_db_snapshot_attribute`][rds_modify_db_snapshot_attribute] API.
 #' @param DbiResourceId A specific DB resource ID to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBSnapshots = list(
+#'     list(
+#'       DBSnapshotIdentifier = "string",
+#'       DBInstanceIdentifier = "string",
+#'       SnapshotCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Engine = "string",
+#'       AllocatedStorage = 123,
+#'       Status = "string",
+#'       Port = 123,
+#'       AvailabilityZone = "string",
+#'       VpcId = "string",
+#'       InstanceCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MasterUsername = "string",
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       SnapshotType = "string",
+#'       Iops = 123,
+#'       OptionGroupName = "string",
+#'       PercentProgress = 123,
+#'       SourceRegion = "string",
+#'       SourceDBSnapshotIdentifier = "string",
+#'       StorageType = "string",
+#'       TdeCredentialArn = "string",
+#'       Encrypted = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       DBSnapshotArn = "string",
+#'       Timezone = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DbiResourceId = "string",
+#'       TagList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_snapshots(
@@ -6345,6 +9072,35 @@ rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIde
 #' response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   DBSubnetGroups = list(
+#'     list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_db_subnet_groups(
@@ -6413,6 +9169,34 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EngineDefaults = list(
+#'     DBParameterGroupFamily = "string",
+#'     Marker = "string",
+#'     Parameters = list(
+#'       list(
+#'         ParameterName = "string",
+#'         ParameterValue = "string",
+#'         Description = "string",
+#'         Source = "string",
+#'         ApplyType = "string",
+#'         DataType = "string",
+#'         AllowedValues = "string",
+#'         IsModifiable = TRUE|FALSE,
+#'         MinimumEngineVersion = "string",
+#'         ApplyMethod = "immediate"|"pending-reboot",
+#'         SupportedEngineModes = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_engine_default_cluster_parameters(
@@ -6476,6 +9260,34 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EngineDefaults = list(
+#'     DBParameterGroupFamily = "string",
+#'     Marker = "string",
+#'     Parameters = list(
+#'       list(
+#'         ParameterName = "string",
+#'         ParameterValue = "string",
+#'         Description = "string",
+#'         Source = "string",
+#'         ApplyType = "string",
+#'         DataType = "string",
+#'         AllowedValues = "string",
+#'         IsModifiable = TRUE|FALSE,
+#'         MinimumEngineVersion = "string",
+#'         ApplyMethod = "immediate"|"pending-reboot",
+#'         SupportedEngineModes = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_engine_default_parameters(
@@ -6531,6 +9343,21 @@ rds_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filte
 #' Valid values: `db-instance` | `db-cluster` | `db-parameter-group` |
 #' `db-security-group` | `db-snapshot` | `db-cluster-snapshot`
 #' @param Filters This parameter isn't currently supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventCategoriesMapList = list(
+#'     list(
+#'       SourceType = "string",
+#'       EventCategories = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6597,6 +9424,32 @@ rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' DescribeOrderableDBInstanceOptions request. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
 #' the value specified by `MaxRecords` .
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   EventSubscriptionsList = list(
+#'     list(
+#'       CustomerAwsId = "string",
+#'       CustSubscriptionId = "string",
+#'       SnsTopicArn = "string",
+#'       Status = "string",
+#'       SubscriptionCreationTime = "string",
+#'       SourceType = "string",
+#'       SourceIdsList = list(
+#'         "string"
+#'       ),
+#'       EventCategoriesList = list(
+#'         "string"
+#'       ),
+#'       Enabled = TRUE|FALSE,
+#'       EventSubscriptionArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6710,6 +9563,28 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   Events = list(
+#'     list(
+#'       SourceIdentifier = "string",
+#'       SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
+#'       Message = "string",
+#'       EventCategories = list(
+#'         "string"
+#'       ),
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_events(
@@ -6800,6 +9675,41 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ExportTasks = list(
+#'     list(
+#'       ExportTaskIdentifier = "string",
+#'       SourceArn = "string",
+#'       ExportOnly = list(
+#'         "string"
+#'       ),
+#'       SnapshotTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TaskStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TaskEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       S3Bucket = "string",
+#'       S3Prefix = "string",
+#'       IamRoleArn = "string",
+#'       KmsKeyId = "string",
+#'       Status = "string",
+#'       PercentProgress = 123,
+#'       TotalExtractedDataInGB = 123,
+#'       FailureCause = "string",
+#'       WarningMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_export_tasks(
@@ -6881,6 +9791,37 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 #' this parameter is specified, the response includes only records beyond
 #' the marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   GlobalClusters = list(
+#'     list(
+#'       GlobalClusterIdentifier = "string",
+#'       GlobalClusterResourceId = "string",
+#'       GlobalClusterArn = "string",
+#'       Status = "string",
+#'       Engine = "string",
+#'       EngineVersion = "string",
+#'       DatabaseName = "string",
+#'       StorageEncrypted = TRUE|FALSE,
+#'       DeletionProtection = TRUE|FALSE,
+#'       GlobalClusterMembers = list(
+#'         list(
+#'           DBClusterArn = "string",
+#'           Readers = list(
+#'             "string"
+#'           ),
+#'           IsWriter = TRUE|FALSE,
+#'           GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_global_clusters(
@@ -6951,6 +9892,28 @@ rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   InstallationMedia = list(
+#'     list(
+#'       InstallationMediaId = "string",
+#'       CustomAvailabilityZoneId = "string",
+#'       Engine = "string",
+#'       EngineVersion = "string",
+#'       EngineInstallationMediaPath = "string",
+#'       OSInstallationMediaPath = "string",
+#'       Status = "string",
+#'       FailureCause = list(
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_installation_media(
@@ -7013,6 +9976,59 @@ rds_describe_installation_media <- function(InstallationMediaId = NULL, Filters 
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OptionGroupOptions = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       EngineName = "string",
+#'       MajorEngineVersion = "string",
+#'       MinimumRequiredMinorEngineVersion = "string",
+#'       PortRequired = TRUE|FALSE,
+#'       DefaultPort = 123,
+#'       OptionsDependedOn = list(
+#'         "string"
+#'       ),
+#'       OptionsConflictsWith = list(
+#'         "string"
+#'       ),
+#'       Persistent = TRUE|FALSE,
+#'       Permanent = TRUE|FALSE,
+#'       RequiresAutoMinorEngineVersionUpgrade = TRUE|FALSE,
+#'       VpcOnly = TRUE|FALSE,
+#'       SupportsOptionVersionDowngrade = TRUE|FALSE,
+#'       OptionGroupOptionSettings = list(
+#'         list(
+#'           SettingName = "string",
+#'           SettingDescription = "string",
+#'           DefaultValue = "string",
+#'           ApplyType = "string",
+#'           AllowedValues = "string",
+#'           IsModifiable = TRUE|FALSE,
+#'           IsRequired = TRUE|FALSE,
+#'           MinimumEngineVersionPerAllowedValue = list(
+#'             list(
+#'               AllowedValue = "string",
+#'               MinimumEngineVersion = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OptionGroupOptionVersions = list(
+#'         list(
+#'           Version = "string",
+#'           IsDefault = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7080,6 +10096,60 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 #' @param MajorEngineVersion Filters the list of option groups to only include groups associated with
 #' a specific database engine version. If specified, then EngineName must
 #' also be specified.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OptionGroupsList = list(
+#'     list(
+#'       OptionGroupName = "string",
+#'       OptionGroupDescription = "string",
+#'       EngineName = "string",
+#'       MajorEngineVersion = "string",
+#'       Options = list(
+#'         list(
+#'           OptionName = "string",
+#'           OptionDescription = "string",
+#'           Persistent = TRUE|FALSE,
+#'           Permanent = TRUE|FALSE,
+#'           Port = 123,
+#'           OptionVersion = "string",
+#'           OptionSettings = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string",
+#'               DefaultValue = "string",
+#'               Description = "string",
+#'               ApplyType = "string",
+#'               DataType = "string",
+#'               AllowedValues = "string",
+#'               IsModifiable = TRUE|FALSE,
+#'               IsCollection = TRUE|FALSE
+#'             )
+#'           ),
+#'           DBSecurityGroupMemberships = list(
+#'             list(
+#'               DBSecurityGroupName = "string",
+#'               Status = "string"
+#'             )
+#'           ),
+#'           VpcSecurityGroupMemberships = list(
+#'             list(
+#'               VpcSecurityGroupId = "string",
+#'               Status = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
+#'       VpcId = "string",
+#'       OptionGroupArn = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7158,6 +10228,57 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #' DescribeOrderableDBInstanceOptions request. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
 #' the value specified by `MaxRecords` .
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrderableDBInstanceOptions = list(
+#'     list(
+#'       Engine = "string",
+#'       EngineVersion = "string",
+#'       DBInstanceClass = "string",
+#'       LicenseModel = "string",
+#'       AvailabilityZoneGroup = "string",
+#'       AvailabilityZones = list(
+#'         list(
+#'           Name = "string"
+#'         )
+#'       ),
+#'       MultiAZCapable = TRUE|FALSE,
+#'       ReadReplicaCapable = TRUE|FALSE,
+#'       Vpc = TRUE|FALSE,
+#'       SupportsStorageEncryption = TRUE|FALSE,
+#'       StorageType = "string",
+#'       SupportsIops = TRUE|FALSE,
+#'       SupportsEnhancedMonitoring = TRUE|FALSE,
+#'       SupportsIAMDatabaseAuthentication = TRUE|FALSE,
+#'       SupportsPerformanceInsights = TRUE|FALSE,
+#'       MinStorageSize = 123,
+#'       MaxStorageSize = 123,
+#'       MinIopsPerDbInstance = 123,
+#'       MaxIopsPerDbInstance = 123,
+#'       MinIopsPerGib = 123.0,
+#'       MaxIopsPerGib = 123.0,
+#'       AvailableProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           DefaultValue = "string",
+#'           AllowedValues = "string"
+#'         )
+#'       ),
+#'       SupportedEngineModes = list(
+#'         "string"
+#'       ),
+#'       SupportsStorageAutoscaling = TRUE|FALSE,
+#'       SupportsKerberosAuthentication = TRUE|FALSE,
+#'       OutpostCapable = TRUE|FALSE,
+#'       SupportsGlobalDatabases = TRUE|FALSE
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7239,6 +10360,35 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PendingMaintenanceActions = list(
+#'     list(
+#'       ResourceIdentifier = "string",
+#'       PendingMaintenanceActionDetails = list(
+#'         list(
+#'           Action = "string",
+#'           AutoAppliedAfterDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ForcedApplyDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           OptInStatus = "string",
+#'           CurrentApplyDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Description = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7324,6 +10474,41 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReservedDBInstances = list(
+#'     list(
+#'       ReservedDBInstanceId = "string",
+#'       ReservedDBInstancesOfferingId = "string",
+#'       DBInstanceClass = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Duration = 123,
+#'       FixedPrice = 123.0,
+#'       UsagePrice = 123.0,
+#'       CurrencyCode = "string",
+#'       DBInstanceCount = 123,
+#'       ProductDescription = "string",
+#'       OfferingType = "string",
+#'       MultiAZ = TRUE|FALSE,
+#'       State = "string",
+#'       RecurringCharges = list(
+#'         list(
+#'           RecurringChargeAmount = 123.0,
+#'           RecurringChargeFrequency = "string"
+#'         )
+#'       ),
+#'       ReservedDBInstanceArn = "string",
+#'       LeaseId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7412,6 +10597,33 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReservedDBInstancesOfferings = list(
+#'     list(
+#'       ReservedDBInstancesOfferingId = "string",
+#'       DBInstanceClass = "string",
+#'       Duration = 123,
+#'       FixedPrice = 123.0,
+#'       UsagePrice = 123.0,
+#'       CurrencyCode = "string",
+#'       ProductDescription = "string",
+#'       OfferingType = "string",
+#'       MultiAZ = TRUE|FALSE,
+#'       RecurringCharges = list(
+#'         list(
+#'           RecurringChargeAmount = 123.0,
+#'           RecurringChargeFrequency = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_reserved_db_instances_offerings(
@@ -7485,6 +10697,22 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 #' the marker, up to the value specified by `MaxRecords`.
 #' @param Filters This parameter isn't currently supported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   SourceRegions = list(
+#'     list(
+#'       RegionName = "string",
+#'       Endpoint = "string",
+#'       Status = "string",
+#'       SupportsDBInstanceAutomatedBackupsReplication = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_source_regions(
@@ -7536,6 +10764,48 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #' rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The customer identifier or the ARN of your DB instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ValidDBInstanceModificationsMessage = list(
+#'     Storage = list(
+#'       list(
+#'         StorageType = "string",
+#'         StorageSize = list(
+#'           list(
+#'             From = 123,
+#'             To = 123,
+#'             Step = 123
+#'           )
+#'         ),
+#'         ProvisionedIops = list(
+#'           list(
+#'             From = 123,
+#'             To = 123,
+#'             Step = 123
+#'           )
+#'         ),
+#'         IopsToStorageRatio = list(
+#'           list(
+#'             From = 123.0,
+#'             To = 123.0
+#'           )
+#'         ),
+#'         SupportsStorageAutoscaling = TRUE|FALSE
+#'       )
+#'     ),
+#'     ValidProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         DefaultValue = "string",
+#'         AllowedValues = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7609,6 +10879,16 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
 #'     Marker value for the next request, continuing until the
 #'     AdditionalDataPending response element returns false.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LogFileData = "string",
+#'   Marker = "string",
+#'   AdditionalDataPending = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$download_db_log_file_portion(
@@ -7674,6 +10954,141 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #' 
 #' You must specify the instance identifier for an Aurora Replica in the DB
 #' cluster. For example, `mydbcluster-replica1`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7753,6 +11168,23 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 #' 
 #' Example: `WindowsISO/en_windows_server_2016_x64_dvd_9327751.iso`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstallationMediaId = "string",
+#'   CustomAvailabilityZoneId = "string",
+#'   Engine = "string",
+#'   EngineVersion = "string",
+#'   EngineInstallationMediaPath = "string",
+#'   OSInstallationMediaPath = "string",
+#'   Status = "string",
+#'   FailureCause = list(
+#'     Message = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_installation_media(
@@ -7803,6 +11235,19 @@ rds_import_installation_media <- function(CustomAvailabilityZoneId, Engine, Engi
 #' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
 #' in the *Amazon RDS User Guide*.
 #' @param Filters This parameter isn't currently supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7888,6 +11333,29 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @param RemoveCustomerOverride A value that indicates whether to remove the override for the default
 #' certificate. If the override is removed, the default certificate is the
 #' system default.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = list(
+#'     CertificateIdentifier = "string",
+#'     CertificateType = "string",
+#'     Thumbprint = "string",
+#'     ValidFrom = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ValidTill = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CertificateArn = "string",
+#'     CustomerOverride = TRUE|FALSE,
+#'     CustomerOverrideValidTill = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7982,6 +11450,18 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' 
 #' `RollbackCapacityChange` ignores the capacity change if a scaling point
 #' isn't found in the timeout period.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterIdentifier = "string",
+#'   PendingCapacity = 123,
+#'   CurrentCapacity = 123,
+#'   SecondsBeforeTimeout = 123,
+#'   TimeoutAction = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8161,17 +11641,17 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' To list all of the available engine versions for `aurora` (for MySQL
 #' 5.6-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-mysql` (for
 #' MySQL 5.7-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-postgresql`,
 #' use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
 #' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
 #' 
 #' Constraints: You must allow major version upgrades when specifying a
@@ -8227,6 +11707,141 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' This parameter only applies to DB clusters that are secondary clusters
 #' in an Aurora global database. By default, Aurora disallows write
 #' operations for secondary clusters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8313,6 +11928,27 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
 #' group. All other eligible instances are reachable through the custom
 #' endpoint. Only relevant if the list of static members is empty.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterEndpointIdentifier = "string",
+#'   DBClusterIdentifier = "string",
+#'   DBClusterEndpointResourceIdentifier = "string",
+#'   Endpoint = "string",
+#'   Status = "string",
+#'   EndpointType = "string",
+#'   CustomEndpointType = "string",
+#'   StaticMembers = list(
+#'     "string"
+#'   ),
+#'   ExcludedMembers = list(
+#'     "string"
+#'   ),
+#'   DBClusterEndpointArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_db_cluster_endpoint(
@@ -8390,6 +12026,14 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to modify.
 #' @param Parameters &#91;required&#93; A list of parameters in the DB cluster parameter group to modify.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterParameterGroupName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8498,6 +12142,24 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #' `all`, an AWS account whose account ID is explicitly added to the
 #' `restore` attribute can still copy or restore a manual DB cluster
 #' snapshot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterSnapshotAttributesResult = list(
+#'     DBClusterSnapshotIdentifier = "string",
+#'     DBClusterSnapshotAttributes = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeValues = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9084,6 +12746,197 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
 #' in the *AWS Outposts User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_db_instance(
@@ -9213,6 +13066,14 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
 #' use the pending-reboot value for both dynamic and static parameters, and
 #' changes are applied when you reboot the DB instance without failover.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBParameterGroupName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_db_parameter_group(
@@ -9289,6 +13150,45 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
 #' access secrets in AWS Secrets Manager.
 #' @param SecurityGroups The new list of security groups for the `DBProxy`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxy = list(
+#'     DBProxyName = "string",
+#'     DBProxyArn = "string",
+#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
+#'     EngineFamily = "string",
+#'     VpcSecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     VpcSubnetIds = list(
+#'       "string"
+#'     ),
+#'     Auth = list(
+#'       list(
+#'         Description = "string",
+#'         UserName = "string",
+#'         AuthScheme = "SECRETS",
+#'         SecretArn = "string",
+#'         IAMAuth = "DISABLED"|"REQUIRED"
+#'       )
+#'     ),
+#'     RoleArn = "string",
+#'     Endpoint = "string",
+#'     RequireTLS = TRUE|FALSE,
+#'     IdleClientTimeout = 123,
+#'     DebugLogging = TRUE|FALSE,
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_db_proxy(
@@ -9349,6 +13249,35 @@ rds_modify_db_proxy <- function(DBProxyName, NewDBProxyName = NULL, Auth = NULL,
 #' @param NewName The new name for the modified `DBProxyTarget`. An identifier must begin
 #' with a letter and must contain only ASCII letters, digits, and hyphens;
 #' it can't end with a hyphen or contain two consecutive hyphens.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxyTargetGroup = list(
+#'     DBProxyName = "string",
+#'     TargetGroupName = "string",
+#'     TargetGroupArn = "string",
+#'     IsDefault = TRUE|FALSE,
+#'     Status = "string",
+#'     ConnectionPoolConfig = list(
+#'       MaxConnectionsPercent = 123,
+#'       MaxIdleConnectionsPercent = 123,
+#'       ConnectionBorrowTimeout = 123,
+#'       SessionPinningFilters = list(
+#'         "string"
+#'       ),
+#'       InitQuery = "string"
+#'     ),
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9431,6 +13360,58 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' as when upgrading a DB instance. For more information, see [Option group
 #' considerations](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG)
 #' in the *Amazon RDS User Guide.*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSnapshot = list(
+#'     DBSnapshotIdentifier = "string",
+#'     DBInstanceIdentifier = "string",
+#'     SnapshotCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Engine = "string",
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     AvailabilityZone = "string",
+#'     VpcId = "string",
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     SnapshotType = "string",
+#'     Iops = 123,
+#'     OptionGroupName = "string",
+#'     PercentProgress = 123,
+#'     SourceRegion = "string",
+#'     SourceDBSnapshotIdentifier = "string",
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     Encrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DBSnapshotArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DbiResourceId = "string",
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9519,6 +13500,24 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #' whose account ID is explicitly added to the `restore` attribute can
 #' still copy or restore the manual DB snapshot.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSnapshotAttributesResult = list(
+#'     DBSnapshotIdentifier = "string",
+#'     DBSnapshotAttributes = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeValues = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_db_snapshot_attribute(
@@ -9572,6 +13571,32 @@ rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName
 #' Example: `mySubnetgroup`
 #' @param DBSubnetGroupDescription The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 subnet IDs for the DB subnet group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSubnetGroup = list(
+#'     DBSubnetGroupName = "string",
+#'     DBSubnetGroupDescription = "string",
+#'     VpcId = "string",
+#'     SubnetGroupStatus = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetIdentifier = "string",
+#'         SubnetAvailabilityZone = list(
+#'           Name = "string"
+#'         ),
+#'         SubnetOutpost = list(
+#'           Arn = "string"
+#'         ),
+#'         SubnetStatus = "string"
+#'       )
+#'     ),
+#'     DBSubnetGroupArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9643,6 +13668,29 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' in the *Amazon RDS User Guide* or by using the
 #' [`describe_event_categories`][rds_describe_event_categories] operation.
 #' @param Enabled A value that indicates whether to activate the subscription.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9716,6 +13764,34 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #' enabled. The global database cluster can't be deleted when deletion
 #' protection is enabled.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE,
+#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_global_cluster(
@@ -9766,6 +13842,57 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 #' @param ApplyImmediately A value that indicates whether to apply the change immediately or during
 #' the next maintenance window for each instance associated with the option
 #' group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OptionGroup = list(
+#'     OptionGroupName = "string",
+#'     OptionGroupDescription = "string",
+#'     EngineName = "string",
+#'     MajorEngineVersion = "string",
+#'     Options = list(
+#'       list(
+#'         OptionName = "string",
+#'         OptionDescription = "string",
+#'         Persistent = TRUE|FALSE,
+#'         Permanent = TRUE|FALSE,
+#'         Port = 123,
+#'         OptionVersion = "string",
+#'         OptionSettings = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string",
+#'             DefaultValue = "string",
+#'             Description = "string",
+#'             ApplyType = "string",
+#'             DataType = "string",
+#'             AllowedValues = "string",
+#'             IsModifiable = TRUE|FALSE,
+#'             IsCollection = TRUE|FALSE
+#'           )
+#'         ),
+#'         DBSecurityGroupMemberships = list(
+#'           list(
+#'             DBSecurityGroupName = "string",
+#'             Status = "string"
+#'           )
+#'         ),
+#'         VpcSecurityGroupMemberships = list(
+#'           list(
+#'             VpcSecurityGroupId = "string",
+#'             Status = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
+#'     VpcId = "string",
+#'     OptionGroupArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9882,6 +14009,197 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #' 
 #' -   Must be at least 30 minutes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$promote_read_replica(
@@ -9930,6 +14248,141 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #' 
 #' Example: `my-cluster-replica1`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$promote_read_replica_db_cluster(
@@ -9977,6 +14430,38 @@ rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' 
 #' Default: `1`
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedDBInstance = list(
+#'     ReservedDBInstanceId = "string",
+#'     ReservedDBInstancesOfferingId = "string",
+#'     DBInstanceClass = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Duration = 123,
+#'     FixedPrice = 123.0,
+#'     UsagePrice = 123.0,
+#'     CurrencyCode = "string",
+#'     DBInstanceCount = 123,
+#'     ProductDescription = "string",
+#'     OfferingType = "string",
+#'     MultiAZ = TRUE|FALSE,
+#'     State = "string",
+#'     RecurringCharges = list(
+#'       list(
+#'         RecurringChargeAmount = 123.0,
+#'         RecurringChargeFrequency = "string"
+#'       )
+#'     ),
+#'     ReservedDBInstanceArn = "string",
+#'     LeaseId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10045,6 +14530,197 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #' Constraint: You can't enable force failover if the instance isn't
 #' configured for Multi-AZ.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reboot_db_instance(
@@ -10089,6 +14765,28 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
 #' @param TargetGroupName The identifier of the `DBProxyTargetGroup`.
 #' @param DBInstanceIdentifiers One or more DB instance identifiers.
 #' @param DBClusterIdentifiers One or more DB cluster identifiers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBProxyTargets = list(
+#'     list(
+#'       TargetArn = "string",
+#'       Endpoint = "string",
+#'       TrackedClusterId = "string",
+#'       RdsResourceId = "string",
+#'       Port = 123,
+#'       Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
+#'       TargetHealth = list(
+#'         State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
+#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
+#'         Description = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10144,6 +14842,34 @@ rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, D
 #' @param DbClusterIdentifier The Amazon Resource Name (ARN) identifying the cluster that was detached
 #' from the Aurora global database cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalCluster = list(
+#'     GlobalClusterIdentifier = "string",
+#'     GlobalClusterResourceId = "string",
+#'     GlobalClusterArn = "string",
+#'     Status = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     DatabaseName = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     DeletionProtection = TRUE|FALSE,
+#'     GlobalClusterMembers = list(
+#'       list(
+#'         DBClusterArn = "string",
+#'         Readers = list(
+#'           "string"
+#'         ),
+#'         IsWriter = TRUE|FALSE,
+#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_from_global_cluster(
@@ -10196,6 +14922,9 @@ rds_remove_from_global_cluster <- function(GlobalClusterIdentifier = NULL, DbClu
 #' disassociated from. For the list of supported feature names, see
 #' DBEngineVersion.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_role_from_db_cluster(
@@ -10243,6 +14972,9 @@ rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Featur
 #' disassociated from. For the list of supported feature names, see
 #' `DBEngineVersion`.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_role_from_db_instance(
@@ -10288,6 +15020,29 @@ rds_remove_role_from_db_instance <- function(DBInstanceIdentifier, RoleArn, Feat
 #' @param SourceIdentifier &#91;required&#93; The source identifier to be removed from the subscription, such as the
 #' **DB instance identifier** for a DB instance or the name of a security
 #' group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     EventSubscriptionArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10336,6 +15091,9 @@ rds_remove_source_identifier_from_subscription <- function(SubscriptionName, Sou
 #' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
 #' in the *Amazon RDS User Guide.*
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -10402,6 +15160,14 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @param Parameters A list of parameter names in the DB cluster parameter group to reset to
 #' the default values. You can't use this parameter if the
 #' `ResetAllParameters` parameter is enabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBClusterParameterGroupName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10497,6 +15263,14 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #' **Oracle**
 #' 
 #' Valid Values (for Apply method): `pending-reboot`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBParameterGroupName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10631,17 +15405,17 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' To list all of the available engine versions for `aurora` (for MySQL
 #' 5.6-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-mysql` (for
 #' MySQL 5.7-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-postgresql`,
 #' use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' **Aurora MySQL**
 #' 
@@ -10777,6 +15551,141 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' in the *Amazon Aurora User Guide*.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10914,17 +15823,17 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' To list all of the available engine versions for `aurora` (for MySQL
 #' 5.6-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-mysql` (for
 #' MySQL 5.7-compatible Aurora), use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-postgresql`,
 #' use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\[\\].EngineVersion"`
+#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' If you aren't using the default engine version, then you must specify
 #' the engine version.
@@ -11030,6 +15939,141 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' in the *Amazon RDS User Guide*.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11273,6 +16317,141 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' in the *Amazon Aurora User Guide*.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11578,6 +16757,197 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' For more information about CoIPs, see [Customer-owned IP
 #' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
 #' in the *AWS Outposts User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11921,6 +17291,197 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$restore_db_instance_from_s3(
@@ -12262,6 +17823,197 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
 #' in the *AWS Outposts User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$restore_db_instance_to_point_in_time(
@@ -12370,6 +18122,34 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
 #' be provided. Otherwise, EC2SecurityGroupOwnerId and either
 #' `EC2SecurityGroupName` or `EC2SecurityGroupId` must be provided.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBSecurityGroup = list(
+#'     OwnerId = "string",
+#'     DBSecurityGroupName = "string",
+#'     DBSecurityGroupDescription = "string",
+#'     VpcId = "string",
+#'     EC2SecurityGroups = list(
+#'       list(
+#'         Status = "string",
+#'         EC2SecurityGroupName = "string",
+#'         EC2SecurityGroupId = "string",
+#'         EC2SecurityGroupOwnerId = "string"
+#'       )
+#'     ),
+#'     IPRanges = list(
+#'       list(
+#'         Status = "string",
+#'         CIDRIP = "string"
+#'       )
+#'     ),
+#'     DBSecurityGroupArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$revoke_db_security_group_ingress(
@@ -12423,6 +18203,18 @@ rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = N
 #' @param ApplyImmediately Specifies whether or not the database activity stream is to start as
 #' soon as possible, regardless of the maintenance window for the database.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KmsKeyId = "string",
+#'   KinesisStreamName = "string",
+#'   Status = "stopped"|"starting"|"started"|"stopping",
+#'   Mode = "sync"|"async",
+#'   ApplyImmediately = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_activity_stream(
@@ -12474,6 +18266,141 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Amazon Aurora DB cluster to be started.
 #' This parameter is stored as a lowercase string.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_db_cluster(
@@ -12521,6 +18448,197 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #' rds_start_db_instance(DBInstanceIdentifier)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The user-supplied instance identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12576,6 +18694,54 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
 #' request for the StartDBInstanceAutomatedBackupsReplication API action
 #' that can be executed in the AWS Region that contains the source DB
 #' instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstanceAutomatedBackup = list(
+#'     DBInstanceArn = "string",
+#'     DbiResourceId = "string",
+#'     Region = "string",
+#'     DBInstanceIdentifier = "string",
+#'     RestoreWindow = list(
+#'       EarliestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     AvailabilityZone = "string",
+#'     VpcId = "string",
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupName = "string",
+#'     TdeCredentialArn = "string",
+#'     Encrypted = TRUE|FALSE,
+#'     StorageType = "string",
+#'     KmsKeyId = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     BackupRetentionPeriod = 123,
+#'     DBInstanceAutomatedBackupsArn = "string",
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12667,6 +18833,36 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 #'     database schema. This format is valid only for RDS for PostgreSQL
 #'     and Aurora PostgreSQL.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportTaskIdentifier = "string",
+#'   SourceArn = "string",
+#'   ExportOnly = list(
+#'     "string"
+#'   ),
+#'   SnapshotTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TaskStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TaskEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   S3Bucket = "string",
+#'   S3Prefix = "string",
+#'   IamRoleArn = "string",
+#'   KmsKeyId = "string",
+#'   Status = "string",
+#'   PercentProgress = 123,
+#'   TotalExtractedDataInGB = 123,
+#'   FailureCause = "string",
+#'   WarningMessage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_export_task(
@@ -12724,6 +18920,16 @@ rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName,
 #' @param ApplyImmediately Specifies whether or not the database activity stream is to stop as soon
 #' as possible, regardless of the maintenance window for the database.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KmsKeyId = "string",
+#'   KinesisStreamName = "string",
+#'   Status = "stopped"|"starting"|"started"|"stopping"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_activity_stream(
@@ -12771,6 +18977,141 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Amazon Aurora DB cluster to be stopped.
 #' This parameter is stored as a lowercase string.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBCluster = list(
+#'     AllocatedStorage = 123,
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     BackupRetentionPeriod = 123,
+#'     CharacterSetName = "string",
+#'     DatabaseName = "string",
+#'     DBClusterIdentifier = "string",
+#'     DBClusterParameterGroup = "string",
+#'     DBSubnetGroup = "string",
+#'     Status = "string",
+#'     PercentProgress = "string",
+#'     EarliestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoint = "string",
+#'     ReaderEndpoint = "string",
+#'     CustomEndpoints = list(
+#'       "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Port = 123,
+#'     MasterUsername = "string",
+#'     DBClusterOptionGroupMemberships = list(
+#'       list(
+#'         DBClusterOptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     ReplicationSourceIdentifier = "string",
+#'     ReadReplicaIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DBClusterMembers = list(
+#'       list(
+#'         DBInstanceIdentifier = "string",
+#'         IsClusterWriter = TRUE|FALSE,
+#'         DBClusterParameterGroupStatus = "string",
+#'         PromotionTier = 123
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     HostedZoneId = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbClusterResourceId = "string",
+#'     DBClusterArn = "string",
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         Status = "string",
+#'         FeatureName = "string"
+#'       )
+#'     ),
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     CloneGroupId = "string",
+#'     ClusterCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EarliestBacktrackTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BacktrackWindow = 123,
+#'     BacktrackConsumedChangeRecords = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     Capacity = 123,
+#'     EngineMode = "string",
+#'     ScalingConfigurationInfo = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       AutoPause = TRUE|FALSE,
+#'       SecondsUntilAutoPause = 123,
+#'       TimeoutAction = "string"
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     HttpEndpointEnabled = TRUE|FALSE,
+#'     ActivityStreamMode = "sync"|"async",
+#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
+#'     ActivityStreamKmsKeyId = "string",
+#'     ActivityStreamKinesisStreamName = "string",
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     CrossAccountClone = TRUE|FALSE,
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
+#'     GlobalWriteForwardingRequested = TRUE|FALSE,
+#'     PendingModifiedValues = list(
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DBClusterIdentifier = "string",
+#'       MasterUserPassword = "string",
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12821,6 +19162,197 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #' @param DBSnapshotIdentifier The user-supplied instance identifier of the DB Snapshot created
 #' immediately before the DB instance is stopped.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstance = list(
+#'     DBInstanceIdentifier = "string",
+#'     DBInstanceClass = "string",
+#'     Engine = "string",
+#'     DBInstanceStatus = "string",
+#'     MasterUsername = "string",
+#'     DBName = "string",
+#'     Endpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PreferredBackupWindow = "string",
+#'     BackupRetentionPeriod = 123,
+#'     DBSecurityGroups = list(
+#'       list(
+#'         DBSecurityGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     DBParameterGroups = list(
+#'       list(
+#'         DBParameterGroupName = "string",
+#'         ParameterApplyStatus = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     DBSubnetGroup = list(
+#'       DBSubnetGroupName = "string",
+#'       DBSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetOutpost = list(
+#'             Arn = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       ),
+#'       DBSubnetGroupArn = "string"
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       DBInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MasterUserPassword = "string",
+#'       Port = 123,
+#'       BackupRetentionPeriod = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       LicenseModel = "string",
+#'       Iops = 123,
+#'       DBInstanceIdentifier = "string",
+#'       StorageType = "string",
+#'       CACertificateIdentifier = "string",
+#'       DBSubnetGroupName = "string",
+#'       PendingCloudwatchLogsExports = list(
+#'         LogTypesToEnable = list(
+#'           "string"
+#'         ),
+#'         LogTypesToDisable = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProcessorFeatures = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
+#'     ),
+#'     LatestRestorableTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     ReadReplicaSourceDBInstanceIdentifier = "string",
+#'     ReadReplicaDBInstanceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReadReplicaDBClusterIdentifiers = list(
+#'       "string"
+#'     ),
+#'     ReplicaMode = "open-read-only"|"mounted",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupMemberships = list(
+#'       list(
+#'         OptionGroupName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     CharacterSetName = "string",
+#'     NcharCharacterSetName = "string",
+#'     SecondaryAvailabilityZone = "string",
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     StorageType = "string",
+#'     TdeCredentialArn = "string",
+#'     DbInstancePort = 123,
+#'     DBClusterIdentifier = "string",
+#'     StorageEncrypted = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     DbiResourceId = "string",
+#'     CACertificateIdentifier = "string",
+#'     DomainMemberships = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "string",
+#'         FQDN = "string",
+#'         IAMRoleName = "string"
+#'       )
+#'     ),
+#'     CopyTagsToSnapshot = TRUE|FALSE,
+#'     MonitoringInterval = 123,
+#'     EnhancedMonitoringResourceArn = "string",
+#'     MonitoringRoleArn = "string",
+#'     PromotionTier = 123,
+#'     DBInstanceArn = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     PerformanceInsightsEnabled = TRUE|FALSE,
+#'     PerformanceInsightsKMSKeyId = "string",
+#'     PerformanceInsightsRetentionPeriod = 123,
+#'     EnabledCloudwatchLogsExports = list(
+#'       "string"
+#'     ),
+#'     ProcessorFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DeletionProtection = TRUE|FALSE,
+#'     AssociatedRoles = list(
+#'       list(
+#'         RoleArn = "string",
+#'         FeatureName = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     ListenerEndpoint = list(
+#'       Address = "string",
+#'       Port = 123,
+#'       HostedZoneId = "string"
+#'     ),
+#'     MaxAllocatedStorage = 123,
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     ),
+#'     CustomerOwnedIpEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_db_instance(
@@ -12864,6 +19396,54 @@ rds_stop_db_instance <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NU
 #' @param SourceDBInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the source DB instance for which to
 #' stop replicating automated backups, for example,
 #' `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBInstanceAutomatedBackup = list(
+#'     DBInstanceArn = "string",
+#'     DbiResourceId = "string",
+#'     Region = "string",
+#'     DBInstanceIdentifier = "string",
+#'     RestoreWindow = list(
+#'       EarliestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     AllocatedStorage = 123,
+#'     Status = "string",
+#'     Port = 123,
+#'     AvailabilityZone = "string",
+#'     VpcId = "string",
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MasterUsername = "string",
+#'     Engine = "string",
+#'     EngineVersion = "string",
+#'     LicenseModel = "string",
+#'     Iops = 123,
+#'     OptionGroupName = "string",
+#'     TdeCredentialArn = "string",
+#'     Encrypted = TRUE|FALSE,
+#'     StorageType = "string",
+#'     KmsKeyId = "string",
+#'     Timezone = "string",
+#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'     BackupRetentionPeriod = 123,
+#'     DBInstanceAutomatedBackupsArn = "string",
+#'     DBInstanceAutomatedBackupsReplications = list(
+#'       list(
+#'         DBInstanceAutomatedBackupsArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -9,6 +9,9 @@ chime_delete_voice_connector(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Amazon Chime Voice Connector. Any phone numbers
 associated with the Amazon Chime Voice Connector must be disassociated

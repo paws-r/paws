@@ -15,6 +15,20 @@ apigateway_update_documentation_part(restApiId, documentationPartId,
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  location = list(
+    type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
+    path = "string",
+    method = "string",
+    statusCode = "string",
+    name = "string"
+  ),
+  properties = "string"
+)
+}
+}
 \description{
 Update documentation part
 }

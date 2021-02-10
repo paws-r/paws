@@ -88,7 +88,7 @@ svc$add_attributes_to_findings(
     )
   ),
   findingArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
+    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/r..."
   )
 )
 }

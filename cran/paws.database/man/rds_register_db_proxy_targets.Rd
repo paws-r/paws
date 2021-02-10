@@ -18,6 +18,26 @@ rds_register_db_proxy_targets(DBProxyName, TargetGroupName,
 
 \item{DBClusterIdentifiers}{One or more DB cluster identifiers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBProxyTargets = list(
+    list(
+      TargetArn = "string",
+      Endpoint = "string",
+      TrackedClusterId = "string",
+      RdsResourceId = "string",
+      Port = 123,
+      Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
+      TargetHealth = list(
+        State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
+        Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
+        Description = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Associate one or more \code{DBProxyTarget} data structures with a
 \code{DBProxyTargetGroup}.

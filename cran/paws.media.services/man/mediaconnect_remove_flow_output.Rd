@@ -11,8 +11,19 @@ mediaconnect_remove_flow_output(FlowArn, OutputArn)
 
 \item{OutputArn}{[required] The ARN of the output that you want to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  OutputArn = "string"
+)
+}
+}
 \description{
-Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.
+Removes an output from an existing flow. This request can be made only
+on an output that does not have an entitlement associated with it. If
+the output has an entitlement, you must revoke the entitlement instead.
+When an entitlement is revoked from a flow, the service automatically
+removes the associated output.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_flow_output(

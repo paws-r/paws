@@ -21,6 +21,23 @@ If there are more objects to return, Shield Advanced returns a value in
 \code{NextToken} that you can use in your next request, to get the next batch
 of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProtectionGroups = list(
+    list(
+      ProtectionGroupId = "string",
+      Aggregation = "SUM"|"MEAN"|"MAX",
+      Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
+      ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
+      Members = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the ProtectionGroup objects for the account.
 }

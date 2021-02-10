@@ -31,6 +31,39 @@ Available values: \code{af-south-1}, \code{ap-northeast-1}, \code{ap-northeast-2
 
 \item{Attendees}{The request containing the attendees to create.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Meeting = list(
+    MeetingId = "string",
+    ExternalMeetingId = "string",
+    MediaPlacement = list(
+      AudioHostUrl = "string",
+      AudioFallbackUrl = "string",
+      ScreenDataUrl = "string",
+      ScreenSharingUrl = "string",
+      ScreenViewingUrl = "string",
+      SignalingUrl = "string",
+      TurnControlUrl = "string"
+    ),
+    MediaRegion = "string"
+  ),
+  Attendees = list(
+    list(
+      ExternalUserId = "string",
+      AttendeeId = "string",
+      JoinToken = "string"
+    )
+  ),
+  Errors = list(
+    list(
+      ExternalUserId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a new Amazon Chime SDK meeting in the specified media Region,
 with attendees. For more information about specifying media Regions, see

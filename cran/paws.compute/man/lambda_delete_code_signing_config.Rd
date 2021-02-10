@@ -9,6 +9,9 @@ lambda_delete_code_signing_config(CodeSigningConfigArn)
 \arguments{
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the code signing configuration. You can delete the code signing
 configuration only if no function is using it.

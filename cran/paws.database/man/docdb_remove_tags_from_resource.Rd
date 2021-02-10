@@ -12,6 +12,9 @@ value is an Amazon Resource Name (ARN).}
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes metadata tags from an Amazon DocumentDB resource.
 }

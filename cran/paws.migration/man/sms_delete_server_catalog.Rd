@@ -6,6 +6,9 @@
 \usage{
 sms_delete_server_catalog()
 }
+\value{
+An empty list.
+}
 \description{
 Deletes all servers from your server catalog.
 }

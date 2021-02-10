@@ -18,6 +18,9 @@ index.}
 
 \item{IndexName}{[required] The name of the partition index to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified partition index from an existing table.
 }

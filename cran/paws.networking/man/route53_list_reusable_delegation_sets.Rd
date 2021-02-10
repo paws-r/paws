@@ -24,6 +24,24 @@ there are no more reusable delegation sets to get.}
 return in the response to this request. If you specify a value greater
 than 100, Route 53 returns only the first 100 reusable delegation sets.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DelegationSets = list(
+    list(
+      Id = "string",
+      CallerReference = "string",
+      NameServers = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string",
+  IsTruncated = TRUE|FALSE,
+  NextMarker = "string",
+  MaxItems = "string"
+)
+}
+}
 \description{
 Retrieves a list of the reusable delegation sets that are associated
 with the current AWS account.

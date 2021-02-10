@@ -10,6 +10,24 @@ datasync_describe_location_smb(LocationArn)
 \arguments{
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the SMB location to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string",
+  LocationUri = "string",
+  AgentArns = list(
+    "string"
+  ),
+  User = "string",
+  Domain = "string",
+  MountOptions = list(
+    Version = "AUTOMATIC"|"SMB2"|"SMB3"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns metadata, such as the path and user information about an SMB
 location.

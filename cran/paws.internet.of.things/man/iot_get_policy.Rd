@@ -10,6 +10,22 @@ iot_get_policy(policyName)
 \arguments{
 \item{policyName}{[required] The name of the policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policyName = "string",
+  policyArn = "string",
+  policyDocument = "string",
+  defaultVersionId = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  generationId = "string"
+)
+}
+}
 \description{
 Gets information about the specified policy with the policy document of
 the default version.

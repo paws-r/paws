@@ -13,6 +13,18 @@ dax_list_tags(ResourceName, NextToken)
 pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all of the tags for a DAX cluster. You can call
 \code{\link[=dax_list_tags]{list_tags}} up to 10 times per second, per account.

@@ -17,6 +17,23 @@ results.}
 
 \item{ruleDisabled}{Specifies whether the rule is disabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  rules = list(
+    list(
+      ruleArn = "string",
+      ruleName = "string",
+      topicPattern = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      ruleDisabled = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the rules for the specific topic.
 }

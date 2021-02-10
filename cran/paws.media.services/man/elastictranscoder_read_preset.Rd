@@ -10,6 +10,74 @@ elastictranscoder_read_preset(Id)
 \item{Id}{[required] The identifier of the preset for which you want to get detailed
 information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Preset = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string",
+    Description = "string",
+    Container = "string",
+    Audio = list(
+      Codec = "string",
+      SampleRate = "string",
+      BitRate = "string",
+      Channels = "string",
+      AudioPackingMode = "string",
+      CodecOptions = list(
+        Profile = "string",
+        BitDepth = "string",
+        BitOrder = "string",
+        Signed = "string"
+      )
+    ),
+    Video = list(
+      Codec = "string",
+      CodecOptions = list(
+        "string"
+      ),
+      KeyframesMaxDist = "string",
+      FixedGOP = "string",
+      BitRate = "string",
+      FrameRate = "string",
+      MaxFrameRate = "string",
+      Resolution = "string",
+      AspectRatio = "string",
+      MaxWidth = "string",
+      MaxHeight = "string",
+      DisplayAspectRatio = "string",
+      SizingPolicy = "string",
+      PaddingPolicy = "string",
+      Watermarks = list(
+        list(
+          Id = "string",
+          MaxWidth = "string",
+          MaxHeight = "string",
+          SizingPolicy = "string",
+          HorizontalAlign = "string",
+          HorizontalOffset = "string",
+          VerticalAlign = "string",
+          VerticalOffset = "string",
+          Opacity = "string",
+          Target = "string"
+        )
+      )
+    ),
+    Thumbnails = list(
+      Format = "string",
+      Interval = "string",
+      Resolution = "string",
+      AspectRatio = "string",
+      MaxWidth = "string",
+      MaxHeight = "string",
+      SizingPolicy = "string",
+      PaddingPolicy = "string"
+    ),
+    Type = "string"
+  )
+)
+}
+}
 \description{
 The ReadPreset operation gets detailed information about a preset.
 }

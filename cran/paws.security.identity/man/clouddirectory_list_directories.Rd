@@ -14,6 +14,22 @@ clouddirectory_list_directories(NextToken, MaxResults, state)
 \item{state}{The state of the directories in the list. Can be either Enabled,
 Disabled, or Deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Directories = list(
+    list(
+      Name = "string",
+      DirectoryArn = "string",
+      State = "ENABLED"|"DISABLED"|"DELETED",
+      CreationDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists directories created within an account.
 }

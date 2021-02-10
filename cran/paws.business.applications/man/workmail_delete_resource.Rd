@@ -12,6 +12,9 @@ is deleted.}
 
 \item{ResourceId}{[required] The identifier of the resource to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified resource.
 }

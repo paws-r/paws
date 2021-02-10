@@ -185,6 +185,24 @@ that tests for MFA). If the role being assumed requires MFA and if the
 The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Credentials = list(
+    AccessKeyId = "string",
+    SecretAccessKey = "string",
+    SessionToken = "string",
+    Expiration = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  AssumedRoleUser = list(
+    AssumedRoleId = "string",
+    Arn = "string"
+  ),
+  PackedPolicySize = 123
+)
+}
+}
 \description{
 Returns a set of temporary security credentials that you can use to
 access AWS resources that you might not normally have access to. These
@@ -300,7 +318,7 @@ information, the request to assume the role is denied. The condition in
 a trust policy that tests for MFA authentication might look like the
 following example.
 
-\verb{"Condition": \\\{"Bool": \\\{"aws:MultiFactorAuthPresent": true\\\}\\\}}
+\code{"Condition": {"Bool": {"aws:MultiFactorAuthPresent": true}}}
 
 For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html}{Configuring MFA-Protected API Access}
 in the \emph{IAM User Guide} guide.
@@ -342,7 +360,7 @@ the time-based one-time password (TOTP) that the MFA device produces.
 # 
 svc$assume_role(
   ExternalId = "123ABC",
-  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
+  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
   RoleArn = "arn:aws:iam::123456789012:role/demo",
   RoleSessionName = "testAssumeRoleSession",
   Tags = list(

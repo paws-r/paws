@@ -15,6 +15,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ConnectionNotificationIds}{[required] One or more notification IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Unsuccessful = list(
+    list(
+      Error = list(
+        Code = "string",
+        Message = "string"
+      ),
+      ResourceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more VPC endpoint connection notifications.
 }

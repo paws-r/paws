@@ -11,6 +11,12 @@ applicationdiscoveryservice_create_application(name, description)
 
 \item{description}{Description of the application to be created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  configurationId = "string"
+)
+}
+}
 \description{
 Creates an application with the given name and description.
 }

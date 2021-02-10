@@ -14,6 +14,26 @@ chime_update_bot(AccountId, BotId, Disabled)
 
 \item{Disabled}{When true, stops the specified bot from running in your account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Bot = list(
+    BotId = "string",
+    UserId = "string",
+    DisplayName = "string",
+    BotType = "ChatBot",
+    Disabled = TRUE|FALSE,
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    BotEmail = "string",
+    SecurityToken = "string"
+  )
+)
+}
+}
 \description{
 Updates the status of the specified bot, such as starting or stopping
 the bot from running in your Amazon Chime Enterprise account.

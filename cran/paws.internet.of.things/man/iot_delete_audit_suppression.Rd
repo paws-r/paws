@@ -11,6 +11,9 @@ iot_delete_audit_suppression(checkName, resourceIdentifier)
 
 \item{resourceIdentifier}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Device Defender audit suppression.
 }

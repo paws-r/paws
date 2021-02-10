@@ -20,6 +20,19 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttachTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Device = "string",
+  InstanceId = "string",
+  State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+  VolumeId = "string",
+  DeleteOnTermination = TRUE|FALSE
+)
+}
+}
 \description{
 Attaches an EBS volume to a running or stopped instance and exposes it
 to the instance with the specified device name.

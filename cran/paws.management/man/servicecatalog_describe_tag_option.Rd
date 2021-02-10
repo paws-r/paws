@@ -9,6 +9,18 @@ servicecatalog_describe_tag_option(Id)
 \arguments{
 \item{Id}{[required] The TagOption identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagOptionDetail = list(
+    Key = "string",
+    Value = "string",
+    Active = TRUE|FALSE,
+    Id = "string",
+    Owner = "string"
+  )
+)
+}
+}
 \description{
 Gets information about the specified TagOption.
 }

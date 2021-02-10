@@ -9,6 +9,31 @@ iot_describe_domain_configuration(domainConfigurationName)
 \arguments{
 \item{domainConfigurationName}{[required] The name of the domain configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  domainConfigurationName = "string",
+  domainConfigurationArn = "string",
+  domainName = "string",
+  serverCertificates = list(
+    list(
+      serverCertificateArn = "string",
+      serverCertificateStatus = "INVALID"|"VALID",
+      serverCertificateStatusDetail = "string"
+    )
+  ),
+  authorizerConfig = list(
+    defaultAuthorizerName = "string",
+    allowAuthorizerOverride = TRUE|FALSE
+  ),
+  domainConfigurationStatus = "ENABLED"|"DISABLED",
+  serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS",
+  domainType = "ENDPOINT"|"AWS_MANAGED"|"CUSTOMER_MANAGED",
+  lastStatusChangeDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets summary information about a domain configuration.
 

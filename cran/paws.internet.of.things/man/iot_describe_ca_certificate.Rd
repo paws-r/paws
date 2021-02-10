@@ -9,6 +9,39 @@ iot_describe_ca_certificate(certificateId)
 \arguments{
 \item{certificateId}{[required] The CA certificate identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificateDescription = list(
+    certificateArn = "string",
+    certificateId = "string",
+    status = "ACTIVE"|"INACTIVE",
+    certificatePem = "string",
+    ownedBy = "string",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    autoRegistrationStatus = "ENABLE"|"DISABLE",
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    customerVersion = 123,
+    generationId = "string",
+    validity = list(
+      notBefore = as.POSIXct(
+        "2015-01-01"
+      ),
+      notAfter = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  registrationConfig = list(
+    templateBody = "string",
+    roleArn = "string"
+  )
+)
+}
+}
 \description{
 Describes a registered CA certificate.
 }

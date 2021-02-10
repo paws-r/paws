@@ -15,6 +15,25 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  bundles = list(
+    list(
+      bundleId = "string",
+      name = "string",
+      price = 123.0,
+      ramSizeInGb = 123.0,
+      diskSizeInGb = 123,
+      transferPerMonthInGb = 123,
+      cpuCount = 123,
+      isEncrypted = TRUE|FALSE,
+      isActive = TRUE|FALSE
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns the list of bundles that are available in Amazon Lightsail. A
 bundle describes the performance specifications for a database.

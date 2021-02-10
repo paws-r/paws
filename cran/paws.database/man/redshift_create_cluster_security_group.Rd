@@ -25,6 +25,46 @@ Example: \code{examplesecuritygroup}}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterSecurityGroup = list(
+    ClusterSecurityGroupName = "string",
+    Description = "string",
+    EC2SecurityGroups = list(
+      list(
+        Status = "string",
+        EC2SecurityGroupName = "string",
+        EC2SecurityGroupOwnerId = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    ),
+    IPRanges = list(
+      list(
+        Status = "string",
+        CIDRIP = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new Amazon Redshift security group. You use security groups to
 control access to non-VPC clusters.

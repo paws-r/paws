@@ -9,6 +9,56 @@ medialive_describe_input(InputId)
 \arguments{
 \item{InputId}{[required] Unique ID of the input}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AttachedChannels = list(
+    "string"
+  ),
+  Destinations = list(
+    list(
+      Ip = "string",
+      Port = "string",
+      Url = "string",
+      Vpc = list(
+        AvailabilityZone = "string",
+        NetworkInterfaceId = "string"
+      )
+    )
+  ),
+  Id = "string",
+  InputClass = "STANDARD"|"SINGLE_PIPELINE",
+  InputDevices = list(
+    list(
+      Id = "string"
+    )
+  ),
+  InputSourceType = "STATIC"|"DYNAMIC",
+  MediaConnectFlows = list(
+    list(
+      FlowArn = "string"
+    )
+  ),
+  Name = "string",
+  RoleArn = "string",
+  SecurityGroups = list(
+    "string"
+  ),
+  Sources = list(
+    list(
+      PasswordParam = "string",
+      Url = "string",
+      Username = "string"
+    )
+  ),
+  State = "CREATING"|"DETACHED"|"ATTACHED"|"DELETING"|"DELETED",
+  Tags = list(
+    "string"
+  ),
+  Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE"|"AWS_CDI"
+)
+}
+}
 \description{
 Produces details about an input
 }

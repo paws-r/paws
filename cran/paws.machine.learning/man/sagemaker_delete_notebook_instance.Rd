@@ -9,6 +9,9 @@ sagemaker_delete_notebook_instance(NotebookInstanceName)
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the Amazon SageMaker notebook instance to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an Amazon SageMaker notebook instance. Before you can delete a
 notebook instance, you must call the

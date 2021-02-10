@@ -14,6 +14,34 @@ cloudsearch_describe_suggesters(DomainName, SuggesterNames, Deployed)
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Suggesters = list(
+    list(
+      Options = list(
+        SuggesterName = "string",
+        DocumentSuggesterOptions = list(
+          SourceField = "string",
+          FuzzyMatching = "none"|"low"|"high",
+          SortExpression = "string"
+        )
+      ),
+      Status = list(
+        CreationDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateVersion = 123,
+        State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+        PendingDeletion = TRUE|FALSE
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the suggesters configured for a domain. A suggester enables you to
 display possible matches before users finish typing their queries. Can

@@ -27,6 +27,9 @@ same request. Use separate requests for each attribute.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the specified attribute of the specified VPC.
 }

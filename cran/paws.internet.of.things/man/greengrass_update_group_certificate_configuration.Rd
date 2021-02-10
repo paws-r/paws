@@ -8,9 +8,18 @@ greengrass_update_group_certificate_configuration(
   CertificateExpiryInMilliseconds, GroupId)
 }
 \arguments{
-\item{CertificateExpiryInMilliseconds}{The amount of time remaining before the certificate expires, in milliseconds.}
+\item{CertificateExpiryInMilliseconds}{The amount of time remaining before the certificate expires, in
+milliseconds.}
 
 \item{GroupId}{[required] The ID of the Greengrass group.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateAuthorityExpiryInMilliseconds = "string",
+  CertificateExpiryInMilliseconds = "string",
+  GroupId = "string"
+)
+}
 }
 \description{
 Updates the Certificate expiry time for a group.

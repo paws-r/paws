@@ -38,6 +38,29 @@ of transform jobs, use the token in the next request.}
 \item{MaxResults}{The maximum number of transform jobs to return in the response. The
 default value is \code{10}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformJobSummaries = list(
+    list(
+      TransformJobName = "string",
+      TransformJobArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TransformEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TransformJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+      FailureReason = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists transform jobs.
 }

@@ -14,6 +14,34 @@ NULL
 #'
 #' @param arns &#91;required&#93; Array of ARNs, one per channel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channels = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       latencyMode = "NORMAL"|"LOW",
+#'       type = "BASIC"|"STANDARD",
+#'       ingestEndpoint = "string",
+#'       playbackUrl = "string",
+#'       authorized = TRUE|FALSE,
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       arn = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_channel(
@@ -53,6 +81,30 @@ ivs_batch_get_channel <- function(arns) {
 #' ivs_batch_get_stream_key(arns)
 #'
 #' @param arns &#91;required&#93; Array of ARNs, one per channel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamKeys = list(
+#'     list(
+#'       arn = "string",
+#'       value = "string",
+#'       channelArn = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       arn = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -111,6 +163,33 @@ ivs_batch_get_stream_key <- function(arns) {
 #' @param authorized Whether the channel is authorized. Default: `false`.
 #' @param tags See Channel$tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channel = list(
+#'     arn = "string",
+#'     name = "string",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     type = "BASIC"|"STANDARD",
+#'     ingestEndpoint = "string",
+#'     playbackUrl = "string",
+#'     authorized = TRUE|FALSE,
+#'     tags = list(
+#'       "string"
+#'     )
+#'   ),
+#'   streamKey = list(
+#'     arn = "string",
+#'     value = "string",
+#'     channelArn = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_channel(
@@ -163,6 +242,21 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, aut
 #' @param channelArn &#91;required&#93; ARN of the channel for which to create the stream key.
 #' @param tags See Channel$tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamKey = list(
+#'     arn = "string",
+#'     value = "string",
+#'     channelArn = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_stream_key(
@@ -203,6 +297,9 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_channel(
@@ -240,6 +337,9 @@ ivs_delete_channel <- function(arn) {
 #' ivs_delete_playback_key_pair(arn)
 #'
 #' @param arn &#91;required&#93; ARN of the key pair to be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -280,6 +380,9 @@ ivs_delete_playback_key_pair <- function(arn) {
 #'
 #' @param arn &#91;required&#93; ARN of the stream key to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_stream_key(
@@ -317,6 +420,25 @@ ivs_delete_stream_key <- function(arn) {
 #' ivs_get_channel(arn)
 #'
 #' @param arn &#91;required&#93; ARN of the channel for which the configuration is to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channel = list(
+#'     arn = "string",
+#'     name = "string",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     type = "BASIC"|"STANDARD",
+#'     ingestEndpoint = "string",
+#'     playbackUrl = "string",
+#'     authorized = TRUE|FALSE,
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -359,6 +481,21 @@ ivs_get_channel <- function(arn) {
 #'
 #' @param arn &#91;required&#93; ARN of the key pair to be returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   keyPair = list(
+#'     arn = "string",
+#'     name = "string",
+#'     fingerprint = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_playback_key_pair(
@@ -396,6 +533,23 @@ ivs_get_playback_key_pair <- function(arn) {
 #'
 #' @param channelArn &#91;required&#93; Channel ARN for stream to be accessed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stream = list(
+#'     channelArn = "string",
+#'     playbackUrl = "string",
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     state = "LIVE"|"OFFLINE",
+#'     health = "HEALTHY"|"STARVING"|"UNKNOWN",
+#'     viewerCount = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_stream(
@@ -432,6 +586,21 @@ ivs_get_stream <- function(channelArn) {
 #' ivs_get_stream_key(arn)
 #'
 #' @param arn &#91;required&#93; ARN for the stream key to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamKey = list(
+#'     arn = "string",
+#'     value = "string",
+#'     channelArn = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -477,6 +646,21 @@ ivs_get_stream_key <- function(arn) {
 #' unique.
 #' @param tags Any tags provided with the request are added to the playback key pair
 #' tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   keyPair = list(
+#'     arn = "string",
+#'     name = "string",
+#'     fingerprint = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -525,6 +709,25 @@ ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = 
 #' `nextToken` response field.
 #' @param maxResults Maximum number of channels to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channels = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       latencyMode = "NORMAL"|"LOW",
+#'       authorized = TRUE|FALSE,
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_channels(
@@ -566,6 +769,23 @@ ivs_list_channels <- function(filterByName = NULL, nextToken = NULL, maxResults 
 #' @param maxResults The first key pair to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   keyPairs = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_playback_key_pairs(
@@ -606,6 +826,23 @@ ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
 #' @param nextToken The first stream key to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
 #' @param maxResults Maximum number of streamKeys to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamKeys = list(
+#'     list(
+#'       arn = "string",
+#'       channelArn = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -650,6 +887,25 @@ ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL
 #' `nextToken` response field.
 #' @param maxResults Maximum number of streams to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streams = list(
+#'     list(
+#'       channelArn = "string",
+#'       state = "LIVE"|"OFFLINE",
+#'       health = "HEALTHY"|"STARVING"|"UNKNOWN",
+#'       viewerCount = 123,
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_streams(
@@ -690,6 +946,17 @@ ivs_list_streams <- function(nextToken = NULL, maxResults = NULL) {
 #' @param nextToken The first tag to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
 #' @param maxResults Maximum number of tags to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -733,6 +1000,9 @@ ivs_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults
 #' @param channelArn &#91;required&#93; ARN of the channel into which metadata is inserted. This channel must
 #' have an active stream.
 #' @param metadata &#91;required&#93; Metadata to insert into the stream. Maximum: 1 KB per request.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -778,6 +1048,9 @@ ivs_put_metadata <- function(channelArn, metadata) {
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel for which the stream is to be stopped.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_stream(
@@ -815,6 +1088,9 @@ ivs_stop_stream <- function(channelArn) {
 #'
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be added or updated.
 #' @param tags &#91;required&#93; Array of tags to be added or updated.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -856,6 +1132,9 @@ ivs_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be removed.
 #' @param tagKeys &#91;required&#93; Array of tags to be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -916,6 +1195,25 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' 
 #' Default: `STANDARD`.
 #' @param authorized Whether the channel is authorized. Default: `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channel = list(
+#'     arn = "string",
+#'     name = "string",
+#'     latencyMode = "NORMAL"|"LOW",
+#'     type = "BASIC"|"STANDARD",
+#'     ingestEndpoint = "string",
+#'     playbackUrl = "string",
+#'     authorized = TRUE|FALSE,
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

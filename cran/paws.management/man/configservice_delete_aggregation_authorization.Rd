@@ -13,6 +13,9 @@ configservice_delete_aggregation_authorization(AuthorizedAccountId,
 
 \item{AuthorizedAwsRegion}{[required] The region authorized to collect aggregated data.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the authorization granted to the specified configuration
 aggregator account in a specified region.

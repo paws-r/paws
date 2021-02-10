@@ -6,6 +6,42 @@
 \usage{
 iot_get_indexing_configuration()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingIndexingConfiguration = list(
+    thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
+    thingConnectivityIndexingMode = "OFF"|"STATUS",
+    managedFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    ),
+    customFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    )
+  ),
+  thingGroupIndexingConfiguration = list(
+    thingGroupIndexingMode = "OFF"|"ON",
+    managedFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    ),
+    customFields = list(
+      list(
+        name = "string",
+        type = "Number"|"String"|"Boolean"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the indexing configuration.
 }

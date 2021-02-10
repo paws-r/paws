@@ -41,6 +41,19 @@ IPv4 or an IPv6 address:
 \item \strong{IPv6}: Specify a value between 0 and 128
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Nameserver = "string",
+  RecordName = "string",
+  RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+  RecordData = list(
+    "string"
+  ),
+  ResponseCode = "string",
+  Protocol = "string"
+)
+}
+}
 \description{
 Gets the value that Amazon Route 53 returns in response to a DNS request
 for a specified record name and type. You can optionally specify the IP

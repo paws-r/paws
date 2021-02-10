@@ -11,6 +11,9 @@ apigatewayv2_delete_api_mapping(ApiMappingId, DomainName)
 
 \item{DomainName}{[required] The domain name.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an API mapping.
 }

@@ -12,6 +12,36 @@ docdb_delete_db_cluster_snapshot(DBClusterSnapshotIdentifier)
 Constraints: Must be the name of an existing cluster snapshot in the
 \code{available} state.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshot = list(
+    AvailabilityZones = list(
+      "string"
+    ),
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterIdentifier = "string",
+    SnapshotCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Engine = "string",
+    Status = "string",
+    Port = 123,
+    VpcId = "string",
+    ClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    EngineVersion = "string",
+    SnapshotType = "string",
+    PercentProgress = 123,
+    StorageEncrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    DBClusterSnapshotArn = "string",
+    SourceDBClusterSnapshotArn = "string"
+  )
+)
+}
+}
 \description{
 Deletes a cluster snapshot. If the snapshot is being copied, the copy
 operation is terminated.

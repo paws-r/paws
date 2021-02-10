@@ -31,6 +31,29 @@ price of USD 100, specify 100.00.}
 
 \item{TagSpecifications}{The tags to apply to the Dedicated Host Reservation during purchase.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientToken = "string",
+  CurrencyCode = "USD",
+  Purchase = list(
+    list(
+      CurrencyCode = "USD",
+      Duration = 123,
+      HostIdSet = list(
+        "string"
+      ),
+      HostReservationId = "string",
+      HourlyPrice = "string",
+      InstanceFamily = "string",
+      PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
+      UpfrontPrice = "string"
+    )
+  ),
+  TotalHourlyPrice = "string",
+  TotalUpfrontPrice = "string"
+)
+}
+}
 \description{
 Purchase a reservation with configurations that match those of your
 Dedicated Host. You must have active Dedicated Hosts in your account

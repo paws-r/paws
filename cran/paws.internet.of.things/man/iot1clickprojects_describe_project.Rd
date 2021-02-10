@@ -9,6 +9,38 @@ iot1clickprojects_describe_project(projectName)
 \arguments{
 \item{projectName}{[required] The name of the project to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  project = list(
+    arn = "string",
+    projectName = "string",
+    description = "string",
+    createdDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    updatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    placementTemplate = list(
+      defaultAttributes = list(
+        "string"
+      ),
+      deviceTemplates = list(
+        list(
+          deviceType = "string",
+          callbackOverrides = list(
+            "string"
+          )
+        )
+      )
+    ),
+    tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns an object describing a project.
 }

@@ -15,6 +15,33 @@ administrator credentials to access the API.}
 
 \item{IncludeCustomMetadata}{Set to TRUE to include custom metadata in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metadata = list(
+    Id = "string",
+    Name = "string",
+    CreatorId = "string",
+    ParentFolderId = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModifiedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+    Signature = "string",
+    Labels = list(
+      "string"
+    ),
+    Size = 123,
+    LatestVersionSize = 123
+  ),
+  CustomMetadata = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves the metadata of the specified folder.
 }

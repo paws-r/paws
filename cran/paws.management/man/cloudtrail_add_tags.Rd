@@ -14,6 +14,9 @@ The format of a trail ARN is:
 
 \item{TagsList}{Contains a list of CloudTrail tags, up to a limit of 50}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to a trail, up to a limit of 50. Overwrites an
 existing tag's value when a new value is specified for an existing tag

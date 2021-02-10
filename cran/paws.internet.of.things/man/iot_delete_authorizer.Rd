@@ -9,6 +9,9 @@ iot_delete_authorizer(authorizerName)
 \arguments{
 \item{authorizerName}{[required] The name of the authorizer to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an authorizer.
 }

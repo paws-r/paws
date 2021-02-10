@@ -18,6 +18,12 @@ personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
 \item{roleArn}{[required] The ARN of the IAM role that has permissions to read from the Amazon S3
 data source.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasetImportJobArn = "string"
+)
+}
+}
 \description{
 Creates a job that imports training data from your data source (an
 Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon
@@ -32,7 +38,7 @@ The dataset import job replaces any previous data in the dataset.
 
 A dataset import job can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
 FAILED
 }
 

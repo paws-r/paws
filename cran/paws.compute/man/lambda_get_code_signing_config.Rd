@@ -9,6 +9,25 @@ lambda_get_code_signing_config(CodeSigningConfigArn)
 \arguments{
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeSigningConfig = list(
+    CodeSigningConfigId = "string",
+    CodeSigningConfigArn = "string",
+    Description = "string",
+    AllowedPublishers = list(
+      SigningProfileVersionArns = list(
+        "string"
+      )
+    ),
+    CodeSigningPolicies = list(
+      UntrustedArtifactOnDeployment = "Warn"|"Enforce"
+    ),
+    LastModified = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the specified code signing configuration.
 }

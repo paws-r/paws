@@ -15,6 +15,15 @@ Required.}
 
 \item{ParameterKey}{[required] The room skill parameter key for which to get details. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoomSkillParameter = list(
+    ParameterKey = "string",
+    ParameterValue = "string"
+  )
+)
+}
+}
 \description{
 Gets room skill parameter details by room, skill, and parameter key ARN.
 }

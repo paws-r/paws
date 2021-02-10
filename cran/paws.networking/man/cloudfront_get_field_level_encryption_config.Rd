@@ -9,6 +9,41 @@ cloudfront_get_field_level_encryption_config(Id)
 \arguments{
 \item{Id}{[required] Request the ID for the field-level encryption configuration information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldLevelEncryptionConfig = list(
+    CallerReference = "string",
+    Comment = "string",
+    QueryArgProfileConfig = list(
+      ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+      QueryArgProfiles = list(
+        Quantity = 123,
+        Items = list(
+          list(
+            QueryArg = "string",
+            ProfileId = "string"
+          )
+        )
+      )
+    ),
+    ContentTypeProfileConfig = list(
+      ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+      ContentTypeProfiles = list(
+        Quantity = 123,
+        Items = list(
+          list(
+            Format = "URLEncoded",
+            ProfileId = "string",
+            ContentType = "string"
+          )
+        )
+      )
+    )
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Get the field-level encryption configuration information.
 }

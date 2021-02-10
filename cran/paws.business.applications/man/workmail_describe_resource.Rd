@@ -12,6 +12,27 @@ is described.}
 
 \item{ResourceId}{[required] The identifier of the resource to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceId = "string",
+  Email = "string",
+  Name = "string",
+  Type = "ROOM"|"EQUIPMENT",
+  BookingOptions = list(
+    AutoAcceptRequests = TRUE|FALSE,
+    AutoDeclineRecurringRequests = TRUE|FALSE,
+    AutoDeclineConflictingRequests = TRUE|FALSE
+  ),
+  State = "ENABLED"|"DISABLED"|"DELETED",
+  EnabledDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DisabledDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns the data available for the resource.
 }

@@ -9,6 +9,20 @@ ec2_disassociate_subnet_cidr_block(AssociationId)
 \arguments{
 \item{AssociationId}{[required] The association ID for the CIDR block.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Ipv6CidrBlockAssociation = list(
+    AssociationId = "string",
+    Ipv6CidrBlock = "string",
+    Ipv6CidrBlockState = list(
+      State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+      StatusMessage = "string"
+    )
+  ),
+  SubnetId = "string"
+)
+}
+}
 \description{
 Disassociates a CIDR block from a subnet. Currently, you can
 disassociate an IPv6 CIDR block only. You must detach or delete all

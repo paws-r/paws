@@ -11,6 +11,9 @@ autoscaling_delete_policy(AutoScalingGroupName, PolicyName)
 
 \item{PolicyName}{[required] The name or Amazon Resource Name (ARN) of the policy.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified scaling policy.
 

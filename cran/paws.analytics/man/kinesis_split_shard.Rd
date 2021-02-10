@@ -21,6 +21,9 @@ key values in hash key range are distributed to one of the child shards.
 All the lower hash key values in the range are distributed to the other
 child shard.}
 }
+\value{
+An empty list.
+}
 \description{
 Splits a shard into two new shards in the Kinesis data stream, to
 increase the stream's capacity to ingest and transport data.

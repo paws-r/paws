@@ -49,6 +49,40 @@ specified in the filter are returned.
 \code{executionFilter}, \code{typeFilter} and \code{tagFilter} are mutually exclusive.
 You can specify at most one of these in a request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  executionInfos = list(
+    list(
+      execution = list(
+        workflowId = "string",
+        runId = "string"
+      ),
+      workflowType = list(
+        name = "string",
+        version = "string"
+      ),
+      startTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      closeTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      executionStatus = "OPEN"|"CLOSED",
+      closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
+      parent = list(
+        workflowId = "string",
+        runId = "string"
+      ),
+      tagList = list(
+        "string"
+      ),
+      cancelRequested = TRUE|FALSE
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns a list of open workflow executions in the specified domain that
 meet the filtering criteria. The results may be split into multiple

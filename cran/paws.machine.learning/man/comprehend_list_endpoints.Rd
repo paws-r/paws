@@ -16,6 +16,28 @@ You can only set one filter at a time.}
 \item{MaxResults}{The maximum number of results to return in each page. The default is
 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointPropertiesList = list(
+    list(
+      EndpointArn = "string",
+      Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
+      Message = "string",
+      ModelArn = "string",
+      DesiredInferenceUnits = 123,
+      CurrentInferenceUnits = 123,
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of all existing endpoints that you've created.
 }

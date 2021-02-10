@@ -12,6 +12,9 @@ policy to.}
 
 \item{LifecyclePolicy}{[required] The object lifecycle policy to apply to the container.}
 }
+\value{
+An empty list.
+}
 \description{
 Writes an object lifecycle policy to a container. If the container
 already has an object lifecycle policy, the service replaces the

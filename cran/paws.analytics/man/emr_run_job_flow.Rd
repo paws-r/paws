@@ -160,6 +160,13 @@ default value is \code{1}. The maximum value is \code{256}.}
 
 \item{PlacementGroupConfigs}{The specified placement group configuration for an Amazon EMR cluster.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobFlowId = "string",
+  ClusterArn = "string"
+)
+}
+}
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The
 cluster runs the steps specified. After the steps complete, the cluster

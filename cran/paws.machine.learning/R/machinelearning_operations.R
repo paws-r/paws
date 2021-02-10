@@ -20,6 +20,15 @@ NULL
 #' @param ResourceId &#91;required&#93; The ID of the ML object to tag. For example, `exampleModelId`.
 #' @param ResourceType &#91;required&#93; The type of the ML object to tag.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceId = "string",
+#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_tags(
@@ -96,6 +105,14 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #' behalf. For information about how to set permissions, see the [Amazon
 #' Machine Learning Developer
 #' Guide](https://docs.aws.amazon.com/machine-learning/latest/dg/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BatchPredictionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -211,7 +228,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #'       
 #' 
 #'     Sample -
-#'     ` "\{\"splitting\":\{\"percentBegin\":10,\"percentEnd\":60\}\}"`
+#'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
 #' @param RoleARN &#91;required&#93; The role that Amazon ML assumes on behalf of the user to create and
 #' activate a data pipeline in the user's account and copy data using the
 #' `SelectSqlQuery` query from Amazon RDS to Amazon S3.
@@ -220,6 +237,14 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' the statistics internally during `MLModel` training. This parameter must
 #' be set to `true` if the ``DataSource`` needs to be used for `MLModel`
 #' training.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSourceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -357,7 +382,7 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #'     rearrangement requirements for the `DataSource`.
 #' 
 #'     Sample -
-#'     ` "\{\"splitting\":\{\"percentBegin\":10,\"percentEnd\":60\}\}"`
+#'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
 #' @param RoleARN &#91;required&#93; A fully specified role Amazon Resource Name (ARN). Amazon ML assumes the
 #' role on behalf of the user to create the following:
 #' 
@@ -371,6 +396,14 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' the statistics internally during `MLModel` training. This parameter must
 #' be set to `true` if the `DataSource` needs to be used for `MLModel`
 #' training.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSourceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -480,12 +513,20 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #'     rearrangement requirements for the `Datasource`.
 #' 
 #'     Sample -
-#'     ` "\{\"splitting\":\{\"percentBegin\":10,\"percentEnd\":60\}\}"`
+#'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
 #' @param ComputeStatistics The compute statistics for a `DataSource`. The statistics are generated
 #' from the observation data referenced by a `DataSource`. Amazon ML uses
 #' the statistics internally during `MLModel` training. This parameter must
 #' be set to `true` if the ``DataSource`` needs to be used for `MLModel`
 #' training.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSourceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -558,6 +599,14 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 #' `DataSource` used in the `Evaluation`.
 #' @param EvaluationDataSourceId &#91;required&#93; The ID of the `DataSource` for the evaluation. The schema of the
 #' `DataSource` must match the schema used to create the `MLModel`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -686,6 +735,14 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' or its URI. If you don't specify a recipe or its URI, Amazon ML creates
 #' a default.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MLModelId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_ml_model(
@@ -732,6 +789,22 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
 #' machinelearning_create_realtime_endpoint(MLModelId)
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MLModelId = "string",
+#'   RealtimeEndpointInfo = list(
+#'     PeakRequestsPerSecond = 123,
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndpointUrl = "string",
+#'     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -781,6 +854,14 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
 #'
 #' @param BatchPredictionId &#91;required&#93; A user-supplied ID that uniquely identifies the `BatchPrediction`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BatchPredictionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_batch_prediction(
@@ -827,6 +908,14 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
 #' machinelearning_delete_data_source(DataSourceId)
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied ID that uniquely identifies the `DataSource`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSourceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -876,6 +965,14 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 #'
 #' @param EvaluationId &#91;required&#93; A user-supplied ID that uniquely identifies the `Evaluation` to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_evaluation(
@@ -922,6 +1019,14 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
 #'
 #' @param MLModelId &#91;required&#93; A user-supplied ID that uniquely identifies the `MLModel`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MLModelId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_ml_model(
@@ -958,6 +1063,22 @@ machinelearning_delete_ml_model <- function(MLModelId) {
 #' machinelearning_delete_realtime_endpoint(MLModelId)
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MLModelId = "string",
+#'   RealtimeEndpointInfo = list(
+#'     PeakRequestsPerSecond = 123,
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndpointUrl = "string",
+#'     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1000,6 +1121,15 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
 #' @param TagKeys &#91;required&#93; One or more tags to delete.
 #' @param ResourceId &#91;required&#93; The ID of the tagged ML object. For example, `exampleModelId`.
 #' @param ResourceType &#91;required&#93; The type of the tagged ML object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceId = "string",
+#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1101,6 +1231,42 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' @param Limit The number of pages of information to include in the result. The range
 #' of acceptable values is `1` through `100`. The default value is `100`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       BatchPredictionId = "string",
+#'       MLModelId = "string",
+#'       BatchPredictionDataSourceId = "string",
+#'       InputDataLocationS3 = "string",
+#'       CreatedByIamUser = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'       OutputUri = "string",
+#'       Message = "string",
+#'       ComputeTime = 123,
+#'       FinishedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TotalRecordCount = 123,
+#'       InvalidRecordCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_batch_predictions(
@@ -1200,6 +1366,61 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken The ID of the page in the paginated results.
 #' @param Limit The maximum number of `DataSource` to include in the result.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       DataSourceId = "string",
+#'       DataLocationS3 = "string",
+#'       DataRearrangement = "string",
+#'       CreatedByIamUser = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataSizeInBytes = 123,
+#'       NumberOfFiles = 123,
+#'       Name = "string",
+#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'       Message = "string",
+#'       RedshiftMetadata = list(
+#'         RedshiftDatabase = list(
+#'           DatabaseName = "string",
+#'           ClusterIdentifier = "string"
+#'         ),
+#'         DatabaseUserName = "string",
+#'         SelectSqlQuery = "string"
+#'       ),
+#'       RDSMetadata = list(
+#'         Database = list(
+#'           InstanceIdentifier = "string",
+#'           DatabaseName = "string"
+#'         ),
+#'         DatabaseUserName = "string",
+#'         SelectSqlQuery = "string",
+#'         ResourceRole = "string",
+#'         ServiceRole = "string",
+#'         DataPipelineId = "string"
+#'       ),
+#'       RoleARN = "string",
+#'       ComputeStatistics = TRUE|FALSE,
+#'       ComputeTime = 123,
+#'       FinishedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1307,6 +1528,44 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' @param NextToken The ID of the page in the paginated results.
 #' @param Limit The maximum number of `Evaluation` to include in the result.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       EvaluationId = "string",
+#'       MLModelId = "string",
+#'       EvaluationDataSourceId = "string",
+#'       InputDataLocationS3 = "string",
+#'       CreatedByIamUser = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'       PerformanceMetrics = list(
+#'         Properties = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Message = "string",
+#'       ComputeTime = 123,
+#'       FinishedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_evaluations(
@@ -1412,6 +1671,56 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' @param Limit The number of pages of information to include in the result. The range
 #' of acceptable values is `1` through `100`. The default value is `100`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       MLModelId = "string",
+#'       TrainingDataSourceId = "string",
+#'       CreatedByIamUser = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'       SizeInBytes = 123,
+#'       EndpointInfo = list(
+#'         PeakRequestsPerSecond = 123,
+#'         CreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndpointUrl = "string",
+#'         EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
+#'       ),
+#'       TrainingParameters = list(
+#'         "string"
+#'       ),
+#'       InputDataLocationS3 = "string",
+#'       Algorithm = "sgd",
+#'       MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
+#'       ScoreThreshold = 123.0,
+#'       ScoreThresholdLastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Message = "string",
+#'       ComputeTime = 123,
+#'       FinishedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_ml_models(
@@ -1460,6 +1769,21 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
 #' @param ResourceId &#91;required&#93; The ID of the ML object. For example, `exampleModelId`.
 #' @param ResourceType &#91;required&#93; The type of the ML object.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceId = "string",
+#'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_tags(
@@ -1499,6 +1823,38 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
 #' machinelearning_get_batch_prediction(BatchPredictionId)
 #'
 #' @param BatchPredictionId &#91;required&#93; An ID assigned to the `BatchPrediction` at creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BatchPredictionId = "string",
+#'   MLModelId = "string",
+#'   BatchPredictionDataSourceId = "string",
+#'   InputDataLocationS3 = "string",
+#'   CreatedByIamUser = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'   OutputUri = "string",
+#'   LogUri = "string",
+#'   Message = "string",
+#'   ComputeTime = 123,
+#'   FinishedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TotalRecordCount = 123,
+#'   InvalidRecordCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1550,6 +1906,58 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #' 
 #' If false, `DataSourceSchema` is not returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSourceId = "string",
+#'   DataLocationS3 = "string",
+#'   DataRearrangement = "string",
+#'   CreatedByIamUser = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSizeInBytes = 123,
+#'   NumberOfFiles = 123,
+#'   Name = "string",
+#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'   LogUri = "string",
+#'   Message = "string",
+#'   RedshiftMetadata = list(
+#'     RedshiftDatabase = list(
+#'       DatabaseName = "string",
+#'       ClusterIdentifier = "string"
+#'     ),
+#'     DatabaseUserName = "string",
+#'     SelectSqlQuery = "string"
+#'   ),
+#'   RDSMetadata = list(
+#'     Database = list(
+#'       InstanceIdentifier = "string",
+#'       DatabaseName = "string"
+#'     ),
+#'     DatabaseUserName = "string",
+#'     SelectSqlQuery = "string",
+#'     ResourceRole = "string",
+#'     ServiceRole = "string",
+#'     DataPipelineId = "string"
+#'   ),
+#'   RoleARN = "string",
+#'   ComputeStatistics = TRUE|FALSE,
+#'   ComputeTime = 123,
+#'   FinishedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSourceSchema = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_data_source(
@@ -1591,6 +1999,40 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
 #' @param EvaluationId &#91;required&#93; The ID of the `Evaluation` to retrieve. The evaluation of each `MLModel`
 #' is recorded and cataloged. The ID provides the means to access the
 #' information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationId = "string",
+#'   MLModelId = "string",
+#'   EvaluationDataSourceId = "string",
+#'   InputDataLocationS3 = "string",
+#'   CreatedByIamUser = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'   PerformanceMetrics = list(
+#'     Properties = list(
+#'       "string"
+#'     )
+#'   ),
+#'   LogUri = "string",
+#'   Message = "string",
+#'   ComputeTime = 123,
+#'   FinishedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1640,6 +2082,53 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #' 
 #' If false, `Recipe` is not returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MLModelId = "string",
+#'   TrainingDataSourceId = "string",
+#'   CreatedByIamUser = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+#'   SizeInBytes = 123,
+#'   EndpointInfo = list(
+#'     PeakRequestsPerSecond = 123,
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndpointUrl = "string",
+#'     EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
+#'   ),
+#'   TrainingParameters = list(
+#'     "string"
+#'   ),
+#'   InputDataLocationS3 = "string",
+#'   MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
+#'   ScoreThreshold = 123.0,
+#'   ScoreThresholdLastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LogUri = "string",
+#'   Message = "string",
+#'   ComputeTime = 123,
+#'   FinishedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Recipe = "string",
+#'   Schema = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ml_model(
@@ -1685,6 +2174,23 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
 #' @param MLModelId &#91;required&#93; A unique identifier of the `MLModel`.
 #' @param Record &#91;required&#93; 
 #' @param PredictEndpoint &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Prediction = list(
+#'     predictedLabel = "string",
+#'     predictedValue = 123.0,
+#'     predictedScores = list(
+#'       123.0
+#'     ),
+#'     details = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1733,6 +2239,14 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
 #' @param BatchPredictionId &#91;required&#93; The ID assigned to the `BatchPrediction` during creation.
 #' @param BatchPredictionName &#91;required&#93; A new user-supplied name or description of the `BatchPrediction`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BatchPredictionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_batch_prediction(
@@ -1776,6 +2290,14 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @param DataSourceName &#91;required&#93; A new user-supplied name or description of the `DataSource` that will
 #' replace the current description.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSourceId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_data_source(
@@ -1818,6 +2340,14 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
 #' @param EvaluationId &#91;required&#93; The ID assigned to the `Evaluation` during creation.
 #' @param EvaluationName &#91;required&#93; A new user-supplied name or description of the `Evaluation` that will
 #' replace the current content.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1867,6 +2397,14 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 #' positive result from the `MLModel`, such as `true`. Output values less
 #' than the `ScoreThreshold` receive a negative response from the
 #' `MLModel`, such as `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MLModelId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

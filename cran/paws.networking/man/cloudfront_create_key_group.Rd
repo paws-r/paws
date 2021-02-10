@@ -10,6 +10,26 @@ cloudfront_create_key_group(KeyGroupConfig)
 \arguments{
 \item{KeyGroupConfig}{[required] A key group configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyGroup = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    KeyGroupConfig = list(
+      Name = "string",
+      Items = list(
+        "string"
+      ),
+      Comment = "string"
+    )
+  ),
+  Location = "string",
+  ETag = "string"
+)
+}
+}
 \description{
 Creates a key group that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{CloudFront signed URLs and signed cookies}.
 

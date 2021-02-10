@@ -16,6 +16,23 @@ quicksight_update_template_permissions(AwsAccountId, TemplateId,
 
 \item{RevokePermissions}{A list of resource permissions to be revoked from the template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateId = "string",
+  TemplateArn = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates the resource permissions for a template.
 }

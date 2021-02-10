@@ -12,6 +12,36 @@ about the user.}
 
 \item{Username}{[required] The user name of the user you wish to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Username = "string",
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  UserCreateDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  UserLastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Enabled = TRUE|FALSE,
+  UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+  MFAOptions = list(
+    list(
+      DeliveryMedium = "SMS"|"EMAIL",
+      AttributeName = "string"
+    )
+  ),
+  PreferredMfaSetting = "string",
+  UserMFASettingList = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets the specified user by user name in a user pool as an administrator.
 Works on any user.

@@ -13,6 +13,19 @@ iot_list_domain_configurations(marker, pageSize, serviceType)
 
 \item{serviceType}{The type of service delivered by the endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  domainConfigurations = list(
+    list(
+      domainConfigurationName = "string",
+      domainConfigurationArn = "string",
+      serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS"
+    )
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Gets a list of domain configurations for the user. This list is sorted
 alphabetically by domain configuration name.

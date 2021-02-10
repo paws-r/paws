@@ -17,6 +17,50 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBalancers = list(
+    list(
+      LoadBalancerArn = "string",
+      DNSName = "string",
+      CanonicalHostedZoneId = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LoadBalancerName = "string",
+      Scheme = "internet-facing"|"internal",
+      VpcId = "string",
+      State = list(
+        Code = "active"|"provisioning"|"active_impaired"|"failed",
+        Reason = "string"
+      ),
+      Type = "application"|"network"|"gateway",
+      AvailabilityZones = list(
+        list(
+          ZoneName = "string",
+          SubnetId = "string",
+          OutpostId = "string",
+          LoadBalancerAddresses = list(
+            list(
+              IpAddress = "string",
+              AllocationId = "string",
+              PrivateIPv4Address = "string",
+              IPv6Address = "string"
+            )
+          )
+        )
+      ),
+      SecurityGroups = list(
+        "string"
+      ),
+      IpAddressType = "ipv4"|"dualstack",
+      CustomerOwnedIpv4Pool = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the specified load balancers or all of your load balancers.
 }
@@ -39,7 +83,7 @@ Describes the specified load balancers or all of your load balancers.
 # This example describes the specified load balancer.
 svc$describe_load_balancers(
   LoadBalancerArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
   )
 )
 }

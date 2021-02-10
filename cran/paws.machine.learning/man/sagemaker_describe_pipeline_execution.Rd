@@ -9,6 +9,32 @@ sagemaker_describe_pipeline_execution(PipelineExecutionArn)
 \arguments{
 \item{PipelineExecutionArn}{[required] The Amazon Resource Name (ARN) of the pipeline execution.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineArn = "string",
+  PipelineExecutionArn = "string",
+  PipelineExecutionDisplayName = "string",
+  PipelineExecutionStatus = "Executing"|"Stopping"|"Stopped"|"Failed"|"Succeeded",
+  PipelineExecutionDescription = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreatedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  LastModifiedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  )
+)
+}
+}
 \description{
 Describes the details of a pipeline execution.
 }

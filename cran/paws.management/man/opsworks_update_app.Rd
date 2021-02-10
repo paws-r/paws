@@ -46,6 +46,9 @@ it will cause an exception with the message, "Environment: is too large
 If you have specified one or more environment variables, you cannot
 modify the stack's Chef version.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a specified app.
 

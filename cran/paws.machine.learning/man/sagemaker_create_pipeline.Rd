@@ -26,6 +26,12 @@ access and create resources.}
 
 \item{Tags}{A list of tags to apply to the created pipeline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineArn = "string"
+)
+}
+}
 \description{
 Creates a pipeline using a JSON pipeline definition.
 }

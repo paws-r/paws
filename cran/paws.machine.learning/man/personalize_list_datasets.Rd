@@ -16,6 +16,26 @@ getting the next set of dataset import jobs (if they exist).}
 
 \item{maxResults}{The maximum number of datasets to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasets = list(
+    list(
+      name = "string",
+      datasetArn = "string",
+      datasetType = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the list of datasets contained in the given dataset group. The
 response provides the properties for each dataset, including the Amazon

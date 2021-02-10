@@ -11,6 +11,14 @@ sns_get_platform_application_attributes(PlatformApplicationArn)
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn for GetPlatformApplicationAttributesInput.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM (Firebase

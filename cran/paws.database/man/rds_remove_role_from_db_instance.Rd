@@ -18,6 +18,9 @@ DB instance, for example, \verb{arn:aws:iam::123456789012:role/AccessRole}.}
 disassociated from. For the list of supported feature names, see
 \code{DBEngineVersion}.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates an AWS Identity and Access Management (IAM) role from a DB
 instance.

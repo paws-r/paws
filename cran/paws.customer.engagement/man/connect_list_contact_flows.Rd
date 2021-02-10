@@ -19,6 +19,20 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContactFlowSummaryList = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      ContactFlowType = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides information about the contact flows for the specified Amazon
 Connect instance.

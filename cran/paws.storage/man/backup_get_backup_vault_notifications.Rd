@@ -12,6 +12,17 @@ are identified by names that are unique to the account used to create
 them and the AWS Region where they are created. They consist of
 lowercase letters, numbers, and hyphens.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupVaultName = "string",
+  BackupVaultArn = "string",
+  SNSTopicArn = "string",
+  BackupVaultEvents = list(
+    "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"
+  )
+)
+}
+}
 \description{
 Returns event notifications for the specified backup vault.
 }

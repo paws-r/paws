@@ -12,6 +12,16 @@ apigateway_get_documentation_version(restApiId, documentationVersion)
 \item{documentationVersion}{[required] [Required] The version identifier of the to-be-retrieved documentation
 snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  version = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  description = "string"
+)
+}
+}
 \description{
 Get documentation version
 }

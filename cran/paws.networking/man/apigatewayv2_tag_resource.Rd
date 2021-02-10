@@ -12,6 +12,9 @@ apigatewayv2_tag_resource(ResourceArn, Tags)
 \item{Tags}{The collection of tags. Each tag element is associated with a given
 resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new Tag resource to represent a tag.
 }

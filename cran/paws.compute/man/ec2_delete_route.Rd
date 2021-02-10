@@ -23,6 +23,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the route table.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified route from the specified route table.
 }

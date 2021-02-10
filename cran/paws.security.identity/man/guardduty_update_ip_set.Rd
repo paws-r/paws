@@ -20,6 +20,9 @@ https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.}
 \item{Activate}{The updated Boolean value that specifies whether the IPSet is active or
 not.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the IPSet specified by the IPSet ID.
 }

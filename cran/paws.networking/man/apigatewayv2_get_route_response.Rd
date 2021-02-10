@@ -13,6 +13,22 @@ apigatewayv2_get_route_response(ApiId, RouteId, RouteResponseId)
 
 \item{RouteResponseId}{[required] The route response ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelSelectionExpression = "string",
+  ResponseModels = list(
+    "string"
+  ),
+  ResponseParameters = list(
+    list(
+      Required = TRUE|FALSE
+    )
+  ),
+  RouteResponseId = "string",
+  RouteResponseKey = "string"
+)
+}
+}
 \description{
 Gets a RouteResponse.
 }

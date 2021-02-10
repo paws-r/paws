@@ -39,6 +39,32 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value. If
 a player session ID is specified, this parameter is ignored.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlayerSessions = list(
+    list(
+      PlayerSessionId = "string",
+      PlayerId = "string",
+      GameSessionId = "string",
+      FleetId = "string",
+      FleetArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TerminationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "RESERVED"|"ACTIVE"|"COMPLETED"|"TIMEDOUT",
+      IpAddress = "string",
+      DnsName = "string",
+      Port = 123,
+      PlayerData = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves properties for one or more player sessions. This operation can
 be used in several ways: (1) provide a \code{PlayerSessionId} to request

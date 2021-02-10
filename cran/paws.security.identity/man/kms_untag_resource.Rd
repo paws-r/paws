@@ -23,6 +23,9 @@ To get the key ID and key ARN for a CMK, use
 
 \item{TagKeys}{[required] One or more tag keys. Specify only the tag keys, not the tag values.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes tags from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}.
 To delete a tag, specify the tag key and the CMK.

@@ -10,6 +10,20 @@ swf_describe_domain(name)
 \arguments{
 \item{name}{[required] The name of the domain to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  domainInfo = list(
+    name = "string",
+    status = "REGISTERED"|"DEPRECATED",
+    description = "string",
+    arn = "string"
+  ),
+  configuration = list(
+    workflowExecutionRetentionPeriodInDays = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the specified domain, including description
 and status.

@@ -26,6 +26,35 @@ specified number.
 
 Amazon Web Services may impose its own limit, if this field is not set.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tapes = list(
+    list(
+      TapeARN = "string",
+      TapeBarcode = "string",
+      TapeCreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      TapeSizeInBytes = 123,
+      TapeStatus = "string",
+      VTLDevice = "string",
+      Progress = 123.0,
+      TapeUsedInBytes = 123,
+      KMSKey = "string",
+      PoolId = "string",
+      Worm = TRUE|FALSE,
+      RetentionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      PoolEntryDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a description of the specified Amazon Resource Name (ARN) of
 virtual tapes. If a \code{TapeARN} is not specified, returns a description of

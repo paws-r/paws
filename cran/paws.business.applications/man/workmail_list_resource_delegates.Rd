@@ -18,6 +18,18 @@ resource.}
 
 \item{MaxResults}{The number of maximum results in a page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Delegates = list(
+    list(
+      Id = "string",
+      Type = "GROUP"|"USER"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the delegates associated with a resource. Users and groups can be
 resource delegates and answer requests on behalf of the resource.

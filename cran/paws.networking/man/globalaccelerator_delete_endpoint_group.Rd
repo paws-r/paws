@@ -9,6 +9,9 @@ globalaccelerator_delete_endpoint_group(EndpointGroupArn)
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete an endpoint group from a listener.
 }

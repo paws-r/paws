@@ -15,6 +15,9 @@ s3control_put_bucket_lifecycle_configuration(AccountId, Bucket,
 
 \item{LifecycleConfiguration}{Container for lifecycle rules. You can add as many as 1,000 rules.}
 }
+\value{
+An empty list.
+}
 \description{
 This action puts a lifecycle configuration to an Amazon S3 on Outposts
 bucket. To put a lifecycle configuration to an S3 bucket, see
@@ -25,7 +28,7 @@ Creates a new lifecycle configuration for the Outposts bucket or
 replaces an existing lifecycle configuration. Outposts buckets only
 support lifecycle configurations that delete/expire objects after a
 certain period of time and abort incomplete multipart uploads. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Managing Lifecycle Permissions for Amazon S3 on Outposts}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Managing Lifecycle Permissions for Amazon S3 on Outposts}.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request

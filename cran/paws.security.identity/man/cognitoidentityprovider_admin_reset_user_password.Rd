@@ -42,6 +42,9 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Resets the specified user's password in a user pool as an administrator.
 Works on any user.

@@ -18,6 +18,9 @@ NULL
 #' @param AcmCertificateArn &#91;required&#93; The ARN of an issued ACM certificate that is valid for the domain being
 #' associated.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_domain(
@@ -64,6 +67,14 @@ worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, 
 #' @param DomainName The domain name of the authorization provider. This applies only to
 #' SAML-based authorization providers.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthorizationProviderId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_website_authorization_provider(
@@ -109,6 +120,14 @@ worklink_associate_website_authorization_provider <- function(FleetArn, Authoriz
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param Certificate &#91;required&#93; The root certificate of the CA.
 #' @param DisplayName The certificate name to display.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebsiteCaId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -157,6 +176,14 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
 #' Region.
 #' @param Tags The tags to add to the resource. A tag is a key-value pair.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_fleet(
@@ -200,6 +227,9 @@ worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndU
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_fleet(
@@ -238,6 +268,14 @@ worklink_delete_fleet <- function(FleetArn) {
 #' worklink_describe_audit_stream_configuration(FleetArn)
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuditStreamArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -278,6 +316,20 @@ worklink_describe_audit_stream_configuration <- function(FleetArn) {
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcId = "string",
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   SecurityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_company_network_configuration(
@@ -315,6 +367,26 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DeviceId &#91;required&#93; A unique identifier for a registered user's device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "ACTIVE"|"SIGNED_OUT",
+#'   Model = "string",
+#'   Manufacturer = "string",
+#'   OperatingSystem = "string",
+#'   OperatingSystemVersion = "string",
+#'   PatchLevel = "string",
+#'   FirstAccessedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAccessedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Username = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -354,6 +426,14 @@ worklink_describe_device <- function(FleetArn, DeviceId) {
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceCaCertificate = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_device_policy_configuration(
@@ -391,6 +471,20 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   DisplayName = "string",
+#'   CreatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DomainStatus = "PENDING_VALIDATION"|"ASSOCIATING"|"ACTIVE"|"INACTIVE"|"DISASSOCIATING"|"DISASSOCIATED"|"FAILED_TO_ASSOCIATE"|"FAILED_TO_DISASSOCIATE",
+#'   AcmCertificateArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -432,6 +526,27 @@ worklink_describe_domain <- function(FleetArn, DomainName) {
 #'
 #' @param FleetArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FleetName = "string",
+#'   DisplayName = "string",
+#'   OptimizeForEndUserLocation = TRUE|FALSE,
+#'   CompanyCode = "string",
+#'   FleetStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"FAILED_TO_CREATE"|"FAILED_TO_DELETE",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fleet_metadata(
@@ -468,6 +583,16 @@ worklink_describe_fleet_metadata <- function(FleetArn) {
 #' worklink_describe_identity_provider_configuration(FleetArn)
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityProviderType = "SAML",
+#'   ServiceProviderSamlMetadata = "string",
+#'   IdentityProviderSamlMetadata = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -506,6 +631,18 @@ worklink_describe_identity_provider_configuration <- function(FleetArn) {
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param WebsiteCaId &#91;required&#93; A unique identifier for the certificate authority.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = "string",
+#'   CreatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DisplayName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -546,6 +683,9 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -589,6 +729,9 @@ worklink_disassociate_domain <- function(FleetArn, DomainName) {
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param AuthorizationProviderId &#91;required&#93; A unique identifier for the authorization provider.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_website_authorization_provider(
@@ -628,6 +771,9 @@ worklink_disassociate_website_authorization_provider <- function(FleetArn, Autho
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param WebsiteCaId &#91;required&#93; A unique identifier for the CA.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -669,6 +815,20 @@ worklink_disassociate_website_certificate_authority <- function(FleetArn, Websit
 #' @param NextToken The pagination token used to retrieve the next page of results for this
 #' operation. If this value is null, it retrieves the first page.
 #' @param MaxResults The maximum number of results to be included in the next page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Devices = list(
+#'     list(
+#'       DeviceId = "string",
+#'       DeviceStatus = "ACTIVE"|"SIGNED_OUT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -712,6 +872,24 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 #' operation. If this value is null, it retrieves the first page.
 #' @param MaxResults The maximum number of results to be included in the next page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Domains = list(
+#'     list(
+#'       DomainName = "string",
+#'       DisplayName = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DomainStatus = "PENDING_VALIDATION"|"ASSOCIATING"|"ACTIVE"|"INACTIVE"|"DISASSOCIATING"|"DISASSOCIATED"|"FAILED_TO_ASSOCIATE"|"FAILED_TO_DISASSOCIATE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_domains(
@@ -753,6 +931,32 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 #' operation. If this value is null, it retrieves the first page.
 #' @param MaxResults The maximum number of results to be included in the next page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetSummaryList = list(
+#'     list(
+#'       FleetArn = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FleetName = "string",
+#'       DisplayName = "string",
+#'       CompanyCode = "string",
+#'       FleetStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"FAILED_TO_CREATE"|"FAILED_TO_DELETE",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_fleets(
@@ -790,6 +994,16 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
 #' worklink_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -833,6 +1047,24 @@ worklink_list_tags_for_resource <- function(ResourceArn) {
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #' @param MaxResults The maximum number of results to be included in the next page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebsiteAuthorizationProviders = list(
+#'     list(
+#'       AuthorizationProviderId = "string",
+#'       AuthorizationProviderType = "SAML",
+#'       DomainName = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -879,6 +1111,23 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
 #' @param NextToken The pagination token used to retrieve the next page of results for this
 #' operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebsiteCertificateAuthorities = list(
+#'     list(
+#'       WebsiteCaId = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisplayName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_website_certificate_authorities(
@@ -919,6 +1168,9 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$restore_domain_access(
@@ -957,6 +1209,9 @@ worklink_restore_domain_access <- function(FleetArn, DomainName) {
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -997,6 +1252,9 @@ worklink_revoke_domain_access <- function(FleetArn, DomainName) {
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param Username &#91;required&#93; The name of the user.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1040,6 +1298,9 @@ worklink_sign_out_user <- function(FleetArn, Username) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #' @param Tags &#91;required&#93; The tags to add to the resource. A tag is a key-value pair.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1080,6 +1341,9 @@ worklink_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1123,6 +1387,9 @@ worklink_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param AuditStreamArn The ARN of the Amazon Kinesis data stream that receives the audit
 #' events.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_audit_stream_configuration(
@@ -1165,6 +1432,9 @@ worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn 
 #' @param SubnetIds &#91;required&#93; The subnets used for X-ENI connections from Amazon WorkLink rendering
 #' containers.
 #' @param SecurityGroupIds &#91;required&#93; The security groups associated with access to the provided subnets.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1213,6 +1483,9 @@ worklink_update_company_network_configuration <- function(FleetArn, VpcId, Subne
 #' @param DeviceCaCertificate The certificate chain, including intermediate certificates and the root
 #' certificate authority certificate used to issue device certificates.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_device_policy_configuration(
@@ -1252,6 +1525,9 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
 #' @param DisplayName The name to display.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1298,6 +1574,9 @@ worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = 
 #' the closest AWS Region to users, which may be outside of your home
 #' Region.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_fleet_metadata(
@@ -1340,6 +1619,9 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
 #' @param IdentityProviderType &#91;required&#93; The type of identity provider.
 #' @param IdentityProviderSamlMetadata The SAML metadata document provided by the customer’s identity provider.
 #' The existing IdentityProviderSamlMetadata is unset if null is passed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

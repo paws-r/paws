@@ -9,6 +9,22 @@ cognitoidentityprovider_get_user_pool_mfa_config(UserPoolId)
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SmsMfaConfiguration = list(
+    SmsAuthenticationMessage = "string",
+    SmsConfiguration = list(
+      SnsCallerArn = "string",
+      ExternalId = "string"
+    )
+  ),
+  SoftwareTokenMfaConfiguration = list(
+    Enabled = TRUE|FALSE
+  ),
+  MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
+)
+}
+}
 \description{
 Gets the user pool multi-factor authentication (MFA) configuration.
 }

@@ -16,6 +16,9 @@ NULL
 #' @param ResourceId &#91;required&#93; The resource for which members (users or groups) are associated.
 #' @param EntityId &#91;required&#93; The member (user or group) to associate to the resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_delegate_to_resource(
@@ -56,6 +59,9 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 #' @param OrganizationId &#91;required&#93; The organization under which the group exists.
 #' @param GroupId &#91;required&#93; The group to which the member (user or group) is associated.
 #' @param MemberId &#91;required&#93; The member (user or group) to associate to the group.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -101,6 +107,9 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 #' @param JobId &#91;required&#93; The job ID.
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_mailbox_export_job(
@@ -144,6 +153,9 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
 #' @param EntityId &#91;required&#93; The member (user or group) to which this alias is added.
 #' @param Alias &#91;required&#93; The alias to add to the member set.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_alias(
@@ -185,6 +197,14 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the group is to be created.
 #' @param Name &#91;required&#93; The name of the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -255,6 +275,14 @@ workmail_create_group <- function(OrganizationId, Name) {
 #' WorkMail and Microsoft Exchange. Can only be set to `true` if an AD
 #' Connector directory ID is included in the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_organization(
@@ -306,6 +334,14 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
 #' @param Type &#91;required&#93; The type of the new resource. The available types are `equipment` and
 #' `room`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_resource(
@@ -351,6 +387,14 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #' @param DisplayName &#91;required&#93; The display name for the new user.
 #' @param Password &#91;required&#93; The password for the new user.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_user(
@@ -391,6 +435,9 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization.
 #' @param Name &#91;required&#93; The name of the access control rule.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -437,6 +484,9 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
 #' entries in the list are collapsed into single entries (the list is
 #' transformed into a set).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_alias(
@@ -476,6 +526,9 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
 #'
 #' @param OrganizationId &#91;required&#93; The organization that contains the group.
 #' @param GroupId &#91;required&#93; The identifier of the group to be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -518,6 +571,9 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 #' @param EntityId &#91;required&#93; The identifier of the member (user or group) that owns the mailbox.
 #' @param GranteeId &#91;required&#93; The identifier of the member (user or group) for which to delete granted
 #' permissions.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -568,6 +624,15 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #' @param DeleteDirectory &#91;required&#93; If true, deletes the AWS Directory Service directory associated with the
 #' organization.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string",
+#'   State = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_organization(
@@ -609,6 +674,9 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
 #' is deleted.
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource(
@@ -647,6 +715,9 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
 #'
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #' @param Id &#91;required&#93; The retention policy ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -693,6 +764,9 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 #' @param OrganizationId &#91;required&#93; The organization that contains the user to be deleted.
 #' @param UserId &#91;required&#93; The identifier of the user to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_user(
@@ -736,6 +810,9 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #' entity exists.
 #' @param EntityId &#91;required&#93; The identifier for the member (user or group) to be updated.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_from_work_mail(
@@ -775,6 +852,23 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group to be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupId = "string",
+#'   Name = "string",
+#'   Email = "string",
+#'   State = "ENABLED"|"DISABLED"|"DELETED",
+#'   EnabledDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DisabledDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_group(
@@ -813,6 +907,29 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
 #'
 #' @param JobId &#91;required&#93; The mailbox export job ID.
 #' @param OrganizationId &#91;required&#93; The organization ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntityId = "string",
+#'   Description = "string",
+#'   RoleArn = "string",
+#'   KmsKeyArn = "string",
+#'   S3BucketName = "string",
+#'   S3Prefix = "string",
+#'   S3Path = "string",
+#'   EstimatedProgress = 123,
+#'   State = "RUNNING"|"COMPLETED"|"FAILED"|"CANCELLED",
+#'   ErrorInfo = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -854,6 +971,24 @@ workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization to be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string",
+#'   Alias = "string",
+#'   State = "string",
+#'   DirectoryId = "string",
+#'   DirectoryType = "string",
+#'   DefaultMailDomain = "string",
+#'   CompletedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ErrorMessage = "string",
+#'   ARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_organization(
@@ -893,6 +1028,29 @@ workmail_describe_organization <- function(OrganizationId) {
 #' is described.
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceId = "string",
+#'   Email = "string",
+#'   Name = "string",
+#'   Type = "ROOM"|"EQUIPMENT",
+#'   BookingOptions = list(
+#'     AutoAcceptRequests = TRUE|FALSE,
+#'     AutoDeclineRecurringRequests = TRUE|FALSE,
+#'     AutoDeclineConflictingRequests = TRUE|FALSE
+#'   ),
+#'   State = "ENABLED"|"DISABLED"|"DELETED",
+#'   EnabledDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DisabledDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_resource(
@@ -931,6 +1089,25 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
 #' @param UserId &#91;required&#93; The identifier for the user to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserId = "string",
+#'   Name = "string",
+#'   Email = "string",
+#'   DisplayName = "string",
+#'   State = "ENABLED"|"DISABLED"|"DELETED",
+#'   UserRole = "USER"|"RESOURCE"|"SYSTEM_USER",
+#'   EnabledDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DisabledDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -975,6 +1152,9 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 #' @param EntityId &#91;required&#93; The identifier for the member (user, group) to be removed from the
 #' resource's delegates.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_delegate_from_resource(
@@ -1016,6 +1196,9 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group from which members are removed.
 #' @param MemberId &#91;required&#93; The identifier for the member to be removed to the group.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1063,6 +1246,17 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #' `AutoDiscover`, `EWS`, `IMAP`, `SMTP`, `WindowsOutlook`, and `WebMail`.
 #' @param UserId &#91;required&#93; The user ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Effect = "ALLOW"|"DENY",
+#'   MatchedRules = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_access_control_effect(
@@ -1104,6 +1298,23 @@ workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action
 #'
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   FolderConfigurations = list(
+#'     list(
+#'       Name = "INBOX"|"DELETED_ITEMS"|"SENT_ITEMS"|"DRAFTS"|"JUNK_EMAIL",
+#'       Action = "NONE"|"DELETE"|"PERMANENTLY_DELETE",
+#'       Period = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_default_retention_policy(
@@ -1143,6 +1354,15 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 #' details are being requested.
 #' @param UserId &#91;required&#93; The identifier for the user whose mailbox details are being requested.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MailboxQuota = 123,
+#'   MailboxSize = 123.0
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_mailbox_details(
@@ -1180,6 +1400,44 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
 #' workmail_list_access_control_rules(OrganizationId)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rules = list(
+#'     list(
+#'       Name = "string",
+#'       Effect = "ALLOW"|"DENY",
+#'       Description = "string",
+#'       IpRanges = list(
+#'         "string"
+#'       ),
+#'       NotIpRanges = list(
+#'         "string"
+#'       ),
+#'       Actions = list(
+#'         "string"
+#'       ),
+#'       NotActions = list(
+#'         "string"
+#'       ),
+#'       UserIds = list(
+#'         "string"
+#'       ),
+#'       NotUserIds = list(
+#'         "string"
+#'       ),
+#'       DateCreated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DateModified = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1223,6 +1481,17 @@ workmail_list_access_control_rules <- function(OrganizationId) {
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Aliases = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1271,6 +1540,28 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Members = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Type = "GROUP"|"USER",
+#'       State = "ENABLED"|"DISABLED"|"DELETED",
+#'       EnabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_group_members(
@@ -1314,6 +1605,28 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       Id = "string",
+#'       Email = "string",
+#'       Name = "string",
+#'       State = "ENABLED"|"DISABLED"|"DELETED",
+#'       EnabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_groups(
@@ -1356,6 +1669,31 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       JobId = "string",
+#'       EntityId = "string",
+#'       Description = "string",
+#'       S3BucketName = "string",
+#'       S3Path = "string",
+#'       EstimatedProgress = 123,
+#'       State = "RUNNING"|"COMPLETED"|"FAILED"|"CANCELLED",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1405,6 +1743,23 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Permissions = list(
+#'     list(
+#'       GranteeId = "string",
+#'       GranteeType = "GROUP"|"USER",
+#'       PermissionValues = list(
+#'         "FULL_ACCESS"|"SEND_AS"|"SEND_ON_BEHALF"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_mailbox_permissions(
@@ -1446,6 +1801,23 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationSummaries = list(
+#'     list(
+#'       OrganizationId = "string",
+#'       Alias = "string",
+#'       DefaultMailDomain = "string",
+#'       ErrorMessage = "string",
+#'       State = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1492,6 +1864,20 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
 #' resource.
 #' @param MaxResults The number of maximum results in a page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Delegates = list(
+#'     list(
+#'       Id = "string",
+#'       Type = "GROUP"|"USER"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resource_delegates(
@@ -1535,6 +1921,29 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Resources = list(
+#'     list(
+#'       Id = "string",
+#'       Email = "string",
+#'       Name = "string",
+#'       Type = "ROOM"|"EQUIPMENT",
+#'       State = "ENABLED"|"DISABLED"|"DELETED",
+#'       EnabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resources(
@@ -1573,6 +1982,19 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 #' workmail_list_tags_for_resource(ResourceARN)
 #'
 #' @param ResourceARN &#91;required&#93; The resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1613,6 +2035,30 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       Id = "string",
+#'       Email = "string",
+#'       Name = "string",
+#'       DisplayName = "string",
+#'       State = "ENABLED"|"DISABLED"|"DELETED",
+#'       UserRole = "USER"|"RESOURCE"|"SYSTEM_USER",
+#'       EnabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1669,6 +2115,9 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #' @param UserIds User IDs to include in the rule.
 #' @param NotUserIds User IDs to exclude from the rule.
 #' @param OrganizationId &#91;required&#93; The identifier of the organization.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1734,13 +2183,16 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 #' mailbox permissions.
 #' @param GranteeId &#91;required&#93; The identifier of the user, group, or resource to which to grant the
 #' permissions.
-#' @param PermissionValues &#91;required&#93; The permissions granted to the grantee. SEND\\_AS allows the grantee to
+#' @param PermissionValues &#91;required&#93; The permissions granted to the grantee. SEND_AS allows the grantee to
 #' send email as the owner of the mailbox (the grantee is not mentioned on
-#' these emails). SEND\\_ON\\_BEHALF allows the grantee to send email on
+#' these emails). SEND_ON_BEHALF allows the grantee to send email on
 #' behalf of the owner of the mailbox (the grantee is not mentioned as the
-#' physical sender of these emails). FULL\\_ACCESS allows the grantee full
+#' physical sender of these emails). FULL_ACCESS allows the grantee full
 #' access to the mailbox, irrespective of other folder-level permissions
 #' set on the mailbox.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1788,6 +2240,9 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 #' @param Name &#91;required&#93; The retention policy name.
 #' @param Description The retention policy description.
 #' @param FolderConfigurations &#91;required&#93; The retention policy folder configurations.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1851,6 +2306,9 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
 #' @param EntityId &#91;required&#93; The identifier for the user, group, or resource to be updated.
 #' @param Email &#91;required&#93; The email for the user, group, or resource to be updated.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_to_work_mail(
@@ -1892,6 +2350,9 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
 #' password is reset.
 #' @param UserId &#91;required&#93; The identifier of the user for whom the password is reset.
 #' @param Password &#91;required&#93; The new password for the user.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1949,6 +2410,14 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #' @param S3BucketName &#91;required&#93; The name of the S3 bucket.
 #' @param S3Prefix &#91;required&#93; The S3 bucket prefix.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_mailbox_export_job(
@@ -1996,6 +2465,9 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
 #' @param ResourceARN &#91;required&#93; The resource ARN.
 #' @param Tags &#91;required&#93; The tag key-value pairs.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2042,6 +2514,9 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
 #' @param ResourceARN &#91;required&#93; The resource ARN.
 #' @param TagKeys &#91;required&#93; The tag keys.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -2087,6 +2562,9 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param UserId &#91;required&#93; The identifer for the user for whom to update the mailbox quota.
 #' @param MailboxQuota &#91;required&#93; The updated mailbox quota, in MB, for the specified user.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_mailbox_quota(
@@ -2130,6 +2608,9 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
 #' @param OrganizationId &#91;required&#93; The organization that contains the user, group, or resource to update.
 #' @param EntityId &#91;required&#93; The user, group, or resource to update.
 #' @param Email &#91;required&#93; The value of the email to be updated as primary.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2177,6 +2658,9 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be updated.
 #' @param Name The name of the resource to be updated.
 #' @param BookingOptions The resource's booking options to be updated.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

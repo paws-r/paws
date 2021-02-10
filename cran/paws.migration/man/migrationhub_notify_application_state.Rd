@@ -18,6 +18,9 @@ identifies the grouped application.}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the migration state of an application. For a given application
 identified by the value passed to \code{ApplicationId}, its status is set or

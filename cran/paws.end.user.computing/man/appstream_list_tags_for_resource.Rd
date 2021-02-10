@@ -9,6 +9,14 @@ appstream_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves a list of all tags for the specified AppStream 2.0 resource.
 You can tag AppStream 2.0 image builders, images, fleets, and stacks.

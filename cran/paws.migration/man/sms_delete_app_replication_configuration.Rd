@@ -9,6 +9,9 @@ sms_delete_app_replication_configuration(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the replication configuration for the specified application.
 }

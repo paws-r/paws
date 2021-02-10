@@ -15,6 +15,32 @@ cluster.}
 \item{DbClusterIdentifier}{The Amazon Resource Name (ARN) identifying the cluster that was detached
 from the Aurora global database cluster.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalCluster = list(
+    GlobalClusterIdentifier = "string",
+    GlobalClusterResourceId = "string",
+    GlobalClusterArn = "string",
+    Status = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    DatabaseName = "string",
+    StorageEncrypted = TRUE|FALSE,
+    DeletionProtection = TRUE|FALSE,
+    GlobalClusterMembers = list(
+      list(
+        DBClusterArn = "string",
+        Readers = list(
+          "string"
+        ),
+        IsWriter = TRUE|FALSE,
+        GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Detaches an Aurora secondary cluster from an Aurora global database
 cluster. The cluster becomes a standalone cluster with read-write

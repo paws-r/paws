@@ -19,6 +19,22 @@ must be an integer with a value greater than zero. Optional.}
 operation. If present, \code{Marker} specifies where to continue the list
 from after a previous call to ListFileShares. Optional.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  NextMarker = "string",
+  FileShareInfoList = list(
+    list(
+      FileShareType = "NFS"|"SMB",
+      FileShareARN = "string",
+      FileShareId = "string",
+      FileShareStatus = "string",
+      GatewayARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of the file shares for a specific file gateway, or the list
 of file shares that belong to the calling user account. This operation

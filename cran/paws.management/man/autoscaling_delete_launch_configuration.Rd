@@ -9,6 +9,9 @@ autoscaling_delete_launch_configuration(LaunchConfigurationName)
 \arguments{
 \item{LaunchConfigurationName}{[required] The name of the launch configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified launch configuration.
 

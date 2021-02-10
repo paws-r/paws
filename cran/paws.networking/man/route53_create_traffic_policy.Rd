@@ -16,6 +16,20 @@ information, see \href{https://docs.aws.amazon.com/Route53/latest/APIReference/a
 \item{Comment}{(Optional) Any comments that you want to include about the traffic
 policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicy = list(
+    Id = "string",
+    Version = 123,
+    Name = "string",
+    Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+    Document = "string",
+    Comment = "string"
+  ),
+  Location = "string"
+)
+}
+}
 \description{
 Creates a traffic policy, which you use to create multiple DNS resource
 record sets for one domain name (such as example.com) or one subdomain

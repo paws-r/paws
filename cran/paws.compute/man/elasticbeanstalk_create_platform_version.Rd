@@ -24,6 +24,32 @@ Elastic Beanstalk applies these tags only to the platform version.
 Environments that you create using the platform version don't inherit
 the tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlatformSummary = list(
+    PlatformArn = "string",
+    PlatformOwner = "string",
+    PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
+    PlatformCategory = "string",
+    OperatingSystemName = "string",
+    OperatingSystemVersion = "string",
+    SupportedTierList = list(
+      "string"
+    ),
+    SupportedAddonList = list(
+      "string"
+    ),
+    PlatformLifecycleState = "string",
+    PlatformVersion = "string",
+    PlatformBranchName = "string",
+    PlatformBranchLifecycleState = "string"
+  ),
+  Builder = list(
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Create a new version of your custom platform.
 }

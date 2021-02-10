@@ -19,6 +19,35 @@ from the URL provided in an export project operation.}
 This snapshot identifier is included in the share URL when a project is
 exported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  details = list(
+    name = "string",
+    projectId = "string",
+    region = "string",
+    state = "NORMAL"|"SYNCING"|"IMPORTING",
+    createdDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    consoleUrl = "string",
+    resources = list(
+      list(
+        type = "string",
+        name = "string",
+        arn = "string",
+        feature = "string",
+        attributes = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an AWS Mobile Hub project.
 }

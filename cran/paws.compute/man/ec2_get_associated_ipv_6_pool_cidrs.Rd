@@ -22,6 +22,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Ipv6CidrAssociations = list(
+    list(
+      Ipv6Cidr = "string",
+      AssociatedResource = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about the IPv6 CIDR block associations for a specified
 IPv6 address pool.

@@ -65,6 +65,30 @@ supports for the associated migration task, run the
 \code{\link[=databasemigrationservice_describe_applicable_individual_assessments]{describe_applicable_individual_assessments}}
 operation using its own \code{ReplicationTaskArn} request parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationTaskAssessmentRun = list(
+    ReplicationTaskAssessmentRunArn = "string",
+    ReplicationTaskArn = "string",
+    Status = "string",
+    ReplicationTaskAssessmentRunCreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssessmentProgress = list(
+      IndividualAssessmentCount = 123,
+      IndividualAssessmentCompletedCount = 123
+    ),
+    LastFailureMessage = "string",
+    ServiceAccessRoleArn = "string",
+    ResultLocationBucket = "string",
+    ResultLocationFolder = "string",
+    ResultEncryptionMode = "string",
+    ResultKmsKeyArn = "string",
+    AssessmentRunName = "string"
+  )
+)
+}
+}
 \description{
 Starts a new premigration assessment run for one or more individual
 assessments of a migration task.

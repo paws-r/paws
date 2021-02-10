@@ -33,6 +33,12 @@ to select which checks are enabled.)}
 
 \item{tags}{Metadata that can be used to manage the scheduled audit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  scheduledAuditArn = "string"
+)
+}
+}
 \description{
 Creates a scheduled audit that is run at a specified time interval.
 }

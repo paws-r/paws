@@ -18,6 +18,16 @@ JSON-encoded messages using HTTPS POST.}
 
 \item{SubscriptionType}{[required] The notification type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Subscription = list(
+    SubscriptionId = "string",
+    EndPoint = "string",
+    Protocol = "HTTPS"
+  )
+)
+}
+}
 \description{
 Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
 receives a confirmation message, and must confirm the subscription.

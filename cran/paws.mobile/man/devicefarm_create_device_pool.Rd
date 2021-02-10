@@ -25,6 +25,25 @@ value for this parameter.
 By specifying the maximum number of devices, you can control the costs
 that you incur by running tests.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  devicePool = list(
+    arn = "string",
+    name = "string",
+    description = "string",
+    type = "CURATED"|"PRIVATE",
+    rules = list(
+      list(
+        attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+        operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+        value = "string"
+      )
+    ),
+    maxDevices = 123
+  )
+)
+}
+}
 \description{
 Creates a device pool.
 }

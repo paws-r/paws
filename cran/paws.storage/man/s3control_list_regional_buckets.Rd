@@ -19,10 +19,27 @@ s3control_list_regional_buckets(AccountId, NextToken, MaxResults,
 
 This is required by Amazon S3 on Outposts buckets.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegionalBucketList = list(
+    list(
+      Bucket = "string",
+      BucketArn = "string",
+      PublicAccessBlockEnabled = TRUE|FALSE,
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      OutpostId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of all Outposts buckets in an Outpost that are owned by
 the authenticated sender of the request. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 For an example of the request syntax for Amazon S3 on Outposts that uses

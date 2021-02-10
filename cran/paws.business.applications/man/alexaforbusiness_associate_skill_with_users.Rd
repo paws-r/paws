@@ -10,6 +10,9 @@ alexaforbusiness_associate_skill_with_users(SkillId)
 \arguments{
 \item{SkillId}{[required] The private skill ID you want to make available to enrolled users.}
 }
+\value{
+An empty list.
+}
 \description{
 Makes a private skill available for enrolled users to enable on their
 devices.

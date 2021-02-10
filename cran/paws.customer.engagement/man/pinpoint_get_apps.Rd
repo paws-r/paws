@@ -15,6 +15,24 @@ journey metrics.}
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationsResponse = list(
+    Item = list(
+      list(
+        Arn = "string",
+        Id = "string",
+        Name = "string",
+        tags = list(
+          "string"
+        )
+      )
+    ),
+    NextToken = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about all the applications that are associated
 with your Amazon Pinpoint account.

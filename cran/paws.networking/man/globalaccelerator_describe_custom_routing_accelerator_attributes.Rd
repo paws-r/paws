@@ -11,6 +11,16 @@ globalaccelerator_describe_custom_routing_accelerator_attributes(
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the custom routing accelerator to
 describe the attributes for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AcceleratorAttributes = list(
+    FlowLogsEnabled = TRUE|FALSE,
+    FlowLogsS3Bucket = "string",
+    FlowLogsS3Prefix = "string"
+  )
+)
+}
+}
 \description{
 Describe the attributes of a custom routing accelerator.
 }

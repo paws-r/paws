@@ -26,6 +26,21 @@ Uploads request.}
 If this value is not specified, the List Uploads operation returns up to
 50 uploads.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UploadsList = list(
+    list(
+      MultipartUploadId = "string",
+      VaultARN = "string",
+      ArchiveDescription = "string",
+      PartSizeInBytes = 123,
+      CreationDate = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 This operation lists in-progress multipart uploads for the specified
 vault. An in-progress multipart upload is a multipart upload that has

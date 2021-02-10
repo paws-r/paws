@@ -13,6 +13,9 @@ chime_delete_room_membership(AccountId, RoomId, MemberId)
 
 \item{MemberId}{[required] The member ID (user ID or bot ID).}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a member from a chat room in an Amazon Chime Enterprise account.
 }

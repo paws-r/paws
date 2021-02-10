@@ -17,6 +17,9 @@ none is provided, the AWS account ID is used by default.}
 
 \item{PartitionValues}{[required] The values that define the partition.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified partition.
 }

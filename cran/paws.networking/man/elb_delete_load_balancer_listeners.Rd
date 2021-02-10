@@ -11,6 +11,9 @@ elb_delete_load_balancer_listeners(LoadBalancerName, LoadBalancerPorts)
 
 \item{LoadBalancerPorts}{[required] The client port numbers of the listeners.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified listeners from the specified load balancer.
 }

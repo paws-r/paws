@@ -20,6 +20,12 @@ configservice_put_organization_config_rule(OrganizationConfigRuleName,
 \item{ExcludedAccounts}{A comma-separated list of accounts that you want to exclude from an
 organization config rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationConfigRuleArn = "string"
+)
+}
+}
 \description{
 Adds or updates organization config rule for your entire organization
 evaluating whether your AWS resources comply with your desired

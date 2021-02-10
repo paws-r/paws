@@ -24,7 +24,7 @@ not available in Chef 12 stacks.}
 name, which is used internally by AWS OpsWorks Stacks and by Chef
 recipes. The short name is also used as the name for the directory where
 your app files are installed. It can have a maximum of 200 characters,
-which are limited to the alphanumeric characters, '-', '\\_', and '.'.
+which are limited to the alphanumeric characters, '-', '_', and '.'.
 
 The built-in layers' short names are defined by AWS OpsWorks Stacks. For
 more information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
@@ -80,6 +80,12 @@ strongly recommend using the default value of \code{true}.}
 \item{LifecycleEventConfiguration}{A \code{LifeCycleEventConfiguration} object that you can use to configure the
 Shutdown event to specify an execution timeout and enable or disable
 Elastic Load Balancer connection draining.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  LayerId = "string"
+)
+}
 }
 \description{
 Creates a layer. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html}{How to Create a Layer}.

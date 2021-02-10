@@ -9,6 +9,9 @@ sagemaker_start_monitoring_schedule(MonitoringScheduleName)
 \arguments{
 \item{MonitoringScheduleName}{[required] The name of the schedule to start.}
 }
+\value{
+An empty list.
+}
 \description{
 Starts a previously stopped monitoring schedule.
 

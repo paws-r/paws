@@ -13,6 +13,9 @@ destination.}
 
 \item{EventDestinationName}{[required] The name of the event destination to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a configuration set event destination. Configuration set event
 destinations are associated with configuration sets, which enable you to

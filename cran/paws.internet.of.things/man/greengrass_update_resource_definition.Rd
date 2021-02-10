@@ -11,6 +11,9 @@ greengrass_update_resource_definition(Name, ResourceDefinitionId)
 
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a resource definition.
 }

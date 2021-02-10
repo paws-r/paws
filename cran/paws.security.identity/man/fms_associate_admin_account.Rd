@@ -12,6 +12,9 @@ Firewall Manager administrator account. This can be an AWS Organizations
 master account or a member account. For more information about AWS
 Organizations and master accounts, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html}{Managing the AWS Accounts in Your Organization}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the AWS Firewall Manager administrator account. AWS Firewall
 Manager must be associated with the master account of your AWS

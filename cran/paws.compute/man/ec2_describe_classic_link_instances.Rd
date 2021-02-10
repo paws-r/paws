@@ -43,6 +43,30 @@ items.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = list(
+    list(
+      Groups = list(
+        list(
+          GroupName = "string",
+          GroupId = "string"
+        )
+      ),
+      InstanceId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      VpcId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your linked EC2-Classic instances. This request
 only returns information about EC2-Classic instances linked to a VPC

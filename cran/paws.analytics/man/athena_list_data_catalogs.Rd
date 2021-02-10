@@ -14,6 +14,18 @@ page call.}
 
 \item{MaxResults}{Specifies the maximum number of data catalogs to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataCatalogsSummary = list(
+    list(
+      CatalogName = "string",
+      Type = "LAMBDA"|"GLUE"|"HIVE"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the data catalogs in the current AWS account.
 }

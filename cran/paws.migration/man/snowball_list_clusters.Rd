@@ -13,6 +13,22 @@ snowball_list_clusters(MaxResults, NextToken)
 list of \code{ClusterListEntry} objects, you have the option of specifying
 \code{NextToken} as the starting point for your returned list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterListEntries = list(
+    list(
+      ClusterId = "string",
+      ClusterState = "AwaitingQuorum"|"Pending"|"InUse"|"Complete"|"Cancelled",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of \code{ClusterListEntry} objects of the specified length.
 Each \code{ClusterListEntry} object contains a cluster's state, a cluster's

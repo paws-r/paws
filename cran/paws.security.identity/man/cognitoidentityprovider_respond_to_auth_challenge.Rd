@@ -84,6 +84,27 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
+  Session = "string",
+  ChallengeParameters = list(
+    "string"
+  ),
+  AuthenticationResult = list(
+    AccessToken = "string",
+    ExpiresIn = 123,
+    TokenType = "string",
+    RefreshToken = "string",
+    IdToken = "string",
+    NewDeviceMetadata = list(
+      DeviceKey = "string",
+      DeviceGroupKey = "string"
+    )
+  )
+)
+}
+}
 \description{
 Responds to the authentication challenge.
 }

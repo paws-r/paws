@@ -12,6 +12,24 @@ glue_get_resource_policies(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum size of a list to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GetResourcePoliciesResponseList = list(
+    list(
+      PolicyInJson = "string",
+      PolicyHash = "string",
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the security configurations for the resource policies set on
 individual resources, and also the account-level policy.

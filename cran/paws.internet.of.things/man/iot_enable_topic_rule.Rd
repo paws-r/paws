@@ -9,6 +9,9 @@ iot_enable_topic_rule(ruleName)
 \arguments{
 \item{ruleName}{[required] The name of the topic rule to enable.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables the rule.
 }

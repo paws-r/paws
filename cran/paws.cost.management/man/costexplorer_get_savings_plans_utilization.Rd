@@ -51,6 +51,51 @@ The following values are supported for \code{Key}:
 
 Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SavingsPlansUtilizationsByTime = list(
+    list(
+      TimePeriod = list(
+        Start = "string",
+        End = "string"
+      ),
+      Utilization = list(
+        TotalCommitment = "string",
+        UsedCommitment = "string",
+        UnusedCommitment = "string",
+        UtilizationPercentage = "string"
+      ),
+      Savings = list(
+        NetSavings = "string",
+        OnDemandCostEquivalent = "string"
+      ),
+      AmortizedCommitment = list(
+        AmortizedRecurringCommitment = "string",
+        AmortizedUpfrontCommitment = "string",
+        TotalAmortizedCommitment = "string"
+      )
+    )
+  ),
+  Total = list(
+    Utilization = list(
+      TotalCommitment = "string",
+      UsedCommitment = "string",
+      UnusedCommitment = "string",
+      UtilizationPercentage = "string"
+    ),
+    Savings = list(
+      NetSavings = "string",
+      OnDemandCostEquivalent = "string"
+    ),
+    AmortizedCommitment = list(
+      AmortizedRecurringCommitment = "string",
+      AmortizedUpfrontCommitment = "string",
+      TotalAmortizedCommitment = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the Savings Plans utilization for your account across date
 ranges with daily or monthly granularity. Management account in an

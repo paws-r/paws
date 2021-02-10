@@ -15,6 +15,24 @@ UsageLimit.}
 \item{BreachAction}{The new action that Amazon Redshift takes when the limit is reached. For
 more information about this parameter, see UsageLimit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UsageLimitId = "string",
+  ClusterIdentifier = "string",
+  FeatureType = "spectrum"|"concurrency-scaling",
+  LimitType = "time"|"data-scanned",
+  Amount = 123,
+  Period = "daily"|"weekly"|"monthly",
+  BreachAction = "log"|"emit-metric"|"disable",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modifies a usage limit in a cluster. You can't modify the feature type
 or period of a usage limit.

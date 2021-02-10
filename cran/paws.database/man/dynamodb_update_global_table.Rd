@@ -11,6 +11,42 @@ dynamodb_update_global_table(GlobalTableName, ReplicaUpdates)
 
 \item{ReplicaUpdates}{[required] A list of Regions that should be added or removed from the global table.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalTableDescription = list(
+    ReplicationGroup = list(
+      list(
+        RegionName = "string",
+        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+        ReplicaStatusDescription = "string",
+        ReplicaStatusPercentProgress = "string",
+        KMSMasterKeyId = "string",
+        ProvisionedThroughputOverride = list(
+          ReadCapacityUnits = 123
+        ),
+        GlobalSecondaryIndexes = list(
+          list(
+            IndexName = "string",
+            ProvisionedThroughputOverride = list(
+              ReadCapacityUnits = 123
+            )
+          )
+        ),
+        ReplicaInaccessibleDateTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    GlobalTableArn = "string",
+    CreationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    GlobalTableStatus = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING",
+    GlobalTableName = "string"
+  )
+)
+}
+}
 \description{
 Adds or removes replicas in the specified global table. The global table
 must already exist to be able to use this operation. Any replica to be

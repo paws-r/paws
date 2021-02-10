@@ -16,6 +16,21 @@ results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  logTargetConfigurations = list(
+    list(
+      logTarget = list(
+        targetType = "DEFAULT"|"THING_GROUP",
+        targetName = "string"
+      ),
+      logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists logging levels.
 }

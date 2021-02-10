@@ -38,6 +38,27 @@ endpoints). The subnet ID uniquely identifies a VPC.}
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverEndpoint = list(
+    Id = "string",
+    CreatorRequestId = "string",
+    Arn = "string",
+    Name = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Direction = "INBOUND"|"OUTBOUND",
+    IpAddressCount = 123,
+    HostVPCId = "string",
+    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+    StatusMessage = "string",
+    CreationTime = "string",
+    ModificationTime = "string"
+  )
+)
+}
+}
 \description{
 Creates a Resolver endpoint. There are two types of Resolver endpoints,
 inbound and outbound:

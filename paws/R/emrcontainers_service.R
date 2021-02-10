@@ -21,8 +21,8 @@ NULL
 #'     example, `aws emr-containers start-job-run`.
 #' 
 #' -   It is the prefix before IAM policy actions for Amazon EMR on EKS.
-#'     For example, `"Action": \\[ "emr-containers:StartJobRun"\\]`. For
-#'     more information, see [Policy actions for Amazon EMR on
+#'     For example, `"Action": [ "emr-containers:StartJobRun"]`. For more
+#'     information, see [Policy actions for Amazon EMR on
 #'     EKS](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
 #' 
 #' -   It is the prefix used in Amazon EMR on EKS service endpoints. For

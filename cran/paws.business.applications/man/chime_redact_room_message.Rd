@@ -13,6 +13,9 @@ chime_redact_room_message(AccountId, RoomId, MessageId)
 
 \item{MessageId}{[required] The message ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Redacts the specified message from the specified Amazon Chime channel.
 }

@@ -13,6 +13,22 @@ to reference this VpcLink.}
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  targetArns = list(
+    "string"
+  ),
+  status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
+  statusMessage = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Updates an existing VpcLink of a specified identifier.
 }

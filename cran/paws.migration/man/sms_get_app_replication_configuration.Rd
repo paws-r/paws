@@ -10,6 +10,47 @@ sms_get_app_replication_configuration(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  serverGroupReplicationConfigurations = list(
+    list(
+      serverGroupId = "string",
+      serverReplicationConfigurations = list(
+        list(
+          server = list(
+            serverId = "string",
+            serverType = "VIRTUAL_MACHINE",
+            vmServer = list(
+              vmServerAddress = list(
+                vmManagerId = "string",
+                vmId = "string"
+              ),
+              vmName = "string",
+              vmManagerName = "string",
+              vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+              vmPath = "string"
+            ),
+            replicationJobId = "string",
+            replicationJobTerminated = TRUE|FALSE
+          ),
+          serverReplicationParameters = list(
+            seedTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            frequency = 123,
+            runOnce = TRUE|FALSE,
+            licenseType = "AWS"|"BYOL",
+            numberOfRecentAmisToKeep = 123,
+            encrypted = TRUE|FALSE,
+            kmsKeyId = "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the application replication configuration associated with the
 specified application.

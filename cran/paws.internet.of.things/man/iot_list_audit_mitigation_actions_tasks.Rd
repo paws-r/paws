@@ -28,6 +28,21 @@ specific date and time.}
 \item{endTime}{[required] Specify this filter to limit results to tasks that were completed or
 canceled on or before a specific date and time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tasks = list(
+    list(
+      taskId = "string",
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a list of audit mitigation action tasks that match the specified
 filters.

@@ -15,6 +15,16 @@ findings' statistics you want to retrieve.}
 
 \item{FindingCriteria}{Represents the criteria that is used for querying findings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FindingStatistics = list(
+    CountBySeverity = list(
+      123
+    )
+  )
+)
+}
+}
 \description{
 Lists Amazon GuardDuty findings statistics for the specified detector
 ID.

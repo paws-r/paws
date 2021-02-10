@@ -15,6 +15,28 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateSummaryList = list(
+    list(
+      Arn = "string",
+      TemplateId = "string",
+      Name = "string",
+      LatestVersionNumber = 123,
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Lists all the templates in the current Amazon QuickSight account.
 }

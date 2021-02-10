@@ -9,6 +9,26 @@ personalize_describe_recipe(recipeArn)
 \arguments{
 \item{recipeArn}{[required] The Amazon Resource Name (ARN) of the recipe to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  recipe = list(
+    name = "string",
+    recipeArn = "string",
+    algorithmArn = "string",
+    featureTransformationArn = "string",
+    status = "string",
+    description = "string",
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    recipeType = "string",
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes a recipe.
 

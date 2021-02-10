@@ -24,6 +24,22 @@ for WebSocket APIs.}
 
 \item{RouteResponseKey}{The route response key.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelSelectionExpression = "string",
+  ResponseModels = list(
+    "string"
+  ),
+  ResponseParameters = list(
+    list(
+      Required = TRUE|FALSE
+    )
+  ),
+  RouteResponseId = "string",
+  RouteResponseKey = "string"
+)
+}
+}
 \description{
 Updates a RouteResponse.
 }

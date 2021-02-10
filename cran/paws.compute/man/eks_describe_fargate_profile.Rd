@@ -11,6 +11,35 @@ eks_describe_fargate_profile(clusterName, fargateProfileName)
 
 \item{fargateProfileName}{[required] The name of the Fargate profile to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  fargateProfile = list(
+    fargateProfileName = "string",
+    fargateProfileArn = "string",
+    clusterName = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    podExecutionRoleArn = "string",
+    subnets = list(
+      "string"
+    ),
+    selectors = list(
+      list(
+        namespace = "string",
+        labels = list(
+          "string"
+        )
+      )
+    ),
+    status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+    tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns descriptive information about an AWS Fargate profile.
 }

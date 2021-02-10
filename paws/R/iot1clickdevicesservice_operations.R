@@ -15,6 +15,15 @@ NULL
 #' @param ClaimCode &#91;required&#93; The claim code, starting with "C-", as provided by the device
 #' manufacturer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClaimCode = "string",
+#'   Total = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$claim_devices_by_claim_code(
@@ -53,6 +62,26 @@ iot1clickdevicesservice_claim_devices_by_claim_code <- function(ClaimCode) {
 #' iot1clickdevicesservice_describe_device(DeviceId)
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceDescription = list(
+#'     Arn = "string",
+#'     Attributes = list(
+#'       "string"
+#'     ),
+#'     DeviceId = "string",
+#'     Enabled = TRUE|FALSE,
+#'     RemainingLife = 123.0,
+#'     Type = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -96,9 +125,17 @@ iot1clickdevicesservice_describe_device <- function(DeviceId) {
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
 #' @param Tags A collection of key/value pairs defining the resource tags. For example,
-#' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more information,
-#' see [AWS Tagging
+#' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more
+#' information, see [AWS Tagging
 #' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   State = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -142,6 +179,19 @@ iot1clickdevicesservice_finalize_device_claim <- function(DeviceId, Tags = NULL)
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceMethods = list(
+#'     list(
+#'       DeviceType = "string",
+#'       MethodName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_device_methods(
@@ -182,6 +232,14 @@ iot1clickdevicesservice_get_device_methods <- function(DeviceId) {
 #' iot1clickdevicesservice_initiate_device_claim(DeviceId)
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   State = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -224,6 +282,14 @@ iot1clickdevicesservice_initiate_device_claim <- function(DeviceId) {
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
 #' @param DeviceMethod The device method to invoke.
 #' @param DeviceMethodParameters A JSON encoded string containing the device method request parameters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceMethodResponse = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -277,6 +343,24 @@ iot1clickdevicesservice_invoke_device_method <- function(DeviceId, DeviceMethod 
 #' @param ToTimeStamp &#91;required&#93; The end date for the device event query, in ISO8061 format. For example,
 #' 2018-03-28T15:45:12.880Z
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Events = list(
+#'     list(
+#'       Device = list(
+#'         Attributes = list(),
+#'         DeviceId = "string",
+#'         Type = "string"
+#'       ),
+#'       StdEvent = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_device_events(
@@ -325,6 +409,29 @@ iot1clickdevicesservice_list_device_events <- function(DeviceId, FromTimeStamp, 
 #' default value of 100 is used.
 #' @param NextToken The token to retrieve the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Devices = list(
+#'     list(
+#'       Arn = "string",
+#'       Attributes = list(
+#'         "string"
+#'       ),
+#'       DeviceId = "string",
+#'       Enabled = TRUE|FALSE,
+#'       RemainingLife = 123.0,
+#'       Type = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_devices(
@@ -363,6 +470,16 @@ iot1clickdevicesservice_list_devices <- function(DeviceType = NULL, MaxResults =
 #' iot1clickdevicesservice_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -404,9 +521,12 @@ iot1clickdevicesservice_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #' @param Tags &#91;required&#93; A collection of key/value pairs defining the resource tags. For example,
-#' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more information,
-#' see [AWS Tagging
+#' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more
+#' information, see [AWS Tagging
 #' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -448,6 +568,14 @@ iot1clickdevicesservice_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   State = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unclaim_device(
@@ -487,6 +615,9 @@ iot1clickdevicesservice_unclaim_device <- function(DeviceId) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #' @param TagKeys &#91;required&#93; A collections of tag keys. For example, \{"key1","key2"\}
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -530,6 +661,9 @@ iot1clickdevicesservice_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
 #' @param Enabled If true, the device is enabled. If false, the device is disabled.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

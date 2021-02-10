@@ -9,6 +9,9 @@ ssm_delete_ops_metadata(OpsMetadataArn)
 \arguments{
 \item{OpsMetadataArn}{[required] The Amazon Resource Name (ARN) of an OpsMetadata Object to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete OpsMetadata related to an application.
 }

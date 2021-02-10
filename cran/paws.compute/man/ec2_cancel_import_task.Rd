@@ -16,6 +16,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ImportTaskId}{The ID of the import image or import snapshot task to be canceled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImportTaskId = "string",
+  PreviousState = "string",
+  State = "string"
+)
+}
+}
 \description{
 Cancels an in-process import virtual machine or import snapshot task.
 }

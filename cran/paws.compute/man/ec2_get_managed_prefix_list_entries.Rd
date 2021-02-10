@@ -24,6 +24,18 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Entries = list(
+    list(
+      Cidr = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about the entries for a specified managed prefix list.
 }

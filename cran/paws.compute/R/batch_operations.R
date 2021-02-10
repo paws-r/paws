@@ -21,6 +21,9 @@ NULL
 #' [`describe_jobs`][batch_describe_jobs] operations on the job. This
 #' message is also recorded in the AWS Batch activity logs.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_job(
@@ -167,6 +170,15 @@ batch_cancel_job <- function(jobId, reason) {
 #' [`tag_resource`][batch_tag_resource] and
 #' [`untag_resource`][batch_untag_resource] API operations. These tags
 #' don't propagate to the underlying compute resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   computeEnvironmentName = "string",
+#'   computeEnvironmentArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -359,6 +371,15 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html)
 #' in *AWS Batch User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobQueueName = "string",
+#'   jobQueueArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_job_queue(
@@ -454,6 +475,9 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, priority, compute
 #' @param computeEnvironment &#91;required&#93; The name or Amazon Resource Name (ARN) of the compute environment to
 #' delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_compute_environment(
@@ -507,6 +531,9 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 #' @param jobQueue &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the queue to
 #' delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_job_queue(
@@ -553,6 +580,9 @@ batch_delete_job_queue <- function(jobQueue) {
 #'
 #' @param jobDefinition &#91;required&#93; The name and revision (`name:revision`) or full Amazon Resource Name
 #' (ARN) of the job definition to deregister.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -626,6 +656,65 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   computeEnvironments = list(
+#'     list(
+#'       computeEnvironmentName = "string",
+#'       computeEnvironmentArn = "string",
+#'       ecsClusterArn = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       type = "MANAGED"|"UNMANAGED",
+#'       state = "ENABLED"|"DISABLED",
+#'       status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
+#'       statusReason = "string",
+#'       computeResources = list(
+#'         type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
+#'         allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
+#'         minvCpus = 123,
+#'         maxvCpus = 123,
+#'         desiredvCpus = 123,
+#'         instanceTypes = list(
+#'           "string"
+#'         ),
+#'         imageId = "string",
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         ec2KeyPair = "string",
+#'         instanceRole = "string",
+#'         tags = list(
+#'           "string"
+#'         ),
+#'         placementGroup = "string",
+#'         bidPercentage = 123,
+#'         spotIamFleetRole = "string",
+#'         launchTemplate = list(
+#'           launchTemplateId = "string",
+#'           launchTemplateName = "string",
+#'           version = "string"
+#'         ),
+#'         ec2Configuration = list(
+#'           list(
+#'             imageType = "string",
+#'             imageIdOverride = "string"
+#'           )
+#'         )
+#'       ),
+#'       serviceRole = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -705,6 +794,248 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobDefinitions = list(
+#'     list(
+#'       jobDefinitionName = "string",
+#'       jobDefinitionArn = "string",
+#'       revision = 123,
+#'       status = "string",
+#'       type = "string",
+#'       parameters = list(
+#'         "string"
+#'       ),
+#'       retryStrategy = list(
+#'         attempts = 123,
+#'         evaluateOnExit = list(
+#'           list(
+#'             onStatusReason = "string",
+#'             onReason = "string",
+#'             onExitCode = "string",
+#'             action = "RETRY"|"EXIT"
+#'           )
+#'         )
+#'       ),
+#'       containerProperties = list(
+#'         image = "string",
+#'         vcpus = 123,
+#'         memory = 123,
+#'         command = list(
+#'           "string"
+#'         ),
+#'         jobRoleArn = "string",
+#'         executionRoleArn = "string",
+#'         volumes = list(
+#'           list(
+#'             host = list(
+#'               sourcePath = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         environment = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         mountPoints = list(
+#'           list(
+#'             containerPath = "string",
+#'             readOnly = TRUE|FALSE,
+#'             sourceVolume = "string"
+#'           )
+#'         ),
+#'         readonlyRootFilesystem = TRUE|FALSE,
+#'         privileged = TRUE|FALSE,
+#'         ulimits = list(
+#'           list(
+#'             hardLimit = 123,
+#'             name = "string",
+#'             softLimit = 123
+#'           )
+#'         ),
+#'         user = "string",
+#'         instanceType = "string",
+#'         resourceRequirements = list(
+#'           list(
+#'             value = "string",
+#'             type = "GPU"|"VCPU"|"MEMORY"
+#'           )
+#'         ),
+#'         linuxParameters = list(
+#'           devices = list(
+#'             list(
+#'               hostPath = "string",
+#'               containerPath = "string",
+#'               permissions = list(
+#'                 "READ"|"WRITE"|"MKNOD"
+#'               )
+#'             )
+#'           ),
+#'           initProcessEnabled = TRUE|FALSE,
+#'           sharedMemorySize = 123,
+#'           tmpfs = list(
+#'             list(
+#'               containerPath = "string",
+#'               size = 123,
+#'               mountOptions = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           maxSwap = 123,
+#'           swappiness = 123
+#'         ),
+#'         logConfiguration = list(
+#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'           options = list(
+#'             "string"
+#'           ),
+#'           secretOptions = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         secrets = list(
+#'           list(
+#'             name = "string",
+#'             valueFrom = "string"
+#'           )
+#'         ),
+#'         networkConfiguration = list(
+#'           assignPublicIp = "ENABLED"|"DISABLED"
+#'         ),
+#'         fargatePlatformConfiguration = list(
+#'           platformVersion = "string"
+#'         )
+#'       ),
+#'       timeout = list(
+#'         attemptDurationSeconds = 123
+#'       ),
+#'       nodeProperties = list(
+#'         numNodes = 123,
+#'         mainNode = 123,
+#'         nodeRangeProperties = list(
+#'           list(
+#'             targetNodes = "string",
+#'             container = list(
+#'               image = "string",
+#'               vcpus = 123,
+#'               memory = 123,
+#'               command = list(
+#'                 "string"
+#'               ),
+#'               jobRoleArn = "string",
+#'               executionRoleArn = "string",
+#'               volumes = list(
+#'                 list(
+#'                   host = list(
+#'                     sourcePath = "string"
+#'                   ),
+#'                   name = "string"
+#'                 )
+#'               ),
+#'               environment = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               mountPoints = list(
+#'                 list(
+#'                   containerPath = "string",
+#'                   readOnly = TRUE|FALSE,
+#'                   sourceVolume = "string"
+#'                 )
+#'               ),
+#'               readonlyRootFilesystem = TRUE|FALSE,
+#'               privileged = TRUE|FALSE,
+#'               ulimits = list(
+#'                 list(
+#'                   hardLimit = 123,
+#'                   name = "string",
+#'                   softLimit = 123
+#'                 )
+#'               ),
+#'               user = "string",
+#'               instanceType = "string",
+#'               resourceRequirements = list(
+#'                 list(
+#'                   value = "string",
+#'                   type = "GPU"|"VCPU"|"MEMORY"
+#'                 )
+#'               ),
+#'               linuxParameters = list(
+#'                 devices = list(
+#'                   list(
+#'                     hostPath = "string",
+#'                     containerPath = "string",
+#'                     permissions = list(
+#'                       "READ"|"WRITE"|"MKNOD"
+#'                     )
+#'                   )
+#'                 ),
+#'                 initProcessEnabled = TRUE|FALSE,
+#'                 sharedMemorySize = 123,
+#'                 tmpfs = list(
+#'                   list(
+#'                     containerPath = "string",
+#'                     size = 123,
+#'                     mountOptions = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 maxSwap = 123,
+#'                 swappiness = 123
+#'               ),
+#'               logConfiguration = list(
+#'                 logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'                 options = list(
+#'                   "string"
+#'                 ),
+#'                 secretOptions = list(
+#'                   list(
+#'                     name = "string",
+#'                     valueFrom = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               secrets = list(
+#'                 list(
+#'                   name = "string",
+#'                   valueFrom = "string"
+#'                 )
+#'               ),
+#'               networkConfiguration = list(
+#'                 assignPublicIp = "ENABLED"|"DISABLED"
+#'               ),
+#'               fargatePlatformConfiguration = list(
+#'                 platformVersion = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       propagateTags = TRUE|FALSE,
+#'       platformCapabilities = list(
+#'         "EC2"|"FARGATE"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job_definitions(
@@ -778,6 +1109,33 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobQueues = list(
+#'     list(
+#'       jobQueueName = "string",
+#'       jobQueueArn = "string",
+#'       state = "ENABLED"|"DISABLED",
+#'       status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
+#'       statusReason = "string",
+#'       priority = 123,
+#'       computeEnvironmentOrder = list(
+#'         list(
+#'           order = 123,
+#'           computeEnvironment = "string"
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job_queues(
@@ -828,6 +1186,302 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #' batch_describe_jobs(jobs)
 #'
 #' @param jobs &#91;required&#93; A list of up to 100 job IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobs = list(
+#'     list(
+#'       jobArn = "string",
+#'       jobName = "string",
+#'       jobId = "string",
+#'       jobQueue = "string",
+#'       status = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
+#'       attempts = list(
+#'         list(
+#'           container = list(
+#'             containerInstanceArn = "string",
+#'             taskArn = "string",
+#'             exitCode = 123,
+#'             reason = "string",
+#'             logStreamName = "string",
+#'             networkInterfaces = list(
+#'               list(
+#'                 attachmentId = "string",
+#'                 ipv6Address = "string",
+#'                 privateIpv4Address = "string"
+#'               )
+#'             )
+#'           ),
+#'           startedAt = 123,
+#'           stoppedAt = 123,
+#'           statusReason = "string"
+#'         )
+#'       ),
+#'       statusReason = "string",
+#'       createdAt = 123,
+#'       retryStrategy = list(
+#'         attempts = 123,
+#'         evaluateOnExit = list(
+#'           list(
+#'             onStatusReason = "string",
+#'             onReason = "string",
+#'             onExitCode = "string",
+#'             action = "RETRY"|"EXIT"
+#'           )
+#'         )
+#'       ),
+#'       startedAt = 123,
+#'       stoppedAt = 123,
+#'       dependsOn = list(
+#'         list(
+#'           jobId = "string",
+#'           type = "N_TO_N"|"SEQUENTIAL"
+#'         )
+#'       ),
+#'       jobDefinition = "string",
+#'       parameters = list(
+#'         "string"
+#'       ),
+#'       container = list(
+#'         image = "string",
+#'         vcpus = 123,
+#'         memory = 123,
+#'         command = list(
+#'           "string"
+#'         ),
+#'         jobRoleArn = "string",
+#'         executionRoleArn = "string",
+#'         volumes = list(
+#'           list(
+#'             host = list(
+#'               sourcePath = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         environment = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         mountPoints = list(
+#'           list(
+#'             containerPath = "string",
+#'             readOnly = TRUE|FALSE,
+#'             sourceVolume = "string"
+#'           )
+#'         ),
+#'         readonlyRootFilesystem = TRUE|FALSE,
+#'         ulimits = list(
+#'           list(
+#'             hardLimit = 123,
+#'             name = "string",
+#'             softLimit = 123
+#'           )
+#'         ),
+#'         privileged = TRUE|FALSE,
+#'         user = "string",
+#'         exitCode = 123,
+#'         reason = "string",
+#'         containerInstanceArn = "string",
+#'         taskArn = "string",
+#'         logStreamName = "string",
+#'         instanceType = "string",
+#'         networkInterfaces = list(
+#'           list(
+#'             attachmentId = "string",
+#'             ipv6Address = "string",
+#'             privateIpv4Address = "string"
+#'           )
+#'         ),
+#'         resourceRequirements = list(
+#'           list(
+#'             value = "string",
+#'             type = "GPU"|"VCPU"|"MEMORY"
+#'           )
+#'         ),
+#'         linuxParameters = list(
+#'           devices = list(
+#'             list(
+#'               hostPath = "string",
+#'               containerPath = "string",
+#'               permissions = list(
+#'                 "READ"|"WRITE"|"MKNOD"
+#'               )
+#'             )
+#'           ),
+#'           initProcessEnabled = TRUE|FALSE,
+#'           sharedMemorySize = 123,
+#'           tmpfs = list(
+#'             list(
+#'               containerPath = "string",
+#'               size = 123,
+#'               mountOptions = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           maxSwap = 123,
+#'           swappiness = 123
+#'         ),
+#'         logConfiguration = list(
+#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'           options = list(
+#'             "string"
+#'           ),
+#'           secretOptions = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         secrets = list(
+#'           list(
+#'             name = "string",
+#'             valueFrom = "string"
+#'           )
+#'         ),
+#'         networkConfiguration = list(
+#'           assignPublicIp = "ENABLED"|"DISABLED"
+#'         ),
+#'         fargatePlatformConfiguration = list(
+#'           platformVersion = "string"
+#'         )
+#'       ),
+#'       nodeDetails = list(
+#'         nodeIndex = 123,
+#'         isMainNode = TRUE|FALSE
+#'       ),
+#'       nodeProperties = list(
+#'         numNodes = 123,
+#'         mainNode = 123,
+#'         nodeRangeProperties = list(
+#'           list(
+#'             targetNodes = "string",
+#'             container = list(
+#'               image = "string",
+#'               vcpus = 123,
+#'               memory = 123,
+#'               command = list(
+#'                 "string"
+#'               ),
+#'               jobRoleArn = "string",
+#'               executionRoleArn = "string",
+#'               volumes = list(
+#'                 list(
+#'                   host = list(
+#'                     sourcePath = "string"
+#'                   ),
+#'                   name = "string"
+#'                 )
+#'               ),
+#'               environment = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               mountPoints = list(
+#'                 list(
+#'                   containerPath = "string",
+#'                   readOnly = TRUE|FALSE,
+#'                   sourceVolume = "string"
+#'                 )
+#'               ),
+#'               readonlyRootFilesystem = TRUE|FALSE,
+#'               privileged = TRUE|FALSE,
+#'               ulimits = list(
+#'                 list(
+#'                   hardLimit = 123,
+#'                   name = "string",
+#'                   softLimit = 123
+#'                 )
+#'               ),
+#'               user = "string",
+#'               instanceType = "string",
+#'               resourceRequirements = list(
+#'                 list(
+#'                   value = "string",
+#'                   type = "GPU"|"VCPU"|"MEMORY"
+#'                 )
+#'               ),
+#'               linuxParameters = list(
+#'                 devices = list(
+#'                   list(
+#'                     hostPath = "string",
+#'                     containerPath = "string",
+#'                     permissions = list(
+#'                       "READ"|"WRITE"|"MKNOD"
+#'                     )
+#'                   )
+#'                 ),
+#'                 initProcessEnabled = TRUE|FALSE,
+#'                 sharedMemorySize = 123,
+#'                 tmpfs = list(
+#'                   list(
+#'                     containerPath = "string",
+#'                     size = 123,
+#'                     mountOptions = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 maxSwap = 123,
+#'                 swappiness = 123
+#'               ),
+#'               logConfiguration = list(
+#'                 logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'                 options = list(
+#'                   "string"
+#'                 ),
+#'                 secretOptions = list(
+#'                   list(
+#'                     name = "string",
+#'                     valueFrom = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               secrets = list(
+#'                 list(
+#'                   name = "string",
+#'                   valueFrom = "string"
+#'                 )
+#'               ),
+#'               networkConfiguration = list(
+#'                 assignPublicIp = "ENABLED"|"DISABLED"
+#'               ),
+#'               fargatePlatformConfiguration = list(
+#'                 platformVersion = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       arrayProperties = list(
+#'         statusSummary = list(
+#'           123
+#'         ),
+#'         size = 123,
+#'         index = 123
+#'       ),
+#'       timeout = list(
+#'         attemptDurationSeconds = 123
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       propagateTags = TRUE|FALSE,
+#'       platformCapabilities = list(
+#'         "EC2"|"FARGATE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -916,6 +1570,39 @@ batch_describe_jobs <- function(jobs) {
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobSummaryList = list(
+#'     list(
+#'       jobArn = "string",
+#'       jobId = "string",
+#'       jobName = "string",
+#'       createdAt = 123,
+#'       status = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
+#'       statusReason = "string",
+#'       startedAt = 123,
+#'       stoppedAt = 123,
+#'       container = list(
+#'         exitCode = 123,
+#'         reason = "string"
+#'       ),
+#'       arrayProperties = list(
+#'         size = 123,
+#'         index = 123
+#'       ),
+#'       nodeProperties = list(
+#'         isMainNode = TRUE|FALSE,
+#'         numNodes = 123,
+#'         nodeIndex = 123
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_jobs(
@@ -978,6 +1665,16 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' are listed for. AWS Batch resources that support tags are compute
 #' environments, jobs, job definitions, and job queues. ARNs for child jobs
 #' of array and multi-node parallel (MNP) jobs are not supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1081,6 +1778,16 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' @param platformCapabilities The platform capabilities required by the job definition. If no value is
 #' specified, it defaults to `EC2`. To run the job on Fargate resources,
 #' specify `FARGATE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobDefinitionName = "string",
+#'   jobDefinitionArn = "string",
+#'   revision = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1456,6 +2163,16 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
 #' in *AWS General Reference*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   jobName = "string",
+#'   jobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$submit_job(
@@ -1599,6 +2316,9 @@ batch_submit_job <- function(jobName, jobQueue, arrayProperties = NULL, dependsO
 #' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
 #' in *AWS General Reference*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1657,6 +2377,9 @@ batch_tag_resource <- function(resourceArn, tags) {
 #' [`describe_jobs`][batch_describe_jobs] operations on the job. This
 #' message is also recorded in the AWS Batch activity logs.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$terminate_job(
@@ -1707,6 +2430,9 @@ batch_terminate_job <- function(jobId, reason) {
 #' jobs, job definitions, and job queues. ARNs for child jobs of array and
 #' multi-node parallel (MNP) jobs are not supported.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1797,6 +2523,15 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' specify the full ARN of your service role when you create compute
 #' environments.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   computeEnvironmentName = "string",
+#'   computeEnvironmentArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_compute_environment(
@@ -1880,6 +2615,15 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, c
 #' All compute environments that are associated with a job queue must share
 #' the same architecture. AWS Batch doesn't support mixing compute
 #' environment architecture types in a single job queue.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobQueueName = "string",
+#'   jobQueueArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

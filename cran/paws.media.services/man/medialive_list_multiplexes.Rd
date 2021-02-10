@@ -11,6 +11,31 @@ medialive_list_multiplexes(MaxResults, NextToken)
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Multiplexes = list(
+    list(
+      Arn = "string",
+      AvailabilityZones = list(
+        "string"
+      ),
+      Id = "string",
+      MultiplexSettings = list(
+        TransportStreamBitrate = 123
+      ),
+      Name = "string",
+      PipelinesRunningCount = 123,
+      ProgramCount = 123,
+      State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED",
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieve a list of the existing multiplexes.
 }

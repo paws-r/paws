@@ -10,6 +10,9 @@ gamelift_delete_fleet(FleetId)
 \item{FleetId}{[required] A unique identifier for a fleet to be deleted. You can use either the
 fleet ID or ARN value.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes everything related to a fleet. Before deleting a fleet, you must
 set the fleet's desired capacity to zero. See

@@ -67,6 +67,27 @@ parameter.}
 
 \item{ShardFilter}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Shards = list(
+    list(
+      ShardId = "string",
+      ParentShardId = "string",
+      AdjacentParentShardId = "string",
+      HashKeyRange = list(
+        StartingHashKey = "string",
+        EndingHashKey = "string"
+      ),
+      SequenceNumberRange = list(
+        StartingSequenceNumber = "string",
+        EndingSequenceNumber = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the shards in a stream and provides information about each shard.
 This operation has a limit of 100 transactions per second per data

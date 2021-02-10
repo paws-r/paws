@@ -6,6 +6,9 @@
 \usage{
 sagemaker_enable_sagemaker_servicecatalog_portfolio()
 }
+\value{
+An empty list.
+}
 \description{
 Enables using Service Catalog in SageMaker. Service Catalog is used to
 create SageMaker projects.

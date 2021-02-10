@@ -13,7 +13,7 @@ iotjobsdataplane_update_job_execution(jobId, thingName, status,
 
 \item{thingName}{[required] The name of the thing associated with the device.}
 
-\item{status}{[required] The new status for the job execution (IN\\_PROGRESS, FAILED, SUCCESS, or
+\item{status}{[required] The new status for the job execution (IN_PROGRESS, FAILED, SUCCESS, or
 REJECTED). This must be specified on every update.}
 
 \item{statusDetails}{Optional. A collection of name/value pairs that describe the status of
@@ -45,6 +45,19 @@ default is false.}
 
 \item{executionNumber}{Optional. A number that identifies a particular job execution on a
 particular device.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  executionState = list(
+    status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+    statusDetails = list(
+      "string"
+    ),
+    versionNumber = 123
+  ),
+  jobDocument = "string"
+)
+}
 }
 \description{
 Updates the status of a job execution.

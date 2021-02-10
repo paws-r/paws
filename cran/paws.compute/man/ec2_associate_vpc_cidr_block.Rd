@@ -32,6 +32,30 @@ block.}
 
 To let Amazon choose the IPv6 CIDR block for you, omit this parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Ipv6CidrBlockAssociation = list(
+    AssociationId = "string",
+    Ipv6CidrBlock = "string",
+    Ipv6CidrBlockState = list(
+      State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+      StatusMessage = "string"
+    ),
+    NetworkBorderGroup = "string",
+    Ipv6Pool = "string"
+  ),
+  CidrBlockAssociation = list(
+    AssociationId = "string",
+    CidrBlock = "string",
+    CidrBlockState = list(
+      State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+      StatusMessage = "string"
+    )
+  ),
+  VpcId = "string"
+)
+}
+}
 \description{
 Associates a CIDR block with your VPC. You can associate a secondary
 IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR

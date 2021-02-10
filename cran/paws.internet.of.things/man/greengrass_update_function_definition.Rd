@@ -11,6 +11,9 @@ greengrass_update_function_definition(FunctionDefinitionId, Name)
 
 \item{Name}{The name of the definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a Lambda function definition.
 }

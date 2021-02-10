@@ -61,6 +61,23 @@ permissions from this user. Using this parameter resets the user to the
 state it was in before a custom permissions profile was applied. This
 parameter defaults to NULL and it doesn't accept any other value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    Arn = "string",
+    UserName = "string",
+    Email = "string",
+    Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
+    IdentityType = "IAM"|"QUICKSIGHT",
+    Active = TRUE|FALSE,
+    PrincipalId = "string",
+    CustomPermissionsName = "string"
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates an Amazon QuickSight user.
 }

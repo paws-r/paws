@@ -11,7 +11,23 @@ greengrass_list_deployments(GroupId, MaxResults, NextToken)
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Deployments = list(
+    list(
+      CreatedAt = "string",
+      DeploymentArn = "string",
+      DeploymentId = "string",
+      DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
+      GroupArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns a history of deployments for the group.

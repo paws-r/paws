@@ -13,6 +13,37 @@ provided, the AWS account ID is used by default.}
 \item{Name}{[required] The name of the database to retrieve. For Hive compatibility, this
 should be all lowercase.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Database = list(
+    Name = "string",
+    Description = "string",
+    LocationUri = "string",
+    Parameters = list(
+      "string"
+    ),
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreateTableDefaultPermissions = list(
+      list(
+        Principal = list(
+          DataLakePrincipalIdentifier = "string"
+        ),
+        Permissions = list(
+          "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+        )
+      )
+    ),
+    TargetDatabase = list(
+      CatalogId = "string",
+      DatabaseName = "string"
+    ),
+    CatalogId = "string"
+  )
+)
+}
+}
 \description{
 Retrieves the definition of a specified database.
 }

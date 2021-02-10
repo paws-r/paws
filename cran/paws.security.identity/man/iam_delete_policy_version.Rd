@@ -23,6 +23,9 @@ digits.
 For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified version from the specified managed policy.
 

@@ -29,6 +29,13 @@ For the CLI command-line parameter use format: &&tags
 For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificateArn = "string",
+  certificateId = "string"
+)
+}
+}
 \description{
 Registers a CA certificate with AWS IoT. This CA certificate can then be
 used to sign device certificates, which can be then registered with AWS

@@ -16,6 +16,9 @@ authorization.}
 
 \item{RoomArn}{The room that the skill is authorized for.}
 }
+\value{
+An empty list.
+}
 \description{
 Links a user's account to a third-party skill provider. If this API
 operation is called by an assumed IAM role, the skill being linked must

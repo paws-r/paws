@@ -13,6 +13,9 @@ backup_delete_backup_selection(BackupPlanId, SelectionId)
 \item{SelectionId}{[required] Uniquely identifies the body of a request to assign a set of resources
 to a backup plan.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the resource selection associated with a backup plan that is
 specified by the \code{SelectionId}.

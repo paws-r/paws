@@ -9,6 +9,39 @@ mediaconvert_get_queue(Name)
 \arguments{
 \item{Name}{[required] The name of the queue that you want information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Queue = list(
+    Arn = "string",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Description = "string",
+    LastUpdated = as.POSIXct(
+      "2015-01-01"
+    ),
+    Name = "string",
+    PricingPlan = "ON_DEMAND"|"RESERVED",
+    ProgressingJobsCount = 123,
+    ReservationPlan = list(
+      Commitment = "ONE_YEAR",
+      ExpiresAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      PurchasedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      RenewalType = "AUTO_RENEW"|"EXPIRE",
+      ReservedSlots = 123,
+      Status = "ACTIVE"|"EXPIRED"
+    ),
+    Status = "ACTIVE"|"PAUSED",
+    SubmittedJobsCount = 123,
+    Type = "SYSTEM"|"CUSTOM"
+  )
+)
+}
+}
 \description{
 Retrieve the JSON for a specific queue.
 }

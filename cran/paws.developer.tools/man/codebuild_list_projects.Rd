@@ -36,6 +36,15 @@ operation again, adding the next token to the call. To get all of the
 items in the list, keep calling this operation with each subsequent next
 token that is returned, until no more next tokens are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  projects = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets a list of build project names, with each build project name
 representing a single build project.

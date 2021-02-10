@@ -19,6 +19,12 @@ workspaces_copy_workspace_image(Name, Description, SourceImageId,
 
 \item{Tags}{The tags for the image.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageId = "string"
+)
+}
+}
 \description{
 Copies the specified image from the specified Region to the current
 Region. For more information about copying images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html}{Copy a Custom WorkSpaces Image}.

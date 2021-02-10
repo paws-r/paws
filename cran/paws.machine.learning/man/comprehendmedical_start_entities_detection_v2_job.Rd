@@ -29,6 +29,12 @@ do not specify a key, the files are written in plain text.}
 \item{LanguageCode}{[required] The language of the input documents. All documents must be in the same
 language.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Starts an asynchronous medical entity detection job for a collection of
 documents. Use the

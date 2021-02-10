@@ -16,6 +16,16 @@ NULL
 #' cancel.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   imageBuildVersionArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_image_creation(
@@ -78,6 +88,16 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' @param kmsKeyId The ID of the KMS key that should be used to encrypt this component.
 #' @param tags The tags of the component.
 #' @param clientToken &#91;required&#93; The idempotency token of the component.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   componentBuildVersionArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -152,6 +172,16 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @param kmsKeyId Identifies which KMS key is used to encrypt the container image.
 #' @param clientToken &#91;required&#93; The client token used to make this request idempotent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   containerRecipeArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_container_recipe(
@@ -217,6 +247,16 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #' @param distributions &#91;required&#93; The distributions of the distribution configuration.
 #' @param tags The tags of the distribution configuration.
 #' @param clientToken &#91;required&#93; The idempotency token of the distribution configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   distributionConfigurationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -316,6 +356,16 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @param tags The tags of the image.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   imageBuildVersionArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_image(
@@ -387,6 +437,16 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @param status The status of the image pipeline.
 #' @param tags The tags of the image pipeline.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   imagePipelineArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -461,6 +521,16 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @param tags The tags of the image recipe.
 #' @param workingDirectory The working directory to be used during build and test workflows.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   imageRecipeArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -554,6 +624,16 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @param tags The tags of the infrastructure configuration.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   infrastructureConfigurationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_infrastructure_configuration(
@@ -616,6 +696,15 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 #'
 #' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component build version to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   componentBuildVersionArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_component(
@@ -652,6 +741,15 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
 #' imagebuilder_delete_container_recipe(containerRecipeArn)
 #'
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   containerRecipeArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -692,6 +790,15 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration to
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   distributionConfigurationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_distribution_configuration(
@@ -728,6 +835,15 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
 #' imagebuilder_delete_image(imageBuildVersionArn)
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageBuildVersionArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -766,6 +882,15 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imagePipelineArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_image_pipeline(
@@ -802,6 +927,15 @@ imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
 #' imagebuilder_delete_image_recipe(imageRecipeArn)
 #'
 #' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageRecipeArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -842,6 +976,15 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration to
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   infrastructureConfigurationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_infrastructure_configuration(
@@ -878,7 +1021,35 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #' imagebuilder_get_component(componentBuildVersionArn)
 #'
 #' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to
-#' retrieve. Regex requires "/`\\d`+$" suffix.
+#' retrieve. Regex requires "/\\d+$" suffix.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   component = list(
+#'     arn = "string",
+#'     name = "string",
+#'     version = "string",
+#'     description = "string",
+#'     changeDescription = "string",
+#'     type = "BUILD"|"TEST",
+#'     platform = "Windows"|"Linux",
+#'     supportedOsVersions = list(
+#'       "string"
+#'     ),
+#'     owner = "string",
+#'     data = "string",
+#'     kmsKeyId = "string",
+#'     encrypted = TRUE|FALSE,
+#'     dateCreated = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -918,6 +1089,15 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
 #' @param componentArn &#91;required&#93; The Amazon Resource Name (ARN) of the component whose policy you want to
 #' retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   policy = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_component_policy(
@@ -954,6 +1134,41 @@ imagebuilder_get_component_policy <- function(componentArn) {
 #' imagebuilder_get_container_recipe(containerRecipeArn)
 #'
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   containerRecipe = list(
+#'     arn = "string",
+#'     containerType = "DOCKER",
+#'     name = "string",
+#'     description = "string",
+#'     platform = "Windows"|"Linux",
+#'     owner = "string",
+#'     version = "string",
+#'     components = list(
+#'       list(
+#'         componentArn = "string"
+#'       )
+#'     ),
+#'     dockerfileTemplateData = "string",
+#'     kmsKeyId = "string",
+#'     encrypted = TRUE|FALSE,
+#'     parentImage = "string",
+#'     dateCreated = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     workingDirectory = "string",
+#'     targetRepository = list(
+#'       service = "ECR",
+#'       repositoryName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -992,6 +1207,15 @@ imagebuilder_get_container_recipe <- function(containerRecipeArn) {
 #'
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe for the policy
 #' being requested.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1032,6 +1256,62 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration that
 #' you want to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   distributionConfiguration = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     distributions = list(
+#'       list(
+#'         region = "string",
+#'         amiDistributionConfiguration = list(
+#'           name = "string",
+#'           description = "string",
+#'           targetAccountIds = list(
+#'             "string"
+#'           ),
+#'           amiTags = list(
+#'             "string"
+#'           ),
+#'           kmsKeyId = "string",
+#'           launchPermission = list(
+#'             userIds = list(
+#'               "string"
+#'             ),
+#'             userGroups = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         containerDistributionConfiguration = list(
+#'           description = "string",
+#'           containerTags = list(
+#'             "string"
+#'           ),
+#'           targetRepository = list(
+#'             service = "ECR",
+#'             repositoryName = "string"
+#'           )
+#'         ),
+#'         licenseConfigurationArns = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     timeoutMinutes = 123,
+#'     dateCreated = "string",
+#'     dateUpdated = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_distribution_configuration(
@@ -1068,6 +1348,201 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #' imagebuilder_get_image(imageBuildVersionArn)
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   image = list(
+#'     arn = "string",
+#'     type = "AMI"|"DOCKER",
+#'     name = "string",
+#'     version = "string",
+#'     platform = "Windows"|"Linux",
+#'     enhancedImageMetadataEnabled = TRUE|FALSE,
+#'     osVersion = "string",
+#'     state = list(
+#'       status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED",
+#'       reason = "string"
+#'     ),
+#'     imageRecipe = list(
+#'       arn = "string",
+#'       type = "AMI"|"DOCKER",
+#'       name = "string",
+#'       description = "string",
+#'       platform = "Windows"|"Linux",
+#'       owner = "string",
+#'       version = "string",
+#'       components = list(
+#'         list(
+#'           componentArn = "string"
+#'         )
+#'       ),
+#'       parentImage = "string",
+#'       blockDeviceMappings = list(
+#'         list(
+#'           deviceName = "string",
+#'           ebs = list(
+#'             encrypted = TRUE|FALSE,
+#'             deleteOnTermination = TRUE|FALSE,
+#'             iops = 123,
+#'             kmsKeyId = "string",
+#'             snapshotId = "string",
+#'             volumeSize = 123,
+#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'           ),
+#'           virtualName = "string",
+#'           noDevice = "string"
+#'         )
+#'       ),
+#'       dateCreated = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       workingDirectory = "string"
+#'     ),
+#'     containerRecipe = list(
+#'       arn = "string",
+#'       containerType = "DOCKER",
+#'       name = "string",
+#'       description = "string",
+#'       platform = "Windows"|"Linux",
+#'       owner = "string",
+#'       version = "string",
+#'       components = list(
+#'         list(
+#'           componentArn = "string"
+#'         )
+#'       ),
+#'       dockerfileTemplateData = "string",
+#'       kmsKeyId = "string",
+#'       encrypted = TRUE|FALSE,
+#'       parentImage = "string",
+#'       dateCreated = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       workingDirectory = "string",
+#'       targetRepository = list(
+#'         service = "ECR",
+#'         repositoryName = "string"
+#'       )
+#'     ),
+#'     sourcePipelineName = "string",
+#'     sourcePipelineArn = "string",
+#'     infrastructureConfiguration = list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       instanceTypes = list(
+#'         "string"
+#'       ),
+#'       instanceProfileName = "string",
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       subnetId = "string",
+#'       logging = list(
+#'         s3Logs = list(
+#'           s3BucketName = "string",
+#'           s3KeyPrefix = "string"
+#'         )
+#'       ),
+#'       keyPair = "string",
+#'       terminateInstanceOnFailure = TRUE|FALSE,
+#'       snsTopicArn = "string",
+#'       dateCreated = "string",
+#'       dateUpdated = "string",
+#'       resourceTags = list(
+#'         "string"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     ),
+#'     distributionConfiguration = list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       distributions = list(
+#'         list(
+#'           region = "string",
+#'           amiDistributionConfiguration = list(
+#'             name = "string",
+#'             description = "string",
+#'             targetAccountIds = list(
+#'               "string"
+#'             ),
+#'             amiTags = list(
+#'               "string"
+#'             ),
+#'             kmsKeyId = "string",
+#'             launchPermission = list(
+#'               userIds = list(
+#'                 "string"
+#'               ),
+#'               userGroups = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           containerDistributionConfiguration = list(
+#'             description = "string",
+#'             containerTags = list(
+#'               "string"
+#'             ),
+#'             targetRepository = list(
+#'               service = "ECR",
+#'               repositoryName = "string"
+#'             )
+#'           ),
+#'           licenseConfigurationArns = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       timeoutMinutes = 123,
+#'       dateCreated = "string",
+#'       dateUpdated = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     ),
+#'     imageTestsConfiguration = list(
+#'       imageTestsEnabled = TRUE|FALSE,
+#'       timeoutMinutes = 123
+#'     ),
+#'     dateCreated = "string",
+#'     outputResources = list(
+#'       amis = list(
+#'         list(
+#'           region = "string",
+#'           image = "string",
+#'           name = "string",
+#'           description = "string",
+#'           state = list(
+#'             status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED",
+#'             reason = "string"
+#'           ),
+#'           accountId = "string"
+#'         )
+#'       ),
+#'       containers = list(
+#'         list(
+#'           region = "string",
+#'           imageUris = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1107,6 +1582,41 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to
 #' retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imagePipeline = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     platform = "Windows"|"Linux",
+#'     enhancedImageMetadataEnabled = TRUE|FALSE,
+#'     imageRecipeArn = "string",
+#'     containerRecipeArn = "string",
+#'     infrastructureConfigurationArn = "string",
+#'     distributionConfigurationArn = "string",
+#'     imageTestsConfiguration = list(
+#'       imageTestsEnabled = TRUE|FALSE,
+#'       timeoutMinutes = 123
+#'     ),
+#'     schedule = list(
+#'       scheduleExpression = "string",
+#'       pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
+#'     ),
+#'     status = "DISABLED"|"ENABLED",
+#'     dateCreated = "string",
+#'     dateUpdated = "string",
+#'     dateLastRun = "string",
+#'     dateNextRun = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_image_pipeline(
@@ -1144,6 +1654,15 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
 #'
 #' @param imageArn &#91;required&#93; The Amazon Resource Name (ARN) of the image whose policy you want to
 #' retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1183,6 +1702,50 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that you want to
 #' retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageRecipe = list(
+#'     arn = "string",
+#'     type = "AMI"|"DOCKER",
+#'     name = "string",
+#'     description = "string",
+#'     platform = "Windows"|"Linux",
+#'     owner = "string",
+#'     version = "string",
+#'     components = list(
+#'       list(
+#'         componentArn = "string"
+#'       )
+#'     ),
+#'     parentImage = "string",
+#'     blockDeviceMappings = list(
+#'       list(
+#'         deviceName = "string",
+#'         ebs = list(
+#'           encrypted = TRUE|FALSE,
+#'           deleteOnTermination = TRUE|FALSE,
+#'           iops = 123,
+#'           kmsKeyId = "string",
+#'           snapshotId = "string",
+#'           volumeSize = 123,
+#'           volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'         ),
+#'         virtualName = "string",
+#'         noDevice = "string"
+#'       )
+#'     ),
+#'     dateCreated = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     workingDirectory = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_image_recipe(
@@ -1220,6 +1783,15 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
 #'
 #' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe whose policy you want
 #' to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1259,6 +1831,44 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
 #' you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   infrastructureConfiguration = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     instanceTypes = list(
+#'       "string"
+#'     ),
+#'     instanceProfileName = "string",
+#'     securityGroupIds = list(
+#'       "string"
+#'     ),
+#'     subnetId = "string",
+#'     logging = list(
+#'       s3Logs = list(
+#'         s3BucketName = "string",
+#'         s3KeyPrefix = "string"
+#'       )
+#'     ),
+#'     keyPair = "string",
+#'     terminateInstanceOnFailure = TRUE|FALSE,
+#'     snsTopicArn = "string",
+#'     dateCreated = "string",
+#'     dateUpdated = "string",
+#'     resourceTags = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1320,6 +1930,16 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 #' @param tags The tags of the component.
 #' @param clientToken &#91;required&#93; The idempotency token of the component.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   componentBuildVersionArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_component(
@@ -1377,6 +1997,34 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   componentSummaryList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       version = "string",
+#'       platform = "Windows"|"Linux",
+#'       supportedOsVersions = list(
+#'         "string"
+#'       ),
+#'       type = "BUILD"|"TEST",
+#'       owner = "string",
+#'       description = "string",
+#'       changeDescription = "string",
+#'       dateCreated = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_component_build_versions(
@@ -1428,6 +2076,30 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   componentVersionList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       version = "string",
+#'       description = "string",
+#'       platform = "Windows"|"Linux",
+#'       supportedOsVersions = list(
+#'         "string"
+#'       ),
+#'       type = "BUILD"|"TEST",
+#'       owner = "string",
+#'       dateCreated = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1486,6 +2158,29 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' next set of results when the current set reaches the maximum for one
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   containerRecipeSummaryList = list(
+#'     list(
+#'       arn = "string",
+#'       containerType = "DOCKER",
+#'       name = "string",
+#'       platform = "Windows"|"Linux",
+#'       owner = "string",
+#'       parentImage = "string",
+#'       dateCreated = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_container_recipes(
@@ -1539,6 +2234,30 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   distributionConfigurationSummaryList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       dateCreated = "string",
+#'       dateUpdated = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       regions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_distribution_configurations(
@@ -1590,6 +2309,57 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageSummaryList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "AMI"|"DOCKER",
+#'       version = "string",
+#'       platform = "Windows"|"Linux",
+#'       osVersion = "string",
+#'       state = list(
+#'         status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED",
+#'         reason = "string"
+#'       ),
+#'       owner = "string",
+#'       dateCreated = "string",
+#'       outputResources = list(
+#'         amis = list(
+#'           list(
+#'             region = "string",
+#'             image = "string",
+#'             name = "string",
+#'             description = "string",
+#'             state = list(
+#'               status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED",
+#'               reason = "string"
+#'             ),
+#'             accountId = "string"
+#'           )
+#'         ),
+#'         containers = list(
+#'           list(
+#'             region = "string",
+#'             imageUris = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1644,6 +2414,57 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageSummaryList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "AMI"|"DOCKER",
+#'       version = "string",
+#'       platform = "Windows"|"Linux",
+#'       osVersion = "string",
+#'       state = list(
+#'         status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED",
+#'         reason = "string"
+#'       ),
+#'       owner = "string",
+#'       dateCreated = "string",
+#'       outputResources = list(
+#'         amis = list(
+#'           list(
+#'             region = "string",
+#'             image = "string",
+#'             name = "string",
+#'             description = "string",
+#'             state = list(
+#'               status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED",
+#'               reason = "string"
+#'             ),
+#'             accountId = "string"
+#'           )
+#'         ),
+#'         containers = list(
+#'           list(
+#'             region = "string",
+#'             imageUris = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_image_pipeline_images(
@@ -1693,6 +2514,44 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imagePipelineList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       platform = "Windows"|"Linux",
+#'       enhancedImageMetadataEnabled = TRUE|FALSE,
+#'       imageRecipeArn = "string",
+#'       containerRecipeArn = "string",
+#'       infrastructureConfigurationArn = "string",
+#'       distributionConfigurationArn = "string",
+#'       imageTestsConfiguration = list(
+#'         imageTestsEnabled = TRUE|FALSE,
+#'         timeoutMinutes = 123
+#'       ),
+#'       schedule = list(
+#'         scheduleExpression = "string",
+#'         pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
+#'       ),
+#'       status = "DISABLED"|"ENABLED",
+#'       dateCreated = "string",
+#'       dateUpdated = "string",
+#'       dateLastRun = "string",
+#'       dateNextRun = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1747,6 +2606,28 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageRecipeSummaryList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       platform = "Windows"|"Linux",
+#'       owner = "string",
+#'       parentImage = "string",
+#'       dateCreated = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1806,6 +2687,27 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' a previously truncated response.
 #' @param includeDeprecated Includes deprecated images in the response list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageVersionList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "AMI"|"DOCKER",
+#'       version = "string",
+#'       platform = "Windows"|"Linux",
+#'       osVersion = "string",
+#'       owner = "string",
+#'       dateCreated = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_images(
@@ -1859,6 +2761,30 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   infrastructureConfigurationSummaryList = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       dateCreated = "string",
+#'       dateUpdated = "string",
+#'       resourceTags = list(
+#'         "string"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_infrastructure_configurations(
@@ -1906,6 +2832,16 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
 #' retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1952,6 +2888,15 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
 #' be applied to.
 #' @param policy &#91;required&#93; The policy to apply.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   componentArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_component_policy(
@@ -1985,11 +2930,11 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 #' @description
 #' Applies a policy to a container image. We recommend that you call the
 #' RAM API CreateResourceShare
-#' (https://docs.aws.amazon.com/ram/latest/APIReference/API\\_CreateResourceShare.html)
+#' (https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
 #' to share resources. If you call the Image Builder API
 #' `PutContainerImagePolicy`, you must also call the RAM API
 #' PromoteResourceShareCreatedFromPolicy
-#' (https://docs.aws.amazon.com/ram/latest/APIReference/API\\_PromoteResourceShareCreatedFromPolicy.html)
+#' (https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
 #' in order for the resource to be visible to all principals with whom the
 #' resource is shared.
 #'
@@ -1999,6 +2944,15 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe that this policy
 #' should be applied to.
 #' @param policy &#91;required&#93; The policy to apply to the container recipe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   containerRecipeArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2046,6 +3000,15 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
 #' @param imageArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that this policy should be
 #' applied to.
 #' @param policy &#91;required&#93; The policy to apply.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2095,6 +3058,15 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
 #' should be applied to.
 #' @param policy &#91;required&#93; The policy to apply.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageRecipeArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_image_recipe_policy(
@@ -2136,6 +3108,16 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 #' manually invoke.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   imageBuildVersionArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_image_pipeline_execution(
@@ -2174,6 +3156,9 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
 #' @param tags &#91;required&#93; The tags to apply to the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2215,6 +3200,9 @@ imagebuilder_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to untag.
 #' @param tagKeys &#91;required&#93; The tag keys to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2261,6 +3249,16 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #' @param description The description of the distribution configuration.
 #' @param distributions &#91;required&#93; The distributions of the distribution configuration.
 #' @param clientToken &#91;required&#93; The idempotency token of the distribution configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   distributionConfigurationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2360,6 +3358,16 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @param status The status of the image pipeline.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   imagePipelineArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_image_pipeline(
@@ -2437,6 +3445,16 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' @param snsTopicArn The SNS topic on which to send image build events.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #' @param resourceTags The tags attached to the resource created by Image Builder.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   clientToken = "string",
+#'   infrastructureConfigurationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

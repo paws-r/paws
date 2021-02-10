@@ -10,9 +10,34 @@ simpledb_select(SelectExpression, NextToken, ConsistentRead)
 \arguments{
 \item{SelectExpression}{[required] The expression used to query the domain.}
 
-\item{NextToken}{A string informing Amazon SimpleDB where to start the next list of <code>ItemNames</code>.}
+\item{NextToken}{A string informing Amazon SimpleDB where to start the next list of
+\code{ItemNames}.}
 
-\item{ConsistentRead}{Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.}
+\item{ConsistentRead}{Determines whether or not strong consistency should be enforced when
+data is read from SimpleDB. If \code{true}, any data previously written to
+SimpleDB will be returned. Otherwise, results will be consistent
+eventually, and the client may not see data that was written immediately
+before your read.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      Name = "string",
+      AlternateNameEncoding = "string",
+      Attributes = list(
+        list(
+          Name = "string",
+          AlternateNameEncoding = "string",
+          Value = "string",
+          AlternateValueEncoding = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 The \code{\link[=simpledb_select]{select}} operation returns a set of attributes

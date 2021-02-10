@@ -20,6 +20,29 @@ specific audit finding.}
 
 \item{nextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actionsExecutions = list(
+    list(
+      taskId = "string",
+      findingId = "string",
+      actionName = "string",
+      actionId = "string",
+      status = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED"|"SKIPPED"|"PENDING",
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      endTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      errorCode = "string",
+      message = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the status of audit mitigation action tasks that were executed.
 }

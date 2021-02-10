@@ -12,6 +12,9 @@ pinpoint_tag_resource(ResourceArn, TagsModel)
 
 \item{TagsModel}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags (keys and values) to an application, campaign,
 message template, or segment.

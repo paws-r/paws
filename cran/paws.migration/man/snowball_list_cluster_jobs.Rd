@@ -16,6 +16,25 @@ snowball_list_cluster_jobs(ClusterId, MaxResults, NextToken)
 list of \code{JobListEntry} objects, you have the option of specifying
 \code{NextToken} as the starting point for your returned list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobListEntries = list(
+    list(
+      JobId = "string",
+      JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
+      IsMaster = TRUE|FALSE,
+      JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+      SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of \code{JobListEntry} objects of the specified length. Each
 \code{JobListEntry} object is for a job in the specified cluster and contains

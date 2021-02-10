@@ -15,6 +15,14 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 This operation lists all the tags attached to a vault. The operation
 returns an empty map if there are no tags. For more information about

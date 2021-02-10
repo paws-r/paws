@@ -25,6 +25,9 @@ number type and multiple numbers.}
 
 \item{SipAddresses}{The list of SIP addresses for the contact.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the contact details by the contact ARN.
 }

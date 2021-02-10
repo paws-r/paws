@@ -21,6 +21,9 @@ vault’s events; for example,
 \item{BackupVaultEvents}{[required] An array of events that indicate the status of jobs to back up resources
 to the backup vault.}
 }
+\value{
+An empty list.
+}
 \description{
 Turns on notifications on a backup vault for the specified topic and
 events.

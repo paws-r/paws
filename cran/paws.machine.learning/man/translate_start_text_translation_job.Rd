@@ -39,6 +39,13 @@ job. For a list of available parallel data resources, use the
 \item{ClientToken}{[required] A unique identifier for the request. This token is auto-generated when
 using the Amazon Translate SDK.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+)
+}
+}
 \description{
 Starts an asynchronous batch translation job. Batch translation jobs can
 be used to translate large volumes of text across multiple documents at

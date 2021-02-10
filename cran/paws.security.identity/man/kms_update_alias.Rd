@@ -35,6 +35,9 @@ To get the key ID and key ARN for a CMK, use
 To verify that the alias is mapped to the correct CMK, use
 \code{\link[=kms_list_aliases]{list_aliases}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates an existing AWS KMS alias with a different customer master
 key (CMK). Each alias is associated with only one CMK at a time,

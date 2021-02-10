@@ -12,6 +12,14 @@ applicationinsights_describe_component_configuration(ResourceGroupName,
 
 \item{ComponentName}{[required] The name of the component.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Monitor = TRUE|FALSE,
+  Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+  ComponentConfiguration = "string"
+)
+}
+}
 \description{
 Describes the monitoring configuration of the component.
 }

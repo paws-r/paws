@@ -11,6 +11,9 @@ apigateway_delete_deployment(restApiId, deploymentId)
 
 \item{deploymentId}{[required] [Required] The identifier of the Deployment resource to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Deployment resource. Deleting a deployment will only succeed
 if there are no Stage resources associated with it.

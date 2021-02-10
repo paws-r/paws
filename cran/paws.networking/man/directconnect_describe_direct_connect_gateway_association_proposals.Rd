@@ -25,6 +25,36 @@ returned.}
 
 \item{nextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  directConnectGatewayAssociationProposals = list(
+    list(
+      proposalId = "string",
+      directConnectGatewayId = "string",
+      directConnectGatewayOwnerAccount = "string",
+      proposalState = "requested"|"accepted"|"deleted",
+      associatedGateway = list(
+        id = "string",
+        type = "virtualPrivateGateway"|"transitGateway",
+        ownerAccount = "string",
+        region = "string"
+      ),
+      existingAllowedPrefixesToDirectConnectGateway = list(
+        list(
+          cidr = "string"
+        )
+      ),
+      requestedAllowedPrefixesToDirectConnectGateway = list(
+        list(
+          cidr = "string"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Describes one or more association proposals for connection between a
 virtual private gateway or transit gateway and a Direct Connect gateway.

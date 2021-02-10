@@ -16,6 +16,21 @@ they are deleted.}
 \item{InstanceId}{[required] A unique identifier for an instance you want to get access to. You can
 access an instance in any status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceAccess = list(
+    FleetId = "string",
+    InstanceId = "string",
+    IpAddress = "string",
+    OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+    Credentials = list(
+      UserName = "string",
+      Secret = "string"
+    )
+  )
+)
+}
+}
 \description{
 Requests remote access to a fleet instance. Remote access is useful for
 debugging, gathering benchmarking data, or observing activity in real

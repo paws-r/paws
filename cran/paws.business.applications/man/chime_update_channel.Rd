@@ -15,6 +15,12 @@ chime_update_channel(ChannelArn, Name, Mode, Metadata)
 
 \item{Metadata}{The metadata of the channel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string"
+)
+}
+}
 \description{
 Update a channel's attributes.
 

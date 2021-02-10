@@ -17,6 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches an internet gateway from a VPC, disabling connectivity between
 the internet and the VPC. The VPC must not contain any running instances

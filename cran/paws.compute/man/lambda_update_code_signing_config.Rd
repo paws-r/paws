@@ -16,6 +16,25 @@ lambda_update_code_signing_config(CodeSigningConfigArn, Description,
 
 \item{CodeSigningPolicies}{The code signing policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeSigningConfig = list(
+    CodeSigningConfigId = "string",
+    CodeSigningConfigArn = "string",
+    Description = "string",
+    AllowedPublishers = list(
+      SigningProfileVersionArns = list(
+        "string"
+      )
+    ),
+    CodeSigningPolicies = list(
+      UntrustedArtifactOnDeployment = "Warn"|"Enforce"
+    ),
+    LastModified = "string"
+  )
+)
+}
+}
 \description{
 Update the code signing configuration. Changes to the code signing
 configuration take effect the next time a user tries to deploy a code

@@ -20,6 +20,9 @@ NULL
 #' all `deviceId` values.
 #' @param deviceTemplateName &#91;required&#93; The device template name to associate with the device ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_device_with_placement(
@@ -63,6 +66,9 @@ iot1clickprojects_associate_device_with_placement <- function(projectName, place
 #' @param projectName &#91;required&#93; The name of the project in which to create the placement.
 #' @param attributes Optional user-defined key/value pairs providing contextual data (such as
 #' location or function) for the placement.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -114,9 +120,12 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 #' However, you can update `callbackOverrides` for the device templates
 #' using the [`update_project`][iot1clickprojects_update_project] API.
 #' @param tags Optional tags (metadata key/value pairs) to be associated with the
-#' project. For example, `\{ \{"key1": "value1", "key2": "value2"\} \}`. For
+#' project. For example, `{ {"key1": "value1", "key2": "value2"} }`. For
 #' more information, see [AWS Tagging
 #' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -176,6 +185,9 @@ iot1clickprojects_create_project <- function(projectName, description = NULL, pl
 #' @param placementName &#91;required&#93; The name of the empty placement to delete.
 #' @param projectName &#91;required&#93; The project containing the empty placement to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_placement(
@@ -217,6 +229,9 @@ iot1clickprojects_delete_placement <- function(placementName, projectName) {
 #'
 #' @param projectName &#91;required&#93; The name of the empty project to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -255,6 +270,26 @@ iot1clickprojects_delete_project <- function(projectName) {
 #' @param placementName &#91;required&#93; The name of the placement within a project.
 #' @param projectName &#91;required&#93; The project containing the placement to be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   placement = list(
+#'     projectName = "string",
+#'     placementName = "string",
+#'     attributes = list(
+#'       "string"
+#'     ),
+#'     createdDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_placement(
@@ -292,6 +327,40 @@ iot1clickprojects_describe_placement <- function(placementName, projectName) {
 #' iot1clickprojects_describe_project(projectName)
 #'
 #' @param projectName &#91;required&#93; The name of the project to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   project = list(
+#'     arn = "string",
+#'     projectName = "string",
+#'     description = "string",
+#'     createdDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     placementTemplate = list(
+#'       defaultAttributes = list(
+#'         "string"
+#'       ),
+#'       deviceTemplates = list(
+#'         list(
+#'           deviceType = "string",
+#'           callbackOverrides = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -333,6 +402,9 @@ iot1clickprojects_describe_project <- function(projectName) {
 #' @param placementName &#91;required&#93; The name of the placement that the device should be removed from.
 #' @param deviceTemplateName &#91;required&#93; The device ID that should be removed from the placement.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_device_from_placement(
@@ -372,6 +444,16 @@ iot1clickprojects_disassociate_device_from_placement <- function(projectName, pl
 #'
 #' @param projectName &#91;required&#93; The name of the project containing the placement.
 #' @param placementName &#91;required&#93; The name of the placement to get the devices from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   devices = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -413,6 +495,26 @@ iot1clickprojects_get_devices_in_placement <- function(projectName, placementNam
 #' @param nextToken The token to retrieve the next set of results.
 #' @param maxResults The maximum number of results to return per request. If not set, a
 #' default value of 100 is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   placements = list(
+#'     list(
+#'       projectName = "string",
+#'       placementName = "string",
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -457,6 +559,29 @@ iot1clickprojects_list_placements <- function(projectName, nextToken = NULL, max
 #' @param maxResults The maximum number of results to return per request. If not set, a
 #' default value of 100 is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projects = list(
+#'     list(
+#'       arn = "string",
+#'       projectName = "string",
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_projects(
@@ -496,6 +621,16 @@ iot1clickprojects_list_projects <- function(nextToken = NULL, maxResults = NULL)
 #' iot1clickprojects_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource whose tags you want to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -541,6 +676,9 @@ iot1clickprojects_list_tags_for_resource <- function(resourceArn) {
 #' Limits](https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits)
 #' for the maximum number of tags allowed per resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -581,6 +719,9 @@ iot1clickprojects_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource whose tag you want to remove.
 #' @param tagKeys &#91;required&#93; The keys of those tags which you want to remove.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -626,6 +767,9 @@ iot1clickprojects_untag_resource <- function(resourceArn, tagKeys) {
 #' @param projectName &#91;required&#93; The name of the project containing the placement to be updated.
 #' @param attributes The user-defined object of attributes used to update the placement. The
 #' maximum number of key/value pairs is 50.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -677,6 +821,9 @@ iot1clickprojects_update_placement <- function(placementName, projectName, attri
 #' you cannot add device template names to the project. However, for a
 #' given `placementTemplate`, you can update the associated
 #' `callbackOverrides` for the device definition using this API.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

@@ -27,6 +27,20 @@ returned in a single call.}
 the results are returned in ascending alphabetical order by \code{name} of
 the domains.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  domainInfos = list(
+    list(
+      name = "string",
+      status = "REGISTERED"|"DEPRECATED",
+      description = "string",
+      arn = "string"
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns the list of domains registered in the account. The results may
 be split into multiple pages. To retrieve subsequent pages, make the

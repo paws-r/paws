@@ -11,6 +11,9 @@ chime_delete_room(AccountId, RoomId)
 
 \item{RoomId}{[required] The chat room ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a chat room in an Amazon Chime Enterprise account.
 }

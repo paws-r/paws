@@ -11,6 +11,13 @@ iot_register_certificate_without_ca(certificatePem, status)
 
 \item{status}{The status of the register certificate request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificateArn = "string",
+  certificateId = "string"
+)
+}
+}
 \description{
 Register a certificate that does not have a certificate authority (CA).
 }

@@ -9,6 +9,12 @@ iot1clickdevicesservice_initiate_device_claim(DeviceId)
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  State = "string"
+)
+}
+}
 \description{
 Given a device ID, initiates a claim request for the associated device.
 

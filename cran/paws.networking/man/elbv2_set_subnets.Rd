@@ -49,8 +49,29 @@ balancer, you can specify one IPv6 address per subnet.}
 \item{IpAddressType}{[Network Load Balancers] The type of IP addresses used by the subnets
 for your load balancer. The possible values are \code{ipv4} (for IPv4
 addresses) and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t
-specify \code{dualstack} for a load balancer with a UDP or TCP\\_UDP listener.
+specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.
 Internal load balancers must use \code{ipv4}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AvailabilityZones = list(
+    list(
+      ZoneName = "string",
+      SubnetId = "string",
+      OutpostId = "string",
+      LoadBalancerAddresses = list(
+        list(
+          IpAddress = "string",
+          AllocationId = "string",
+          PrivateIPv4Address = "string",
+          IPv6Address = "string"
+        )
+      )
+    )
+  ),
+  IpAddressType = "ipv4"|"dualstack"
+)
+}
 }
 \description{
 Enables the Availability Zones for the specified public subnets for the
@@ -85,7 +106,7 @@ configurations, plus any additional subnets.
 # This example enables the Availability Zones for the specified subnets
 # for the specified load balancer.
 svc$set_subnets(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
   Subnets = list(
     "subnet-8360a9e7",
     "subnet-b7d581c0"

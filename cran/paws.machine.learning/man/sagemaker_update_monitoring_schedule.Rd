@@ -14,6 +14,12 @@ AWS Region within an AWS account.}
 \item{MonitoringScheduleConfig}{[required] The configuration object that specifies the monitoring schedule and
 defines the monitoring job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitoringScheduleArn = "string"
+)
+}
+}
 \description{
 Updates a previously created schedule.
 }

@@ -13,6 +13,13 @@ iot_update_role_alias(roleAlias, roleArn, credentialDurationSeconds)
 
 \item{credentialDurationSeconds}{The number of seconds the credential will be valid.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  roleAlias = "string",
+  roleAliasArn = "string"
+)
+}
+}
 \description{
 Updates a role alias.
 }

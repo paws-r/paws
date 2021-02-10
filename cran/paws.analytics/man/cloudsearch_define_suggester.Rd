@@ -11,6 +11,32 @@ cloudsearch_define_suggester(DomainName, Suggester)
 
 \item{Suggester}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Suggester = list(
+    Options = list(
+      SuggesterName = "string",
+      DocumentSuggesterOptions = list(
+        SourceField = "string",
+        FuzzyMatching = "none"|"low"|"high",
+        SortExpression = "string"
+      )
+    ),
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Configures a suggester for a domain. A suggester enables you to display
 possible matches before users finish typing their queries. When you

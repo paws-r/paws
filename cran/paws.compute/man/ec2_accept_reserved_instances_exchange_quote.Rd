@@ -20,6 +20,12 @@ Convertible Reserved Instance of the same or higher value.}
 \item{TargetConfigurations}{The configuration of the target Convertible Reserved Instance to
 exchange for your current Convertible Reserved Instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExchangeId = "string"
+)
+}
+}
 \description{
 Accepts the Convertible Reserved Instance exchange quote described in
 the

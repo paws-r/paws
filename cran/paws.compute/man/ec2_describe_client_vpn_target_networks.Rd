@@ -32,6 +32,27 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientVpnTargetNetworks = list(
+    list(
+      AssociationId = "string",
+      VpcId = "string",
+      TargetNetworkId = "string",
+      ClientVpnEndpointId = "string",
+      Status = list(
+        Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
+        Message = "string"
+      ),
+      SecurityGroups = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the target networks associated with the specified Client VPN
 endpoint.

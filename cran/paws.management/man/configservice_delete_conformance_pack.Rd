@@ -11,6 +11,9 @@ configservice_delete_conformance_pack(ConformancePackName)
 \arguments{
 \item{ConformancePackName}{[required] Name of the conformance pack you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified conformance pack and all the AWS Config rules,
 remediation actions, and all evaluation results within that conformance

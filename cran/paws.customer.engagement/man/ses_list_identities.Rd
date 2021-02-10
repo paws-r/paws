@@ -18,6 +18,15 @@ listed.}
 \item{MaxItems}{The maximum number of identities per page. Possible values are 1-1000
 inclusive.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Identities = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list containing all of the identities (email addresses and
 domains) for your AWS account in the current AWS Region, regardless of

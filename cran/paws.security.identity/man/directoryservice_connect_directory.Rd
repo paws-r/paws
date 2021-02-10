@@ -24,6 +24,12 @@ for the operation.}
 
 \item{Tags}{The tags to be assigned to AD Connector.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryId = "string"
+)
+}
+}
 \description{
 Creates an AD Connector to connect to an on-premises directory.
 

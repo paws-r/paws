@@ -30,6 +30,9 @@ If any one of the tags is invalid or if you exceed the allowed number of
 tags for an account user, then the entire request fails and the account
 is not created.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to the specified resource.
 

@@ -9,6 +9,9 @@ greengrass_delete_device_definition(DeviceDefinitionId)
 \arguments{
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a device definition.
 }

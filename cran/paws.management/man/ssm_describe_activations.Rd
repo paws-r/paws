@@ -19,6 +19,35 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActivationList = list(
+    list(
+      ActivationId = "string",
+      Description = "string",
+      DefaultInstanceName = "string",
+      IamRole = "string",
+      RegistrationLimit = 123,
+      RegistrationsCount = 123,
+      ExpirationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Expired = TRUE|FALSE,
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes details about the activation, such as the date and time the
 activation was created, its expiration date, the IAM role assigned to

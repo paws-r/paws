@@ -27,6 +27,9 @@ application configuration. You can use the
 \code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the specific \code{OutputId}.}
 }
+\value{
+An empty list.
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

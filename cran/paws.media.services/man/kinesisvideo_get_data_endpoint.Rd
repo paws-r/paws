@@ -16,6 +16,12 @@ in the request.}
 
 \item{APIName}{[required] The name of the API action for which to get an endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataEndpoint = "string"
+)
+}
+}
 \description{
 Gets an endpoint for a specified stream for either reading or writing.
 Use this endpoint in your application to read from the specified stream

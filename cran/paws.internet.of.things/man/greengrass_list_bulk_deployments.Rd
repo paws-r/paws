@@ -9,7 +9,21 @@ greengrass_list_bulk_deployments(MaxResults, NextToken)
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BulkDeployments = list(
+    list(
+      BulkDeploymentArn = "string",
+      BulkDeploymentId = "string",
+      CreatedAt = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns a list of bulk deployments.

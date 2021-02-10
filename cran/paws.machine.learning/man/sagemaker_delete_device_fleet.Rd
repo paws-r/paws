@@ -9,6 +9,9 @@ sagemaker_delete_device_fleet(DeviceFleetName)
 \arguments{
 \item{DeviceFleetName}{[required] The name of the fleet to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a fleet.
 }

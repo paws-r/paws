@@ -12,6 +12,44 @@ apigateway_get_rest_apis(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      name = "string",
+      description = "string",
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      version = "string",
+      warnings = list(
+        "string"
+      ),
+      binaryMediaTypes = list(
+        "string"
+      ),
+      minimumCompressionSize = 123,
+      apiKeySource = "HEADER"|"AUTHORIZER",
+      endpointConfiguration = list(
+        types = list(
+          "REGIONAL"|"EDGE"|"PRIVATE"
+        ),
+        vpcEndpointIds = list(
+          "string"
+        )
+      ),
+      policy = "string",
+      tags = list(
+        "string"
+      ),
+      disableExecuteApiEndpoint = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Lists the RestApis resources for your collection.
 }

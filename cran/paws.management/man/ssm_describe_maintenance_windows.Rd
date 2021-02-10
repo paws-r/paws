@@ -17,6 +17,28 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowIdentities = list(
+    list(
+      WindowId = "string",
+      Name = "string",
+      Description = "string",
+      Enabled = TRUE|FALSE,
+      Duration = 123,
+      Cutoff = 123,
+      Schedule = "string",
+      ScheduleTimezone = "string",
+      ScheduleOffset = 123,
+      EndDate = "string",
+      StartDate = "string",
+      NextExecutionTime = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the maintenance windows in an AWS account.
 }

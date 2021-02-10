@@ -12,6 +12,29 @@ configservice_describe_configuration_recorder_status(
 the action returns the current status of all the configuration recorders
 associated with the account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigurationRecordersStatus = list(
+    list(
+      name = "string",
+      lastStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastStopTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      recording = TRUE|FALSE,
+      lastStatus = "Pending"|"Success"|"Failure",
+      lastErrorCode = "string",
+      lastErrorMessage = "string",
+      lastStatusChangeTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the current status of the specified configuration recorder. If a
 configuration recorder is not specified, this action returns the status

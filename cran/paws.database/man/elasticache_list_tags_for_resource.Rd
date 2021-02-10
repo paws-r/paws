@@ -14,6 +14,17 @@ list of tags, for example
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists all cost allocation tags currently on the named resource. A
 \verb{cost allocation tag} is a key-value pair where the key is

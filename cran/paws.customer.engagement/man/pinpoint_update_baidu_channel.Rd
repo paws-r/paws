@@ -13,6 +13,24 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{BaiduChannelRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BaiduChannelResponse = list(
+    ApplicationId = "string",
+    CreationDate = "string",
+    Credential = "string",
+    Enabled = TRUE|FALSE,
+    HasCredential = TRUE|FALSE,
+    Id = "string",
+    IsArchived = TRUE|FALSE,
+    LastModifiedBy = "string",
+    LastModifiedDate = "string",
+    Platform = "string",
+    Version = 123
+  )
+)
+}
+}
 \description{
 Enables the Baidu channel for an application or updates the status and
 settings of the Baidu channel for an application.

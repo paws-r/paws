@@ -11,6 +11,18 @@ alexaforbusiness_list_skills_store_categories(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of categories returned, per paginated calls.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CategoryList = list(
+    list(
+      CategoryId = 123,
+      CategoryName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all categories in the Alexa skill store.
 }

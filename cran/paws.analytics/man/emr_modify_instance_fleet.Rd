@@ -13,6 +13,9 @@ emr_modify_instance_fleet(ClusterId, InstanceFleet)
 
 \item{InstanceFleet}{[required] The unique identifier of the instance fleet.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the target On-Demand and target Spot capacities for the
 instance fleet with the specified InstanceFleetID within the cluster

@@ -8,6 +8,15 @@ that you create there}
 \usage{
 dynamodb_describe_limits()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountMaxReadCapacityUnits = 123,
+  AccountMaxWriteCapacityUnits = 123,
+  TableMaxReadCapacityUnits = 123,
+  TableMaxWriteCapacityUnits = 123
+)
+}
+}
 \description{
 Returns the current provisioned-capacity quotas for your AWS account in
 a Region, both for the Region as a whole and for any one DynamoDB table

@@ -79,6 +79,12 @@ instance.
 used as part of the new deployment.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deploymentId = "string"
+)
+}
+}
 \description{
 Deploys an application revision through the specified deployment group.
 }

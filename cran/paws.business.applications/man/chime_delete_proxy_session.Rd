@@ -12,6 +12,9 @@ chime_delete_proxy_session(VoiceConnectorId, ProxySessionId)
 
 \item{ProxySessionId}{[required] The proxy session ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified proxy session from the specified Amazon Chime
 Voice Connector.

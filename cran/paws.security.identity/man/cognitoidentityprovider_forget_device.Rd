@@ -11,6 +11,9 @@ cognitoidentityprovider_forget_device(AccessToken, DeviceKey)
 
 \item{DeviceKey}{[required] The device key.}
 }
+\value{
+An empty list.
+}
 \description{
 Forgets the specified device.
 }

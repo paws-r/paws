@@ -13,6 +13,23 @@ comprehend_classify_document(Text, EndpointArn)
 
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Classes = list(
+    list(
+      Name = "string",
+      Score = 123.0
+    )
+  ),
+  Labels = list(
+    list(
+      Name = "string",
+      Score = 123.0
+    )
+  )
+)
+}
+}
 \description{
 Creates a new document classification request to analyze a single
 document in real-time, using a previously created and trained custom

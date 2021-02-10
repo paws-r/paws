@@ -14,6 +14,9 @@ scaling policy is applied is within this cluster.}
 \item{InstanceGroupId}{[required] Specifies the ID of the instance group to which the scaling policy is
 applied.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes an automatic scaling policy from a specified instance group
 within an EMR cluster.

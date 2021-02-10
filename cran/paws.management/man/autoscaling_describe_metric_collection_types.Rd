@@ -6,6 +6,21 @@
 \usage{
 autoscaling_describe_metric_collection_types()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metrics = list(
+    list(
+      Metric = "string"
+    )
+  ),
+  Granularities = list(
+    list(
+      Granularity = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 

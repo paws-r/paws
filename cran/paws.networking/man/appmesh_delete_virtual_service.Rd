@@ -15,6 +15,41 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 
 \item{virtualServiceName}{[required] The name of the virtual service to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualService = list(
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    spec = list(
+      provider = list(
+        virtualNode = list(
+          virtualNodeName = "string"
+        ),
+        virtualRouter = list(
+          virtualRouterName = "string"
+        )
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    ),
+    virtualServiceName = "string"
+  )
+)
+}
+}
 \description{
 Deletes an existing virtual service.
 }

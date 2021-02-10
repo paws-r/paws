@@ -45,6 +45,61 @@ Account ID or multiple comma-separated Account IDs for which you want to
 see Savings Plans Purchase Recommendations. \code{AND} and \code{OR} operators are
 not supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metadata = list(
+    RecommendationId = "string",
+    GenerationTimestamp = "string",
+    AdditionalMetadata = "string"
+  ),
+  SavingsPlansPurchaseRecommendation = list(
+    AccountScope = "PAYER"|"LINKED",
+    SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP",
+    TermInYears = "ONE_YEAR"|"THREE_YEARS",
+    PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+    LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
+    SavingsPlansPurchaseRecommendationDetails = list(
+      list(
+        SavingsPlansDetails = list(
+          Region = "string",
+          InstanceFamily = "string",
+          OfferingId = "string"
+        ),
+        AccountId = "string",
+        UpfrontCost = "string",
+        EstimatedROI = "string",
+        CurrencyCode = "string",
+        EstimatedSPCost = "string",
+        EstimatedOnDemandCost = "string",
+        EstimatedOnDemandCostWithCurrentCommitment = "string",
+        EstimatedSavingsAmount = "string",
+        EstimatedSavingsPercentage = "string",
+        HourlyCommitmentToPurchase = "string",
+        EstimatedAverageUtilization = "string",
+        EstimatedMonthlySavingsAmount = "string",
+        CurrentMinimumHourlyOnDemandSpend = "string",
+        CurrentMaximumHourlyOnDemandSpend = "string",
+        CurrentAverageHourlyOnDemandSpend = "string"
+      )
+    ),
+    SavingsPlansPurchaseRecommendationSummary = list(
+      EstimatedROI = "string",
+      CurrencyCode = "string",
+      EstimatedTotalCost = "string",
+      CurrentOnDemandSpend = "string",
+      EstimatedSavingsAmount = "string",
+      TotalRecommendationCount = "string",
+      DailyCommitmentToPurchase = "string",
+      HourlyCommitmentToPurchase = "string",
+      EstimatedSavingsPercentage = "string",
+      EstimatedMonthlySavingsAmount = "string",
+      EstimatedOnDemandCostWithCurrentCommitment = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Retrieves your request parameters, Savings Plan Recommendations Summary
 and Details.

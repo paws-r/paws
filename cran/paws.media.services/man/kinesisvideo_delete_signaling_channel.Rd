@@ -16,6 +16,9 @@ You can obtain the current version by invoking the
 or \code{\link[=kinesisvideo_list_signaling_channels]{list_signaling_channels}} API
 operations.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified signaling channel.
 \code{\link[=kinesisvideo_delete_signaling_channel]{delete_signaling_channel}} is

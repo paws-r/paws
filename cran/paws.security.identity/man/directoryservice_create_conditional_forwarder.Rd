@@ -17,6 +17,9 @@ you will set up a trust relationship.}
 \item{DnsIpAddrs}{[required] The IP addresses of the remote DNS server associated with
 RemoteDomainName.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a conditional forwarder associated with your AWS directory.
 Conditional forwarders are required in order to set up a trust

@@ -11,6 +11,9 @@ opsworks_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] A list of the keys of tags to be removed from a stack or layer.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from a specified stack or layer.
 }

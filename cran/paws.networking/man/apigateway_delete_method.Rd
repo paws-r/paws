@@ -13,6 +13,9 @@ apigateway_delete_method(restApiId, resourceId, httpMethod)
 
 \item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing Method resource.
 }

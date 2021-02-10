@@ -14,6 +14,24 @@ cloudfront_update_public_key(PublicKeyConfig, Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 public key to update. For example: \code{E2QWRUHAPOMQZL}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PublicKey = list(
+    Id = "string",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    PublicKeyConfig = list(
+      CallerReference = "string",
+      Name = "string",
+      EncodedKey = "string",
+      Comment = "string"
+    )
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Update public key information. Note that the only value you can change
 is the comment.

@@ -15,6 +15,12 @@ route53domains_update_domain_nameservers(DomainName, FIAuthKey,
 
 \item{Nameservers}{[required] A list of new name servers for the domain.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 This operation replaces the current set of name servers for the domain
 with the specified set of name servers. If you use Amazon Route 53 as

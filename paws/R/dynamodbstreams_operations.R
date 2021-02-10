@@ -31,6 +31,40 @@ NULL
 #' the value that was returned for `LastEvaluatedShardId` in the previous
 #' operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamDescription = list(
+#'     StreamArn = "string",
+#'     StreamLabel = "string",
+#'     StreamStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED",
+#'     StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY",
+#'     CreationRequestDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TableName = "string",
+#'     KeySchema = list(
+#'       list(
+#'         AttributeName = "string",
+#'         KeyType = "HASH"|"RANGE"
+#'       )
+#'     ),
+#'     Shards = list(
+#'       list(
+#'         ShardId = "string",
+#'         SequenceNumberRange = list(
+#'           StartingSequenceNumber = "string",
+#'           EndingSequenceNumber = "string"
+#'         ),
+#'         ParentShardId = "string"
+#'       )
+#'     ),
+#'     LastEvaluatedShardId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_stream(
@@ -44,7 +78,7 @@ NULL
 #' \dontrun{
 #' # The following example describes a stream with a given stream ARN.
 #' svc$describe_stream(
-#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
+#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
 #' )
 #' }
 #'
@@ -93,6 +127,107 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
 #' @param Limit The maximum number of records to return from the shard. The upper limit
 #' is 1000.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list(
+#'       eventID = "string",
+#'       eventName = "INSERT"|"MODIFY"|"REMOVE",
+#'       eventVersion = "string",
+#'       eventSource = "string",
+#'       awsRegion = "string",
+#'       dynamodb = list(
+#'         ApproximateCreationDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Keys = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         NewImage = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         OldImage = list(
+#'           list(
+#'             S = "string",
+#'             N = "string",
+#'             B = raw,
+#'             SS = list(
+#'               "string"
+#'             ),
+#'             NS = list(
+#'               "string"
+#'             ),
+#'             BS = list(
+#'               raw
+#'             ),
+#'             M = list(
+#'               list()
+#'             ),
+#'             L = list(
+#'               list()
+#'             ),
+#'             NULL = TRUE|FALSE,
+#'             BOOL = TRUE|FALSE
+#'           )
+#'         ),
+#'         SequenceNumber = "string",
+#'         SizeBytes = 123,
+#'         StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
+#'       ),
+#'       userIdentity = list(
+#'         PrincipalId = "string",
+#'         Type = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextShardIterator = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_records(
@@ -105,7 +240,7 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
 #' \dontrun{
 #' # The following example retrieves all the stream records from a shard.
 #' svc$get_records(
-#'   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:..."
+#'   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05..."
 #' )
 #' }
 #'
@@ -168,6 +303,14 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 #' @param SequenceNumber The sequence number of a stream record in the shard from which to start
 #' reading.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShardIterator = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_shard_iterator(
@@ -185,7 +328,7 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 #' svc$get_shard_iterator(
 #'   ShardId = "00000001414576573621-f55eea83",
 #'   ShardIteratorType = "TRIM_HORIZON",
-#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
+#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
 #' )
 #' }
 #'
@@ -230,6 +373,21 @@ dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIterator
 #' @param ExclusiveStartStreamArn The ARN (Amazon Resource Name) of the first item that this operation
 #' will evaluate. Use the value that was returned for
 #' `LastEvaluatedStreamArn` in the previous operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Streams = list(
+#'     list(
+#'       StreamArn = "string",
+#'       TableName = "string",
+#'       StreamLabel = "string"
+#'     )
+#'   ),
+#'   LastEvaluatedStreamArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -11,6 +11,16 @@ chime_create_channel_moderator(ChannelArn, ChannelModeratorArn)
 
 \item{ChannelModeratorArn}{[required] The ARN of the moderator.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  ChannelModerator = list(
+    Arn = "string",
+    Name = "string"
+  )
+)
+}
+}
 \description{
 Creates a new \code{ChannelModerator}. A channel moderator can:
 \itemize{

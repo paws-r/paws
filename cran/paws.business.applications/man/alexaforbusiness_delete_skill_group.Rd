@@ -9,6 +9,9 @@ alexaforbusiness_delete_skill_group(SkillGroupArn)
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group to delete. Required.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a skill group by skill group ARN.
 }

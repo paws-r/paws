@@ -9,6 +9,36 @@ comprehend_describe_events_detection_job(JobId)
 \arguments{
 \item{JobId}{[required] The identifier of the events detection job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventsDetectionJobProperties = list(
+    JobId = "string",
+    JobName = "string",
+    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+    Message = "string",
+    SubmitTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    InputDataConfig = list(
+      S3Uri = "string",
+      InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+    ),
+    OutputDataConfig = list(
+      S3Uri = "string",
+      KmsKeyId = "string"
+    ),
+    LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+    DataAccessRoleArn = "string",
+    TargetEventTypes = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets the status and details of an events detection job.
 }

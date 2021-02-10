@@ -9,6 +9,9 @@ serverlessapplicationrepository_delete_application(ApplicationId)
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified application.
 }

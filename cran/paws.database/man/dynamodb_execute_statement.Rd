@@ -20,6 +20,38 @@ used.}
 \item{NextToken}{Set this value to get remaining results, if \code{NextToken} was returned in
 the statement response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      list(
+        S = "string",
+        N = "string",
+        B = raw,
+        SS = list(
+          "string"
+        ),
+        NS = list(
+          "string"
+        ),
+        BS = list(
+          raw
+        ),
+        M = list(
+          list()
+        ),
+        L = list(
+          list()
+        ),
+        NULL = TRUE|FALSE,
+        BOOL = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 This operation allows you to perform reads and singleton writes on data
 stored in DynamoDB, using PartiQL.

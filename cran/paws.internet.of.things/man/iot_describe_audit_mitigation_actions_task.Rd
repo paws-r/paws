@@ -10,6 +10,74 @@ iot_describe_audit_mitigation_actions_task(taskId)
 \arguments{
 \item{taskId}{[required] The unique identifier for the audit mitigation task.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
+  startTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  endTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  taskStatistics = list(
+    list(
+      totalFindingsCount = 123,
+      failedFindingsCount = 123,
+      succeededFindingsCount = 123,
+      skippedFindingsCount = 123,
+      canceledFindingsCount = 123
+    )
+  ),
+  target = list(
+    auditTaskId = "string",
+    findingIds = list(
+      "string"
+    ),
+    auditCheckToReasonCodeFilter = list(
+      list(
+        "string"
+      )
+    )
+  ),
+  auditCheckToActionsMapping = list(
+    list(
+      "string"
+    )
+  ),
+  actionsDefinition = list(
+    list(
+      name = "string",
+      id = "string",
+      roleArn = "string",
+      actionParams = list(
+        updateDeviceCertificateParams = list(
+          action = "DEACTIVATE"
+        ),
+        updateCACertificateParams = list(
+          action = "DEACTIVATE"
+        ),
+        addThingsToThingGroupParams = list(
+          thingGroupNames = list(
+            "string"
+          ),
+          overrideDynamicGroups = TRUE|FALSE
+        ),
+        replaceDefaultPolicyVersionParams = list(
+          templateName = "BLANK_POLICY"
+        ),
+        enableIoTLoggingParams = list(
+          roleArnForLogging = "string",
+          logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+        ),
+        publishFindingToSnsParams = list(
+          topicArn = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about an audit mitigation task that is used to apply
 mitigation actions to a set of audit findings. Properties include the

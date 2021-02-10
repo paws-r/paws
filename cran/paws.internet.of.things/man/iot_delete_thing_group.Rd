@@ -11,6 +11,9 @@ iot_delete_thing_group(thingGroupName, expectedVersion)
 
 \item{expectedVersion}{The expected version of the thing group to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a thing group.
 }

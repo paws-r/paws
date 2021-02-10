@@ -16,6 +16,22 @@ this operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WebsiteAuthorizationProviders = list(
+    list(
+      AuthorizationProviderId = "string",
+      AuthorizationProviderType = "SAML",
+      DomainName = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of website authorization providers associated with a
 specified fleet.

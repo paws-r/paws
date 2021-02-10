@@ -17,6 +17,30 @@ returned. The limit is 5 versions per request.}
 \item{statusType}{[required] To return utterances that were recognized and handled, use \code{Detected}.
 To return utterances that were not recognized, use \code{Missed}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  botName = "string",
+  utterances = list(
+    list(
+      botVersion = "string",
+      utterances = list(
+        list(
+          utteranceString = "string",
+          count = 123,
+          distinctUsers = 123,
+          firstUtteredDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          lastUtteredDate = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Use the
 \code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}}

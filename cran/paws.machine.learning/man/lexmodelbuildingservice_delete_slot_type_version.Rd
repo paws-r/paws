@@ -14,6 +14,9 @@ version of the slot type. To delete the \verb{$LATEST} version, use the
 \code{\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type}}
 operation.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specific version of a slot type. To delete all versions of a
 slot type, use the

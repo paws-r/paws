@@ -15,6 +15,9 @@ update the mailbox quota.}
 
 \item{MailboxQuota}{[required] The updated mailbox quota, in MB, for the specified user.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a user's current mailbox quota for a specified organization and
 user.

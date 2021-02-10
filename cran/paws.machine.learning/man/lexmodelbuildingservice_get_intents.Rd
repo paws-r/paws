@@ -2,9 +2,7 @@
 % Please edit documentation in R/lexmodelbuildingservice_operations.R
 \name{lexmodelbuildingservice_get_intents}
 \alias{lexmodelbuildingservice_get_intents}
-\title{Returns intent information as follows: - If you specify the nameContains
-field, returns the $LATEST version of all intents that contain the
-specified string}
+\title{Returns intent information as follows:}
 \usage{
 lexmodelbuildingservice_get_intents(nextToken, maxResults, nameContains)
 }
@@ -20,6 +18,25 @@ pagination token in the next request.}
 \item{nameContains}{Substring to match in intent names. An intent will be returned if any
 part of its name matches the substring. For example, "xyz" matches both
 "xyzabc" and "abcxyz."}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  intents = list(
+    list(
+      name = "string",
+      description = "string",
+      lastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      version = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
 }
 \description{
 Returns intent information as follows:

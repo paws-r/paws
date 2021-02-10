@@ -20,6 +20,14 @@ NULL
 #' from the response of the [`poll_for_jobs`][codepipeline_poll_for_jobs]
 #' request that returned this job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$acknowledge_job(
@@ -66,6 +74,14 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -118,12 +134,59 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' 
 #' You can refer to a name in the configuration properties of the custom
 #' action within the URL templates by following the format of
-#' \{Config:name\}, as long as the configuration property is both required
-#' and not secret. For more information, see [Create a Custom Action for a
+#' \{Config:name\}, as long as the configuration property is both
+#' required and not secret. For more information, see [Create a Custom
+#' Action for a
 #' Pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html).
 #' @param inputArtifactDetails &#91;required&#93; The details of the input artifact for the action, such as its commit ID.
 #' @param outputArtifactDetails &#91;required&#93; The details of the output artifact of the action, such as its commit ID.
 #' @param tags The tags for the custom action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionType = list(
+#'     id = list(
+#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'       owner = "AWS"|"ThirdParty"|"Custom",
+#'       provider = "string",
+#'       version = "string"
+#'     ),
+#'     settings = list(
+#'       thirdPartyConfigurationUrl = "string",
+#'       entityUrlTemplate = "string",
+#'       executionUrlTemplate = "string",
+#'       revisionUrlTemplate = "string"
+#'     ),
+#'     actionConfigurationProperties = list(
+#'       list(
+#'         name = "string",
+#'         required = TRUE|FALSE,
+#'         key = TRUE|FALSE,
+#'         secret = TRUE|FALSE,
+#'         queryable = TRUE|FALSE,
+#'         description = "string",
+#'         type = "String"|"Number"|"Boolean"
+#'       )
+#'     ),
+#'     inputArtifactDetails = list(
+#'       minimumCount = 123,
+#'       maximumCount = 123
+#'     ),
+#'     outputArtifactDetails = list(
+#'       minimumCount = 123,
+#'       maximumCount = 123
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -201,6 +264,81 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #' @param pipeline &#91;required&#93; Represents the structure of actions and stages to be performed in the
 #' pipeline.
 #' @param tags The tags for the pipeline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipeline = list(
+#'     name = "string",
+#'     roleArn = "string",
+#'     artifactStore = list(
+#'       type = "S3",
+#'       location = "string",
+#'       encryptionKey = list(
+#'         id = "string",
+#'         type = "KMS"
+#'       )
+#'     ),
+#'     artifactStores = list(
+#'       list(
+#'         type = "S3",
+#'         location = "string",
+#'         encryptionKey = list(
+#'           id = "string",
+#'           type = "KMS"
+#'         )
+#'       )
+#'     ),
+#'     stages = list(
+#'       list(
+#'         name = "string",
+#'         blockers = list(
+#'           list(
+#'             name = "string",
+#'             type = "Schedule"
+#'           )
+#'         ),
+#'         actions = list(
+#'           list(
+#'             name = "string",
+#'             actionTypeId = list(
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               owner = "AWS"|"ThirdParty"|"Custom",
+#'               provider = "string",
+#'               version = "string"
+#'             ),
+#'             runOrder = 123,
+#'             configuration = list(
+#'               "string"
+#'             ),
+#'             outputArtifacts = list(
+#'               list(
+#'                 name = "string"
+#'               )
+#'             ),
+#'             inputArtifacts = list(
+#'               list(
+#'                 name = "string"
+#'               )
+#'             ),
+#'             roleArn = "string",
+#'             region = "string",
+#'             namespace = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     version = 123
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -319,6 +457,9 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #' CodeDeploy.
 #' @param version &#91;required&#93; The version of the custom action to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_action_type(
@@ -357,6 +498,9 @@ codepipeline_delete_custom_action_type <- function(category, provider, version) 
 #' codepipeline_delete_pipeline(name)
 #'
 #' @param name &#91;required&#93; The name of the pipeline to be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -399,6 +543,9 @@ codepipeline_delete_pipeline <- function(name) {
 #'
 #' @param name &#91;required&#93; The name of the webhook you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_webhook(
@@ -438,6 +585,9 @@ codepipeline_delete_webhook <- function(name) {
 #' codepipeline_deregister_webhook_with_third_party(webhookName)
 #'
 #' @param webhookName The name of the webhook you want to deregister.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -489,6 +639,9 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #' for manual approval or manual tests. This message is displayed in the
 #' pipeline console UI.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_stage_transition(
@@ -538,6 +691,9 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 #' processed artifacts are allowed to transition to the next stage
 #' (outbound).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_stage_transition(
@@ -582,6 +738,78 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID for the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobDetails = list(
+#'     id = "string",
+#'     data = list(
+#'       actionTypeId = list(
+#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'         owner = "AWS"|"ThirdParty"|"Custom",
+#'         provider = "string",
+#'         version = "string"
+#'       ),
+#'       actionConfiguration = list(
+#'         configuration = list(
+#'           "string"
+#'         )
+#'       ),
+#'       pipelineContext = list(
+#'         pipelineName = "string",
+#'         stage = list(
+#'           name = "string"
+#'         ),
+#'         action = list(
+#'           name = "string",
+#'           actionExecutionId = "string"
+#'         ),
+#'         pipelineArn = "string",
+#'         pipelineExecutionId = "string"
+#'       ),
+#'       inputArtifacts = list(
+#'         list(
+#'           name = "string",
+#'           revision = "string",
+#'           location = list(
+#'             type = "S3",
+#'             s3Location = list(
+#'               bucketName = "string",
+#'               objectKey = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       outputArtifacts = list(
+#'         list(
+#'           name = "string",
+#'           revision = "string",
+#'           location = list(
+#'             type = "S3",
+#'             s3Location = list(
+#'               bucketName = "string",
+#'               objectKey = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       artifactCredentials = list(
+#'         accessKeyId = "string",
+#'         secretAccessKey = "string",
+#'         sessionToken = "string"
+#'       ),
+#'       continuationToken = "string",
+#'       encryptionKey = list(
+#'         id = "string",
+#'         type = "KMS"
+#'       )
+#'     ),
+#'     accountId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_job_details(
@@ -624,6 +852,84 @@ codepipeline_get_job_details <- function(jobId) {
 #' names must be unique under an AWS user account.
 #' @param version The version number of the pipeline. If you do not specify a version,
 #' defaults to the current version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipeline = list(
+#'     name = "string",
+#'     roleArn = "string",
+#'     artifactStore = list(
+#'       type = "S3",
+#'       location = "string",
+#'       encryptionKey = list(
+#'         id = "string",
+#'         type = "KMS"
+#'       )
+#'     ),
+#'     artifactStores = list(
+#'       list(
+#'         type = "S3",
+#'         location = "string",
+#'         encryptionKey = list(
+#'           id = "string",
+#'           type = "KMS"
+#'         )
+#'       )
+#'     ),
+#'     stages = list(
+#'       list(
+#'         name = "string",
+#'         blockers = list(
+#'           list(
+#'             name = "string",
+#'             type = "Schedule"
+#'           )
+#'         ),
+#'         actions = list(
+#'           list(
+#'             name = "string",
+#'             actionTypeId = list(
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               owner = "AWS"|"ThirdParty"|"Custom",
+#'               provider = "string",
+#'               version = "string"
+#'             ),
+#'             runOrder = 123,
+#'             configuration = list(
+#'               "string"
+#'             ),
+#'             outputArtifacts = list(
+#'               list(
+#'                 name = "string"
+#'               )
+#'             ),
+#'             inputArtifacts = list(
+#'               list(
+#'                 name = "string"
+#'               )
+#'             ),
+#'             roleArn = "string",
+#'             region = "string",
+#'             namespace = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     version = 123
+#'   ),
+#'   metadata = list(
+#'     pipelineArn = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updated = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -669,6 +975,32 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution about which you want to get execution
 #' details.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineExecution = list(
+#'     pipelineName = "string",
+#'     pipelineVersion = 123,
+#'     pipelineExecutionId = "string",
+#'     status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
+#'     statusSummary = "string",
+#'     artifactRevisions = list(
+#'       list(
+#'         name = "string",
+#'         revisionId = "string",
+#'         revisionChangeIdentifier = "string",
+#'         revisionSummary = "string",
+#'         created = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         revisionUrl = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_pipeline_execution(
@@ -712,6 +1044,73 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #' codepipeline_get_pipeline_state(name)
 #'
 #' @param name &#91;required&#93; The name of the pipeline about which you want to get information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineName = "string",
+#'   pipelineVersion = 123,
+#'   stageStates = list(
+#'     list(
+#'       stageName = "string",
+#'       inboundExecution = list(
+#'         pipelineExecutionId = "string",
+#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
+#'       ),
+#'       inboundTransitionState = list(
+#'         enabled = TRUE|FALSE,
+#'         lastChangedBy = "string",
+#'         lastChangedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         disabledReason = "string"
+#'       ),
+#'       actionStates = list(
+#'         list(
+#'           actionName = "string",
+#'           currentRevision = list(
+#'             revisionId = "string",
+#'             revisionChangeId = "string",
+#'             created = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           ),
+#'           latestExecution = list(
+#'             actionExecutionId = "string",
+#'             status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
+#'             summary = "string",
+#'             lastStatusChange = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             token = "string",
+#'             lastUpdatedBy = "string",
+#'             externalExecutionId = "string",
+#'             externalExecutionUrl = "string",
+#'             percentComplete = 123,
+#'             errorDetails = list(
+#'               code = "string",
+#'               message = "string"
+#'             )
+#'           ),
+#'           entityUrl = "string",
+#'           revisionUrl = "string"
+#'         )
+#'       ),
+#'       latestExecution = list(
+#'         pipelineExecutionId = "string",
+#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
+#'       )
+#'     )
+#'   ),
+#'   created = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updated = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -758,6 +1157,78 @@ codepipeline_get_pipeline_state <- function(name) {
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobDetails = list(
+#'     id = "string",
+#'     data = list(
+#'       actionTypeId = list(
+#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'         owner = "AWS"|"ThirdParty"|"Custom",
+#'         provider = "string",
+#'         version = "string"
+#'       ),
+#'       actionConfiguration = list(
+#'         configuration = list(
+#'           "string"
+#'         )
+#'       ),
+#'       pipelineContext = list(
+#'         pipelineName = "string",
+#'         stage = list(
+#'           name = "string"
+#'         ),
+#'         action = list(
+#'           name = "string",
+#'           actionExecutionId = "string"
+#'         ),
+#'         pipelineArn = "string",
+#'         pipelineExecutionId = "string"
+#'       ),
+#'       inputArtifacts = list(
+#'         list(
+#'           name = "string",
+#'           revision = "string",
+#'           location = list(
+#'             type = "S3",
+#'             s3Location = list(
+#'               bucketName = "string",
+#'               objectKey = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       outputArtifacts = list(
+#'         list(
+#'           name = "string",
+#'           revision = "string",
+#'           location = list(
+#'             type = "S3",
+#'             s3Location = list(
+#'               bucketName = "string",
+#'               objectKey = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       artifactCredentials = list(
+#'         accessKeyId = "string",
+#'         secretAccessKey = "string",
+#'         sessionToken = "string"
+#'       ),
+#'       continuationToken = "string",
+#'       encryptionKey = list(
+#'         id = "string",
+#'         type = "KMS"
+#'       )
+#'     ),
+#'     nonce = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -811,6 +1282,75 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' which can be used to return the next set of action executions in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionExecutionDetails = list(
+#'     list(
+#'       pipelineExecutionId = "string",
+#'       actionExecutionId = "string",
+#'       pipelineVersion = 123,
+#'       stageName = "string",
+#'       actionName = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
+#'       input = list(
+#'         actionTypeId = list(
+#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'           owner = "AWS"|"ThirdParty"|"Custom",
+#'           provider = "string",
+#'           version = "string"
+#'         ),
+#'         configuration = list(
+#'           "string"
+#'         ),
+#'         resolvedConfiguration = list(
+#'           "string"
+#'         ),
+#'         roleArn = "string",
+#'         region = "string",
+#'         inputArtifacts = list(
+#'           list(
+#'             name = "string",
+#'             s3location = list(
+#'               bucket = "string",
+#'               key = "string"
+#'             )
+#'           )
+#'         ),
+#'         namespace = "string"
+#'       ),
+#'       output = list(
+#'         outputArtifacts = list(
+#'           list(
+#'             name = "string",
+#'             s3location = list(
+#'               bucket = "string",
+#'               key = "string"
+#'             )
+#'           )
+#'         ),
+#'         executionResult = list(
+#'           externalExecutionId = "string",
+#'           externalExecutionSummary = "string",
+#'           externalExecutionUrl = "string"
+#'         ),
+#'         outputVariables = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_action_executions(
@@ -857,6 +1397,49 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #' @param nextToken An identifier that was returned from the previous list action types
 #' call, which can be used to return the next set of action types in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionTypes = list(
+#'     list(
+#'       id = list(
+#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'         owner = "AWS"|"ThirdParty"|"Custom",
+#'         provider = "string",
+#'         version = "string"
+#'       ),
+#'       settings = list(
+#'         thirdPartyConfigurationUrl = "string",
+#'         entityUrlTemplate = "string",
+#'         executionUrlTemplate = "string",
+#'         revisionUrlTemplate = "string"
+#'       ),
+#'       actionConfigurationProperties = list(
+#'         list(
+#'           name = "string",
+#'           required = TRUE|FALSE,
+#'           key = TRUE|FALSE,
+#'           secret = TRUE|FALSE,
+#'           queryable = TRUE|FALSE,
+#'           description = "string",
+#'           type = "String"|"Number"|"Boolean"
+#'         )
+#'       ),
+#'       inputArtifactDetails = list(
+#'         minimumCount = 123,
+#'         maximumCount = 123
+#'       ),
+#'       outputArtifactDetails = list(
+#'         minimumCount = 123,
+#'         maximumCount = 123
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -906,6 +1489,41 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' call, which can be used to return the next set of pipeline executions in
 #' the list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineExecutionSummaries = list(
+#'     list(
+#'       pipelineExecutionId = "string",
+#'       status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       sourceRevisions = list(
+#'         list(
+#'           actionName = "string",
+#'           revisionId = "string",
+#'           revisionSummary = "string",
+#'           revisionUrl = "string"
+#'         )
+#'       ),
+#'       trigger = list(
+#'         triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision",
+#'         triggerDetail = "string"
+#'       ),
+#'       stopTrigger = list(
+#'         reason = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_pipeline_executions(
@@ -945,6 +1563,26 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #'
 #' @param nextToken An identifier that was returned from the previous list pipelines call.
 #' It can be used to return the next set of pipelines in the list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelines = list(
+#'     list(
+#'       name = "string",
+#'       version = 123,
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -988,6 +1626,20 @@ codepipeline_list_pipelines <- function(nextToken = NULL) {
 #' used to return the next page of the list. The ListTagsforResource call
 #' lists all available tags in one call and does not use pagination.
 #' @param maxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1033,6 +1685,47 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned nextToken
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhooks = list(
+#'     list(
+#'       definition = list(
+#'         name = "string",
+#'         targetPipeline = "string",
+#'         targetAction = "string",
+#'         filters = list(
+#'           list(
+#'             jsonPath = "string",
+#'             matchEquals = "string"
+#'           )
+#'         ),
+#'         authentication = "GITHUB_HMAC"|"IP"|"UNAUTHENTICATED",
+#'         authenticationConfiguration = list(
+#'           AllowedIPRange = "string",
+#'           SecretToken = "string"
+#'         )
+#'       ),
+#'       url = "string",
+#'       errorMessage = "string",
+#'       errorCode = "string",
+#'       lastTriggered = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       arn = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1087,6 +1780,81 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' map. Only jobs whose action configuration matches the mapped value are
 #' returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobs = list(
+#'     list(
+#'       id = "string",
+#'       data = list(
+#'         actionTypeId = list(
+#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'           owner = "AWS"|"ThirdParty"|"Custom",
+#'           provider = "string",
+#'           version = "string"
+#'         ),
+#'         actionConfiguration = list(
+#'           configuration = list(
+#'             "string"
+#'           )
+#'         ),
+#'         pipelineContext = list(
+#'           pipelineName = "string",
+#'           stage = list(
+#'             name = "string"
+#'           ),
+#'           action = list(
+#'             name = "string",
+#'             actionExecutionId = "string"
+#'           ),
+#'           pipelineArn = "string",
+#'           pipelineExecutionId = "string"
+#'         ),
+#'         inputArtifacts = list(
+#'           list(
+#'             name = "string",
+#'             revision = "string",
+#'             location = list(
+#'               type = "S3",
+#'               s3Location = list(
+#'                 bucketName = "string",
+#'                 objectKey = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         outputArtifacts = list(
+#'           list(
+#'             name = "string",
+#'             revision = "string",
+#'             location = list(
+#'               type = "S3",
+#'               s3Location = list(
+#'                 bucketName = "string",
+#'                 objectKey = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         artifactCredentials = list(
+#'           accessKeyId = "string",
+#'           secretAccessKey = "string",
+#'           sessionToken = "string"
+#'         ),
+#'         continuationToken = "string",
+#'         encryptionKey = list(
+#'           id = "string",
+#'           type = "KMS"
+#'         )
+#'       ),
+#'       nonce = "string",
+#'       accountId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$poll_for_jobs(
@@ -1140,6 +1908,19 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' @param actionTypeId &#91;required&#93; Represents information about an action type.
 #' @param maxBatchSize The maximum number of jobs to return in a poll for jobs call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobs = list(
+#'     list(
+#'       clientId = "string",
+#'       jobId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$poll_for_third_party_jobs(
@@ -1189,6 +1970,15 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 #' revision.
 #' @param actionName &#91;required&#93; The name of the action that processes the revision.
 #' @param actionRevision &#91;required&#93; Represents information about the version (or revision) of an action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   newRevision = TRUE|FALSE,
+#'   pipelineExecutionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1246,6 +2036,16 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' used to validate that the approval request corresponding to this token
 #' is still valid.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_approval_result(
@@ -1293,6 +2093,9 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that failed. This is the same
 #' ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
 #' @param failureDetails &#91;required&#93; The details about the failure of a job.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1352,6 +2155,9 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' @param outputVariables Key-value pairs produced as output by a job worker that can be made
 #' available to a downstream action configuration. `outputVariables` can be
 #' included only when there is no continuation token on the request.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1415,6 +2221,9 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #' details.
 #' @param failureDetails &#91;required&#93; Represents information about failure details.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_third_party_job_failure_result(
@@ -1474,6 +2283,9 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' continuation token should be supplied.
 #' @param executionDetails The details of the actions taken and results produced on an artifact as
 #' it passes through stages in the pipeline.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1541,6 +2353,44 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' it's used for later.
 #' @param tags The tags for the webhook.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhook = list(
+#'     definition = list(
+#'       name = "string",
+#'       targetPipeline = "string",
+#'       targetAction = "string",
+#'       filters = list(
+#'         list(
+#'           jsonPath = "string",
+#'           matchEquals = "string"
+#'         )
+#'       ),
+#'       authentication = "GITHUB_HMAC"|"IP"|"UNAUTHENTICATED",
+#'       authenticationConfiguration = list(
+#'         AllowedIPRange = "string",
+#'         SecretToken = "string"
+#'       )
+#'     ),
+#'     url = "string",
+#'     errorMessage = "string",
+#'     errorCode = "string",
+#'     lastTriggered = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     arn = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_webhook(
@@ -1602,6 +2452,9 @@ codepipeline_put_webhook <- function(webhook, tags = NULL) {
 #' @param webhookName The name of an existing webhook created with PutWebhook to register with
 #' a supported third party.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_webhook_with_third_party(
@@ -1648,7 +2501,15 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' the [`get_pipeline_state`][codepipeline_get_pipeline_state] action to
 #' retrieve the current pipelineExecutionId of the failed stage
 #' @param retryMode &#91;required&#93; The scope of the retry attempt. Currently, the only supported value is
-#' FAILED\\_ACTIONS.
+#' FAILED_ACTIONS.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineExecutionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1692,6 +2553,14 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' @param name &#91;required&#93; The name of the pipeline to start.
 #' @param clientRequestToken The system-generated unique ID used to identify a unique execution
 #' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineExecutionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1746,6 +2615,14 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 #' @param reason Use this option to enter comments, such as the reason the pipeline was
 #' stopped.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineExecutionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_pipeline_execution(
@@ -1787,6 +2664,9 @@ codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecution
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to add tags to.
 #' @param tags &#91;required&#93; The tags you want to modify or add to the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1832,6 +2712,9 @@ codepipeline_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
 #' @param tagKeys &#91;required&#93; The list of keys for the tags to be removed from the resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1875,6 +2758,75 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 #' codepipeline_update_pipeline(pipeline)
 #'
 #' @param pipeline &#91;required&#93; The name of the pipeline to be updated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipeline = list(
+#'     name = "string",
+#'     roleArn = "string",
+#'     artifactStore = list(
+#'       type = "S3",
+#'       location = "string",
+#'       encryptionKey = list(
+#'         id = "string",
+#'         type = "KMS"
+#'       )
+#'     ),
+#'     artifactStores = list(
+#'       list(
+#'         type = "S3",
+#'         location = "string",
+#'         encryptionKey = list(
+#'           id = "string",
+#'           type = "KMS"
+#'         )
+#'       )
+#'     ),
+#'     stages = list(
+#'       list(
+#'         name = "string",
+#'         blockers = list(
+#'           list(
+#'             name = "string",
+#'             type = "Schedule"
+#'           )
+#'         ),
+#'         actions = list(
+#'           list(
+#'             name = "string",
+#'             actionTypeId = list(
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               owner = "AWS"|"ThirdParty"|"Custom",
+#'               provider = "string",
+#'               version = "string"
+#'             ),
+#'             runOrder = 123,
+#'             configuration = list(
+#'               "string"
+#'             ),
+#'             outputArtifacts = list(
+#'               list(
+#'                 name = "string"
+#'               )
+#'             ),
+#'             inputArtifacts = list(
+#'               list(
+#'                 name = "string"
+#'               )
+#'             ),
+#'             roleArn = "string",
+#'             region = "string",
+#'             namespace = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     version = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

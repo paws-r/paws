@@ -13,6 +13,9 @@ autoscalingplans_delete_scaling_plan(ScalingPlanName,
 \item{ScalingPlanVersion}{[required] The version number of the scaling plan. Currently, the only valid value
 is \code{1}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified scaling plan.
 

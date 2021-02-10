@@ -31,6 +31,30 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInsightsPath = list(
+    NetworkInsightsPathId = "string",
+    NetworkInsightsPathArn = "string",
+    CreatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Source = "string",
+    Destination = "string",
+    SourceIp = "string",
+    DestinationIp = "string",
+    Protocol = "tcp"|"udp",
+    DestinationPort = 123,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a path to analyze for reachability.
 

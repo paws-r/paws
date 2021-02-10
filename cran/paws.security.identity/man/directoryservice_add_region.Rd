@@ -16,6 +16,9 @@ replication. For example, \code{us-east-1}.}
 
 \item{VPCSettings}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Adds two domain controllers in the specified Region for the specified
 directory.

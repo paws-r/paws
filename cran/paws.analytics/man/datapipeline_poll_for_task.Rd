@@ -26,6 +26,29 @@ proves that your task runner is running on an EC2 instance, and ensures
 the proper AWS Data Pipeline service charges are applied to your
 pipeline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskObject = list(
+    taskId = "string",
+    pipelineId = "string",
+    attemptId = "string",
+    objects = list(
+      list(
+        id = "string",
+        name = "string",
+        fields = list(
+          list(
+            key = "string",
+            stringValue = "string",
+            refValue = "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Task runners call \code{\link[=datapipeline_poll_for_task]{poll_for_task}} to
 receive a task to perform from AWS Data Pipeline. The task runner

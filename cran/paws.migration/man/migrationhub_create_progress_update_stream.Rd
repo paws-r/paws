@@ -16,6 +16,9 @@ this field.}}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a progress update stream which is an AWS resource used for
 access control as well as a namespace for migration task names that is

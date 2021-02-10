@@ -22,6 +22,20 @@ code.}
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  statusCode = "string",
+  selectionPattern = "string",
+  responseParameters = list(
+    "string"
+  ),
+  responseTemplates = list(
+    "string"
+  ),
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+)
+}
+}
 \description{
 Represents an update integration response.
 }

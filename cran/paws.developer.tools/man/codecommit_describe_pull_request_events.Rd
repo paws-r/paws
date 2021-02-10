@@ -25,6 +25,60 @@ batch of the results.}
 results. The default is 100 events, which is also the maximum number of
 events that can be returned in a result.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pullRequestEvents = list(
+    list(
+      pullRequestId = "string",
+      eventDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED"|"PULL_REQUEST_APPROVAL_RULE_CREATED"|"PULL_REQUEST_APPROVAL_RULE_UPDATED"|"PULL_REQUEST_APPROVAL_RULE_DELETED"|"PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"|"PULL_REQUEST_APPROVAL_STATE_CHANGED",
+      actorArn = "string",
+      pullRequestCreatedEventMetadata = list(
+        repositoryName = "string",
+        sourceCommitId = "string",
+        destinationCommitId = "string",
+        mergeBase = "string"
+      ),
+      pullRequestStatusChangedEventMetadata = list(
+        pullRequestStatus = "OPEN"|"CLOSED"
+      ),
+      pullRequestSourceReferenceUpdatedEventMetadata = list(
+        repositoryName = "string",
+        beforeCommitId = "string",
+        afterCommitId = "string",
+        mergeBase = "string"
+      ),
+      pullRequestMergedStateChangedEventMetadata = list(
+        repositoryName = "string",
+        destinationReference = "string",
+        mergeMetadata = list(
+          isMerged = TRUE|FALSE,
+          mergedBy = "string",
+          mergeCommitId = "string",
+          mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+        )
+      ),
+      approvalRuleEventMetadata = list(
+        approvalRuleName = "string",
+        approvalRuleId = "string",
+        approvalRuleContent = "string"
+      ),
+      approvalStateChangedEventMetadata = list(
+        revisionId = "string",
+        approvalStatus = "APPROVE"|"REVOKE"
+      ),
+      approvalRuleOverriddenEventMetadata = list(
+        revisionId = "string",
+        overrideStatus = "OVERRIDE"|"REVOKE"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns information about one or more pull request events.
 }

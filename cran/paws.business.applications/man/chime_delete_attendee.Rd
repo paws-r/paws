@@ -12,6 +12,9 @@ chime_delete_attendee(MeetingId, AttendeeId)
 
 \item{AttendeeId}{[required] The Amazon Chime SDK attendee ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an attendee from the specified Amazon Chime SDK meeting and
 deletes their \code{JoinToken}. Attendees are automatically deleted when a

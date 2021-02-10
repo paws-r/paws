@@ -28,6 +28,157 @@ exclude some or all of the indexes at the time of restore.}
 
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableDescription = list(
+    AttributeDefinitions = list(
+      list(
+        AttributeName = "string",
+        AttributeType = "S"|"N"|"B"
+      )
+    ),
+    TableName = "string",
+    KeySchema = list(
+      list(
+        AttributeName = "string",
+        KeyType = "HASH"|"RANGE"
+      )
+    ),
+    TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+    CreationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProvisionedThroughput = list(
+      LastIncreaseDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastDecreaseDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      NumberOfDecreasesToday = 123,
+      ReadCapacityUnits = 123,
+      WriteCapacityUnits = 123
+    ),
+    TableSizeBytes = 123,
+    ItemCount = 123,
+    TableArn = "string",
+    TableId = "string",
+    BillingModeSummary = list(
+      BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
+      LastUpdateToPayPerRequestDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    LocalSecondaryIndexes = list(
+      list(
+        IndexName = "string",
+        KeySchema = list(
+          list(
+            AttributeName = "string",
+            KeyType = "HASH"|"RANGE"
+          )
+        ),
+        Projection = list(
+          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+          NonKeyAttributes = list(
+            "string"
+          )
+        ),
+        IndexSizeBytes = 123,
+        ItemCount = 123,
+        IndexArn = "string"
+      )
+    ),
+    GlobalSecondaryIndexes = list(
+      list(
+        IndexName = "string",
+        KeySchema = list(
+          list(
+            AttributeName = "string",
+            KeyType = "HASH"|"RANGE"
+          )
+        ),
+        Projection = list(
+          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+          NonKeyAttributes = list(
+            "string"
+          )
+        ),
+        IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
+        Backfilling = TRUE|FALSE,
+        ProvisionedThroughput = list(
+          LastIncreaseDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          LastDecreaseDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          NumberOfDecreasesToday = 123,
+          ReadCapacityUnits = 123,
+          WriteCapacityUnits = 123
+        ),
+        IndexSizeBytes = 123,
+        ItemCount = 123,
+        IndexArn = "string"
+      )
+    ),
+    StreamSpecification = list(
+      StreamEnabled = TRUE|FALSE,
+      StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
+    ),
+    LatestStreamLabel = "string",
+    LatestStreamArn = "string",
+    GlobalTableVersion = "string",
+    Replicas = list(
+      list(
+        RegionName = "string",
+        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+        ReplicaStatusDescription = "string",
+        ReplicaStatusPercentProgress = "string",
+        KMSMasterKeyId = "string",
+        ProvisionedThroughputOverride = list(
+          ReadCapacityUnits = 123
+        ),
+        GlobalSecondaryIndexes = list(
+          list(
+            IndexName = "string",
+            ProvisionedThroughputOverride = list(
+              ReadCapacityUnits = 123
+            )
+          )
+        ),
+        ReplicaInaccessibleDateTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    RestoreSummary = list(
+      SourceBackupArn = "string",
+      SourceTableArn = "string",
+      RestoreDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      RestoreInProgress = TRUE|FALSE
+    ),
+    SSEDescription = list(
+      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
+      SSEType = "AES256"|"KMS",
+      KMSMasterKeyArn = "string",
+      InaccessibleEncryptionDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    ArchivalSummary = list(
+      ArchivalDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ArchivalReason = "string",
+      ArchivalBackupArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a new table from an existing backup. Any number of users can
 execute up to 4 concurrent restores (any type of restore) in a given

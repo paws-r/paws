@@ -18,6 +18,22 @@ updated.}
 \item{Entries}{[required] A list of up to 100 \code{BatchUpdatePartitionRequestEntry} objects to
 update.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Errors = list(
+    list(
+      PartitionValueList = list(
+        "string"
+      ),
+      ErrorDetail = list(
+        ErrorCode = "string",
+        ErrorMessage = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates one or more partitions in a batch operation.
 }

@@ -14,6 +14,9 @@ iot_attach_security_profile(securityProfileName,
 \item{securityProfileTargetArn}{[required] The ARN of the target (thing group) to which the security profile is
 attached.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a Device Defender security profile with a thing group or this
 account. Each thing group or account can have up to five security

@@ -34,6 +34,13 @@ definition that includes the \code{PiiEntityTypes} parameter.}
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+)
+}
+}
 \description{
 Starts an asynchronous PII entity detection job for a collection of
 documents.

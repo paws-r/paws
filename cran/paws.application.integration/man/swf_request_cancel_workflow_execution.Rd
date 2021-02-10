@@ -15,6 +15,9 @@ swf_request_cancel_workflow_execution(domain, workflowId, runId)
 
 \item{runId}{The runId of the workflow execution to cancel.}
 }
+\value{
+An empty list.
+}
 \description{
 Records a \code{WorkflowExecutionCancelRequested} event in the currently
 running workflow execution identified by the given domain, workflowId,

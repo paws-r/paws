@@ -14,6 +14,18 @@ IAM to get information about.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SAMLMetadataDocument = "string",
+  CreateDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ValidUntil = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns the SAML provider metadocument that was uploaded when the IAM
 SAML provider resource object was created or updated.

@@ -10,6 +10,37 @@ emr_describe_studio(StudioId)
 \arguments{
 \item{StudioId}{[required] The Amazon EMR Studio ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Studio = list(
+    StudioId = "string",
+    StudioArn = "string",
+    Name = "string",
+    Description = "string",
+    AuthMode = "SSO"|"IAM",
+    VpcId = "string",
+    SubnetIds = list(
+      "string"
+    ),
+    ServiceRole = "string",
+    UserRole = "string",
+    WorkspaceSecurityGroupId = "string",
+    EngineSecurityGroupId = "string",
+    Url = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    DefaultS3Location = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

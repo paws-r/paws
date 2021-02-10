@@ -19,6 +19,40 @@ Maximum: Ten CIDR values}
 \item{OidcConfig}{Use this parameter to update your OIDC Identity Provider (IdP)
 configuration for a workforce made using your own IdP.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Workforce = list(
+    WorkforceName = "string",
+    WorkforceArn = "string",
+    LastUpdatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    SourceIpConfig = list(
+      Cidrs = list(
+        "string"
+      )
+    ),
+    SubDomain = "string",
+    CognitoConfig = list(
+      UserPool = "string",
+      ClientId = "string"
+    ),
+    OidcConfig = list(
+      ClientId = "string",
+      Issuer = "string",
+      AuthorizationEndpoint = "string",
+      TokenEndpoint = "string",
+      UserInfoEndpoint = "string",
+      LogoutEndpoint = "string",
+      JwksUri = "string"
+    ),
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Use this operation to update your workforce. You can use this operation
 to require that workers use specific IP addresses to work on tasks and

@@ -45,6 +45,19 @@ and 10. If this parameter is not used, then
 \code{\link[=ecs_list_account_settings]{list_account_settings}} returns up to 10
 results and a \code{nextToken} value if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  settings = list(
+    list(
+      name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
+      value = "string",
+      principalArn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the account settings for a specified principal.
 }

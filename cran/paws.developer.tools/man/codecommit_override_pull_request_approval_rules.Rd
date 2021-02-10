@@ -21,6 +21,9 @@ revision of a pull request. To get the revision ID, use GetPullRequest.}
 request (OVERRIDE) or revoke a previous override and apply approval rule
 requirements (REVOKE). REVOKE status is not stored.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets aside (overrides) all approval rule requirements for a specified
 pull request.

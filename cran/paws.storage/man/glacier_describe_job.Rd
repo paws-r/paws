@@ -20,6 +20,90 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{jobId}{[required] The ID of the job to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobDescription = "string",
+  Action = "ArchiveRetrieval"|"InventoryRetrieval"|"Select",
+  ArchiveId = "string",
+  VaultARN = "string",
+  CreationDate = "string",
+  Completed = TRUE|FALSE,
+  StatusCode = "InProgress"|"Succeeded"|"Failed",
+  StatusMessage = "string",
+  ArchiveSizeInBytes = 123,
+  InventorySizeInBytes = 123,
+  SNSTopic = "string",
+  CompletionDate = "string",
+  SHA256TreeHash = "string",
+  ArchiveSHA256TreeHash = "string",
+  RetrievalByteRange = "string",
+  Tier = "string",
+  InventoryRetrievalParameters = list(
+    Format = "string",
+    StartDate = "string",
+    EndDate = "string",
+    Limit = "string",
+    Marker = "string"
+  ),
+  JobOutputPath = "string",
+  SelectParameters = list(
+    InputSerialization = list(
+      csv = list(
+        FileHeaderInfo = "USE"|"IGNORE"|"NONE",
+        Comments = "string",
+        QuoteEscapeCharacter = "string",
+        RecordDelimiter = "string",
+        FieldDelimiter = "string",
+        QuoteCharacter = "string"
+      )
+    ),
+    ExpressionType = "SQL",
+    Expression = "string",
+    OutputSerialization = list(
+      csv = list(
+        QuoteFields = "ALWAYS"|"ASNEEDED",
+        QuoteEscapeCharacter = "string",
+        RecordDelimiter = "string",
+        FieldDelimiter = "string",
+        QuoteCharacter = "string"
+      )
+    )
+  ),
+  OutputLocation = list(
+    S3 = list(
+      BucketName = "string",
+      Prefix = "string",
+      Encryption = list(
+        EncryptionType = "aws:kms"|"AES256",
+        KMSKeyId = "string",
+        KMSContext = "string"
+      ),
+      CannedACL = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
+      AccessControlList = list(
+        list(
+          Grantee = list(
+            Type = "AmazonCustomerByEmail"|"CanonicalUser"|"Group",
+            DisplayName = "string",
+            URI = "string",
+            ID = "string",
+            EmailAddress = "string"
+          ),
+          Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+        )
+      ),
+      Tagging = list(
+        "string"
+      ),
+      UserMetadata = list(
+        "string"
+      ),
+      StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"
+    )
+  )
+)
+}
+}
 \description{
 This operation returns information about a job you previously initiated,
 including the job initiation date, the user who initiated the job, the
@@ -59,7 +143,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 # specified by the job ID.
 svc$describe_job(
   accountId = "-",
-  jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
+  jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW...",
   vaultName = "my-vault"
 )
 }

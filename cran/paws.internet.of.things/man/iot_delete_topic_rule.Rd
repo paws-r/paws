@@ -9,6 +9,9 @@ iot_delete_topic_rule(ruleName)
 \arguments{
 \item{ruleName}{[required] The name of the rule.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the rule.
 }

@@ -9,6 +9,9 @@ chime_delete_sip_media_application(SipMediaApplicationId)
 \arguments{
 \item{SipMediaApplicationId}{[required] The SIP media application ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a SIP media application.
 }

@@ -44,6 +44,26 @@ of model packages, use the token in the next request.}
 
 \item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelPackageSummaryList = list(
+    list(
+      ModelPackageName = "string",
+      ModelPackageGroupName = "string",
+      ModelPackageVersion = 123,
+      ModelPackageArn = "string",
+      ModelPackageDescription = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModelPackageStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting",
+      ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the model packages that have been created.
 }

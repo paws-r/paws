@@ -29,6 +29,30 @@ getting the next set of contexts.}
 \item{MaxResults}{The maximum number of contexts to return in the response. The default
 value is 10.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContextSummaries = list(
+    list(
+      ContextArn = "string",
+      ContextName = "string",
+      Source = list(
+        SourceUri = "string",
+        SourceType = "string",
+        SourceId = "string"
+      ),
+      ContextType = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the contexts in your account and their properties.
 }

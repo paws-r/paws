@@ -62,6 +62,14 @@ authenticate as QuickSight or IAM users. For example, if you set
 "\verb{--dashboard-id dash_id1 --dashboard-id dash_id2 dash_id3 identity-type ANONYMOUS}",
 the session can access all three dashboards.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EmbedUrl = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Generates a session URL and authorization code that you can use to embed
 an Amazon QuickSight read-only dashboard in your web server code. Before

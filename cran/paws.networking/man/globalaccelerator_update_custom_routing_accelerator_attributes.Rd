@@ -31,7 +31,17 @@ the bucket. If you specify slash (/) for the S3 bucket prefix, the log
 file bucket folder structure will include a double slash (//), like the
 following:
 
-DOC-EXAMPLE-BUCKET//AWSLogs/aws\\_account\\_id}
+DOC-EXAMPLE-BUCKET//AWSLogs/aws_account_id}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AcceleratorAttributes = list(
+    FlowLogsEnabled = TRUE|FALSE,
+    FlowLogsS3Bucket = "string",
+    FlowLogsS3Prefix = "string"
+  )
+)
+}
 }
 \description{
 Update the attributes for a custom routing accelerator.

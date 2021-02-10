@@ -14,6 +14,28 @@ does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Users = list(
+    list(
+      Id = "string",
+      Email = "string",
+      Name = "string",
+      DisplayName = "string",
+      State = "ENABLED"|"DISABLED"|"DELETED",
+      UserRole = "USER"|"RESOURCE"|"SYSTEM_USER",
+      EnabledDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DisabledDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summaries of the organization's users.
 }

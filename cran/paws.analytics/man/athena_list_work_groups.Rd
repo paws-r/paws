@@ -14,6 +14,22 @@ previous page call.}
 
 \item{MaxResults}{The maximum number of workgroups to return in this request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WorkGroups = list(
+    list(
+      Name = "string",
+      State = "ENABLED"|"DISABLED",
+      Description = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists available workgroups for the account.
 }

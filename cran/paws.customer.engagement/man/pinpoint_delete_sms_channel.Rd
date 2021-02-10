@@ -11,6 +11,27 @@ pinpoint_delete_sms_channel(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SMSChannelResponse = list(
+    ApplicationId = "string",
+    CreationDate = "string",
+    Enabled = TRUE|FALSE,
+    HasCredential = TRUE|FALSE,
+    Id = "string",
+    IsArchived = TRUE|FALSE,
+    LastModifiedBy = "string",
+    LastModifiedDate = "string",
+    Platform = "string",
+    PromotionalMessagesPerSecond = 123,
+    SenderId = "string",
+    ShortCode = "string",
+    TransactionalMessagesPerSecond = 123,
+    Version = 123
+  )
+)
+}
+}
 \description{
 Disables the SMS channel for an application and deletes any existing
 settings for the channel.

@@ -14,6 +14,12 @@ rate limit to delete.
 
 Valid Values: \code{UPLOAD} | \code{DOWNLOAD} | \code{ALL}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Deletes the bandwidth rate limits of a gateway. You can delete either
 the upload and download bandwidth rate limit, or you can delete both. If

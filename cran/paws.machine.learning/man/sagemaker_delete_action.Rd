@@ -9,6 +9,12 @@ sagemaker_delete_action(ActionName)
 \arguments{
 \item{ActionName}{[required] The name of the action to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionArn = "string"
+)
+}
+}
 \description{
 Deletes an action.
 }

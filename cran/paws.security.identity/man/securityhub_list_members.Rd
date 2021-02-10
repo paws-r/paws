@@ -28,6 +28,26 @@ For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous
 response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Members = list(
+    list(
+      AccountId = "string",
+      Email = "string",
+      MasterId = "string",
+      MemberStatus = "string",
+      InvitedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists details about all member accounts for the current Security Hub
 master account.

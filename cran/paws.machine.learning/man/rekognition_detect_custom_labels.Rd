@@ -22,6 +22,31 @@ Rekognition doesn't return any labels with a confidence lower than this
 specified value. If you specify a value of 0, all labels are return,
 regardless of the default thresholds that the model version applies.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomLabels = list(
+    list(
+      Name = "string",
+      Confidence = 123.0,
+      Geometry = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        Polygon = list(
+          list(
+            X = 123.0,
+            Y = 123.0
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Detects custom labels in a supplied image by using an Amazon Rekognition
 Custom Labels model.

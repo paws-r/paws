@@ -12,6 +12,58 @@ swf_describe_workflow_execution(domain, execution)
 
 \item{execution}{[required] The workflow execution to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  executionInfo = list(
+    execution = list(
+      workflowId = "string",
+      runId = "string"
+    ),
+    workflowType = list(
+      name = "string",
+      version = "string"
+    ),
+    startTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    closeTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    executionStatus = "OPEN"|"CLOSED",
+    closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
+    parent = list(
+      workflowId = "string",
+      runId = "string"
+    ),
+    tagList = list(
+      "string"
+    ),
+    cancelRequested = TRUE|FALSE
+  ),
+  executionConfiguration = list(
+    taskStartToCloseTimeout = "string",
+    executionStartToCloseTimeout = "string",
+    taskList = list(
+      name = "string"
+    ),
+    taskPriority = "string",
+    childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+    lambdaRole = "string"
+  ),
+  openCounts = list(
+    openActivityTasks = 123,
+    openDecisionTasks = 123,
+    openTimers = 123,
+    openChildWorkflowExecutions = 123,
+    openLambdaFunctions = 123
+  ),
+  latestActivityTaskTimestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  latestExecutionContext = "string"
+)
+}
+}
 \description{
 Returns information about the specified workflow execution including its
 type and some statistics.

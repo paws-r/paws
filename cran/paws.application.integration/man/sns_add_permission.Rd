@@ -21,6 +21,9 @@ need to be signed up for this service.}
 Valid values: Any Amazon SNS action name, for example
 \code{\link[=sns_publish]{publish}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds a statement to a topic's access control policy, granting access for
 the specified AWS accounts to the specified actions.

@@ -13,6 +13,12 @@ sagemaker_create_presigned_notebook_instance_url(NotebookInstanceName,
 
 \item{SessionExpirationDurationInSeconds}{The duration of the session, in seconds. The default is 12 hours.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthorizedUrl = "string"
+)
+}
+}
 \description{
 Returns a URL that you can use to connect to the Jupyter server from a
 notebook instance. In the Amazon SageMaker console, when you choose

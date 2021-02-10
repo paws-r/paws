@@ -15,6 +15,49 @@ health_describe_event_details_for_organization(
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  successfulSet = list(
+    list(
+      awsAccountId = "string",
+      event = list(
+        arn = "string",
+        service = "string",
+        eventTypeCode = "string",
+        eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+        region = "string",
+        availabilityZone = "string",
+        startTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        endTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        lastUpdatedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        statusCode = "open"|"closed"|"upcoming",
+        eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+      ),
+      eventDescription = list(
+        latestDescription = "string"
+      ),
+      eventMetadata = list(
+        "string"
+      )
+    )
+  ),
+  failedSet = list(
+    list(
+      awsAccountId = "string",
+      eventArn = "string",
+      errorName = "string",
+      errorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns detailed information about one or more specified events for one
 or more accounts in your organization. Information includes standard

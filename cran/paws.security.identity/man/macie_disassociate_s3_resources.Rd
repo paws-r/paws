@@ -14,6 +14,21 @@ want to remove from being monitored by Amazon Macie Classic.}
 \item{associatedS3Resources}{[required] The S3 resources (buckets or prefixes) that you want to remove from
 being monitored and classified by Amazon Macie Classic.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  failedS3Resources = list(
+    list(
+      failedItem = list(
+        bucketName = "string",
+        prefix = "string"
+      ),
+      errorCode = "string",
+      errorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes specified S3 resources from being monitored by Amazon Macie
 Classic. If memberAccountId isn't specified, the action removes

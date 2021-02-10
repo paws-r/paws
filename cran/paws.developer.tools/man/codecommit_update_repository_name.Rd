@@ -11,6 +11,9 @@ codecommit_update_repository_name(oldName, newName)
 
 \item{newName}{[required] The new name for the repository.}
 }
+\value{
+An empty list.
+}
 \description{
 Renames a repository. The repository name must be unique across the
 calling AWS account. Repository names are limited to 100 alphanumeric,

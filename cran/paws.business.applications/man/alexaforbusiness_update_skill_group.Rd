@@ -14,6 +14,9 @@ alexaforbusiness_update_skill_group(SkillGroupArn, SkillGroupName,
 
 \item{Description}{The updated description for the skill group.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates skill group details by skill group ARN.
 }

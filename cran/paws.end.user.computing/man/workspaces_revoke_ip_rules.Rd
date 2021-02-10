@@ -11,6 +11,9 @@ workspaces_revoke_ip_rules(GroupId, UserRules)
 
 \item{UserRules}{[required] The rules to remove from the group.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more rules from the specified IP access control group.
 }

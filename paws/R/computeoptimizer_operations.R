@@ -38,6 +38,35 @@ NULL
 #' To retrieve the remaining results, make another request with the
 #' returned `NextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recommendationExportJobs = list(
+#'     list(
+#'       jobId = "string",
+#'       destination = list(
+#'         s3 = list(
+#'           bucket = "string",
+#'           key = "string",
+#'           metadataKey = "string"
+#'         )
+#'       ),
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup",
+#'       status = "Queued"|"InProgress"|"Complete"|"Failed",
+#'       creationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_recommendation_export_jobs(
@@ -147,6 +176,19 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' 
 #' Recommendations for member accounts are not included in the export if
 #' this parameter, or the account IDs parameter, is omitted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   s3Destination = list(
+#'     bucket = "string",
+#'     key = "string",
+#'     metadataKey = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -262,6 +304,19 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' Recommendations for member accounts are not included in the export if
 #' this parameter, or the account IDs parameter, is omitted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   s3Destination = list(
+#'     bucket = "string",
+#'     key = "string",
+#'     metadataKey = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_ec2_instance_recommendations(
@@ -343,6 +398,65 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #' @param filters An array of objects that describe a filter that returns a more specific
 #' list of Auto Scaling group recommendations.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   autoScalingGroupRecommendations = list(
+#'     list(
+#'       accountId = "string",
+#'       autoScalingGroupArn = "string",
+#'       autoScalingGroupName = "string",
+#'       finding = "Underprovisioned"|"Overprovisioned"|"Optimized"|"NotOptimized",
+#'       utilizationMetrics = list(
+#'         list(
+#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'           statistic = "Maximum"|"Average",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       lookBackPeriodInDays = 123.0,
+#'       currentConfiguration = list(
+#'         desiredCapacity = 123,
+#'         minSize = 123,
+#'         maxSize = 123,
+#'         instanceType = "string"
+#'       ),
+#'       recommendationOptions = list(
+#'         list(
+#'           configuration = list(
+#'             desiredCapacity = 123,
+#'             minSize = 123,
+#'             maxSize = 123,
+#'             instanceType = "string"
+#'           ),
+#'           projectedUtilizationMetrics = list(
+#'             list(
+#'               name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'               statistic = "Maximum"|"Average",
+#'               value = 123.0
+#'             )
+#'           ),
+#'           performanceRisk = 123.0,
+#'           rank = 123
+#'         )
+#'       ),
+#'       lastRefreshTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       identifier = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_auto_scaling_group_recommendations(
@@ -417,6 +531,61 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #' volume recommendations.
 #' 
 #' Only one account ID can be specified per request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   volumeRecommendations = list(
+#'     list(
+#'       volumeArn = "string",
+#'       accountId = "string",
+#'       currentConfiguration = list(
+#'         volumeType = "string",
+#'         volumeSize = 123,
+#'         volumeBaselineIOPS = 123,
+#'         volumeBurstIOPS = 123,
+#'         volumeBaselineThroughput = 123,
+#'         volumeBurstThroughput = 123
+#'       ),
+#'       finding = "Optimized"|"NotOptimized",
+#'       utilizationMetrics = list(
+#'         list(
+#'           name = "VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond"|"VolumeReadBytesPerSecond"|"VolumeWriteBytesPerSecond",
+#'           statistic = "Maximum"|"Average",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       lookBackPeriodInDays = 123.0,
+#'       volumeRecommendationOptions = list(
+#'         list(
+#'           configuration = list(
+#'             volumeType = "string",
+#'             volumeSize = 123,
+#'             volumeBaselineIOPS = 123,
+#'             volumeBurstIOPS = 123,
+#'             volumeBaselineThroughput = 123,
+#'             volumeBurstThroughput = 123
+#'           ),
+#'           performanceRisk = 123.0,
+#'           rank = 123
+#'         )
+#'       ),
+#'       lastRefreshTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       identifier = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -494,6 +663,61 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #' 
 #' Only one account ID can be specified per request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   instanceRecommendations = list(
+#'     list(
+#'       instanceArn = "string",
+#'       accountId = "string",
+#'       instanceName = "string",
+#'       currentInstanceType = "string",
+#'       finding = "Underprovisioned"|"Overprovisioned"|"Optimized"|"NotOptimized",
+#'       utilizationMetrics = list(
+#'         list(
+#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'           statistic = "Maximum"|"Average",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       lookBackPeriodInDays = 123.0,
+#'       recommendationOptions = list(
+#'         list(
+#'           instanceType = "string",
+#'           projectedUtilizationMetrics = list(
+#'             list(
+#'               name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'               statistic = "Maximum"|"Average",
+#'               value = 123.0
+#'             )
+#'           ),
+#'           performanceRisk = 123.0,
+#'           rank = 123
+#'         )
+#'       ),
+#'       recommendationSources = list(
+#'         list(
+#'           recommendationSourceArn = "string",
+#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"
+#'         )
+#'       ),
+#'       lastRefreshTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       identifier = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ec2_instance_recommendations(
@@ -561,6 +785,32 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #' @param startTime &#91;required&#93; The time stamp of the first projected metrics data point to return.
 #' @param endTime &#91;required&#93; The time stamp of the last projected metrics data point to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recommendedOptionProjectedMetrics = list(
+#'     list(
+#'       recommendedInstanceType = "string",
+#'       rank = 123,
+#'       projectedMetrics = list(
+#'         list(
+#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'           timestamps = list(
+#'             as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           ),
+#'           values = list(
+#'             123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ec2_recommendation_projected_metrics(
@@ -609,6 +859,16 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 #'
 #' @usage
 #' computeoptimizer_get_enrollment_status()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "Active"|"Inactive"|"Pending"|"Failed",
+#'   statusReason = "string",
+#'   memberAccountsEnrolled = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -677,6 +937,51 @@ computeoptimizer_get_enrollment_status <- function() {
 #' 
 #' To retrieve the remaining results, make another request with the
 #' returned `NextToken` value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   lambdaFunctionRecommendations = list(
+#'     list(
+#'       functionArn = "string",
+#'       functionVersion = "string",
+#'       accountId = "string",
+#'       currentMemorySize = 123,
+#'       numberOfInvocations = 123,
+#'       utilizationMetrics = list(
+#'         list(
+#'           name = "Duration"|"Memory",
+#'           statistic = "Maximum"|"Average",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       lookbackPeriodInDays = 123.0,
+#'       lastRefreshTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       finding = "Optimized"|"NotOptimized"|"Unavailable",
+#'       findingReasonCodes = list(
+#'         "MemoryOverprovisioned"|"MemoryUnderprovisioned"|"InsufficientData"|"Inconclusive"
+#'       ),
+#'       memorySizeRecommendationOptions = list(
+#'         list(
+#'           rank = 123,
+#'           memorySize = 123,
+#'           projectedUtilizationMetrics = list(
+#'             list(
+#'               name = "Duration",
+#'               statistic = "LowerBound"|"UpperBound"|"Expected",
+#'               value = 123.0
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -749,6 +1054,32 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #' To retrieve the remaining results, make another request with the
 #' returned `NextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   recommendationSummaries = list(
+#'     list(
+#'       summaries = list(
+#'         list(
+#'           name = "Underprovisioned"|"Overprovisioned"|"Optimized"|"NotOptimized",
+#'           value = 123.0,
+#'           reasonCodeSummaries = list(
+#'             list(
+#'               name = "MemoryOverprovisioned"|"MemoryUnderprovisioned",
+#'               value = 123.0
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction",
+#'       accountId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_recommendation_summaries(
@@ -799,6 +1130,15 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' `Pending` or `Failed` are specified.
 #' @param includeMemberAccounts Indicates whether to enroll member accounts of the organization if the
 #' your account is the management account of an organization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "Active"|"Inactive"|"Pending"|"Failed",
+#'   statusReason = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

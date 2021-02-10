@@ -13,6 +13,22 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationInfoList = list(
+    list(
+      ResourceGroupName = "string",
+      LifeCycle = "string",
+      OpsItemSNSTopicArn = "string",
+      OpsCenterEnabled = TRUE|FALSE,
+      CWEMonitorEnabled = TRUE|FALSE,
+      Remarks = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the IDs of the applications that you are monitoring.
 }

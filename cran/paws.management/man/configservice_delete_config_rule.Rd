@@ -9,6 +9,9 @@ configservice_delete_config_rule(ConfigRuleName)
 \arguments{
 \item{ConfigRuleName}{[required] The name of the AWS Config rule that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified AWS Config rule and all of its evaluation results.
 

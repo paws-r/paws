@@ -11,6 +11,35 @@ swf_describe_workflow_type(domain, workflowType)
 
 \item{workflowType}{[required] The workflow type to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  typeInfo = list(
+    workflowType = list(
+      name = "string",
+      version = "string"
+    ),
+    status = "REGISTERED"|"DEPRECATED",
+    description = "string",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    deprecationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  configuration = list(
+    defaultTaskStartToCloseTimeout = "string",
+    defaultExecutionStartToCloseTimeout = "string",
+    defaultTaskList = list(
+      name = "string"
+    ),
+    defaultTaskPriority = "string",
+    defaultChildPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+    defaultLambdaRole = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the specified \emph{workflow type}. This includes
 configuration settings specified when the type was registered and other

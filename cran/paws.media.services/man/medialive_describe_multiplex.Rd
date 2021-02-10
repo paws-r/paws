@@ -9,6 +9,36 @@ medialive_describe_multiplex(MultiplexId)
 \arguments{
 \item{MultiplexId}{[required] The ID of the multiplex.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AvailabilityZones = list(
+    "string"
+  ),
+  Destinations = list(
+    list(
+      MediaConnectSettings = list(
+        EntitlementArn = "string"
+      )
+    )
+  ),
+  Id = "string",
+  MultiplexSettings = list(
+    MaximumVideoBufferDelayMilliseconds = 123,
+    TransportStreamBitrate = 123,
+    TransportStreamId = 123,
+    TransportStreamReservedBitrate = 123
+  ),
+  Name = "string",
+  PipelinesRunningCount = 123,
+  ProgramCount = 123,
+  State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets details about a multiplex.
 }

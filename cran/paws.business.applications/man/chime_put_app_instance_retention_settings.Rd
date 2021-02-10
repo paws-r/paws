@@ -12,6 +12,19 @@ chime_put_app_instance_retention_settings(AppInstanceArn,
 
 \item{AppInstanceRetentionSettings}{[required] The time in days to retain data. Data type: number.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceRetentionSettings = list(
+    ChannelRetentionSettings = list(
+      RetentionDays = 123
+    )
+  ),
+  InitiateDeletionTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Sets the amount of time in days that a given app instance retains data.
 }

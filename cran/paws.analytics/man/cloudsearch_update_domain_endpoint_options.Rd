@@ -16,6 +16,28 @@ recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For
 compatibility with older clients, the default is
 Policy-Min-TLS-1-0-2019-07.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainEndpointOptions = list(
+    Options = list(
+      EnforceHTTPS = TRUE|FALSE,
+      TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+    ),
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Updates the domain's endpoint options, specifically whether all requests
 to the domain must arrive over HTTPS. For more information, see

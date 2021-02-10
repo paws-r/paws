@@ -26,6 +26,22 @@ When \code{TestMode} is \code{true},
 valid value for the \code{ResultToken} parameter, but the value cannot be
 null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedEvaluations = list(
+    list(
+      ComplianceResourceType = "string",
+      ComplianceResourceId = "string",
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+      Annotation = "string",
+      OrderingTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Used by an AWS Lambda function to deliver evaluation results to AWS
 Config. This action is required in every AWS Lambda function that is

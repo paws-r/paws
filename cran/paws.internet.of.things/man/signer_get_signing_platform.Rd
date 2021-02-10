@@ -9,6 +9,38 @@ signer_get_signing_platform(platformId)
 \arguments{
 \item{platformId}{[required] The ID of the target signing platform.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  platformId = "string",
+  displayName = "string",
+  partner = "string",
+  target = "string",
+  category = "AWSIoT",
+  signingConfiguration = list(
+    encryptionAlgorithmOptions = list(
+      allowedValues = list(
+        "RSA"|"ECDSA"
+      ),
+      defaultValue = "RSA"|"ECDSA"
+    ),
+    hashAlgorithmOptions = list(
+      allowedValues = list(
+        "SHA1"|"SHA256"
+      ),
+      defaultValue = "SHA1"|"SHA256"
+    )
+  ),
+  signingImageFormat = list(
+    supportedFormats = list(
+      "JSON"|"JSONEmbedded"|"JSONDetached"
+    ),
+    defaultFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+  ),
+  maxSizeInMB = 123,
+  revocationSupported = TRUE|FALSE
+)
+}
+}
 \description{
 Returns information on a specific signing platform.
 }

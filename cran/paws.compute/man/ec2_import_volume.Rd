@@ -21,6 +21,62 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Volume}{[required] The volume size.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConversionTask = list(
+    ConversionTaskId = "string",
+    ExpirationTime = "string",
+    ImportInstance = list(
+      Description = "string",
+      InstanceId = "string",
+      Platform = "Windows",
+      Volumes = list(
+        list(
+          AvailabilityZone = "string",
+          BytesConverted = 123,
+          Description = "string",
+          Image = list(
+            Checksum = "string",
+            Format = "VMDK"|"RAW"|"VHD",
+            ImportManifestUrl = "string",
+            Size = 123
+          ),
+          Status = "string",
+          StatusMessage = "string",
+          Volume = list(
+            Id = "string",
+            Size = 123
+          )
+        )
+      )
+    ),
+    ImportVolume = list(
+      AvailabilityZone = "string",
+      BytesConverted = 123,
+      Description = "string",
+      Image = list(
+        Checksum = "string",
+        Format = "VMDK"|"RAW"|"VHD",
+        ImportManifestUrl = "string",
+        Size = 123
+      ),
+      Volume = list(
+        Id = "string",
+        Size = 123
+      )
+    ),
+    State = "active"|"cancelling"|"cancelled"|"completed",
+    StatusMessage = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an import volume task using metadata from the specified disk
 image.For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing Disks to Amazon EBS}.

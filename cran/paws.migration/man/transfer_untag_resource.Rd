@@ -16,6 +16,9 @@ as a server, user, or role.}
 and search for resources by type. This metadata can be attached to
 resources for any purpose.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches a key-value pair from a resource, as identified by its Amazon
 Resource Name (ARN). Resources are users, servers, roles, and other

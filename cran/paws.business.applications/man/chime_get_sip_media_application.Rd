@@ -10,6 +10,27 @@ chime_get_sip_media_application(SipMediaApplicationId)
 \arguments{
 \item{SipMediaApplicationId}{[required] The SIP media application ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipMediaApplication = list(
+    SipMediaApplicationId = "string",
+    AwsRegion = "string",
+    Name = "string",
+    Endpoints = list(
+      list(
+        LambdaArn = "string"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the information for a SIP media application, including name,
 AWS Region, and endpoints.

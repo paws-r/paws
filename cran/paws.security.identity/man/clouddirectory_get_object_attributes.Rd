@@ -20,6 +20,29 @@ SchemaFacet for details.}
 
 \item{AttributeNames}{[required] List of attribute names whose values will be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Key = list(
+        SchemaArn = "string",
+        FacetName = "string",
+        Name = "string"
+      ),
+      Value = list(
+        StringValue = "string",
+        BinaryValue = raw,
+        BooleanValue = TRUE|FALSE,
+        NumberValue = "string",
+        DatetimeValue = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves attributes within a facet that are associated with an object.
 }

@@ -9,6 +9,67 @@ robomaker_describe_deployment_job(job)
 \arguments{
 \item{job}{[required] The Amazon Resource Name (ARN) of the deployment job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  fleet = "string",
+  status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+  deploymentConfig = list(
+    concurrentDeploymentPercentage = 123,
+    failureThresholdPercentage = 123,
+    robotDeploymentTimeoutInSeconds = 123,
+    downloadConditionFile = list(
+      bucket = "string",
+      key = "string",
+      etag = "string"
+    )
+  ),
+  deploymentApplicationConfigs = list(
+    list(
+      application = "string",
+      applicationVersion = "string",
+      launchConfig = list(
+        packageName = "string",
+        preLaunchFile = "string",
+        launchFile = "string",
+        postLaunchFile = "string",
+        environmentVariables = list(
+          "string"
+        )
+      )
+    )
+  ),
+  failureReason = "string",
+  failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  robotDeploymentSummary = list(
+    list(
+      arn = "string",
+      deploymentStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      deploymentFinishTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+      progressDetail = list(
+        currentProgress = "Validating"|"DownloadingExtracting"|"ExecutingDownloadCondition"|"ExecutingPreLaunch"|"Launching"|"ExecutingPostLaunch"|"Finished",
+        percentDone = 123.0,
+        estimatedTimeRemainingSeconds = 123,
+        targetResource = "string"
+      ),
+      failureReason = "string",
+      failureCode = "ResourceNotFound"|"EnvironmentSetupError"|"EtagMismatch"|"FailureThresholdBreached"|"RobotDeploymentAborted"|"RobotDeploymentNoResponse"|"RobotAgentConnectionTimeout"|"GreengrassDeploymentFailed"|"InvalidGreengrassGroup"|"MissingRobotArchitecture"|"MissingRobotApplicationArchitecture"|"MissingRobotDeploymentResource"|"GreengrassGroupVersionDoesNotExist"|"LambdaDeleted"|"ExtractingBundleFailure"|"PreLaunchFileFailure"|"PostLaunchFileFailure"|"BadPermissionError"|"DownloadConditionFailed"|"InternalServerError"
+    )
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a deployment job.
 }

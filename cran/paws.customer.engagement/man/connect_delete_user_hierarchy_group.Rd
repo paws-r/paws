@@ -11,6 +11,9 @@ connect_delete_user_hierarchy_group(HierarchyGroupId, InstanceId)
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing user hierarchy group. It must not be associated with
 any agents or have any active child groups.

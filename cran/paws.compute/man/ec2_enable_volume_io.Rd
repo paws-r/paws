@@ -15,6 +15,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VolumeId}{[required] The ID of the volume.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables I/O operations for a volume that had I/O operations disabled
 because the data on the volume was potentially inconsistent.

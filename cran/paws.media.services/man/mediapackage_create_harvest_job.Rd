@@ -10,15 +10,33 @@ mediapackage_create_harvest_job(EndTime, Id, OriginEndpointId,
 \arguments{
 \item{EndTime}{[required] The end of the time-window which will be harvested}
 
-\item{Id}{[required] The ID of the HarvestJob. The ID must be unique within the region
-and it cannot be changed after the HarvestJob is submitted}
+\item{Id}{[required] The ID of the HarvestJob. The ID must be unique within the region and it
+cannot be changed after the HarvestJob is submitted}
 
-\item{OriginEndpointId}{[required] The ID of the OriginEndpoint that the HarvestJob will harvest from.
-This cannot be changed after the HarvestJob is submitted.}
+\item{OriginEndpointId}{[required] The ID of the OriginEndpoint that the HarvestJob will harvest from. This
+cannot be changed after the HarvestJob is submitted.}
 
 \item{S3Destination}{[required]}
 
 \item{StartTime}{[required] The start of the time-window which will be harvested}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  ChannelId = "string",
+  CreatedAt = "string",
+  EndTime = "string",
+  Id = "string",
+  OriginEndpointId = "string",
+  S3Destination = list(
+    BucketName = "string",
+    ManifestKey = "string",
+    RoleArn = "string"
+  ),
+  StartTime = "string",
+  Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+)
+}
 }
 \description{
 Creates a new HarvestJob record.

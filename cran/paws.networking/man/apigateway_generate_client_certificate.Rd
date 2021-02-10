@@ -10,8 +10,25 @@ apigateway_generate_client_certificate(description, tags)
 \item{description}{The description of the ClientCertificate.}
 
 \item{tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  clientCertificateId = "string",
+  description = "string",
+  pemEncodedCertificate = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  expirationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Generates a ClientCertificate resource.

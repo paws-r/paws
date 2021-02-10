@@ -9,6 +9,14 @@ licensemanager_accept_grant(GrantArn)
 \arguments{
 \item{GrantArn}{[required] Amazon Resource Name (ARN) of the grant.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GrantArn = "string",
+  Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+  Version = "string"
+)
+}
+}
 \description{
 Accepts the specified grant.
 }

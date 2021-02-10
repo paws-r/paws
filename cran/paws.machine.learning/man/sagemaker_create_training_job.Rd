@@ -135,6 +135,12 @@ tensors.}
 \item{ProfilerRuleConfigurations}{Configuration information for Debugger rules for profiling system and
 framework metrics.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrainingJobArn = "string"
+)
+}
+}
 \description{
 Starts a model training job. After training completes, Amazon SageMaker
 saves the resulting model artifacts to an Amazon S3 location that you

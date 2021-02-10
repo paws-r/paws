@@ -26,6 +26,30 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpnGateway = list(
+    AvailabilityZone = "string",
+    State = "pending"|"available"|"deleting"|"deleted",
+    Type = "ipsec.1",
+    VpcAttachments = list(
+      list(
+        State = "attaching"|"attached"|"detaching"|"detached",
+        VpcId = "string"
+      )
+    ),
+    VpnGatewayId = "string",
+    AmazonSideAsn = 123,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a virtual private gateway. A virtual private gateway is the
 endpoint on the VPC side of your VPN connection. You can create a

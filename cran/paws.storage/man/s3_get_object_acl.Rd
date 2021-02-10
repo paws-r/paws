@@ -16,7 +16,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] The key of the object for which to get the ACL information.}
@@ -28,6 +28,28 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 \item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Owner = list(
+    DisplayName = "string",
+    ID = "string"
+  ),
+  Grants = list(
+    list(
+      Grantee = list(
+        DisplayName = "string",
+        EmailAddress = "string",
+        ID = "string",
+        Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
+        URI = "string"
+      ),
+      Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+    )
+  ),
+  RequestCharged = "requester"
+)
+}
 }
 \description{
 Returns the access control list (ACL) of an object. To use this

@@ -27,6 +27,21 @@ appsync_update_function(apiId, name, description, functionId,
 \item{functionVersion}{[required] The \code{version} of the request mapping template. Currently the supported
 value is 2018-05-29.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  functionConfiguration = list(
+    functionId = "string",
+    functionArn = "string",
+    name = "string",
+    description = "string",
+    dataSourceName = "string",
+    requestMappingTemplate = "string",
+    responseMappingTemplate = "string",
+    functionVersion = "string"
+  )
+)
+}
+}
 \description{
 Updates a \code{Function} object.
 }

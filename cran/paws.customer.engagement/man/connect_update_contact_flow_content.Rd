@@ -15,6 +15,9 @@ connect_update_contact_flow_content(InstanceId, ContactFlowId, Content)
 see \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language-example.html}{Example contact flow in Amazon Connect Flow language}
 in the \emph{Amazon Connect Administrator Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the specified contact flow.
 

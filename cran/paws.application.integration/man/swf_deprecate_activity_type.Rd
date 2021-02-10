@@ -11,6 +11,9 @@ swf_deprecate_activity_type(domain, activityType)
 
 \item{activityType}{[required] The activity type to deprecate.}
 }
+\value{
+An empty list.
+}
 \description{
 Deprecates the specified \emph{activity type}. After an activity type has
 been deprecated, you cannot create new tasks of that activity type.

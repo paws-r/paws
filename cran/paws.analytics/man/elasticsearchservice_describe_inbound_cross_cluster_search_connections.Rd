@@ -25,6 +25,31 @@ specified, defaults to 100.}
 \item{NextToken}{NextToken is sent in case the earlier API call results contain the
 NextToken. It is used for pagination.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CrossClusterSearchConnections = list(
+    list(
+      SourceDomainInfo = list(
+        OwnerId = "string",
+        DomainName = "string",
+        Region = "string"
+      ),
+      DestinationDomainInfo = list(
+        OwnerId = "string",
+        DomainName = "string",
+        Region = "string"
+      ),
+      CrossClusterSearchConnectionId = "string",
+      ConnectionStatus = list(
+        StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
+        Message = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all the inbound cross-cluster search connections for a destination
 domain.

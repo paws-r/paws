@@ -13,6 +13,9 @@ s3_delete_bucket_website(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation removes the website configuration for a bucket. Amazon S3
 returns a \verb{200 OK} response upon successfully deleting a website
@@ -27,7 +30,7 @@ attached to a bucket. However, bucket owners can grant other users
 permission to delete the website configuration by writing a bucket
 policy granting them the \code{S3:DeleteBucketWebsite} permission.
 
-For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
+For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
 The following operations are related to
 \code{\link[=s3_delete_bucket_website]{delete_bucket_website}}:

@@ -10,6 +10,31 @@ codedeploy_batch_get_on_premises_instances(instanceNames)
 \item{instanceNames}{[required] The names of the on-premises instances about which to get information.
 The maximum number of instance names you can specify is 25.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  instanceInfos = list(
+    list(
+      instanceName = "string",
+      iamSessionArn = "string",
+      iamUserArn = "string",
+      instanceArn = "string",
+      registerTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      deregisterTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about one or more on-premises instances. The maximum
 number of on-premises instances that can be returned is 25.

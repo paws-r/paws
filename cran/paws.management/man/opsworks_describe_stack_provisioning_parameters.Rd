@@ -9,6 +9,15 @@ opsworks_describe_stack_provisioning_parameters(StackId)
 \arguments{
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AgentInstallerUrl = "string",
+  Parameters = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Requests a description of a stack's provisioning parameters.
 

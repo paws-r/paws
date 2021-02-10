@@ -13,6 +13,33 @@ mediapackage_configure_logs(EgressAccessLogs, Id, IngressAccessLogs)
 
 \item{IngressAccessLogs}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Description = "string",
+  EgressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  HlsIngest = list(
+    IngestEndpoints = list(
+      list(
+        Id = "string",
+        Password = "string",
+        Url = "string",
+        Username = "string"
+      )
+    )
+  ),
+  Id = "string",
+  IngressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Changes the Channel's properities to configure log subscription
 }

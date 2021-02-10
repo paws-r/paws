@@ -21,6 +21,9 @@ For example:
 To get the key ID and key ARN for a CMK, use
 \href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the state of a customer master key (CMK) to disabled. This change
 temporarily prevents use of the CMK for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.

@@ -52,6 +52,14 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 Choose an algorithm that is compatible with the type and size of the
 specified asymmetric CMK.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyId = "string",
+  Signature = raw,
+  SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+)
+}
+}
 \description{
 Creates a \href{https://en.wikipedia.org/wiki/Digital_signature}{digital signature} for a
 message or message digest by using the private key in an asymmetric CMK.

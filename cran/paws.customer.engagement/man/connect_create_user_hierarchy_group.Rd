@@ -15,6 +15,13 @@ created at level one if the parent group ID is null.}
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HierarchyGroupId = "string",
+  HierarchyGroupArn = "string"
+)
+}
+}
 \description{
 Creates a new user hierarchy group.
 }

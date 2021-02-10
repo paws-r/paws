@@ -22,6 +22,24 @@ if this is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Snapshots = list(
+    list(
+      DirectoryId = "string",
+      SnapshotId = "string",
+      Type = "Auto"|"Manual",
+      Name = "string",
+      Status = "Creating"|"Completed"|"Failed",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Obtains information about the directory snapshots that belong to this
 account.

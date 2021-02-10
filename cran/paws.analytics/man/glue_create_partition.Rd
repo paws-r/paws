@@ -18,6 +18,9 @@ created.}
 
 \item{PartitionInput}{[required] A \code{PartitionInput} structure defining the partition to be created.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new partition.
 }

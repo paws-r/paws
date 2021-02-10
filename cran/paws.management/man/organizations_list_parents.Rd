@@ -38,6 +38,18 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parents = list(
+    list(
+      Id = "string",
+      Type = "ROOT"|"ORGANIZATIONAL_UNIT"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the root or organizational units (OUs) that serve as the immediate
 parent of the specified child OU or account. This operation, along with

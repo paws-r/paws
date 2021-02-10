@@ -23,6 +23,23 @@ value of NextToken from the previous response to continue listing data.}
 members (including members who haven't been invited yet or have been
 disassociated).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Members = list(
+    list(
+      AccountId = "string",
+      DetectorId = "string",
+      MasterId = "string",
+      Email = "string",
+      RelationshipStatus = "string",
+      InvitedAt = "string",
+      UpdatedAt = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists details about all member accounts for the current GuardDuty
 administrator account.

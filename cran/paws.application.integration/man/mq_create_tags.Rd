@@ -11,6 +11,9 @@ mq_create_tags(ResourceArn, Tags)
 
 \item{Tags}{The key-value pair for the resource tag.}
 }
+\value{
+An empty list.
+}
 \description{
 Add a tag to a resource.
 }

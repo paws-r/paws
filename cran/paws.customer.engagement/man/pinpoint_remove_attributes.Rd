@@ -12,9 +12,32 @@ pinpoint_remove_attributes(ApplicationId, AttributeType,
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{AttributeType}{[required]  <p>The type of attribute or attributes to remove. Valid values are:</p> <ul><li><p>endpoint-custom-attributes - Custom attributes that describe endpoints, such as the date when an associated user opted in or out of receiving communications from you through a specific type of channel.</p></li> <li><p>endpoint-metric-attributes - Custom metrics that your app reports to Amazon Pinpoint for endpoints, such as the number of app sessions or the number of items left in a cart.</p></li> <li><p>endpoint-user-attributes - Custom attributes that describe users, such as first name, last name, and age.</p></li></ul>}
+\item{AttributeType}{[required] The type of attribute or attributes to remove. Valid values are:
+\itemize{
+\item endpoint-custom-attributes - Custom attributes that describe
+endpoints, such as the date when an associated user opted in or out
+of receiving communications from you through a specific type of
+channel.
+\item endpoint-metric-attributes - Custom metrics that your app reports to
+Amazon Pinpoint for endpoints, such as the number of app sessions or
+the number of items left in a cart.
+\item endpoint-user-attributes - Custom attributes that describe users,
+such as first name, last name, and age.
+}}
 
 \item{UpdateAttributesRequest}{[required]}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AttributesResource = list(
+    ApplicationId = "string",
+    AttributeType = "string",
+    Attributes = list(
+      "string"
+    )
+  )
+)
+}
 }
 \description{
 Removes one or more attributes, of the same attribute type, from all the

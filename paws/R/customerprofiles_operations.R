@@ -22,6 +22,17 @@ NULL
 #' @param Values &#91;required&#93; A list of key values.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyName = "string",
+#'   Values = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_profile_key(
@@ -82,6 +93,26 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' enable Amazon Connect Customer Profiles to send messages to the
 #' DeadLetterQueue.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   DefaultExpirationDays = 123,
+#'   DefaultEncryptionKey = "string",
+#'   DeadLetterQueueUrl = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -157,6 +188,14 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 #' @param MailingAddress The customer’s mailing address.
 #' @param BillingAddress The customer’s billing address.
 #' @param Attributes A key value pair of attributes of a customer profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -264,6 +303,14 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_domain(
@@ -301,6 +348,14 @@ customerprofiles_delete_domain <- function(DomainName) {
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Uri The URI of the S3 bucket or any other type of data source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -343,6 +398,14 @@ customerprofiles_delete_integration <- function(DomainName, Uri = NULL) {
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_profile(
@@ -384,6 +447,14 @@ customerprofiles_delete_profile <- function(ProfileId, DomainName) {
 #' @param KeyName &#91;required&#93; A searchable identifier of a customer profile.
 #' @param Values &#91;required&#93; A list of key values.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -432,6 +503,14 @@ customerprofiles_delete_profile_key <- function(ProfileId, KeyName, Values, Doma
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_profile_object(
@@ -478,6 +557,14 @@ customerprofiles_delete_profile_object <- function(ProfileId, ProfileObjectUniqu
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_profile_object_type(
@@ -515,6 +602,32 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 #' customerprofiles_get_domain(DomainName)
 #'
 #' @param DomainName &#91;required&#93; A unique name for the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   DefaultExpirationDays = 123,
+#'   DefaultEncryptionKey = "string",
+#'   DeadLetterQueueUrl = "string",
+#'   Stats = list(
+#'     ProfileCount = 123,
+#'     MeteringProfileCount = 123,
+#'     ObjectCount = 123,
+#'     TotalSize = 123
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -554,6 +667,25 @@ customerprofiles_get_domain <- function(DomainName) {
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Uri The URI of the S3 bucket or any other type of data source.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   Uri = "string",
+#'   ObjectTypeName = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_integration(
@@ -592,6 +724,47 @@ customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   TemplateId = "string",
+#'   ExpirationDays = 123,
+#'   EncryptionKey = "string",
+#'   AllowProfileCreation = TRUE|FALSE,
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER"|"PHONE_NUMBER"|"EMAIL_ADDRESS"|"NAME"
+#'     )
+#'   ),
+#'   Keys = list(
+#'     list(
+#'       list(
+#'         StandardIdentifiers = list(
+#'           "PROFILE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'         ),
+#'         FieldNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -637,6 +810,36 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #'
 #' @param TemplateId &#91;required&#93; A unique identifier for the object template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemplateId = "string",
+#'   SourceName = "string",
+#'   SourceObject = "string",
+#'   AllowProfileCreation = TRUE|FALSE,
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER"|"PHONE_NUMBER"|"EMAIL_ADDRESS"|"NAME"
+#'     )
+#'   ),
+#'   Keys = list(
+#'     list(
+#'       list(
+#'         StandardIdentifiers = list(
+#'           "PROFILE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'         ),
+#'         FieldNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_profile_object_type_template(
@@ -677,6 +880,30 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #' @param NextToken The pagination token from the previous ListAccountIntegrations API call.
 #' @param MaxResults The maximum number of objects returned per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       DomainName = "string",
+#'       Uri = "string",
+#'       ObjectTypeName = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -720,6 +947,28 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
 #' @param NextToken The pagination token from the previous ListDomain API call.
 #' @param MaxResults The maximum number of objects returned per page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       DomainName = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_domains(
@@ -759,6 +1008,30 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param NextToken The pagination token from the previous ListIntegrations API call.
 #' @param MaxResults The maximum number of objects returned per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       DomainName = "string",
+#'       Uri = "string",
+#'       ObjectTypeName = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -801,6 +1074,21 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
 #' @param NextToken The pagination token from the previous ListObjectTypeTemplates API call.
 #' @param MaxResults The maximum number of objects returned per page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       TemplateId = "string",
+#'       SourceName = "string",
+#'       SourceObject = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_profile_object_type_templates(
@@ -841,6 +1129,29 @@ customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of objects returned per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ObjectTypeName = "string",
+#'       Description = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -888,6 +1199,21 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ObjectTypeName = "string",
+#'       ProfileObjectUniqueKey = "string",
+#'       Object = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_profile_objects(
@@ -932,6 +1258,16 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource for which you want to view tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -975,6 +1311,25 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   Uri = "string",
+#'   ObjectTypeName = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1033,6 +1388,14 @@ customerprofiles_put_integration <- function(DomainName, Uri, ObjectTypeName, Ta
 #' @param Object &#91;required&#93; A string that is serialized from a JSON object.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileObjectUniqueKey = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_profile_object(
@@ -1088,6 +1451,47 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @param Fields A map of the name and ObjectType field.
 #' @param Keys A list of unique keys that can be used to map data to the profile.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   TemplateId = "string",
+#'   ExpirationDays = 123,
+#'   EncryptionKey = "string",
+#'   AllowProfileCreation = TRUE|FALSE,
+#'   Fields = list(
+#'     list(
+#'       Source = "string",
+#'       Target = "string",
+#'       ContentType = "STRING"|"NUMBER"|"PHONE_NUMBER"|"EMAIL_ADDRESS"|"NAME"
+#'     )
+#'   ),
+#'   Keys = list(
+#'     list(
+#'       list(
+#'         StandardIdentifiers = list(
+#'           "PROFILE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'         ),
+#'         FieldNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1159,11 +1563,91 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #' @param MaxResults The maximum number of objects returned per page.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param KeyName &#91;required&#93; A searchable identifier of a customer profile. The predefined keys you
-#' can use to search include: \\_account, \\_profileId, \\_fullName, \\_phone,
-#' \\_email, \\_ctrContactId, \\_marketoLeadId, \\_salesforceAccountId,
-#' \\_salesforceContactId, \\_zendeskUserId, \\_zendeskExternalId,
-#' \\_serviceNowSystemId.
+#' can use to search include: _account, _profileId, _fullName, _phone,
+#' _email, _ctrContactId, _marketoLeadId, _salesforceAccountId,
+#' _salesforceContactId, _zendeskUserId, _zendeskExternalId,
+#' _serviceNowSystemId.
 #' @param Values &#91;required&#93; A list of key values.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ProfileId = "string",
+#'       AccountNumber = "string",
+#'       AdditionalInformation = "string",
+#'       PartyType = "INDIVIDUAL"|"BUSINESS"|"OTHER",
+#'       BusinessName = "string",
+#'       FirstName = "string",
+#'       MiddleName = "string",
+#'       LastName = "string",
+#'       BirthDate = "string",
+#'       Gender = "MALE"|"FEMALE"|"UNSPECIFIED",
+#'       PhoneNumber = "string",
+#'       MobilePhoneNumber = "string",
+#'       HomePhoneNumber = "string",
+#'       BusinessPhoneNumber = "string",
+#'       EmailAddress = "string",
+#'       PersonalEmailAddress = "string",
+#'       BusinessEmailAddress = "string",
+#'       Address = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       ShippingAddress = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       MailingAddress = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       BillingAddress = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1226,6 +1710,9 @@ customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL
 #' @param resourceArn &#91;required&#93; The ARN of the resource that you're adding tags to.
 #' @param tags &#91;required&#93; The tags used to organize, track, or control access for this resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1269,6 +1756,9 @@ customerprofiles_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource from which you are removing tags.
 #' @param tagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1326,6 +1816,26 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' enable Amazon Connect Customer Profiles to send messages to the
 #' DeadLetterQueue.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   DefaultExpirationDays = 123,
+#'   DefaultEncryptionKey = "string",
+#'   DeadLetterQueueUrl = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1404,6 +1914,14 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @param MailingAddress The customer’s mailing address.
 #' @param BillingAddress The customer’s billing address.
 #' @param Attributes A key value pair of attributes of a customer profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

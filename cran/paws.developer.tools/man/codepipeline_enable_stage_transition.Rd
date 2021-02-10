@@ -20,6 +20,9 @@ processed by the actions in that stage (inbound) or whether already
 processed artifacts are allowed to transition to the next stage
 (outbound).}
 }
+\value{
+An empty list.
+}
 \description{
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
 }

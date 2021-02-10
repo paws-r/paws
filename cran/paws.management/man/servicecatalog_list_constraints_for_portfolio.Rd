@@ -24,6 +24,22 @@ servicecatalog_list_constraints_for_portfolio(AcceptLanguage,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConstraintDetails = list(
+    list(
+      ConstraintId = "string",
+      Type = "string",
+      Description = "string",
+      Owner = "string",
+      ProductId = "string",
+      PortfolioId = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists the constraints for the specified portfolio and product.
 }

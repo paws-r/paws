@@ -11,6 +11,16 @@ emr_add_instance_groups(InstanceGroups, JobFlowId)
 
 \item{JobFlowId}{[required] Job flow in which to add the instance groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobFlowId = "string",
+  InstanceGroupIds = list(
+    "string"
+  ),
+  ClusterArn = "string"
+)
+}
+}
 \description{
 Adds one or more instance groups to a running cluster.
 }

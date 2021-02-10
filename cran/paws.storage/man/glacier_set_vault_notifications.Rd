@@ -19,6 +19,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultNotificationConfig}{Provides options for specifying notification configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation configures notifications that will be sent when specific
 events happen to a vault. By default, you don't get any notifications.

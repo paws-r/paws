@@ -13,12 +13,12 @@ After a job deletion is completed, you may reuse this jobId when you
 create a new job. However, this is not recommended, and you must ensure
 that your devices are not using the jobId to refer to the deleted job.}
 
-\item{force}{(Optional) When true, you can delete a job which is "IN\\_PROGRESS".
+\item{force}{(Optional) When true, you can delete a job which is "IN_PROGRESS".
 Otherwise, you can only delete a job which is in a terminal state
 ("COMPLETED" or "CANCELED") or an exception will occur. The default is
 false.
 
-Deleting a job which is "IN\\_PROGRESS", will cause a device which is
+Deleting a job which is "IN_PROGRESS", will cause a device which is
 executing the job to be unable to access job information or update the
 job execution status. Use caution and ensure that each device executing
 a job which is deleted is able to recover to a valid state.}
@@ -33,16 +33,19 @@ format.
 
 The \code{namespaceId} feature is in public preview.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a job and its related job executions.
 
 Deleting a job may take time, depending on the number of job executions
 created for the job and various other factors. While the job is being
 deleted, the status of the job will be shown as
-"DELETION\\_IN\\_PROGRESS". Attempting to delete or cancel a job whose
-status is already "DELETION\\_IN\\_PROGRESS" will result in an error.
+"DELETION_IN_PROGRESS". Attempting to delete or cancel a job whose
+status is already "DELETION_IN_PROGRESS" will result in an error.
 
-Only 10 jobs may have status "DELETION\\_IN\\_PROGRESS" at the same time,
+Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time,
 or a LimitExceededException will occur.
 }
 \section{Request syntax}{

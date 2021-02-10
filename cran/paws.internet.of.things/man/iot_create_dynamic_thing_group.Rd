@@ -14,7 +14,7 @@ iot_create_dynamic_thing_group(thingGroupName, thingGroupProperties,
 
 \item{indexName}{The dynamic thing group index name.
 
-Currently one index is supported: "AWS\\_Things".}
+Currently one index is supported: "AWS_Things".}
 
 \item{queryString}{[required] The dynamic thing group search query string.
 
@@ -27,6 +27,17 @@ Currently one query version is supported: "2017-09-30". If not
 specified, the query version defaults to this value.}
 
 \item{tags}{Metadata which can be used to manage the dynamic thing group.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  thingGroupName = "string",
+  thingGroupArn = "string",
+  thingGroupId = "string",
+  indexName = "string",
+  queryString = "string",
+  queryVersion = "string"
+)
+}
 }
 \description{
 Creates a dynamic thing group.

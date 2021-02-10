@@ -22,6 +22,9 @@ workflow.}
 \item{input}{Data to attach to the \code{WorkflowExecutionSignaled} event in the target
 workflow execution's history.}
 }
+\value{
+An empty list.
+}
 \description{
 Records a \code{WorkflowExecutionSignaled} event in the workflow execution
 history and creates a decision task for the workflow execution

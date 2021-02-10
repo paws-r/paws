@@ -19,6 +19,9 @@ notification types supported by Amazon EC2 Auto Scaling, call the
 \code{\link[=autoscaling_describe_auto_scaling_notification_types]{describe_auto_scaling_notification_types}}
 API.}
 }
+\value{
+An empty list.
+}
 \description{
 Configures an Auto Scaling group to send notifications when specified
 events take place. Subscribers to the specified topic can have messages

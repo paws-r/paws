@@ -11,6 +11,52 @@ opsworks_describe_stacks(StackIds)
 omit this parameter, \code{\link[=opsworks_describe_stacks]{describe_stacks}}
 returns a description of every stack.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Stacks = list(
+    list(
+      StackId = "string",
+      Name = "string",
+      Arn = "string",
+      Region = "string",
+      VpcId = "string",
+      Attributes = list(
+        "string"
+      ),
+      ServiceRoleArn = "string",
+      DefaultInstanceProfileArn = "string",
+      DefaultOs = "string",
+      HostnameTheme = "string",
+      DefaultAvailabilityZone = "string",
+      DefaultSubnetId = "string",
+      CustomJson = "string",
+      ConfigurationManager = list(
+        Name = "string",
+        Version = "string"
+      ),
+      ChefConfiguration = list(
+        ManageBerkshelf = TRUE|FALSE,
+        BerkshelfVersion = "string"
+      ),
+      UseCustomCookbooks = TRUE|FALSE,
+      UseOpsworksSecurityGroups = TRUE|FALSE,
+      CustomCookbooksSource = list(
+        Type = "git"|"svn"|"archive"|"s3",
+        Url = "string",
+        Username = "string",
+        Password = "string",
+        SshKey = "string",
+        Revision = "string"
+      ),
+      DefaultSshKeyName = "string",
+      CreatedAt = "string",
+      DefaultRootDeviceType = "ebs"|"instance-store",
+      AgentVersion = "string"
+    )
+  )
+)
+}
+}
 \description{
 Requests a description of one or more stacks.
 

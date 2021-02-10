@@ -19,6 +19,17 @@ want to retrieve.}
 
 \item{MaxResults}{The maximum number of results to return in response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttributeValues = list(
+    list(
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of attribute values. Attibutes are similar to the details
 in a Price List API offer file. For a list of available attributes, see

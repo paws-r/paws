@@ -69,6 +69,40 @@ returned in a single call.}
 results are returned in descending order of the start or the close time
 of the executions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  executionInfos = list(
+    list(
+      execution = list(
+        workflowId = "string",
+        runId = "string"
+      ),
+      workflowType = list(
+        name = "string",
+        version = "string"
+      ),
+      startTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      closeTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      executionStatus = "OPEN"|"CLOSED",
+      closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
+      parent = list(
+        workflowId = "string",
+        runId = "string"
+      ),
+      tagList = list(
+        "string"
+      ),
+      cancelRequested = TRUE|FALSE
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns a list of closed workflow executions in the specified domain
 that meet the filtering criteria. The results may be split into multiple

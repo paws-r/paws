@@ -19,6 +19,9 @@ servicecatalog_disassociate_product_from_portfolio(AcceptLanguage,
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the specified product from the specified portfolio.
 

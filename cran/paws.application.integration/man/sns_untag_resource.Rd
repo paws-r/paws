@@ -11,6 +11,9 @@ sns_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The list of tag keys to remove from the specified topic.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove tags from the specified Amazon SNS topic. For an overview, see
 \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Tags} in the

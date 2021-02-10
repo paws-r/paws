@@ -15,6 +15,31 @@ elasticsearchservice_get_upgrade_history(DomainName, MaxResults,
 
 \item{NextToken}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UpgradeHistories = list(
+    list(
+      UpgradeName = "string",
+      StartTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpgradeStatus = "IN_PROGRESS"|"SUCCEEDED"|"SUCCEEDED_WITH_ISSUES"|"FAILED",
+      StepsList = list(
+        list(
+          UpgradeStep = "PRE_UPGRADE_CHECK"|"SNAPSHOT"|"UPGRADE",
+          UpgradeStepStatus = "IN_PROGRESS"|"SUCCEEDED"|"SUCCEEDED_WITH_ISSUES"|"FAILED",
+          Issues = list(
+            "string"
+          ),
+          ProgressPercent = 123.0
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the complete history of the last 10 upgrades that were
 performed on the domain.

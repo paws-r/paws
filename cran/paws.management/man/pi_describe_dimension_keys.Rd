@@ -90,6 +90,36 @@ included in the response so that the remaining results can be retrieved.}
 parameter is specified, the response includes only records beyond the
 token, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AlignedStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  AlignedEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PartitionKeys = list(
+    list(
+      Dimensions = list(
+        "string"
+      )
+    )
+  ),
+  Keys = list(
+    list(
+      Dimensions = list(
+        "string"
+      ),
+      Total = 123.0,
+      Partitions = list(
+        123.0
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 For a specific time period, retrieve the top \code{N} dimension keys for a
 metric.

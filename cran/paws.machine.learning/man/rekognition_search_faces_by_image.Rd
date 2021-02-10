@@ -40,6 +40,36 @@ If you specify \code{NONE}, no filtering is performed. The default value is
 To use quality filtering, the collection you are using must be
 associated with version 3 of the face model or higher.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SearchedFaceBoundingBox = list(
+    Width = 123.0,
+    Height = 123.0,
+    Left = 123.0,
+    Top = 123.0
+  ),
+  SearchedFaceConfidence = 123.0,
+  FaceMatches = list(
+    list(
+      Similarity = 123.0,
+      Face = list(
+        FaceId = "string",
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        ImageId = "string",
+        ExternalImageId = "string",
+        Confidence = 123.0
+      )
+    )
+  ),
+  FaceModelVersion = "string"
+)
+}
+}
 \description{
 For a given input image, first detects the largest face in the image,
 and then searches the specified collection for matching faces. The

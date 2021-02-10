@@ -14,6 +14,15 @@ To get a page token, perform an initial
 results are paginated, the response will return a next page token that
 you can specify as the page token in a subsequent request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  activeNames = list(
+    "string"
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns the names of all active (not deleted) resources.
 }

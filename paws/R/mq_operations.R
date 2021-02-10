@@ -16,24 +16,61 @@ NULL
 #'   PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users)
 #'
 #' @param AuthenticationStrategy The authentication strategy used to secure the broker.
-#' @param AutoMinorVersionUpgrade Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
-#' @param BrokerName Required. The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
+#' @param AutoMinorVersionUpgrade Required. Enables automatic upgrades to new minor versions for brokers,
+#' as Apache releases the versions. The automatic upgrades occur during the
+#' maintenance window of the broker or after a manual broker reboot.
+#' @param BrokerName Required. The name of the broker. This value must be unique in your AWS
+#' account, 1-50 characters long, must contain only letters, numbers,
+#' dashes, and underscores, and must not contain whitespaces, brackets,
+#' wildcard characters, or special characters.
 #' @param Configuration A list of information about the configuration.
-#' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon MQ passes your ID with the API action. Note: We recommend using a Universally Unique Identifier (UUID) for the creatorRequestId. You may omit the creatorRequestId if your application doesn't require idempotency.
+#' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon
+#' MQ passes your ID with the API action. Note: We recommend using a
+#' Universally Unique Identifier (UUID) for the creatorRequestId. You may
+#' omit the creatorRequestId if your application doesn't require
+#' idempotency.
 #' @param DeploymentMode Required. The deployment mode of the broker.
 #' @param EncryptionOptions Encryption options for the broker.
-#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.
-#' @param EngineVersion Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports
+#' ACTIVEMQ and RABBITMQ.
+#' @param EngineVersion Required. The version of the broker engine. For a list of supported
+#' engine versions, see
+#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param HostInstanceType Required. The broker's instance type.
-#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize connections to the broker.
+#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize
+#' connections to the broker.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
-#' @param PubliclyAccessible Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.
-#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
+#' @param PubliclyAccessible Required. Enables connections from applications outside of the VPC that
+#' hosts the broker's subnets.
+#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes
+#' connections to brokers.
 #' @param StorageType The broker's storage type.
-#' @param SubnetIds The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when deployed with public accessibility, deployment without public accessibility requires at least one subnet.
+#' @param SubnetIds The list of groups that define which subnets and IP ranges the broker
+#' can use from different Availability Zones. A SINGLE_INSTANCE deployment
+#' requires one subnet (for example, the default subnet). An
+#' ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A
+#' CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when
+#' deployed with public accessibility, deployment without public
+#' accessibility requires at least one subnet.
 #' @param Tags Create tags when creating the broker.
-#' @param Users Required. The list of broker users (persons or applications) who can access queues and topics. For RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned. All subsequent broker users are created by making RabbitMQ API calls directly to brokers or via the RabbitMQ Web Console. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+#' @param Users Required. The list of broker users (persons or applications) who can
+#' access queues and topics. For RabbitMQ brokers, one and only one
+#' administrative user is accepted and created when a broker is first
+#' provisioned. All subsequent broker users are created by making RabbitMQ
+#' API calls directly to brokers or via the RabbitMQ Web Console. This
+#' value can contain only alphanumeric characters, dashes, periods,
+#' underscores, and tildes (- . _ ~). This value must be 2-100 characters
+#' long.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BrokerArn = "string",
+#'   BrokerId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -125,17 +162,44 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' Creates a new configuration for the specified configuration name
 #'
 #' @description
-#' Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
+#' Creates a new configuration for the specified configuration name. Amazon
+#' MQ uses the default configuration (the engine type and version).
 #'
 #' @usage
 #' mq_create_configuration(AuthenticationStrategy, EngineType,
 #'   EngineVersion, Name, Tags)
 #'
 #' @param AuthenticationStrategy The authentication strategy associated with the configuration.
-#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.
-#' @param EngineVersion Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
-#' @param Name Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
+#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports
+#' ACTIVEMQ and RABBITMQ.
+#' @param EngineVersion Required. The version of the broker engine. For a list of supported
+#' engine versions, see
+#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+#' @param Name Required. The name of the configuration. This value can contain only
+#' alphanumeric characters, dashes, periods, underscores, and tildes (- .
+#' _ ~). This value must be 1-150 characters long.
 #' @param Tags Create tags when creating the configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   Created = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Id = "string",
+#'   LatestRevision = list(
+#'     Created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     Revision = 123
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -181,6 +245,9 @@ mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType = 
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param Tags The key-value pair for the resource tag.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_tags(
@@ -221,9 +288,19 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param ConsoleAccess Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
-#' @param Groups The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
-#' @param Password Required. The password of the user. This value must be at least 12 characters long, must contain at least 4 unique characters, and must not contain commas.
-#' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+#' @param Groups The list of groups (20 maximum) to which the ActiveMQ user belongs. This
+#' value can contain only alphanumeric characters, dashes, periods,
+#' underscores, and tildes (- . _ ~). This value must be 2-100 characters
+#' long.
+#' @param Password Required. The password of the user. This value must be at least 12
+#' characters long, must contain at least 4 unique characters, and must not
+#' contain commas.
+#' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
+#' alphanumeric characters, dashes, periods, underscores, and tildes (- .
+#' _ ~). This value must be 2-100 characters long.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -268,6 +345,14 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BrokerId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_broker(
@@ -305,6 +390,9 @@ mq_delete_broker <- function(BrokerId) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param TagKeys &#91;required&#93; An array of tag keys to delete
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -345,7 +433,12 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
 #' mq_delete_user(BrokerId, Username)
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
-#' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+#' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
+#' alphanumeric characters, dashes, periods, underscores, and tildes (- .
+#' _ ~). This value must be 2-100 characters long.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -383,7 +476,125 @@ mq_delete_user <- function(BrokerId, Username) {
 #' @usage
 #' mq_describe_broker(BrokerId)
 #'
-#' @param BrokerId &#91;required&#93; The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
+#' @param BrokerId &#91;required&#93; The name of the broker. This value must be unique in your AWS account,
+#' 1-50 characters long, must contain only letters, numbers, dashes, and
+#' underscores, and must not contain whitespaces, brackets, wildcard
+#' characters, or special characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AutoMinorVersionUpgrade = TRUE|FALSE,
+#'   BrokerArn = "string",
+#'   BrokerId = "string",
+#'   BrokerInstances = list(
+#'     list(
+#'       ConsoleURL = "string",
+#'       Endpoints = list(
+#'         "string"
+#'       ),
+#'       IpAddress = "string"
+#'     )
+#'   ),
+#'   BrokerName = "string",
+#'   BrokerState = "CREATION_IN_PROGRESS"|"CREATION_FAILED"|"DELETION_IN_PROGRESS"|"RUNNING"|"REBOOT_IN_PROGRESS",
+#'   Configurations = list(
+#'     Current = list(
+#'       Id = "string",
+#'       Revision = 123
+#'     ),
+#'     History = list(
+#'       list(
+#'         Id = "string",
+#'         Revision = 123
+#'       )
+#'     ),
+#'     Pending = list(
+#'       Id = "string",
+#'       Revision = 123
+#'     )
+#'   ),
+#'   Created = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ"|"CLUSTER_MULTI_AZ",
+#'   EncryptionOptions = list(
+#'     KmsKeyId = "string",
+#'     UseAwsOwnedKey = TRUE|FALSE
+#'   ),
+#'   EngineType = "ACTIVEMQ"|"RABBITMQ",
+#'   EngineVersion = "string",
+#'   HostInstanceType = "string",
+#'   LdapServerMetadata = list(
+#'     Hosts = list(
+#'       "string"
+#'     ),
+#'     RoleBase = "string",
+#'     RoleName = "string",
+#'     RoleSearchMatching = "string",
+#'     RoleSearchSubtree = TRUE|FALSE,
+#'     ServiceAccountUsername = "string",
+#'     UserBase = "string",
+#'     UserRoleName = "string",
+#'     UserSearchMatching = "string",
+#'     UserSearchSubtree = TRUE|FALSE
+#'   ),
+#'   Logs = list(
+#'     Audit = TRUE|FALSE,
+#'     AuditLogGroup = "string",
+#'     General = TRUE|FALSE,
+#'     GeneralLogGroup = "string",
+#'     Pending = list(
+#'       Audit = TRUE|FALSE,
+#'       General = TRUE|FALSE
+#'     )
+#'   ),
+#'   MaintenanceWindowStartTime = list(
+#'     DayOfWeek = "MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"|"SUNDAY",
+#'     TimeOfDay = "string",
+#'     TimeZone = "string"
+#'   ),
+#'   PendingAuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   PendingEngineVersion = "string",
+#'   PendingHostInstanceType = "string",
+#'   PendingLdapServerMetadata = list(
+#'     Hosts = list(
+#'       "string"
+#'     ),
+#'     RoleBase = "string",
+#'     RoleName = "string",
+#'     RoleSearchMatching = "string",
+#'     RoleSearchSubtree = TRUE|FALSE,
+#'     ServiceAccountUsername = "string",
+#'     UserBase = "string",
+#'     UserRoleName = "string",
+#'     UserSearchMatching = "string",
+#'     UserSearchSubtree = TRUE|FALSE
+#'   ),
+#'   PendingSecurityGroups = list(
+#'     "string"
+#'   ),
+#'   PubliclyAccessible = TRUE|FALSE,
+#'   SecurityGroups = list(
+#'     "string"
+#'   ),
+#'   StorageType = "EBS"|"EFS",
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Users = list(
+#'     list(
+#'       PendingChange = "CREATE"|"UPDATE"|"DELETE",
+#'       Username = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -421,8 +632,29 @@ mq_describe_broker <- function(BrokerId) {
 #' mq_describe_broker_engine_types(EngineType, MaxResults, NextToken)
 #'
 #' @param EngineType Filter response by engine type.
-#' @param MaxResults The maximum number of engine types that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
-#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#' @param MaxResults The maximum number of engine types that Amazon MQ can return per page
+#' (20 by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should
+#' return. To request the first page, leave nextToken empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BrokerEngineTypes = list(
+#'     list(
+#'       EngineType = "ACTIVEMQ"|"RABBITMQ",
+#'       EngineVersions = list(
+#'         list(
+#'           Name = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -464,9 +696,38 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 #'
 #' @param EngineType Filter response by engine type.
 #' @param HostInstanceType Filter response by host instance type.
-#' @param MaxResults The maximum number of instance options that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
-#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#' @param MaxResults The maximum number of instance options that Amazon MQ can return per
+#' page (20 by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should
+#' return. To request the first page, leave nextToken empty.
 #' @param StorageType Filter response by storage type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BrokerInstanceOptions = list(
+#'     list(
+#'       AvailabilityZones = list(
+#'         list(
+#'           Name = "string"
+#'         )
+#'       ),
+#'       EngineType = "ACTIVEMQ"|"RABBITMQ",
+#'       HostInstanceType = "string",
+#'       StorageType = "EBS"|"EFS",
+#'       SupportedDeploymentModes = list(
+#'         "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ"|"CLUSTER_MULTI_AZ"
+#'       ),
+#'       SupportedEngineVersions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -509,6 +770,33 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   Created = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   EngineType = "ACTIVEMQ"|"RABBITMQ",
+#'   EngineVersion = "string",
+#'   Id = "string",
+#'   LatestRevision = list(
+#'     Created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     Revision = 123
+#'   ),
+#'   Name = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_configuration(
@@ -540,7 +828,8 @@ mq_describe_configuration <- function(ConfigurationId) {
 #' configuration
 #'
 #' @description
-#' Returns the specified configuration revision for the specified configuration.
+#' Returns the specified configuration revision for the specified
+#' configuration.
 #'
 #' @usage
 #' mq_describe_configuration_revision(ConfigurationId,
@@ -548,6 +837,19 @@ mq_describe_configuration <- function(ConfigurationId) {
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #' @param ConfigurationRevision &#91;required&#93; The revision of the configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationId = "string",
+#'   Created = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Data = "string",
+#'   Description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -586,7 +888,29 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
 #' mq_describe_user(BrokerId, Username)
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
-#' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+#' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
+#' alphanumeric characters, dashes, periods, underscores, and tildes (- .
+#' _ ~). This value must be 2-100 characters long.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BrokerId = "string",
+#'   ConsoleAccess = TRUE|FALSE,
+#'   Groups = list(
+#'     "string"
+#'   ),
+#'   Pending = list(
+#'     ConsoleAccess = TRUE|FALSE,
+#'     Groups = list(
+#'       "string"
+#'     ),
+#'     PendingChange = "CREATE"|"UPDATE"|"DELETE"
+#'   ),
+#'   Username = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -624,8 +948,32 @@ mq_describe_user <- function(BrokerId, Username) {
 #' @usage
 #' mq_list_brokers(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
-#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
+#' default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should
+#' return. To request the first page, leave nextToken empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BrokerSummaries = list(
+#'     list(
+#'       BrokerArn = "string",
+#'       BrokerId = "string",
+#'       BrokerName = "string",
+#'       BrokerState = "CREATION_IN_PROGRESS"|"CREATION_FAILED"|"DELETION_IN_PROGRESS"|"RUNNING"|"REBOOT_IN_PROGRESS",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ"|"CLUSTER_MULTI_AZ",
+#'       EngineType = "ACTIVEMQ"|"RABBITMQ",
+#'       HostInstanceType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -664,8 +1012,29 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
 #' mq_list_configuration_revisions(ConfigurationId, MaxResults, NextToken)
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
-#' @param MaxResults The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
-#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#' @param MaxResults The maximum number of configurations that Amazon MQ can return per page
+#' (20 by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should
+#' return. To request the first page, leave nextToken empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Revisions = list(
+#'     list(
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       Revision = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -704,8 +1073,43 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 #' @usage
 #' mq_list_configurations(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
-#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#' @param MaxResults The maximum number of configurations that Amazon MQ can return per page
+#' (20 by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should
+#' return. To request the first page, leave nextToken empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configurations = list(
+#'     list(
+#'       Arn = "string",
+#'       AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       EngineType = "ACTIVEMQ"|"RABBITMQ",
+#'       EngineVersion = "string",
+#'       Id = "string",
+#'       LatestRevision = list(
+#'         Created = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Description = "string",
+#'         Revision = 123
+#'       ),
+#'       Name = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -745,6 +1149,16 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags(
@@ -781,8 +1195,26 @@ mq_list_tags <- function(ResourceArn) {
 #' mq_list_users(BrokerId, MaxResults, NextToken)
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
-#' @param MaxResults The maximum number of ActiveMQ users that can be returned per page (20 by default). This value must be an integer from 5 to 100.
-#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#' @param MaxResults The maximum number of ActiveMQ users that can be returned per page (20
+#' by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should
+#' return. To request the first page, leave nextToken empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BrokerId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Users = list(
+#'     list(
+#'       PendingChange = "CREATE"|"UPDATE"|"DELETE",
+#'       Username = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -823,6 +1255,9 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reboot_broker(
@@ -861,14 +1296,59 @@ mq_reboot_broker <- function(BrokerId) {
 #'   LdapServerMetadata, Logs, SecurityGroups)
 #'
 #' @param AuthenticationStrategy The authentication strategy used to secure the broker.
-#' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+#' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as Apache
+#' releases the versions. The automatic upgrades occur during the
+#' maintenance window of the broker or after a manual broker reboot.
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Configuration A list of information about the configuration.
-#' @param EngineVersion The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
-#' @param HostInstanceType The host instance type of the broker to upgrade to. For a list of supported instance types, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
-#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize connections to the broker.
+#' @param EngineVersion The version of the broker engine. For a list of supported engine
+#' versions, see
+#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+#' @param HostInstanceType The host instance type of the broker to upgrade to. For a list of
+#' supported instance types, see
+#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html\#broker-instance-types
+#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize
+#' connections to the broker.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
-#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
+#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes
+#' connections to brokers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   AutoMinorVersionUpgrade = TRUE|FALSE,
+#'   BrokerId = "string",
+#'   Configuration = list(
+#'     Id = "string",
+#'     Revision = 123
+#'   ),
+#'   EngineVersion = "string",
+#'   HostInstanceType = "string",
+#'   LdapServerMetadata = list(
+#'     Hosts = list(
+#'       "string"
+#'     ),
+#'     RoleBase = "string",
+#'     RoleName = "string",
+#'     RoleSearchMatching = "string",
+#'     RoleSearchSubtree = TRUE|FALSE,
+#'     ServiceAccountUsername = "string",
+#'     UserBase = "string",
+#'     UserRoleName = "string",
+#'     UserSearchMatching = "string",
+#'     UserSearchSubtree = TRUE|FALSE
+#'   ),
+#'   Logs = list(
+#'     Audit = TRUE|FALSE,
+#'     General = TRUE|FALSE
+#'   ),
+#'   SecurityGroups = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -939,6 +1419,33 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @param Data Required. The base64-encoded XML configuration.
 #' @param Description The description of the configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Created = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Id = "string",
+#'   LatestRevision = list(
+#'     Created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     Revision = 123
+#'   ),
+#'   Name = "string",
+#'   Warnings = list(
+#'     list(
+#'       AttributeName = "string",
+#'       ElementName = "string",
+#'       Reason = "DISALLOWED_ELEMENT_REMOVED"|"DISALLOWED_ATTRIBUTE_REMOVED"|"INVALID_ATTRIBUTE_VALUE_REMOVED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_configuration(
@@ -978,9 +1485,19 @@ mq_update_configuration <- function(ConfigurationId, Data = NULL, Description = 
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param ConsoleAccess Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
-#' @param Groups The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
-#' @param Password The password of the user. This value must be at least 12 characters long, must contain at least 4 unique characters, and must not contain commas.
-#' @param Username &#91;required&#93; Required. The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+#' @param Groups The list of groups (20 maximum) to which the ActiveMQ user belongs. This
+#' value can contain only alphanumeric characters, dashes, periods,
+#' underscores, and tildes (- . _ ~). This value must be 2-100 characters
+#' long.
+#' @param Password The password of the user. This value must be at least 12 characters
+#' long, must contain at least 4 unique characters, and must not contain
+#' commas.
+#' @param Username &#91;required&#93; Required. The username of the ActiveMQ user. This value can contain only
+#' alphanumeric characters, dashes, periods, underscores, and tildes (- .
+#' _ ~). This value must be 2-100 characters long.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

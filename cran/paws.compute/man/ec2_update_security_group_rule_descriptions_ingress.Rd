@@ -23,6 +23,12 @@ request.}
 
 \item{IpPermissions}{[required] The IP permissions for the security group rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Updates the description of an ingress (inbound) security group rule. You
 can replace an existing description, or add a description to a rule that

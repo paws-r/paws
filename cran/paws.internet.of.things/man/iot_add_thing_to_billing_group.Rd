@@ -16,6 +16,9 @@ iot_add_thing_to_billing_group(billingGroupName, billingGroupArn,
 
 \item{thingArn}{The ARN of the thing to be added to the billing group.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds a thing to a billing group.
 }

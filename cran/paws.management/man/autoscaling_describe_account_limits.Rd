@@ -7,6 +7,15 @@ AWS account}
 \usage{
 autoscaling_describe_account_limits()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MaxNumberOfAutoScalingGroups = 123,
+  MaxNumberOfLaunchConfigurations = 123,
+  NumberOfAutoScalingGroups = 123,
+  NumberOfLaunchConfigurations = 123
+)
+}
+}
 \description{
 Describes the current Amazon EC2 Auto Scaling resource quotas for your
 AWS account.

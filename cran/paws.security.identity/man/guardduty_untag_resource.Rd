@@ -11,6 +11,9 @@ guardduty_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The tag keys to remove from the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from a resource.
 }

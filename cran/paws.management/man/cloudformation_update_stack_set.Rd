@@ -236,6 +236,12 @@ changes to the template or parameters, AWS CloudFormation updates the
 stack instances in the specified accounts and Regions, while leaving all
 other stack instances with their existing stack instance status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Updates the stack set, and associated stack instances in the specified
 accounts and Regions.

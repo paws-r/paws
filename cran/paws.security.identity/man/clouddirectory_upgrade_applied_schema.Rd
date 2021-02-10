@@ -18,6 +18,13 @@ compatible or not. If schema compatibility fails, an exception would be
 thrown else the call would succeed but no changes will be saved. This
 parameter is optional.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UpgradedSchemaArn = "string",
+  DirectoryArn = "string"
+)
+}
+}
 \description{
 Upgrades a single directory in-place using the \code{PublishedSchemaArn} with
 schema updates found in \code{MinorVersion}. Backwards-compatible minor

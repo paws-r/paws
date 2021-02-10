@@ -13,6 +13,20 @@ cannot be returned in one response.}
 
 \item{maxResults}{The maximum number of results to return in a response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  userProfiles = list(
+    list(
+      userArn = "string",
+      displayName = "string",
+      emailAddress = "string",
+      sshPublicKey = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all the user profiles configured for your AWS account in AWS
 CodeStar.

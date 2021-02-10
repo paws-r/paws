@@ -16,6 +16,13 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Deletes the Amazon QuickSight user that is associated with the identity
 of the AWS Identity and Access Management (IAM) user or role that's

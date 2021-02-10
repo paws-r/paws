@@ -12,6 +12,9 @@ chime_disassociate_phone_number_from_user(AccountId, UserId)
 
 \item{UserId}{[required] The user ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the primary provisioned phone number from the specified
 Amazon Chime user.

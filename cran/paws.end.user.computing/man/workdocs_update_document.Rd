@@ -20,6 +20,9 @@ administrator credentials to access the API.}
 \item{ResourceState}{The resource state of the document. Only ACTIVE and RECYCLED are
 supported.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the specified attributes of a document. The user must have
 access to both the document and its parent folder, if applicable.

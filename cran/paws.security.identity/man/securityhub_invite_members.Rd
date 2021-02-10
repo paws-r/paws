@@ -11,6 +11,17 @@ securityhub_invite_members(AccountIds)
 \item{AccountIds}{[required] The list of account IDs of the AWS accounts to invite to Security Hub as
 members.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      ProcessingResult = "string"
+    )
+  )
+)
+}
+}
 \description{
 Invites other AWS accounts to become member accounts for the Security
 Hub master account that the invitation is sent from.

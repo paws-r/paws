@@ -16,6 +16,9 @@ lexmodelbuildingservice_delete_bot_channel_association(name, botName,
 \item{botAlias}{[required] An alias that points to the specific version of the Amazon Lex bot to
 which this association is being made.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the association between an Amazon Lex bot and a messaging
 platform.

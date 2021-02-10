@@ -36,6 +36,22 @@ account to copy or restore the DB cluster snapshot. If you specify
 \code{restore} attribute can still copy or restore a manual DB cluster
 snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshotAttributesResult = list(
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterSnapshotAttributes = list(
+      list(
+        AttributeName = "string",
+        AttributeValues = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds an attribute and values to, or removes an attribute and values
 from, a manual DB cluster snapshot.

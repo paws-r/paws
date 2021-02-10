@@ -9,6 +9,12 @@ storagegateway_disable_gateway(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Disables a tape gateway when the gateway is no longer functioning. For
 example, if your gateway VM is damaged, you can disable the gateway so

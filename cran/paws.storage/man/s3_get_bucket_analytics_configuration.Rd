@@ -18,6 +18,43 @@ retrieved.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnalyticsConfiguration = list(
+    Id = "string",
+    Filter = list(
+      Prefix = "string",
+      Tag = list(
+        Key = "string",
+        Value = "string"
+      ),
+      And = list(
+        Prefix = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    ),
+    StorageClassAnalysis = list(
+      DataExport = list(
+        OutputSchemaVersion = "V_1",
+        Destination = list(
+          S3BucketDestination = list(
+            Format = "CSV",
+            BucketAccountId = "string",
+            Bucket = "string",
+            Prefix = "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 This implementation of the GET operation returns an analytics
 configuration (identified by the analytics configuration ID) from the
@@ -26,11 +63,11 @@ bucket.
 To use this operation, you must have permissions to perform the
 \code{s3:GetAnalyticsConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
-For information about Amazon S3 analytics feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html}{Amazon S3 Analytics – Storage Class Analysis}
+For information about Amazon S3 analytics feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/analytics-storage-class.html}{Amazon S3 Analytics – Storage Class Analysis}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}

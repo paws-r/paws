@@ -14,6 +14,17 @@ want to delete.}
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes GuardDuty member accounts (to the current GuardDuty
 administrator account) specified by the account IDs.

@@ -28,6 +28,12 @@ To remove an instance from a placement group, specify an empty string
 
 \item{HostResourceGroupArn}{The ARN of the host resource group in which to place the instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies the placement attributes for a specified instance. You can do
 the following:

@@ -72,6 +72,59 @@ Results are sorted by \code{FilterVariable}.}
 
 \item{Limit}{The maximum number of \code{DataSource} to include in the result.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Results = list(
+    list(
+      DataSourceId = "string",
+      DataLocationS3 = "string",
+      DataRearrangement = "string",
+      CreatedByIamUser = "string",
+      CreatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      DataSizeInBytes = 123,
+      NumberOfFiles = 123,
+      Name = "string",
+      Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+      Message = "string",
+      RedshiftMetadata = list(
+        RedshiftDatabase = list(
+          DatabaseName = "string",
+          ClusterIdentifier = "string"
+        ),
+        DatabaseUserName = "string",
+        SelectSqlQuery = "string"
+      ),
+      RDSMetadata = list(
+        Database = list(
+          InstanceIdentifier = "string",
+          DatabaseName = "string"
+        ),
+        DatabaseUserName = "string",
+        SelectSqlQuery = "string",
+        ResourceRole = "string",
+        ServiceRole = "string",
+        DataPipelineId = "string"
+      ),
+      RoleARN = "string",
+      ComputeStatistics = TRUE|FALSE,
+      ComputeTime = 123,
+      FinishedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      StartedAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of \code{DataSource} that match the search criteria in the
 request.

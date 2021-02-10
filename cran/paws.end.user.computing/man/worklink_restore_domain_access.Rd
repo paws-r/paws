@@ -11,6 +11,9 @@ worklink_restore_domain_access(FleetArn, DomainName)
 
 \item{DomainName}{[required] The name of the domain.}
 }
+\value{
+An empty list.
+}
 \description{
 Moves a domain to ACTIVE status if it was in the INACTIVE status.
 }

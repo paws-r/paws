@@ -13,6 +13,13 @@ acm_get_certificate(CertificateArn)
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = "string",
+  CertificateChain = "string"
+)
+}
+}
 \description{
 Retrieves an Amazon-issued certificate and its certificate chain. The
 chain consists of the certificate of the issuing CA and the intermediate

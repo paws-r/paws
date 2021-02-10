@@ -13,6 +13,9 @@ datapipeline_deactivate_pipeline(pipelineId, cancelActive)
 which sets the state of any running objects to \code{CANCELED}. If this value
 is false, the pipeline is deactivated after all running objects finish.}
 }
+\value{
+An empty list.
+}
 \description{
 Deactivates the specified running pipeline. The pipeline is set to the
 \code{DEACTIVATING} state until the deactivation process completes.

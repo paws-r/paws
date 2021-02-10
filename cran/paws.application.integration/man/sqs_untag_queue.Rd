@@ -11,6 +11,9 @@ sqs_untag_queue(QueueUrl, TagKeys)
 
 \item{TagKeys}{[required] The list of tags to be removed from the specified queue.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove cost allocation tags from the specified Amazon SQS queue. For an
 overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}

@@ -11,6 +11,9 @@ sagemaker_delete_image_version(ImageName, Version)
 
 \item{Version}{[required] The version to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a version of a SageMaker image. The container image the version
 represents isn't deleted.

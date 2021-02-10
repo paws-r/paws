@@ -27,6 +27,14 @@ that you want to use during signing.}
 
 \item{tags}{Tags to be associated with the signing profile that is being created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  profileVersion = "string",
+  profileVersionArn = "string"
+)
+}
+}
 \description{
 Creates a signing profile. A signing profile is a code signing template
 that can be used to carry out a pre-defined signing job. For more

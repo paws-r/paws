@@ -24,6 +24,25 @@ information, see \href{https://docs.aws.amazon.com/organizations/latest/userguid
 in the \emph{AWS Organizations User Guide.}
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Organization = list(
+    Id = "string",
+    Arn = "string",
+    FeatureSet = "ALL"|"CONSOLIDATED_BILLING",
+    MasterAccountArn = "string",
+    MasterAccountId = "string",
+    MasterAccountEmail = "string",
+    AvailablePolicyTypes = list(
+      list(
+        Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+        Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an AWS organization. The account whose user is calling the
 \code{\link[=organizations_create_organization]{create_organization}} operation

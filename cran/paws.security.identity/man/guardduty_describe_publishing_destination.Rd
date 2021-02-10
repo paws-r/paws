@@ -13,6 +13,19 @@ to retrieve.}
 
 \item{DestinationId}{[required] The ID of the publishing destination to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DestinationId = "string",
+  DestinationType = "S3",
+  Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED",
+  PublishingFailureStartTimestamp = 123,
+  DestinationProperties = list(
+    DestinationArn = "string",
+    KmsKeyArn = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the publishing destination specified by the
 provided \code{destinationId}.

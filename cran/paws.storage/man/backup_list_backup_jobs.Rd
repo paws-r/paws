@@ -43,6 +43,51 @@ They consist of lowercase letters, numbers, and hyphens.}
 \item{ByAccountId}{The account ID to list the jobs from. Returns only backup jobs
 associated with the specified account ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupJobs = list(
+    list(
+      AccountId = "string",
+      BackupJobId = "string",
+      BackupVaultName = "string",
+      BackupVaultArn = "string",
+      RecoveryPointArn = "string",
+      ResourceArn = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompletionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      State = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED",
+      StatusMessage = "string",
+      PercentDone = "string",
+      BackupSizeInBytes = 123,
+      IamRoleArn = "string",
+      CreatedBy = list(
+        BackupPlanId = "string",
+        BackupPlanArn = "string",
+        BackupPlanVersion = "string",
+        BackupRuleId = "string"
+      ),
+      ExpectedCompletionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      StartBy = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceType = "string",
+      BytesTransferred = 123,
+      BackupOptions = list(
+        "string"
+      ),
+      BackupType = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of existing backup jobs for an authenticated account.
 }

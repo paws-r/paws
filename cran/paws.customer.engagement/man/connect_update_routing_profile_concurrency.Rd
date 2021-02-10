@@ -15,6 +15,9 @@ connect_update_routing_profile_concurrency(InstanceId, RoutingProfileId,
 
 \item{MediaConcurrencies}{[required] The channels agents can handle in the Contact Control Panel (CCP).}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the channels that agents can handle in the Contact Control Panel
 (CCP) for a routing profile.

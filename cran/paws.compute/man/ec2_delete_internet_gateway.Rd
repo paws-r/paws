@@ -14,6 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InternetGatewayId}{[required] The ID of the internet gateway.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified internet gateway. You must detach the internet
 gateway from the VPC before you can delete it.

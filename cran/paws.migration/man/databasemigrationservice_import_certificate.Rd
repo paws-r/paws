@@ -18,6 +18,29 @@ They can't end with a hyphen or contain two consecutive hyphens.}
 
 \item{Tags}{The tags associated with the certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = list(
+    CertificateIdentifier = "string",
+    CertificateCreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CertificatePem = "string",
+    CertificateWallet = raw,
+    CertificateArn = "string",
+    CertificateOwner = "string",
+    ValidFromDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ValidToDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    SigningAlgorithm = "string",
+    KeyLength = 123
+  )
+)
+}
+}
 \description{
 Uploads the specified certificate.
 }

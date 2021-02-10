@@ -23,6 +23,31 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  CacheSubnetGroups = list(
+    list(
+      CacheSubnetGroupName = "string",
+      CacheSubnetGroupDescription = "string",
+      VpcId = "string",
+      Subnets = list(
+        list(
+          SubnetIdentifier = "string",
+          SubnetAvailabilityZone = list(
+            Name = "string"
+          ),
+          SubnetOutpost = list(
+            SubnetOutpostArn = "string"
+          )
+        )
+      ),
+      ARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of cache subnet group descriptions. If a subnet group
 name is specified, the list contains only the description of that group.

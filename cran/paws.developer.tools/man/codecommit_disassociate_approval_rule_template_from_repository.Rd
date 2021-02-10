@@ -15,6 +15,9 @@ repository.}
 
 \item{repositoryName}{[required] The name of the repository you want to disassociate from the template.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the association between a template and a repository so that
 approval rules based on the template are not automatically created when

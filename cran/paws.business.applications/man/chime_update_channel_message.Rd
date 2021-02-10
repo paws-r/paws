@@ -15,6 +15,13 @@ chime_update_channel_message(ChannelArn, MessageId, Content, Metadata)
 
 \item{Metadata}{The metadata of the message being updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  MessageId = "string"
+)
+}
+}
 \description{
 Updates the content of a message.
 }

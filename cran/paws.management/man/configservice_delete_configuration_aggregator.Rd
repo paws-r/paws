@@ -11,6 +11,9 @@ configservice_delete_configuration_aggregator(
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified configuration aggregator and the aggregated data
 associated with the aggregator.

@@ -13,6 +13,9 @@ connect_disassociate_security_key(InstanceId, AssociationId)
 \item{AssociationId}{[required] The existing association identifier that uniquely identifies the
 resource type and storage config for the given instance ID.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

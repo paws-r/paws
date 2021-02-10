@@ -11,6 +11,26 @@ chime_regenerate_security_token(AccountId, BotId)
 
 \item{BotId}{[required] The bot ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Bot = list(
+    BotId = "string",
+    UserId = "string",
+    DisplayName = "string",
+    BotType = "ChatBot",
+    Disabled = TRUE|FALSE,
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    BotEmail = "string",
+    SecurityToken = "string"
+  )
+)
+}
+}
 \description{
 Regenerates the security token for a bot.
 }

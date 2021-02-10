@@ -12,6 +12,9 @@ administrator credentials to access the API.}
 
 \item{DocumentId}{[required] The ID of the document.}
 }
+\value{
+An empty list.
+}
 \description{
 Permanently deletes the specified document and its associated metadata.
 }

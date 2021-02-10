@@ -35,6 +35,9 @@ held in the dead-letter queue for further analysis or reprocessing.
 
 \item{AttributeValue}{The new value for the attribute in JSON format.}
 }
+\value{
+An empty list.
+}
 \description{
 Allows a subscription owner to set an attribute of the subscription to a
 new value.

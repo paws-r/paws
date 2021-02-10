@@ -15,7 +15,7 @@ s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
   ExpectedBucketOwner)
 }
 \arguments{
-\item{ACL}{The canned ACL to apply to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+\item{ACL}{The canned ACL to apply to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.
 
 This action is not supported by Amazon S3 on Outposts.}
 
@@ -28,7 +28,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -37,7 +37,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
@@ -64,7 +64,7 @@ headers) according to RFC 1864. This header can be used as a message
 integrity check to verify that the data is the same data that was
 originally sent. Although it is optional, we recommend using the
 Content-MD5 mechanism as an end-to-end integrity check. For more
-information about REST request authentication, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html}{REST Authentication}.}
+information about REST request authentication, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html}{REST Authentication}.}
 
 \item{ContentType}{A standard MIME type describing the format of the contents. For more
 information, see
@@ -74,7 +74,7 @@ information, see
 information, see
 \url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21}.}
 
-\item{GrantFullControl}{Gives the grantee READ, READ\\_ACP, and WRITE\\_ACP permissions on the
+\item{GrantFullControl}{Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
 
 This action is not supported by Amazon S3 on Outposts.}
@@ -102,13 +102,13 @@ Amazon S3 (for example, AES256, aws:kms).}
 created objects. The STANDARD storage class provides high durability and
 high availability. Depending on performance needs, you can specify a
 different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html}{Storage Classes}
+Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
 in the \emph{Amazon S3 Service Developer Guide}.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
 Amazon S3 stores the value of this header in the object metadata. For
-information about object metadata, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html}{Object Key and Metadata}.
+information about object metadata, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html}{Object Key and Metadata}.
 
 In the following example, the request header sets the redirect to an
 object (anotherPage.html) in the same bucket:
@@ -120,8 +120,8 @@ another website:
 
 \verb{x-amz-website-redirect-location: http://www.example.com/}
 
-For more information about website hosting in Amazon S3, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html}{How to Configure Website Page Redirects}.}
+For more information about website hosting in Amazon S3, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html}{How to Configure Website Page Redirects}.}
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
 example, AES256).}
@@ -170,11 +170,26 @@ parameters. (For example, "Key1=Value1")}
 \item{ObjectLockRetainUntilDate}{The date and time when you want this object's Object Lock to expire.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether a legal hold will be applied to this object. For more
-information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html}{Object Lock}.}
+information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Object Lock}.}
 
 \item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Expiration = "string",
+  ETag = "string",
+  ServerSideEncryption = "AES256"|"aws:kms",
+  VersionId = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKeyMD5 = "string",
+  SSEKMSKeyId = "string",
+  SSEKMSEncryptionContext = "string",
+  BucketKeyEnabled = TRUE|FALSE,
+  RequestCharged = "requester"
+)
+}
 }
 \description{
 Adds an object to a bucket. You must have WRITE permissions on a bucket
@@ -198,7 +213,7 @@ value.
 
 The \code{Content-MD5} header is required for any request to upload an object
 with a retention period configured using Amazon S3 Object Lock. For more
-information about Amazon S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html}{Amazon S3 Object Lock Overview}
+information about Amazon S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html}{Amazon S3 Object Lock Overview}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Server-side Encryption}
@@ -207,11 +222,11 @@ You can optionally request server-side encryption. With server-side
 encryption, Amazon S3 encrypts your data as it writes it to disks in its
 data centers and decrypts the data when you access it. You have the
 option to provide your own encryption key or use AWS managed encryption
-keys (SSE-S3 or SSE-KMS). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}.
+keys (SSE-S3 or SSE-KMS). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html}{Using Server-Side Encryption}.
 
 If you request server-side encryption using AWS Key Management Service
 (SSE-KMS), you can enable an S3 Bucket Key at the object-level. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html}{Amazon S3 Bucket Keys}
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Access Control List (ACL)-Specific Request Headers}
@@ -220,8 +235,8 @@ You can use headers to grant ACL- based permissions. By default, all
 objects are private. Only the owner has full access control. When adding
 a new object, you can grant permissions to individual AWS accounts or to
 predefined groups defined by Amazon S3. These permissions are then added
-to the ACL on the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-using-rest-api.html}{Managing ACLs Using the REST API}.
+to the ACL on the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access Control List (ACL) Overview}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/managing-acls.html}{Managing ACLs Using the REST API}.
 
 \strong{Storage Class Options}
 
@@ -229,7 +244,7 @@ By default, Amazon S3 uses the STANDARD Storage Class to store newly
 created objects. The STANDARD storage class provides high durability and
 high availability. Depending on performance needs, you can specify a
 different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html}{Storage Classes}
+Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
 in the \emph{Amazon S3 Service Developer Guide}.
 
 \strong{Versioning}
@@ -240,7 +255,7 @@ ID in the response. When you enable versioning for a bucket, if Amazon
 S3 receives multiple write requests for the same object simultaneously,
 it stores all of the objects.
 
-For more information about versioning, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/AddingObjectstoVersioningEnabledBuckets.html}{Adding Objects to Versioning Enabled Buckets}.
+For more information about versioning, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/AddingObjectstoVersioningEnabledBuckets.html}{Adding Objects to Versioning Enabled Buckets}.
 For information about returning the versioning state of a bucket, see
 \code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}.
 

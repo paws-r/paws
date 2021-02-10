@@ -21,6 +21,24 @@ The default is 100.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationConfigRuleDetailedStatus = list(
+    list(
+      AccountId = "string",
+      ConfigRuleName = "string",
+      MemberAccountRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+      ErrorCode = "string",
+      ErrorMessage = "string",
+      LastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns detailed status for each member account within an organization
 for a given organization config rule.

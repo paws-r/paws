@@ -16,6 +16,9 @@ NULL
 #' associated.
 #' @param configurationIds &#91;required&#93; The ID of each configuration item to be associated with an application.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_configuration_items_to_application(
@@ -66,6 +69,20 @@ applicationdiscoveryservice_associate_configuration_items_to_application <- func
 #'
 #' @param importTaskIds &#91;required&#93; The IDs for the import tasks that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       importTaskId = "string",
+#'       errorCode = "NOT_FOUND"|"INTERNAL_SERVER_ERROR"|"OVER_LIMIT",
+#'       errorDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_import_data(
@@ -105,6 +122,14 @@ applicationdiscoveryservice_batch_delete_import_data <- function(importTaskIds) 
 #'
 #' @param name &#91;required&#93; Name of the application to be created.
 #' @param description Description of the application to be created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -149,7 +174,10 @@ applicationdiscoveryservice_create_application <- function(name, description = N
 #' Specify the tags that you want to create in a *key*-*value* format. For
 #' example:
 #' 
-#' `\{"key": "serverType", "value": "webServer"\}`
+#' `{"key": "serverType", "value": "webServer"}`
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -198,6 +226,9 @@ applicationdiscoveryservice_create_tags <- function(configurationIds, tags) {
 #'
 #' @param configurationIds &#91;required&#93; Configuration ID of an application to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_applications(
@@ -241,7 +272,10 @@ applicationdiscoveryservice_delete_applications <- function(configurationIds) {
 #' Specify the tags that you want to delete in a *key*-*value* format. For
 #' example:
 #' 
-#' `\{"key": "serverType", "value": "webServer"\}`
+#' `{"key": "serverType", "value": "webServer"}`
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -296,7 +330,7 @@ applicationdiscoveryservice_delete_tags <- function(configurationIds, tags = NUL
 #' @param filters You can filter the request using various logical operators and a
 #' *key*-*value* format. For example:
 #' 
-#' `\{"key": "collectionStatus", "value": "STARTED"\}`
+#' `{"key": "collectionStatus", "value": "STARTED"}`
 #' @param maxResults The total number of agents/Connectors to return in a single page of
 #' output. The maximum value is 100.
 #' @param nextToken Token to retrieve the next set of results. For example, if you
@@ -304,6 +338,33 @@ applicationdiscoveryservice_delete_tags <- function(configurationIds, tags = NUL
 #' set `DescribeAgentsRequest$maxResults` to 10, you received a set of 10
 #' results along with a token. Use that token in this query to get the next
 #' set of 10.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   agentsInfo = list(
+#'     list(
+#'       agentId = "string",
+#'       hostName = "string",
+#'       agentNetworkInfoList = list(
+#'         list(
+#'           ipAddress = "string",
+#'           macAddress = "string"
+#'         )
+#'       ),
+#'       connectorId = "string",
+#'       version = "string",
+#'       health = "HEALTHY"|"UNHEALTHY"|"RUNNING"|"UNKNOWN"|"BLACKLISTED"|"SHUTDOWN",
+#'       lastHealthPingTime = "string",
+#'       collectionStatus = "string",
+#'       agentType = "string",
+#'       registeredTime = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -376,6 +437,18 @@ applicationdiscoveryservice_describe_agents <- function(agentIds = NULL, filters
 #'
 #' @param configurationIds &#91;required&#93; One or more configuration IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurations = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_configurations(
@@ -422,6 +495,32 @@ applicationdiscoveryservice_describe_configurations <- function(configurationIds
 #' export descriptions returned.
 #' @param nextToken The token from the previous call to
 #' [`describe_export_tasks`][applicationdiscoveryservice_describe_export_tasks].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   descriptions = list(
+#'     list(
+#'       exportId = "string",
+#'       status = "START_IN_PROGRESS"|"START_FAILED"|"ACTIVE"|"ERROR"|"STOP_IN_PROGRESS"|"STOP_FAILED"|"INACTIVE",
+#'       statusDetail = "string",
+#'       s3Bucket = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       dataSource = "AGENT",
+#'       schemaStorageConfig = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -470,6 +569,32 @@ applicationdiscoveryservice_describe_continuous_exports <- function(exportIds = 
 #' @param maxResults A number between 1 and 100 specifying the maximum number of continuous
 #' export descriptions returned.
 #' @param nextToken The token from the previous call to describe-export-tasks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   exportsInfo = list(
+#'     list(
+#'       exportId = "string",
+#'       exportStatus = "FAILED"|"SUCCEEDED"|"IN_PROGRESS",
+#'       statusMessage = "string",
+#'       configurationsDownloadUrl = "string",
+#'       exportRequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       isTruncated = TRUE|FALSE,
+#'       requestedStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       requestedEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -530,6 +655,32 @@ applicationdiscoveryservice_describe_export_configurations <- function(exportIds
 #' results that returned the `nextToken` value. This value is null when
 #' there are no more results to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   exportsInfo = list(
+#'     list(
+#'       exportId = "string",
+#'       exportStatus = "FAILED"|"SUCCEEDED"|"IN_PROGRESS",
+#'       statusMessage = "string",
+#'       configurationsDownloadUrl = "string",
+#'       exportRequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       isTruncated = TRUE|FALSE,
+#'       requestedStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       requestedEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_export_tasks(
@@ -589,6 +740,37 @@ applicationdiscoveryservice_describe_export_tasks <- function(exportIds = NULL, 
 #' @param maxResults The maximum number of results that you want this request to return, up
 #' to 100.
 #' @param nextToken The token to request a specific page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   tasks = list(
+#'     list(
+#'       importTaskId = "string",
+#'       clientRequestToken = "string",
+#'       name = "string",
+#'       importUrl = "string",
+#'       status = "IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_COMPLETE_WITH_ERRORS"|"IMPORT_FAILED"|"IMPORT_FAILED_SERVER_LIMIT_EXCEEDED"|"IMPORT_FAILED_RECORD_LIMIT_EXCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"DELETE_FAILED_LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+#'       importRequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       importCompletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       importDeletedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       serverImportSuccess = 123,
+#'       serverImportFailure = 123,
+#'       applicationImportSuccess = 123,
+#'       applicationImportFailure = 123,
+#'       errorsAndFailedEntriesZip = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -660,6 +842,25 @@ applicationdiscoveryservice_describe_import_tasks <- function(filters = NULL, ma
 #' @param nextToken A token to start the list. Use this token to get the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       configurationType = "SERVER"|"PROCESS"|"CONNECTION"|"APPLICATION",
+#'       configurationId = "string",
+#'       key = "string",
+#'       value = "string",
+#'       timeOfCreation = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_tags(
@@ -708,6 +909,9 @@ applicationdiscoveryservice_describe_tags <- function(filters = NULL, maxResults
 #' @param applicationConfigurationId &#91;required&#93; Configuration ID of an application from which each item is
 #' disassociated.
 #' @param configurationIds &#91;required&#93; Configuration ID of each item to be disassociated from an application.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -758,6 +962,14 @@ applicationdiscoveryservice_disassociate_configuration_items_from_application <-
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   exportId = "string"
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -790,6 +1002,35 @@ applicationdiscoveryservice_export_configurations <- function() {
 #'
 #' @usage
 #' applicationdiscoveryservice_get_discovery_summary()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   servers = 123,
+#'   applications = 123,
+#'   serversMappedToApplications = 123,
+#'   serversMappedtoTags = 123,
+#'   agentSummary = list(
+#'     activeAgents = 123,
+#'     healthyAgents = 123,
+#'     blackListedAgents = 123,
+#'     shutdownAgents = 123,
+#'     unhealthyAgents = 123,
+#'     totalAgents = 123,
+#'     unknownAgents = 123
+#'   ),
+#'   connectorSummary = list(
+#'     activeConnectors = 123,
+#'     healthyConnectors = 123,
+#'     blackListedConnectors = 123,
+#'     shutdownConnectors = 123,
+#'     unhealthyConnectors = 123,
+#'     totalConnectors = 123,
+#'     unknownConnectors = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -832,7 +1073,7 @@ applicationdiscoveryservice_get_discovery_summary <- function() {
 #' @param filters You can filter the request using various logical operators and a
 #' *key*-*value* format. For example:
 #' 
-#' `\{"key": "serverType", "value": "webServer"\}`
+#' `{"key": "serverType", "value": "webServer"}`
 #' 
 #' For a complete list of filter options and guidance about using them with
 #' this action, see [Using the ListConfigurations
@@ -849,6 +1090,19 @@ applicationdiscoveryservice_get_discovery_summary <- function() {
 #' see [Using the ListConfigurations
 #' Action](https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations)
 #' in the *AWS Application Discovery Service User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurations = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -917,6 +1171,24 @@ applicationdiscoveryservice_list_configurations <- function(configurationType, f
 #' results along with a token. Use that token in this query to get the next
 #' set of 10.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   neighbors = list(
+#'     list(
+#'       sourceServerId = "string",
+#'       destinationServerId = "string",
+#'       destinationPort = 123,
+#'       transportProtocol = "string",
+#'       connectionsCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   knownDependencyCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_server_neighbors(
@@ -957,6 +1229,22 @@ applicationdiscoveryservice_list_server_neighbors <- function(configurationId, p
 #'
 #' @usage
 #' applicationdiscoveryservice_start_continuous_export()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   exportId = "string",
+#'   s3Bucket = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   dataSource = "AGENT",
+#'   schemaStorageConfig = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -999,6 +1287,20 @@ applicationdiscoveryservice_start_continuous_export <- function() {
 #' and you do not have permission to contact some of those
 #' agents/connectors, the system does not throw an exception. Instead, the
 #' system shows `Failed` in the *Description* field.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   agentsConfigurationStatus = list(
+#'     list(
+#'       agentId = "string",
+#'       operationSucceeded = TRUE|FALSE,
+#'       description = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1065,6 +1367,14 @@ applicationdiscoveryservice_start_data_collection_by_agent_ids <- function(agent
 #' @param endTime The end timestamp for exported data from the single Application
 #' Discovery Agent selected in the filters. If no value is specified,
 #' exported data includes the most recent data collected by the agent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   exportId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1172,6 +1482,34 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #' If you're using the AWS CLI, this URL is structured as follows:
 #' `s3://BucketName/ImportFileName.CSV`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   task = list(
+#'     importTaskId = "string",
+#'     clientRequestToken = "string",
+#'     name = "string",
+#'     importUrl = "string",
+#'     status = "IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_COMPLETE_WITH_ERRORS"|"IMPORT_FAILED"|"IMPORT_FAILED_SERVER_LIMIT_EXCEEDED"|"IMPORT_FAILED_RECORD_LIMIT_EXCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"DELETE_FAILED_LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+#'     importRequestTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     importCompletionTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     importDeletedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     serverImportSuccess = 123,
+#'     serverImportFailure = 123,
+#'     applicationImportSuccess = 123,
+#'     applicationImportFailure = 123,
+#'     errorsAndFailedEntriesZip = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_import_task(
@@ -1211,6 +1549,19 @@ applicationdiscoveryservice_start_import_task <- function(clientRequestToken = N
 #'
 #' @param exportId &#91;required&#93; The unique ID assigned to this export.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stopTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_continuous_export(
@@ -1247,6 +1598,20 @@ applicationdiscoveryservice_stop_continuous_export <- function(exportId) {
 #' applicationdiscoveryservice_stop_data_collection_by_agent_ids(agentIds)
 #'
 #' @param agentIds &#91;required&#93; The IDs of the agents or connectors from which to stop collecting data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   agentsConfigurationStatus = list(
+#'     list(
+#'       agentId = "string",
+#'       operationSucceeded = TRUE|FALSE,
+#'       description = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1289,6 +1654,9 @@ applicationdiscoveryservice_stop_data_collection_by_agent_ids <- function(agentI
 #' @param configurationId &#91;required&#93; Configuration ID of the application to be updated.
 #' @param name New name of the application to be updated.
 #' @param description New description of the application to be updated.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

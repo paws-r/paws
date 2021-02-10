@@ -23,6 +23,32 @@ inclusive.}
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  events = list(
+    list(
+      arn = "string",
+      service = "string",
+      eventTypeCode = "string",
+      eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+      eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+      region = "string",
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      endTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      statusCode = "open"|"closed"|"upcoming"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns information about events across your organization in AWS
 Organizations. You can use the\code{filters} parameter to specify the events

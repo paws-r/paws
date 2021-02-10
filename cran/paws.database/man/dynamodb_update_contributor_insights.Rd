@@ -15,6 +15,14 @@ dynamodb_update_contributor_insights(TableName, IndexName,
 
 \item{ContributorInsightsAction}{[required] Represents the contributor insights action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableName = "string",
+  IndexName = "string",
+  ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
+)
+}
+}
 \description{
 Updates the status for contributor insights for a specific table or
 index.

@@ -19,6 +19,9 @@ NULL
 #' idempotency of the request.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$complete_attachment_upload(
@@ -66,7 +69,7 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' For chat, you need to publish the following on the established websocket
 #' connection:
 #' 
-#' `\{"topic":"aws/subscribe","content":\{"topics":\\["aws/chat"\\]\}\}`
+#' `{"topic":"aws/subscribe","content":{"topics":["aws/chat"]}}`
 #' 
 #' Upon websocket URL expiry, as specified in the response ConnectionExpiry
 #' parameter, clients need to call this API again to obtain a new websocket
@@ -85,6 +88,21 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' The Participant Token as obtained from
 #' [StartChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html)
 #' API response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Websocket = list(
+#'     Url = "string",
+#'     ConnectionExpiry = "string"
+#'   ),
+#'   ConnectionCredentials = list(
+#'     ConnectionToken = "string",
+#'     Expiry = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -133,6 +151,9 @@ connectparticipant_create_participant_connection <- function(Type, ParticipantTo
 #' idempotency of the request.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disconnect_participant(
@@ -172,6 +193,15 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #'
 #' @param AttachmentId &#91;required&#93; A unique identifier for the attachment.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Url = "string",
+#'   UrlExpiry = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -228,6 +258,35 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' @param SortOrder The sort order for the records. Default: DESCENDING.
 #' @param StartPosition A filtering option for where to start.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InitialContactId = "string",
+#'   Transcript = list(
+#'     list(
+#'       AbsoluteTime = "string",
+#'       Content = "string",
+#'       ContentType = "string",
+#'       Id = "string",
+#'       Type = "TYPING"|"PARTICIPANT_JOINED"|"PARTICIPANT_LEFT"|"CHAT_ENDED"|"TRANSFER_SUCCEEDED"|"TRANSFER_FAILED"|"MESSAGE"|"EVENT"|"ATTACHMENT"|"CONNECTION_ACK",
+#'       ParticipantId = "string",
+#'       DisplayName = "string",
+#'       ParticipantRole = "AGENT"|"CUSTOMER"|"SYSTEM",
+#'       Attachments = list(
+#'         list(
+#'           ContentType = "string",
+#'           AttachmentId = "string",
+#'           AttachmentName = "string",
+#'           Status = "APPROVED"|"REJECTED"|"IN_PROGRESS"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -291,6 +350,15 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' idempotency of the request.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   AbsoluteTime = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_event(
@@ -341,6 +409,15 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' idempotency of the request.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   AbsoluteTime = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_message(
@@ -390,6 +467,21 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' @param AttachmentName &#91;required&#93; A case-sensitive name of the attachment being uploaded.
 #' @param ClientToken &#91;required&#93; A unique case sensitive identifier to support idempotency of request.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachmentId = "string",
+#'   UploadMetadata = list(
+#'     Url = "string",
+#'     UrlExpiry = "string",
+#'     HeadersToInclude = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

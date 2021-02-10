@@ -10,6 +10,9 @@ sagemaker_stop_hyper_parameter_tuning_job(HyperParameterTuningJobName)
 \arguments{
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job to stop.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a running hyperparameter tuning job and all running training jobs
 that the tuning job launched.

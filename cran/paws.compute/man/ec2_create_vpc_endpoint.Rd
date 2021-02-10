@@ -59,6 +59,57 @@ Default: \code{true}}
 
 \item{TagSpecifications}{The tags to associate with the endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcEndpoint = list(
+    VpcEndpointId = "string",
+    VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
+    VpcId = "string",
+    ServiceName = "string",
+    State = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
+    PolicyDocument = "string",
+    RouteTableIds = list(
+      "string"
+    ),
+    SubnetIds = list(
+      "string"
+    ),
+    Groups = list(
+      list(
+        GroupId = "string",
+        GroupName = "string"
+      )
+    ),
+    PrivateDnsEnabled = TRUE|FALSE,
+    RequesterManaged = TRUE|FALSE,
+    NetworkInterfaceIds = list(
+      "string"
+    ),
+    DnsEntries = list(
+      list(
+        DnsName = "string",
+        HostedZoneId = "string"
+      )
+    ),
+    CreationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    OwnerId = "string",
+    LastError = list(
+      Message = "string",
+      Code = "string"
+    )
+  ),
+  ClientToken = "string"
+)
+}
+}
 \description{
 Creates a VPC endpoint for a specified service. An endpoint enables you
 to create a private connection between your VPC and the service. The

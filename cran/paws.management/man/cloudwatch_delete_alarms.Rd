@@ -9,6 +9,9 @@ cloudwatch_delete_alarms(AlarmNames)
 \arguments{
 \item{AlarmNames}{[required] The alarms to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified alarms. You can delete up to 100 alarms in one
 operation. However, this total can include no more than one composite
