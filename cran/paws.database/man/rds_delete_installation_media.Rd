@@ -10,6 +10,21 @@ rds_delete_installation_media(InstallationMediaId)
 \arguments{
 \item{InstallationMediaId}{[required] The installation medium ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstallationMediaId = "string",
+  CustomAvailabilityZoneId = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  EngineInstallationMediaPath = "string",
+  OSInstallationMediaPath = "string",
+  Status = "string",
+  FailureCause = list(
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Deletes the installation medium for a DB engine that requires an
 on-premises customer provided license, such as Microsoft SQL Server.

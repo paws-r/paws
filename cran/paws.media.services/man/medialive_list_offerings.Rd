@@ -11,7 +11,8 @@ medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
 \arguments{
 \item{ChannelClass}{Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'}
 
-\item{ChannelConfiguration}{Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)}
+\item{ChannelConfiguration}{Filter to offerings that match the configuration of an existing channel,
+e.g. '2345678' (a channel ID)}
 
 \item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'}
 
@@ -32,6 +33,36 @@ medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
 \item{SpecialFeature}{Filter by special feature, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'}
 
 \item{VideoQuality}{Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Offerings = list(
+    list(
+      Arn = "string",
+      CurrencyCode = "string",
+      Duration = 123,
+      DurationUnits = "MONTHS",
+      FixedPrice = 123.0,
+      OfferingDescription = "string",
+      OfferingId = "string",
+      OfferingType = "NO_UPFRONT",
+      Region = "string",
+      ResourceSpecification = list(
+        ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
+        Codec = "MPEG2"|"AVC"|"HEVC"|"AUDIO"|"LINK",
+        MaximumBitrate = "MAX_10_MBPS"|"MAX_20_MBPS"|"MAX_50_MBPS",
+        MaximumFramerate = "MAX_30_FPS"|"MAX_60_FPS",
+        Resolution = "SD"|"HD"|"FHD"|"UHD",
+        ResourceType = "INPUT"|"OUTPUT"|"MULTIPLEX"|"CHANNEL",
+        SpecialFeature = "ADVANCED_AUDIO"|"AUDIO_NORMALIZATION",
+        VideoQuality = "STANDARD"|"ENHANCED"|"PREMIUM"
+      ),
+      UsagePrice = 123.0
+    )
+  )
+)
+}
 }
 \description{
 List offerings available for purchase.

@@ -18,6 +18,21 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceGroupName = "string",
+  LogPatterns = list(
+    list(
+      PatternSetName = "string",
+      PatternName = "string",
+      Pattern = "string",
+      Rank = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the log patterns in the specific log \code{LogPatternSet}.
 }

@@ -19,6 +19,15 @@ range as an IPv4 CIDR block).}
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ManagementCidrRanges = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 that you can use for the network management interface when you enable

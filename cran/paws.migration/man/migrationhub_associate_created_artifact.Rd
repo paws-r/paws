@@ -21,6 +21,9 @@ instance, RDS instance, etc.)}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a created artifact of an AWS cloud resource, the target
 receiving the migration, with the migration task performed by a

@@ -28,6 +28,12 @@ In the \code{Resource} section of the statement, specify the ARN for the rule
 that you want to share with another account. Specify the same ARN that
 you specified in \code{Arn}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReturnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Specifies an AWS rule that you want to share with another account, the
 account that you want to share the rule with, and the operations that

@@ -40,6 +40,34 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DhcpOptions = list(
+    list(
+      DhcpConfigurations = list(
+        list(
+          Key = "string",
+          Values = list(
+            list(
+              Value = "string"
+            )
+          )
+        )
+      ),
+      DhcpOptionsId = "string",
+      OwnerId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your DHCP options sets.
 

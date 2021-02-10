@@ -12,6 +12,18 @@ chime_batch_unsuspend_user(AccountId, UserIdList)
 
 \item{UserIdList}{[required] The request containing the user IDs to unsuspend.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserErrors = list(
+    list(
+      UserId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes the suspension from up to 50 previously suspended users for the
 specified Amazon Chime \code{EnterpriseLWA} account. Only users on

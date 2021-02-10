@@ -39,6 +39,26 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayPrefixListReferences = list(
+    list(
+      TransitGatewayRouteTableId = "string",
+      PrefixListId = "string",
+      PrefixListOwnerId = "string",
+      State = "pending"|"available"|"modifying"|"deleting",
+      Blackhole = TRUE|FALSE,
+      TransitGatewayAttachment = list(
+        TransitGatewayAttachmentId = "string",
+        ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+        ResourceId = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about the prefix list references in a specified transit
 gateway route table.

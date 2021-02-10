@@ -10,6 +10,9 @@ sagemaker_start_notebook_instance(NotebookInstanceName)
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the notebook instance to start.}
 }
+\value{
+An empty list.
+}
 \description{
 Launches an ML compute instance with the latest version of the libraries
 and attaches your ML storage volume. After configuring the notebook

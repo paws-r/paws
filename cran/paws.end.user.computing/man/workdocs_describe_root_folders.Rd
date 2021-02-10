@@ -15,6 +15,33 @@ workdocs_describe_root_folders(AuthenticationToken, Limit, Marker)
 \item{Marker}{The marker for the next set of results. (You received this marker from a
 previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Folders = list(
+    list(
+      Id = "string",
+      Name = "string",
+      CreatorId = "string",
+      ParentFolderId = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+      Signature = "string",
+      Labels = list(
+        "string"
+      ),
+      Size = 123,
+      LatestVersionSize = 123
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Describes the current user's special folders; the \code{RootFolder} and the
 \code{RecycleBin}. \code{RootFolder} is the root of user's files and folders and

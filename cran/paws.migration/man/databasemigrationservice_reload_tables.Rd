@@ -21,6 +21,12 @@ Valid values: data-reload, validate-only
 
 Default value is data-reload.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationTaskArn = "string"
+)
+}
+}
 \description{
 Reloads the target database table with the source data.
 }

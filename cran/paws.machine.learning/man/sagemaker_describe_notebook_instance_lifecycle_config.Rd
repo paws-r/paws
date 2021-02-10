@@ -10,6 +10,29 @@ sagemaker_describe_notebook_instance_lifecycle_config(
 \arguments{
 \item{NotebookInstanceLifecycleConfigName}{[required] The name of the lifecycle configuration to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotebookInstanceLifecycleConfigArn = "string",
+  NotebookInstanceLifecycleConfigName = "string",
+  OnCreate = list(
+    list(
+      Content = "string"
+    )
+  ),
+  OnStart = list(
+    list(
+      Content = "string"
+    )
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns a description of a notebook instance lifecycle configuration.
 

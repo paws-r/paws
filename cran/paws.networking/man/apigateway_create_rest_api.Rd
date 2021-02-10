@@ -39,17 +39,51 @@ a custom authorizer.
 \item{endpointConfiguration}{The endpoint configuration of this RestApi showing the endpoint types of
 the API.}
 
-\item{policy}{A stringified JSON policy document that applies to this RestApi regardless of the caller and <a>Method</a> configuration.}
+\item{policy}{A stringified JSON policy document that applies to this RestApi
+regardless of the caller and Method configuration.}
 
 \item{tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 
 \item{disableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
 \code{execute-api} endpoint. By default, clients can invoke your API with the
-default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
-To require that clients use a custom domain name to invoke your API,
-disable the default endpoint.}
+default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
+endpoint. To require that clients use a custom domain name to invoke
+your API, disable the default endpoint.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  version = "string",
+  warnings = list(
+    "string"
+  ),
+  binaryMediaTypes = list(
+    "string"
+  ),
+  minimumCompressionSize = 123,
+  apiKeySource = "HEADER"|"AUTHORIZER",
+  endpointConfiguration = list(
+    types = list(
+      "REGIONAL"|"EDGE"|"PRIVATE"
+    ),
+    vpcEndpointIds = list(
+      "string"
+    )
+  ),
+  policy = "string",
+  tags = list(
+    "string"
+  ),
+  disableExecuteApiEndpoint = TRUE|FALSE
+)
+}
 }
 \description{
 Creates a new RestApi resource.

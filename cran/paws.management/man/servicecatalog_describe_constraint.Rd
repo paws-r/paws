@@ -16,6 +16,21 @@ servicecatalog_describe_constraint(AcceptLanguage, Id)
 
 \item{Id}{[required] The identifier of the constraint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConstraintDetail = list(
+    ConstraintId = "string",
+    Type = "string",
+    Description = "string",
+    Owner = "string",
+    ProductId = "string",
+    PortfolioId = "string"
+  ),
+  ConstraintParameters = "string",
+  Status = "AVAILABLE"|"CREATING"|"FAILED"
+)
+}
+}
 \description{
 Gets information about the specified constraint.
 }

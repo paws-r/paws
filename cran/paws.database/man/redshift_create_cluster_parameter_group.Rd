@@ -35,6 +35,22 @@ the valid values. For example, a valid family name is "redshift-1.0".}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterParameterGroup = list(
+    ParameterGroupName = "string",
+    ParameterGroupFamily = "string",
+    Description = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an Amazon Redshift parameter group.
 

@@ -12,6 +12,21 @@ resources' classification types you want to update.}
 
 \item{s3ResourcesUpdate}{[required] The S3 resources whose classification types you want to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  failedS3Resources = list(
+    list(
+      failedItem = list(
+        bucketName = "string",
+        prefix = "string"
+      ),
+      errorCode = "string",
+      errorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the classification types for the specified S3 resources. If
 memberAccountId isn't specified, the action updates the classification

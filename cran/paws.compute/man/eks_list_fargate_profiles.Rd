@@ -29,6 +29,15 @@ results and a \code{nextToken} value if applicable.}
 parameter. Pagination continues from the end of the previous results
 that returned the \code{nextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  fargateProfileNames = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the AWS Fargate profiles associated with the specified cluster in
 your AWS account in the specified Region.

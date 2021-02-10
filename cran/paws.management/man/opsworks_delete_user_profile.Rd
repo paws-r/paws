@@ -9,6 +9,9 @@ opsworks_delete_user_profile(IamUserArn)
 \arguments{
 \item{IamUserArn}{[required] The user's IAM ARN. This can also be a federated user's ARN.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a user profile.
 

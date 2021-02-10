@@ -21,6 +21,35 @@ Default: There is no default value.}
 
 Default: There is no default value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackResourceDetail = list(
+    StackName = "string",
+    StackId = "string",
+    LogicalResourceId = "string",
+    PhysicalResourceId = "string",
+    ResourceType = "string",
+    LastUpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
+    ResourceStatusReason = "string",
+    Description = "string",
+    Metadata = "string",
+    DriftInformation = list(
+      StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
+      LastCheckTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    ModuleInfo = list(
+      TypeHierarchy = "string",
+      LogicalIdHierarchy = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a description of the specified resource in the specified stack.
 

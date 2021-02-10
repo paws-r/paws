@@ -17,6 +17,9 @@ To successfully call this API, you must own the identity.}
 
 \item{PolicyName}{[required] The name of the policy to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified sending authorization policy for the given
 identity (an email address or a domain). This API returns successfully

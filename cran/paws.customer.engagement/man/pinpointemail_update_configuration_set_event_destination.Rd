@@ -15,6 +15,9 @@ that you want to modify.}
 
 \item{EventDestination}{[required] An object that defines the event destination.}
 }
+\value{
+An empty list.
+}
 \description{
 Update the configuration of an event destination for a configuration
 set.

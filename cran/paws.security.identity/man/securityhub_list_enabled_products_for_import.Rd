@@ -18,6 +18,15 @@ response.}
 
 \item{MaxResults}{The maximum number of items to return in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProductSubscriptions = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all findings-generating solutions (products) that you are
 subscribed to receive findings from in Security Hub.

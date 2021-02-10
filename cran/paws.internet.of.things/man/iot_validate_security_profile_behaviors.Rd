@@ -10,6 +10,17 @@ iot_validate_security_profile_behaviors(behaviors)
 \item{behaviors}{[required] Specifies the behaviors that, when violated by a device (thing), cause
 an alert.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  valid = TRUE|FALSE,
+  validationErrors = list(
+    list(
+      errorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Validates a Device Defender security profile behaviors specification.
 }

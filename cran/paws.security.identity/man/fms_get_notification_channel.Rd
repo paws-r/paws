@@ -7,6 +7,13 @@ that is used to record AWS Firewall Manager SNS logs}
 \usage{
 fms_get_notification_channel()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnsTopicArn = "string",
+  SnsRoleName = "string"
+)
+}
+}
 \description{
 Information about the Amazon Simple Notification Service (SNS) topic
 that is used to record AWS Firewall Manager SNS logs.

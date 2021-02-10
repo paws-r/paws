@@ -15,6 +15,33 @@ results.}
 
 \item{thingTypeName}{The name of the thing type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingTypes = list(
+    list(
+      thingTypeName = "string",
+      thingTypeArn = "string",
+      thingTypeProperties = list(
+        thingTypeDescription = "string",
+        searchableAttributes = list(
+          "string"
+        )
+      ),
+      thingTypeMetadata = list(
+        deprecated = TRUE|FALSE,
+        deprecationDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        creationDate = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the existing thing types.
 }

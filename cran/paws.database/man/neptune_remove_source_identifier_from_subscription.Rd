@@ -16,6 +16,27 @@ source identifier from.}
 \strong{DB instance identifier} for a DB instance or the name of a security
 group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = "string",
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE,
+    EventSubscriptionArn = "string"
+  )
+)
+}
+}
 \description{
 Removes a source identifier from an existing event notification
 subscription.

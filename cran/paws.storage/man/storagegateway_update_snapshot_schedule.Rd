@@ -26,8 +26,14 @@ a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \\_ : / @. The maximum length of a tag's key is 128 characters, and
+= . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string"
+)
+}
 }
 \description{
 Updates a snapshot schedule configured for a gateway volume. This
@@ -66,7 +72,7 @@ svc$update_snapshot_schedule(
   Description = "Hourly snapshot",
   RecurrenceInHours = 1L,
   StartAt = 0L,
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 )
 }
 

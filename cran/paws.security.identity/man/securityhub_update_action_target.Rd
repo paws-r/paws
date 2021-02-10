@@ -14,6 +14,9 @@ securityhub_update_action_target(ActionTargetArn, Name, Description)
 
 \item{Description}{The updated description for the custom action target.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the name and description of a custom action target in Security
 Hub.

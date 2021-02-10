@@ -11,6 +11,9 @@ cloudformation_delete_stack_set(StackSetName)
 obtain this value by running
 \code{\link[=cloudformation_list_stack_sets]{list_stack_sets}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a stack set. Before you can delete a stack set, all of its
 member stack instances must be deleted. For more information about how

@@ -15,6 +15,9 @@ mturk_accept_qualification_request(QualificationRequestId, IntegerValue)
 the presence or absence of the Qualification as the basis for a HIT
 requirement.}
 }
+\value{
+An empty list.
+}
 \description{
 The \code{\link[=mturk_accept_qualification_request]{accept_qualification_request}}
 operation approves a Worker's request for a Qualification.

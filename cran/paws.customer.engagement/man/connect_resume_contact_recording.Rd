@@ -16,6 +16,9 @@ connect_resume_contact_recording(InstanceId, ContactId,
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 }
+\value{
+An empty list.
+}
 \description{
 When a contact is being recorded, and the recording has been suspended
 using SuspendContactRecording, this API resumes recording the call.

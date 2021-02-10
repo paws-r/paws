@@ -13,6 +13,26 @@ cloudsearchdomain_suggest(query, suggester, size)
 
 \item{size}{Specifies the maximum number of suggestions to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = list(
+    timems = 123,
+    rid = "string"
+  ),
+  suggest = list(
+    query = "string",
+    found = 123,
+    suggestions = list(
+      list(
+        suggestion = "string",
+        score = 123,
+        id = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves autocomplete suggestions for a partial query string. You can
 use suggestions enable you to display likely matches before users finish

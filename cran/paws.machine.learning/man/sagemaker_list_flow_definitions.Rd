@@ -24,6 +24,23 @@ items is more than the value specified in \code{MaxResults}, then a
 \code{NextToken} will be provided in the output that you can use to resume
 pagination.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowDefinitionSummaries = list(
+    list(
+      FlowDefinitionName = "string",
+      FlowDefinitionArn = "string",
+      FlowDefinitionStatus = "Initializing"|"Active"|"Failed"|"Deleting",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FailureReason = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns information about the flow definitions in your account.
 }

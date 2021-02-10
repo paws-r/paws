@@ -17,28 +17,39 @@ in the \emph{AWS Step Functions Developer Guide}.
 A name must \emph{not} contain:
 \itemize{
 \item white space
-\item brackets \verb{< > \\\{ \\\} \\\[ \\\]}
+\item brackets \verb{< > \{ \} [ ]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ & , ; : /}
+\item special characters \verb{\\" # \% \\ ^ | ~ \\` $ & , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }
 
 To enable logging with CloudWatch Logs, the name should only contain
-0-9, A-Z, a-z, - and \\_.}
+0-9, A-Z, a-z, - and _.
+
+[ ]: R:\%20}
 
 \item{input}{The string that contains the JSON input data for the execution, for
 example:
 
-\verb{"input": "\\\{\\"first_name\\" : \\"test\\"\\\}"}
+\verb{"input": "\{\\"first_name\\" : \\"test\\"\}"}
 
 If you don't include any JSON input data, you still must include the two
-braces, for example: \code{"input": "\\{\\}"}
+braces, for example: \code{"input": "{}"}
 
 Length constraints apply to the payload size, and are expressed as bytes
 in UTF-8 encoding.}
 
 \item{traceHeader}{Passes the AWS X-Ray trace header. The trace header can also be passed
 in the request payload.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  executionArn = "string",
+  startDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
 }
 \description{
 Starts a state machine execution.

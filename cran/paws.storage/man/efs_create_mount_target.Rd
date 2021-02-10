@@ -17,6 +17,21 @@ efs_create_mount_target(FileSystemId, SubnetId, IpAddress,
 \item{SecurityGroups}{Up to five VPC security group IDs, of the form \code{sg-xxxxxxxx}. These must
 be for the same VPC as subnet specified.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OwnerId = "string",
+  MountTargetId = "string",
+  FileSystemId = "string",
+  SubnetId = "string",
+  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+  IpAddress = "string",
+  NetworkInterfaceId = "string",
+  AvailabilityZoneId = "string",
+  AvailabilityZoneName = "string",
+  VpcId = "string"
+)
+}
+}
 \description{
 Creates a mount target for a file system. You can then mount the file
 system on EC2 instances by using the mount target.

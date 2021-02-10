@@ -29,6 +29,38 @@ administrator credentials to access the API.}
 \item{GrantPoweruserPrivileges}{Boolean value to determine whether the user is granted Poweruser
 privileges.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    Id = "string",
+    Username = "string",
+    EmailAddress = "string",
+    GivenName = "string",
+    Surname = "string",
+    OrganizationId = "string",
+    RootFolderId = "string",
+    RecycleBinFolderId = "string",
+    Status = "ACTIVE"|"INACTIVE"|"PENDING",
+    Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModifiedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    TimeZoneId = "string",
+    Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+    Storage = list(
+      StorageUtilizedInBytes = 123,
+      StorageRule = list(
+        StorageAllocatedInBytes = 123,
+        StorageType = "UNLIMITED"|"QUOTA"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates the specified attributes of the specified user, and grants or
 revokes administrative privileges to the Amazon WorkDocs site.

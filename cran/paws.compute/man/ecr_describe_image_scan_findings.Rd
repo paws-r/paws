@@ -36,6 +36,47 @@ and 1000. If this parameter is not used, then
 \code{\link[=ecr_describe_image_scan_findings]{describe_image_scan_findings}}
 returns up to 100 results and a \code{nextToken} value, if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  imageId = list(
+    imageDigest = "string",
+    imageTag = "string"
+  ),
+  imageScanStatus = list(
+    status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+    description = "string"
+  ),
+  imageScanFindings = list(
+    imageScanCompletedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    vulnerabilitySourceUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    findings = list(
+      list(
+        name = "string",
+        description = "string",
+        uri = "string",
+        severity = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"|"UNDEFINED",
+        attributes = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        )
+      )
+    ),
+    findingSeverityCounts = list(
+      123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the scan findings for the specified image.
 }

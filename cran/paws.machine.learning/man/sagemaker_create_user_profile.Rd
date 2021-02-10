@@ -27,6 +27,12 @@ unique per resource.}
 
 \item{UserSettings}{A collection of settings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserProfileArn = "string"
+)
+}
+}
 \description{
 Creates a user profile. A user profile represents a single user within a
 domain, and is the main way to reference a "person" for the purposes of

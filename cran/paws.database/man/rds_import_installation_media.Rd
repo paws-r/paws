@@ -49,6 +49,21 @@ with the specified DB engine.
 
 Example: \code{WindowsISO/en_windows_server_2016_x64_dvd_9327751.iso}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstallationMediaId = "string",
+  CustomAvailabilityZoneId = "string",
+  Engine = "string",
+  EngineVersion = "string",
+  EngineInstallationMediaPath = "string",
+  OSInstallationMediaPath = "string",
+  Status = "string",
+  FailureCause = list(
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Imports the installation media for a DB engine that requires an
 on-premises customer provided license, such as SQL Server.

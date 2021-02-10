@@ -18,6 +18,21 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateAliasList = list(
+    list(
+      AliasName = "string",
+      Arn = "string",
+      TemplateVersionNumber = 123
+    )
+  ),
+  Status = 123,
+  RequestId = "string",
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all the aliases of a template.
 }

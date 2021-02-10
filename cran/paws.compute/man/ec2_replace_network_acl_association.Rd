@@ -17,6 +17,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkAclId}{[required] The ID of the new network ACL to associate with the subnet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NewAssociationId = "string"
+)
+}
+}
 \description{
 Changes which network ACL a subnet is associated with. By default when
 you create a subnet, it's automatically associated with the default

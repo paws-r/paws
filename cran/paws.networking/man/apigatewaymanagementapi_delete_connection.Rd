@@ -9,6 +9,9 @@ apigatewaymanagementapi_delete_connection(ConnectionId)
 \arguments{
 \item{ConnectionId}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Delete the connection with the provided id.
 }

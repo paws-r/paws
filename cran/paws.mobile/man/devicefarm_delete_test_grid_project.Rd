@@ -11,6 +11,9 @@ devicefarm_delete_test_grid_project(projectArn)
 \code{\link[=devicefarm_create_test_grid_project]{create_test_grid_project}} or
 \code{\link[=devicefarm_list_test_grid_projects]{list_test_grid_projects}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Selenium testing project and all content generated under it.
 

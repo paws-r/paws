@@ -39,6 +39,13 @@ subnets
 with an AWS managed customer master key (CMK) by default. For more
 control, specify a customer managed CMK.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainArn = "string",
+  Url = "string"
+)
+}
+}
 \description{
 Creates a \code{Domain} used by Amazon SageMaker Studio. A domain consists of
 an associated Amazon Elastic File System (EFS) volume, a list of

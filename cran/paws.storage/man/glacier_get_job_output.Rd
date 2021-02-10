@@ -48,6 +48,18 @@ compare this value with the checksum you computed to ensure you have
 downloaded the entire archive content with no errors.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  body = raw,
+  checksum = "string",
+  status = 123,
+  contentRange = "string",
+  acceptRanges = "string",
+  contentType = "string",
+  archiveDescription = "string"
+)
+}
+}
 \description{
 This operation downloads the output of the job you initiated using
 \code{\link[=glacier_initiate_job]{initiate_job}}. Depending on the job type you
@@ -110,7 +122,7 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-ge
 # retrieval job that is identified by the job ID.
 svc$get_job_output(
   accountId = "-",
-  jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
+  jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW...",
   range = "",
   vaultName = "my-vaul"
 )

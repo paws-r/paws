@@ -9,6 +9,9 @@ emr_stop_notebook_execution(NotebookExecutionId)
 \arguments{
 \item{NotebookExecutionId}{[required] The unique identifier of the notebook execution.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a notebook execution.
 }

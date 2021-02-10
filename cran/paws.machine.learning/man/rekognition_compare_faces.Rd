@@ -41,6 +41,79 @@ blurry, or a face with a pose that's too extreme to use. If you specify
 To use quality filtering, the collection you are using must be
 associated with version 3 of the face model or higher.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SourceImageFace = list(
+    BoundingBox = list(
+      Width = 123.0,
+      Height = 123.0,
+      Left = 123.0,
+      Top = 123.0
+    ),
+    Confidence = 123.0
+  ),
+  FaceMatches = list(
+    list(
+      Similarity = 123.0,
+      Face = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        Confidence = 123.0,
+        Landmarks = list(
+          list(
+            Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+            X = 123.0,
+            Y = 123.0
+          )
+        ),
+        Pose = list(
+          Roll = 123.0,
+          Yaw = 123.0,
+          Pitch = 123.0
+        ),
+        Quality = list(
+          Brightness = 123.0,
+          Sharpness = 123.0
+        )
+      )
+    )
+  ),
+  UnmatchedFaces = list(
+    list(
+      BoundingBox = list(
+        Width = 123.0,
+        Height = 123.0,
+        Left = 123.0,
+        Top = 123.0
+      ),
+      Confidence = 123.0,
+      Landmarks = list(
+        list(
+          Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+          X = 123.0,
+          Y = 123.0
+        )
+      ),
+      Pose = list(
+        Roll = 123.0,
+        Yaw = 123.0,
+        Pitch = 123.0
+      ),
+      Quality = list(
+        Brightness = 123.0,
+        Sharpness = 123.0
+      )
+    )
+  ),
+  SourceImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
+  TargetImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
+)
+}
+}
 \description{
 Compares a face in the \emph{source} input image with each of the 100 largest
 faces detected in the \emph{target} input image.

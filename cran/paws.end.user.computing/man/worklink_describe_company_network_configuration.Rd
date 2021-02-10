@@ -10,6 +10,18 @@ worklink_describe_company_network_configuration(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcId = "string",
+  SubnetIds = list(
+    "string"
+  ),
+  SecurityGroupIds = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes the networking configuration to access the internal websites
 associated with the specified fleet.

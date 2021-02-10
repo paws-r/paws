@@ -25,6 +25,9 @@ autoscaling_resume_processes(AutoScalingGroupName, ScalingProcesses)
 
 If you omit this parameter, all processes are specified.}
 }
+\value{
+An empty list.
+}
 \description{
 Resumes the specified suspended auto scaling processes, or all suspended
 process, for the specified Auto Scaling group.

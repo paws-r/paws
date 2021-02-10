@@ -43,6 +43,9 @@ log data is grouped by log stream, but the grouping can be set to random
 for a more even distribution. This property is only applicable when the
 destination is an Amazon Kinesis stream.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a

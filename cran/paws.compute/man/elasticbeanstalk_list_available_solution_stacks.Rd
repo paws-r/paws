@@ -7,6 +7,22 @@ version first and then in reverse chronological order}
 \usage{
 elasticbeanstalk_list_available_solution_stacks()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SolutionStacks = list(
+    "string"
+  ),
+  SolutionStackDetails = list(
+    list(
+      SolutionStackName = "string",
+      PermittedFileTypes = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the available solution stack names, with the public
 version first and then in reverse chronological order.

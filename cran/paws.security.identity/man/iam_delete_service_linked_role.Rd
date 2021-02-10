@@ -10,6 +10,12 @@ iam_delete_service_linked_role(RoleName)
 \arguments{
 \item{RoleName}{[required] The name of the service-linked role to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeletionTaskId = "string"
+)
+}
+}
 \description{
 Submits a service-linked role deletion request and returns a
 \code{DeletionTaskId}, which you can use to check the status of the deletion.

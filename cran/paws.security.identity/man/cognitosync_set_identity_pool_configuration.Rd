@@ -16,6 +16,23 @@ Cognito. This is the ID of the pool to modify.}
 
 \item{CognitoStreams}{Options to apply to this identity pool for Amazon Cognito streams.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPoolId = "string",
+  PushSync = list(
+    ApplicationArns = list(
+      "string"
+    ),
+    RoleArn = "string"
+  ),
+  CognitoStreams = list(
+    StreamName = "string",
+    RoleArn = "string",
+    StreamingStatus = "ENABLED"|"DISABLED"
+  )
+)
+}
+}
 \description{
 Sets the necessary configuration for push sync.
 

@@ -13,6 +13,19 @@ datasync_list_agents(MaxResults, NextToken)
 \item{NextToken}{An opaque string that indicates the position at which to begin the next
 list of agents.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Agents = list(
+    list(
+      AgentArn = "string",
+      Name = "string",
+      Status = "ONLINE"|"OFFLINE"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of agents owned by an AWS account in the AWS Region
 specified in the request. The returned list is ordered by agent Amazon

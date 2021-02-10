@@ -24,6 +24,12 @@ sagemaker_create_action(ActionName, Source, ActionType, Description,
 
 \item{Tags}{A list of tags to apply to the action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionArn = "string"
+)
+}
+}
 \description{
 Creates an \emph{action}. An action is a lineage tracking entity that
 represents an action or activity. For example, a model deployment or an

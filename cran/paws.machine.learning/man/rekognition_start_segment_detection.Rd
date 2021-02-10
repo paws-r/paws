@@ -28,7 +28,13 @@ the completion notification.}
 \item{Filters}{Filters for technical cue or shot detection.}
 
 \item{SegmentTypes}{[required] An array of segment types to detect in the video. Valid values are
-TECHNICAL\\_CUE and SHOT.}
+TECHNICAL_CUE and SHOT.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
 }
 \description{
 Starts asynchronous detection of segment detection in a stored video.

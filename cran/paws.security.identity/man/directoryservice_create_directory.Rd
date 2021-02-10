@@ -30,13 +30,13 @@ AND any 3 of the following password complexity rules required by Active
 Directory:
 \itemize{
 \item Numbers and upper case and lowercase
-(?=.\emph{\verb{\\\\d})(?=.}[A-Z])(?=.*[a-z])
+(?=.\emph{\\d)(?=.}[A-Z])(?=.*[a-z])
 \item Numbers and special characters and lower case
-(?=.\emph{\verb{\\\\d})(?=.}[^A-Za-z0-9\verb{\\\\s}])(?=.*[a-z])
+(?=.\emph{\\d)(?=.}[^A-Za-z0-9\\s])(?=.*[a-z])
 \item Special characters and upper case and lower case
-(?=.\emph{[^A-Za-z0-9\verb{\\\\s}])(?=.}[A-Z])(?=.*[a-z])
+(?=.\emph{[^A-Za-z0-9\\s])(?=.}[A-Z])(?=.*[a-z])
 \item Numbers and upper case and special characters
-(?=.\emph{\verb{\\\\d})(?=.}[A-Z])(?=.*[^A-Za-z0-9\verb{\\\\s}])
+(?=.\emph{\\d)(?=.}[A-Z])(?=.*[^A-Za-z0-9\\s])
 }
 
 For additional information about how Active Directory passwords are
@@ -51,6 +51,12 @@ on the Microsoft website.}
 the operation.}
 
 \item{Tags}{The tags to be assigned to the Simple AD directory.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryId = "string"
+)
+}
 }
 \description{
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory}

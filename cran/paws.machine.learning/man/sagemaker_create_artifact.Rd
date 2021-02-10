@@ -21,6 +21,12 @@ Region.}
 
 \item{Tags}{A list of tags to apply to the artifact.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ArtifactArn = "string"
+)
+}
+}
 \description{
 Creates an \emph{artifact}. An artifact is a lineage tracking entity that
 represents a URI addressable object or data. Some examples are the S3

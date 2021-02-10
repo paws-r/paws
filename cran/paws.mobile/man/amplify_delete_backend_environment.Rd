@@ -11,6 +11,23 @@ amplify_delete_backend_environment(appId, environmentName)
 
 \item{environmentName}{[required] The name of a backend environment of an Amplify app.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  backendEnvironment = list(
+    backendEnvironmentArn = "string",
+    environmentName = "string",
+    stackName = "string",
+    deploymentArtifacts = "string",
+    createTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    updateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a backend environment for an Amplify app.
 }

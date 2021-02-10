@@ -9,6 +9,18 @@ chime_batch_delete_phone_number(PhoneNumberIds)
 \arguments{
 \item{PhoneNumberIds}{[required] List of phone number IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumberErrors = list(
+    list(
+      PhoneNumberId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Moves phone numbers into the \strong{Deletion queue}. Phone numbers must be
 disassociated from any users or Amazon Chime Voice Connectors before

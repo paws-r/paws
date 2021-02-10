@@ -14,6 +14,45 @@ can be used to return the next set of webhooks in the list.}
 the remaining results, make another call with the returned nextToken
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  webhooks = list(
+    list(
+      definition = list(
+        name = "string",
+        targetPipeline = "string",
+        targetAction = "string",
+        filters = list(
+          list(
+            jsonPath = "string",
+            matchEquals = "string"
+          )
+        ),
+        authentication = "GITHUB_HMAC"|"IP"|"UNAUTHENTICATED",
+        authenticationConfiguration = list(
+          AllowedIPRange = "string",
+          SecretToken = "string"
+        )
+      ),
+      url = "string",
+      errorMessage = "string",
+      errorCode = "string",
+      lastTriggered = as.POSIXct(
+        "2015-01-01"
+      ),
+      arn = "string",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a listing of all the webhooks in this AWS Region for this account.
 The output lists all webhooks and includes the webhook URL and ARN and

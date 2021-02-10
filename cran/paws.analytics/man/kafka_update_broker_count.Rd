@@ -8,18 +8,23 @@ kafka_update_broker_count(ClusterArn, CurrentVersion,
   TargetNumberOfBrokerNodes)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
+\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 
-\item{CurrentVersion}{[required]
-<p>The version of cluster to update from. A successful operation will then generate a new version.</p>}
+\item{CurrentVersion}{[required] The version of cluster to update from. A successful operation will then
+generate a new version.}
 
-\item{TargetNumberOfBrokerNodes}{[required]
-<p>The number of broker nodes that you want the cluster to have after this operation completes successfully.</p>}
+\item{TargetNumberOfBrokerNodes}{[required] The number of broker nodes that you want the cluster to have after this
+operation completes successfully.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterArn = "string",
+  ClusterOperationArn = "string"
+)
+}
 }
 \description{
-\preformatted{        <p>Updates the number of broker nodes in the cluster.</p>
-}
+Updates the number of broker nodes in the cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$update_broker_count(

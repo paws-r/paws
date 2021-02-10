@@ -9,6 +9,9 @@ opsworks_update_my_user_profile(SshPublicKey)
 \arguments{
 \item{SshPublicKey}{The user's SSH public key.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a user's SSH public key.
 

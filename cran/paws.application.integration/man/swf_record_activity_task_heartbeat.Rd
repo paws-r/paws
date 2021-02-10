@@ -17,6 +17,12 @@ with results.}
 
 \item{details}{If specified, contains details about the progress of the task.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cancelRequested = TRUE|FALSE
+)
+}
+}
 \description{
 Used by activity workers to report to the service that the ActivityTask
 represented by the specified \code{taskToken} is still making progress. The

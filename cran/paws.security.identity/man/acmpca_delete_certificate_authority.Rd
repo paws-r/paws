@@ -17,6 +17,9 @@ This must have the following form:
 \item{PermanentDeletionTimeInDays}{The number of days to make a CA restorable after it has been deleted.
 This can be anywhere from 7 to 30 days, with 30 being the default.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a private certificate authority (CA). You must provide the
 Amazon Resource Name (ARN) of the private CA that you want to delete.

@@ -34,6 +34,9 @@ NULL
 #'
 #' @param AlarmNames &#91;required&#93; The alarms to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_alarms(
@@ -77,6 +80,9 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 #' @param Dimensions The metric dimensions associated with the anomaly detection model to
 #' delete.
 #' @param Stat &#91;required&#93; The statistic associated with the anomaly detection model to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -125,6 +131,9 @@ cloudwatch_delete_anomaly_detector <- function(Namespace, MetricName, Dimensions
 #'
 #' @param DashboardNames &#91;required&#93; The dashboards to be deleted. This parameter is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dashboards(
@@ -169,6 +178,21 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
 #' @param RuleNames &#91;required&#93; An array of the rule names to delete. If you need to find out the names
 #' of your rules, use
 #' [`describe_insight_rules`][cloudwatch_describe_insight_rules].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       FailureResource = "string",
+#'       ExceptionType = "string",
+#'       FailureCode = "string",
+#'       FailureDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -227,6 +251,26 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 #' Specify `TimestampDescending` to have the newest event history returned
 #' first, and specify `TimestampAscending` to have the oldest history
 #' returned first.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AlarmHistoryItems = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmType = "CompositeAlarm"|"MetricAlarm",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
+#'       HistorySummary = "string",
+#'       HistoryData = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -301,7 +345,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' you do so, you receive a validation error.
 #' 
 #' Only the `Alarm Name`, `ARN`, `StateValue`
-#' (OK/ALARM/INSUFFICIENT\\_DATA), and `StateUpdatedTimestamp` information
+#' (OK/ALARM/INSUFFICIENT_DATA), and `StateUpdatedTimestamp` information
 #' are returned by this operation when you use this parameter. To get
 #' complete information about these alarms, perform another
 #' [`describe_alarms`][cloudwatch_describe_alarms] operation and specify
@@ -330,6 +374,110 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' @param MaxRecords The maximum number of alarm descriptions to retrieve.
 #' @param NextToken The token returned by a previous call to indicate that there is more
 #' data available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CompositeAlarms = list(
+#'     list(
+#'       ActionsEnabled = TRUE|FALSE,
+#'       AlarmActions = list(
+#'         "string"
+#'       ),
+#'       AlarmArn = "string",
+#'       AlarmConfigurationUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AlarmDescription = "string",
+#'       AlarmName = "string",
+#'       AlarmRule = "string",
+#'       InsufficientDataActions = list(
+#'         "string"
+#'       ),
+#'       OKActions = list(
+#'         "string"
+#'       ),
+#'       StateReason = "string",
+#'       StateReasonData = "string",
+#'       StateUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA"
+#'     )
+#'   ),
+#'   MetricAlarms = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmArn = "string",
+#'       AlarmDescription = "string",
+#'       AlarmConfigurationUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ActionsEnabled = TRUE|FALSE,
+#'       OKActions = list(
+#'         "string"
+#'       ),
+#'       AlarmActions = list(
+#'         "string"
+#'       ),
+#'       InsufficientDataActions = list(
+#'         "string"
+#'       ),
+#'       StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+#'       StateReason = "string",
+#'       StateReasonData = "string",
+#'       StateUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MetricName = "string",
+#'       Namespace = "string",
+#'       Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
+#'       ExtendedStatistic = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Period = 123,
+#'       Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+#'       EvaluationPeriods = 123,
+#'       DatapointsToAlarm = 123,
+#'       Threshold = 123.0,
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
+#'       TreatMissingData = "string",
+#'       EvaluateLowSampleCountPercentile = "string",
+#'       Metrics = list(
+#'         list(
+#'           Id = "string",
+#'           MetricStat = list(
+#'             Metric = list(
+#'               Namespace = "string",
+#'               MetricName = "string",
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             ),
+#'             Period = 123,
+#'             Stat = "string",
+#'             Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+#'           ),
+#'           Expression = "string",
+#'           Label = "string",
+#'           ReturnData = TRUE|FALSE,
+#'           Period = 123
+#'         )
+#'       ),
+#'       ThresholdMetricId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -396,6 +544,82 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 #' succeed.
 #' @param Period The period, in seconds, over which the statistic is applied.
 #' @param Unit The unit for the metric.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricAlarms = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmArn = "string",
+#'       AlarmDescription = "string",
+#'       AlarmConfigurationUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ActionsEnabled = TRUE|FALSE,
+#'       OKActions = list(
+#'         "string"
+#'       ),
+#'       AlarmActions = list(
+#'         "string"
+#'       ),
+#'       InsufficientDataActions = list(
+#'         "string"
+#'       ),
+#'       StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+#'       StateReason = "string",
+#'       StateReasonData = "string",
+#'       StateUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MetricName = "string",
+#'       Namespace = "string",
+#'       Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
+#'       ExtendedStatistic = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Period = 123,
+#'       Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+#'       EvaluationPeriods = 123,
+#'       DatapointsToAlarm = 123,
+#'       Threshold = 123.0,
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
+#'       TreatMissingData = "string",
+#'       EvaluateLowSampleCountPercentile = "string",
+#'       Metrics = list(
+#'         list(
+#'           Id = "string",
+#'           MetricStat = list(
+#'             Metric = list(
+#'               Namespace = "string",
+#'               MetricName = "string",
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             ),
+#'             Period = 123,
+#'             Stat = "string",
+#'             Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+#'           ),
+#'           Expression = "string",
+#'           Label = "string",
+#'           ReturnData = TRUE|FALSE,
+#'           Period = 123
+#'         )
+#'       ),
+#'       ThresholdMetricId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -465,6 +689,41 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #' metrics that have these dimensions and have anomaly detection models
 #' associated, they're all returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnomalyDetectors = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricName = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Stat = "string",
+#'       Configuration = list(
+#'         ExcludedTimeRanges = list(
+#'           list(
+#'             StartTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             EndTime = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         MetricTimezone = "string"
+#'       ),
+#'       StateValue = "PENDING_TRAINING"|"TRAINED_INSUFFICIENT_DATA"|"TRAINED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_anomaly_detectors(
@@ -518,6 +777,22 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
 #' @param MaxResults The maximum number of results to return in one operation. If you omit
 #' this parameter, the default of 500 is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   InsightRules = list(
+#'     list(
+#'       Name = "string",
+#'       State = "string",
+#'       Schema = "string",
+#'       Definition = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_insight_rules(
@@ -557,6 +832,9 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
 #' cloudwatch_disable_alarm_actions(AlarmNames)
 #'
 #' @param AlarmNames &#91;required&#93; The names of the alarms.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -600,6 +878,21 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 #' of your rules, use
 #' [`describe_insight_rules`][cloudwatch_describe_insight_rules].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       FailureResource = "string",
+#'       ExceptionType = "string",
+#'       FailureCode = "string",
+#'       FailureDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_insight_rules(
@@ -638,6 +931,9 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
 #' cloudwatch_enable_alarm_actions(AlarmNames)
 #'
 #' @param AlarmNames &#91;required&#93; The names of the alarms.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -680,6 +976,21 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
 #' @param RuleNames &#91;required&#93; An array of the rule names to enable. If you need to find out the names
 #' of your rules, use
 #' [`describe_insight_rules`][cloudwatch_describe_insight_rules].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       FailureResource = "string",
+#'       ExceptionType = "string",
+#'       FailureCode = "string",
+#'       FailureDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -725,6 +1036,16 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
 #' cloudwatch_get_dashboard(DashboardName)
 #'
 #' @param DashboardName &#91;required&#93; The name of the dashboard to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardArn = "string",
+#'   DashboardBody = "string",
+#'   DashboardName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -837,6 +1158,49 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #'     period represented by that data point.
 #' @param OrderBy Determines what statistic to use to rank the contributors. Valid values
 #' are SUM and MAXIMUM.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyLabels = list(
+#'     "string"
+#'   ),
+#'   AggregationStatistic = "string",
+#'   AggregateValue = 123.0,
+#'   ApproximateUniqueCount = 123,
+#'   Contributors = list(
+#'     list(
+#'       Keys = list(
+#'         "string"
+#'       ),
+#'       ApproximateAggregateValue = 123.0,
+#'       Datapoints = list(
+#'         list(
+#'           Timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ApproximateValue = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   MetricDatapoints = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UniqueContributors = 123.0,
+#'       MaxContributorValue = 123.0,
+#'       SampleCount = 123.0,
+#'       Average = 123.0,
+#'       Sum = 123.0,
+#'       Minimum = 123.0,
+#'       Maximum = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -991,6 +1355,41 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' paginates when the `MaxDatapoints` limit is reached.
 #' @param MaxDatapoints The maximum number of data points the request should return before
 #' paginating. If you omit this, the default of 100,800 is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricDataResults = list(
+#'     list(
+#'       Id = "string",
+#'       Label = "string",
+#'       Timestamps = list(
+#'         as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Values = list(
+#'         123.0
+#'       ),
+#'       StatusCode = "Complete"|"InternalError"|"PartialData",
+#'       Messages = list(
+#'         list(
+#'           Code = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Messages = list(
+#'     list(
+#'       Code = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1201,6 +1600,30 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' collected, the results of the operation are null. CloudWatch does not
 #' perform unit conversions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Label = "string",
+#'   Datapoints = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SampleCount = 123.0,
+#'       Average = 123.0,
+#'       Sum = 123.0,
+#'       Minimum = 123.0,
+#'       Maximum = 123.0,
+#'       Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+#'       ExtendedStatistics = list(
+#'         123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_metric_statistics(
@@ -1319,6 +1742,14 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' If you specify `image/png`, the HTTP response has a content-type set to
 #' `image/png`, and the body of the response is a PNG image.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricWidgetImage = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_metric_widget_image(
@@ -1366,9 +1797,27 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 #'
 #' @param DashboardNamePrefix If you specify this parameter, only the dashboards with names starting
 #' with the specified string are listed. The maximum length is 255, and
-#' valid characters are A-Z, a-z, 0-9, ".", "-", and "\\_".
+#' valid characters are A-Z, a-z, 0-9, ".", "-", and "_".
 #' @param NextToken The token returned by a previous call to indicate that there is more
 #' data available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardEntries = list(
+#'     list(
+#'       DashboardName = "string",
+#'       DashboardArn = "string",
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Size = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1441,6 +1890,26 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 #' metrics with last published data as much as 40 minutes more than the
 #' specified time interval.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metrics = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricName = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_metrics(
@@ -1499,6 +1968,19 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 #' in the *Amazon Web Services General Reference*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1549,6 +2031,9 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' and updating the model. You can specify as many as 10 time ranges.
 #' 
 #' The configuration can also include the time zone to use for the metric.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1665,7 +2150,7 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 #' @param AlarmRule &#91;required&#93; An expression that specifies which other alarms are to be evaluated to
 #' determine this composite alarm's state. For each alarm that you
 #' reference, you designate a function that specifies whether that alarm
-#' needs to be in ALARM state, OK state, or INSUFFICIENT\\_DATA state. You
+#' needs to be in ALARM state, OK state, or INSUFFICIENT_DATA state. You
 #' can use operators (AND, OR and NOT) to combine multiple functions in a
 #' single expression. You can use parenthesis to logically group the
 #' functions in your expression.
@@ -1682,7 +2167,7 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 #'     state.
 #' 
 #' -   `INSUFFICIENT_DATA("alarm-name or alarm-ARN")` is TRUE if the named
-#'     alarm is in INSUFFICIENT\\_DATA state.
+#'     alarm is in INSUFFICIENT_DATA state.
 #' 
 #' -   `TRUE` always evaluates to TRUE.
 #' 
@@ -1734,6 +2219,9 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only resources with certain tag values.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1814,7 +2302,7 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' @param DashboardName &#91;required&#93; The name of the dashboard. If a dashboard with this name already exists,
 #' this call modifies that dashboard, replacing its current contents.
 #' Otherwise, a new dashboard is created. The maximum length is 255, and
-#' valid characters are A-Z, a-z, 0-9, "-", and "\\_". This parameter is
+#' valid characters are A-Z, a-z, 0-9, "-", and "_". This parameter is
 #' required.
 #' @param DashboardBody &#91;required&#93; The detailed information about the dashboard in JSON format, including
 #' the widgets to include and their location on the dashboard. This
@@ -1822,6 +2310,19 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' 
 #' For more information about the syntax, see [Dashboard Body Structure and
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardValidationMessages = list(
+#'     list(
+#'       DataPath = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1887,6 +2388,9 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' Insights rule, any tags you specify in this parameter are ignored. To
 #' change the tags of an existing rule, use
 #' [`tag_resource`][cloudwatch_tag_resource].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2056,7 +2560,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' attempts to gather data at the period rate that you specify. In this
 #' case, it does not receive data for the attempts that do not correspond
 #' to a one-minute data resolution, and the alarm might often lapse into
-#' INSUFFICENT\\_DATA status. Specifying 10 or 30 also sets this alarm as a
+#' INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a
 #' high-resolution alarm, which has a higher charge than other alarms. For
 #' more information about pricing, see [Amazon CloudWatch
 #' Pricing](https://aws.amazon.com/cloudwatch/pricing/).
@@ -2160,6 +2664,9 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' Model Alarm** example on this page.
 #' 
 #' If your alarm uses this parameter, it cannot have Auto Scaling actions.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2315,6 +2822,9 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' @param MetricData &#91;required&#93; The data for the metric. The array can include no more than 20 metrics
 #' per call.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_metric_data(
@@ -2411,6 +2921,9 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling
 #' policy uses the information in this field to take the correct action.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_alarm_state(
@@ -2481,6 +2994,9 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the alarm.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2535,6 +3051,9 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 #' in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

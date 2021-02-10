@@ -16,6 +16,21 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      ResourceId = "string",
+      ResourceType = "string",
+      Key = "string",
+      Value = "string",
+      PropagateAtLaunch = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the specified tags.
 

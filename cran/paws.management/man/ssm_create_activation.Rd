@@ -58,6 +58,13 @@ managed instances, see
 about how to remove tags from your managed instances, see
 \code{\link[=ssm_remove_tags_from_resource]{remove_tags_from_resource}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActivationId = "string",
+  ActivationCode = "string"
+)
+}
+}
 \description{
 Generates an activation code and activation ID you can use to register
 your on-premises server or virtual machine (VM) with Systems Manager.

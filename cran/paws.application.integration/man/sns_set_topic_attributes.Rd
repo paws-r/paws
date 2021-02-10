@@ -55,6 +55,9 @@ value for the the \code{MessageDeduplicationId} parameter for the
 
 \item{AttributeValue}{The new value for the attribute.}
 }
+\value{
+An empty list.
+}
 \description{
 Allows a topic owner to set an attribute of the topic to a new value.
 }

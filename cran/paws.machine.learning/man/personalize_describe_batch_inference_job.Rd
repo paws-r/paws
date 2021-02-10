@@ -11,6 +11,44 @@ personalize_describe_batch_inference_job(batchInferenceJobArn)
 \arguments{
 \item{batchInferenceJobArn}{[required] The ARN of the batch inference job to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  batchInferenceJob = list(
+    jobName = "string",
+    batchInferenceJobArn = "string",
+    filterArn = "string",
+    failureReason = "string",
+    solutionVersionArn = "string",
+    numResults = 123,
+    jobInput = list(
+      s3DataSource = list(
+        path = "string",
+        kmsKeyArn = "string"
+      )
+    ),
+    jobOutput = list(
+      s3DataDestination = list(
+        path = "string",
+        kmsKeyArn = "string"
+      )
+    ),
+    batchInferenceJobConfig = list(
+      itemExplorationConfig = list(
+        "string"
+      )
+    ),
+    roleArn = "string",
+    status = "string",
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets the properties of a batch inference job including name, Amazon
 Resource Name (ARN), status, input and output configurations, and the

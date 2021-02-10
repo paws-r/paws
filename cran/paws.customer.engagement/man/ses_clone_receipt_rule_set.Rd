@@ -10,12 +10,15 @@ ses_clone_receipt_rule_set(RuleSetName, OriginalRuleSetName)
 \item{RuleSetName}{[required] The name of the rule set to create. The name must:
 \itemize{
 \item This value can only contain ASCII letters (a-z, A-Z), numbers (0-9),
-underscores (\\_), or dashes (-).
+underscores (_), or dashes (-).
 \item Start and end with a letter or number.
 \item Contain less than 64 characters.
 }}
 
 \item{OriginalRuleSetName}{[required] The name of the rule set to clone.}
+}
+\value{
+An empty list.
 }
 \description{
 Creates a receipt rule set by cloning an existing one. All receipt rules

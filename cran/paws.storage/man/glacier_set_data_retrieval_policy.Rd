@@ -17,6 +17,9 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{Policy}{The data retrieval policy in JSON format.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation sets and then enacts a data retrieval policy in the
 region specified in the PUT request. You can set one policy per region

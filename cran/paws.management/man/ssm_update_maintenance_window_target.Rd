@@ -25,6 +25,24 @@ raised while running tasks for these targets in this maintenance window.}
 RegisterTargetWithMaintenanceWindow action are also required for this
 API request. Optional fields that are not specified are set to null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowId = "string",
+  WindowTargetId = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  OwnerInformation = "string",
+  Name = "string",
+  Description = "string"
+)
+}
+}
 \description{
 Modifies the target of an existing maintenance window. You can change
 the following:

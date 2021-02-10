@@ -9,6 +9,22 @@ configservice_describe_delivery_channels(DeliveryChannelNames)
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeliveryChannels = list(
+    list(
+      name = "string",
+      s3BucketName = "string",
+      s3KeyPrefix = "string",
+      snsTopicARN = "string",
+      configSnapshotDeliveryProperties = list(
+        deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns details about the specified delivery channel. If a delivery
 channel is not specified, this action returns the details of all

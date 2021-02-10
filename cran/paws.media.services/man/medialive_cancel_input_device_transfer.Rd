@@ -7,7 +7,11 @@
 medialive_cancel_input_device_transfer(InputDeviceId)
 }
 \arguments{
-\item{InputDeviceId}{[required] The unique ID of the input device to cancel. For example, hd-123456789abcdef.}
+\item{InputDeviceId}{[required] The unique ID of the input device to cancel. For example,
+hd-123456789abcdef.}
+}
+\value{
+An empty list.
 }
 \description{
 Cancel an input device transfer that you have requested.

@@ -31,6 +31,28 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 Pagination continues from the end of the previous results that returned
 the \code{nextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  virtualGateways = list(
+    list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshName = "string",
+      meshOwner = "string",
+      resourceOwner = "string",
+      version = 123,
+      virtualGatewayName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of existing virtual gateways in a service mesh.
 }

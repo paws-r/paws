@@ -9,6 +9,13 @@ efs_describe_file_system_policy(FileSystemId)
 \arguments{
 \item{FileSystemId}{[required] Specifies which EFS file system to retrieve the \code{FileSystemPolicy} for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileSystemId = "string",
+  Policy = "string"
+)
+}
+}
 \description{
 Returns the \code{FileSystemPolicy} for the specified EFS file system.
 

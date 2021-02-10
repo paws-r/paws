@@ -11,6 +11,13 @@ sagemaker_delete_association(SourceArn, DestinationArn)
 
 \item{DestinationArn}{[required] The Amazon Resource Name (ARN) of the destination.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SourceArn = "string",
+  DestinationArn = "string"
+)
+}
+}
 \description{
 Deletes an association.
 }

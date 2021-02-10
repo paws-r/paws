@@ -9,6 +9,9 @@ appstream_start_fleet(Name)
 \arguments{
 \item{Name}{[required] The name of the fleet.}
 }
+\value{
+An empty list.
+}
 \description{
 Starts the specified fleet.
 }

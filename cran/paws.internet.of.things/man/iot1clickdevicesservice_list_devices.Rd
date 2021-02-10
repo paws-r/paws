@@ -14,6 +14,27 @@ default value of 100 is used.}
 
 \item{NextToken}{The token to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Devices = list(
+    list(
+      Arn = "string",
+      Attributes = list(
+        "string"
+      ),
+      DeviceId = "string",
+      Enabled = TRUE|FALSE,
+      RemainingLife = 123.0,
+      Type = "string",
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the 1-Click compatible devices associated with your AWS account.
 }

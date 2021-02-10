@@ -42,6 +42,25 @@ processing.
 \item \strong{Event Bus} - The ARN of an Amazon EventBridge event bus.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LastModified = as.POSIXct(
+    "2015-01-01"
+  ),
+  FunctionArn = "string",
+  MaximumRetryAttempts = 123,
+  MaximumEventAgeInSeconds = 123,
+  DestinationConfig = list(
+    OnSuccess = list(
+      Destination = "string"
+    ),
+    OnFailure = list(
+      Destination = "string"
+    )
+  )
+)
+}
+}
 \description{
 Configures options for \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html}{asynchronous invocation}
 on a function, version, or alias. If a configuration already exists for

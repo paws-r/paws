@@ -15,6 +15,33 @@ purchase.}
 
 Default: \code{1}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedNode = list(
+    ReservedNodeId = "string",
+    ReservedNodeOfferingId = "string",
+    NodeType = "string",
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Duration = 123,
+    FixedPrice = 123.0,
+    UsagePrice = 123.0,
+    CurrencyCode = "string",
+    NodeCount = 123,
+    State = "string",
+    OfferingType = "string",
+    RecurringCharges = list(
+      list(
+        RecurringChargeAmount = 123.0,
+        RecurringChargeFrequency = "string"
+      )
+    ),
+    ReservedNodeOfferingType = "Regular"|"Upgradable"
+  )
+)
+}
+}
 \description{
 Allows you to purchase reserved nodes. Amazon Redshift offers a
 predefined set of reserved node offerings. You can purchase one or more

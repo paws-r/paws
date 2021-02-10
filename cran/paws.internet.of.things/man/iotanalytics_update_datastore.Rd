@@ -27,6 +27,9 @@ The default file format is JSON. You can specify only one format.
 
 You can't change the file format after you create the data store.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the settings of a data store.
 }

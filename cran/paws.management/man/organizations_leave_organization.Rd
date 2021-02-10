@@ -6,6 +6,9 @@
 \usage{
 organizations_leave_organization()
 }
+\value{
+An empty list.
+}
 \description{
 Removes a member account from its parent organization. This version of
 the operation is performed by the account that wants to leave. To remove

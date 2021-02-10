@@ -18,6 +18,32 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataEncryptionKeyId = "string",
+  Description = "string",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  OwnerId = "string",
+  Progress = "string",
+  SnapshotId = "string",
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  State = "pending"|"completed"|"error",
+  StateMessage = "string",
+  VolumeId = "string",
+  VolumeSize = 123,
+  OwnerAlias = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
 use snapshots for backups, to make copies of EBS volumes, and to save

@@ -23,6 +23,9 @@ NULL
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' @param TagsList Contains a list of CloudTrail tags, up to a limit of 50
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_tags(
@@ -73,7 +76,7 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' requirements:
 #' 
 #' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (\\_), or dashes (-)
+#'     underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
@@ -137,6 +140,26 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' in AWS Organizations.
 #' @param TagsList 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   S3BucketName = "string",
+#'   S3KeyPrefix = "string",
+#'   SnsTopicName = "string",
+#'   SnsTopicARN = "string",
+#'   IncludeGlobalServiceEvents = TRUE|FALSE,
+#'   IsMultiRegionTrail = TRUE|FALSE,
+#'   TrailARN = "string",
+#'   LogFileValidationEnabled = TRUE|FALSE,
+#'   CloudWatchLogsLogGroupArn = "string",
+#'   CloudWatchLogsRoleArn = "string",
+#'   KmsKeyId = "string",
+#'   IsOrganizationTrail = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_trail(
@@ -194,6 +217,9 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
 #' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail to be deleted. The
 #' format of a trail ARN is:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -258,6 +284,33 @@ cloudtrail_delete_trail <- function(Name) {
 #' include shadow trails, organization trails in a member account and
 #' region replication trails will not be returned. The default is true.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   trailList = list(
+#'     list(
+#'       Name = "string",
+#'       S3BucketName = "string",
+#'       S3KeyPrefix = "string",
+#'       SnsTopicName = "string",
+#'       SnsTopicARN = "string",
+#'       IncludeGlobalServiceEvents = TRUE|FALSE,
+#'       IsMultiRegionTrail = TRUE|FALSE,
+#'       HomeRegion = "string",
+#'       TrailARN = "string",
+#'       LogFileValidationEnabled = TRUE|FALSE,
+#'       CloudWatchLogsLogGroupArn = "string",
+#'       CloudWatchLogsRoleArn = "string",
+#'       KmsKeyId = "string",
+#'       HasCustomEventSelectors = TRUE|FALSE,
+#'       HasInsightSelectors = TRUE|FALSE,
+#'       IsOrganizationTrail = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_trails(
@@ -316,7 +369,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #' name, the string must meet the following requirements:
 #' 
 #' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (\\_), or dashes (-)
+#'     underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
@@ -330,6 +383,59 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #' If you specify a trail ARN, it must be in the format:
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrailARN = "string",
+#'   EventSelectors = list(
+#'     list(
+#'       ReadWriteType = "ReadOnly"|"WriteOnly"|"All",
+#'       IncludeManagementEvents = TRUE|FALSE,
+#'       DataResources = list(
+#'         list(
+#'           Type = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ExcludeManagementEventSources = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AdvancedEventSelectors = list(
+#'     list(
+#'       Name = "string",
+#'       FieldSelectors = list(
+#'         list(
+#'           Field = "string",
+#'           Equals = list(
+#'             "string"
+#'           ),
+#'           StartsWith = list(
+#'             "string"
+#'           ),
+#'           EndsWith = list(
+#'             "string"
+#'           ),
+#'           NotEquals = list(
+#'             "string"
+#'           ),
+#'           NotStartsWith = list(
+#'             "string"
+#'           ),
+#'           NotEndsWith = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -382,7 +488,7 @@ cloudtrail_get_event_selectors <- function(TrailName) {
 #' name, the string must meet the following requirements:
 #' 
 #' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (\\_), or dashes (-)
+#'     underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
@@ -396,6 +502,19 @@ cloudtrail_get_event_selectors <- function(TrailName) {
 #' If you specify a trail ARN, it must be in the format:
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrailARN = "string",
+#'   InsightSelectors = list(
+#'     list(
+#'       InsightType = "ApiCallRateInsight"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -434,6 +553,31 @@ cloudtrail_get_insight_selectors <- function(TrailName) {
 #'
 #' @param Name &#91;required&#93; The name or the Amazon Resource Name (ARN) of the trail for which you
 #' want to retrieve settings information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Trail = list(
+#'     Name = "string",
+#'     S3BucketName = "string",
+#'     S3KeyPrefix = "string",
+#'     SnsTopicName = "string",
+#'     SnsTopicARN = "string",
+#'     IncludeGlobalServiceEvents = TRUE|FALSE,
+#'     IsMultiRegionTrail = TRUE|FALSE,
+#'     HomeRegion = "string",
+#'     TrailARN = "string",
+#'     LogFileValidationEnabled = TRUE|FALSE,
+#'     CloudWatchLogsLogGroupArn = "string",
+#'     CloudWatchLogsRoleArn = "string",
+#'     KmsKeyId = "string",
+#'     HasCustomEventSelectors = TRUE|FALSE,
+#'     HasInsightSelectors = TRUE|FALSE,
+#'     IsOrganizationTrail = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -480,6 +624,42 @@ cloudtrail_get_trail <- function(Name) {
 #' trail ARN is:
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IsLogging = TRUE|FALSE,
+#'   LatestDeliveryError = "string",
+#'   LatestNotificationError = "string",
+#'   LatestDeliveryTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LatestNotificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StartLoggingTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StopLoggingTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LatestCloudWatchLogsDeliveryError = "string",
+#'   LatestCloudWatchLogsDeliveryTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LatestDigestDeliveryTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LatestDigestDeliveryError = "string",
+#'   LatestDeliveryAttemptTime = "string",
+#'   LatestNotificationAttemptTime = "string",
+#'   LatestNotificationAttemptSucceeded = "string",
+#'   LatestDeliveryAttemptSucceeded = "string",
+#'   TimeLoggingStarted = "string",
+#'   TimeLoggingStopped = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -533,6 +713,26 @@ cloudtrail_get_trail_status <- function(Name) {
 #' time is used.
 #' @param NextToken Reserved for future use.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicKeyList = list(
+#'     list(
+#'       Value = raw,
+#'       ValidityStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ValidityEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Fingerprint = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_public_keys(
@@ -580,6 +780,25 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' @param NextToken Reserved for future use.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceTagList = list(
+#'     list(
+#'       ResourceId = "string",
+#'       TagsList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags(
@@ -623,6 +842,21 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #' specified in the the original call. For example, if the original call
 #' specified an AttributeKey of 'Username' with a value of 'root', the call
 #' with NextToken should include those same parameters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Trails = list(
+#'     list(
+#'       TrailARN = "string",
+#'       Name = "string",
+#'       HomeRegion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -717,6 +951,34 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' specified in the the original call. For example, if the original call
 #' specified an AttributeKey of 'Username' with a value of 'root', the call
 #' with NextToken should include those same parameters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Events = list(
+#'     list(
+#'       EventId = "string",
+#'       EventName = "string",
+#'       ReadOnly = "string",
+#'       AccessKeyId = "string",
+#'       EventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EventSource = "string",
+#'       Username = "string",
+#'       Resources = list(
+#'         list(
+#'           ResourceType = "string",
+#'           ResourceName = "string"
+#'         )
+#'       ),
+#'       CloudTrailEvent = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -818,7 +1080,7 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' name, the string must meet the following requirements:
 #' 
 #' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (\\_), or dashes (-)
+#'     underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
@@ -847,6 +1109,59 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' information about advanced event selectors, see [Logging data events for
 #' trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
 #' in the *AWS CloudTrail User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrailARN = "string",
+#'   EventSelectors = list(
+#'     list(
+#'       ReadWriteType = "ReadOnly"|"WriteOnly"|"All",
+#'       IncludeManagementEvents = TRUE|FALSE,
+#'       DataResources = list(
+#'         list(
+#'           Type = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ExcludeManagementEventSources = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AdvancedEventSelectors = list(
+#'     list(
+#'       Name = "string",
+#'       FieldSelectors = list(
+#'         list(
+#'           Field = "string",
+#'           Equals = list(
+#'             "string"
+#'           ),
+#'           StartsWith = list(
+#'             "string"
+#'           ),
+#'           EndsWith = list(
+#'             "string"
+#'           ),
+#'           NotEquals = list(
+#'             "string"
+#'           ),
+#'           NotStartsWith = list(
+#'             "string"
+#'           ),
+#'           NotEndsWith = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -940,6 +1255,19 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' trail. In this release, only `ApiCallRateInsight` is supported as an
 #' insight type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrailARN = "string",
+#'   InsightSelectors = list(
+#'     list(
+#'       InsightType = "ApiCallRateInsight"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_insight_selectors(
@@ -985,6 +1313,9 @@ cloudtrail_put_insight_selectors <- function(TrailName, InsightSelectors) {
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' @param TagsList Specifies a list of tags to be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1036,6 +1367,9 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList = NULL) {
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_logging(
@@ -1085,6 +1419,9 @@ cloudtrail_start_logging <- function(Name) {
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_logging(
@@ -1133,7 +1470,7 @@ cloudtrail_stop_logging <- function(Name) {
 #' the string must meet the following requirements:
 #' 
 #' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (\\_), or dashes (-)
+#'     underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
@@ -1206,6 +1543,26 @@ cloudtrail_stop_logging <- function(Name) {
 #' belong to the organization. If the trail is an organization trail and
 #' this is set to false, the trail will remain in the current AWS account
 #' but be deleted from all member accounts in the organization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   S3BucketName = "string",
+#'   S3KeyPrefix = "string",
+#'   SnsTopicName = "string",
+#'   SnsTopicARN = "string",
+#'   IncludeGlobalServiceEvents = TRUE|FALSE,
+#'   IsMultiRegionTrail = TRUE|FALSE,
+#'   TrailARN = "string",
+#'   LogFileValidationEnabled = TRUE|FALSE,
+#'   CloudWatchLogsLogGroupArn = "string",
+#'   CloudWatchLogsRoleArn = "string",
+#'   KmsKeyId = "string",
+#'   IsOrganizationTrail = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

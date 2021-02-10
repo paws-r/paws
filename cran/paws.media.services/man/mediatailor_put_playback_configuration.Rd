@@ -59,6 +59,52 @@ profiles with the help of AWS Support.}
 \item{VideoContentSourceUrl}{The URL prefix for the master playlist for the stream, minus the asset
 ID. The maximum length is 512 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AdDecisionServerUrl = "string",
+  AvailSuppression = list(
+    Mode = "OFF"|"BEHIND_LIVE_EDGE",
+    Value = "string"
+  ),
+  Bumper = list(
+    EndUrl = "string",
+    StartUrl = "string"
+  ),
+  CdnConfiguration = list(
+    AdSegmentUrlPrefix = "string",
+    ContentSegmentUrlPrefix = "string"
+  ),
+  DashConfiguration = list(
+    ManifestEndpointPrefix = "string",
+    MpdLocation = "string",
+    OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
+  ),
+  HlsConfiguration = list(
+    ManifestEndpointPrefix = "string"
+  ),
+  LivePreRollConfiguration = list(
+    AdDecisionServerUrl = "string",
+    MaxDurationSeconds = 123
+  ),
+  ManifestProcessingRules = list(
+    AdMarkerPassthrough = list(
+      Enabled = TRUE|FALSE
+    )
+  ),
+  Name = "string",
+  PersonalizationThresholdSeconds = 123,
+  PlaybackConfigurationArn = "string",
+  PlaybackEndpointPrefix = "string",
+  SessionInitializationEndpointPrefix = "string",
+  SlateAdUrl = "string",
+  Tags = list(
+    "string"
+  ),
+  TranscodeProfileName = "string",
+  VideoContentSourceUrl = "string"
+)
+}
+}
 \description{
 Adds a new playback configuration to AWS Elemental MediaTailor.
 }

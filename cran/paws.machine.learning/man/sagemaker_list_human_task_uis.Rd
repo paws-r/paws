@@ -24,6 +24,21 @@ items is more than the value specified in \code{MaxResults}, then a
 \code{NextToken} will be provided in the output that you can use to resume
 pagination.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HumanTaskUiSummaries = list(
+    list(
+      HumanTaskUiName = "string",
+      HumanTaskUiArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns information about the human task user interfaces in your
 account.

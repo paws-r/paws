@@ -86,7 +86,7 @@ tag is a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \\_ : / @. The maximum length of a tag's key is 128 characters, and
+= . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
 
 \item{FileShareName}{The name of the file share. Optional.
@@ -97,6 +97,12 @@ the maximum length for a tag's value is 256.}
 \item{CacheAttributes}{Refresh cache information.}
 
 \item{NotificationPolicy}{The notification policy of the file share.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  FileShareARN = "string"
+)
+}
 }
 \description{
 Creates a Network File System (NFS) file share on an existing file

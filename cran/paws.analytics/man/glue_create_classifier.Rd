@@ -16,6 +16,9 @@ glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
 
 \item{CsvClassifier}{A \code{CsvClassifier} object specifying the classifier to create.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a classifier in the user's account. This can be a
 \code{GrokClassifier}, an \code{XMLClassifier}, a \code{JsonClassifier}, or a

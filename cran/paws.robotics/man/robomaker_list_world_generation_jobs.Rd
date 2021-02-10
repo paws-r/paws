@@ -26,6 +26,28 @@ results and a \code{nextToken} value if applicable.}
 \item{filters}{Optional filters to limit results. You can use \code{status} and
 \code{templateId}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  worldGenerationJobSummaries = list(
+    list(
+      arn = "string",
+      template = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "Pending"|"Running"|"Completed"|"Failed"|"PartialFailed"|"Canceling"|"Canceled",
+      worldCount = list(
+        floorplanCount = 123,
+        interiorCountPerFloorplan = 123
+      ),
+      succeededWorldCount = 123,
+      failedWorldCount = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists world generator jobs.
 }

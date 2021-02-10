@@ -27,6 +27,23 @@ is \code{true}, and the value of \code{TrafficPolicyIdMarker} is the ID of the
 first traffic policy that Route 53 will return if you submit another
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicySummaries = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+      LatestVersion = 123,
+      TrafficPolicyCount = 123
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  TrafficPolicyIdMarker = "string",
+  MaxItems = "string"
+)
+}
+}
 \description{
 Gets information about the latest version for every traffic policy that
 is associated with the current AWS account. Policies are listed in the

@@ -12,6 +12,9 @@ iot1clickprojects_tag_resource(resourceArn, tags)
 \item{tags}{[required] The new or modifying tag(s) for the resource. See \href{https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits}{AWS IoT 1-Click Service Limits}
 for the maximum number of tags allowed per resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or modifies tags for a resource. Tags are key/value pairs
 (metadata) that can be used to manage a resource. For more information,

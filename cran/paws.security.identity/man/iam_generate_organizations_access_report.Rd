@@ -22,6 +22,12 @@ This parameter is optional.
 This ID is used to generate information about when an account principal
 that is limited by the SCP attempted to access an AWS service.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Generates a report for service last accessed data for AWS Organizations.
 You can generate a report for any entities (organization root,

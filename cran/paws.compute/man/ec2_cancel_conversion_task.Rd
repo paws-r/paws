@@ -16,6 +16,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ReasonMessage}{The reason for canceling the conversion task.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels an active conversion task. The task can be the import of an
 instance or volume. The action removes all artifacts of the conversion,

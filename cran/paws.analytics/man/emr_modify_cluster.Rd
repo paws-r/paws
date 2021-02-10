@@ -13,6 +13,12 @@ emr_modify_cluster(ClusterId, StepConcurrencyLevel)
 \item{StepConcurrencyLevel}{The number of steps that can be executed concurrently. You can specify a
 maximum of 256 steps.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StepConcurrencyLevel = 123
+)
+}
+}
 \description{
 Modifies the number of steps that can be executed concurrently for the
 cluster specified using ClusterID.

@@ -16,11 +16,11 @@ s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
 \item{Key}{[required] The object key.}
 
 \item{SSECustomerAlgorithm}{The SSE Algorithm used to encrypt the object. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
-\item{SSECustomerKey}{The SSE Customer Key. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\item{SSECustomerKey}{The SSE Customer Key. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
-\item{SSECustomerKeyMD5}{The SSE Customer Key MD5. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
+\item{SSECustomerKeyMD5}{The SSE Customer Key MD5. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys}.}
 
 \item{Expression}{[required] The expression that is used to query the object.}
 
@@ -54,6 +54,32 @@ within the last 50 bytes of the file.
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Payload = list(
+    Records = list(
+      Payload = raw
+    ),
+    Stats = list(
+      Details = list(
+        BytesScanned = 123,
+        BytesProcessed = 123,
+        BytesReturned = 123
+      )
+    ),
+    Progress = list(
+      Details = list(
+        BytesScanned = 123,
+        BytesProcessed = 123,
+        BytesReturned = 123
+      )
+    ),
+    Cont = list(),
+    End = list()
+  )
+)
+}
+}
 \description{
 This operation filters the contents of an Amazon S3 object based on a
 simple structured query language (SQL) statement. In the request, along
@@ -65,17 +91,17 @@ serialization format for the response.
 
 This action is not supported by Amazon S3 on Outposts.
 
-For more information about Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html}{Selecting Content from Objects}
+For more information about Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html}{Selecting Content from Objects}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
-For more information about using SQL with Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
+For more information about using SQL with Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Permissions}
 
 You must have \code{s3:GetObject} permission for this operation. Amazon S3
 Select does not support anonymous access. For more information about
-permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}
+permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \emph{Object Data Formats}
@@ -98,7 +124,7 @@ objects that are protected with server-side encryption.
 For objects that are encrypted with customer-provided encryption
 keys (SSE-C), you must use HTTPS, and you must use the headers that
 are documented in the \code{\link[=s3_get_object]{get_object}}. For more
-information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
+information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 For objects that are encrypted with Amazon S3 managed encryption
@@ -106,7 +132,7 @@ keys (SSE-S3) and customer master keys (CMKs) stored in AWS Key
 Management Service (SSE-KMS), server-side encryption is handled
 transparently, so you don't need to specify anything. For more
 information about server-side encryption, including SSE-S3 and
-SSE-KMS, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
+SSE-KMS, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 
@@ -128,10 +154,10 @@ For more information, see \code{\link[=s3_get_object]{get_object}}.
 Select request (see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html#AmazonS3-SelectObjectContent-request-ScanRange}{SelectObjectContentRequest - ScanRange}
 in the request parameters), you cannot specify the range of bytes of
 an object to return.
-\item GLACIER, DEEP\\_ARCHIVE and REDUCED\\_REDUNDANCY storage classes: You
-cannot specify the GLACIER, DEEP\\_ARCHIVE, or \code{REDUCED_REDUNDANCY}
+\item GLACIER, DEEP_ARCHIVE and REDUCED_REDUNDANCY storage classes: You
+cannot specify the GLACIER, DEEP_ARCHIVE, or \code{REDUCED_REDUNDANCY}
 storage classes. For more information, about storage classes see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#storage-class-intro}{Storage Classes}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#storage-class-intro}{Storage Classes}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 

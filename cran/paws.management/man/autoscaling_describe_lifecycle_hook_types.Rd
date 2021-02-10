@@ -6,13 +6,21 @@
 \usage{
 autoscaling_describe_lifecycle_hook_types()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LifecycleHookTypes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes the available types of lifecycle hooks.
 
 The following hook types are supported:
 \itemize{
-\item autoscaling:EC2\\_INSTANCE\\_LAUNCHING
-\item autoscaling:EC2\\_INSTANCE\\_TERMINATING
+\item autoscaling:EC2_INSTANCE_LAUNCHING
+\item autoscaling:EC2_INSTANCE_TERMINATING
 }
 }
 \examples{

@@ -13,6 +13,13 @@ quicksight_tag_resource(ResourceArn, Tags)
 \item{Tags}{[required] Contains a map of the key-value pairs for the resource tag or tags
 assigned to the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Assigns one or more tags (key-value pairs) to the specified QuickSight
 resource.

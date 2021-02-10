@@ -11,6 +11,9 @@ apigatewayv2_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The Tag keys to delete}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Tag.
 }

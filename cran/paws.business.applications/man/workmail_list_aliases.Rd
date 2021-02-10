@@ -17,6 +17,15 @@ does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Aliases = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Creates a paginated call to list the aliases associated with a given
 entity.

@@ -12,6 +12,23 @@ quicksight_describe_data_set_permissions(AwsAccountId, DataSetId)
 \item{DataSetId}{[required] The ID for the dataset that you want to create. This ID is unique per
 AWS Region for each AWS account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSetArn = "string",
+  DataSetId = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes the permissions on a dataset.
 

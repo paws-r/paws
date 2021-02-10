@@ -23,6 +23,32 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 
 \item{NextToken}{A token that indicates the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExportImageTasks = list(
+    list(
+      Description = "string",
+      ExportImageTaskId = "string",
+      ImageId = "string",
+      Progress = "string",
+      S3ExportLocation = list(
+        S3Bucket = "string",
+        S3Prefix = "string"
+      ),
+      Status = "string",
+      StatusMessage = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the specified export image tasks or all of your export image
 tasks.

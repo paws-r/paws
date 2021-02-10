@@ -19,6 +19,20 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IAMPolicyAssignments = list(
+    list(
+      AssignmentName = "string",
+      AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED"
+    )
+  ),
+  NextToken = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Lists IAM policy assignments in the current Amazon QuickSight account.
 }

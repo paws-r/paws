@@ -36,6 +36,15 @@ up to 10 results and a \code{nextToken} value if applicable.}
 
 \item{schedulingStrategy}{The scheduling strategy for services to list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  serviceArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the services that are running in a specified cluster.
 }

@@ -11,6 +11,23 @@ dynamodb_describe_continuous_backups(TableName)
 \item{TableName}{[required] Name of the table for which the customer wants to check the continuous
 backups and point in time recovery settings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContinuousBackupsDescription = list(
+    ContinuousBackupsStatus = "ENABLED"|"DISABLED",
+    PointInTimeRecoveryDescription = list(
+      PointInTimeRecoveryStatus = "ENABLED"|"DISABLED",
+      EarliestRestorableDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LatestRestorableDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Checks the status of continuous backups and point in time recovery on
 the specified table. Continuous backups are \code{ENABLED} on all tables at

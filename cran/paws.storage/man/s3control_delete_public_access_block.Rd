@@ -10,9 +10,12 @@ s3control_delete_public_access_block(AccountId)
 \item{AccountId}{[required] The account ID for the AWS account whose \code{PublicAccessBlock}
 configuration you want to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the \code{PublicAccessBlock} configuration for an AWS account. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 block public access}.
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 block public access}.
 
 Related actions include:
 \itemize{

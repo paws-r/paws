@@ -28,6 +28,12 @@ is highly recommended for environments that handle sensitive data. This
 option works with SMB clients on Microsoft Windows 8, Windows Server
 2012 or newer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Updates the SMB security strategy on a file gateway. This action is only
 supported in file gateways.

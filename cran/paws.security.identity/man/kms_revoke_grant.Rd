@@ -25,6 +25,9 @@ To get the key ID and key ARN for a CMK, use
 
 \item{GrantId}{[required] Identifier of the grant to be revoked.}
 }
+\value{
+An empty list.
+}
 \description{
 Revokes the specified grant for the specified customer master key (CMK).
 You can revoke a grant to actively deny operations that depend on it.

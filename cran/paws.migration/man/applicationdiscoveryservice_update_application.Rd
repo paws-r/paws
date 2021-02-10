@@ -14,6 +14,9 @@ applicationdiscoveryservice_update_application(configurationId, name,
 
 \item{description}{New description of the application to be updated.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates metadata about an application.
 }

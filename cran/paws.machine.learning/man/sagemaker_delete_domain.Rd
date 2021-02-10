@@ -13,6 +13,9 @@ sagemaker_delete_domain(DomainId, RetentionPolicy)
 will be retained after the Domain is deleted. By default, all resources
 are retained (not automatically deleted).}
 }
+\value{
+An empty list.
+}
 \description{
 Used to delete a domain. If you onboarded with IAM mode, you will need
 to delete your domain to onboard again using SSO. Use with caution. All

@@ -12,6 +12,9 @@ cloudwatchevents_tag_resource(ResourceARN, Tags)
 
 \item{Tags}{[required] The list of key-value pairs to associate with the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Assigns one or more tags (key-value pairs) to the specified EventBridge
 resource. Tags can help you organize and categorize your resources. You

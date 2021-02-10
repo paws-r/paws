@@ -15,8 +15,8 @@ elbv2_modify_target_group(TargetGroupArn, HealthCheckProtocol,
 
 \item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on
 targets. The TCP protocol is supported for health checks only if the
-protocol of the target group is TCP, TLS, UDP, or TCP\\_UDP. The GENEVE,
-TLS, UDP, and TCP\\_UDP protocols are not supported for health checks.
+protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The GENEVE,
+TLS, UDP, and TCP_UDP protocols are not supported for health checks.
 
 With Network Load Balancers, you can't modify this setting.}
 
@@ -56,6 +56,37 @@ for a successful response from a target.
 
 With Network Load Balancers, you can't modify this setting.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TargetGroups = list(
+    list(
+      TargetGroupArn = "string",
+      TargetGroupName = "string",
+      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      Port = 123,
+      VpcId = "string",
+      HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      HealthCheckPort = "string",
+      HealthCheckEnabled = TRUE|FALSE,
+      HealthCheckIntervalSeconds = 123,
+      HealthCheckTimeoutSeconds = 123,
+      HealthyThresholdCount = 123,
+      UnhealthyThresholdCount = 123,
+      HealthCheckPath = "string",
+      Matcher = list(
+        HttpCode = "string",
+        GrpcCode = "string"
+      ),
+      LoadBalancerArns = list(
+        "string"
+      ),
+      TargetType = "instance"|"ip"|"lambda",
+      ProtocolVersion = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the health checks used when evaluating the health state of the
 targets in the specified target group.
@@ -86,7 +117,7 @@ targets in the specified target group.
 svc$modify_target_group(
   HealthCheckPort = "443",
   HealthCheckProtocol = "HTTPS",
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
 )
 }
 

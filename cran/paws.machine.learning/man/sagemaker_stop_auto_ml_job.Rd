@@ -9,6 +9,9 @@ sagemaker_stop_auto_ml_job(AutoMLJobName)
 \arguments{
 \item{AutoMLJobName}{[required] The name of the object you are requesting.}
 }
+\value{
+An empty list.
+}
 \description{
 A method for forcing the termination of a running job.
 }

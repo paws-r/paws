@@ -13,6 +13,17 @@ resources: \code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PR
 \code{DEVICE_INSTANCE}, \code{SESSION}, \code{DEVICE_POOL}, \code{DEVICE}, and
 \code{VPCE_CONFIGURATION}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 List the tags for an AWS Device Farm resource.
 }

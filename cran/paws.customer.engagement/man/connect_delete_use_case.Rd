@@ -14,6 +14,9 @@ connect_delete_use_case(InstanceId, IntegrationAssociationId, UseCaseId)
 
 \item{UseCaseId}{[required] The identifier for the use case.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

@@ -12,6 +12,16 @@ support_refresh_trusted_advisor_check(checkId)
 \strong{Note:} Specifying the check ID of a check that is automatically
 refreshed causes an \code{InvalidParameterValue} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = list(
+    checkId = "string",
+    status = "string",
+    millisUntilNextRefreshable = 123
+  )
+)
+}
+}
 \description{
 Refreshes the AWS Trusted Advisor check that you specify using the check
 ID. You can get the check IDs by calling the

@@ -36,6 +36,18 @@ NULL
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   affectedAccounts = list(
+#'     "string"
+#'   ),
+#'   eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_affected_accounts_for_organization(
@@ -96,6 +108,30 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' returned, the response does not contain a pagination token value.
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entities = list(
+#'     list(
+#'       entityArn = "string",
+#'       eventArn = "string",
+#'       entityValue = "string",
+#'       entityUrl = "string",
+#'       awsAccountId = "string",
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "IMPAIRED"|"UNIMPAIRED"|"UNKNOWN",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -193,6 +229,38 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entities = list(
+#'     list(
+#'       entityArn = "string",
+#'       eventArn = "string",
+#'       entityValue = "string",
+#'       entityUrl = "string",
+#'       awsAccountId = "string",
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "IMPAIRED"|"UNIMPAIRED"|"UNKNOWN",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   failedSet = list(
+#'     list(
+#'       awsAccountId = "string",
+#'       eventArn = "string",
+#'       errorName = "string",
+#'       errorMessage = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_affected_entities_for_organization(
@@ -241,6 +309,19 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
 #'
 #' @param eventArns A list of event ARNs (unique identifiers). For example:
 #' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entityAggregates = list(
+#'     list(
+#'       eventArn = "string",
+#'       count = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -295,6 +376,20 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #' response. To retrieve the next batch of results, reissue the search
 #' request and include the returned token. When all results have been
 #' returned, the response does not contain a pagination token value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventAggregates = list(
+#'     list(
+#'       aggregateValue = "string",
+#'       count = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -412,6 +507,49 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulSet = list(
+#'     list(
+#'       event = list(
+#'         arn = "string",
+#'         service = "string",
+#'         eventTypeCode = "string",
+#'         eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'         region = "string",
+#'         availabilityZone = "string",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         statusCode = "open"|"closed"|"upcoming",
+#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'       ),
+#'       eventDescription = list(
+#'         latestDescription = "string"
+#'       ),
+#'       eventMetadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   failedSet = list(
+#'     list(
+#'       eventArn = "string",
+#'       errorName = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_details(
@@ -489,6 +627,51 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulSet = list(
+#'     list(
+#'       awsAccountId = "string",
+#'       event = list(
+#'         arn = "string",
+#'         service = "string",
+#'         eventTypeCode = "string",
+#'         eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'         region = "string",
+#'         availabilityZone = "string",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         statusCode = "open"|"closed"|"upcoming",
+#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'       ),
+#'       eventDescription = list(
+#'         latestDescription = "string"
+#'       ),
+#'       eventMetadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   failedSet = list(
+#'     list(
+#'       awsAccountId = "string",
+#'       eventArn = "string",
+#'       errorName = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_details_for_organization(
@@ -545,6 +728,21 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' returned, the response does not contain a pagination token value.
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTypes = list(
+#'     list(
+#'       service = "string",
+#'       code = "string",
+#'       category = "issue"|"accountNotification"|"scheduledChange"|"investigation"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -627,6 +825,35 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' inclusive.
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       arn = "string",
+#'       service = "string",
+#'       eventTypeCode = "string",
+#'       eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'       region = "string",
+#'       availabilityZone = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "open"|"closed"|"upcoming",
+#'       eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -768,6 +995,34 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       arn = "string",
+#'       service = "string",
+#'       eventTypeCode = "string",
+#'       eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'       eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+#'       region = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "open"|"closed"|"upcoming"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_events_for_organization(
@@ -861,6 +1116,14 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   healthServiceAccessStatusForOrganization = "string"
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -915,6 +1178,9 @@ health_describe_health_service_status_for_organization <- function() {
 #'
 
 #'
+#' @return
+#' An empty list.
+#'
 
 #'
 #' @keywords internal
@@ -954,6 +1220,9 @@ health_disable_health_service_access_for_organization <- function() {
 #' health_enable_health_service_access_for_organization()
 #'
 
+#'
+#' @return
+#' An empty list.
 #'
 
 #'

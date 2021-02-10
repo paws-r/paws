@@ -20,6 +20,12 @@ The schema used in creating the \code{MLModel} must match the schema of the
 \item{EvaluationDataSourceId}{[required] The ID of the \code{DataSource} for the evaluation. The schema of the
 \code{DataSource} must match the schema used to create the \code{MLModel}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EvaluationId = "string"
+)
+}
+}
 \description{
 Creates a new \code{Evaluation} of an \code{MLModel}. An \code{MLModel} is evaluated on
 a set of observations associated to a \code{DataSource}. Like a \code{DataSource}

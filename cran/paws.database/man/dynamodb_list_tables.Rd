@@ -15,6 +15,15 @@ so that you can obtain the next page of results.}
 \item{Limit}{A maximum number of table names to return. If this parameter is not
 specified, the limit is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableNames = list(
+    "string"
+  ),
+  LastEvaluatedTableName = "string"
+)
+}
+}
 \description{
 Returns an array of table names associated with the current account and
 endpoint. The output from \code{\link[=dynamodb_list_tables]{list_tables}} is

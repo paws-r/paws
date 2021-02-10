@@ -13,6 +13,29 @@ lightsail_get_contact_methods(protocols)
 Specify a protocol in your request to return information about a
 specific contact method protocol.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  contactMethods = list(
+    list(
+      contactEndpoint = "string",
+      status = "PendingVerification"|"Valid"|"Invalid",
+      protocol = "Email"|"SMS",
+      name = "string",
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      location = list(
+        availabilityZone = "string",
+        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+      ),
+      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+      supportCode = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about the configured contact methods. Specify a
 protocol in your request to return information about a specific contact

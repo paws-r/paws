@@ -12,6 +12,9 @@ ses_reorder_receipt_rule_set(RuleSetName, RuleNames)
 \item{RuleNames}{[required] A list of the specified receipt rule set's receipt rules in the order
 that you want to put them.}
 }
+\value{
+An empty list.
+}
 \description{
 Reorders the receipt rules within a receipt rule set.
 

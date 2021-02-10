@@ -9,6 +9,9 @@ iot_delete_topic_rule_destination(arn)
 \arguments{
 \item{arn}{[required] The ARN of the topic rule destination to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a topic rule destination.
 }

@@ -17,6 +17,9 @@ administrator credentials to access the API.}
 
 \item{DeleteAll}{Flag to request removal of all labels from the specified resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified list of labels from a resource.
 }

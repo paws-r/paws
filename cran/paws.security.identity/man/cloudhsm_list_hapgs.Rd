@@ -11,6 +11,15 @@ cloudhsm_list_hapgs(NextToken)
 \code{\link[=cloudhsm_list_hapgs]{list_hapgs}}. Pass null if this is the first
 call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HapgList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

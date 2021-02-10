@@ -57,6 +57,15 @@ effective outside of AWS KMS.}
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PrivateKeyCiphertextBlob = raw,
+  PublicKey = raw,
+  KeyId = "string",
+  KeyPairSpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"
+)
+}
+}
 \description{
 Generates a unique asymmetric data key pair. The
 \code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}

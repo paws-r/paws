@@ -79,6 +79,12 @@ of the tag groups. Cannot be used in the same call as
 organize and categorize them. Each tag consists of a key and an optional
 value, both of which you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deploymentGroupId = "string"
+)
+}
+}
 \description{
 Creates a deployment group to which application revisions are deployed.
 }

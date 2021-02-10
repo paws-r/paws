@@ -17,6 +17,18 @@ get steps and their states for the specified cluster.}
 \item{StepCancellationOption}{The option to choose to cancel \code{RUNNING} steps. By default, the value is
 \code{SEND_INTERRUPT}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CancelStepsInfoList = list(
+    list(
+      StepId = "string",
+      Status = "SUBMITTED"|"FAILED",
+      Reason = "string"
+    )
+  )
+)
+}
+}
 \description{
 Cancels a pending step or steps in a running cluster. Available only in
 Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum

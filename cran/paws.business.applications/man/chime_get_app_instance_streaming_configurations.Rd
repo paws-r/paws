@@ -9,6 +9,17 @@ chime_get_app_instance_streaming_configurations(AppInstanceArn)
 \arguments{
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceStreamingConfigurations = list(
+    list(
+      AppInstanceDataType = "Channel"|"ChannelMessage",
+      ResourceArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets the streaming settings for an app instance.
 }

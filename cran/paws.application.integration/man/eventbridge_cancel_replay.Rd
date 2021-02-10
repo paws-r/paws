@@ -9,6 +9,14 @@ eventbridge_cancel_replay(ReplayName)
 \arguments{
 \item{ReplayName}{[required] The name of the replay to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplayArn = "string",
+  State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+  StateReason = "string"
+)
+}
+}
 \description{
 Cancels the specified replay.
 }

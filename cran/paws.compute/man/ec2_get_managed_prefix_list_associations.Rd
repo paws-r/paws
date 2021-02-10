@@ -22,6 +22,18 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PrefixListAssociations = list(
+    list(
+      ResourceId = "string",
+      ResourceOwner = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about the resources that are associated with the
 specified managed prefix list.

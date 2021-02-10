@@ -10,6 +10,27 @@ pinpoint_create_recommender_configuration(
 \arguments{
 \item{CreateRecommenderConfiguration}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecommenderConfigurationResponse = list(
+    Attributes = list(
+      "string"
+    ),
+    CreationDate = "string",
+    Description = "string",
+    Id = "string",
+    LastModifiedDate = "string",
+    Name = "string",
+    RecommendationProviderIdType = "string",
+    RecommendationProviderRoleArn = "string",
+    RecommendationProviderUri = "string",
+    RecommendationTransformerUri = "string",
+    RecommendationsDisplayName = "string",
+    RecommendationsPerMessage = 123
+  )
+)
+}
+}
 \description{
 Creates an Amazon Pinpoint configuration for a recommender model.
 }

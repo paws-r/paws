@@ -11,6 +11,17 @@ chime_list_attendee_tags(MeetingId, AttendeeId)
 
 \item{AttendeeId}{[required] The Amazon Chime SDK attendee ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the tags applied to an Amazon Chime SDK attendee resource.
 }

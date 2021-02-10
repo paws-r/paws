@@ -27,6 +27,9 @@ service when an app and mobile device are registered with the
 notification service.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the attributes for an endpoint for a device on one of the supported
 push notification services, such as GCM (Firebase Cloud Messaging) and

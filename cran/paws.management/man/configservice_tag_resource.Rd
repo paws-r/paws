@@ -14,6 +14,9 @@ list the tags. Currently, the supported resources are \code{ConfigRule},
 
 \item{Tags}{[required] An array of tag object.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates the specified tags to a resource with the specified
 resourceArn. If existing tags on a resource are not specified in the

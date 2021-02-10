@@ -25,7 +25,6 @@ NULL
 #'         dependencies, only agent-based discovery collects that
 #'         information.
 #' 
-#' <!-- -->
 #' 
 #' -   **Agent-based discovery** collects a richer set of data than
 #'     agentless discovery by using the AWS Application Discovery Agent,
@@ -39,7 +38,6 @@ NULL
 #'         transit to the Application Discovery Service database in the
 #'         cloud.
 #' 
-#' <!-- -->
 #' 
 #' -   **AWS Partner Network (APN) solutions** integrate with Application
 #'     Discovery Service, enabling you to import details of your

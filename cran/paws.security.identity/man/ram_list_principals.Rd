@@ -32,6 +32,25 @@ Valid values: \code{codebuild:Project} | \code{codebuild:ReportGroup} |
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  principals = list(
+    list(
+      id = "string",
+      resourceShareArn = "string",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      external = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the principals that you have shared resources with or that have
 shared resources with you.

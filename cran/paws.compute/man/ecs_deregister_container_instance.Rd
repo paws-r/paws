@@ -32,6 +32,82 @@ Classic Load Balancer or an Application Load Balancer target group are
 deregistered. They begin connection draining according to the settings
 on the load balancer or target group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  containerInstance = list(
+    containerInstanceArn = "string",
+    ec2InstanceId = "string",
+    capacityProviderName = "string",
+    version = 123,
+    versionInfo = list(
+      agentVersion = "string",
+      agentHash = "string",
+      dockerVersion = "string"
+    ),
+    remainingResources = list(
+      list(
+        name = "string",
+        type = "string",
+        doubleValue = 123.0,
+        longValue = 123,
+        integerValue = 123,
+        stringSetValue = list(
+          "string"
+        )
+      )
+    ),
+    registeredResources = list(
+      list(
+        name = "string",
+        type = "string",
+        doubleValue = 123.0,
+        longValue = 123,
+        integerValue = 123,
+        stringSetValue = list(
+          "string"
+        )
+      )
+    ),
+    status = "string",
+    statusReason = "string",
+    agentConnected = TRUE|FALSE,
+    runningTasksCount = 123,
+    pendingTasksCount = 123,
+    agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+    attributes = list(
+      list(
+        name = "string",
+        value = "string",
+        targetType = "container-instance",
+        targetId = "string"
+      )
+    ),
+    registeredAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    attachments = list(
+      list(
+        id = "string",
+        type = "string",
+        status = "string",
+        details = list(
+          list(
+            name = "string",
+            value = "string"
+          )
+        )
+      )
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deregisters an Amazon ECS container instance from the specified cluster.
 This instance is no longer available to run tasks.

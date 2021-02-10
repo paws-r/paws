@@ -22,6 +22,22 @@ Firewall Manager to return for this request. If you have more
 \code{MaxResults}, the response includes a \code{NextToken} value that you can use
 to get another batch of \code{PolicySummary} objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyList = list(
+    list(
+      PolicyArn = "string",
+      PolicyId = "string",
+      PolicyName = "string",
+      ResourceType = "string",
+      SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+      RemediationEnabled = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of \code{PolicySummary} objects.
 }

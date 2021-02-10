@@ -12,6 +12,15 @@ appstream_create_image_builder_streaming_url(Name, Validity)
 \item{Validity}{The time that the streaming URL will be valid, in seconds. Specify a
 value between 1 and 604800 seconds. The default is 3600 seconds.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamingURL = "string",
+  Expires = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a URL to start an image builder streaming session.
 }

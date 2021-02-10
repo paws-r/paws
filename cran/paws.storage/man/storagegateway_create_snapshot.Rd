@@ -21,8 +21,15 @@ a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \\_ : / @. The maximum length of a tag's key is 128 characters, and
+= . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string",
+  SnapshotId = "string"
+)
+}
 }
 \description{
 Initiates a snapshot of a volume.
@@ -76,7 +83,7 @@ page.
 # Initiates an ad-hoc snapshot of a gateway volume.
 svc$create_snapshot(
   SnapshotDescription = "My root volume snapshot as of 10/03/2017",
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 )
 }
 

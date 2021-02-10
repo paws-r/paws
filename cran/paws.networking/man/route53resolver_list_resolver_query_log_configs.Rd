@@ -85,6 +85,28 @@ If you submit a second or subsequent
 request and specify the \code{NextToken} parameter, you must use the same
 value for \code{SortOrder}, if any, as in the previous request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  TotalCount = 123,
+  TotalFilteredCount = 123,
+  ResolverQueryLogConfigs = list(
+    list(
+      Id = "string",
+      OwnerId = "string",
+      Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+      ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+      AssociationCount = 123,
+      Arn = "string",
+      Name = "string",
+      DestinationArn = "string",
+      CreatorRequestId = "string",
+      CreationTime = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists information about the specified query logging configurations. Each
 configuration defines where you want Resolver to save DNS query logs and

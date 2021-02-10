@@ -26,6 +26,15 @@ streams of all types are returned.}
 with the delivery stream whose name comes alphabetically immediately
 after the name you specify in \code{ExclusiveStartDeliveryStreamName}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeliveryStreamNames = list(
+    "string"
+  ),
+  HasMoreDeliveryStreams = TRUE|FALSE
+)
+}
+}
 \description{
 Lists your delivery streams in alphabetical order of their names.
 

@@ -21,6 +21,24 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Associations = list(
+    TransitGatewayMulticastDomainId = "string",
+    TransitGatewayAttachmentId = "string",
+    ResourceId = "string",
+    ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+    ResourceOwnerId = "string",
+    Subnets = list(
+      list(
+        SubnetId = "string",
+        State = "pendingAcceptance"|"associating"|"associated"|"disassociating"|"disassociated"|"rejected"|"failed"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Disassociates the specified subnets from the transit gateway multicast
 domain.

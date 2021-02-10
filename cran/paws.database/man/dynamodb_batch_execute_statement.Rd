@@ -10,6 +10,44 @@ dynamodb_batch_execute_statement(Statements)
 \arguments{
 \item{Statements}{[required] The list of PartiQL statements representing the batch to run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Responses = list(
+    list(
+      Error = list(
+        Code = "ConditionalCheckFailed"|"ItemCollectionSizeLimitExceeded"|"RequestLimitExceeded"|"ValidationError"|"ProvisionedThroughputExceeded"|"TransactionConflict"|"ThrottlingError"|"InternalServerError"|"ResourceNotFound"|"AccessDenied"|"DuplicateItem",
+        Message = "string"
+      ),
+      TableName = "string",
+      Item = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 This operation allows you to perform batch reads and writes on data
 stored in DynamoDB, using PartiQL.

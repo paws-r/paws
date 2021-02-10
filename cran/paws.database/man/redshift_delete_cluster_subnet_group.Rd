@@ -9,6 +9,9 @@ redshift_delete_cluster_subnet_group(ClusterSubnetGroupName)
 \arguments{
 \item{ClusterSubnetGroupName}{[required] The name of the cluster subnet group name to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified cluster subnet group.
 }

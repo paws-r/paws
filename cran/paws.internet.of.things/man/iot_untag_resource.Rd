@@ -11,6 +11,9 @@ iot_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] A list of the keys of the tags to be removed from the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the given tags (metadata) from the resource.
 }

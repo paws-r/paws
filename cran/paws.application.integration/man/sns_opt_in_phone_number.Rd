@@ -10,6 +10,9 @@ sns_opt_in_phone_number(phoneNumber)
 \arguments{
 \item{phoneNumber}{[required] The phone number to opt in.}
 }
+\value{
+An empty list.
+}
 \description{
 Use this request to opt in a phone number that is opted out, which
 enables you to resume sending SMS messages to the number.

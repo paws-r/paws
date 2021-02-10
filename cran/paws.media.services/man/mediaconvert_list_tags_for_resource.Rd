@@ -7,7 +7,19 @@
 mediaconvert_list_tags_for_resource(Arn)
 }
 \arguments{
-\item{Arn}{[required] The Amazon Resource Name (ARN) of the resource that you want to list tags for. To get the ARN, send a GET request with the resource name.}
+\item{Arn}{[required] The Amazon Resource Name (ARN) of the resource that you want to list
+tags for. To get the ARN, send a GET request with the resource name.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceTags = list(
+    Arn = "string",
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
 }
 \description{
 Retrieve the tags for a MediaConvert resource.

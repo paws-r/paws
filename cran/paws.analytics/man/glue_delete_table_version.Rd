@@ -19,6 +19,9 @@ lowercase.}
 \item{VersionId}{[required] The ID of the table version to be deleted. A \code{VersionID} is a string
 representation of an integer. Each version is incremented by 1.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified version of a table.
 }

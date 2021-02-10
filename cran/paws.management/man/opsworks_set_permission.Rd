@@ -28,6 +28,9 @@ strings. You cannot set your own permissions level.
 For more information about the permissions associated with these levels,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.}
 }
+\value{
+An empty list.
+}
 \description{
 Specifies a user's permissions. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
 

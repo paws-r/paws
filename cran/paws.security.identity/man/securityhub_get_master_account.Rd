@@ -7,6 +7,19 @@ member account}
 \usage{
 securityhub_get_master_account()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Master = list(
+    AccountId = "string",
+    InvitationId = "string",
+    InvitedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    MemberStatus = "string"
+  )
+)
+}
+}
 \description{
 Provides the details for the Security Hub master account for the current
 member account.

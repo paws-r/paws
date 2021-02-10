@@ -26,6 +26,19 @@ use \code{\link[=gamelift_tag_resource]{tag_resource}},
 remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuleSet = list(
+    RuleSetName = "string",
+    RuleSetArn = "string",
+    RuleSetBody = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a new rule set for FlexMatch matchmaking. A rule set describes
 the type of match to create, such as the number and size of teams. It

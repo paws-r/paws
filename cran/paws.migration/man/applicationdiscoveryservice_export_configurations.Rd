@@ -6,6 +6,12 @@
 \usage{
 applicationdiscoveryservice_export_configurations()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  exportId = "string"
+)
+}
+}
 \description{
 Deprecated. Use
 \code{\link[=applicationdiscoveryservice_start_export_task]{start_export_task}}

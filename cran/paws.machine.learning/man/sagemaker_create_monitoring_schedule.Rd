@@ -19,6 +19,12 @@ defines the monitoring job.}
 Cost Allocation Tags in the \emph{AWS Billing and Cost Management User
 Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitoringScheduleArn = "string"
+)
+}
+}
 \description{
 Creates a schedule that regularly starts Amazon SageMaker Processing
 Jobs to monitor the data captured for an Amazon SageMaker Endoint.

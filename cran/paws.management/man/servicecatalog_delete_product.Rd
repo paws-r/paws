@@ -16,6 +16,9 @@ servicecatalog_delete_product(AcceptLanguage, Id)
 
 \item{Id}{[required] The product identifier.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified product.
 

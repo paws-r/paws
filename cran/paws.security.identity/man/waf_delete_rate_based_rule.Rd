@@ -14,6 +14,12 @@ by \code{\link[=waf_list_rate_based_rules]{list_rate_based_rules}}.}
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

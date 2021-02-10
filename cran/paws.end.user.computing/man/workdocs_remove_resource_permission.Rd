@@ -18,6 +18,9 @@ administrator credentials to access the API.}
 
 \item{PrincipalType}{The principal type of the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the permission for the specified principal from the specified
 resource.

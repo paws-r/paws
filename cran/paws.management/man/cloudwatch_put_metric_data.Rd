@@ -15,6 +15,9 @@ namespace that begins with \verb{AWS/}}
 \item{MetricData}{[required] The data for the metric. The array can include no more than 20 metrics
 per call.}
 }
+\value{
+An empty list.
+}
 \description{
 Publishes metric data points to Amazon CloudWatch. CloudWatch associates
 the data points with the specified metric. If the specified metric does

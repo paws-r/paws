@@ -16,6 +16,9 @@ designated as automatically enabled. If you do not provide a value for
 automatically enabled standards, set \code{EnableDefaultStandards} to
 \code{false}.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables Security Hub for your account in the current Region or the
 Region you specify in the request.

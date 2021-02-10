@@ -38,6 +38,35 @@ DescribeCompilationJobResponse$CompilationJobStatus status.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CompilationJobSummaries = list(
+    list(
+      CompilationJobName = "string",
+      CompilationJobArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompilationStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompilationEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompilationTargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
+      CompilationTargetPlatformOs = "ANDROID"|"LINUX",
+      CompilationTargetPlatformArch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
+      CompilationTargetPlatformAccelerator = "INTEL_GRAPHICS"|"MALI"|"NVIDIA",
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompilationJobStatus = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists model compilation jobs that satisfy various filters.
 

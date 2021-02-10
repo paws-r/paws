@@ -11,6 +11,9 @@ codedeploy_update_application(applicationName, newApplicationName)
 
 \item{newApplicationName}{The new name to give the application.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the name of an application.
 }

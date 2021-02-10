@@ -14,8 +14,14 @@ pinpointsmsvoice_update_configuration_set_event_destination(
 
 \item{EventDestinationName}{[required] EventDestinationName}
 }
+\value{
+An empty list.
+}
 \description{
-Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
+Update an event destination in a configuration set. An event destination
+is a location that you publish information about your voice calls to.
+For example, you can log an event to an Amazon CloudWatch destination
+when a call fails.
 }
 \section{Request syntax}{
 \preformatted{svc$update_configuration_set_event_destination(

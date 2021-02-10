@@ -28,6 +28,12 @@ optional value, both of which you define. Tag keys can have a maximum
 character length of 128 characters, and tag values can have a maximum
 length of 256 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Creates a private namespace based on DNS, which will be visible only
 inside a specified Amazon VPC. The namespace defines your service naming

@@ -16,6 +16,53 @@ elastictranscoder_update_pipeline_status(Id, Status)
 \item \code{Paused}: The pipeline is not currently processing jobs.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Pipeline = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string",
+    Status = "string",
+    InputBucket = "string",
+    OutputBucket = "string",
+    Role = "string",
+    AwsKmsKeyArn = "string",
+    Notifications = list(
+      Progressing = "string",
+      Completed = "string",
+      Warning = "string",
+      Error = "string"
+    ),
+    ContentConfig = list(
+      Bucket = "string",
+      StorageClass = "string",
+      Permissions = list(
+        list(
+          GranteeType = "string",
+          Grantee = "string",
+          Access = list(
+            "string"
+          )
+        )
+      )
+    ),
+    ThumbnailConfig = list(
+      Bucket = "string",
+      StorageClass = "string",
+      Permissions = list(
+        list(
+          GranteeType = "string",
+          Grantee = "string",
+          Access = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
 that the pipeline stops or restarts the processing of jobs.

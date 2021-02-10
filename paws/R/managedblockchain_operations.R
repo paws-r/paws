@@ -24,6 +24,14 @@ NULL
 #' @param NetworkId &#91;required&#93; The unique identifier of the network in which the member is created.
 #' @param MemberConfiguration &#91;required&#93; Member configuration parameters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MemberId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_member(
@@ -98,6 +106,15 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #' @param VotingPolicy &#91;required&#93; The voting rules used by the network to determine if a proposal is
 #' approved.
 #' @param MemberConfiguration &#91;required&#93; Configuration properties for the first member within the network.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkId = "string",
+#'   MemberId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -191,6 +208,14 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #' Applies only to Hyperledger Fabric.
 #' @param NodeConfiguration &#91;required&#93; The properties of a node configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NodeId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_node(
@@ -270,6 +295,14 @@ managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberI
 #' @param Description A description for the proposal that is visible to voting members, for
 #' example, "Proposal to add Example Corp. as member."
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProposalId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_proposal(
@@ -333,6 +366,9 @@ managedblockchain_create_proposal <- function(ClientRequestToken, NetworkId, Mem
 #' @param NetworkId &#91;required&#93; The unique identifier of the network from which the member is removed.
 #' @param MemberId &#91;required&#93; The unique identifier of the member to remove.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_member(
@@ -387,6 +423,9 @@ managedblockchain_delete_member <- function(NetworkId, MemberId) {
 #' Fabric.
 #' @param NodeId &#91;required&#93; The unique identifier of the node.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_node(
@@ -429,6 +468,38 @@ managedblockchain_delete_node <- function(NetworkId, MemberId = NULL, NodeId) {
 #' @param NetworkId &#91;required&#93; The unique identifier of the network to which the member belongs.
 #' @param MemberId &#91;required&#93; The unique identifier of the member.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Member = list(
+#'     NetworkId = "string",
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     FrameworkAttributes = list(
+#'       Fabric = list(
+#'         AdminUsername = "string",
+#'         CaEndpoint = "string"
+#'       )
+#'     ),
+#'     LogPublishingConfiguration = list(
+#'       Fabric = list(
+#'         CaLogs = list(
+#'           Cloudwatch = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_member(
@@ -468,6 +539,41 @@ managedblockchain_get_member <- function(NetworkId, MemberId) {
 #' managedblockchain_get_network(NetworkId)
 #'
 #' @param NetworkId &#91;required&#93; The unique identifier of the network to get information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Network = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Framework = "HYPERLEDGER_FABRIC"|"ETHEREUM",
+#'     FrameworkVersion = "string",
+#'     FrameworkAttributes = list(
+#'       Fabric = list(
+#'         OrderingServiceEndpoint = "string",
+#'         Edition = "STARTER"|"STANDARD"
+#'       ),
+#'       Ethereum = list(
+#'         ChainId = "string"
+#'       )
+#'     ),
+#'     VpcEndpointServiceName = "string",
+#'     VotingPolicy = list(
+#'       ApprovalThresholdPolicy = list(
+#'         ThresholdPercentage = 123,
+#'         ProposalDurationInHours = 123,
+#'         ThresholdComparator = "GREATER_THAN"|"GREATER_THAN_OR_EQUAL_TO"
+#'       )
+#'     ),
+#'     Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -513,6 +619,49 @@ managedblockchain_get_network <- function(NetworkId) {
 #' Fabric.
 #' @param NodeId &#91;required&#93; The unique identifier of the node.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Node = list(
+#'     NetworkId = "string",
+#'     MemberId = "string",
+#'     Id = "string",
+#'     InstanceType = "string",
+#'     AvailabilityZone = "string",
+#'     FrameworkAttributes = list(
+#'       Fabric = list(
+#'         PeerEndpoint = "string",
+#'         PeerEventEndpoint = "string"
+#'       ),
+#'       Ethereum = list(
+#'         HttpEndpoint = "string",
+#'         WebSocketEndpoint = "string"
+#'       )
+#'     ),
+#'     LogPublishingConfiguration = list(
+#'       Fabric = list(
+#'         ChaincodeLogs = list(
+#'           Cloudwatch = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         PeerLogs = list(
+#'           Cloudwatch = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StateDB = "LevelDB"|"CouchDB",
+#'     Status = "CREATING"|"AVAILABLE"|"UNHEALTHY"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_node(
@@ -555,6 +704,42 @@ managedblockchain_get_node <- function(NetworkId, MemberId = NULL, NodeId) {
 #' @param NetworkId &#91;required&#93; The unique identifier of the network for which the proposal is made.
 #' @param ProposalId &#91;required&#93; The unique identifier of the proposal.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Proposal = list(
+#'     ProposalId = "string",
+#'     NetworkId = "string",
+#'     Description = "string",
+#'     Actions = list(
+#'       Invitations = list(
+#'         list(
+#'           Principal = "string"
+#'         )
+#'       ),
+#'       Removals = list(
+#'         list(
+#'           MemberId = "string"
+#'         )
+#'       )
+#'     ),
+#'     ProposedByMemberId = "string",
+#'     ProposedByMemberName = "string",
+#'     Status = "IN_PROGRESS"|"APPROVED"|"REJECTED"|"EXPIRED"|"ACTION_FAILED",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     YesVoteCount = 123,
+#'     NoVoteCount = 123,
+#'     OutstandingVoteCount = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_proposal(
@@ -595,6 +780,37 @@ managedblockchain_get_proposal <- function(NetworkId, ProposalId) {
 #'
 #' @param MaxResults The maximum number of invitations to return.
 #' @param NextToken The pagination token that indicates the next set of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Invitations = list(
+#'     list(
+#'       InvitationId = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "PENDING"|"ACCEPTED"|"ACCEPTING"|"REJECTED"|"EXPIRED",
+#'       NetworkSummary = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         Description = "string",
+#'         Framework = "HYPERLEDGER_FABRIC"|"ETHEREUM",
+#'         FrameworkVersion = "string",
+#'         Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -646,6 +862,26 @@ managedblockchain_list_invitations <- function(MaxResults = NULL, NextToken = NU
 #' accounts own (`false`). If omitted, all members are listed.
 #' @param MaxResults The maximum number of members to return in the request.
 #' @param NextToken The pagination token that indicates the next set of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Members = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IsOwned = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -702,6 +938,27 @@ managedblockchain_list_members <- function(NetworkId, Name = NULL, Status = NULL
 #' @param MaxResults The maximum number of networks to list.
 #' @param NextToken The pagination token that indicates the next set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Networks = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Framework = "HYPERLEDGER_FABRIC"|"ETHEREUM",
+#'       FrameworkVersion = "string",
+#'       Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_networks(
@@ -754,6 +1011,25 @@ managedblockchain_list_networks <- function(Name = NULL, Framework = NULL, Statu
 #' @param MaxResults The maximum number of nodes to list.
 #' @param NextToken The pagination token that indicates the next set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Nodes = list(
+#'     list(
+#'       Id = "string",
+#'       Status = "CREATING"|"AVAILABLE"|"UNHEALTHY"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AvailabilityZone = "string",
+#'       InstanceType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_nodes(
@@ -803,6 +1079,21 @@ managedblockchain_list_nodes <- function(NetworkId, MemberId = NULL, Status = NU
 #' @param MaxResults The maximum number of votes to return.
 #' @param NextToken The pagination token that indicates the next set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProposalVotes = list(
+#'     list(
+#'       Vote = "YES"|"NO",
+#'       MemberName = "string",
+#'       MemberId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_proposal_votes(
@@ -847,6 +1138,29 @@ managedblockchain_list_proposal_votes <- function(NetworkId, ProposalId, MaxResu
 #' @param MaxResults The maximum number of proposals to return.
 #' @param NextToken The pagination token that indicates the next set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Proposals = list(
+#'     list(
+#'       ProposalId = "string",
+#'       Description = "string",
+#'       ProposedByMemberId = "string",
+#'       ProposedByMemberName = "string",
+#'       Status = "IN_PROGRESS"|"APPROVED"|"REJECTED"|"EXPIRED"|"ACTION_FAILED",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_proposals(
@@ -890,6 +1204,9 @@ managedblockchain_list_proposals <- function(NetworkId, MaxResults = NULL, NextT
 #'
 #' @param InvitationId &#91;required&#93; The unique identifier of the invitation to reject.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_invitation(
@@ -932,6 +1249,9 @@ managedblockchain_reject_invitation <- function(InvitationId) {
 #' member belongs.
 #' @param MemberId &#91;required&#93; The unique identifier of the member.
 #' @param LogPublishingConfiguration Configuration properties for publishing to Amazon CloudWatch Logs.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -987,6 +1307,9 @@ managedblockchain_update_member <- function(NetworkId, MemberId, LogPublishingCo
 #' Applies only to Hyperledger Fabric.
 #' @param NodeId &#91;required&#93; The unique identifier of the node.
 #' @param LogPublishingConfiguration Configuration properties for publishing to Amazon CloudWatch Logs.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1048,6 +1371,9 @@ managedblockchain_update_node <- function(NetworkId, MemberId = NULL, NodeId, Lo
 #' @param ProposalId &#91;required&#93; The unique identifier of the proposal.
 #' @param VoterMemberId &#91;required&#93; The unique identifier of the member casting the vote.
 #' @param Vote &#91;required&#93; The value of the vote.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

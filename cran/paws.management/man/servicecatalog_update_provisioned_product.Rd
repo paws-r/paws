@@ -52,6 +52,41 @@ allow tag updates.}
 \item{UpdateToken}{[required] The idempotency token that uniquely identifies the provisioning update
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecordDetail = list(
+    RecordId = "string",
+    ProvisionedProductName = "string",
+    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProvisionedProductType = "string",
+    RecordType = "string",
+    ProvisionedProductId = "string",
+    ProductId = "string",
+    ProvisioningArtifactId = "string",
+    PathId = "string",
+    RecordErrors = list(
+      list(
+        Code = "string",
+        Description = "string"
+      )
+    ),
+    RecordTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    LaunchRoleArn = "string"
+  )
+)
+}
+}
 \description{
 Requests updates to the configuration of the specified provisioned
 product.

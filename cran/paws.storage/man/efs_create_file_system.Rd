@@ -65,8 +65,42 @@ in the \emph{Amazon EFS User Guide.}}
 
 \item{Tags}{A value that specifies to create one or more tags associated with the
 file system. Each tag is a user-defined key-value pair. Name your file
-system on creation by including a \verb{"Key":"Name","Value":"\\\{value\\\}"}
+system on creation by including a \verb{"Key":"Name","Value":"\{value\}"}
 key-value pair.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  OwnerId = "string",
+  CreationToken = "string",
+  FileSystemId = "string",
+  FileSystemArn = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+  Name = "string",
+  NumberOfMountTargets = 123,
+  SizeInBytes = list(
+    Value = 123,
+    Timestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ValueInIA = 123,
+    ValueInStandard = 123
+  ),
+  PerformanceMode = "generalPurpose"|"maxIO",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  ThroughputMode = "bursting"|"provisioned",
+  ProvisionedThroughputInMibps = 123.0,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new, empty file system. The operation requires a creation

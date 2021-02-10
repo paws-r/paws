@@ -10,6 +10,40 @@ opsworks_describe_stack_summary(StackId)
 \arguments{
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackSummary = list(
+    StackId = "string",
+    Name = "string",
+    Arn = "string",
+    LayersCount = 123,
+    AppsCount = 123,
+    InstancesCount = list(
+      Assigning = 123,
+      Booting = 123,
+      ConnectionLost = 123,
+      Deregistering = 123,
+      Online = 123,
+      Pending = 123,
+      Rebooting = 123,
+      Registered = 123,
+      Registering = 123,
+      Requested = 123,
+      RunningSetup = 123,
+      SetupFailed = 123,
+      ShuttingDown = 123,
+      StartFailed = 123,
+      StopFailed = 123,
+      Stopped = 123,
+      Stopping = 123,
+      Terminated = 123,
+      Terminating = 123,
+      Unassigning = 123
+    )
+  )
+)
+}
+}
 \description{
 Describes the number of layers and apps in a specified stack, and the
 number of instances in each state, such as \code{running_setup} or \code{online}.

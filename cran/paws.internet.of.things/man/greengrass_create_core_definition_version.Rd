@@ -14,8 +14,18 @@ greengrass_create_core_definition_version(AmznClientToken,
 
 \item{Cores}{A list of cores in the core definition version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
+}
 \description{
-Creates a version of a core definition that has already been defined. Greengrass groups must each contain exactly one Greengrass core.
+Creates a version of a core definition that has already been defined.
+Greengrass groups must each contain exactly one Greengrass core.
 }
 \section{Request syntax}{
 \preformatted{svc$create_core_definition_version(

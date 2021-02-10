@@ -12,6 +12,16 @@ backup_describe_protected_resource(ResourceArn)
 \item{ResourceArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a resource. The
 format of the ARN depends on the resource type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceArn = "string",
+  ResourceType = "string",
+  LastBackupTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns information about a saved resource, including the last time it
 was backed up, its Amazon Resource Name (ARN), and the AWS service type

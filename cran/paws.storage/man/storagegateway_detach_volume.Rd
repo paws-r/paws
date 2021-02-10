@@ -17,6 +17,12 @@ the target volume.
 
 Valid Values: \code{true} | \code{false}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string"
+)
+}
+}
 \description{
 Disconnects a volume from an iSCSI connection and then detaches the
 volume from the specified gateway. Detaching and attaching a volume

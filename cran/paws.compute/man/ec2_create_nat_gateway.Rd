@@ -26,6 +26,51 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to assign to the NAT gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientToken = "string",
+  NatGateway = list(
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    DeleteTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FailureCode = "string",
+    FailureMessage = "string",
+    NatGatewayAddresses = list(
+      list(
+        AllocationId = "string",
+        NetworkInterfaceId = "string",
+        PrivateIp = "string",
+        PublicIp = "string"
+      )
+    ),
+    NatGatewayId = "string",
+    ProvisionedBandwidth = list(
+      ProvisionTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Provisioned = "string",
+      RequestTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Requested = "string",
+      Status = "string"
+    ),
+    State = "pending"|"failed"|"available"|"deleting"|"deleted",
+    SubnetId = "string",
+    VpcId = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a NAT gateway in the specified public subnet. This action
 creates a network interface in the specified subnet with a private IP

@@ -15,7 +15,7 @@ cloudtrail_create_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
 requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\\_), or dashes (-)
+underscores (_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
@@ -82,6 +82,24 @@ behalf of an AWS account that is the master account for an organization
 in AWS Organizations.}
 
 \item{TagsList}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  SnsTopicName = "string",
+  SnsTopicARN = "string",
+  IncludeGlobalServiceEvents = TRUE|FALSE,
+  IsMultiRegionTrail = TRUE|FALSE,
+  TrailARN = "string",
+  LogFileValidationEnabled = TRUE|FALSE,
+  CloudWatchLogsLogGroupArn = "string",
+  CloudWatchLogsRoleArn = "string",
+  KmsKeyId = "string",
+  IsOrganizationTrail = TRUE|FALSE
+)
+}
 }
 \description{
 Creates a trail that specifies the settings for delivery of log data to

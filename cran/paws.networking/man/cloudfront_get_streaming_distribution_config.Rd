@@ -9,6 +9,40 @@ cloudfront_get_streaming_distribution_config(Id)
 \arguments{
 \item{Id}{[required] The streaming distribution's ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamingDistributionConfig = list(
+    CallerReference = "string",
+    S3Origin = list(
+      DomainName = "string",
+      OriginAccessIdentity = "string"
+    ),
+    Aliases = list(
+      Quantity = 123,
+      Items = list(
+        "string"
+      )
+    ),
+    Comment = "string",
+    Logging = list(
+      Enabled = TRUE|FALSE,
+      Bucket = "string",
+      Prefix = "string"
+    ),
+    TrustedSigners = list(
+      Enabled = TRUE|FALSE,
+      Quantity = 123,
+      Items = list(
+        "string"
+      )
+    ),
+    PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+    Enabled = TRUE|FALSE
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Get the configuration information about a streaming distribution.
 }

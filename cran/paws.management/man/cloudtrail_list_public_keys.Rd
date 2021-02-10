@@ -18,6 +18,24 @@ time is used.}
 
 \item{NextToken}{Reserved for future use.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PublicKeyList = list(
+    list(
+      Value = raw,
+      ValidityStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ValidityEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Fingerprint = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns all public keys whose private keys were used to sign the digest
 files within the specified time range. The public key is needed to

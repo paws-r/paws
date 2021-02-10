@@ -25,6 +25,14 @@ Zone, network, and platform of the schedule that you purchased.}
 
 \item{ScheduledInstanceId}{[required] The Scheduled Instance ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceIdSet = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Launches the specified Scheduled Instances.
 

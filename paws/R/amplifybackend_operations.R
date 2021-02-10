@@ -16,6 +16,19 @@ NULL
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param TargetEnvironmentName &#91;required&#93; The name of the destination backend environment to be created.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$clone_backend(
@@ -61,6 +74,19 @@ amplifybackend_clone_backend <- function(AppId, BackendEnvironmentName, TargetEn
 #' @param ResourceConfig The resource configuration for the backend creation request.
 #' @param ResourceName The name of the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_backend(
@@ -105,6 +131,19 @@ amplifybackend_create_backend <- function(AppId, AppName, BackendEnvironmentName
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param ResourceConfig &#91;required&#93; The resource configuration for this request.
 #' @param ResourceName &#91;required&#93; The name of this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -184,6 +223,19 @@ amplifybackend_create_backend_api <- function(AppId, BackendEnvironmentName, Res
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param ResourceConfig &#91;required&#93; The resource configuration for this request object.
 #' @param ResourceName &#91;required&#93; The name of this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -292,6 +344,17 @@ amplifybackend_create_backend_auth <- function(AppId, BackendEnvironmentName, Re
 #' @param AppId &#91;required&#93; The app ID.
 #' @param BackendManagerAppId The app ID for the backend manager.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   JobId = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_backend_config(
@@ -332,6 +395,17 @@ amplifybackend_create_backend_config <- function(AppId, BackendManagerAppId = NU
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   ChallengeCode = "string",
+#'   SessionId = "string",
+#'   Ttl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_token(
@@ -369,6 +443,19 @@ amplifybackend_create_token <- function(AppId) {
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -412,6 +499,19 @@ amplifybackend_delete_backend <- function(AppId, BackendEnvironmentName) {
 #' @param ResourceConfig Defines the resource configuration for the data model in your Amplify
 #' project.
 #' @param ResourceName &#91;required&#93; The name of this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -491,6 +591,19 @@ amplifybackend_delete_backend_api <- function(AppId, BackendEnvironmentName, Res
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param ResourceName &#91;required&#93; The name of this resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_backend_auth(
@@ -530,6 +643,14 @@ amplifybackend_delete_backend_auth <- function(AppId, BackendEnvironmentName, Re
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #' @param SessionId &#91;required&#93; The session ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IsSuccess = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -572,6 +693,19 @@ amplifybackend_delete_token <- function(AppId, SessionId) {
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param ResourceName &#91;required&#93; The name of this resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_backend_api_models(
@@ -611,6 +745,21 @@ amplifybackend_generate_backend_api_models <- function(AppId, BackendEnvironment
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #' @param BackendEnvironmentName The name of the backend environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AmplifyMetaConfig = "string",
+#'   AppId = "string",
+#'   AppName = "string",
+#'   BackendEnvironmentList = list(
+#'     "string"
+#'   ),
+#'   BackendEnvironmentName = "string",
+#'   Error = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -654,6 +803,53 @@ amplifybackend_get_backend <- function(AppId, BackendEnvironmentName = NULL) {
 #' @param ResourceConfig Defines the resource configuration for the data model in your Amplify
 #' project.
 #' @param ResourceName &#91;required&#93; The name of this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   ResourceConfig = list(
+#'     AdditionalAuthTypes = list(
+#'       list(
+#'         Mode = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'         Settings = list(
+#'           CognitoUserPoolId = "string",
+#'           Description = "string",
+#'           ExpirationTime = 123.0,
+#'           OpenIDAuthTTL = "string",
+#'           OpenIDClientId = "string",
+#'           OpenIDIatTTL = "string",
+#'           OpenIDIssueURL = "string",
+#'           OpenIDProviderName = "string"
+#'         )
+#'       )
+#'     ),
+#'     ApiName = "string",
+#'     ConflictResolution = list(
+#'       ResolutionStrategy = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE"
+#'     ),
+#'     DefaultAuthType = list(
+#'       Mode = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'       Settings = list(
+#'         CognitoUserPoolId = "string",
+#'         Description = "string",
+#'         ExpirationTime = 123.0,
+#'         OpenIDAuthTTL = "string",
+#'         OpenIDClientId = "string",
+#'         OpenIDIatTTL = "string",
+#'         OpenIDIssueURL = "string",
+#'         OpenIDProviderName = "string"
+#'       )
+#'     ),
+#'     Service = "string",
+#'     TransformSchema = "string"
+#'   ),
+#'   ResourceName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -733,6 +929,15 @@ amplifybackend_get_backend_api <- function(AppId, BackendEnvironmentName, Resour
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param ResourceName &#91;required&#93; The name of this resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Models = "string",
+#'   Status = "LATEST"|"STALE"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_backend_api_models(
@@ -775,6 +980,84 @@ amplifybackend_get_backend_api_models <- function(AppId, BackendEnvironmentName,
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param ResourceName &#91;required&#93; The name of this resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   ResourceConfig = list(
+#'     AuthResources = "USER_POOL_ONLY"|"IDENTITY_POOL_AND_USER_POOL",
+#'     IdentityPoolConfigs = list(
+#'       IdentityPoolName = "string",
+#'       UnauthenticatedLogin = TRUE|FALSE
+#'     ),
+#'     Service = "COGNITO",
+#'     UserPoolConfigs = list(
+#'       ForgotPassword = list(
+#'         DeliveryMethod = "EMAIL"|"SMS",
+#'         EmailSettings = list(
+#'           EmailMessage = "string",
+#'           EmailSubject = "string"
+#'         ),
+#'         SmsSettings = list(
+#'           SmsMessage = "string"
+#'         )
+#'       ),
+#'       Mfa = list(
+#'         MFAMode = "ON"|"OFF"|"OPTIONAL",
+#'         Settings = list(
+#'           MfaTypes = list(
+#'             "SMS"|"TOTP"
+#'           ),
+#'           SmsMessage = "string"
+#'         )
+#'       ),
+#'       OAuth = list(
+#'         DomainPrefix = "string",
+#'         OAuthGrantType = "CODE"|"IMPLICIT",
+#'         OAuthScopes = list(
+#'           "PHONE"|"EMAIL"|"OPENID"|"PROFILE"|"AWS_COGNITO_SIGNIN_USER_ADMIN"
+#'         ),
+#'         RedirectSignInURIs = list(
+#'           "string"
+#'         ),
+#'         RedirectSignOutURIs = list(
+#'           "string"
+#'         ),
+#'         SocialProviderSettings = list(
+#'           Facebook = list(
+#'             ClientId = "string",
+#'             ClientSecret = "string"
+#'           ),
+#'           Google = list(
+#'             ClientId = "string",
+#'             ClientSecret = "string"
+#'           ),
+#'           LoginWithAmazon = list(
+#'             ClientId = "string",
+#'             ClientSecret = "string"
+#'           )
+#'         )
+#'       ),
+#'       PasswordPolicy = list(
+#'         AdditionalConstraints = list(
+#'           "REQUIRE_DIGIT"|"REQUIRE_LOWERCASE"|"REQUIRE_SYMBOL"|"REQUIRE_UPPERCASE"
+#'         ),
+#'         MinimumLength = 123.0
+#'       ),
+#'       RequiredSignUpAttributes = list(
+#'         "ADDRESS"|"BIRTHDATE"|"EMAIL"|"FAMILY_NAME"|"GENDER"|"GIVEN_NAME"|"LOCALE"|"MIDDLE_NAME"|"NAME"|"NICKNAME"|"PHONE_NUMBER"|"PICTURE"|"PREFERRED_USERNAME"|"PROFILE"|"UPDATED_AT"|"WEBSITE"|"ZONE_INFO"
+#'       ),
+#'       SignInMethod = "EMAIL"|"EMAIL_AND_PHONE_NUMBER"|"PHONE_NUMBER"|"USERNAME",
+#'       UserPoolName = "string"
+#'     )
+#'   ),
+#'   ResourceName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_backend_auth(
@@ -816,6 +1099,21 @@ amplifybackend_get_backend_auth <- function(AppId, BackendEnvironmentName, Resou
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param JobId &#91;required&#93; The ID for the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   CreateTime = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string",
+#'   UpdateTime = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_backend_job(
@@ -855,6 +1153,17 @@ amplifybackend_get_backend_job <- function(AppId, BackendEnvironmentName, JobId)
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #' @param SessionId &#91;required&#93; The session ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   ChallengeCode = "string",
+#'   SessionId = "string",
+#'   Ttl = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -903,6 +1212,26 @@ amplifybackend_get_token <- function(AppId, SessionId) {
 #' @param Status Filters the list of response objects to include only those with the
 #' specified status.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       AppId = "string",
+#'       BackendEnvironmentName = "string",
+#'       CreateTime = "string",
+#'       Error = "string",
+#'       JobId = "string",
+#'       Operation = "string",
+#'       Status = "string",
+#'       UpdateTime = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_backend_jobs(
@@ -947,6 +1276,18 @@ amplifybackend_list_backend_jobs <- function(AppId, BackendEnvironmentName, JobI
 #' @param AppId &#91;required&#93; The app ID.
 #' @param CleanAmplifyApp Cleans up the Amplify Console app if this value is set to true.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_all_backends(
@@ -986,6 +1327,14 @@ amplifybackend_remove_all_backends <- function(AppId, CleanAmplifyApp = NULL) {
 #' amplifybackend_remove_backend_config(AppId)
 #'
 #' @param AppId &#91;required&#93; The app ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Error = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1028,6 +1377,19 @@ amplifybackend_remove_backend_config <- function(AppId) {
 #' @param ResourceConfig Defines the resource configuration for the data model in your Amplify
 #' project.
 #' @param ResourceName &#91;required&#93; The name of this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1107,6 +1469,19 @@ amplifybackend_update_backend_api <- function(AppId, BackendEnvironmentName, Res
 #' @param BackendEnvironmentName &#91;required&#93; The name of the backend environment.
 #' @param ResourceConfig &#91;required&#93; The resource configuration for this request object.
 #' @param ResourceName &#91;required&#93; The name of this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1211,6 +1586,22 @@ amplifybackend_update_backend_auth <- function(AppId, BackendEnvironmentName, Re
 #' @param AppId &#91;required&#93; The app ID.
 #' @param LoginAuthConfig Describes the Amazon Cognito configuration for Admin UI access.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendManagerAppId = "string",
+#'   Error = "string",
+#'   LoginAuthConfig = list(
+#'     AwsCognitoIdentityPoolId = "string",
+#'     AwsCognitoRegion = "string",
+#'     AwsUserPoolsId = "string",
+#'     AwsUserPoolsWebClientId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_backend_config(
@@ -1260,6 +1651,21 @@ amplifybackend_update_backend_config <- function(AppId, LoginAuthConfig = NULL) 
 #' specified operation name.
 #' @param Status Filters the list of response objects to include only those with the
 #' specified status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string",
+#'   BackendEnvironmentName = "string",
+#'   CreateTime = "string",
+#'   Error = "string",
+#'   JobId = "string",
+#'   Operation = "string",
+#'   Status = "string",
+#'   UpdateTime = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

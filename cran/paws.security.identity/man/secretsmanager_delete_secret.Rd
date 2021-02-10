@@ -52,6 +52,16 @@ would normally impose with the \code{RecoveryWindowInDays} parameter. If you
 delete a secret with the \code{ForceDeleteWithouRecovery} parameter, then you
 have no opportunity to recover the secret. It is permanently lost.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  DeletionDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Deletes an entire secret and all of its versions. You can optionally
 include a recovery window during which you can restore the secret. If

@@ -33,6 +33,9 @@ data arrives late. To specify \code{lateDataRules}, the dataset must use a
 \href{https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html}{DeltaTimer}
 filter.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the settings of a data set.
 }

@@ -11,6 +11,9 @@ rekognition_stop_stream_processor(Name)
 \item{Name}{[required] The name of a stream processor created by
 \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a running stream processor that was created by
 \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.

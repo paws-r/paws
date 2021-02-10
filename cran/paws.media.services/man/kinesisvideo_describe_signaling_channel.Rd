@@ -11,6 +11,24 @@ kinesisvideo_describe_signaling_channel(ChannelName, ChannelARN)
 
 \item{ChannelARN}{The ARN of the signaling channel that you want to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelInfo = list(
+    ChannelName = "string",
+    ChannelARN = "string",
+    ChannelType = "SINGLE_MASTER",
+    ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    SingleMasterConfiguration = list(
+      MessageTtlSeconds = 123
+    ),
+    Version = "string"
+  )
+)
+}
+}
 \description{
 Returns the most current information about the signaling channel. You
 must specify either the name or the Amazon Resource Name (ARN) of the

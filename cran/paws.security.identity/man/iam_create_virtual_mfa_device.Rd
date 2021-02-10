@@ -17,8 +17,8 @@ slash (/).
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{VirtualMFADeviceName}{[required] The name of the virtual MFA device. Use with path to uniquely identify a
@@ -26,7 +26,42 @@ virtual MFA device.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  VirtualMFADevice = list(
+    SerialNumber = "string",
+    Base32StringSeed = raw,
+    QRCodePNG = raw,
+    User = list(
+      Path = "string",
+      UserName = "string",
+      UserId = "string",
+      Arn = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      PasswordLastUsed = as.POSIXct(
+        "2015-01-01"
+      ),
+      PermissionsBoundary = list(
+        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+        PermissionsBoundaryArn = "string"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    ),
+    EnableDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new virtual MFA device for the AWS account. After creating the

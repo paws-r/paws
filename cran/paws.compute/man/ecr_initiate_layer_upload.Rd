@@ -13,6 +13,13 @@ assumed.}
 
 \item{repositoryName}{[required] The name of the repository to which you intend to upload layers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  uploadId = "string",
+  partSize = 123
+)
+}
+}
 \description{
 Notifies Amazon ECR that you intend to upload an image layer.
 

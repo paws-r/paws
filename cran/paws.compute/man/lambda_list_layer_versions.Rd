@@ -16,6 +16,24 @@ lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
 
 \item{MaxItems}{The maximum number of versions to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  LayerVersions = list(
+    list(
+      LayerVersionArn = "string",
+      Version = 123,
+      Description = "string",
+      CreatedDate = "string",
+      CompatibleRuntimes = list(
+        "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
+      ),
+      LicenseInfo = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the versions of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
 Versions that have been deleted aren't listed. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}

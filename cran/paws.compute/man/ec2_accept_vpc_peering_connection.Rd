@@ -15,6 +15,69 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcPeeringConnectionId}{The ID of the VPC peering connection. You must specify this parameter in
 the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcPeeringConnection = list(
+    AccepterVpcInfo = list(
+      CidrBlock = "string",
+      Ipv6CidrBlockSet = list(
+        list(
+          Ipv6CidrBlock = "string"
+        )
+      ),
+      CidrBlockSet = list(
+        list(
+          CidrBlock = "string"
+        )
+      ),
+      OwnerId = "string",
+      PeeringOptions = list(
+        AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+      ),
+      VpcId = "string",
+      Region = "string"
+    ),
+    ExpirationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    RequesterVpcInfo = list(
+      CidrBlock = "string",
+      Ipv6CidrBlockSet = list(
+        list(
+          Ipv6CidrBlock = "string"
+        )
+      ),
+      CidrBlockSet = list(
+        list(
+          CidrBlock = "string"
+        )
+      ),
+      OwnerId = "string",
+      PeeringOptions = list(
+        AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+      ),
+      VpcId = "string",
+      Region = "string"
+    ),
+    Status = list(
+      Code = "initiating-request"|"pending-acceptance"|"active"|"deleted"|"rejected"|"failed"|"expired"|"provisioning"|"deleting",
+      Message = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    VpcPeeringConnectionId = "string"
+  )
+)
+}
+}
 \description{
 Accept a VPC peering connection request. To accept a request, the VPC
 peering connection must be in the \code{pending-acceptance} state, and you

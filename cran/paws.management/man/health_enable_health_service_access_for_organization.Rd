@@ -6,6 +6,9 @@
 \usage{
 health_enable_health_service_access_for_organization()
 }
+\value{
+An empty list.
+}
 \description{
 Calling this operation enables AWS Health to work with AWS
 Organizations. This applies a service-linked role (SLR) to the master

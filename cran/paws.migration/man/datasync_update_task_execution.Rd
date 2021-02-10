@@ -12,6 +12,9 @@ being updated.}
 
 \item{Options}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Updates execution of a task.
 

@@ -10,6 +10,9 @@ apigateway_delete_vpc_link(vpcLinkId)
 \item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration
 to reference this VpcLink.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing VpcLink of a specified identifier.
 }

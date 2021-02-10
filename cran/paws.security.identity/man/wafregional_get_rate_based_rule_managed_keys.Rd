@@ -15,6 +15,15 @@ wafregional_get_rate_based_rule_managed_keys(RuleId, NextMarker)
 \item{NextMarker}{A null value and not currently used. Do not include this in your
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ManagedKeys = list(
+    "string"
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

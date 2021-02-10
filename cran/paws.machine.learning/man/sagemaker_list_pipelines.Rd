@@ -27,6 +27,30 @@ use the token in the next request.}
 
 \item{MaxResults}{The maximum number of pipelines to return in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineSummaries = list(
+    list(
+      PipelineArn = "string",
+      PipelineName = "string",
+      PipelineDisplayName = "string",
+      PipelineDescription = "string",
+      RoleArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastExecutionTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of pipelines.
 }

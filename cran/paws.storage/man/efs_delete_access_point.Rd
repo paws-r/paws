@@ -9,6 +9,9 @@ efs_delete_access_point(AccessPointId)
 \arguments{
 \item{AccessPointId}{[required] The ID of the access point that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified access point. After deletion is complete, new
 clients can no longer connect to the access points. Clients connected to

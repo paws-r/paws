@@ -11,6 +11,14 @@ codestar_tag_project(id, tags)
 
 \item{tags}{[required] The tags you want to add to the project.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Adds tags to a project.
 }

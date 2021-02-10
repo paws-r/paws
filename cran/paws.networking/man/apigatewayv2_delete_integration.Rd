@@ -11,6 +11,9 @@ apigatewayv2_delete_integration(ApiId, IntegrationId)
 
 \item{IntegrationId}{[required] The integration ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an Integration.
 }

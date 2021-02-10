@@ -14,6 +14,9 @@ delete.
 
 To specify an empty base path, set this parameter to \code{'(none)'}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the BasePathMapping resource.
 }

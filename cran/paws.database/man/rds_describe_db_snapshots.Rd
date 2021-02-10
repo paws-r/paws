@@ -105,6 +105,59 @@ You can share a manual DB snapshot as public by using the
 
 \item{DbiResourceId}{A specific DB resource ID to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBSnapshots = list(
+    list(
+      DBSnapshotIdentifier = "string",
+      DBInstanceIdentifier = "string",
+      SnapshotCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Engine = "string",
+      AllocatedStorage = 123,
+      Status = "string",
+      Port = 123,
+      AvailabilityZone = "string",
+      VpcId = "string",
+      InstanceCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      MasterUsername = "string",
+      EngineVersion = "string",
+      LicenseModel = "string",
+      SnapshotType = "string",
+      Iops = 123,
+      OptionGroupName = "string",
+      PercentProgress = 123,
+      SourceRegion = "string",
+      SourceDBSnapshotIdentifier = "string",
+      StorageType = "string",
+      TdeCredentialArn = "string",
+      Encrypted = TRUE|FALSE,
+      KmsKeyId = "string",
+      DBSnapshotArn = "string",
+      Timezone = "string",
+      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+      ProcessorFeatures = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      DbiResourceId = "string",
+      TagList = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about DB snapshots. This API action supports
 pagination.

@@ -9,6 +9,33 @@ guardduty_get_detector(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CreatedAt = "string",
+  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
+  ServiceRole = "string",
+  Status = "ENABLED"|"DISABLED",
+  UpdatedAt = "string",
+  DataSources = list(
+    CloudTrail = list(
+      Status = "ENABLED"|"DISABLED"
+    ),
+    DNSLogs = list(
+      Status = "ENABLED"|"DISABLED"
+    ),
+    FlowLogs = list(
+      Status = "ENABLED"|"DISABLED"
+    ),
+    S3Logs = list(
+      Status = "ENABLED"|"DISABLED"
+    )
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves an Amazon GuardDuty detector specified by the detectorId.
 }

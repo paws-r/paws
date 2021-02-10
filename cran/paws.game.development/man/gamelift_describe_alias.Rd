@@ -10,6 +10,28 @@ gamelift_describe_alias(AliasId)
 \item{AliasId}{[required] The unique identifier for the fleet alias that you want to retrieve. You
 can use either the alias ID or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Alias = list(
+    AliasId = "string",
+    Name = "string",
+    AliasArn = "string",
+    Description = "string",
+    RoutingStrategy = list(
+      Type = "SIMPLE"|"TERMINAL",
+      FleetId = "string",
+      Message = "string"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves properties for an alias. This operation returns all alias
 metadata and settings. To get an alias's target fleet ID only, use

@@ -9,6 +9,9 @@ iotanalytics_delete_datastore(datastoreName)
 \arguments{
 \item{datastoreName}{[required] The name of the data store to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified data store.
 }

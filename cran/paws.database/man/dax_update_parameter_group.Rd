@@ -12,6 +12,15 @@ dax_update_parameter_group(ParameterGroupName, ParameterNameValues)
 \item{ParameterNameValues}{[required] An array of name-value pairs for the parameters in the group. Each
 element in the array represents a single parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ParameterGroup = list(
+    ParameterGroupName = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Modifies the parameters of a parameter group. You can modify up to 20
 parameters in a single request by submitting a list parameter name and

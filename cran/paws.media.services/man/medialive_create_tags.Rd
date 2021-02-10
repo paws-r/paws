@@ -11,6 +11,9 @@ medialive_create_tags(ResourceArn, Tags)
 
 \item{Tags}{}
 }
+\value{
+An empty list.
+}
 \description{
 Create tags for a resource
 }

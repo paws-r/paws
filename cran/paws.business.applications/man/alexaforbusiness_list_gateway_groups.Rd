@@ -13,6 +13,19 @@ summaries.}
 \item{MaxResults}{The maximum number of gateway group summaries to return. The default is
 50.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayGroups = list(
+    list(
+      Arn = "string",
+      Name = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of gateway group summaries. Use GetGatewayGroup to
 retrieve details of a specific gateway group.

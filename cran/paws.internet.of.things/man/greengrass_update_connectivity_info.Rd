@@ -11,8 +11,17 @@ greengrass_update_connectivity_info(ConnectivityInfo, ThingName)
 
 \item{ThingName}{[required] The thing name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Message = "string",
+  Version = "string"
+)
+}
+}
 \description{
-Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.
+Updates the connectivity information for the core. Any devices that
+belong to the group which has this core will receive this information in
+order to find the location of the core and connect to it.
 }
 \section{Request syntax}{
 \preformatted{svc$update_connectivity_info(

@@ -15,6 +15,59 @@ list.}
 
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  dataSources = list(
+    list(
+      dataSourceArn = "string",
+      name = "string",
+      description = "string",
+      type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+      serviceRoleArn = "string",
+      dynamodbConfig = list(
+        tableName = "string",
+        awsRegion = "string",
+        useCallerCredentials = TRUE|FALSE,
+        deltaSyncConfig = list(
+          baseTableTTL = 123,
+          deltaSyncTableName = "string",
+          deltaSyncTableTTL = 123
+        ),
+        versioned = TRUE|FALSE
+      ),
+      lambdaConfig = list(
+        lambdaFunctionArn = "string"
+      ),
+      elasticsearchConfig = list(
+        endpoint = "string",
+        awsRegion = "string"
+      ),
+      httpConfig = list(
+        endpoint = "string",
+        authorizationConfig = list(
+          authorizationType = "AWS_IAM",
+          awsIamConfig = list(
+            signingRegion = "string",
+            signingServiceName = "string"
+          )
+        )
+      ),
+      relationalDatabaseConfig = list(
+        relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+        rdsHttpEndpointConfig = list(
+          awsRegion = "string",
+          dbClusterIdentifier = "string",
+          databaseName = "string",
+          schema = "string",
+          awsSecretStoreArn = "string"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the data sources for a given API.
 }

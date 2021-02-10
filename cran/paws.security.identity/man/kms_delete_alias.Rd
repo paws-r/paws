@@ -10,6 +10,9 @@ kms_delete_alias(AliasName)
 \item{AliasName}{[required] The alias to be deleted. The alias name must begin with \verb{alias/}
 followed by the alias name, such as \code{alias/ExampleAlias}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified alias.
 

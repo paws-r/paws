@@ -9,6 +9,17 @@ swf_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) for the Amazon SWF domain.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 List tags for a given domain.
 }

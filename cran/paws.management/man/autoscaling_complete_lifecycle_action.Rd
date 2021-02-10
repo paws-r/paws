@@ -24,6 +24,9 @@ created the lifecycle hook.}
 
 \item{InstanceId}{The ID of the instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Completes the lifecycle action for the specified token or instance with
 the specified result.

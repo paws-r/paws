@@ -11,6 +11,26 @@ serverlessapplicationrepository_list_applications(MaxItems, NextToken)
 
 \item{NextToken}{A token to specify where to start paginating.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Applications = list(
+    list(
+      ApplicationId = "string",
+      Author = "string",
+      CreationTime = "string",
+      Description = "string",
+      HomePageUrl = "string",
+      Labels = list(
+        "string"
+      ),
+      Name = "string",
+      SpdxLicenseId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists applications owned by the requester.
 }

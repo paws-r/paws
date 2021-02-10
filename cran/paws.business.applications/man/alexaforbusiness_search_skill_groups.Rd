@@ -24,6 +24,20 @@ supported filter key is SkillGroupName.}
 \item{SortCriteria}{The sort order to use in listing the specified set of skill groups. The
 supported sort key is SkillGroupName.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SkillGroups = list(
+    list(
+      SkillGroupArn = "string",
+      SkillGroupName = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string",
+  TotalCount = 123
+)
+}
+}
 \description{
 Searches skill groups and lists the ones that meet a set of filter and
 sort criteria.

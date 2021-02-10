@@ -4,7 +4,8 @@ NULL
 
 #' Managed Streaming for Kafka
 #'
-#' 
+#' @description
+#' The operations for managing an Amazon MSK cluster.
 #'
 #' @param
 #' config

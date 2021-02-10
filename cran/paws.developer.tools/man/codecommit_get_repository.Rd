@@ -9,6 +9,27 @@ codecommit_get_repository(repositoryName)
 \arguments{
 \item{repositoryName}{[required] The name of the repository to get information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositoryMetadata = list(
+    accountId = "string",
+    repositoryId = "string",
+    repositoryName = "string",
+    repositoryDescription = "string",
+    defaultBranch = "string",
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    cloneUrlHttp = "string",
+    cloneUrlSsh = "string",
+    Arn = "string"
+  )
+)
+}
+}
 \description{
 Returns information about a repository.
 

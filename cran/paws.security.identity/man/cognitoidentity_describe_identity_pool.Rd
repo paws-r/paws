@@ -10,6 +10,35 @@ cognitoidentity_describe_identity_pool(IdentityPoolId)
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPoolId = "string",
+  IdentityPoolName = "string",
+  AllowUnauthenticatedIdentities = TRUE|FALSE,
+  AllowClassicFlow = TRUE|FALSE,
+  SupportedLoginProviders = list(
+    "string"
+  ),
+  DeveloperProviderName = "string",
+  OpenIdConnectProviderARNs = list(
+    "string"
+  ),
+  CognitoIdentityProviders = list(
+    list(
+      ProviderName = "string",
+      ClientId = "string",
+      ServerSideTokenCheck = TRUE|FALSE
+    )
+  ),
+  SamlProviderARNs = list(
+    "string"
+  ),
+  IdentityPoolTags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets details about a particular identity pool, including the pool name,
 ID description, creation date, and current number of users.

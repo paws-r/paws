@@ -13,6 +13,19 @@ apigatewayv2_update_deployment(ApiId, DeploymentId, Description)
 
 \item{Description}{The description for the deployment resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoDeployed = TRUE|FALSE,
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DeploymentId = "string",
+  DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+  DeploymentStatusMessage = "string",
+  Description = "string"
+)
+}
+}
 \description{
 Updates a Deployment.
 }

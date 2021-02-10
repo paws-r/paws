@@ -13,6 +13,39 @@ dynamodb_execute_transaction(TransactStatements, ClientRequestToken)
 \item{ClientRequestToken}{Set this value to get remaining results, if \code{NextToken} was returned in
 the statement response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Responses = list(
+    list(
+      Item = list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 This operation allows you to perform transactional reads or writes on
 data stored in DynamoDB, using PartiQL.

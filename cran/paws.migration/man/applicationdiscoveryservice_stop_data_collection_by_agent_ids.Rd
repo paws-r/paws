@@ -9,6 +9,18 @@ applicationdiscoveryservice_stop_data_collection_by_agent_ids(agentIds)
 \arguments{
 \item{agentIds}{[required] The IDs of the agents or connectors from which to stop collecting data.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  agentsConfigurationStatus = list(
+    list(
+      agentId = "string",
+      operationSucceeded = TRUE|FALSE,
+      description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Instructs the specified agents or connectors to stop collecting data.
 }

@@ -18,6 +18,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Disassociates an IAM role from an AWS Certificate Manager (ACM)
 certificate. Disassociating an IAM role from an ACM certificate removes

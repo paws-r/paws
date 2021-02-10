@@ -27,6 +27,17 @@ the function name, it is limited to 64 characters in length.}
 \item{ProvisionedConcurrentExecutions}{[required] The amount of provisioned concurrency to allocate for the version or
 alias.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestedProvisionedConcurrentExecutions = 123,
+  AvailableProvisionedConcurrentExecutions = 123,
+  AllocatedProvisionedConcurrentExecutions = 123,
+  Status = "IN_PROGRESS"|"READY"|"FAILED",
+  StatusReason = "string",
+  LastModified = "string"
+)
+}
+}
 \description{
 Adds a provisioned concurrency configuration to a function's alias or
 version.

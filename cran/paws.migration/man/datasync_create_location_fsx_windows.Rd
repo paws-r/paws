@@ -32,6 +32,12 @@ to.}
 \item{Password}{[required] The password of the user who has the permissions to access files and
 folders in the FSx for Windows file system.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string"
+)
+}
+}
 \description{
 Creates an endpoint for an Amazon FSx for Windows file system.
 }

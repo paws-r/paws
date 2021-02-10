@@ -17,6 +17,17 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceTagAttribute}{Information about the tag keys to deregister.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceTagAttribute = list(
+    InstanceTagKeys = list(
+      "string"
+    ),
+    IncludeAllTagsOfInstance = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Deregisters tag keys to prevent tags that have the specified tag keys
 from being included in scheduled event notifications for resources in

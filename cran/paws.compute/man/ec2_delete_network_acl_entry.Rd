@@ -19,6 +19,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RuleNumber}{[required] The rule number of the entry to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified ingress or egress entry (rule) from the specified
 network ACL.

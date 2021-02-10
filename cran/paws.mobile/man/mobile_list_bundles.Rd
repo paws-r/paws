@@ -13,6 +13,24 @@ mobile_list_bundles(maxResults, nextToken)
 non-null pagination token is returned in a result, then pass its value
 in here in another request to list more bundles.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  bundleList = list(
+    list(
+      bundleId = "string",
+      title = "string",
+      version = "string",
+      description = "string",
+      iconUrl = "string",
+      availablePlatforms = list(
+        "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 List all available bundles.
 }

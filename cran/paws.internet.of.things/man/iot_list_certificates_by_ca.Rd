@@ -18,6 +18,23 @@ device certificate that were signed by this CA certificate.}
 \item{ascendingOrder}{Specifies the order for results. If True, the results are returned in
 ascending order, based on the creation date.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificates = list(
+    list(
+      certificateArn = "string",
+      certificateId = "string",
+      status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION",
+      certificateMode = "DEFAULT"|"SNI_ONLY",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 List the device certificates signed by the specified CA certificate.
 }

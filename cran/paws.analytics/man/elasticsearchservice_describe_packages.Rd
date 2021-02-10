@@ -16,6 +16,32 @@ values.}
 non-null NextToken value. If provided, returns results for the next
 page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PackageDetailsList = list(
+    list(
+      PackageID = "string",
+      PackageName = "string",
+      PackageType = "TXT-DICTIONARY",
+      PackageDescription = "string",
+      PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
+      CreatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      AvailablePackageVersion = "string",
+      ErrorDetails = list(
+        ErrorType = "string",
+        ErrorMessage = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes all packages available to Amazon ES. Includes options for
 filtering, limiting the number of results, and pagination.

@@ -10,6 +10,23 @@ apigateway_get_client_certificate(clientCertificateId)
 \item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be
 described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  clientCertificateId = "string",
+  description = "string",
+  pemEncodedCertificate = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  expirationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets information about the current ClientCertificate resource.
 }

@@ -16,6 +16,17 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceTagAttribute}{Information about the tag keys to register.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceTagAttribute = list(
+    InstanceTagKeys = list(
+      "string"
+    ),
+    IncludeAllTagsOfInstance = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Registers a set of tag keys to include in scheduled event notifications
 for your resources.

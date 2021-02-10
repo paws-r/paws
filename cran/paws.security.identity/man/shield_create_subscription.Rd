@@ -6,6 +6,9 @@
 \usage{
 shield_create_subscription()
 }
+\value{
+An empty list.
+}
 \description{
 Activates AWS Shield Advanced for an account.
 

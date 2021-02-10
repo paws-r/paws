@@ -23,6 +23,25 @@ the next page of results in a paginated response.}
 \item{Limit}{The maximum number of AggregatorSourceStatus returned on each page. The
 default is maximum. If you specify 0, AWS Config uses the default.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AggregatedSourceStatusList = list(
+    list(
+      SourceId = "string",
+      SourceType = "ACCOUNT"|"ORGANIZATION",
+      AwsRegion = "string",
+      LastUpdateStatus = "FAILED"|"SUCCEEDED"|"OUTDATED",
+      LastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastErrorCode = "string",
+      LastErrorMessage = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns status information for sources within an aggregator. The status
 includes information about the last time AWS Config verified

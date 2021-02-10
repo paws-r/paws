@@ -22,6 +22,18 @@ response. To retrieve the next batch of results, reissue the search
 request and include the returned token. When all results have been
 returned, the response does not contain a pagination token value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  eventAggregates = list(
+    list(
+      aggregateValue = "string",
+      count = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the number of events of each event type (issue, scheduled
 change, and account notification). If no filter is specified, the counts

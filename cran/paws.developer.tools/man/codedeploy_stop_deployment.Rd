@@ -13,6 +13,13 @@ codedeploy_stop_deployment(deploymentId, autoRollbackEnabled)
 been updated should be rolled back to the previous version of the
 application revision.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "Pending"|"Succeeded",
+  statusMessage = "string"
+)
+}
+}
 \description{
 Attempts to stop an ongoing deployment.
 }

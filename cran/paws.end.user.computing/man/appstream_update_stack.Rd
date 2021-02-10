@@ -43,6 +43,57 @@ endpoints.}
 iframe. You must approve the domains that you want to host embedded
 AppStream 2.0 streaming sessions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Stack = list(
+    Arn = "string",
+    Name = "string",
+    Description = "string",
+    DisplayName = "string",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    StorageConnectors = list(
+      list(
+        ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
+        ResourceIdentifier = "string",
+        Domains = list(
+          "string"
+        )
+      )
+    ),
+    RedirectURL = "string",
+    FeedbackURL = "string",
+    StackErrors = list(
+      list(
+        ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
+        ErrorMessage = "string"
+      )
+    ),
+    UserSettings = list(
+      list(
+        Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
+        Permission = "ENABLED"|"DISABLED"
+      )
+    ),
+    ApplicationSettings = list(
+      Enabled = TRUE|FALSE,
+      SettingsGroup = "string",
+      S3BucketName = "string"
+    ),
+    AccessEndpoints = list(
+      list(
+        EndpointType = "STREAMING",
+        VpceId = "string"
+      )
+    ),
+    EmbedHostDomains = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the specified fields for the specified stack.
 }

@@ -118,7 +118,7 @@ the \emph{AWS General Reference}.
 \link[=lightsail_get_container_api_metadata]{get_container_api_metadata} \tab Returns information about Amazon Lightsail containers, such as the current version of the Lightsail Control (lightsailctl) plugin\cr
 \link[=lightsail_get_container_images]{get_container_images} \tab Returns the container images that are registered to your Amazon Lightsail container service\cr
 \link[=lightsail_get_container_log]{get_container_log} \tab Returns the log events of a container of your Amazon Lightsail container service\cr
-\link[=lightsail_get_container_service_deployments]{get_container_service_deployments} \tab Returns the deployments for your Amazon Lightsail container service A deployment specifies the settings, such as the ports and launch command, of containers that are deployed to your container service\cr
+\link[=lightsail_get_container_service_deployments]{get_container_service_deployments} \tab Returns the deployments for your Amazon Lightsail container service\cr
 \link[=lightsail_get_container_service_metric_data]{get_container_service_metric_data} \tab Returns the data points of a specific metric of your Amazon Lightsail container service\cr
 \link[=lightsail_get_container_service_powers]{get_container_service_powers} \tab Returns the list of powers that can be specified for your Amazon Lightsail container services\cr
 \link[=lightsail_get_container_services]{get_container_services} \tab Returns information about one or more of your Amazon Lightsail container services\cr

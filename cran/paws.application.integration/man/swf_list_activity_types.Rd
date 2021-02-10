@@ -32,6 +32,28 @@ returned in a single call.}
 the results are returned in ascending alphabetical order by \code{name} of
 the activity types.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  typeInfos = list(
+    list(
+      activityType = list(
+        name = "string",
+        version = "string"
+      ),
+      status = "REGISTERED"|"DEPRECATED",
+      description = "string",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      deprecationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns information about all activities registered in the specified
 domain that match the specified name and registration status. The result

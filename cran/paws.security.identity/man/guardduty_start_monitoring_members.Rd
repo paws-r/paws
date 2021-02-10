@@ -13,6 +13,17 @@ associated with the member accounts to monitor.}
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts to start
 monitoring.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Turns on GuardDuty monitoring of the specified member accounts. Use this
 operation to restart monitoring of accounts that you stopped monitoring

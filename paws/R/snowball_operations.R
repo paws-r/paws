@@ -16,6 +16,9 @@ NULL
 #' @param ClusterId &#91;required&#93; The 39-character ID for the cluster that you want to cancel, for example
 #' `CID123e4567-e89b-12d3-a456-426655440000`.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_cluster(
@@ -67,6 +70,9 @@ snowball_cancel_cluster <- function(ClusterId) {
 #' @param JobId &#91;required&#93; The 39-character job ID for the job that you want to cancel, for example
 #' `JID123e4567-e89b-12d3-a456-426655440000`.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_job(
@@ -115,6 +121,14 @@ snowball_cancel_job <- function(JobId) {
 #' snowball_create_address(Address)
 #'
 #' @param Address &#91;required&#93; The address that you want the Snow device shipped to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AddressId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -229,7 +243,6 @@ snowball_create_address <- function(Address) {
 #' -   In the United States of America (US), you have access to one-day
 #'     shipping and two-day shipping.
 #' 
-#' <!-- -->
 #' 
 #' -   In Australia, you have access to express shipping. Typically,
 #'     devices shipped express are delivered in about a day.
@@ -247,6 +260,14 @@ snowball_create_address <- function(Address) {
 #' @param ForwardingAddressId The forwarding address ID for a cluster. This field is not supported in
 #' most regions.
 #' @param TaxDocuments The tax documents required in your AWS Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -434,6 +455,14 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @param TaxDocuments The tax documents required in your AWS Region.
 #' @param DeviceConfiguration Defines the device configuration for an AWS Snowcone job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_job(
@@ -570,6 +599,14 @@ snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = 
 #' moves to its destination while in transit. Regional shipping speeds are
 #' as follows:
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "InProgress"|"TimedOut"|"Succeeded"|"Failed"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_return_shipping_label(
@@ -609,6 +646,29 @@ snowball_create_return_shipping_label <- function(JobId, ShippingOption = NULL) 
 #' snowball_describe_address(AddressId)
 #'
 #' @param AddressId &#91;required&#93; The automatically generated ID for a specific address.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Address = list(
+#'     AddressId = "string",
+#'     Name = "string",
+#'     Company = "string",
+#'     Street1 = "string",
+#'     Street2 = "string",
+#'     Street3 = "string",
+#'     City = "string",
+#'     StateOrProvince = "string",
+#'     PrefectureOrDistrict = "string",
+#'     Landmark = "string",
+#'     Country = "string",
+#'     PostalCode = "string",
+#'     PhoneNumber = "string",
+#'     IsRestricted = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -660,6 +720,32 @@ snowball_describe_address <- function(AddressId) {
 #' list of `ADDRESS` objects, you have the option of specifying a value for
 #' `NextToken` as the starting point for your list of returned addresses.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Addresses = list(
+#'     list(
+#'       AddressId = "string",
+#'       Name = "string",
+#'       Company = "string",
+#'       Street1 = "string",
+#'       Street2 = "string",
+#'       Street3 = "string",
+#'       City = "string",
+#'       StateOrProvince = "string",
+#'       PrefectureOrDistrict = "string",
+#'       Landmark = "string",
+#'       Country = "string",
+#'       PostalCode = "string",
+#'       PhoneNumber = "string",
+#'       IsRestricted = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_addresses(
@@ -708,6 +794,67 @@ snowball_describe_addresses <- function(MaxResults = NULL, NextToken = NULL) {
 #' snowball_describe_cluster(ClusterId)
 #'
 #' @param ClusterId &#91;required&#93; The automatically generated ID for a cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterMetadata = list(
+#'     ClusterId = "string",
+#'     Description = "string",
+#'     KmsKeyARN = "string",
+#'     RoleARN = "string",
+#'     ClusterState = "AwaitingQuorum"|"Pending"|"InUse"|"Complete"|"Cancelled",
+#'     JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+#'     SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Resources = list(
+#'       S3Resources = list(
+#'         list(
+#'           BucketArn = "string",
+#'           KeyRange = list(
+#'             BeginMarker = "string",
+#'             EndMarker = "string"
+#'           )
+#'         )
+#'       ),
+#'       LambdaResources = list(
+#'         list(
+#'           LambdaArn = "string",
+#'           EventTriggers = list(
+#'             list(
+#'               EventResourceARN = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Ec2AmiResources = list(
+#'         list(
+#'           AmiId = "string",
+#'           SnowballAmiId = "string"
+#'         )
+#'       )
+#'     ),
+#'     AddressId = "string",
+#'     ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+#'     Notification = list(
+#'       SnsTopicARN = "string",
+#'       JobStatesToNotify = list(
+#'         "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+#'       ),
+#'       NotifyAll = TRUE|FALSE
+#'     ),
+#'     ForwardingAddressId = "string",
+#'     TaxDocuments = list(
+#'       IND = list(
+#'         GSTIN = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -758,6 +905,183 @@ snowball_describe_cluster <- function(ClusterId) {
 #' @param JobId &#91;required&#93; The automatically generated ID for a job, for example
 #' `JID123e4567-e89b-12d3-a456-426655440000`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobMetadata = list(
+#'     JobId = "string",
+#'     JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
+#'     JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+#'     SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Resources = list(
+#'       S3Resources = list(
+#'         list(
+#'           BucketArn = "string",
+#'           KeyRange = list(
+#'             BeginMarker = "string",
+#'             EndMarker = "string"
+#'           )
+#'         )
+#'       ),
+#'       LambdaResources = list(
+#'         list(
+#'           LambdaArn = "string",
+#'           EventTriggers = list(
+#'             list(
+#'               EventResourceARN = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Ec2AmiResources = list(
+#'         list(
+#'           AmiId = "string",
+#'           SnowballAmiId = "string"
+#'         )
+#'       )
+#'     ),
+#'     Description = "string",
+#'     KmsKeyARN = "string",
+#'     RoleARN = "string",
+#'     AddressId = "string",
+#'     ShippingDetails = list(
+#'       ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+#'       InboundShipment = list(
+#'         Status = "string",
+#'         TrackingNumber = "string"
+#'       ),
+#'       OutboundShipment = list(
+#'         Status = "string",
+#'         TrackingNumber = "string"
+#'       )
+#'     ),
+#'     SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+#'     Notification = list(
+#'       SnsTopicARN = "string",
+#'       JobStatesToNotify = list(
+#'         "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+#'       ),
+#'       NotifyAll = TRUE|FALSE
+#'     ),
+#'     DataTransferProgress = list(
+#'       BytesTransferred = 123,
+#'       ObjectsTransferred = 123,
+#'       TotalBytes = 123,
+#'       TotalObjects = 123
+#'     ),
+#'     JobLogInfo = list(
+#'       JobCompletionReportURI = "string",
+#'       JobSuccessLogURI = "string",
+#'       JobFailureLogURI = "string"
+#'     ),
+#'     ClusterId = "string",
+#'     ForwardingAddressId = "string",
+#'     TaxDocuments = list(
+#'       IND = list(
+#'         GSTIN = "string"
+#'       )
+#'     ),
+#'     DeviceConfiguration = list(
+#'       SnowconeDeviceConfiguration = list(
+#'         WirelessConnection = list(
+#'           IsWifiEnabled = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   SubJobMetadata = list(
+#'     list(
+#'       JobId = "string",
+#'       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
+#'       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Resources = list(
+#'         S3Resources = list(
+#'           list(
+#'             BucketArn = "string",
+#'             KeyRange = list(
+#'               BeginMarker = "string",
+#'               EndMarker = "string"
+#'             )
+#'           )
+#'         ),
+#'         LambdaResources = list(
+#'           list(
+#'             LambdaArn = "string",
+#'             EventTriggers = list(
+#'               list(
+#'                 EventResourceARN = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Ec2AmiResources = list(
+#'           list(
+#'             AmiId = "string",
+#'             SnowballAmiId = "string"
+#'           )
+#'         )
+#'       ),
+#'       Description = "string",
+#'       KmsKeyARN = "string",
+#'       RoleARN = "string",
+#'       AddressId = "string",
+#'       ShippingDetails = list(
+#'         ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+#'         InboundShipment = list(
+#'           Status = "string",
+#'           TrackingNumber = "string"
+#'         ),
+#'         OutboundShipment = list(
+#'           Status = "string",
+#'           TrackingNumber = "string"
+#'         )
+#'       ),
+#'       SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+#'       Notification = list(
+#'         SnsTopicARN = "string",
+#'         JobStatesToNotify = list(
+#'           "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+#'         ),
+#'         NotifyAll = TRUE|FALSE
+#'       ),
+#'       DataTransferProgress = list(
+#'         BytesTransferred = 123,
+#'         ObjectsTransferred = 123,
+#'         TotalBytes = 123,
+#'         TotalObjects = 123
+#'       ),
+#'       JobLogInfo = list(
+#'         JobCompletionReportURI = "string",
+#'         JobSuccessLogURI = "string",
+#'         JobFailureLogURI = "string"
+#'       ),
+#'       ClusterId = "string",
+#'       ForwardingAddressId = "string",
+#'       TaxDocuments = list(
+#'         IND = list(
+#'           GSTIN = "string"
+#'         )
+#'       ),
+#'       DeviceConfiguration = list(
+#'         SnowconeDeviceConfiguration = list(
+#'           WirelessConnection = list(
+#'             IsWifiEnabled = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job(
@@ -805,6 +1129,17 @@ snowball_describe_job <- function(JobId) {
 #'
 #' @param JobId The automatically generated ID for a job, for example
 #' `JID123e4567-e89b-12d3-a456-426655440000`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "InProgress"|"TimedOut"|"Succeeded"|"Failed",
+#'   ExpirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -863,6 +1198,14 @@ snowball_describe_return_shipping_label <- function(JobId = NULL) {
 #'
 #' @param JobId &#91;required&#93; The ID for a job that you want to get the manifest file for, for example
 #' `JID123e4567-e89b-12d3-a456-426655440000`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManifestURI = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -941,6 +1284,14 @@ snowball_get_job_manifest <- function(JobId) {
 #' @param JobId &#91;required&#93; The ID for the job that you want to get the `UnlockCode` value for, for
 #' example `JID123e4567-e89b-12d3-a456-426655440000`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnlockCode = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_job_unlock_code(
@@ -1003,6 +1354,15 @@ snowball_get_job_unlock_code <- function(JobId) {
 #' @usage
 #' snowball_get_snowball_usage()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnowballLimit = 123,
+#'   SnowballsInUse = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_snowball_usage()
@@ -1052,6 +1412,14 @@ snowball_get_snowball_usage <- function() {
 #' @param JobId &#91;required&#93; The ID for a job that you want to get the software update file for, for
 #' example `JID123e4567-e89b-12d3-a456-426655440000`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdatesURI = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_software_updates(
@@ -1095,6 +1463,27 @@ snowball_get_software_updates <- function(JobId) {
 #' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
 #' list of `JobListEntry` objects, you have the option of specifying
 #' `NextToken` as the starting point for your returned list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobListEntries = list(
+#'     list(
+#'       JobId = "string",
+#'       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
+#'       IsMaster = TRUE|FALSE,
+#'       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1150,6 +1539,24 @@ snowball_list_cluster_jobs <- function(ClusterId, MaxResults = NULL, NextToken =
 #' list of `ClusterListEntry` objects, you have the option of specifying
 #' `NextToken` as the starting point for your returned list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterListEntries = list(
+#'     list(
+#'       ClusterId = "string",
+#'       ClusterState = "AwaitingQuorum"|"Pending"|"InUse"|"Complete"|"Cancelled",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_clusters(
@@ -1194,7 +1601,7 @@ snowball_list_clusters <- function(MaxResults = NULL, NextToken = NULL) {
 #' This action returns a list of the different Amazon EC2 Amazon Machine
 #' Images (AMIs) that are owned by your AWS account that would be supported
 #' for use on a Snow device. Currently, supported AMIs are based on the
-#' CentOS 7 (x86\\_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM),
+#' CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM),
 #' and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
 #' Marketplace.
 #'
@@ -1206,6 +1613,20 @@ snowball_list_clusters <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
 #' list of compatible images, you can specify a value for `NextToken` as
 #' the starting point for your list of returned images.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CompatibleImages = list(
+#'     list(
+#'       AmiId = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1252,6 +1673,27 @@ snowball_list_compatible_images <- function(MaxResults = NULL, NextToken = NULL)
 #' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
 #' list of `JobListEntry` objects, you have the option of specifying
 #' `NextToken` as the starting point for your returned list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobListEntries = list(
+#'     list(
+#'       JobId = "string",
+#'       JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
+#'       IsMaster = TRUE|FALSE,
+#'       JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+#'       SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1319,6 +1761,9 @@ snowball_list_jobs <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param Notification The new or updated Notification object.
 #' @param ForwardingAddressId The updated ID for the forwarding address for a cluster. This field is
 #' not supported in most regions.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1428,6 +1873,9 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' @param ForwardingAddressId The updated ID for the forwarding address for a job. This field is not
 #' supported in most regions.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_job(
@@ -1482,7 +1930,7 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' # job being created, this action is no longer available.
 #' svc$update_job(
 #'   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
-#'   Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster shipping sp...",
+#'   Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster ship...",
 #'   JobId = "JID123e4567-e89b-12d3-a456-426655440000",
 #'   ShippingOption = "NEXT_DAY",
 #'   SnowballCapacityPreference = "T100"
@@ -1526,6 +1974,9 @@ snowball_update_job <- function(JobId, RoleARN = NULL, Notification = NULL, Reso
 #' Set to `RECEIVED` when the device arrives at your location.
 #' 
 #' Set to `RETURNED` when you have returned the device to AWS.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

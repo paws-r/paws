@@ -28,6 +28,61 @@ available licenses have been exceeded. Logical operators are
 \code{EQUALS} | \code{NOT_EQUALS}.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseConfigurations = list(
+    list(
+      LicenseConfigurationId = "string",
+      LicenseConfigurationArn = "string",
+      Name = "string",
+      Description = "string",
+      LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
+      LicenseRules = list(
+        "string"
+      ),
+      LicenseCount = 123,
+      LicenseCountHardLimit = TRUE|FALSE,
+      DisassociateWhenNotFound = TRUE|FALSE,
+      ConsumedLicenses = 123,
+      Status = "string",
+      OwnerAccountId = "string",
+      ConsumedLicenseSummaryList = list(
+        list(
+          ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+          ConsumedLicenses = 123
+        )
+      ),
+      ManagedResourceSummaryList = list(
+        list(
+          ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+          AssociationCount = 123
+        )
+      ),
+      ProductInformationList = list(
+        list(
+          ResourceType = "string",
+          ProductInformationFilterList = list(
+            list(
+              ProductInformationFilterName = "string",
+              ProductInformationFilterValue = list(
+                "string"
+              ),
+              ProductInformationFilterComparator = "string"
+            )
+          )
+        )
+      ),
+      AutomatedDiscoveryInformation = list(
+        LastRunTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the license configurations for your account.
 }

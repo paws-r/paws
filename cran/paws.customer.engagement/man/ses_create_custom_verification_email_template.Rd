@@ -26,6 +26,9 @@ or her address is successfully verified.}
 \item{FailureRedirectionURL}{[required] The URL that the recipient of the verification email is sent to if his
 or her address is not successfully verified.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new custom verification email template.
 

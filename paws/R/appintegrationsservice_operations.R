@@ -28,6 +28,14 @@ NULL
 #' idempotency of the request.
 #' @param Tags One or more tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventIntegrationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_event_integration(
@@ -79,6 +87,9 @@ appintegrationsservice_create_event_integration <- function(Name, Description = 
 #'
 #' @param Name &#91;required&#93; The name of the event integration.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_event_integration(
@@ -119,6 +130,23 @@ appintegrationsservice_delete_event_integration <- function(Name) {
 #' appintegrationsservice_get_event_integration(Name)
 #'
 #' @param Name &#91;required&#93; The name of the event integration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Description = "string",
+#'   EventIntegrationArn = "string",
+#'   EventBridgeBus = "string",
+#'   EventFilter = list(
+#'     Source = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -167,6 +195,26 @@ appintegrationsservice_get_event_integration <- function(Name) {
 #' results.
 #' @param MaxResults The maximum number of results to return per page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventIntegrationAssociations = list(
+#'     list(
+#'       EventIntegrationAssociationArn = "string",
+#'       EventIntegrationAssociationId = "string",
+#'       EventIntegrationName = "string",
+#'       ClientId = "string",
+#'       EventBridgeRuleName = "string",
+#'       ClientAssociationMetadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_event_integration_associations(
@@ -213,6 +261,28 @@ appintegrationsservice_list_event_integration_associations <- function(EventInte
 #' results.
 #' @param MaxResults The maximum number of results to return per page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventIntegrations = list(
+#'     list(
+#'       EventIntegrationArn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       EventFilter = list(
+#'         Source = "string"
+#'       ),
+#'       EventBridgeBus = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_event_integrations(
@@ -255,6 +325,16 @@ appintegrationsservice_list_event_integrations <- function(NextToken = NULL, Max
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -296,6 +376,9 @@ appintegrationsservice_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; One or more tags.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -342,6 +425,9 @@ appintegrationsservice_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; The tag keys.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -386,6 +472,9 @@ appintegrationsservice_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param Name &#91;required&#93; The name of the event integration.
 #' @param Description The description of the event inegration.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

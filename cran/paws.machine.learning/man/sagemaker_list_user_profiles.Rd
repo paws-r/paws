@@ -21,6 +21,25 @@ it in your next request to receive the next set of results.}
 
 \item{UserProfileNameContains}{A parameter by which to filter the results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserProfiles = list(
+    list(
+      DomainId = "string",
+      UserProfileName = "string",
+      Status = "Deleting"|"Failed"|"InService"|"Pending"|"Updating"|"Update_Failed"|"Delete_Failed",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists user profiles.
 }

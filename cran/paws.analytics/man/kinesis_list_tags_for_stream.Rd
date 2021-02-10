@@ -18,6 +18,18 @@ number of tags associated with the stream, \code{HasMoreTags} is set to
 \code{true}. To list additional tags, set \code{ExclusiveStartTagKey} to the last
 key in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  HasMoreTags = TRUE|FALSE
+)
+}
+}
 \description{
 Lists the tags for the specified Kinesis data stream. This operation has
 a limit of five transactions per second per account.

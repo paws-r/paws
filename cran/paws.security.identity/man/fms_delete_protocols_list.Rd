@@ -12,6 +12,9 @@ this ID from \code{\link[=fms_put_protocols_list]{put_protocols_list}},
 \code{\link[=fms_list_protocols_lists]{list_protocols_lists}}, and
 \code{GetProtocolsLost}.}
 }
+\value{
+An empty list.
+}
 \description{
 Permanently deletes an AWS Firewall Manager protocols list.
 }

@@ -10,6 +10,9 @@ elbv2_delete_load_balancer(LoadBalancerArn)
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Application Load Balancer, Network Load Balancer,
 or Gateway Load Balancer. Deleting a load balancer also deletes its
@@ -35,7 +38,7 @@ stop or terminate them.
 \dontrun{
 # This example deletes the specified load balancer.
 svc$delete_load_balancer(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
 )
 }
 

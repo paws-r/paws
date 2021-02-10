@@ -13,6 +13,9 @@ alexaforbusiness_update_address_book(AddressBookArn, Name, Description)
 
 \item{Description}{The updated description of the room.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates address book details by the address book ARN.
 }

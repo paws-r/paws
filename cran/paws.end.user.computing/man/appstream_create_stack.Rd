@@ -39,7 +39,7 @@ If you do not specify a value, the value is set to an empty string.
 Generally allowed characters are: letters, numbers, and spaces
 representable in UTF-8, and the following special characters:
 
-\\_ . : / = + \\ - @
+_ . : / = + \\ - @
 
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Administration Guide}.}
@@ -51,6 +51,57 @@ endpoints.}
 \item{EmbedHostDomains}{The domains where AppStream 2.0 streaming sessions can be embedded in an
 iframe. You must approve the domains that you want to host embedded
 AppStream 2.0 streaming sessions.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Stack = list(
+    Arn = "string",
+    Name = "string",
+    Description = "string",
+    DisplayName = "string",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    StorageConnectors = list(
+      list(
+        ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
+        ResourceIdentifier = "string",
+        Domains = list(
+          "string"
+        )
+      )
+    ),
+    RedirectURL = "string",
+    FeedbackURL = "string",
+    StackErrors = list(
+      list(
+        ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
+        ErrorMessage = "string"
+      )
+    ),
+    UserSettings = list(
+      list(
+        Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
+        Permission = "ENABLED"|"DISABLED"
+      )
+    ),
+    ApplicationSettings = list(
+      Enabled = TRUE|FALSE,
+      SettingsGroup = "string",
+      S3BucketName = "string"
+    ),
+    AccessEndpoints = list(
+      list(
+        EndpointType = "STREAMING",
+        VpceId = "string"
+      )
+    ),
+    EmbedHostDomains = list(
+      "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a stack to start streaming applications to users. A stack

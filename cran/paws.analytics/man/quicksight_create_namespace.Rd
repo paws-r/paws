@@ -20,6 +20,18 @@ supports users with an identity type of \code{QUICKSIGHT}.}
 \item{Tags}{The tags that you want to associate with the namespace that you're
 creating.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Name = "string",
+  CapacityRegion = "string",
+  CreationStatus = "CREATED"|"CREATING"|"DELETING"|"RETRYABLE_FAILURE"|"NON_RETRYABLE_FAILURE",
+  IdentityStore = "QUICKSIGHT",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 (Enterprise edition only) Creates a new namespace for you to use with
 Amazon QuickSight.

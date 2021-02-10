@@ -10,6 +10,27 @@ gamelift_describe_script(ScriptId)
 \item{ScriptId}{[required] A unique identifier for a Realtime script to retrieve properties for.
 You can use either the script ID or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Script = list(
+    ScriptId = "string",
+    ScriptArn = "string",
+    Name = "string",
+    Version = "string",
+    SizeOnDisk = 123,
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    StorageLocation = list(
+      Bucket = "string",
+      Key = "string",
+      RoleArn = "string",
+      ObjectVersion = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves properties for a Realtime script.
 

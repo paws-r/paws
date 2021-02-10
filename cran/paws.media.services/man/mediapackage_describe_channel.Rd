@@ -9,6 +9,33 @@ mediapackage_describe_channel(Id)
 \arguments{
 \item{Id}{[required] The ID of a Channel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Description = "string",
+  EgressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  HlsIngest = list(
+    IngestEndpoints = list(
+      list(
+        Id = "string",
+        Password = "string",
+        Url = "string",
+        Username = "string"
+      )
+    )
+  ),
+  Id = "string",
+  IngressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets details about a Channel.
 }

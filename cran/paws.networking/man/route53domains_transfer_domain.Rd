@@ -76,6 +76,12 @@ technical contact.
 
 Default: \code{true}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Transfers a domain from another registrar to Amazon Route 53. When the
 transfer is complete, the domain is registered either with Amazon

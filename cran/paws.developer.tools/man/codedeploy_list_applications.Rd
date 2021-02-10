@@ -10,6 +10,15 @@ codedeploy_list_applications(nextToken)
 \item{nextToken}{An identifier returned from the previous list applications call. It can
 be used to return the next set of applications in the list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  applications = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the applications registered with the IAM user or AWS account.
 }

@@ -10,6 +10,9 @@ applicationdiscoveryservice_delete_applications(configurationIds)
 \arguments{
 \item{configurationIds}{[required] Configuration ID of an application to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a list of applications and their associations with configuration
 items.

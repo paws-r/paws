@@ -10,6 +10,12 @@ route53domains_enable_domain_transfer_lock(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to set the transfer lock for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 This operation sets the transfer lock on the domain (specifically the
 \code{clientTransferProhibited} status) to prevent domain transfers.

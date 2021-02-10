@@ -31,6 +31,28 @@ to the repository.}
 \item{encryptionConfiguration}{The encryption configuration for the repository. This determines how the
 contents of your repository are encrypted at rest.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repository = list(
+    repositoryArn = "string",
+    registryId = "string",
+    repositoryName = "string",
+    repositoryUri = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    imageTagMutability = "MUTABLE"|"IMMUTABLE",
+    imageScanningConfiguration = list(
+      scanOnPush = TRUE|FALSE
+    ),
+    encryptionConfiguration = list(
+      encryptionType = "AES256"|"KMS",
+      kmsKey = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR Repositories}
 in the \emph{Amazon Elastic Container Registry User Guide}.

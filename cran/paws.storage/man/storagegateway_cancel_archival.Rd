@@ -13,6 +13,12 @@ storagegateway_cancel_archival(GatewayARN, TapeARN)
 \item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape you want to cancel
 archiving for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeARN = "string"
+)
+}
+}
 \description{
 Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
 after the archiving process is initiated. This operation is only

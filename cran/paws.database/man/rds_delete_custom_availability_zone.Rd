@@ -9,6 +9,24 @@ rds_delete_custom_availability_zone(CustomAvailabilityZoneId)
 \arguments{
 \item{CustomAvailabilityZoneId}{[required] The custom AZ identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomAvailabilityZone = list(
+    CustomAvailabilityZoneId = "string",
+    CustomAvailabilityZoneName = "string",
+    CustomAvailabilityZoneStatus = "string",
+    VpnDetails = list(
+      VpnId = "string",
+      VpnTunnelOriginatorIP = "string",
+      VpnGatewayIp = "string",
+      VpnPSK = "string",
+      VpnName = "string",
+      VpnState = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a custom Availability Zone (AZ).
 

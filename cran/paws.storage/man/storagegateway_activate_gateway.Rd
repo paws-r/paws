@@ -59,8 +59,14 @@ a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers that
 can be represented in UTF-8 format, and the following special
-characters: + - = . \\_ : / @. The maximum length of a tag's key is 128
+characters: + - = . _ : / @. The maximum length of a tag's key is 128
 characters, and the maximum length for a tag's value is 256 characters.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
 }
 \description{
 Activates the gateway you previously deployed on your host. In the

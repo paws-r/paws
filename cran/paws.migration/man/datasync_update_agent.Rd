@@ -11,6 +11,9 @@ datasync_update_agent(AgentArn, Name)
 
 \item{Name}{The name that you want to use to configure the agent.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the name of an agent.
 }

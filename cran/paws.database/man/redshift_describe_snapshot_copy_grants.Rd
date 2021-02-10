@@ -45,6 +45,24 @@ example, suppose that you have resources tagged with values called
 request, Amazon Redshift returns a response with all resources that have
 either or both of these tag values associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  SnapshotCopyGrants = list(
+    list(
+      SnapshotCopyGrantName = "string",
+      KmsKeyId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of snapshot copy grants owned by the AWS account in the
 destination region.

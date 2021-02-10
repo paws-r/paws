@@ -6,6 +6,16 @@
 \usage{
 iotanalytics_describe_logging_options()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  loggingOptions = list(
+    roleArn = "string",
+    level = "ERROR",
+    enabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Retrieves the current settings of the AWS IoT Analytics logging options.
 }

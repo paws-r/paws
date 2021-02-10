@@ -41,6 +41,39 @@ idempotency of the request.}
 organization. Each tag consists of a key and an optional value, both of
 which you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  addon = list(
+    addonName = "string",
+    clusterName = "string",
+    status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
+    addonVersion = "string",
+    health = list(
+      issues = list(
+        list(
+          code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+          message = "string",
+          resourceIds = list(
+            "string"
+          )
+        )
+      )
+    ),
+    addonArn = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    modifiedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    serviceAccountRoleArn = "string",
+    tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates an Amazon EKS add-on.
 

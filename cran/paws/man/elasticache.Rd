@@ -65,7 +65,7 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[=elasticache_delete_cache_parameter_group]{delete_cache_parameter_group} \tab Deletes the specified cache parameter group\cr
 \link[=elasticache_delete_cache_security_group]{delete_cache_security_group} \tab Deletes a cache security group\cr
 \link[=elasticache_delete_cache_subnet_group]{delete_cache_subnet_group} \tab Deletes a cache subnet group\cr
-\link[=elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global Datastore is a two-step process: - First, you must DisassociateGlobalReplicationGroup to remove the secondary clusters in the Global Datastore\cr
+\link[=elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global Datastore is a two-step process:\cr
 \link[=elasticache_delete_replication_group]{delete_replication_group} \tab Deletes an existing replication group\cr
 \link[=elasticache_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
 \link[=elasticache_delete_user]{delete_user} \tab For Redis engine version 6\cr

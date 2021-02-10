@@ -24,6 +24,12 @@ be an exact, case-sensitive, match.}
 
 \item{hostname}{The public DNS name of the task runner.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  terminate = TRUE|FALSE
+)
+}
+}
 \description{
 Task runners call
 \code{\link[=datapipeline_report_task_runner_heartbeat]{report_task_runner_heartbeat}}

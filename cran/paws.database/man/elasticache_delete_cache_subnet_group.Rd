@@ -12,6 +12,9 @@ elasticache_delete_cache_subnet_group(CacheSubnetGroupName)
 Constraints: Must contain no more than 255 alphanumeric characters or
 hyphens.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a cache subnet group.
 

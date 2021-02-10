@@ -15,21 +15,35 @@ retrieved.}
 \item{Type}{[required] The type of portfolio share to summarize. This field acts as a filter on
 the type of portfolio share, which can be one of the following:
 
-1\\. \code{ACCOUNT} - Represents an external account to account share.
+1\. \code{ACCOUNT} - Represents an external account to account share.
 
-2\\. \code{ORGANIZATION} - Represents a share to an organization. This share
+2\. \code{ORGANIZATION} - Represents a share to an organization. This share
 is available to every account in the organization.
 
-3\\. \code{ORGANIZATIONAL_UNIT} - Represents a share to an organizational
+3\. \code{ORGANIZATIONAL_UNIT} - Represents a share to an organizational
 unit.
 
-4\\. \code{ORGANIZATION_MEMBER_ACCOUNT} - Represents a share to an account in
+4\. \code{ORGANIZATION_MEMBER_ACCOUNT} - Represents a share to an account in
 the organization.}
 
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextPageToken = "string",
+  PortfolioShareDetails = list(
+    list(
+      PrincipalId = "string",
+      Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
+      Accepted = TRUE|FALSE,
+      ShareTagOptions = TRUE|FALSE
+    )
+  )
+)
+}
 }
 \description{
 Returns a summary of each of the portfolio shares that were created for

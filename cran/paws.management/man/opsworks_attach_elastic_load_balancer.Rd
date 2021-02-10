@@ -12,6 +12,9 @@ opsworks_attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 \item{LayerId}{[required] The ID of the layer to which the Elastic Load Balancing instance is to
 be attached.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches an Elastic Load Balancing load balancer to a specified layer.
 AWS OpsWorks Stacks does not support Application Load Balancer. You can

@@ -15,6 +15,13 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list(StreamName,
 retrieve these values with
 \code{\link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentType = "string",
+  Payload = raw
+)
+}
+}
 \description{
 Gets media for a list of fragments (specified by fragment number) from
 the archived data in an Amazon Kinesis video stream.

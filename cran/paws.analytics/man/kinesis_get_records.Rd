@@ -16,6 +16,36 @@ sequence number of a data record in the shard.}
 \code{\link[=kinesis_get_records]{get_records}} throws \code{InvalidArgumentException}.
 The default value is 10,000.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Records = list(
+    list(
+      SequenceNumber = "string",
+      ApproximateArrivalTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Data = raw,
+      PartitionKey = "string",
+      EncryptionType = "NONE"|"KMS"
+    )
+  ),
+  NextShardIterator = "string",
+  MillisBehindLatest = 123,
+  ChildShards = list(
+    list(
+      ShardId = "string",
+      ParentShards = list(
+        "string"
+      ),
+      HashKeyRange = list(
+        StartingHashKey = "string",
+        EndingHashKey = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets data records from a Kinesis data stream's shard.
 

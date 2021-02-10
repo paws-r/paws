@@ -11,6 +11,9 @@ workspaces_modify_client_properties(ResourceId, ClientProperties)
 
 \item{ClientProperties}{[required] Information about the Amazon WorkSpaces client.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the properties of the specified Amazon WorkSpaces clients.
 }

@@ -13,6 +13,9 @@ operation for.}
 
 \item{OperationId}{[required] The ID of the stack operation.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops an in-progress operation on a stack set and its associated stack
 instances.

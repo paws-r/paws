@@ -22,6 +22,41 @@ application.}
 \item{tags}{A map that contains tag keys and tag values that are attached to the
 simulation application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  version = "string",
+  sources = list(
+    list(
+      s3Bucket = "string",
+      s3Key = "string",
+      etag = "string",
+      architecture = "X86_64"|"ARM64"|"ARMHF"
+    )
+  ),
+  simulationSoftwareSuite = list(
+    name = "Gazebo"|"RosbagPlay",
+    version = "string"
+  ),
+  robotSoftwareSuite = list(
+    name = "ROS"|"ROS2",
+    version = "Kinetic"|"Melodic"|"Dashing"
+  ),
+  renderingEngine = list(
+    name = "OGRE",
+    version = "string"
+  ),
+  lastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  revisionId = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a simulation application.
 }

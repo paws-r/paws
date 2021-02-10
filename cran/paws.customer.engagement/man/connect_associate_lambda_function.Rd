@@ -13,6 +13,9 @@ connect_associate_lambda_function(InstanceId, FunctionArn)
 \item{FunctionArn}{[required] The Amazon Resource Name (ARN) for the Lambda function being associated.
 Maximum number of characters allowed is 140.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

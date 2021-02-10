@@ -11,6 +11,31 @@ datapipeline_describe_pipelines(pipelineIds)
 identifiers in a single call. To obtain pipeline IDs, call
 \code{\link[=datapipeline_list_pipelines]{list_pipelines}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineDescriptionList = list(
+    list(
+      pipelineId = "string",
+      name = "string",
+      fields = list(
+        list(
+          key = "string",
+          stringValue = "string",
+          refValue = "string"
+        )
+      ),
+      description = "string",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves metadata about one or more pipelines. The information
 retrieved includes the name of the pipeline, the pipeline identifier,

@@ -14,6 +14,9 @@ must be of the form:
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a certificate and its associated private key. If this action
 succeeds, the certificate no longer appears in the list that can be

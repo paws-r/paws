@@ -40,6 +40,9 @@ group.
 
 The default value is FALSE.}
 }
+\value{
+An empty list.
+}
 \description{
 Specify the Amazon EC2 instance (destination) IP addresses and ports for
 a VPC subnet endpoint that cannot receive traffic for a custom routing
@@ -50,7 +53,7 @@ outside of the range that you configured for the endpoint group.
 
 After you make changes, you can verify that the updates are complete by
 checking the status of your accelerator: the status changes from
-IN\\_PROGRESS to DEPLOYED.
+IN_PROGRESS to DEPLOYED.
 }
 \section{Request syntax}{
 \preformatted{svc$deny_custom_routing_traffic(

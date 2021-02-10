@@ -31,6 +31,22 @@ specified in this assignment.}
 \item{Identities}{The QuickSight users, groups, or both that you want to assign the policy
 to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssignmentName = "string",
+  AssignmentId = "string",
+  PolicyArn = "string",
+  Identities = list(
+    list(
+      "string"
+    )
+  ),
+  AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates an existing IAM policy assignment. This operation updates only
 the optional parameter or parameters that are specified in the request.

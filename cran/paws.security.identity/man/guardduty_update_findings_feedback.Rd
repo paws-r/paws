@@ -17,6 +17,9 @@ for.}
 
 \item{Comments}{Additional feedback about the GuardDuty findings.}
 }
+\value{
+An empty list.
+}
 \description{
 Marks the specified GuardDuty findings as useful or not useful.
 }

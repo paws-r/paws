@@ -34,6 +34,12 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.}
 
 \item{WorkGroup}{The name of the workgroup in which the query is being started.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueryExecutionId = "string"
+)
+}
+}
 \description{
 Runs the SQL query statements contained in the \code{Query}. Requires you to
 have access to the workgroup in which the query ran. Running queries

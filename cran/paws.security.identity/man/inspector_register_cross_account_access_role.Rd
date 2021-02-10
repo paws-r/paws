@@ -11,6 +11,9 @@ inspector_register_cross_account_access_role(roleArn)
 \item{roleArn}{[required] The ARN of the IAM role that grants Amazon Inspector access to AWS
 Services needed to perform security assessments.}
 }
+\value{
+An empty list.
+}
 \description{
 Registers the IAM role that grants Amazon Inspector access to AWS
 Services needed to perform security assessments.

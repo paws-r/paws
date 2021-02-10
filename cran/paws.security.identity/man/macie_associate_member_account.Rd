@@ -11,6 +11,9 @@ macie_associate_member_account(memberAccountId)
 \item{memberAccountId}{[required] The ID of the AWS account that you want to associate with Amazon Macie
 Classic as a member account.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a specified AWS account with Amazon Macie Classic as a member
 account.

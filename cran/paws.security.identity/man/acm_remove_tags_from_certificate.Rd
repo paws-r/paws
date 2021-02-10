@@ -16,6 +16,9 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 
 \item{Tags}{[required] The key-value pair that defines the tag to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove one or more tags from an ACM certificate. A tag consists of a
 key-value pair. If you do not specify the value portion of the tag when

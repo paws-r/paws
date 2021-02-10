@@ -25,6 +25,35 @@ ram_get_resource_shares(resourceShareArns, resourceShareStatus,
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceShares = list(
+    list(
+      resourceShareArn = "string",
+      name = "string",
+      owningAccountId = "string",
+      allowExternalPrincipals = TRUE|FALSE,
+      status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
+      statusMessage = "string",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the resource shares that you own or the resource shares that are
 shared with you.

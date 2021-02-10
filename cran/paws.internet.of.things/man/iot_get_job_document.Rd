@@ -9,6 +9,12 @@ iot_get_job_document(jobId)
 \arguments{
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  document = "string"
+)
+}
+}
 \description{
 Gets a job document.
 }

@@ -9,6 +9,9 @@ devicefarm_delete_network_profile(arn)
 \arguments{
 \item{arn}{[required] The ARN of the network profile to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a network profile.
 }

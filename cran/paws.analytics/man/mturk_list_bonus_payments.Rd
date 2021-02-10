@@ -22,6 +22,24 @@ specified}
 
 \item{MaxResults}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NumResults = 123,
+  NextToken = "string",
+  BonusPayments = list(
+    list(
+      WorkerId = "string",
+      BonusAmount = "string",
+      AssignmentId = "string",
+      Reason = "string",
+      GrantTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_list_bonus_payments]{list_bonus_payments}} operation
 retrieves the amounts of bonuses you have paid to Workers for a given

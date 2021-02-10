@@ -9,6 +9,9 @@ apigatewayv2_delete_vpc_link(VpcLinkId)
 \arguments{
 \item{VpcLinkId}{[required] The ID of the VPC link.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a VPC link.
 }

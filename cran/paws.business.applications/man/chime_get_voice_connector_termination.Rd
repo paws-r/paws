@@ -10,6 +10,22 @@ chime_get_voice_connector_termination(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Termination = list(
+    CpsLimit = 123,
+    DefaultPhoneNumber = "string",
+    CallingRegions = list(
+      "string"
+    ),
+    CidrAllowedList = list(
+      "string"
+    ),
+    Disabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Retrieves termination setting details for the specified Amazon Chime
 Voice Connector.

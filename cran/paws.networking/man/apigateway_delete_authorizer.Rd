@@ -11,6 +11,9 @@ apigateway_delete_authorizer(restApiId, authorizerId)
 
 \item{authorizerId}{[required] [Required] The identifier of the Authorizer resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing Authorizer resource.<div class="seeAlso">
 

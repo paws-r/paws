@@ -7,6 +7,24 @@ account}
 \usage{
 gamelift_describe_vpc_peering_authorizations()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcPeeringAuthorizations = list(
+    list(
+      GameLiftAwsAccountId = "string",
+      PeerVpcAwsAccountId = "string",
+      PeerVpcId = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExpirationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves valid VPC peering authorizations that are pending for the AWS
 account. This operation returns all VPC peering authorizations and

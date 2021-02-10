@@ -14,6 +14,30 @@ robomaker_create_robot_application_version(application,
 value and it matches the latest revision ID, a new version will be
 created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  version = "string",
+  sources = list(
+    list(
+      s3Bucket = "string",
+      s3Key = "string",
+      etag = "string",
+      architecture = "X86_64"|"ARM64"|"ARMHF"
+    )
+  ),
+  robotSoftwareSuite = list(
+    name = "ROS"|"ROS2",
+    version = "Kinetic"|"Melodic"|"Dashing"
+  ),
+  lastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  revisionId = "string"
+)
+}
+}
 \description{
 Creates a version of a robot application.
 }

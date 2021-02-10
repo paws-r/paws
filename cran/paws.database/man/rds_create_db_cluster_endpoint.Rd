@@ -27,6 +27,25 @@ endpoint. Only relevant if the list of static members is empty.}
 
 \item{Tags}{The tags to be assigned to the Amazon RDS resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterEndpointIdentifier = "string",
+  DBClusterIdentifier = "string",
+  DBClusterEndpointResourceIdentifier = "string",
+  Endpoint = "string",
+  Status = "string",
+  EndpointType = "string",
+  CustomEndpointType = "string",
+  StaticMembers = list(
+    "string"
+  ),
+  ExcludedMembers = list(
+    "string"
+  ),
+  DBClusterEndpointArn = "string"
+)
+}
+}
 \description{
 Creates a new custom endpoint and associates it with an Amazon Aurora DB
 cluster.

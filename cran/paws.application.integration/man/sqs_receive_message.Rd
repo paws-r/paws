@@ -133,10 +133,45 @@ messages in the queue remain in a strict order.
 The maximum length of \code{ReceiveRequestAttemptId} is 128 characters.
 \code{ReceiveRequestAttemptId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
-(\verb{!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
+(\verb{!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~}).
 
 For best practices of using \code{ReceiveRequestAttemptId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter}
-in the \emph{Amazon Simple Queue Service Developer Guide}.}
+in the \emph{Amazon Simple Queue Service Developer Guide}.
+
+[]: R:\%5C
+[Using the
+ReceiveRequestAttemptId Request
+Parameter]: R:Using\%20the\%0AReceiveRequestAttemptId\%20Request\%0AParameter}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Messages = list(
+    list(
+      MessageId = "string",
+      ReceiptHandle = "string",
+      MD5OfBody = "string",
+      Body = "string",
+      Attributes = list(
+        "string"
+      ),
+      MD5OfMessageAttributes = "string",
+      MessageAttributes = list(
+        list(
+          StringValue = "string",
+          BinaryValue = raw,
+          StringListValues = list(
+            "string"
+          ),
+          BinaryListValues = list(
+            raw
+          ),
+          DataType = "string"
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Retrieves one or more messages (up to 10), from the specified queue.

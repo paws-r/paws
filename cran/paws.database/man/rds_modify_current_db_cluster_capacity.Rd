@@ -45,6 +45,16 @@ specified value as soon as possible.
 \code{RollbackCapacityChange} ignores the capacity change if a scaling point
 isn't found in the timeout period.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterIdentifier = "string",
+  PendingCapacity = 123,
+  CurrentCapacity = 123,
+  SecondsBeforeTimeout = 123,
+  TimeoutAction = "string"
+)
+}
+}
 \description{
 Set the capacity of an Aurora Serverless DB cluster to a specific value.
 

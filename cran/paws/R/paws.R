@@ -623,7 +623,7 @@ ec2 <- function(config = list()) {
 #'   AvailabilityZone = "us-west-2a",
 #'   InstanceId = "i-abcd1234",
 #'   InstanceOSUser = "ec2-user",
-#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5lXEIRHa..."
+#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5..."
 #' )
 #' }
 #'
@@ -905,7 +905,7 @@ ecs <- function(config = list()) {
 #'       "subnet-e7e761ac"
 #'     )
 #'   ),
-#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ON..."
+#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonE..."
 #' )
 #' }
 #'
@@ -1297,7 +1297,7 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_get_container_api_metadata]{get_container_api_metadata} \tab Returns information about Amazon Lightsail containers, such as the current version of the Lightsail Control (lightsailctl) plugin\cr
 #'  \link[=lightsail_get_container_images]{get_container_images} \tab Returns the container images that are registered to your Amazon Lightsail container service\cr
 #'  \link[=lightsail_get_container_log]{get_container_log} \tab Returns the log events of a container of your Amazon Lightsail container service\cr
-#'  \link[=lightsail_get_container_service_deployments]{get_container_service_deployments} \tab Returns the deployments for your Amazon Lightsail container service A deployment specifies the settings, such as the ports and launch command, of containers that are deployed to your container service\cr
+#'  \link[=lightsail_get_container_service_deployments]{get_container_service_deployments} \tab Returns the deployments for your Amazon Lightsail container service\cr
 #'  \link[=lightsail_get_container_service_metric_data]{get_container_service_metric_data} \tab Returns the data points of a specific metric of your Amazon Lightsail container service\cr
 #'  \link[=lightsail_get_container_service_powers]{get_container_service_powers} \tab Returns the list of powers that can be specified for your Amazon Lightsail container services\cr
 #'  \link[=lightsail_get_container_services]{get_container_services} \tab Returns information about one or more of your Amazon Lightsail container services\cr
@@ -1851,7 +1851,7 @@ fsx <- function(config = list()) {
 #' # my-vault:
 #' svc$abort_multipart_upload(
 #'   accountId = "-",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -1873,11 +1873,11 @@ fsx <- function(config = list()) {
 #'  \link[=glacier_get_data_retrieval_policy]{get_data_retrieval_policy} \tab This operation returns the current data retrieval policy for the account and region specified in the GET request\cr
 #'  \link[=glacier_get_job_output]{get_job_output} \tab This operation downloads the output of the job you initiated using InitiateJob\cr
 #'  \link[=glacier_get_vault_access_policy]{get_vault_access_policy} \tab This operation retrieves the access-policy subresource set on the vault; for more information on setting this subresource, see Set Vault Access Policy (PUT access-policy)\cr
-#'  \link[=glacier_get_vault_lock]{get_vault_lock} \tab This operation retrieves the following attributes from the lock-policy subresource set on the specified vault: - The vault lock policy set on the vault\cr
+#'  \link[=glacier_get_vault_lock]{get_vault_lock} \tab This operation retrieves the following attributes from the lock-policy subresource set on the specified vault:\cr
 #'  \link[=glacier_get_vault_notifications]{get_vault_notifications} \tab This operation retrieves the notification-configuration subresource of the specified vault\cr
 #'  \link[=glacier_initiate_job]{initiate_job} \tab This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval\cr
 #'  \link[=glacier_initiate_multipart_upload]{initiate_multipart_upload} \tab This operation initiates a multipart upload\cr
-#'  \link[=glacier_initiate_vault_lock]{initiate_vault_lock} \tab This operation initiates the vault locking process by doing the following: - Installing a vault lock policy on the specified vault\cr
+#'  \link[=glacier_initiate_vault_lock]{initiate_vault_lock} \tab This operation initiates the vault locking process by doing the following:\cr
 #'  \link[=glacier_list_jobs]{list_jobs} \tab This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished\cr
 #'  \link[=glacier_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads for the specified vault\cr
 #'  \link[=glacier_list_parts]{list_parts} \tab This operation lists the parts of an archive that have been uploaded in a specific multipart upload\cr
@@ -1932,7 +1932,7 @@ glacier <- function(config = list()) {
 #' svc$abort_multipart_upload(
 #'   Bucket = "examplebucket",
 #'   Key = "bigobject",
-#'   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
+#'   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOm..."
 #' )
 #' }
 #'
@@ -2029,7 +2029,7 @@ glacier <- function(config = list()) {
 #'  \link[=s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object\cr
 #'  \link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket\cr
 #'  \link[=s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket\cr
-#'  \link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3 This action is not supported by Amazon S3 on Outposts\cr
+#'  \link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3\cr
 #'  \link[=s3_select_object_content]{select_object_content} \tab This operation filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement\cr
 #'  \link[=s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload\cr
 #'  \link[=s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source
@@ -2666,7 +2666,7 @@ dynamodb <- function(config = list()) {
 #' svc <- dynamodbstreams()
 #' # The following example describes a stream with a given stream ARN.
 #' svc$describe_stream(
-#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
+#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
 #' )
 #' }
 #'
@@ -2753,7 +2753,7 @@ dynamodbstreams <- function(config = list()) {
 #'  \link[=elasticache_delete_cache_parameter_group]{delete_cache_parameter_group} \tab Deletes the specified cache parameter group\cr
 #'  \link[=elasticache_delete_cache_security_group]{delete_cache_security_group} \tab Deletes a cache security group\cr
 #'  \link[=elasticache_delete_cache_subnet_group]{delete_cache_subnet_group} \tab Deletes a cache subnet group\cr
-#'  \link[=elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global Datastore is a two-step process: - First, you must DisassociateGlobalReplicationGroup to remove the secondary clusters in the Global Datastore\cr
+#'  \link[=elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global Datastore is a two-step process:\cr
 #'  \link[=elasticache_delete_replication_group]{delete_replication_group} \tab Deletes an existing replication group\cr
 #'  \link[=elasticache_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
 #'  \link[=elasticache_delete_user]{delete_user} \tab For Redis engine version 6\cr
@@ -3390,7 +3390,25 @@ redshift <- function(config = list()) {
 #' Amazon SimpleDB
 #'
 #' @description
-#' Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By offloading the time and effort associated with building and operating a web-scale database, SimpleDB provides developers the freedom to focus on application development. <p> A traditional, clustered relational database requires a sizable upfront capital outlay, is complex to design, and often requires extensive and repetitive database administration. Amazon SimpleDB is dramatically simpler, requiring no schema, automatically indexing your data and providing a simple API for storage and access. This approach eliminates the administrative burden of data modeling, index maintenance, and performance tuning. Developers gain access to this functionality within Amazon's proven computing environment, are able to scale instantly, and pay only for what they use. </p> <p> Visit <a href="http://aws.amazon.com/simpledb/">http://aws.amazon.com/simpledb/</a> for more information. </p>
+#' Amazon SimpleDB is a web service providing the core database functions
+#' of data indexing and querying in the cloud. By offloading the time and
+#' effort associated with building and operating a web-scale database,
+#' SimpleDB provides developers the freedom to focus on application
+#' development.
+#' 
+#' A traditional, clustered relational database requires a sizable upfront
+#' capital outlay, is complex to design, and often requires extensive and
+#' repetitive database administration. Amazon SimpleDB is dramatically
+#' simpler, requiring no schema, automatically indexing your data and
+#' providing a simple API for storage and access. This approach eliminates
+#' the administrative burden of data modeling, index maintenance, and
+#' performance tuning. Developers gain access to this functionality within
+#' Amazon's proven computing environment, are able to scale instantly, and
+#' pay only for what they use.
+#' 
+#' Visit
+#' [http://aws.amazon.com/simpledb/](https://aws.amazon.com/simpledb/) for
+#' more information.
 #'
 #' @param
 #' config
@@ -3618,9 +3636,9 @@ apigateway <- function(config = list()) {
 #' runtime aspects of your deployed APIs. To use it, you must explicitly
 #' set the SDK's endpoint to point to the endpoint of your deployed API.
 #' The endpoint will be of the form
-#' https://\{api-id\}.execute-api.\{region\}.amazonaws.com/\{stage\}, or will be
-#' the endpoint corresponding to your API's custom domain and base path, if
-#' applicable.
+#' https://\{api-id\}.execute-api.\{region\}.amazonaws.com/\{stage\},
+#' or will be the endpoint corresponding to your API's custom domain and
+#' base path, if applicable.
 #'
 #' @param
 #' config
@@ -3947,7 +3965,7 @@ appmesh <- function(config = list()) {
 #'  \link[=cloudfront_delete_public_key]{delete_public_key} \tab Remove a public key you previously added to CloudFront\cr
 #'  \link[=cloudfront_delete_realtime_log_config]{delete_realtime_log_config} \tab Deletes a real-time log configuration\cr
 #'  \link[=cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
-#'  \link[=cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata: - The policy’s identifier\cr
+#'  \link[=cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
 #'  \link[=cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
 #'  \link[=cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
 #'  \link[=cloudfront_get_cloud_front_origin_access_identity_config]{get_cloud_front_origin_access_identity_config} \tab Get the configuration information about an origin access identity\cr
@@ -3961,7 +3979,7 @@ appmesh <- function(config = list()) {
 #'  \link[=cloudfront_get_key_group]{get_key_group} \tab Gets a key group, including the date and time when the key group was last modified\cr
 #'  \link[=cloudfront_get_key_group_config]{get_key_group_config} \tab Gets a key group configuration\cr
 #'  \link[=cloudfront_get_monitoring_subscription]{get_monitoring_subscription} \tab Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution\cr
-#'  \link[=cloudfront_get_origin_request_policy]{get_origin_request_policy} \tab Gets an origin request policy, including the following metadata: - The policy’s identifier\cr
+#'  \link[=cloudfront_get_origin_request_policy]{get_origin_request_policy} \tab Gets an origin request policy, including the following metadata:\cr
 #'  \link[=cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config} \tab Gets an origin request policy configuration\cr
 #'  \link[=cloudfront_get_public_key]{get_public_key} \tab Gets a public key\cr
 #'  \link[=cloudfront_get_public_key_config]{get_public_key_config} \tab Gets a public key configuration\cr
@@ -4290,7 +4308,7 @@ elb <- function(config = list()) {
 #' # This example adds the specified tags to the specified load balancer.
 #' svc$add_tags(
 #'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -4974,7 +4992,7 @@ route53resolver <- function(config = list()) {
 #'  \link[=servicediscovery_create_http_namespace]{create_http_namespace} \tab Creates an HTTP namespace\cr
 #'  \link[=servicediscovery_create_private_dns_namespace]{create_private_dns_namespace} \tab Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC\cr
 #'  \link[=servicediscovery_create_public_dns_namespace]{create_public_dns_namespace} \tab Creates a public namespace based on DNS, which will be visible on the internet\cr
-#'  \link[=servicediscovery_create_service]{create_service} \tab Creates a service, which defines the configuration for the following entities: - For public and private DNS namespaces, one of the following combinations of DNS records in Amazon Route 53: - A - AAAA - A and AAAA - SRV - CNAME - Optionally, a health check After you create the service, you can submit a RegisterInstance request, and AWS Cloud Map uses the values in the configuration to create the specified entities\cr
+#'  \link[=servicediscovery_create_service]{create_service} \tab Creates a service, which defines the configuration for the following entities:\cr
 #'  \link[=servicediscovery_delete_namespace]{delete_namespace} \tab Deletes a namespace from the current account\cr
 #'  \link[=servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr
 #'  \link[=servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance\cr
@@ -4993,7 +5011,7 @@ route53resolver <- function(config = list()) {
 #'  \link[=servicediscovery_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
 #'  \link[=servicediscovery_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 #'  \link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status} \tab Submits a request to change the health status of a custom health check to healthy or unhealthy\cr
-#'  \link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations: - Update the TTL setting for existing DnsRecords configurations - Add, update, or delete HealthCheckConfig for a specified service You can't add, update, or delete a HealthCheckCustomConfig configuration
+#'  \link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:
 #' }
 #'
 #' @rdname servicediscovery
@@ -6639,7 +6657,7 @@ opsworkscm <- function(config = list()) {
 #'  \link[=organizations_attach_policy]{attach_policy} \tab Attaches a policy to a root, an organizational unit (OU), or an individual account\cr
 #'  \link[=organizations_cancel_handshake]{cancel_handshake} \tab Cancels a handshake\cr
 #'  \link[=organizations_create_account]{create_account} \tab Creates an AWS account that is automatically a member of the organization whose credentials made the request\cr
-#'  \link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true: - You're authorized to create accounts in the AWS GovCloud (US) Region\cr
+#'  \link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true:\cr
 #'  \link[=organizations_create_organization]{create_organization} \tab Creates an AWS organization\cr
 #'  \link[=organizations_create_organizational_unit]{create_organizational_unit} \tab Creates an organizational unit (OU) within a root or parent OU\cr
 #'  \link[=organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account\cr
@@ -7837,7 +7855,7 @@ support <- function(config = list()) {
 #'  \link[=comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
 #'  \link[=comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model\cr
 #'  \link[=comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files\cr
-#'  \link[=comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier Only those classifiers that are in terminated states (IN_ERROR, TRAINED) will be deleted\cr
+#'  \link[=comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier\cr
 #'  \link[=comprehend_delete_endpoint]{delete_endpoint} \tab Deletes a model-specific endpoint for a previously-trained custom model\cr
 #'  \link[=comprehend_delete_entity_recognizer]{delete_entity_recognizer} \tab Deletes an entity recognizer\cr
 #'  \link[=comprehend_describe_document_classification_job]{describe_document_classification_job} \tab Gets the properties associated with a document classification job\cr
@@ -8024,7 +8042,7 @@ comprehendmedical <- function(config = list()) {
 #'  \link[=lexmodelbuildingservice_get_bot_aliases]{get_bot_aliases} \tab Returns a list of aliases for a specified Amazon Lex bot\cr
 #'  \link[=lexmodelbuildingservice_get_bot_channel_association]{get_bot_channel_association} \tab Returns information about the association between an Amazon Lex bot and a messaging platform\cr
 #'  \link[=lexmodelbuildingservice_get_bot_channel_associations]{get_bot_channel_associations} \tab Returns a list of all of the channels associated with the specified bot\cr
-#'  \link[=lexmodelbuildingservice_get_bots]{get_bots} \tab Returns bot information as follows: - If you provide the nameContains field, the response includes information for the $LATEST version of all bots whose name contains the specified string\cr
+#'  \link[=lexmodelbuildingservice_get_bots]{get_bots} \tab Returns bot information as follows:\cr
 #'  \link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions} \tab Gets information about all of the versions of a bot\cr
 #'  \link[=lexmodelbuildingservice_get_builtin_intent]{get_builtin_intent} \tab Returns information about a built-in intent\cr
 #'  \link[=lexmodelbuildingservice_get_builtin_intents]{get_builtin_intents} \tab Gets a list of built-in intents that meet the specified criteria\cr
@@ -8032,10 +8050,10 @@ comprehendmedical <- function(config = list()) {
 #'  \link[=lexmodelbuildingservice_get_export]{get_export} \tab Exports the contents of a Amazon Lex resource in a specified format\cr
 #'  \link[=lexmodelbuildingservice_get_import]{get_import} \tab Gets information about an import job started with the StartImport operation\cr
 #'  \link[=lexmodelbuildingservice_get_intent]{get_intent} \tab Returns information about an intent\cr
-#'  \link[=lexmodelbuildingservice_get_intents]{get_intents} \tab Returns intent information as follows: - If you specify the nameContains field, returns the $LATEST version of all intents that contain the specified string\cr
+#'  \link[=lexmodelbuildingservice_get_intents]{get_intents} \tab Returns intent information as follows:\cr
 #'  \link[=lexmodelbuildingservice_get_intent_versions]{get_intent_versions} \tab Gets information about all of the versions of an intent\cr
 #'  \link[=lexmodelbuildingservice_get_slot_type]{get_slot_type} \tab Returns information about a specific version of a slot type\cr
-#'  \link[=lexmodelbuildingservice_get_slot_types]{get_slot_types} \tab Returns slot type information as follows: - If you specify the nameContains field, returns the $LATEST version of all slot types that contain the specified string\cr
+#'  \link[=lexmodelbuildingservice_get_slot_types]{get_slot_types} \tab Returns slot type information as follows:\cr
 #'  \link[=lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions} \tab Gets information about all versions of a slot type\cr
 #'  \link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view} \tab Use the GetUtterancesView operation to get information about the utterances that your users have made to your bot\cr
 #'  \link[=lexmodelbuildingservice_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with the specified resource\cr
@@ -9841,7 +9859,8 @@ glue <- function(config = list()) {
 
 #' Managed Streaming for Kafka
 #'
-#' 
+#' @description
+#' The operations for managing an Amazon MSK cluster.
 #'
 #' @param
 #' config
@@ -10272,7 +10291,7 @@ mturk <- function(config = list()) {
 #'  \link[=quicksight_create_group]{create_group} \tab Creates an Amazon QuickSight group\cr
 #'  \link[=quicksight_create_group_membership]{create_group_membership} \tab Adds an Amazon QuickSight user to an Amazon QuickSight group\cr
 #'  \link[=quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN)\cr
-#'  \link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion on a dataset Any ingestions operating on tagged datasets inherit the same tags automatically for use in access control\cr
+#'  \link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion on a dataset\cr
 #'  \link[=quicksight_create_namespace]{create_namespace} \tab (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight\cr
 #'  \link[=quicksight_create_template]{create_template} \tab Creates a template from an existing QuickSight analysis or template\cr
 #'  \link[=quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template\cr
@@ -10622,7 +10641,7 @@ acmpca <- function(config = list()) {
 #'  \link[=clouddirectory_remove_facet_from_object]{remove_facet_from_object} \tab Removes the specified facet from the specified object\cr
 #'  \link[=clouddirectory_tag_resource]{tag_resource} \tab An API operation for adding tags to a resource\cr
 #'  \link[=clouddirectory_untag_resource]{untag_resource} \tab An API operation for removing tags from a resource\cr
-#'  \link[=clouddirectory_update_facet]{update_facet} \tab Does the following: 1\cr
+#'  \link[=clouddirectory_update_facet]{update_facet} \tab Does the following:\cr
 #'  \link[=clouddirectory_update_link_attributes]{update_link_attributes} \tab Updates a given typed link’s attributes\cr
 #'  \link[=clouddirectory_update_object_attributes]{update_object_attributes} \tab Updates a given object's attributes\cr
 #'  \link[=clouddirectory_update_schema]{update_schema} \tab Updates the schema name with a new name\cr
@@ -11665,7 +11684,7 @@ iam <- function(config = list()) {
 #'     )
 #'   ),
 #'   findingArns = list(
-#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/r..."
 #'   )
 #' )
 #' }
@@ -11841,7 +11860,7 @@ inspector <- function(config = list()) {
 #'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage\cr
 #'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a customer master key (CMK)\cr
 #'  \link[=kms_create_key]{create_key} \tab Creates a unique customer managed customer master key (CMK) in your AWS account and Region\cr
-#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a AWS KMS customer master key (CMK) using any of the following operations: - Encrypt - GenerateDataKey - GenerateDataKeyPair - GenerateDataKeyWithoutPlaintext - GenerateDataKeyPairWithoutPlaintext You can use this operation to decrypt ciphertext that was encrypted under a symmetric or asymmetric CMK\cr
+#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a AWS KMS customer master key (CMK) using any of the following operations:\cr
 #'  \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
 #'  \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
 #'  \link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr
@@ -12427,7 +12446,7 @@ shield <- function(config = list()) {
 #' # 
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
 #'   RoleSessionName = "testAssumeRoleSession",
 #'   Tags = list(
@@ -12873,7 +12892,11 @@ eventbridge <- function(config = list()) {
 #' AmazonMQ
 #'
 #' @description
-#' Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
+#' Amazon MQ is a managed message broker service for Apache ActiveMQ and
+#' RabbitMQ that makes it easy to set up and operate message brokers in the
+#' cloud. A message broker allows software applications and components to
+#' communicate using various programming languages, operating systems, and
+#' formal messaging protocols.
 #'
 #' @param
 #' config

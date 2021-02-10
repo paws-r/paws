@@ -10,6 +10,9 @@ chime_delete_voice_connector_termination(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the termination settings for the specified Amazon Chime Voice
 Connector.

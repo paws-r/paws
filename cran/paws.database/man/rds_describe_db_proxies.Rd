@@ -24,6 +24,46 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBProxies = list(
+    list(
+      DBProxyName = "string",
+      DBProxyArn = "string",
+      Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
+      EngineFamily = "string",
+      VpcSecurityGroupIds = list(
+        "string"
+      ),
+      VpcSubnetIds = list(
+        "string"
+      ),
+      Auth = list(
+        list(
+          Description = "string",
+          UserName = "string",
+          AuthScheme = "SECRETS",
+          SecretArn = "string",
+          IAMAuth = "DISABLED"|"REQUIRED"
+        )
+      ),
+      RoleArn = "string",
+      Endpoint = "string",
+      RequireTLS = TRUE|FALSE,
+      IdleClientTimeout = 123,
+      DebugLogging = TRUE|FALSE,
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns information about DB proxies.
 }

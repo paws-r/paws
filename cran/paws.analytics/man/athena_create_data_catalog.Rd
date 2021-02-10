@@ -46,6 +46,9 @@ Lambda function.
 \item{Tags}{A list of comma separated tags to add to the data catalog that is
 created.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates (registers) a data catalog with the specified name and
 properties. Catalogs created are visible to all users of the same AWS

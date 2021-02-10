@@ -9,6 +9,9 @@ sagemaker_delete_code_repository(CodeRepositoryName)
 \arguments{
 \item{CodeRepositoryName}{[required] The name of the Git repository to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Git repository from your account.
 }

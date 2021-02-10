@@ -37,6 +37,18 @@ returns up to 100 results and a \code{nextToken} value, if applicable.}
 \item{filter}{The filter key and value with which to filter your
 \code{\link[=ecr_list_images]{list_images}} results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  imageIds = list(
+    list(
+      imageDigest = "string",
+      imageTag = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all the image IDs for the specified repository.
 

@@ -21,6 +21,26 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientVpnEndpointId = "string",
+  Username = "string",
+  ConnectionStatuses = list(
+    list(
+      ConnectionId = "string",
+      PreviousStatus = list(
+        Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
+        Message = "string"
+      ),
+      CurrentStatus = list(
+        Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
+        Message = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Terminates active Client VPN endpoint connections. This action can be
 used to terminate a specific client connection, or up to five

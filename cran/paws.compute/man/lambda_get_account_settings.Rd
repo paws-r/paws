@@ -6,6 +6,22 @@
 \usage{
 lambda_get_account_settings()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountLimit = list(
+    TotalCodeSize = 123,
+    CodeSizeUnzipped = 123,
+    CodeSizeZipped = 123,
+    ConcurrentExecutions = 123,
+    UnreservedConcurrentExecutions = 123
+  ),
+  AccountUsage = list(
+    TotalCodeSize = 123,
+    FunctionCount = 123
+  )
+)
+}
+}
 \description{
 Retrieves details about your account's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html}{limits}

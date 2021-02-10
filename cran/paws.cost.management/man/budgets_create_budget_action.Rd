@@ -30,6 +30,14 @@ must be in the same account.}
 
 \item{Subscribers}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountId = "string",
+  BudgetName = "string",
+  ActionId = "string"
+)
+}
+}
 \description{
 Creates a budget action.
 }

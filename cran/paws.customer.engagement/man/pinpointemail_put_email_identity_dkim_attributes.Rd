@@ -17,6 +17,9 @@ sends from the identity are DKIM-signed. When you set this value to
 \code{false}, then the messages that Amazon Pinpoint sends from the identity
 aren't DKIM-signed.}
 }
+\value{
+An empty list.
+}
 \description{
 Used to enable or disable DKIM authentication for an email identity.
 }

@@ -12,6 +12,9 @@ configservice_put_delivery_channel(DeliveryChannel)
 configuration information to an Amazon S3 bucket and to an Amazon SNS
 topic.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a delivery channel object to deliver configuration information
 to an Amazon S3 bucket and Amazon SNS topic.

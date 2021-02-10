@@ -9,6 +9,60 @@ personalize_describe_algorithm(algorithmArn)
 \arguments{
 \item{algorithmArn}{[required] The Amazon Resource Name (ARN) of the algorithm to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  algorithm = list(
+    name = "string",
+    algorithmArn = "string",
+    algorithmImage = list(
+      name = "string",
+      dockerURI = "string"
+    ),
+    defaultHyperParameters = list(
+      "string"
+    ),
+    defaultHyperParameterRanges = list(
+      integerHyperParameterRanges = list(
+        list(
+          name = "string",
+          minValue = 123,
+          maxValue = 123,
+          isTunable = TRUE|FALSE
+        )
+      ),
+      continuousHyperParameterRanges = list(
+        list(
+          name = "string",
+          minValue = 123.0,
+          maxValue = 123.0,
+          isTunable = TRUE|FALSE
+        )
+      ),
+      categoricalHyperParameterRanges = list(
+        list(
+          name = "string",
+          values = list(
+            "string"
+          ),
+          isTunable = TRUE|FALSE
+        )
+      )
+    ),
+    defaultResourceConfig = list(
+      "string"
+    ),
+    trainingInputMode = "string",
+    roleArn = "string",
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes the given algorithm.
 }

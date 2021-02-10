@@ -40,6 +40,31 @@ and 1000. If this parameter is not used, then
 results and a \code{nextToken} value, if applicable. This option cannot be
 used when you specify repositories with \code{repositoryNames}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositories = list(
+    list(
+      repositoryArn = "string",
+      registryId = "string",
+      repositoryName = "string",
+      repositoryUri = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      imageTagMutability = "MUTABLE"|"IMMUTABLE",
+      imageScanningConfiguration = list(
+        scanOnPush = TRUE|FALSE
+      ),
+      encryptionConfiguration = list(
+        encryptionType = "AES256"|"KMS",
+        kmsKey = "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Describes image repositories in a registry.
 }

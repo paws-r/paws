@@ -11,6 +11,9 @@ robomaker_delete_simulation_application(application, applicationVersion)
 
 \item{applicationVersion}{The version of the simulation application to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a simulation application.
 }

@@ -11,6 +11,21 @@ datasync_describe_location_fsx_windows(LocationArn)
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the FSx for Windows location to
 describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string",
+  LocationUri = "string",
+  SecurityGroupArns = list(
+    "string"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  User = "string",
+  Domain = "string"
+)
+}
+}
 \description{
 Returns metadata, such as the path information about an Amazon FSx for
 Windows location.

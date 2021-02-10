@@ -22,6 +22,19 @@ response.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionTargets = list(
+    list(
+      ActionTargetArn = "string",
+      Name = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the custom action targets in Security Hub in your
 account.

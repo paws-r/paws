@@ -44,6 +44,12 @@ be used for server-side encryption of the objects in the customer
 bucket. When this parameter is not enabled, the result will be encrypted
 server side,using SSE-S3.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Starts the asynchronous analysis of an input document for relationships
 between detected items such as key-value pairs, tables, and selection

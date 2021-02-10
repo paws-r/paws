@@ -21,7 +21,7 @@ for the version parameter. Otherwise, an error will occur.}
 
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
-characters can be alphanumeric characters, underscores (\\_), or hyphens
+characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
 
 \item{Version}{The unique identifier for the version of the message template to update,
@@ -47,6 +47,15 @@ of the template.
 }}
 
 \item{VoiceTemplateRequest}{[required]}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageBody = list(
+    Message = "string",
+    RequestID = "string"
+  )
+)
+}
 }
 \description{
 Updates an existing message template for messages that are sent through

@@ -16,6 +16,9 @@ Constraints:
 \item Cannot be associated with any clusters.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified cluster parameter group. The cluster parameter group
 to be deleted can't be associated with any clusters.

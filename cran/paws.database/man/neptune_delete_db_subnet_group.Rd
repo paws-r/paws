@@ -18,6 +18,9 @@ be default.
 
 Example: \code{mySubnetgroup}}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a DB subnet group.
 

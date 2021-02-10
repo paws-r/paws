@@ -14,6 +14,14 @@ elb_apply_security_groups_to_load_balancer(LoadBalancerName,
 \item{SecurityGroups}{[required] The IDs of the security groups to associate with the load balancer. Note
 that you cannot specify the name of the security group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityGroups = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Associates one or more security groups with your load balancer in a
 virtual private cloud (VPC). The specified security groups override the

@@ -14,6 +14,9 @@ directoryservice_delete_conditional_forwarder(DirectoryId,
 \item{RemoteDomainName}{[required] The fully qualified domain name (FQDN) of the remote domain with which
 you are deleting the conditional forwarder.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a conditional forwarder that has been set up for your AWS
 directory.

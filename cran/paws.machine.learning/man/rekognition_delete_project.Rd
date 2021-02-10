@@ -9,6 +9,12 @@ rekognition_delete_project(ProjectArn)
 \arguments{
 \item{ProjectArn}{[required] The Amazon Resource Name (ARN) of the project that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "CREATING"|"CREATED"|"DELETING"
+)
+}
+}
 \description{
 Deletes an Amazon Rekognition Custom Labels project. To delete a project
 you must first delete all models associated with the project. To delete

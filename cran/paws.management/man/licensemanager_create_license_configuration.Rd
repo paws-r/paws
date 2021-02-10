@@ -20,8 +20,8 @@ licensemanager_create_license_configuration(Name, Description,
 \item{LicenseCountHardLimit}{Indicates whether hard or soft license enforcement is used. Exceeding a
 hard limit blocks the launch of new instances.}
 
-\item{LicenseRules}{License rules. The syntax is \\#name=value (for example,
-\\#allowedTenancy=EC2-DedicatedHost). The available rules vary by
+\item{LicenseRules}{License rules. The syntax is \#name=value (for example,
+\#allowedTenancy=EC2-DedicatedHost). The available rules vary by
 dimension, as follows.
 \itemize{
 \item \code{Cores} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
@@ -45,6 +45,12 @@ for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 \item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
 
 \item{ProductInformationList}{Product information.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseConfigurationArn = "string"
+)
+}
 }
 \description{
 Creates a license configuration.

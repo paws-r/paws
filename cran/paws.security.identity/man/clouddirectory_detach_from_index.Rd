@@ -15,6 +15,12 @@ exist in.}
 
 \item{TargetReference}{[required] A reference to the object being detached from the index.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DetachedObjectIdentifier = "string"
+)
+}
+}
 \description{
 Detaches the specified object from the specified index.
 }

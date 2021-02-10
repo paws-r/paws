@@ -13,6 +13,13 @@ greengrass_reset_deployments(AmznClientToken, Force, GroupId)
 
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeploymentArn = "string",
+  DeploymentId = "string"
+)
+}
+}
 \description{
 Resets a group's deployments.
 }

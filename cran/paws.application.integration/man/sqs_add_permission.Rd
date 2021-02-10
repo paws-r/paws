@@ -37,6 +37,9 @@ versions of those actions:
 \code{\link[=sqs_delete_message_batch]{delete_message_batch}}, and
 \code{\link[=sqs_change_message_visibility_batch]{change_message_visibility_batch}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds a permission to a queue for a specific
 \href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}.

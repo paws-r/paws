@@ -17,12 +17,15 @@ stack with the same name. You might retry
 \code{\link[=cloudformation_cancel_update_stack]{cancel_update_stack}} requests to
 ensure that AWS CloudFormation successfully received them.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels an update on the specified stack. If the call completes
 successfully, the stack rolls back the update and reverts to the
 previous stack configuration.
 
-You can cancel only stacks that are in the UPDATE\\_IN\\_PROGRESS state.
+You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_update_stack(

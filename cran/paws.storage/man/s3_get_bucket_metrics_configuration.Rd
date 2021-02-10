@@ -16,6 +16,30 @@ s3_get_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MetricsConfiguration = list(
+    Id = "string",
+    Filter = list(
+      Prefix = "string",
+      Tag = list(
+        Key = "string",
+        Value = "string"
+      ),
+      And = list(
+        Prefix = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets a metrics configuration (specified by the metrics configuration ID)
 from the bucket. Note that this doesn't include the daily storage
@@ -24,11 +48,11 @@ metrics.
 To use this operation, you must have permissions to perform the
 \code{s3:GetMetricsConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
 For information about CloudWatch request metrics for Amazon S3, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}.
 
 The following operations are related to
 \code{\link[=s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration}}:
@@ -36,7 +60,7 @@ The following operations are related to
 \item \code{\link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration}}
 \item \code{\link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration}}
 \item \code{\link[=s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations}}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}
 }
 }
 \section{Request syntax}{

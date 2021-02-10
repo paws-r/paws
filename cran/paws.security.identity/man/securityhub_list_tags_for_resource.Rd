@@ -9,6 +9,14 @@ securityhub_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the resource to retrieve tags for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of tags associated with a resource.
 }

@@ -14,6 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified VPC. You must detach or delete all gateways and
 resources that are associated with the VPC before you can delete it. For

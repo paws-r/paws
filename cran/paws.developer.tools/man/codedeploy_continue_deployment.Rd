@@ -18,6 +18,9 @@ that the deployment is ready to start shifting traffic.
 \code{TERMINATION_WAIT} indicates that the traffic is shifted, but the
 original target is not terminated.}
 }
+\value{
+An empty list.
+}
 \description{
 For a blue/green deployment, starts the process of rerouting traffic
 from instances in the original environment to instances in the

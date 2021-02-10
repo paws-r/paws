@@ -11,6 +11,9 @@ directconnect_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] The tags to add.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds the specified tags to the specified AWS Direct Connect resource.
 Each resource can have a maximum of 50 tags.

@@ -15,6 +15,23 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  logGroups = list(
+    list(
+      logGroupName = "string",
+      creationTime = 123,
+      retentionInDays = 123,
+      metricFilterCount = 123,
+      arn = "string",
+      storedBytes = 123,
+      kmsKeyId = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the specified log groups. You can list all your log groups or
 filter the results by prefix. The results are ASCII-sorted by log group

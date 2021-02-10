@@ -9,6 +9,26 @@ storagegateway_list_local_disks(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  Disks = list(
+    list(
+      DiskId = "string",
+      DiskPath = "string",
+      DiskNode = "string",
+      DiskStatus = "string",
+      DiskSizeInBytes = 123,
+      DiskAllocationType = "string",
+      DiskAllocationResource = "string",
+      DiskAttributeList = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the gateway's local disks. To specify which gateway to
 describe, you use the Amazon Resource Name (ARN) of the gateway in the

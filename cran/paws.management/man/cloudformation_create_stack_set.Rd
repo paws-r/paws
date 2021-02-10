@@ -147,6 +147,12 @@ that AWS CloudFormation successfully received them.
 If you don't specify an operation ID, the SDK generates one
 automatically.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackSetId = "string"
+)
+}
+}
 \description{
 Creates a stack set.
 }

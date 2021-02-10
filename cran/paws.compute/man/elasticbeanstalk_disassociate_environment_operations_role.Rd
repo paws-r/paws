@@ -11,6 +11,9 @@ elasticbeanstalk_disassociate_environment_operations_role(
 \item{EnvironmentName}{[required] The name of the environment from which to disassociate the operations
 role.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociate the operations role from an environment. After this call is
 made, Elastic Beanstalk uses the caller's permissions for permissions to

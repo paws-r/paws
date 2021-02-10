@@ -96,6 +96,28 @@ that unit specified. If you specify a unit that does not match the data
 collected, the results of the operation are null. CloudWatch does not
 perform unit conversions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Label = "string",
+  Datapoints = list(
+    list(
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      SampleCount = 123.0,
+      Average = 123.0,
+      Sum = 123.0,
+      Minimum = 123.0,
+      Maximum = 123.0,
+      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+      ExtendedStatistics = list(
+        123.0
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets statistics for the specified metric.
 

@@ -14,6 +14,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Deletes a VPC peering connection. Either the owner of the requester VPC
 or the owner of the accepter VPC can delete the VPC peering connection

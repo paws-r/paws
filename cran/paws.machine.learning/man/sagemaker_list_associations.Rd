@@ -39,6 +39,31 @@ set of associations.}
 \item{MaxResults}{The maximum number of associations to return in the response. The
 default value is 10.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationSummaries = list(
+    list(
+      SourceArn = "string",
+      DestinationArn = "string",
+      SourceType = "string",
+      DestinationType = "string",
+      AssociationType = "ContributedTo"|"AssociatedWith"|"DerivedFrom"|"Produced",
+      SourceName = "string",
+      DestinationName = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatedBy = list(
+        UserProfileArn = "string",
+        UserProfileName = "string",
+        DomainId = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the associations in your account and their properties.
 }

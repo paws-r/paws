@@ -13,6 +13,12 @@ sagemaker_update_user_profile(DomainId, UserProfileName, UserSettings)
 
 \item{UserSettings}{A collection of settings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserProfileArn = "string"
+)
+}
+}
 \description{
 Updates a user profile.
 }

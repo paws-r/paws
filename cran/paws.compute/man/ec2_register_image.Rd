@@ -12,7 +12,7 @@ ec2_register_image(ImageLocation, Architecture, BlockDeviceMappings,
 \item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage. The specified
 bucket must have the \code{aws-exec-read} canned access control list (ACL) to
 ensure that it can be accessed by Amazon EC2. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl}{Canned ACLs}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl}{Canned ACLs}
 in the \emph{Amazon S3 Service Developer Guide}.}
 
 \item{Architecture}{The architecture of the AMI.
@@ -41,7 +41,7 @@ a PV AMI can make instances launched from the AMI unreachable.}
 
 Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
-single quotes ('), at-signs (@), or underscores(\\_)}
+single quotes ('), at-signs (@), or underscores(_)}
 
 \item{BillingProducts}{The billing product codes. Your account must be authorized to specify
 billing product codes. Otherwise, you can use the AWS Marketplace to
@@ -63,6 +63,12 @@ a PV AMI can make instances launched from the AMI unreachable.}
 \item{VirtualizationType}{The type of virtualization (\code{hvm} | \code{paravirtual}).
 
 Default: \code{paravirtual}}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageId = "string"
+)
+}
 }
 \description{
 Registers an AMI. When you're creating an AMI, this is the final step

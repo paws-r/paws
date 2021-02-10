@@ -19,6 +19,15 @@ S3 files.}
 
 \item{tags}{Metadata which can be used to manage streams.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  streamId = "string",
+  streamArn = "string",
+  description = "string",
+  streamVersion = 123
+)
+}
+}
 \description{
 Creates a stream for delivering one or more large files in chunks over
 MQTT. A stream transports data bytes in chunks or blocks packaged as

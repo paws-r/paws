@@ -25,6 +25,26 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  BucketName = "string",
+  ReplicationTaskAssessmentResults = list(
+    list(
+      ReplicationTaskIdentifier = "string",
+      ReplicationTaskArn = "string",
+      ReplicationTaskLastAssessmentDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      AssessmentStatus = "string",
+      AssessmentResultsFile = "string",
+      AssessmentResults = "string",
+      S3ObjectUrl = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the task assessment results from Amazon S3. This action always
 returns the latest results.

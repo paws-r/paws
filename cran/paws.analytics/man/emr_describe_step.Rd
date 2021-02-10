@@ -11,6 +11,49 @@ emr_describe_step(ClusterId, StepId)
 
 \item{StepId}{[required] The identifier of the step to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Step = list(
+    Id = "string",
+    Name = "string",
+    Config = list(
+      Jar = "string",
+      Properties = list(
+        "string"
+      ),
+      MainClass = "string",
+      Args = list(
+        "string"
+      )
+    ),
+    ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+    Status = list(
+      State = "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED",
+      StateChangeReason = list(
+        Code = "NONE",
+        Message = "string"
+      ),
+      FailureDetails = list(
+        Reason = "string",
+        Message = "string",
+        LogFile = "string"
+      ),
+      Timeline = list(
+        CreationDateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        StartDateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        EndDateTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Provides more detail about the cluster step.
 }

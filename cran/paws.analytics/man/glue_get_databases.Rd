@@ -23,6 +23,40 @@ account.
 as well as the databases in yor local account.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DatabaseList = list(
+    list(
+      Name = "string",
+      Description = "string",
+      LocationUri = "string",
+      Parameters = list(
+        "string"
+      ),
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreateTableDefaultPermissions = list(
+        list(
+          Principal = list(
+            DataLakePrincipalIdentifier = "string"
+          ),
+          Permissions = list(
+            "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+          )
+        )
+      ),
+      TargetDatabase = list(
+        CatalogId = "string",
+        DatabaseName = "string"
+      ),
+      CatalogId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all databases defined in a given Data Catalog.
 }

@@ -20,6 +20,13 @@ you want to use to monitor and log events in the gateway.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html}{What is Amazon CloudWatch Logs?}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  GatewayName = "string"
+)
+}
+}
 \description{
 Updates a gateway's metadata, which includes the gateway's name and time
 zone. To specify which gateway to update, use the Amazon Resource Name

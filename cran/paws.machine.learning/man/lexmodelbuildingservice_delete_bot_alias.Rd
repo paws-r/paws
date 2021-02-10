@@ -11,6 +11,9 @@ lexmodelbuildingservice_delete_bot_alias(name, botName)
 
 \item{botName}{[required] The name of the bot that the alias points to.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an alias for the specified bot.
 

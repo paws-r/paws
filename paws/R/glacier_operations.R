@@ -43,6 +43,9 @@ NULL
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param uploadId &#91;required&#93; The upload ID of the multipart upload to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$abort_multipart_upload(
@@ -58,7 +61,7 @@ NULL
 #' # my-vault:
 #' svc$abort_multipart_upload(
 #'   accountId = "-",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -119,6 +122,9 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
 #' associated with the credentials used to sign the request. If you specify
 #' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -181,6 +187,9 @@ glacier_abort_vault_lock <- function(accountId, vaultName) {
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param Tags The tags to add to the vault. Each tag is composed of a key and a value.
 #' The value can be an empty string.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -301,6 +310,16 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' archive as computed by Amazon S3 Glacier (Glacier), Glacier returns an
 #' error and the request fails.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   location = "string",
+#'   checksum = "string",
+#'   archiveId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$complete_multipart_upload(
@@ -319,7 +338,7 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #'   accountId = "-",
 #'   archiveSize = "3145728",
 #'   checksum = "9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -382,6 +401,9 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
 #' @param lockId &#91;required&#93; The `lockId` value is the lock ID obtained from a
 #' [`initiate_vault_lock`][glacier_initiate_vault_lock] request.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$complete_vault_lock(
@@ -434,7 +456,7 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' 
 #' -   Names can be between 1 and 255 characters long.
 #' 
-#' -   Allowed characters are a-z, A-Z, 0-9, '\\_' (underscore), '-'
+#' -   Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-'
 #'     (hyphen), and '.' (period).
 #' 
 #' This operation is idempotent.
@@ -463,6 +485,14 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' associated with the credentials used to sign the request. If you specify
 #' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   location = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -545,6 +575,9 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param archiveId &#91;required&#93; The ID of the archive to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_archive(
@@ -559,7 +592,7 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' # The example deletes the archive specified by the archive ID.
 #' svc$delete_archive(
 #'   accountId = "-",
-#'   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5n...",
+#'   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLH...",
 #'   vaultName = "examplevault"
 #' )
 #' }
@@ -626,6 +659,9 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vault(
@@ -688,6 +724,9 @@ glacier_delete_vault <- function(accountId, vaultName) {
 #' associated with the credentials used to sign the request. If you use an
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -759,6 +798,9 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
 #' associated with the credentials used to sign the request. If you use an
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -841,6 +883,92 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param jobId &#91;required&#93; The ID of the job to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobDescription = "string",
+#'   Action = "ArchiveRetrieval"|"InventoryRetrieval"|"Select",
+#'   ArchiveId = "string",
+#'   VaultARN = "string",
+#'   CreationDate = "string",
+#'   Completed = TRUE|FALSE,
+#'   StatusCode = "InProgress"|"Succeeded"|"Failed",
+#'   StatusMessage = "string",
+#'   ArchiveSizeInBytes = 123,
+#'   InventorySizeInBytes = 123,
+#'   SNSTopic = "string",
+#'   CompletionDate = "string",
+#'   SHA256TreeHash = "string",
+#'   ArchiveSHA256TreeHash = "string",
+#'   RetrievalByteRange = "string",
+#'   Tier = "string",
+#'   InventoryRetrievalParameters = list(
+#'     Format = "string",
+#'     StartDate = "string",
+#'     EndDate = "string",
+#'     Limit = "string",
+#'     Marker = "string"
+#'   ),
+#'   JobOutputPath = "string",
+#'   SelectParameters = list(
+#'     InputSerialization = list(
+#'       csv = list(
+#'         FileHeaderInfo = "USE"|"IGNORE"|"NONE",
+#'         Comments = "string",
+#'         QuoteEscapeCharacter = "string",
+#'         RecordDelimiter = "string",
+#'         FieldDelimiter = "string",
+#'         QuoteCharacter = "string"
+#'       )
+#'     ),
+#'     ExpressionType = "SQL",
+#'     Expression = "string",
+#'     OutputSerialization = list(
+#'       csv = list(
+#'         QuoteFields = "ALWAYS"|"ASNEEDED",
+#'         QuoteEscapeCharacter = "string",
+#'         RecordDelimiter = "string",
+#'         FieldDelimiter = "string",
+#'         QuoteCharacter = "string"
+#'       )
+#'     )
+#'   ),
+#'   OutputLocation = list(
+#'     S3 = list(
+#'       BucketName = "string",
+#'       Prefix = "string",
+#'       Encryption = list(
+#'         EncryptionType = "aws:kms"|"AES256",
+#'         KMSKeyId = "string",
+#'         KMSContext = "string"
+#'       ),
+#'       CannedACL = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
+#'       AccessControlList = list(
+#'         list(
+#'           Grantee = list(
+#'             Type = "AmazonCustomerByEmail"|"CanonicalUser"|"Group",
+#'             DisplayName = "string",
+#'             URI = "string",
+#'             ID = "string",
+#'             EmailAddress = "string"
+#'           ),
+#'           Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+#'         )
+#'       ),
+#'       Tagging = list(
+#'         "string"
+#'       ),
+#'       UserMetadata = list(
+#'         "string"
+#'       ),
+#'       StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job(
@@ -856,7 +984,7 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' # specified by the job ID.
 #' svc$describe_job(
 #'   accountId = "-",
-#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
+#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -924,6 +1052,19 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VaultARN = "string",
+#'   VaultName = "string",
+#'   CreationDate = "string",
+#'   LastInventoryDate = "string",
+#'   NumberOfArchives = 123,
+#'   SizeInBytes = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_vault(
@@ -979,6 +1120,21 @@ glacier_describe_vault <- function(accountId, vaultName) {
 #' (hyphen), in which case Amazon Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
 #' your account ID, do not include any hyphens ('-') in the ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = list(
+#'     Rules = list(
+#'       list(
+#'         Strategy = "string",
+#'         BytesPerHour = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1112,6 +1268,20 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #'     compare this value with the checksum you computed to ensure you have
 #'     downloaded the entire archive content with no errors.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   body = raw,
+#'   checksum = "string",
+#'   status = 123,
+#'   contentRange = "string",
+#'   acceptRanges = "string",
+#'   contentType = "string",
+#'   archiveDescription = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_job_output(
@@ -1128,7 +1298,7 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' # retrieval job that is identified by the job ID.
 #' svc$get_job_output(
 #'   accountId = "-",
-#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
+#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW...",
 #'   range = "",
 #'   vaultName = "my-vaul"
 #' )
@@ -1178,6 +1348,16 @@ glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = list(
+#'     Policy = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_vault_access_policy(
@@ -1217,8 +1397,7 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 .glacier$operations$get_vault_access_policy <- glacier_get_vault_access_policy
 
 #' This operation retrieves the following attributes from the lock-policy
-#' subresource set on the specified vault: - The vault lock policy set on
-#' the vault
+#' subresource set on the specified vault:
 #'
 #' @description
 #' This operation retrieves the following attributes from the `lock-policy`
@@ -1258,6 +1437,17 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 #' associated with the credentials used to sign the request. If you use an
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string",
+#'   State = "string",
+#'   ExpirationDate = "string",
+#'   CreationDate = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1335,6 +1525,19 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vaultNotificationConfig = list(
+#'     SNSTopic = "string",
+#'     Events = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_vault_notifications(
@@ -1393,6 +1596,16 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param jobParameters Provides options for specifying job information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   location = "string",
+#'   jobId = "string",
+#'   jobOutputPath = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1570,6 +1783,15 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' @param partSize The size of each part except the last, in bytes. The last part can be
 #' smaller than this part size.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   location = "string",
+#'   uploadId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$initiate_multipart_upload(
@@ -1612,7 +1834,7 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 .glacier$operations$initiate_multipart_upload <- glacier_initiate_multipart_upload
 
 #' This operation initiates the vault locking process by doing the
-#' following: - Installing a vault lock policy on the specified vault
+#' following:
 #'
 #' @description
 #' This operation initiates the vault locking process by doing the
@@ -1667,6 +1889,14 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' @param policy The vault lock policy as a JSON string, which uses "\\" as an escape
 #' character.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   lockId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$initiate_vault_lock(
@@ -1685,7 +1915,7 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' svc$initiate_vault_lock(
 #'   accountId = "-",
 #'   policy = list(
-#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-lock\",..."
+#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-lock\",\"Effect..."
 #'   ),
 #'   vaultName = "my-vault"
 #' )
@@ -1774,6 +2004,97 @@ glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
 #' @param statuscode The type of job status to return. You can specify the following values:
 #' `InProgress`, `Succeeded`, or `Failed`.
 #' @param completed The state of the jobs to return. You can specify `true` or `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobDescription = "string",
+#'       Action = "ArchiveRetrieval"|"InventoryRetrieval"|"Select",
+#'       ArchiveId = "string",
+#'       VaultARN = "string",
+#'       CreationDate = "string",
+#'       Completed = TRUE|FALSE,
+#'       StatusCode = "InProgress"|"Succeeded"|"Failed",
+#'       StatusMessage = "string",
+#'       ArchiveSizeInBytes = 123,
+#'       InventorySizeInBytes = 123,
+#'       SNSTopic = "string",
+#'       CompletionDate = "string",
+#'       SHA256TreeHash = "string",
+#'       ArchiveSHA256TreeHash = "string",
+#'       RetrievalByteRange = "string",
+#'       Tier = "string",
+#'       InventoryRetrievalParameters = list(
+#'         Format = "string",
+#'         StartDate = "string",
+#'         EndDate = "string",
+#'         Limit = "string",
+#'         Marker = "string"
+#'       ),
+#'       JobOutputPath = "string",
+#'       SelectParameters = list(
+#'         InputSerialization = list(
+#'           csv = list(
+#'             FileHeaderInfo = "USE"|"IGNORE"|"NONE",
+#'             Comments = "string",
+#'             QuoteEscapeCharacter = "string",
+#'             RecordDelimiter = "string",
+#'             FieldDelimiter = "string",
+#'             QuoteCharacter = "string"
+#'           )
+#'         ),
+#'         ExpressionType = "SQL",
+#'         Expression = "string",
+#'         OutputSerialization = list(
+#'           csv = list(
+#'             QuoteFields = "ALWAYS"|"ASNEEDED",
+#'             QuoteEscapeCharacter = "string",
+#'             RecordDelimiter = "string",
+#'             FieldDelimiter = "string",
+#'             QuoteCharacter = "string"
+#'           )
+#'         )
+#'       ),
+#'       OutputLocation = list(
+#'         S3 = list(
+#'           BucketName = "string",
+#'           Prefix = "string",
+#'           Encryption = list(
+#'             EncryptionType = "aws:kms"|"AES256",
+#'             KMSKeyId = "string",
+#'             KMSContext = "string"
+#'           ),
+#'           CannedACL = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
+#'           AccessControlList = list(
+#'             list(
+#'               Grantee = list(
+#'                 Type = "AmazonCustomerByEmail"|"CanonicalUser"|"Group",
+#'                 DisplayName = "string",
+#'                 URI = "string",
+#'                 ID = "string",
+#'                 EmailAddress = "string"
+#'               ),
+#'               Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+#'             )
+#'           ),
+#'           Tagging = list(
+#'             "string"
+#'           ),
+#'           UserMetadata = list(
+#'             "string"
+#'           ),
+#'           StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1875,6 +2196,23 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' If this value is not specified, the List Uploads operation returns up to
 #' 50 uploads.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UploadsList = list(
+#'     list(
+#'       MultipartUploadId = "string",
+#'       VaultARN = "string",
+#'       ArchiveDescription = "string",
+#'       PartSizeInBytes = 123,
+#'       CreationDate = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_multipart_uploads(
@@ -1968,6 +2306,25 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' number of parts returned might be fewer than the specified limit, but
 #' the number of returned parts never exceeds the limit.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MultipartUploadId = "string",
+#'   VaultARN = "string",
+#'   ArchiveDescription = "string",
+#'   PartSizeInBytes = 123,
+#'   CreationDate = "string",
+#'   Parts = list(
+#'     list(
+#'       RangeInBytes = "string",
+#'       SHA256TreeHash = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_parts(
@@ -1984,7 +2341,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' # The example lists all the parts of a multipart upload.
 #' svc$list_parts(
 #'   accountId = "-",
-#'   uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ...",
+#'   uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYt...",
 #'   vaultName = "examplevault"
 #' )
 #' }
@@ -2024,6 +2381,20 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
 #' case Amazon S3 Glacier uses the AWS account ID associated with the
 #' credentials used to sign the request. If you use an account ID, don't
 #' include any hyphens ('-') in the ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisionedCapacityList = list(
+#'     list(
+#'       CapacityId = "string",
+#'       StartDate = "string",
+#'       ExpirationDate = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2077,6 +2448,16 @@ glacier_list_provisioned_capacity <- function(accountId) {
 #' associated with the credentials used to sign the request. If you use an
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2159,6 +2540,24 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 #' The number of vaults returned might be fewer than the specified limit,
 #' but the number of returned vaults never exceeds the limit.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VaultList = list(
+#'     list(
+#'       VaultARN = "string",
+#'       VaultName = "string",
+#'       CreationDate = "string",
+#'       LastInventoryDate = "string",
+#'       NumberOfArchives = 123,
+#'       SizeInBytes = 123
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_vaults(
@@ -2211,6 +2610,14 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
 #' case Amazon S3 Glacier uses the AWS account ID associated with the
 #' credentials used to sign the request. If you use an account ID, don't
 #' include any hyphens ('-') in the ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2267,6 +2674,9 @@ glacier_purchase_provisioned_capacity <- function(accountId) {
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param TagKeys A list of tag keys. Each corresponding tag is removed from the vault.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2336,6 +2746,9 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
 #' associated with the credentials used to sign the request. If you specify
 #' your account ID, do not include any hyphens ('-') in the ID.
 #' @param Policy The data retrieval policy in JSON format.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2412,6 +2825,9 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param policy The vault access policy as a JSON string.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_vault_access_policy(
@@ -2430,7 +2846,7 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
 #' svc$set_vault_access_policy(
 #'   accountId = "-",
 #'   policy = list(
-#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":..."
+#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-owner-access-rights..."
 #'   ),
 #'   vaultName = "examplevault"
 #' )
@@ -2512,6 +2928,9 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param vaultNotificationConfig Provides options for specifying notification configuration.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2623,6 +3042,16 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' @param archiveDescription The optional description of the archive you are uploading.
 #' @param checksum The SHA256 tree hash of the data being uploaded.
 #' @param body The data to upload.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   location = "string",
+#'   checksum = "string",
+#'   archiveId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2740,6 +3169,14 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
 #' @param body The data to upload.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   checksum = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$upload_multipart_part(
@@ -2761,7 +3198,7 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #'   body = "part1",
 #'   checksum = "c06f7cd4baacb087002a99a5f48bf953",
 #'   range = "bytes 0-1048575/*",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
 #'   vaultName = "examplevault"
 #' )
 #' }

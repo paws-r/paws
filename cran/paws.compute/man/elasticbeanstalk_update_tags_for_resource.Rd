@@ -22,6 +22,9 @@ ignored.
 
 Specify at least one of these parameters: \code{TagsToAdd}, \code{TagsToRemove}.}
 }
+\value{
+An empty list.
+}
 \description{
 Update the list of tags applied to an AWS Elastic Beanstalk resource.
 Two lists can be passed: \code{TagsToAdd} for tags to add or update, and

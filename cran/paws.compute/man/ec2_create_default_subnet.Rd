@@ -15,6 +15,44 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Subnet = list(
+    AvailabilityZone = "string",
+    AvailabilityZoneId = "string",
+    AvailableIpAddressCount = 123,
+    CidrBlock = "string",
+    DefaultForAz = TRUE|FALSE,
+    MapPublicIpOnLaunch = TRUE|FALSE,
+    MapCustomerOwnedIpOnLaunch = TRUE|FALSE,
+    CustomerOwnedIpv4Pool = "string",
+    State = "pending"|"available",
+    SubnetId = "string",
+    VpcId = "string",
+    OwnerId = "string",
+    AssignIpv6AddressOnCreation = TRUE|FALSE,
+    Ipv6CidrBlockAssociationSet = list(
+      list(
+        AssociationId = "string",
+        Ipv6CidrBlock = "string",
+        Ipv6CidrBlockState = list(
+          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+          StatusMessage = "string"
+        )
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    SubnetArn = "string",
+    OutpostArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the
 specified Availability Zone in your default VPC. You can have only one

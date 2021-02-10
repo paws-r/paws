@@ -16,6 +16,37 @@ resource type and storage config for the given instance ID.}
 
 \item{ResourceType}{[required] A valid resource type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StorageConfig = list(
+    AssociationId = "string",
+    StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
+    S3Config = list(
+      BucketName = "string",
+      BucketPrefix = "string",
+      EncryptionConfig = list(
+        EncryptionType = "KMS",
+        KeyId = "string"
+      )
+    ),
+    KinesisVideoStreamConfig = list(
+      Prefix = "string",
+      RetentionPeriodHours = 123,
+      EncryptionConfig = list(
+        EncryptionType = "KMS",
+        KeyId = "string"
+      )
+    ),
+    KinesisStreamConfig = list(
+      StreamArn = "string"
+    ),
+    KinesisFirehoseConfig = list(
+      FirehoseArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

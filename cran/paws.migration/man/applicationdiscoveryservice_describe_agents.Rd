@@ -15,7 +15,7 @@ agents/Connectors associated with your AWS user account.}
 \item{filters}{You can filter the request using various logical operators and a
 \emph{key}-\emph{value} format. For example:
 
-\verb{\\\{"key": "collectionStatus", "value": "STARTED"\\\}}}
+\verb{\{"key": "collectionStatus", "value": "STARTED"\}}}
 
 \item{maxResults}{The total number of agents/Connectors to return in a single page of
 output. The maximum value is 100.}
@@ -25,6 +25,31 @@ previously specified 100 IDs for \code{DescribeAgentsRequest$agentIds} but
 set \code{DescribeAgentsRequest$maxResults} to 10, you received a set of 10
 results along with a token. Use that token in this query to get the next
 set of 10.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  agentsInfo = list(
+    list(
+      agentId = "string",
+      hostName = "string",
+      agentNetworkInfoList = list(
+        list(
+          ipAddress = "string",
+          macAddress = "string"
+        )
+      ),
+      connectorId = "string",
+      version = "string",
+      health = "HEALTHY"|"UNHEALTHY"|"RUNNING"|"UNKNOWN"|"BLACKLISTED"|"SHUTDOWN",
+      lastHealthPingTime = "string",
+      collectionStatus = "string",
+      agentType = "string",
+      registeredTime = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
 }
 \description{
 Lists agents or connectors as specified by ID or other filters. All

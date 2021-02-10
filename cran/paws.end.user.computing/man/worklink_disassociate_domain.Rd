@@ -11,6 +11,9 @@ worklink_disassociate_domain(FleetArn, DomainName)
 
 \item{DomainName}{[required] The name of the domain.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates a domain from Amazon WorkLink. End users lose the ability
 to access the domain with Amazon WorkLink.

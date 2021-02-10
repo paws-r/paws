@@ -88,6 +88,99 @@ the remaining results, make another request with the returned
 \code{NextToken} value. This value can be between 5 and 1000. If this
 parameter is not specified, then all results are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityGroups = list(
+    list(
+      Description = "string",
+      GroupName = "string",
+      IpPermissions = list(
+        list(
+          FromPort = 123,
+          IpProtocol = "string",
+          IpRanges = list(
+            list(
+              CidrIp = "string",
+              Description = "string"
+            )
+          ),
+          Ipv6Ranges = list(
+            list(
+              CidrIpv6 = "string",
+              Description = "string"
+            )
+          ),
+          PrefixListIds = list(
+            list(
+              Description = "string",
+              PrefixListId = "string"
+            )
+          ),
+          ToPort = 123,
+          UserIdGroupPairs = list(
+            list(
+              Description = "string",
+              GroupId = "string",
+              GroupName = "string",
+              PeeringStatus = "string",
+              UserId = "string",
+              VpcId = "string",
+              VpcPeeringConnectionId = "string"
+            )
+          )
+        )
+      ),
+      OwnerId = "string",
+      GroupId = "string",
+      IpPermissionsEgress = list(
+        list(
+          FromPort = 123,
+          IpProtocol = "string",
+          IpRanges = list(
+            list(
+              CidrIp = "string",
+              Description = "string"
+            )
+          ),
+          Ipv6Ranges = list(
+            list(
+              CidrIpv6 = "string",
+              Description = "string"
+            )
+          ),
+          PrefixListIds = list(
+            list(
+              Description = "string",
+              PrefixListId = "string"
+            )
+          ),
+          ToPort = 123,
+          UserIdGroupPairs = list(
+            list(
+              Description = "string",
+              GroupId = "string",
+              GroupName = "string",
+              PeeringStatus = "string",
+              UserId = "string",
+              VpcId = "string",
+              VpcPeeringConnectionId = "string"
+            )
+          )
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      VpcId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the specified security groups or all of your security groups.
 

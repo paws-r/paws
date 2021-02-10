@@ -27,6 +27,9 @@ Streams by specifying the alias \code{aws/kinesis}.
 \item Master key owned by Kinesis Data Streams: \code{alias/aws/kinesis}
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Disables server-side encryption for a specified stream.
 

@@ -10,6 +10,9 @@ inspector_delete_assessment_target(assessmentTargetArn)
 \arguments{
 \item{assessmentTargetArn}{[required] The ARN that specifies the assessment target that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the assessment target that is specified by the ARN of the
 assessment target.

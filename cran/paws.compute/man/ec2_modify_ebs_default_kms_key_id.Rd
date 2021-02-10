@@ -34,6 +34,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KmsKeyId = "string"
+)
+}
+}
 \description{
 Changes the default customer master key (CMK) for EBS encryption by
 default for your account in this Region.

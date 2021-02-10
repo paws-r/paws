@@ -21,6 +21,9 @@ For the CLI command-line parameter use format: --tags
 For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a rule. Creating rules is an administrator-level action. Any
 user who has permission to create rules will be able to access data

@@ -44,6 +44,21 @@ the value specified by \code{MaxRecords}.}
 \item{DefaultOnly}{If \code{true}, specifies that only the default version of the specified
 engine or engine and major version combination is to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  CacheEngineVersions = list(
+    list(
+      Engine = "string",
+      EngineVersion = "string",
+      CacheParameterGroupFamily = "string",
+      CacheEngineDescription = "string",
+      CacheEngineVersionDescription = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the available cache engines and their versions.
 }

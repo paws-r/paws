@@ -15,6 +15,12 @@ contains the certificate ID.)}
 
 \item{transferMessage}{The transfer message.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  transferredCertificateArn = "string"
+)
+}
+}
 \description{
 Transfers the specified certificate to the specified AWS account.
 

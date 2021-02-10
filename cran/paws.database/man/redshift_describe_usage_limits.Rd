@@ -48,6 +48,29 @@ these tag values in the request, Amazon Redshift returns a response with
 the usage limit objects that have either or both of these tag values
 associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UsageLimits = list(
+    list(
+      UsageLimitId = "string",
+      ClusterIdentifier = "string",
+      FeatureType = "spectrum"|"concurrency-scaling",
+      LimitType = "time"|"data-scanned",
+      Amount = 123,
+      Period = "daily"|"weekly"|"monthly",
+      BreachAction = "log"|"emit-metric"|"disable",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Shows usage limits on a cluster. Results are filtered based on the
 combination of input usage limit identifier, cluster identifier, and

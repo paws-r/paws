@@ -20,6 +20,31 @@ journey metrics.}
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActivitiesResponse = list(
+    Item = list(
+      list(
+        ApplicationId = "string",
+        CampaignId = "string",
+        End = "string",
+        Id = "string",
+        Result = "string",
+        ScheduledStart = "string",
+        Start = "string",
+        State = "string",
+        SuccessfulEndpointCount = 123,
+        TimezonesCompletedCount = 123,
+        TimezonesTotalCount = 123,
+        TotalEndpointCount = 123,
+        TreatmentId = "string"
+      )
+    ),
+    NextToken = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about all the activities for a campaign.
 }

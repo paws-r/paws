@@ -15,6 +15,9 @@ securityhub_update_insight(InsightArn, Name, Filters, GroupByAttribute)
 
 \item{GroupByAttribute}{The updated \code{GroupBy} attribute that defines this insight.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the Security Hub insight identified by the specified insight
 ARN.

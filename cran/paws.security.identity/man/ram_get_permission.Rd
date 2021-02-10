@@ -11,6 +11,25 @@ ram_get_permission(permissionArn, permissionVersion)
 
 \item{permissionVersion}{The identifier for the version of the permission.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  permission = list(
+    arn = "string",
+    version = "string",
+    defaultVersion = TRUE|FALSE,
+    name = "string",
+    resourceType = "string",
+    permission = "string",
+    creationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets the contents of an AWS RAM permission in JSON format.
 }

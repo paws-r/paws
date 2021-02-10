@@ -12,6 +12,9 @@ pinpointsmsvoice_delete_configuration_set_event_destination(
 
 \item{EventDestinationName}{[required] EventDestinationName}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an event destination in a configuration set.
 }

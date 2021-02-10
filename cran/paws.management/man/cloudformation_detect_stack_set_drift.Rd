@@ -15,6 +15,12 @@ operation.}
 
 \item{OperationId}{\emph{The ID of the stack set operation.}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Detect drift on a stack set. When CloudFormation performs drift
 detection on a stack set, it performs drift detection on the stack

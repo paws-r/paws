@@ -17,6 +17,9 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation aborts the vault locking process if the vault lock is not
 in the \code{Locked} state. If the vault lock is in the \code{Locked} state when

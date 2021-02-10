@@ -33,6 +33,37 @@ For example:
 To get the key ID and key ARN for a CMK, use
 \href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Grants = list(
+    list(
+      KeyId = "string",
+      GrantId = "string",
+      Name = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      GranteePrincipal = "string",
+      RetiringPrincipal = "string",
+      IssuingAccount = "string",
+      Operations = list(
+        "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"Sign"|"Verify"|"GetPublicKey"|"CreateGrant"|"RetireGrant"|"DescribeKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"
+      ),
+      Constraints = list(
+        EncryptionContextSubset = list(
+          "string"
+        ),
+        EncryptionContextEquals = list(
+          "string"
+        )
+      )
+    )
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Gets a list of all grants for the specified customer master key (CMK).
 

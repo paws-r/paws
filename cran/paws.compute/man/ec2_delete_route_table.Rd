@@ -14,6 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the route table.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified route table. You must disassociate the route table
 from any subnets before you can delete it. You can't delete the main

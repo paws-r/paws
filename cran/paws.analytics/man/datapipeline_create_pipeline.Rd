@@ -33,6 +33,12 @@ credentials.}
 control access to pipelines. For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html}{Controlling User Access to Pipelines}
 in the \emph{AWS Data Pipeline Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineId = "string"
+)
+}
+}
 \description{
 Creates a new, empty pipeline. Use
 \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to

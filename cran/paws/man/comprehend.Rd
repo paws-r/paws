@@ -45,7 +45,7 @@ expressed in them, the predominant language used, and more.
 \link[=comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
 \link[=comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model\cr
 \link[=comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files\cr
-\link[=comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier Only those classifiers that are in terminated states (IN_ERROR, TRAINED) will be deleted\cr
+\link[=comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier\cr
 \link[=comprehend_delete_endpoint]{delete_endpoint} \tab Deletes a model-specific endpoint for a previously-trained custom model\cr
 \link[=comprehend_delete_entity_recognizer]{delete_entity_recognizer} \tab Deletes an entity recognizer\cr
 \link[=comprehend_describe_document_classification_job]{describe_document_classification_job} \tab Gets the properties associated with a document classification job\cr

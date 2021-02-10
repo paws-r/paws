@@ -16,6 +16,9 @@ you're accepting.}
 \item{InvitationId}{[required] The value that is used to validate the administrator account to the
 member account.}
 }
+\value{
+An empty list.
+}
 \description{
 Accepts the invitation to be monitored by a GuardDuty administrator
 account.

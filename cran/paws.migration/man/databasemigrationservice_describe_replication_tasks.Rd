@@ -31,6 +31,61 @@ marker, up to the value specified by \code{MaxRecords}.}
 to reduce overhead when setting information is too large. To use this
 option, choose \code{true}; otherwise, choose \code{false} (the default).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReplicationTasks = list(
+    list(
+      ReplicationTaskIdentifier = "string",
+      SourceEndpointArn = "string",
+      TargetEndpointArn = "string",
+      ReplicationInstanceArn = "string",
+      MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+      TableMappings = "string",
+      ReplicationTaskSettings = "string",
+      Status = "string",
+      LastFailureMessage = "string",
+      StopReason = "string",
+      ReplicationTaskCreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ReplicationTaskStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CdcStartPosition = "string",
+      CdcStopPosition = "string",
+      RecoveryCheckpoint = "string",
+      ReplicationTaskArn = "string",
+      ReplicationTaskStats = list(
+        FullLoadProgressPercent = 123,
+        ElapsedTimeMillis = 123,
+        TablesLoaded = 123,
+        TablesLoading = 123,
+        TablesQueued = 123,
+        TablesErrored = 123,
+        FreshStartDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        StartDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        StopDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        FullLoadStartDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        FullLoadFinishDate = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      TaskData = "string",
+      TargetReplicationInstanceArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about replication tasks for your account in the
 current region.

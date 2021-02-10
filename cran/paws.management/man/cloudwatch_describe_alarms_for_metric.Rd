@@ -26,6 +26,80 @@ succeed.}
 
 \item{Unit}{The unit for the metric.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MetricAlarms = list(
+    list(
+      AlarmName = "string",
+      AlarmArn = "string",
+      AlarmDescription = "string",
+      AlarmConfigurationUpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ActionsEnabled = TRUE|FALSE,
+      OKActions = list(
+        "string"
+      ),
+      AlarmActions = list(
+        "string"
+      ),
+      InsufficientDataActions = list(
+        "string"
+      ),
+      StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+      StateReason = "string",
+      StateReasonData = "string",
+      StateUpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      MetricName = "string",
+      Namespace = "string",
+      Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
+      ExtendedStatistic = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      Period = 123,
+      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+      EvaluationPeriods = 123,
+      DatapointsToAlarm = 123,
+      Threshold = 123.0,
+      ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
+      TreatMissingData = "string",
+      EvaluateLowSampleCountPercentile = "string",
+      Metrics = list(
+        list(
+          Id = "string",
+          MetricStat = list(
+            Metric = list(
+              Namespace = "string",
+              MetricName = "string",
+              Dimensions = list(
+                list(
+                  Name = "string",
+                  Value = "string"
+                )
+              )
+            ),
+            Period = 123,
+            Stat = "string",
+            Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+          ),
+          Expression = "string",
+          Label = "string",
+          ReturnData = TRUE|FALSE,
+          Period = 123
+        )
+      ),
+      ThresholdMetricId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.

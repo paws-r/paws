@@ -20,6 +20,51 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TargetConfigurations}{The configuration of the target Convertible Reserved Instance to
 exchange for your current Convertible Reserved Instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CurrencyCode = "string",
+  IsValidExchange = TRUE|FALSE,
+  OutputReservedInstancesWillExpireAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  PaymentDue = "string",
+  ReservedInstanceValueRollup = list(
+    HourlyPrice = "string",
+    RemainingTotalValue = "string",
+    RemainingUpfrontValue = "string"
+  ),
+  ReservedInstanceValueSet = list(
+    list(
+      ReservationValue = list(
+        HourlyPrice = "string",
+        RemainingTotalValue = "string",
+        RemainingUpfrontValue = "string"
+      ),
+      ReservedInstanceId = "string"
+    )
+  ),
+  TargetConfigurationValueRollup = list(
+    HourlyPrice = "string",
+    RemainingTotalValue = "string",
+    RemainingUpfrontValue = "string"
+  ),
+  TargetConfigurationValueSet = list(
+    list(
+      ReservationValue = list(
+        HourlyPrice = "string",
+        RemainingTotalValue = "string",
+        RemainingUpfrontValue = "string"
+      ),
+      TargetConfiguration = list(
+        InstanceCount = 123,
+        OfferingId = "string"
+      )
+    )
+  ),
+  ValidationFailureReason = "string"
+)
+}
+}
 \description{
 Returns a quote and exchange information for exchanging one or more
 specified Convertible Reserved Instances for a new Convertible Reserved

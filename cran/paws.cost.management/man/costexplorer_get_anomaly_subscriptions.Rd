@@ -18,6 +18,31 @@ page size.}
 
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnomalySubscriptions = list(
+    list(
+      SubscriptionArn = "string",
+      AccountId = "string",
+      MonitorArnList = list(
+        "string"
+      ),
+      Subscribers = list(
+        list(
+          Address = "string",
+          Type = "EMAIL"|"SNS",
+          Status = "CONFIRMED"|"DECLINED"
+        )
+      ),
+      Threshold = 123.0,
+      Frequency = "DAILY"|"IMMEDIATE"|"WEEKLY",
+      SubscriptionName = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Retrieves the cost anomaly subscription objects for your account. You
 can filter using a list of cost anomaly monitor Amazon Resource Names

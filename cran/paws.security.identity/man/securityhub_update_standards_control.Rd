@@ -16,6 +16,9 @@ securityhub_update_standards_control(StandardsControlArn, ControlStatus,
 \item{DisabledReason}{A description of the reason why you are disabling a security standard
 control. If you are disabling a control, then this is required.}
 }
+\value{
+An empty list.
+}
 \description{
 Used to control whether an individual security standard control is
 enabled or disabled.

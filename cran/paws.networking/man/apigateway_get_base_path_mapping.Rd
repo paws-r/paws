@@ -15,6 +15,14 @@ part of the URL after the domain name. This value must be unique for all
 of the mappings across a single API. Specify '(none)' if you do not want
 callers to specify any base path name after the domain name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  basePath = "string",
+  restApiId = "string",
+  stage = "string"
+)
+}
+}
 \description{
 Describe a BasePathMapping resource.
 }

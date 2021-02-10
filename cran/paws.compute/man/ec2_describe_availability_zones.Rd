@@ -55,6 +55,30 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AvailabilityZones = list(
+    list(
+      State = "available"|"information"|"impaired"|"unavailable",
+      OptInStatus = "opt-in-not-required"|"opted-in"|"not-opted-in",
+      Messages = list(
+        list(
+          Message = "string"
+        )
+      ),
+      RegionName = "string",
+      ZoneName = "string",
+      ZoneId = "string",
+      GroupName = "string",
+      NetworkBorderGroup = "string",
+      ZoneType = "string",
+      ParentZoneName = "string",
+      ParentZoneId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the Availability Zones, Local Zones, and Wavelength Zones that
 are available to you. If there is an event impacting a zone, you can use

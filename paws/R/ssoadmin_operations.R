@@ -25,6 +25,9 @@ NULL
 #' to.
 #' @param ManagedPolicyArn &#91;required&#93; The IAM managed policy ARN to be attached to a permission set.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_managed_policy_to_permission_set(
@@ -92,6 +95,26 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Permis
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 #' PrincipalIds in AWS SSO, see the AWS SSO Identity Store API Reference.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAssignmentCreationStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_account_assignment(
@@ -145,6 +168,9 @@ ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' alternative to configuring attributes from the AWS SSO identity store.
 #' If a SAML assertion passes any of these attributes, AWS SSO will replace
 #' the attribute value with the value from the AWS SSO identity store.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -208,6 +234,23 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' authentication process.
 #' @param Tags The tags to attach to the new PermissionSet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PermissionSet = list(
+#'     Name = "string",
+#'     PermissionSetArn = "string",
+#'     Description = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SessionDuration = "string",
+#'     RelayState = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_permission_set(
@@ -269,6 +312,26 @@ ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 #' PrincipalIds in AWS SSO, see the AWS SSO Identity Store API Reference.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAssignmentDeletionStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_assignment(
@@ -314,6 +377,9 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' For more information about ARNs, see Amazon Resource Names (ARNs) and
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that will be used to remove access.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -361,6 +427,9 @@ ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, Permi
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the SSO instance under which the operation will be executed.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_instance_access_control_attribute_configuration(
@@ -400,6 +469,9 @@ ssoadmin_delete_instance_access_control_attribute_configuration <- function(Inst
 #' For more information about ARNs, see Amazon Resource Names (ARNs) and
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that should be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -443,6 +515,26 @@ ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param AccountAssignmentCreationRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAssignmentCreationStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_assignment_creation_status(
@@ -484,6 +576,26 @@ ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, Ac
 #' For more information about ARNs, see Amazon Resource Names (ARNs) and
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param AccountAssignmentDeletionRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAssignmentDeletionStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     FailureReason = "string",
+#'     TargetId = "string",
+#'     TargetType = "AWS_ACCOUNT",
+#'     PermissionSetArn = "string",
+#'     PrincipalType = "USER"|"GROUP",
+#'     PrincipalId = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -530,6 +642,27 @@ ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, Ac
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the SSO instance under which the operation will be executed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "ENABLED"|"CREATION_IN_PROGRESS"|"CREATION_FAILED",
+#'   StatusReason = "string",
+#'   InstanceAccessControlAttributeConfiguration = list(
+#'     AccessControlAttributes = list(
+#'       list(
+#'         Key = "string",
+#'         Value = list(
+#'           Source = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instance_access_control_attribute_configuration(
@@ -569,6 +702,23 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
 #' For more information about ARNs, see Amazon Resource Names (ARNs) and
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PermissionSet = list(
+#'     Name = "string",
+#'     PermissionSetArn = "string",
+#'     Description = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SessionDuration = "string",
+#'     RelayState = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -613,6 +763,23 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' @param ProvisionPermissionSetRequestId &#91;required&#93; The identifier that is provided by the
 #' [`provision_permission_set`][ssoadmin_provision_permission_set] call to
 #' retrieve the current status of the provisioning workflow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PermissionSetProvisioningStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     AccountId = "string",
+#'     PermissionSetArn = "string",
+#'     FailureReason = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -659,6 +826,9 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the policy should be detached.
 #' @param ManagedPolicyArn &#91;required&#93; The IAM managed policy ARN to be attached to a permission set.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_managed_policy_from_permission_set(
@@ -701,6 +871,14 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Perm
 #' For more information about ARNs, see Amazon Resource Names (ARNs) and
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InlinePolicy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -748,6 +926,23 @@ ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, Permissio
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
 #' @param Filter Filters results based on the passed attribute value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAssignmentsCreationStatus = list(
+#'     list(
+#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'       RequestId = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -799,6 +994,23 @@ ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxRes
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
 #' @param Filter Filters results based on the passed attribute value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAssignmentsDeletionStatus = list(
+#'     list(
+#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'       RequestId = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -852,6 +1064,22 @@ ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxRes
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAssignments = list(
+#'     list(
+#'       AccountId = "string",
+#'       PermissionSetArn = "string",
+#'       PrincipalType = "USER"|"GROUP",
+#'       PrincipalId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_account_assignments(
@@ -904,6 +1132,17 @@ ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, Permission
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_accounts_for_provisioned_permission_set(
@@ -946,6 +1185,20 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, P
 #' @param MaxResults The maximum number of results to display for the instance.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = list(
+#'     list(
+#'       InstanceArn = "string",
+#'       IdentityStoreId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -993,6 +1246,20 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param MaxResults The maximum number of results to display for the PermissionSet.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachedManagedPolicies = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1043,6 +1310,23 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, Permis
 #' the output of previous API calls to make subsequent calls.
 #' @param Filter Filters results based on the passed attribute value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PermissionSetsProvisioningStatus = list(
+#'     list(
+#'       Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'       RequestId = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_permission_set_provisioning_status(
@@ -1089,6 +1373,17 @@ ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxRes
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
 #' @param MaxResults The maximum number of results to display for the assignment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PermissionSets = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1139,6 +1434,17 @@ ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResu
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PermissionSets = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_permission_sets_provisioned_to_account(
@@ -1184,6 +1490,20 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1232,6 +1552,23 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken 
 #' @param TargetId TargetID is an AWS account identifier, typically a 10-12 digit string
 #' (For example, 123456789012).
 #' @param TargetType &#91;required&#93; The entity type for which the assignment will be created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PermissionSetProvisioningStatus = list(
+#'     Status = "IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'     RequestId = "string",
+#'     AccountId = "string",
+#'     PermissionSetArn = "string",
+#'     FailureReason = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1284,6 +1621,9 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
 #' @param InlinePolicy &#91;required&#93; The IAM inline policy to attach to a PermissionSet.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_inline_policy_to_permission_set(
@@ -1326,6 +1666,9 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, Permission
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param Tags &#91;required&#93; A set of key-value pairs that are used to manage the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1374,6 +1717,9 @@ ssoadmin_tag_resource <- function(InstanceArn, ResourceArn, Tags) {
 #' AWS Service Namespaces in the *AWS General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param TagKeys &#91;required&#93; The keys of tags that are attached to the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1425,6 +1771,9 @@ ssoadmin_untag_resource <- function(InstanceArn, ResourceArn, TagKeys) {
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the SSO instance under which the operation will be executed.
 #' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Updates the attributes for your ABAC configuration.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1483,6 +1832,9 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #' the ISO-8601 standard.
 #' @param RelayState Used to redirect users within the application during the federation
 #' authentication process.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

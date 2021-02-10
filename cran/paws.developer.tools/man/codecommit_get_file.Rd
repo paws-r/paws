@@ -19,6 +19,17 @@ head commit is used.}
 extension of the file. For example, /examples/file.md is the fully
 qualified path to a file named file.md in a folder named examples.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  blobId = "string",
+  filePath = "string",
+  fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+  fileSize = 123,
+  fileContent = raw
+)
+}
+}
 \description{
 Returns the base-64 encoded contents of a specified file and its
 metadata.

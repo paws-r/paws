@@ -40,6 +40,14 @@ NULL
 #' Cloud9 development environment.
 #' @param connectionType The connection type used for connecting to an Amazon EC2 environment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   environmentId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_environment_ec2(
@@ -113,6 +121,22 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
 #' 
 #' -   `read-write`: Has read-write access to the environment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   membership = list(
+#'     permissions = "owner"|"read-write"|"read-only",
+#'     userId = "string",
+#'     userArn = "string",
+#'     environmentId = "string",
+#'     lastAccess = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_environment_membership(
@@ -163,6 +187,9 @@ cloud9_create_environment_membership <- function(environmentId, userArn, permiss
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_environment(
@@ -210,6 +237,9 @@ cloud9_delete_environment <- function(environmentId) {
 #' @param environmentId &#91;required&#93; The ID of the environment to delete the environment member from.
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the environment member to delete from
 #' the environment.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -282,6 +312,25 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
 #' token that is returned, until no more next tokens are returned.
 #' @param maxResults The maximum number of environment members to get information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   memberships = list(
+#'     list(
+#'       permissions = "owner"|"read-write"|"read-only",
+#'       userId = "string",
+#'       userArn = "string",
+#'       environmentId = "string",
+#'       lastAccess = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_environment_memberships(
@@ -349,6 +398,15 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment to get status information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "error"|"creating"|"connecting"|"ready"|"stopping"|"stopped"|"deleting",
+#'   message = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_environment_status(
@@ -393,6 +451,29 @@ cloud9_describe_environment_status <- function(environmentId) {
 #' cloud9_describe_environments(environmentIds)
 #'
 #' @param environmentIds &#91;required&#93; The IDs of individual environments to get information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   environments = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       type = "ssh"|"ec2",
+#'       connectionType = "CONNECT_SSH"|"CONNECT_SSM",
+#'       arn = "string",
+#'       ownerArn = "string",
+#'       lifecycle = list(
+#'         status = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
+#'         reason = "string",
+#'         failureResource = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -450,6 +531,17 @@ cloud9_describe_environments <- function(environmentIds) {
 #' token that is returned, until no more next tokens are returned.
 #' @param maxResults The maximum number of environments to get identifiers for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   environmentIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_environments(
@@ -497,6 +589,19 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
 #' to get the tags for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -538,6 +643,9 @@ cloud9_list_tags_for_resource <- function(ResourceARN) {
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
 #' to add tags to.
 #' @param Tags &#91;required&#93; The list of tags to add to the given AWS Cloud9 development environment.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -585,6 +693,9 @@ cloud9_tag_resource <- function(ResourceARN, Tags) {
 #' @param TagKeys &#91;required&#93; The tag names of the tags to remove from the given AWS Cloud9
 #' development environment.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -626,6 +737,9 @@ cloud9_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param environmentId &#91;required&#93; The ID of the environment to change settings.
 #' @param name A replacement name for the environment.
 #' @param description Any new or replacement description for the environment.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -687,6 +801,22 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
 #' -   `read-only`: Has read-only access to the environment.
 #' 
 #' -   `read-write`: Has read-write access to the environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   membership = list(
+#'     permissions = "owner"|"read-write"|"read-only",
+#'     userId = "string",
+#'     userArn = "string",
+#'     environmentId = "string",
+#'     lastAccess = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

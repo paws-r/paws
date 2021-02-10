@@ -10,6 +10,20 @@ iot_list_policy_versions(policyName)
 \arguments{
 \item{policyName}{[required] The policy name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policyVersions = list(
+    list(
+      versionId = "string",
+      isDefaultVersion = TRUE|FALSE,
+      createDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists the versions of the specified policy and identifies the default
 version.

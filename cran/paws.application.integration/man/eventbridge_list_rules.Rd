@@ -17,6 +17,25 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rules = list(
+    list(
+      Name = "string",
+      Arn = "string",
+      EventPattern = "string",
+      State = "ENABLED"|"DISABLED",
+      Description = "string",
+      ScheduleExpression = "string",
+      RoleArn = "string",
+      ManagedBy = "string",
+      EventBusName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists your Amazon EventBridge rules. You can either list all the rules
 or you can provide a prefix to match to the rule names.

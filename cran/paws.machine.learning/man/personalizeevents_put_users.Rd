@@ -12,6 +12,9 @@ user or users to.}
 
 \item{users}{[required] A list of user data.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more users to a Users dataset. For more information see
 importing-users.

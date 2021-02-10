@@ -14,6 +14,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInsightsPathId}{[required] The ID of the path.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInsightsPathId = "string"
+)
+}
+}
 \description{
 Deletes the specified path.
 }

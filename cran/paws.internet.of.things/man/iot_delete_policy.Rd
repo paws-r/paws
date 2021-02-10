@@ -9,6 +9,9 @@ iot_delete_policy(policyName)
 \arguments{
 \item{policyName}{[required] The name of the policy to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified policy.
 

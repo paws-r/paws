@@ -45,6 +45,9 @@ type and code.}
 
 \item{RuleNumber}{[required] The rule number of the entry to replace.}
 }
+\value{
+An empty list.
+}
 \description{
 Replaces an entry (rule) in a network ACL. For more information, see
 \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the

@@ -23,6 +23,15 @@ previous response to continue listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  assessmentTargetArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the ARNs of the assessment targets within this AWS account. For
 more information about assessment targets, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.

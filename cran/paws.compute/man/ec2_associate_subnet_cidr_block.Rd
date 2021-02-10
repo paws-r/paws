@@ -12,6 +12,20 @@ length.}
 
 \item{SubnetId}{[required] The ID of your subnet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Ipv6CidrBlockAssociation = list(
+    AssociationId = "string",
+    Ipv6CidrBlock = "string",
+    Ipv6CidrBlockState = list(
+      State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+      StatusMessage = "string"
+    )
+  ),
+  SubnetId = "string"
+)
+}
+}
 \description{
 Associates a CIDR block with your subnet. You can only associate a
 single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a

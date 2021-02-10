@@ -10,6 +10,50 @@ transfer_describe_server(ServerId)
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for a server.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Server = list(
+    Arn = "string",
+    Certificate = "string",
+    Domain = "S3"|"EFS",
+    EndpointDetails = list(
+      AddressAllocationIds = list(
+        "string"
+      ),
+      SubnetIds = list(
+        "string"
+      ),
+      VpcEndpointId = "string",
+      VpcId = "string",
+      SecurityGroupIds = list(
+        "string"
+      )
+    ),
+    EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
+    HostKeyFingerprint = "string",
+    IdentityProviderDetails = list(
+      Url = "string",
+      InvocationRole = "string"
+    ),
+    IdentityProviderType = "SERVICE_MANAGED"|"API_GATEWAY",
+    LoggingRole = "string",
+    Protocols = list(
+      "SFTP"|"FTP"|"FTPS"
+    ),
+    SecurityPolicyName = "string",
+    ServerId = "string",
+    State = "OFFLINE"|"ONLINE"|"STARTING"|"STOPPING"|"START_FAILED"|"STOP_FAILED",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    UserCount = 123
+  )
+)
+}
+}
 \description{
 Describes a file transfer protocol-enabled server that you specify by
 passing the \code{ServerId} parameter.

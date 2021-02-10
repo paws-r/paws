@@ -31,6 +31,30 @@ AutoMLJobName.}
 \item{NextToken}{If the previous response was truncated, you receive this token. Use it
 in your next request to receive the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoMLJobSummaries = list(
+    list(
+      AutoMLJobName = "string",
+      AutoMLJobArn = "string",
+      AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
+      AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FailureReason = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Request a list of jobs.
 }

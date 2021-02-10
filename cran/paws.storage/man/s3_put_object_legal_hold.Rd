@@ -16,7 +16,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] The key name for the object that you want to place a Legal Hold on.}
@@ -37,6 +37,12 @@ SDKs, this field is calculated automatically.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Applies a Legal Hold configuration to the specified object.
 
@@ -44,7 +50,7 @@ This action is not supported by Amazon S3 on Outposts.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html}{Locking Objects}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}
 }
 }
 \section{Request syntax}{

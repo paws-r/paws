@@ -13,6 +13,12 @@ rule you want to delete.}
 
 \item{approvalRuleName}{[required] The name of the approval rule you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  approvalRuleId = "string"
+)
+}
+}
 \description{
 Deletes an approval rule from a specified pull request. Approval rules
 can be deleted from a pull request only if the pull request is open, and

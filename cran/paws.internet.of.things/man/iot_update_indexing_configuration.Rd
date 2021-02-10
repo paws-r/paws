@@ -12,6 +12,9 @@ iot_update_indexing_configuration(thingIndexingConfiguration,
 
 \item{thingGroupIndexingConfiguration}{Thing group indexing configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the search configuration.
 }

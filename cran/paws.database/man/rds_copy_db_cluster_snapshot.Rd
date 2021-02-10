@@ -115,6 +115,45 @@ not copied.}
 
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshot = list(
+    AvailabilityZones = list(
+      "string"
+    ),
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterIdentifier = "string",
+    SnapshotCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Engine = "string",
+    AllocatedStorage = 123,
+    Status = "string",
+    Port = 123,
+    VpcId = "string",
+    ClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    EngineVersion = "string",
+    LicenseModel = "string",
+    SnapshotType = "string",
+    PercentProgress = 123,
+    StorageEncrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    DBClusterSnapshotArn = "string",
+    SourceDBClusterSnapshotArn = "string",
+    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Copies a snapshot of a DB cluster.
 

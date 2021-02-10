@@ -11,6 +11,9 @@ apigatewaymanagementapi_post_to_connection(Data, ConnectionId)
 
 \item{ConnectionId}{[required] The identifier of the connection that a specific client is using.}
 }
+\value{
+An empty list.
+}
 \description{
 Sends the provided data to the specified connection.
 }

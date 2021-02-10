@@ -19,6 +19,13 @@ you want to generate.}
 There are two types of assessment reports: a finding report and a full
 report. For more information, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html}{Assessment Reports}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "WORK_IN_PROGRESS"|"FAILED"|"COMPLETED",
+  url = "string"
+)
+}
+}
 \description{
 Produces an assessment report that includes detailed and comprehensive
 results of a specified assessment run.

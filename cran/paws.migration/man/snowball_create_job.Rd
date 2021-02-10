@@ -84,6 +84,12 @@ regions.}
 
 \item{DeviceConfiguration}{Defines the device configuration for an AWS Snowcone job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Creates a job to import or export data between Amazon S3 and your
 on-premises data center. Your AWS account must have the right trust

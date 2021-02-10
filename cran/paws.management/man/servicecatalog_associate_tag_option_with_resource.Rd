@@ -13,6 +13,9 @@ servicecatalog_associate_tag_option_with_resource(ResourceId,
 
 \item{TagOptionId}{[required] The TagOption identifier.}
 }
+\value{
+An empty list.
+}
 \description{
 Associate the specified TagOption with the specified portfolio or
 product.

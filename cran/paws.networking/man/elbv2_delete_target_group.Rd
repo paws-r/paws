@@ -9,6 +9,9 @@ elbv2_delete_target_group(TargetGroupArn)
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified target group.
 
@@ -29,7 +32,7 @@ them.
 \dontrun{
 # This example deletes the specified target group.
 svc$delete_target_group(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
 )
 }
 

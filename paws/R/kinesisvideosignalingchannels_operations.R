@@ -39,6 +39,23 @@ NULL
 #' value.
 #' @param Username An optional user ID to be associated with the credentials.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IceServerList = list(
+#'     list(
+#'       Uris = list(
+#'         "string"
+#'       ),
+#'       Username = "string",
+#'       Password = "string",
+#'       Ttl = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ice_server_config(
@@ -89,6 +106,14 @@ kinesisvideosignalingchannels_get_ice_server_config <- function(ChannelARN, Clie
 #' communicate.
 #' @param SenderClientId &#91;required&#93; The unique identifier for the sender client.
 #' @param MessagePayload &#91;required&#93; The base64-encoded SDP offer content.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Answer = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

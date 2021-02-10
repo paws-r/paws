@@ -57,6 +57,14 @@ secret.}
 
 \item{RotationRules}{A structure that defines the rotation configuration for this secret.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  VersionId = "string"
+)
+}
+}
 \description{
 Configures and starts the asynchronous process of rotating this secret.
 If you include the configuration parameters, the operation sets those
@@ -141,7 +149,7 @@ of a secret, use
 # upon completion of this command. The rotation function runs
 # asynchronously in the background.
 svc$rotate_secret(
-  RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotation...",
+  RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseR...",
   RotationRules = list(
     AutomaticallyAfterDays = 30L
   ),

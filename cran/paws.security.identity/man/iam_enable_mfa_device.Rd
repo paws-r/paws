@@ -13,7 +13,7 @@ iam_enable_mfa_device(UserName, SerialNumber, AuthenticationCode1,
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{SerialNumber}{[required] The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
@@ -43,6 +43,9 @@ request, the MFA device successfully associates with the user but the
 MFA device becomes out of sync. This happens because time-based one-time
 passwords (TOTP) expire after a short period of time. If this happens,
 you can \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html}{resync the device}.}
+}
+\value{
+An empty list.
 }
 \description{
 Enables the specified MFA device and associates it with the specified

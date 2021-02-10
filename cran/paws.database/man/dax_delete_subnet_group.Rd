@@ -9,6 +9,12 @@ dax_delete_subnet_group(SubnetGroupName)
 \arguments{
 \item{SubnetGroupName}{[required] The name of the subnet group to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeletionMessage = "string"
+)
+}
+}
 \description{
 Deletes a subnet group.
 

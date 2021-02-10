@@ -13,6 +13,26 @@ wafregional_get_size_constraint_set(SizeConstraintSetId)
 and by
 \code{\link[=wafregional_list_size_constraint_sets]{list_size_constraint_sets}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SizeConstraintSet = list(
+    SizeConstraintSetId = "string",
+    Name = "string",
+    SizeConstraints = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+        Size = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

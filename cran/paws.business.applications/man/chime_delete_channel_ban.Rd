@@ -11,6 +11,9 @@ chime_delete_channel_ban(ChannelArn, MemberArn)
 
 \item{MemberArn}{[required] The ARN of the app instance user that you want to reinstate.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a user from a channel's ban list.
 }

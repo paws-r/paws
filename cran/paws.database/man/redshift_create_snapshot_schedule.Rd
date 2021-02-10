@@ -23,6 +23,34 @@ characters are allowed for the identifier.}
 
 \item{NextInvocations}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScheduleDefinitions = list(
+    "string"
+  ),
+  ScheduleIdentifier = "string",
+  ScheduleDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextInvocations = list(
+    as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  AssociatedClusterCount = 123,
+  AssociatedClusters = list(
+    list(
+      ClusterIdentifier = "string",
+      ScheduleAssociationState = "MODIFYING"|"ACTIVE"|"FAILED"
+    )
+  )
+)
+}
+}
 \description{
 Create a snapshot schedule that can be associated to a cluster and which
 overrides the default system backup schedule.

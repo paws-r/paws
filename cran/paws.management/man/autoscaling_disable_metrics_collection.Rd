@@ -28,6 +28,9 @@ autoscaling_disable_metrics_collection(AutoScalingGroupName, Metrics)
 
 If you omit this parameter, all metrics are disabled.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables group metrics for the specified Auto Scaling group.
 }

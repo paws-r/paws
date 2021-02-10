@@ -21,6 +21,13 @@ value for \code{data} appear as \code{blob}, which is represented as a
 base64-encoded string. The value for \code{fileName} is the name of the
 attachment, such as \code{troubleshoot-screenshot.png}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  attachmentSetId = "string",
+  expiryTime = "string"
+)
+}
+}
 \description{
 Adds one or more attachments to an attachment set.
 

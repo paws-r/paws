@@ -10,7 +10,7 @@ iot_update_topic_rule_destination(arn, status)
 \item{arn}{[required] The ARN of the topic rule destination.}
 
 \item{status}{[required] The status of the topic rule destination. Valid values are:
-\subsection{IN\\_PROGRESS}{
+\subsection{IN_PROGRESS}{
 
 A topic rule destination was created but has not been confirmed. You can
 set \code{status} to \code{IN_PROGRESS} by calling
@@ -48,6 +48,9 @@ Calling
 causes a new confirmation challenge to be sent to your confirmation
 endpoint.
 }}
+}
+\value{
+An empty list.
 }
 \description{
 Updates a topic rule destination. You use this to change the status,

@@ -24,6 +24,9 @@ NULL
 #' @param StreamName &#91;required&#93; The name of the stream.
 #' @param Tags &#91;required&#93; A set of up to 10 key-value pairs to use to create the tags.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_tags_to_stream(
@@ -117,6 +120,9 @@ kinesis_add_tags_to_stream <- function(StreamName, Tags) {
 #' stream is a function of the number of shards; more shards are required
 #' for greater provisioned throughput.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_stream(
@@ -165,6 +171,9 @@ kinesis_create_stream <- function(StreamName, ShardCount) {
 #' @param StreamName &#91;required&#93; The name of the stream to modify.
 #' @param RetentionPeriodHours &#91;required&#93; The new retention period of the stream, in hours. Must be less than the
 #' current retention period.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -231,6 +240,9 @@ kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriod
 #' [`delete_stream`][kinesis_delete_stream] fails with a
 #' `ResourceInUseException`.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_stream(
@@ -288,6 +300,9 @@ kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
 #' with a given data stream. The description of a consumer contains its
 #' ARN.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_stream_consumer(
@@ -329,6 +344,15 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
 #'
 #' @usage
 #' kinesis_describe_limits()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShardLimit = 123,
+#'   OpenShardCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -388,6 +412,47 @@ kinesis_describe_limits <- function() {
 #' shards are returned.
 #' @param ExclusiveStartShardId The shard ID of the shard to start with.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamDescription = list(
+#'     StreamName = "string",
+#'     StreamARN = "string",
+#'     StreamStatus = "CREATING"|"DELETING"|"ACTIVE"|"UPDATING",
+#'     Shards = list(
+#'       list(
+#'         ShardId = "string",
+#'         ParentShardId = "string",
+#'         AdjacentParentShardId = "string",
+#'         HashKeyRange = list(
+#'           StartingHashKey = "string",
+#'           EndingHashKey = "string"
+#'         ),
+#'         SequenceNumberRange = list(
+#'           StartingSequenceNumber = "string",
+#'           EndingSequenceNumber = "string"
+#'         )
+#'       )
+#'     ),
+#'     HasMoreShards = TRUE|FALSE,
+#'     RetentionPeriodHours = 123,
+#'     StreamCreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EnhancedMonitoring = list(
+#'       list(
+#'         ShardLevelMetrics = list(
+#'           "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+#'         )
+#'       )
+#'     ),
+#'     EncryptionType = "NONE"|"KMS",
+#'     KeyId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_stream(
@@ -443,6 +508,22 @@ kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShar
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the
 #' consumer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConsumerDescription = list(
+#'     ConsumerName = "string",
+#'     ConsumerARN = "string",
+#'     ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
+#'     ConsumerCreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StreamARN = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_stream_consumer(
@@ -490,6 +571,33 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #' kinesis_describe_stream_summary(StreamName)
 #'
 #' @param StreamName &#91;required&#93; The name of the stream to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamDescriptionSummary = list(
+#'     StreamName = "string",
+#'     StreamARN = "string",
+#'     StreamStatus = "CREATING"|"DELETING"|"ACTIVE"|"UPDATING",
+#'     RetentionPeriodHours = 123,
+#'     StreamCreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EnhancedMonitoring = list(
+#'       list(
+#'         ShardLevelMetrics = list(
+#'           "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+#'         )
+#'       )
+#'     ),
+#'     EncryptionType = "NONE"|"KMS",
+#'     KeyId = "string",
+#'     OpenShardCount = 123,
+#'     ConsumerCount = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -553,6 +661,20 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #' Service with Amazon
 #' CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html)
 #' in the *Amazon Kinesis Data Streams Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamName = "string",
+#'   CurrentShardLevelMetrics = list(
+#'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+#'   ),
+#'   DesiredShardLevelMetrics = list(
+#'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -618,6 +740,20 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' Service with Amazon
 #' CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html)
 #' in the *Amazon Kinesis Data Streams Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamName = "string",
+#'   CurrentShardLevelMetrics = list(
+#'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+#'   ),
+#'   DesiredShardLevelMetrics = list(
+#'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -734,6 +870,38 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' [`get_records`][kinesis_get_records] throws `InvalidArgumentException`.
 #' The default value is 10,000.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list(
+#'       SequenceNumber = "string",
+#'       ApproximateArrivalTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Data = raw,
+#'       PartitionKey = "string",
+#'       EncryptionType = "NONE"|"KMS"
+#'     )
+#'   ),
+#'   NextShardIterator = "string",
+#'   MillisBehindLatest = 123,
+#'   ChildShards = list(
+#'     list(
+#'       ShardId = "string",
+#'       ParentShards = list(
+#'         "string"
+#'       ),
+#'       HashKeyRange = list(
+#'         StartingHashKey = "string",
+#'         EndingHashKey = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_records(
@@ -829,33 +997,41 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #' 
 #' The following are the valid Amazon Kinesis shard iterator types:
 #' 
-#' -   AT\\_SEQUENCE\\_NUMBER - Start reading from the position denoted by a
+#' -   AT_SEQUENCE_NUMBER - Start reading from the position denoted by a
 #'     specific sequence number, provided in the value
 #'     `StartingSequenceNumber`.
 #' 
-#' -   AFTER\\_SEQUENCE\\_NUMBER - Start reading right after the position
+#' -   AFTER_SEQUENCE_NUMBER - Start reading right after the position
 #'     denoted by a specific sequence number, provided in the value
 #'     `StartingSequenceNumber`.
 #' 
-#' -   AT\\_TIMESTAMP - Start reading from the position denoted by a
+#' -   AT_TIMESTAMP - Start reading from the position denoted by a
 #'     specific time stamp, provided in the value `Timestamp`.
 #' 
-#' -   TRIM\\_HORIZON - Start reading at the last untrimmed record in the
+#' -   TRIM_HORIZON - Start reading at the last untrimmed record in the
 #'     shard in the system, which is the oldest data record in the shard.
 #' 
 #' -   LATEST - Start reading just after the most recent record in the
 #'     shard, so that you always read the most recent data in the shard.
 #' @param StartingSequenceNumber The sequence number of the data record in the shard from which to start
-#' reading. Used with shard iterator type AT\\_SEQUENCE\\_NUMBER and
-#' AFTER\\_SEQUENCE\\_NUMBER.
+#' reading. Used with shard iterator type AT_SEQUENCE_NUMBER and
+#' AFTER_SEQUENCE_NUMBER.
 #' @param Timestamp The time stamp of the data record from which to start reading. Used with
-#' shard iterator type AT\\_TIMESTAMP. A time stamp is the Unix epoch date
+#' shard iterator type AT_TIMESTAMP. A time stamp is the Unix epoch date
 #' with precision in milliseconds. For example,
 #' `2016-04-04T19:58:46.480-00:00` or `1459799926.480`. If a record with
 #' this exact time stamp does not exist, the iterator returned is for the
 #' next (later) record. If the time stamp is older than the current trim
 #' horizon, the iterator returned is for the oldest untrimmed data record
-#' (TRIM\\_HORIZON).
+#' (TRIM_HORIZON).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShardIterator = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -915,6 +1091,9 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #' @param StreamName &#91;required&#93; The name of the stream to modify.
 #' @param RetentionPeriodHours &#91;required&#93; The new retention period of the stream, in hours. Must be more than the
 #' current retention period.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1016,6 +1195,29 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #' parameter.
 #' @param ShardFilter 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Shards = list(
+#'     list(
+#'       ShardId = "string",
+#'       ParentShardId = "string",
+#'       AdjacentParentShardId = "string",
+#'       HashKeyRange = list(
+#'         StartingHashKey = "string",
+#'         EndingHashKey = "string"
+#'       ),
+#'       SequenceNumberRange = list(
+#'         StartingSequenceNumber = "string",
+#'         EndingSequenceNumber = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_shards(
@@ -1109,6 +1311,24 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #' 
 #' You can't specify this parameter if you specify the NextToken parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Consumers = list(
+#'     list(
+#'       ConsumerName = "string",
+#'       ConsumerARN = "string",
+#'       ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
+#'       ConsumerCreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_stream_consumers(
@@ -1171,6 +1391,17 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
 #' @param Limit The maximum number of streams to list.
 #' @param ExclusiveStartStreamName The name of the stream to start the list with.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamNames = list(
+#'     "string"
+#'   ),
+#'   HasMoreStreams = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_streams(
@@ -1216,6 +1447,20 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) 
 #' number of tags associated with the stream, `HasMoreTags` is set to
 #' `true`. To list additional tags, set `ExclusiveStartTagKey` to the last
 #' key in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   HasMoreTags = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1308,6 +1553,9 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #' @param ShardToMerge &#91;required&#93; The shard ID of the shard to combine with the adjacent shard for the
 #' merge.
 #' @param AdjacentShardToMerge &#91;required&#93; The shard ID of the adjacent shard for the merge.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1422,6 +1670,16 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #' record *n-1* (as returned in the result when putting record *n-1*). If
 #' this parameter is not set, records are coarsely ordered based on arrival
 #' time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShardId = "string",
+#'   SequenceNumber = "string",
+#'   EncryptionType = "NONE"|"KMS"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1544,6 +1802,23 @@ kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey =
 #' @param Records &#91;required&#93; The records associated with the request.
 #' @param StreamName &#91;required&#93; The stream name associated with the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedRecordCount = 123,
+#'   Records = list(
+#'     list(
+#'       SequenceNumber = "string",
+#'       ShardId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   EncryptionType = "NONE"|"KMS"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_records(
@@ -1610,6 +1885,21 @@ kinesis_put_records <- function(Records, StreamName) {
 #' @param ConsumerName &#91;required&#93; For a given Kinesis data stream, each consumer must have a unique name.
 #' However, consumer names don't have to be unique across data streams.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Consumer = list(
+#'     ConsumerName = "string",
+#'     ConsumerARN = "string",
+#'     ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
+#'     ConsumerCreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_stream_consumer(
@@ -1655,6 +1945,9 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
 #'
 #' @param StreamName &#91;required&#93; The name of the stream.
 #' @param TagKeys &#91;required&#93; A list of tag keys. Each corresponding tag is removed from the stream.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1768,6 +2061,9 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' All the lower hash key values in the range are distributed to the other
 #' child shard.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$split_shard(
@@ -1846,6 +2142,9 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #' 
 #' -   Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_stream_encryption(
@@ -1923,6 +2222,9 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' -   Alias name example: `alias/MyAliasName`
 #' 
 #' -   Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2020,6 +2322,16 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' -   Scale a stream with more than 500 shards down unless you set this
 #'     value to less than 500 shards.
 #' @param ScalingType &#91;required&#93; The scaling type. Uniform scaling creates shards of equal size.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamName = "string",
+#'   CurrentShardCount = 123,
+#'   TargetShardCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

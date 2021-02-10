@@ -19,6 +19,9 @@ operation.}
 \item{ClientID}{[required] The client ID (also known as audience) to add to the IAM OpenID Connect
 provider resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds a new client ID (also known as audience) to the list of client IDs
 already registered for the specified IAM OpenID Connect (OIDC) provider

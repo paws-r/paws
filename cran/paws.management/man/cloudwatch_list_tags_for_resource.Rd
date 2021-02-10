@@ -18,6 +18,17 @@ The ARN format of a Contributor Insights rule is
 For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch}
 in the \emph{Amazon Web Services General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Displays the tags associated with a CloudWatch resource. Currently,
 alarms and Contributor Insights rules support tagging.

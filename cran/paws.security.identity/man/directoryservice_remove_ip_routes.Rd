@@ -12,6 +12,9 @@ addresses.}
 
 \item{CidrIps}{[required] IP address blocks that you want to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes IP address blocks from a directory.
 }

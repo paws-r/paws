@@ -13,6 +13,18 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Limits = list(
+    list(
+      Name = "string",
+      Max = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the current Elastic Load Balancing resource limits for your
 AWS account.

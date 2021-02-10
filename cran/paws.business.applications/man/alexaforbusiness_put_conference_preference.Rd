@@ -10,6 +10,9 @@ alexaforbusiness_put_conference_preference(ConferencePreference)
 \arguments{
 \item{ConferencePreference}{[required] The conference preference of a specific conference provider.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the conference preferences on a specific conference provider at the
 account level.

@@ -22,6 +22,14 @@ The token for each open approval request can be obtained using the
 used to validate that the approval request corresponding to this token
 is still valid.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  approvedAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Provides the response to a manual approval request to AWS CodePipeline.
 Valid responses include Approved and Rejected.

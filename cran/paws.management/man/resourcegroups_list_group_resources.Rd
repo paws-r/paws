@@ -61,6 +61,35 @@ indicates that more output is available. Set this parameter to the value
 provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Resources = list(
+    list(
+      Identifier = list(
+        ResourceArn = "string",
+        ResourceType = "string"
+      ),
+      Status = list(
+        Name = "PENDING"
+      )
+    )
+  ),
+  ResourceIdentifiers = list(
+    list(
+      ResourceArn = "string",
+      ResourceType = "string"
+    )
+  ),
+  NextToken = "string",
+  QueryErrors = list(
+    list(
+      ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of ARNs of the resources that are members of a specified
 resource group.

@@ -24,6 +24,46 @@ NULL
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceIdentifiers &#91;required&#93; A list of aggregate ResourceIdentifiers objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaseConfigurationItems = list(
+#'     list(
+#'       version = "string",
+#'       accountId = "string",
+#'       configurationItemCaptureTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
+#'       configurationStateId = "string",
+#'       arn = "string",
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       resourceId = "string",
+#'       resourceName = "string",
+#'       awsRegion = "string",
+#'       availabilityZone = "string",
+#'       resourceCreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       configuration = "string",
+#'       supplementaryConfiguration = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   UnprocessedResourceIdentifiers = list(
+#'     list(
+#'       SourceAccountId = "string",
+#'       SourceRegion = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       ResourceName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_aggregate_resource_config(
@@ -80,6 +120,43 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 #' @param resourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
 #' element in the list consists of the resource type and resource ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   baseConfigurationItems = list(
+#'     list(
+#'       version = "string",
+#'       accountId = "string",
+#'       configurationItemCaptureTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
+#'       configurationStateId = "string",
+#'       arn = "string",
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       resourceId = "string",
+#'       resourceName = "string",
+#'       awsRegion = "string",
+#'       availabilityZone = "string",
+#'       resourceCreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       configuration = "string",
+#'       supplementaryConfiguration = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   unprocessedResourceKeys = list(
+#'     list(
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       resourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_resource_config(
@@ -125,6 +202,9 @@ configservice_batch_get_resource_config <- function(resourceKeys) {
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -173,6 +253,9 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule that you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_config_rule(
@@ -212,6 +295,9 @@ configservice_delete_config_rule <- function(ConfigRuleName) {
 #'   ConfigurationAggregatorName)
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -264,6 +350,9 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 #' [`describe_configuration_recorders`][configservice_describe_configuration_recorders]
 #' action.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_recorder(
@@ -309,6 +398,9 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_conformance_pack(
@@ -350,6 +442,9 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 #' configservice_delete_delivery_channel(DeliveryChannelName)
 #'
 #' @param DeliveryChannelName &#91;required&#93; The name of the delivery channel to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -393,6 +488,9 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 #' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to delete the
 #' evaluation results.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_evaluation_results(
@@ -432,7 +530,7 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 #' administrator, you must ensure AWS Organizations
 #' `ListDelegatedAdministrator` permissions are added.
 #' 
-#' AWS Config sets the state of a rule to DELETE\\_IN\\_PROGRESS until the
+#' AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
 #' deletion is complete. You cannot update a rule while it is in this
 #' state.
 #'
@@ -441,6 +539,9 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 #'   OrganizationConfigRuleName)
 #'
 #' @param OrganizationConfigRuleName &#91;required&#93; The name of organization config rule that you want to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -483,7 +584,7 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
 #' administrator, you must ensure AWS Organizations
 #' `ListDelegatedAdministrator` permissions are added.
 #' 
-#' AWS Config sets the state of a conformance pack to DELETE\\_IN\\_PROGRESS
+#' AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
 #' until the deletion is complete. You cannot update a conformance pack
 #' while it is in this state.
 #'
@@ -492,6 +593,9 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
 #'   OrganizationConformancePackName)
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack that you want to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -534,6 +638,9 @@ configservice_delete_organization_conformance_pack <- function(OrganizationConfo
 #' @param RequesterAccountId &#91;required&#93; The 12-digit account ID of the account requesting to aggregate data.
 #' @param RequesterAwsRegion &#91;required&#93; The region requesting to aggregate data.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_pending_aggregation_request(
@@ -574,6 +681,9 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 #' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to delete remediation
 #' configuration.
 #' @param ResourceType The type of a resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -624,6 +734,24 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
 #' current request. AWS Config adds exception for each resource key. For
 #' example, AWS Config adds 3 exceptions for 3 resource keys.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedBatches = list(
+#'     list(
+#'       FailureMessage = "string",
+#'       FailedItems = list(
+#'         list(
+#'           ResourceType = "string",
+#'           ResourceId = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_remediation_exceptions(
@@ -672,6 +800,9 @@ configservice_delete_remediation_exceptions <- function(ConfigRuleName, Resource
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' @param ResourceId &#91;required&#93; Unique identifier of the resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource_config(
@@ -710,6 +841,9 @@ configservice_delete_resource_config <- function(ResourceType, ResourceId) {
 #'
 #' @param RetentionConfigurationName &#91;required&#93; The name of the retention configuration to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_retention_configuration(
@@ -746,6 +880,9 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #' configservice_delete_stored_query(QueryName)
 #'
 #' @param QueryName &#91;required&#93; The name of the query that you want to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -796,6 +933,14 @@ configservice_delete_stored_query <- function(QueryName) {
 #' @param deliveryChannelName &#91;required&#93; The name of the delivery channel through which the snapshot is
 #' delivered.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configSnapshotId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deliver_config_snapshot(
@@ -843,6 +988,28 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #' default is maximum. If you specify 0, AWS Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregateComplianceByConfigRules = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       Compliance = list(
+#'         ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+#'         ComplianceContributorCount = list(
+#'           CappedCount = 123,
+#'           CapExceeded = TRUE|FALSE
+#'         )
+#'       ),
+#'       AccountId = "string",
+#'       AwsRegion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -893,6 +1060,24 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 #' The default is maximum. If you specify 0, AWS Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregationAuthorizations = list(
+#'     list(
+#'       AggregationAuthorizationArn = "string",
+#'       AuthorizedAccountId = "string",
+#'       AuthorizedAwsRegion = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -962,6 +1147,26 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #' The allowed values are `COMPLIANT` and `NON_COMPLIANT`.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComplianceByConfigRules = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       Compliance = list(
+#'         ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+#'         ComplianceContributorCount = list(
+#'           CappedCount = 123,
+#'           CapExceeded = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1047,6 +1252,27 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComplianceByResources = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ResourceId = "string",
+#'       Compliance = list(
+#'         ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+#'         ComplianceContributorCount = list(
+#'           CappedCount = 123,
+#'           CapExceeded = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_compliance_by_resource(
@@ -1106,6 +1332,42 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #' Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
 #' in the *AWS General Reference Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigRulesEvaluationStatus = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       ConfigRuleArn = "string",
+#'       ConfigRuleId = "string",
+#'       LastSuccessfulInvocationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastFailedInvocationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSuccessfulEvaluationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastFailedEvaluationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FirstActivatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastDeactivatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastErrorCode = "string",
+#'       LastErrorMessage = "string",
+#'       FirstEvaluationStarted = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_config_rule_evaluation_status(
@@ -1149,6 +1411,45 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' not specify any names, AWS Config returns details for all your rules.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigRules = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       ConfigRuleArn = "string",
+#'       ConfigRuleId = "string",
+#'       Description = "string",
+#'       Scope = list(
+#'         ComplianceResourceTypes = list(
+#'           "string"
+#'         ),
+#'         TagKey = "string",
+#'         TagValue = "string",
+#'         ComplianceResourceId = "string"
+#'       ),
+#'       Source = list(
+#'         Owner = "CUSTOM_LAMBDA"|"AWS",
+#'         SourceIdentifier = "string",
+#'         SourceDetails = list(
+#'           list(
+#'             EventSource = "aws.config",
+#'             MessageType = "ConfigurationItemChangeNotification"|"ConfigurationSnapshotDeliveryCompleted"|"ScheduledNotification"|"OversizedConfigurationItemChangeNotification",
+#'             MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
+#'           )
+#'         )
+#'       ),
+#'       InputParameters = "string",
+#'       MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+#'       ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
+#'       CreatedBy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1206,6 +1507,27 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #' @param Limit The maximum number of AggregatorSourceStatus returned on each page. The
 #' default is maximum. If you specify 0, AWS Config uses the default.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregatedSourceStatusList = list(
+#'     list(
+#'       SourceId = "string",
+#'       SourceType = "ACCOUNT"|"ORGANIZATION",
+#'       AwsRegion = "string",
+#'       LastUpdateStatus = "FAILED"|"SUCCEEDED"|"OUTDATED",
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastErrorCode = "string",
+#'       LastErrorMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_configuration_aggregator_sources_status(
@@ -1256,6 +1578,45 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #' @param Limit The maximum number of configuration aggregators returned on each page.
 #' The default is maximum. If you specify 0, AWS Config uses the default.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationAggregators = list(
+#'     list(
+#'       ConfigurationAggregatorName = "string",
+#'       ConfigurationAggregatorArn = "string",
+#'       AccountAggregationSources = list(
+#'         list(
+#'           AccountIds = list(
+#'             "string"
+#'           ),
+#'           AllAwsRegions = TRUE|FALSE,
+#'           AwsRegions = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       OrganizationAggregationSource = list(
+#'         RoleArn = "string",
+#'         AwsRegions = list(
+#'           "string"
+#'         ),
+#'         AllAwsRegions = TRUE|FALSE
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_configuration_aggregators(
@@ -1305,6 +1666,31 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #' the action returns the current status of all the configuration recorders
 #' associated with the account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationRecordersStatus = list(
+#'     list(
+#'       name = "string",
+#'       lastStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastStopTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       recording = TRUE|FALSE,
+#'       lastStatus = "Pending"|"Success"|"Failure",
+#'       lastErrorCode = "string",
+#'       lastErrorMessage = "string",
+#'       lastStatusChangeTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_configuration_recorder_status(
@@ -1349,6 +1735,26 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #'   ConfigurationRecorderNames)
 #'
 #' @param ConfigurationRecorderNames A list of configuration recorder names.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationRecorders = list(
+#'     list(
+#'       name = "string",
+#'       roleARN = "string",
+#'       recordingGroup = list(
+#'         allSupported = TRUE|FALSE,
+#'         includeGlobalResourceTypes = TRUE|FALSE,
+#'         resourceTypes = list(
+#'           "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1396,6 +1802,21 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 #' returned on each page.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConformancePackName = "string",
+#'   ConformancePackRuleComplianceList = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1448,6 +1869,30 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConformancePackStatusDetails = list(
+#'     list(
+#'       ConformancePackName = "string",
+#'       ConformancePackId = "string",
+#'       ConformancePackArn = "string",
+#'       ConformancePackState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED",
+#'       StackArn = "string",
+#'       ConformancePackStatusReason = "string",
+#'       LastUpdateRequestedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdateCompletedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_conformance_pack_status(
@@ -1495,6 +1940,33 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConformancePackDetails = list(
+#'     list(
+#'       ConformancePackName = "string",
+#'       ConformancePackArn = "string",
+#'       ConformancePackId = "string",
+#'       DeliveryS3Bucket = "string",
+#'       DeliveryS3KeyPrefix = "string",
+#'       ConformancePackInputParameters = list(
+#'         list(
+#'           ParameterName = "string",
+#'           ParameterValue = "string"
+#'         )
+#'       ),
+#'       LastUpdateRequestedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_conformance_packs(
@@ -1541,6 +2013,54 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
 #'
 #' @param DeliveryChannelNames A list of delivery channel names.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliveryChannelsStatus = list(
+#'     list(
+#'       name = "string",
+#'       configSnapshotDeliveryInfo = list(
+#'         lastStatus = "Success"|"Failure"|"Not_Applicable",
+#'         lastErrorCode = "string",
+#'         lastErrorMessage = "string",
+#'         lastAttemptTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastSuccessfulTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         nextDeliveryTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       configHistoryDeliveryInfo = list(
+#'         lastStatus = "Success"|"Failure"|"Not_Applicable",
+#'         lastErrorCode = "string",
+#'         lastErrorMessage = "string",
+#'         lastAttemptTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastSuccessfulTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         nextDeliveryTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       configStreamDeliveryInfo = list(
+#'         lastStatus = "Success"|"Failure"|"Not_Applicable",
+#'         lastErrorCode = "string",
+#'         lastErrorMessage = "string",
+#'         lastStatusChangeTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_delivery_channel_status(
@@ -1584,6 +2104,24 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
 #' configservice_describe_delivery_channels(DeliveryChannelNames)
 #'
 #' @param DeliveryChannelNames A list of delivery channel names.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliveryChannels = list(
+#'     list(
+#'       name = "string",
+#'       s3BucketName = "string",
+#'       s3KeyPrefix = "string",
+#'       snsTopicARN = "string",
+#'       configSnapshotDeliveryProperties = list(
+#'         deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1641,6 +2179,25 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConfigRuleStatuses = list(
+#'     list(
+#'       OrganizationConfigRuleName = "string",
+#'       OrganizationRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string",
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_organization_config_rule_statuses(
@@ -1694,6 +2251,53 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
 #' is 100.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConfigRules = list(
+#'     list(
+#'       OrganizationConfigRuleName = "string",
+#'       OrganizationConfigRuleArn = "string",
+#'       OrganizationManagedRuleMetadata = list(
+#'         Description = "string",
+#'         RuleIdentifier = "string",
+#'         InputParameters = "string",
+#'         MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+#'         ResourceTypesScope = list(
+#'           "string"
+#'         ),
+#'         ResourceIdScope = "string",
+#'         TagKeyScope = "string",
+#'         TagValueScope = "string"
+#'       ),
+#'       OrganizationCustomRuleMetadata = list(
+#'         Description = "string",
+#'         LambdaFunctionArn = "string",
+#'         OrganizationConfigRuleTriggerTypes = list(
+#'           "ConfigurationItemChangeNotification"|"OversizedConfigurationItemChangeNotification"|"ScheduledNotification"
+#'         ),
+#'         InputParameters = "string",
+#'         MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+#'         ResourceTypesScope = list(
+#'           "string"
+#'         ),
+#'         ResourceIdScope = "string",
+#'         TagKeyScope = "string",
+#'         TagValueScope = "string"
+#'       ),
+#'       ExcludedAccounts = list(
+#'         "string"
+#'       ),
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1755,6 +2359,25 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConformancePackStatuses = list(
+#'     list(
+#'       OrganizationConformancePackName = "string",
+#'       Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string",
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_organization_conformance_pack_statuses(
@@ -1809,6 +2432,34 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConformancePacks = list(
+#'     list(
+#'       OrganizationConformancePackName = "string",
+#'       OrganizationConformancePackArn = "string",
+#'       DeliveryS3Bucket = "string",
+#'       DeliveryS3KeyPrefix = "string",
+#'       ConformancePackInputParameters = list(
+#'         list(
+#'           ParameterName = "string",
+#'           ParameterValue = "string"
+#'         )
+#'       ),
+#'       ExcludedAccounts = list(
+#'         "string"
+#'       ),
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_organization_conformance_packs(
@@ -1853,6 +2504,20 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PendingAggregationRequests = list(
+#'     list(
+#'       RequesterAccountId = "string",
+#'       RequesterAwsRegion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_pending_aggregation_requests(
@@ -1891,6 +2556,45 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
 #'
 #' @param ConfigRuleNames &#91;required&#93; A list of AWS Config rule names of remediation configurations for which
 #' you want details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RemediationConfigurations = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       TargetType = "SSM_DOCUMENT",
+#'       TargetId = "string",
+#'       TargetVersion = "string",
+#'       Parameters = list(
+#'         list(
+#'           ResourceValue = list(
+#'             Value = "RESOURCE_ID"
+#'           ),
+#'           StaticValue = list(
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ResourceType = "string",
+#'       Automatic = TRUE|FALSE,
+#'       ExecutionControls = list(
+#'         SsmControls = list(
+#'           ConcurrentExecutionRatePercentage = 123,
+#'           ErrorPercentage = 123
+#'         )
+#'       ),
+#'       MaximumAutomaticAttempts = 123,
+#'       RetryAttemptSeconds = 123,
+#'       Arn = "string",
+#'       CreatedByService = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1953,6 +2657,25 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RemediationExceptions = list(
+#'     list(
+#'       ConfigRuleName = "string",
+#'       ResourceType = "string",
+#'       ResourceId = "string",
+#'       Message = "string",
+#'       ExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_remediation_exceptions(
@@ -2012,6 +2735,42 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RemediationExecutionStatuses = list(
+#'     list(
+#'       ResourceKey = list(
+#'         resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'         resourceId = "string"
+#'       ),
+#'       State = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'       StepDetails = list(
+#'         list(
+#'           Name = "string",
+#'           State = "SUCCEEDED"|"PENDING"|"FAILED",
+#'           ErrorMessage = "string",
+#'           StartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           StopTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       InvocationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_remediation_execution_status(
@@ -2069,6 +2828,20 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 #' region in your account.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RetentionConfigurations = list(
+#'     list(
+#'       Name = "string",
+#'       RetentionPeriodInDays = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2133,6 +2906,38 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregateEvaluationResults = list(
+#'     list(
+#'       EvaluationResultIdentifier = list(
+#'         EvaluationResultQualifier = list(
+#'           ConfigRuleName = "string",
+#'           ResourceType = "string",
+#'           ResourceId = "string"
+#'         ),
+#'         OrderingTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+#'       ResultRecordedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ConfigRuleInvokedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Annotation = "string",
+#'       AccountId = "string",
+#'       AwsRegion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_aggregate_compliance_details_by_config_rule(
@@ -2183,12 +2988,39 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results based on the ConfigRuleComplianceSummaryFilters
 #' object.
-#' @param GroupByKey Groups the result based on ACCOUNT\\_ID or AWS\\_REGION.
+#' @param GroupByKey Groups the result based on ACCOUNT_ID or AWS_REGION.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 1000. You cannot specify a number greater than 1000. If you
 #' specify 0, AWS Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupByKey = "string",
+#'   AggregateComplianceCounts = list(
+#'     list(
+#'       GroupName = "string",
+#'       ComplianceSummary = list(
+#'         CompliantResourceCount = list(
+#'           CappedCount = 123,
+#'           CapExceeded = TRUE|FALSE
+#'         ),
+#'         NonCompliantResourceCount = list(
+#'           CappedCount = 123,
+#'           CapExceeded = TRUE|FALSE
+#'         ),
+#'         ComplianceSummaryTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2234,7 +3066,7 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #' 
 #' For example, if the input contains accountID 12345678910 and region
 #' us-east-1 in filters, the API returns the count of resources in account
-#' ID 12345678910 and region us-east-1. If the input contains ACCOUNT\\_ID
+#' ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
 #' as a GroupByKey, the API returns resource counts for all source accounts
 #' that are present in your aggregator.
 #'
@@ -2250,6 +3082,22 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #' 1000. If you specify 0, AWS Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TotalDiscoveredResources = 123,
+#'   GroupByKey = "string",
+#'   GroupedResourceCounts = list(
+#'     list(
+#'       GroupName = "string",
+#'       ResourceCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2299,6 +3147,50 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceIdentifier &#91;required&#93; An object that identifies aggregate resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationItem = list(
+#'     version = "string",
+#'     accountId = "string",
+#'     configurationItemCaptureTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
+#'     configurationStateId = "string",
+#'     configurationItemMD5Hash = "string",
+#'     arn = "string",
+#'     resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'     resourceId = "string",
+#'     resourceName = "string",
+#'     awsRegion = "string",
+#'     availabilityZone = "string",
+#'     resourceCreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     relatedEvents = list(
+#'       "string"
+#'     ),
+#'     relationships = list(
+#'       list(
+#'         resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'         resourceId = "string",
+#'         resourceName = "string",
+#'         relationshipName = "string"
+#'       )
+#'     ),
+#'     configuration = "string",
+#'     supplementaryConfiguration = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2358,6 +3250,37 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationResults = list(
+#'     list(
+#'       EvaluationResultIdentifier = list(
+#'         EvaluationResultQualifier = list(
+#'           ConfigRuleName = "string",
+#'           ResourceType = "string",
+#'           ResourceId = "string"
+#'         ),
+#'         OrderingTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+#'       ResultRecordedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ConfigRuleInvokedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Annotation = "string",
+#'       ResultToken = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_compliance_details_by_config_rule(
@@ -2411,6 +3334,37 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationResults = list(
+#'     list(
+#'       EvaluationResultIdentifier = list(
+#'         EvaluationResultQualifier = list(
+#'           ConfigRuleName = "string",
+#'           ResourceType = "string",
+#'           ResourceId = "string"
+#'         ),
+#'         OrderingTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+#'       ResultRecordedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ConfigRuleInvokedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Annotation = "string",
+#'       ResultToken = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_compliance_details_by_resource(
@@ -2455,6 +3409,26 @@ configservice_get_compliance_details_by_resource <- function(ResourceType, Resou
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComplianceSummary = list(
+#'     CompliantResourceCount = list(
+#'       CappedCount = 123,
+#'       CapExceeded = TRUE|FALSE
+#'     ),
+#'     NonCompliantResourceCount = list(
+#'       CappedCount = 123,
+#'       CapExceeded = TRUE|FALSE
+#'     ),
+#'     ComplianceSummaryTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -2496,6 +3470,31 @@ configservice_get_compliance_summary_by_config_rule <- function() {
 #' For this request, you can specify an AWS resource type such as
 #' `AWS::EC2::Instance`. You can specify that the resource type is an AWS
 #' account by specifying `AWS::::Account`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComplianceSummariesByResourceType = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ComplianceSummary = list(
+#'         CompliantResourceCount = list(
+#'           CappedCount = 123,
+#'           CapExceeded = TRUE|FALSE
+#'         ),
+#'         NonCompliantResourceCount = list(
+#'           CappedCount = 123,
+#'           CapExceeded = TRUE|FALSE
+#'         ),
+#'         ComplianceSummaryTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2543,6 +3542,37 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 #' do no specify a number, AWS Config uses the default. The default is 100.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConformancePackName = "string",
+#'   ConformancePackRuleEvaluationResults = list(
+#'     list(
+#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
+#'       EvaluationResultIdentifier = list(
+#'         EvaluationResultQualifier = list(
+#'           ConfigRuleName = "string",
+#'           ResourceType = "string",
+#'           ResourceId = "string"
+#'         ),
+#'         OrderingTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ConfigRuleInvokedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResultRecordedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Annotation = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2598,6 +3628,20 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
 #' @param Limit The maximum number of conformance packs returned on each page.
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConformancePackComplianceSummaryList = list(
+#'     list(
+#'       ConformancePackName = "string",
+#'       ConformancePackComplianceStatus = "COMPLIANT"|"NON_COMPLIANT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2699,6 +3743,21 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 #' @param nextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   totalDiscoveredResources = 123,
+#'   resourceCounts = list(
+#'     list(
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       count = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_discovered_resource_counts(
@@ -2749,6 +3808,26 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 #' The default is 100.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConfigRuleDetailedStatus = list(
+#'     list(
+#'       AccountId = "string",
+#'       ConfigRuleName = "string",
+#'       MemberAccountRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string",
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2802,6 +3881,26 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
 #' the default. The default is 100.
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConformancePackDetailedStatuses = list(
+#'     list(
+#'       AccountId = "string",
+#'       ConformancePackName = "string",
+#'       Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string",
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2876,6 +3975,53 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
 #' @param nextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurationItems = list(
+#'     list(
+#'       version = "string",
+#'       accountId = "string",
+#'       configurationItemCaptureTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
+#'       configurationStateId = "string",
+#'       configurationItemMD5Hash = "string",
+#'       arn = "string",
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       resourceId = "string",
+#'       resourceName = "string",
+#'       awsRegion = "string",
+#'       availabilityZone = "string",
+#'       resourceCreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       relatedEvents = list(
+#'         "string"
+#'       ),
+#'       relationships = list(
+#'         list(
+#'           resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'           resourceId = "string",
+#'           resourceName = "string",
+#'           relationshipName = "string"
+#'         )
+#'       ),
+#'       configuration = "string",
+#'       supplementaryConfiguration = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_resource_config_history(
@@ -2922,6 +4068,20 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 #' configservice_get_stored_query(QueryName)
 #'
 #' @param QueryName &#91;required&#93; The name of the query.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StoredQuery = list(
+#'     QueryId = "string",
+#'     QueryArn = "string",
+#'     QueryName = "string",
+#'     Description = "string",
+#'     Expression = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2978,6 +4138,23 @@ configservice_get_stored_query <- function(QueryName) {
 #' specify 0, AWS Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceIdentifiers = list(
+#'     list(
+#'       SourceAccountId = "string",
+#'       SourceRegion = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       ResourceName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3055,6 +4232,24 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #' @param nextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceIdentifiers = list(
+#'     list(
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       resourceId = "string",
+#'       resourceName = "string",
+#'       resourceDeletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_discovered_resources(
@@ -3102,6 +4297,22 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 #' request the next page of results in a paginated response.
 #' @param MaxResults The maximum number of results to be returned with a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StoredQueryMetadata = list(
+#'     list(
+#'       QueryId = "string",
+#'       QueryArn = "string",
+#'       QueryName = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_stored_queries(
@@ -3147,6 +4358,20 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -3190,6 +4415,21 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
 #' @param Tags An array of tag object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AggregationAuthorization = list(
+#'     AggregationAuthorizationArn = "string",
+#'     AuthorizedAccountId = "string",
+#'     AuthorizedAwsRegion = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3275,6 +4515,9 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #'
 #' @param ConfigRule &#91;required&#93; The rule that you want to add to your account.
 #' @param Tags An array of tag object.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3362,6 +4605,42 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' @param OrganizationAggregationSource An OrganizationAggregationSource object.
 #' @param Tags An array of tag object.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationAggregator = list(
+#'     ConfigurationAggregatorName = "string",
+#'     ConfigurationAggregatorArn = "string",
+#'     AccountAggregationSources = list(
+#'       list(
+#'         AccountIds = list(
+#'           "string"
+#'         ),
+#'         AllAwsRegions = TRUE|FALSE,
+#'         AwsRegions = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     OrganizationAggregationSource = list(
+#'       RoleArn = "string",
+#'       AwsRegions = list(
+#'         "string"
+#'       ),
+#'       AllAwsRegions = TRUE|FALSE
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_configuration_aggregator(
@@ -3436,6 +4715,9 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #'
 #' @param ConfigurationRecorder &#91;required&#93; The configuration recorder object that records each configuration change
 #' made to the resources.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3512,6 +4794,14 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConformancePackArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_conformance_pack(
@@ -3575,6 +4865,9 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 #' configuration information to an Amazon S3 bucket and to an Amazon SNS
 #' topic.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_delivery_channel(
@@ -3637,6 +4930,24 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #' valid value for the `ResultToken` parameter, but the value cannot be
 #' null.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEvaluations = list(
+#'     list(
+#'       ComplianceResourceType = "string",
+#'       ComplianceResourceId = "string",
+#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+#'       Annotation = "string",
+#'       OrderingTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_evaluations(
@@ -3687,6 +4998,9 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 #'
 #' @param ConfigRuleName &#91;required&#93; 
 #' @param ExternalEvaluation &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3781,6 +5095,14 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' @param ExcludedAccounts A comma-separated list of accounts that you want to exclude from an
 #' organization config rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConfigRuleArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_organization_config_rule(
@@ -3864,8 +5186,8 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' parameter, but not both. If you provide both AWS Config uses the
 #' `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
 #' 
-#' AWS Config sets the state of a conformance pack to CREATE\\_IN\\_PROGRESS
-#' and UPDATE\\_IN\\_PROGRESS until the conformance pack is created or
+#' AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
+#' and UPDATE_IN_PROGRESS until the conformance pack is created or
 #' updated. You cannot update a conformance pack while it is in this state.
 #' 
 #' You can create 6 conformance packs with 25 AWS Config rules in each pack
@@ -3890,13 +5212,21 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' conformance pack template.
 #' 
 #' The delivery bucket name should start with awsconfigconforms. For
-#' example: "Resource": "arn:aws:s3:::your\\_bucket\\_name/*". For more
+#' example: "Resource": "arn:aws:s3:::your_bucket_name/*". For more
 #' information, see [Permissions for cross account bucket
 #' access](https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html).
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
 #' @param ExcludedAccounts A list of AWS accounts to be excluded from an organization conformance
 #' pack while deploying a conformance pack.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationConformancePackArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3961,6 +5291,50 @@ configservice_put_organization_conformance_pack <- function(OrganizationConforma
 #' configservice_put_remediation_configurations(RemediationConfigurations)
 #'
 #' @param RemediationConfigurations &#91;required&#93; A list of remediation configuration objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedBatches = list(
+#'     list(
+#'       FailureMessage = "string",
+#'       FailedItems = list(
+#'         list(
+#'           ConfigRuleName = "string",
+#'           TargetType = "SSM_DOCUMENT",
+#'           TargetId = "string",
+#'           TargetVersion = "string",
+#'           Parameters = list(
+#'             list(
+#'               ResourceValue = list(
+#'                 Value = "RESOURCE_ID"
+#'               ),
+#'               StaticValue = list(
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           ResourceType = "string",
+#'           Automatic = TRUE|FALSE,
+#'           ExecutionControls = list(
+#'             SsmControls = list(
+#'               ConcurrentExecutionRatePercentage = 123,
+#'               ErrorPercentage = 123
+#'             )
+#'           ),
+#'           MaximumAutomaticAttempts = 123,
+#'           RetryAttemptSeconds = 123,
+#'           Arn = "string",
+#'           CreatedByService = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4045,6 +5419,29 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 #' @param Message The message contains an explanation of the exception.
 #' @param ExpirationTime The exception is automatically deleted after the expiration date.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedBatches = list(
+#'     list(
+#'       FailureMessage = "string",
+#'       FailedItems = list(
+#'         list(
+#'           ConfigRuleName = "string",
+#'           ResourceType = "string",
+#'           ResourceId = "string",
+#'           Message = "string",
+#'           ExpirationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_remediation_exceptions(
@@ -4122,6 +5519,9 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
 #' The configuration JSON must not exceed 64 KB.
 #' @param Tags Tags associated with the resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_resource_config(
@@ -4178,6 +5578,17 @@ configservice_put_resource_config <- function(ResourceType, SchemaVersionId, Res
 #' 
 #' Currently, only applicable to the configuration item history.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RetentionConfiguration = list(
+#'     Name = "string",
+#'     RetentionPeriodInDays = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_retention_configuration(
@@ -4218,6 +5629,14 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
 #' @param StoredQuery &#91;required&#93; A list of `StoredQuery` objects. The mandatory fields are `QueryName`
 #' and `Expression`.
 #' @param Tags A list of `Tags` object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4285,6 +5704,24 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
 #' @param NextToken The nextToken string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     "string"
+#'   ),
+#'   QueryInfo = list(
+#'     SelectFields = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$select_aggregate_resource_config(
@@ -4336,6 +5773,24 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
 #' @param Limit The maximum number of query results returned on each page.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     "string"
+#'   ),
+#'   QueryInfo = list(
+#'     SelectFields = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4418,6 +5873,9 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #' @param ConfigRuleNames The list of names of AWS Config rules that you want to run evaluations
 #' for.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_config_rules_evaluation(
@@ -4462,6 +5920,9 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
 #' made to the resources.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4511,6 +5972,20 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 #' @param ResourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
 #' element in the list consists of the resource type and resource ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailureMessage = "string",
+#'   FailedItems = list(
+#'     list(
+#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+#'       resourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_remediation_execution(
@@ -4557,6 +6032,9 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
 #' made to the resources.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_configuration_recorder(
@@ -4600,6 +6078,9 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #' list the tags. Currently, the supported resources are `ConfigRule`,
 #' `ConfigurationAggregator` and `AggregatorAuthorization`.
 #' @param Tags &#91;required&#93; An array of tag object.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4646,6 +6127,9 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #' list the tags. Currently, the supported resources are `ConfigRule`,
 #' `ConfigurationAggregator` and `AggregatorAuthorization`.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

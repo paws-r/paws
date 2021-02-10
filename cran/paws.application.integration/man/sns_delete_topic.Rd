@@ -9,6 +9,9 @@ sns_delete_topic(TopicArn)
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a topic and all its subscriptions. Deleting a topic might
 prevent some messages previously sent to the topic from being delivered

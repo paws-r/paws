@@ -20,6 +20,12 @@ type.}
 \item{Tags}{A set of tags (key-value pairs) that you want to associate with this
 channel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelARN = "string"
+)
+}
+}
 \description{
 Creates a signaling channel.
 

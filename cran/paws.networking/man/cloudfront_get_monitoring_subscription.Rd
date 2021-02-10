@@ -10,6 +10,16 @@ cloudfront_get_monitoring_subscription(DistributionId)
 \arguments{
 \item{DistributionId}{[required] The ID of the distribution that you are getting metrics information for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitoringSubscription = list(
+    RealtimeMetricsSubscriptionConfig = list(
+      RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about whether additional CloudWatch metrics are enabled
 for the specified CloudFront distribution.

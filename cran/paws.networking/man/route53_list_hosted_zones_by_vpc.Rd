@@ -31,6 +31,23 @@ previous response.
 If the previous response didn't include a \code{NextToken} element, there are
 no more hosted zones to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HostedZoneSummaries = list(
+    list(
+      HostedZoneId = "string",
+      Name = "string",
+      Owner = list(
+        OwningAccount = "string",
+        OwningService = "string"
+      )
+    )
+  ),
+  MaxItems = "string",
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all the private hosted zones that a specified VPC is associated
 with, regardless of which AWS account or AWS service owns the hosted

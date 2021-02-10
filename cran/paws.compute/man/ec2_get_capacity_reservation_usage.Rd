@@ -24,6 +24,23 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  CapacityReservationId = "string",
+  InstanceType = "string",
+  TotalInstanceCount = 123,
+  AvailableInstanceCount = 123,
+  State = "active"|"expired"|"cancelled"|"pending"|"failed",
+  InstanceUsages = list(
+    list(
+      AccountId = "string",
+      UsedInstanceCount = 123
+    )
+  )
+)
+}
+}
 \description{
 Gets usage information about a Capacity Reservation. If the Capacity
 Reservation is shared, it shows usage information for the Capacity

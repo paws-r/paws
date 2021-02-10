@@ -19,6 +19,26 @@ default is maximum. If you specify 0, AWS Config uses the default.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AggregateComplianceByConfigRules = list(
+    list(
+      ConfigRuleName = "string",
+      Compliance = list(
+        ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+        ComplianceContributorCount = list(
+          CappedCount = 123,
+          CapExceeded = TRUE|FALSE
+        )
+      ),
+      AccountId = "string",
+      AwsRegion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of compliant and noncompliant rules with the number of
 resources for compliant and noncompliant rules.

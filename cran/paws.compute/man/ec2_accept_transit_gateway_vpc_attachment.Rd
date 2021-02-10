@@ -15,6 +15,35 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayVpcAttachment = list(
+    TransitGatewayAttachmentId = "string",
+    TransitGatewayId = "string",
+    VpcId = "string",
+    VpcOwnerId = "string",
+    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+    SubnetIds = list(
+      "string"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Options = list(
+      DnsSupport = "enable"|"disable",
+      Ipv6Support = "enable"|"disable",
+      ApplianceModeSupport = "enable"|"disable"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Accepts a request to attach a VPC to a transit gateway.
 

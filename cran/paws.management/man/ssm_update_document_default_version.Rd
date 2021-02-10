@@ -13,6 +13,16 @@ version.}
 \item{DocumentVersion}{[required] The version of a custom document that you want to set as the default
 version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Description = list(
+    Name = "string",
+    DefaultVersion = "string",
+    DefaultVersionName = "string"
+  )
+)
+}
+}
 \description{
 Set the default version of a document.
 }

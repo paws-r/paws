@@ -27,6 +27,15 @@ per response. Use \code{nextToken} to iterate pages in the list of returned
 
 \item{filter}{A \code{ReportFilter} object used to filter the returned reports.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  reports = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of ARNs for the reports that belong to a \code{ReportGroup}.
 }

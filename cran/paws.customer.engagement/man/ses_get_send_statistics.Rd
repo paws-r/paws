@@ -6,6 +6,22 @@
 \usage{
 ses_get_send_statistics()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SendDataPoints = list(
+    list(
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeliveryAttempts = 123,
+      Bounces = 123,
+      Complaints = 123,
+      Rejects = 123
+    )
+  )
+)
+}
+}
 \description{
 Provides sending statistics for the current AWS Region. The result is a
 list of data points, representing the last two weeks of sending

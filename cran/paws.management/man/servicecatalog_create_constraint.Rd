@@ -28,11 +28,11 @@ but can't use both.
 
 Specify the \code{RoleArn} property as follows:
 
-\verb{\\\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\\\}}
+\code{{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}}
 
 Specify the \code{LocalRoleName} property as follows:
 
-\verb{\\\{"LocalRoleName": "SCBasicLaunchRole"\\\}}
+\code{{"LocalRoleName": "SCBasicLaunchRole"}}
 
 If you specify the \code{LocalRoleName} property, when an account uses the
 launch constraint, the IAM role with that name in the account will be
@@ -53,14 +53,14 @@ portfolio.
 
 Specify the \code{NotificationArns} property as follows:
 
-\verb{\\\{"NotificationArns" : \\\["arn:aws:sns:us-east-1:123456789012:Topic"\\\]\\\}}
+\verb{\{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]\}}
 }
 
-\subsection{RESOURCE\\_UPDATE}{
+\subsection{RESOURCE_UPDATE}{
 
 Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:
 
-\verb{\\\{"Version":"2.0","Properties":\\\{"TagUpdateOnProvisionedProduct":"String"\\\}\\\}}
+\verb{\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}}
 
 The \code{TagUpdatesOnProvisionedProduct} property accepts a string value of
 \code{ALLOWED} or \code{NOT_ALLOWED}.
@@ -70,7 +70,7 @@ The \code{TagUpdatesOnProvisionedProduct} property accepts a string value of
 
 Specify the \code{Parameters} property as follows:
 
-\verb{\\\{"Version": "String", "Properties": \\\{"AccountList": \\\[ "String" \\\], "RegionList": \\\[ "String" \\\], "AdminRole": "String", "ExecutionRole": "String"\\\}\\\}}
+\verb{\{"Version": "String", "Properties": \{"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"\}\}}
 
 You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 
@@ -100,6 +100,21 @@ Specify the \code{Rules} property. For more information, see \href{https://docs.
 \item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ConstraintDetail = list(
+    ConstraintId = "string",
+    Type = "string",
+    Description = "string",
+    Owner = "string",
+    ProductId = "string",
+    PortfolioId = "string"
+  ),
+  ConstraintParameters = "string",
+  Status = "AVAILABLE"|"CREATING"|"FAILED"
+)
+}
 }
 \description{
 Creates a constraint.

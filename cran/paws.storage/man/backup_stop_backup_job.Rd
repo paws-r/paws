@@ -9,6 +9,9 @@ backup_stop_backup_job(BackupJobId)
 \arguments{
 \item{BackupJobId}{[required] Uniquely identifies a request to AWS Backup to back up a resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Attempts to cancel a job to create a one-time backup of a resource.
 }

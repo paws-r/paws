@@ -11,6 +11,36 @@ glue_get_security_configurations(MaxResults, NextToken)
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityConfigurations = list(
+    list(
+      Name = "string",
+      CreatedTimeStamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      EncryptionConfiguration = list(
+        S3Encryption = list(
+          list(
+            S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
+            KmsKeyArn = "string"
+          )
+        ),
+        CloudWatchEncryption = list(
+          CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
+          KmsKeyArn = "string"
+        ),
+        JobBookmarksEncryption = list(
+          JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
+          KmsKeyArn = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of all security configurations.
 }

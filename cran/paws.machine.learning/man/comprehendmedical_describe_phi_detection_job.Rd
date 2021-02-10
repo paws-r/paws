@@ -12,6 +12,39 @@ comprehendmedical_describe_phi_detection_job(JobId)
 \code{\link[=comprehendmedical_start_phi_detection_job]{start_phi_detection_job}}
 operation returns this identifier in its response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComprehendMedicalAsyncJobProperties = list(
+    JobId = "string",
+    JobName = "string",
+    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+    Message = "string",
+    SubmitTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ExpirationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    InputDataConfig = list(
+      S3Bucket = "string",
+      S3Key = "string"
+    ),
+    OutputDataConfig = list(
+      S3Bucket = "string",
+      S3Key = "string"
+    ),
+    LanguageCode = "en",
+    DataAccessRoleArn = "string",
+    ManifestFilePath = "string",
+    KMSKey = "string",
+    ModelVersion = "string"
+  )
+)
+}
+}
 \description{
 Gets the properties associated with a protected health information (PHI)
 detection job. Use this operation to get the status of a detection job.

@@ -10,6 +10,9 @@ macie_disassociate_member_account(memberAccountId)
 \item{memberAccountId}{[required] The ID of the member account that you want to remove from Amazon Macie
 Classic.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified member account from Amazon Macie Classic.
 }

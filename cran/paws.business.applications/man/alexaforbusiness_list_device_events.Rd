@@ -27,6 +27,21 @@ value is 50. If more results exist than the specified MaxResults value,
 a token is included in the response so that the remaining results can be
 retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceEvents = list(
+    list(
+      Type = "CONNECTION_STATUS"|"DEVICE_STATUS",
+      Value = "string",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the device event history, including device connection status, for
 up to 30 days.

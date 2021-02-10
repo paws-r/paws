@@ -26,6 +26,26 @@ action to see a list of event categories.}
 
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = "string",
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Modifies an existing AWS DMS event notification subscription.
 }

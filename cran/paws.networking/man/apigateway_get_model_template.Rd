@@ -12,6 +12,12 @@ apigateway_get_model_template(restApiId, modelName)
 
 \item{modelName}{[required] [Required] The name of the model for which to generate a template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  value = "string"
+)
+}
+}
 \description{
 Generates a sample mapping template that can be used to transform a
 payload into the structure of a model.

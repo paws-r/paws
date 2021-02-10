@@ -13,6 +13,36 @@ sagemaker_describe_device(NextToken, DeviceName, DeviceFleetName)
 
 \item{DeviceFleetName}{[required] The name of the fleet the devices belong to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceArn = "string",
+  DeviceName = "string",
+  Description = "string",
+  DeviceFleetName = "string",
+  IotThingName = "string",
+  RegistrationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LatestHeartbeat = as.POSIXct(
+    "2015-01-01"
+  ),
+  Models = list(
+    list(
+      ModelName = "string",
+      ModelVersion = "string",
+      LatestSampleTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LatestInference = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  MaxModels = 123,
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the device.
 }

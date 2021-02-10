@@ -23,6 +23,40 @@ provision for your file system. Valid values are 1-1024. Required if
 updating the amount of provisioned throughput for your file system, you
 don't need to provide this value in your request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OwnerId = "string",
+  CreationToken = "string",
+  FileSystemId = "string",
+  FileSystemArn = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+  Name = "string",
+  NumberOfMountTargets = 123,
+  SizeInBytes = list(
+    Value = 123,
+    Timestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ValueInIA = 123,
+    ValueInStandard = 123
+  ),
+  PerformanceMode = "generalPurpose"|"maxIO",
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  ThroughputMode = "bursting"|"provisioned",
+  ProvisionedThroughputInMibps = 123.0,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the throughput mode or the amount of provisioned throughput of
 an existing file system.

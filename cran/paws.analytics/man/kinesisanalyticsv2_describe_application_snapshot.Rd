@@ -13,6 +13,19 @@ kinesisanalyticsv2_describe_application_snapshot(ApplicationName,
 \item{SnapshotName}{[required] The identifier of an application snapshot. You can retrieve this value
 using .}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnapshotDetails = list(
+    SnapshotName = "string",
+    SnapshotStatus = "CREATING"|"READY"|"DELETING"|"FAILED",
+    ApplicationVersionId = 123,
+    SnapshotCreationTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a snapshot of application state data.
 }

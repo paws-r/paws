@@ -33,6 +33,12 @@ VariantProperty to override with the values provided by
 
 \item{DeploymentConfig}{The deployment configuration for the endpoint to be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointArn = "string"
+)
+}
+}
 \description{
 Deploys the new \code{EndpointConfig} specified in the request, switches to
 using newly created endpoint, and then deletes resources provisioned for

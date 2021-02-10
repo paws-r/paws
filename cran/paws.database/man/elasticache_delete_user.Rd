@@ -9,6 +9,24 @@ elasticache_delete_user(UserId)
 \arguments{
 \item{UserId}{[required] The ID of the user.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserId = "string",
+  UserName = "string",
+  Status = "string",
+  Engine = "string",
+  AccessString = "string",
+  UserGroupIds = list(
+    "string"
+  ),
+  Authentication = list(
+    Type = "password"|"no-password",
+    PasswordCount = 123
+  ),
+  ARN = "string"
+)
+}
+}
 \description{
 For Redis engine version 6.x onwards: Deletes a user. The user will be
 removed from all user groups and in turn removed from all replication

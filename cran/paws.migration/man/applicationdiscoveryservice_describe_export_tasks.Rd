@@ -30,6 +30,30 @@ of that parameter. Pagination continues from the end of the previous
 results that returned the \code{nextToken} value. This value is null when
 there are no more results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  exportsInfo = list(
+    list(
+      exportId = "string",
+      exportStatus = "FAILED"|"SUCCEEDED"|"IN_PROGRESS",
+      statusMessage = "string",
+      configurationsDownloadUrl = "string",
+      exportRequestTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      isTruncated = TRUE|FALSE,
+      requestedStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      requestedEndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieve status of one or more export tasks. You can retrieve the status
 of up to 100 export tasks.

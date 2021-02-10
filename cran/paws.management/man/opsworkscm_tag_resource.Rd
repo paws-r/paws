@@ -28,6 +28,9 @@ value.
 server or backup.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 Puppet Enterprise server, or to server backups.

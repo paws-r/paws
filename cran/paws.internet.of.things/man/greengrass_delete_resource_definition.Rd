@@ -9,6 +9,9 @@ greengrass_delete_resource_definition(ResourceDefinitionId)
 \arguments{
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a resource definition.
 }

@@ -29,6 +29,15 @@ listing data.}
 you want in the response. The default value is 10. The maximum value is
 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  assessmentRunArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the assessment runs that correspond to the assessment templates
 that are specified by the ARNs of the assessment templates.

@@ -14,6 +14,22 @@ codebuild_get_report_group_trend(reportGroupArn, numOfReports,
 
 \item{trendField}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  stats = list(
+    average = "string",
+    max = "string",
+    min = "string"
+  ),
+  rawData = list(
+    list(
+      reportArn = "string",
+      data = "string"
+    )
+  )
+)
+}
+}
 \description{
 Get report group trend
 }

@@ -12,6 +12,9 @@ opsworks_associate_elastic_ip(ElasticIp, InstanceId)
 
 \item{InstanceId}{The instance ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates one of the stack's registered Elastic IP addresses with a
 specified instance. The address must first be registered with the stack

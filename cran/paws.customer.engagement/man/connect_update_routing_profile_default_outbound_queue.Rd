@@ -14,6 +14,9 @@ connect_update_routing_profile_default_outbound_queue(InstanceId,
 
 \item{DefaultOutboundQueueId}{[required] The identifier for the default outbound queue.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the default outbound queue of a routing profile.
 }

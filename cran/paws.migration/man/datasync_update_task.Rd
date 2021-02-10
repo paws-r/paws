@@ -29,6 +29,9 @@ UTC time. For more information, see task-scheduling.}
 \item{CloudWatchLogGroupArn}{The Amazon Resource Name (ARN) of the resource name of the CloudWatch
 LogGroup.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the metadata associated with a task.
 }

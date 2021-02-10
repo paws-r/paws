@@ -14,6 +14,9 @@ NULL
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAliases &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_lenses(
@@ -56,6 +59,15 @@ wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
 #' @param WorkloadId &#91;required&#93; 
 #' @param MilestoneName &#91;required&#93; 
 #' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneNumber = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -119,6 +131,15 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @param Lenses &#91;required&#93; 
 #' @param Notes 
 #' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   WorkloadArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -192,6 +213,15 @@ wellarchitected_create_workload <- function(WorkloadName, Description, Environme
 #' @param PermissionType &#91;required&#93; 
 #' @param ClientRequestToken &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   ShareId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_workload_share(
@@ -233,6 +263,9 @@ wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, Permis
 #' @param WorkloadId &#91;required&#93; 
 #' @param ClientRequestToken &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_workload(
@@ -273,6 +306,9 @@ wellarchitected_delete_workload <- function(WorkloadId, ClientRequestToken) {
 #' @param ShareId &#91;required&#93; 
 #' @param WorkloadId &#91;required&#93; 
 #' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -316,6 +352,9 @@ wellarchitected_delete_workload_share <- function(ShareId, WorkloadId, ClientReq
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAliases &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -361,6 +400,37 @@ wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
 #' @param QuestionId &#91;required&#93; 
 #' @param MilestoneNumber 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneNumber = 123,
+#'   LensAlias = "string",
+#'   Answer = list(
+#'     QuestionId = "string",
+#'     PillarId = "string",
+#'     QuestionTitle = "string",
+#'     QuestionDescription = "string",
+#'     ImprovementPlanUrl = "string",
+#'     HelpfulResourceUrl = "string",
+#'     Choices = list(
+#'       list(
+#'         ChoiceId = "string",
+#'         Title = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     SelectedChoices = list(
+#'       "string"
+#'     ),
+#'     IsApplicable = TRUE|FALSE,
+#'     Risk = "UNANSWERED"|"HIGH"|"MEDIUM"|"NONE"|"NOT_APPLICABLE",
+#'     Notes = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_answer(
@@ -402,6 +472,39 @@ wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, Milest
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
 #' @param MilestoneNumber 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneNumber = 123,
+#'   LensReview = list(
+#'     LensAlias = "string",
+#'     LensVersion = "string",
+#'     LensName = "string",
+#'     LensStatus = "CURRENT"|"NOT_CURRENT"|"DEPRECATED",
+#'     PillarReviewSummaries = list(
+#'       list(
+#'         PillarId = "string",
+#'         PillarName = "string",
+#'         Notes = "string",
+#'         RiskCounts = list(
+#'           123
+#'         )
+#'       )
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Notes = "string",
+#'     RiskCounts = list(
+#'       123
+#'     ),
+#'     NextToken = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -445,6 +548,19 @@ wellarchitected_get_lens_review <- function(WorkloadId, LensAlias, MilestoneNumb
 #' @param LensAlias &#91;required&#93; 
 #' @param MilestoneNumber 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneNumber = 123,
+#'   LensReviewReport = list(
+#'     LensAlias = "string",
+#'     Base64String = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_lens_review_report(
@@ -485,6 +601,31 @@ wellarchitected_get_lens_review_report <- function(WorkloadId, LensAlias, Milest
 #' @param LensAlias &#91;required&#93; 
 #' @param BaseLensVersion &#91;required&#93; The base version of the lens.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LensAlias = "string",
+#'   BaseLensVersion = "string",
+#'   LatestLensVersion = "string",
+#'   VersionDifferences = list(
+#'     PillarDifferences = list(
+#'       list(
+#'         PillarId = "string",
+#'         DifferenceStatus = "UPDATED"|"NEW"|"DELETED",
+#'         QuestionDifferences = list(
+#'           list(
+#'             QuestionId = "string",
+#'             QuestionTitle = "string",
+#'             DifferenceStatus = "UPDATED"|"NEW"|"DELETED"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_lens_version_difference(
@@ -524,6 +665,61 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
 #' @param WorkloadId &#91;required&#93; 
 #' @param MilestoneNumber &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   Milestone = list(
+#'     MilestoneNumber = 123,
+#'     MilestoneName = "string",
+#'     RecordedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Workload = list(
+#'       WorkloadId = "string",
+#'       WorkloadArn = "string",
+#'       WorkloadName = "string",
+#'       Description = "string",
+#'       Environment = "PRODUCTION"|"PREPRODUCTION",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AccountIds = list(
+#'         "string"
+#'       ),
+#'       AwsRegions = list(
+#'         "string"
+#'       ),
+#'       NonAwsRegions = list(
+#'         "string"
+#'       ),
+#'       ArchitecturalDesign = "string",
+#'       ReviewOwner = "string",
+#'       ReviewRestrictionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IsReviewOwnerUpdateAcknowledged = TRUE|FALSE,
+#'       IndustryType = "string",
+#'       Industry = "string",
+#'       Notes = "string",
+#'       ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED",
+#'       RiskCounts = list(
+#'         123
+#'       ),
+#'       PillarPriorities = list(
+#'         "string"
+#'       ),
+#'       Lenses = list(
+#'         "string"
+#'       ),
+#'       Owner = "string",
+#'       ShareInvitationId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_milestone(
@@ -561,6 +757,53 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
 #' wellarchitected_get_workload(WorkloadId)
 #'
 #' @param WorkloadId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Workload = list(
+#'     WorkloadId = "string",
+#'     WorkloadArn = "string",
+#'     WorkloadName = "string",
+#'     Description = "string",
+#'     Environment = "PRODUCTION"|"PREPRODUCTION",
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AccountIds = list(
+#'       "string"
+#'     ),
+#'     AwsRegions = list(
+#'       "string"
+#'     ),
+#'     NonAwsRegions = list(
+#'       "string"
+#'     ),
+#'     ArchitecturalDesign = "string",
+#'     ReviewOwner = "string",
+#'     ReviewRestrictionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IsReviewOwnerUpdateAcknowledged = TRUE|FALSE,
+#'     IndustryType = "string",
+#'     Industry = "string",
+#'     Notes = "string",
+#'     ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED",
+#'     RiskCounts = list(
+#'       123
+#'     ),
+#'     PillarPriorities = list(
+#'       "string"
+#'     ),
+#'     Lenses = list(
+#'       "string"
+#'     ),
+#'     Owner = "string",
+#'     ShareInvitationId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -604,6 +847,36 @@ wellarchitected_get_workload <- function(WorkloadId) {
 #' @param MilestoneNumber 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneNumber = 123,
+#'   LensAlias = "string",
+#'   AnswerSummaries = list(
+#'     list(
+#'       QuestionId = "string",
+#'       PillarId = "string",
+#'       QuestionTitle = "string",
+#'       Choices = list(
+#'         list(
+#'           ChoiceId = "string",
+#'           Title = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       SelectedChoices = list(
+#'         "string"
+#'       ),
+#'       IsApplicable = TRUE|FALSE,
+#'       Risk = "UNANSWERED"|"HIGH"|"MEDIUM"|"NONE"|"NOT_APPLICABLE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -653,6 +926,26 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneNumber = 123,
+#'   LensAlias = "string",
+#'   ImprovementSummaries = list(
+#'     list(
+#'       QuestionId = "string",
+#'       PillarId = "string",
+#'       QuestionTitle = "string",
+#'       Risk = "UNANSWERED"|"HIGH"|"MEDIUM"|"NONE"|"NOT_APPLICABLE",
+#'       ImprovementPlanUrl = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_lens_review_improvements(
@@ -699,6 +992,30 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
 #' @param NextToken 
 #' @param MaxResults 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneNumber = 123,
+#'   LensReviewSummaries = list(
+#'     list(
+#'       LensAlias = "string",
+#'       LensVersion = "string",
+#'       LensName = "string",
+#'       LensStatus = "CURRENT"|"NOT_CURRENT"|"DEPRECATED",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RiskCounts = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_lens_reviews(
@@ -740,6 +1057,22 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
 #' @param NextToken 
 #' @param MaxResults 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LensSummaries = list(
+#'     list(
+#'       LensAlias = "string",
+#'       LensVersion = "string",
+#'       LensName = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_lenses(
@@ -779,6 +1112,40 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param WorkloadId &#91;required&#93; 
 #' @param NextToken 
 #' @param MaxResults 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   MilestoneSummaries = list(
+#'     list(
+#'       MilestoneNumber = 123,
+#'       MilestoneName = "string",
+#'       RecordedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       WorkloadSummary = list(
+#'         WorkloadId = "string",
+#'         WorkloadArn = "string",
+#'         WorkloadName = "string",
+#'         Owner = "string",
+#'         UpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Lenses = list(
+#'           "string"
+#'         ),
+#'         RiskCounts = list(
+#'           123
+#'         ),
+#'         ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -821,6 +1188,26 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotificationSummaries = list(
+#'     list(
+#'       Type = "LENS_VERSION_UPGRADED"|"LENS_VERSION_DEPRECATED",
+#'       LensUpgradeSummary = list(
+#'         WorkloadId = "string",
+#'         WorkloadName = "string",
+#'         LensAlias = "string",
+#'         CurrentLensVersion = "string",
+#'         LatestLensVersion = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_notifications(
@@ -862,6 +1249,24 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #' @param WorkloadNamePrefix 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShareInvitationSummaries = list(
+#'     list(
+#'       ShareInvitationId = "string",
+#'       SharedBy = "string",
+#'       SharedWith = "string",
+#'       PermissionType = "READONLY"|"CONTRIBUTOR",
+#'       WorkloadName = "string",
+#'       WorkloadId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -906,6 +1311,23 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Ne
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   WorkloadShareSummaries = list(
+#'     list(
+#'       ShareId = "string",
+#'       SharedWith = "string",
+#'       PermissionType = "READONLY"|"CONTRIBUTOR",
+#'       Status = "ACCEPTED"|"REJECTED"|"PENDING"|"REVOKED"|"EXPIRED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_workload_shares(
@@ -948,6 +1370,32 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
 #' @param WorkloadNamePrefix 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadSummaries = list(
+#'     list(
+#'       WorkloadId = "string",
+#'       WorkloadArn = "string",
+#'       WorkloadName = "string",
+#'       Owner = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Lenses = list(
+#'         "string"
+#'       ),
+#'       RiskCounts = list(
+#'         123
+#'       ),
+#'       ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -993,6 +1441,36 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
 #' @param SelectedChoices 
 #' @param Notes 
 #' @param IsApplicable 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   LensAlias = "string",
+#'   Answer = list(
+#'     QuestionId = "string",
+#'     PillarId = "string",
+#'     QuestionTitle = "string",
+#'     QuestionDescription = "string",
+#'     ImprovementPlanUrl = "string",
+#'     HelpfulResourceUrl = "string",
+#'     Choices = list(
+#'       list(
+#'         ChoiceId = "string",
+#'         Title = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     SelectedChoices = list(
+#'       "string"
+#'     ),
+#'     IsApplicable = TRUE|FALSE,
+#'     Risk = "UNANSWERED"|"HIGH"|"MEDIUM"|"NONE"|"NOT_APPLICABLE",
+#'     Notes = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1042,6 +1520,38 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 #' @param LensNotes 
 #' @param PillarNotes 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   LensReview = list(
+#'     LensAlias = "string",
+#'     LensVersion = "string",
+#'     LensName = "string",
+#'     LensStatus = "CURRENT"|"NOT_CURRENT"|"DEPRECATED",
+#'     PillarReviewSummaries = list(
+#'       list(
+#'         PillarId = "string",
+#'         PillarName = "string",
+#'         Notes = "string",
+#'         RiskCounts = list(
+#'           123
+#'         )
+#'       )
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Notes = "string",
+#'     RiskCounts = list(
+#'       123
+#'     ),
+#'     NextToken = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_lens_review(
@@ -1085,6 +1595,17 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 #'
 #' @param ShareInvitationId &#91;required&#93; The ID assigned to the share invitation.
 #' @param ShareInvitationAction &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShareInvitation = list(
+#'     ShareInvitationId = "string",
+#'     WorkloadId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1145,6 +1666,53 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' @param Industry 
 #' @param Notes 
 #' @param ImprovementStatus 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Workload = list(
+#'     WorkloadId = "string",
+#'     WorkloadArn = "string",
+#'     WorkloadName = "string",
+#'     Description = "string",
+#'     Environment = "PRODUCTION"|"PREPRODUCTION",
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AccountIds = list(
+#'       "string"
+#'     ),
+#'     AwsRegions = list(
+#'       "string"
+#'     ),
+#'     NonAwsRegions = list(
+#'       "string"
+#'     ),
+#'     ArchitecturalDesign = "string",
+#'     ReviewOwner = "string",
+#'     ReviewRestrictionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IsReviewOwnerUpdateAcknowledged = TRUE|FALSE,
+#'     IndustryType = "string",
+#'     Industry = "string",
+#'     Notes = "string",
+#'     ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED",
+#'     RiskCounts = list(
+#'       123
+#'     ),
+#'     PillarPriorities = list(
+#'       "string"
+#'     ),
+#'     Lenses = list(
+#'       "string"
+#'     ),
+#'     Owner = "string",
+#'     ShareInvitationId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1208,6 +1776,23 @@ wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Des
 #' @param WorkloadId &#91;required&#93; 
 #' @param PermissionType &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   WorkloadShare = list(
+#'     ShareId = "string",
+#'     SharedBy = "string",
+#'     SharedWith = "string",
+#'     PermissionType = "READONLY"|"CONTRIBUTOR",
+#'     Status = "ACCEPTED"|"REJECTED"|"PENDING"|"REVOKED"|"EXPIRED",
+#'     WorkloadName = "string",
+#'     WorkloadId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_workload_share(
@@ -1250,6 +1835,9 @@ wellarchitected_update_workload_share <- function(ShareId, WorkloadId, Permissio
 #' @param LensAlias &#91;required&#93; 
 #' @param MilestoneName &#91;required&#93; 
 #' @param ClientRequestToken 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

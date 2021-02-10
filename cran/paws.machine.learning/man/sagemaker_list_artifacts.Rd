@@ -29,6 +29,34 @@ getting the next set of artifacts.}
 \item{MaxResults}{The maximum number of artifacts to return in the response. The default
 value is 10.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ArtifactSummaries = list(
+    list(
+      ArtifactArn = "string",
+      ArtifactName = "string",
+      Source = list(
+        SourceUri = "string",
+        SourceTypes = list(
+          list(
+            SourceIdType = "MD5Hash"|"S3ETag"|"S3Version"|"Custom",
+            Value = "string"
+          )
+        )
+      ),
+      ArtifactType = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the artifacts in your account and their properties.
 }

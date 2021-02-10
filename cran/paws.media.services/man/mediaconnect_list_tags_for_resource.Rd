@@ -7,7 +7,16 @@
 mediaconnect_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental
+MediaConnect resource for which to list the tags.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
 }
 \description{
 List all tags on an AWS Elemental MediaConnect resource

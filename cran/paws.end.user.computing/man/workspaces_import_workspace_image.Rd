@@ -34,6 +34,12 @@ to Office for BYOL images, see \href{https://docs.aws.amazon.com/workspaces/late
 Although this parameter is an array, only one item is allowed at this
 time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageId = "string"
+)
+}
+}
 \description{
 Imports the specified Windows 10 Bring Your Own License (BYOL) image
 into Amazon WorkSpaces. The image must be an already licensed Amazon EC2

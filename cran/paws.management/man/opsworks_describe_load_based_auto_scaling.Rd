@@ -9,6 +9,39 @@ opsworks_describe_load_based_auto_scaling(LayerIds)
 \arguments{
 \item{LayerIds}{[required] An array of layer IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBasedAutoScalingConfigurations = list(
+    list(
+      LayerId = "string",
+      Enable = TRUE|FALSE,
+      UpScaling = list(
+        InstanceCount = 123,
+        ThresholdsWaitTime = 123,
+        IgnoreMetricsTime = 123,
+        CpuThreshold = 123.0,
+        MemoryThreshold = 123.0,
+        LoadThreshold = 123.0,
+        Alarms = list(
+          "string"
+        )
+      ),
+      DownScaling = list(
+        InstanceCount = 123,
+        ThresholdsWaitTime = 123,
+        IgnoreMetricsTime = 123,
+        CpuThreshold = 123.0,
+        MemoryThreshold = 123.0,
+        LoadThreshold = 123.0,
+        Alarms = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes load-based auto scaling configurations for specified layers.
 

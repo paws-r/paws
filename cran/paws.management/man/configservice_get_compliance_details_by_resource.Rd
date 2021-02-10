@@ -20,6 +20,35 @@ The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EvaluationResults = list(
+    list(
+      EvaluationResultIdentifier = list(
+        EvaluationResultQualifier = list(
+          ConfigRuleName = "string",
+          ResourceType = "string",
+          ResourceId = "string"
+        ),
+        OrderingTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+      ResultRecordedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ConfigRuleInvokedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Annotation = "string",
+      ResultToken = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the evaluation results for the specified AWS resource. The
 results indicate which AWS Config rules were used to evaluate the

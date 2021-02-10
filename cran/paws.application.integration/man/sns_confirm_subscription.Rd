@@ -18,6 +18,12 @@ of this parameter is \code{true} and the request has an AWS signature, then
 only the topic owner and the subscription owner can unsubscribe the
 endpoint. The unsubscribe action requires AWS authentication.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SubscriptionArn = "string"
+)
+}
+}
 \description{
 Verifies an endpoint owner's intent to receive messages by validating
 the token sent to the endpoint by an earlier

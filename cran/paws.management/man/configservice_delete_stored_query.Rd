@@ -9,6 +9,9 @@ configservice_delete_stored_query(QueryName)
 \arguments{
 \item{QueryName}{[required] The name of the query that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the stored query for an AWS account in an AWS Region.
 }

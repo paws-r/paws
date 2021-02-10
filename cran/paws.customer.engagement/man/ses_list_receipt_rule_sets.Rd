@@ -12,6 +12,20 @@ ses_list_receipt_rule_sets(NextToken)
 \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to indicate the
 position in the receipt rule set list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuleSets = list(
+    list(
+      Name = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the receipt rule sets that exist under your AWS account in the
 current AWS Region. If there are additional receipt rule sets to be

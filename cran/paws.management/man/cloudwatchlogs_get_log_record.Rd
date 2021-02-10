@@ -14,6 +14,14 @@ that response, the value of the \verb{@ptr} field for a log event is the
 value to use as \code{logRecordPointer} to retrieve that complete log event
 record.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  logRecord = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves all of the fields and values of a single log event. All fields
 are retrieved, even if the original query that produced the

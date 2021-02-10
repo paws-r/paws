@@ -91,6 +91,9 @@ base64-encoded text.}
 \code{userData}, \code{disableApiTermination}, or
 \code{instanceInitiatedShutdownBehavior} attribute.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the specified attribute of the specified instance. You can
 specify only one attribute at a time.

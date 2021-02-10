@@ -10,6 +10,12 @@ snowball_get_job_unlock_code(JobId)
 \item{JobId}{[required] The ID for the job that you want to get the \code{UnlockCode} value for, for
 example \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnlockCode = "string"
+)
+}
+}
 \description{
 Returns the \code{UnlockCode} code value for the specified job. A particular
 \code{UnlockCode} value can be accessed for up to 90 days after the

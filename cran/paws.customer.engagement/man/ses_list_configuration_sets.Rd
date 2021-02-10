@@ -14,6 +14,17 @@ position of the configuration set in the configuration set list.}
 
 \item{MaxItems}{The number of configuration sets to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigurationSets = list(
+    list(
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides a list of the configuration sets associated with your Amazon
 SES account in the current AWS Region. For information about using

@@ -55,6 +55,12 @@ For a list of instance types that support local instance storage, see
 
 For more information about local instance storage encryption, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html}{SSD Instance Store Volumes}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointConfigArn = "string"
+)
+}
+}
 \description{
 Creates an endpoint configuration that Amazon SageMaker hosting services
 uses to deploy models. In the configuration, you identify one or more
@@ -78,7 +84,7 @@ distributes two-thirds of the traffic to Model A, and one-third to model
 B.
 
 For an example that calls this method when deploying a model to Amazon
-SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
+SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
 
 When you call \code{\link[=sagemaker_create_endpoint]{create_endpoint}}, a load
 call is made to DynamoDB to verify that your endpoint configuration

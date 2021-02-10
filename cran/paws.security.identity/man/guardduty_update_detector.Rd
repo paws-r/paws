@@ -17,6 +17,9 @@ as to CloudWatch Events.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the Amazon GuardDuty detector specified by the detectorId.
 }

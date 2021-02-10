@@ -10,6 +10,23 @@ route53resolver_delete_resolver_query_log_config(
 \arguments{
 \item{ResolverQueryLogConfigId}{[required] The ID of the query logging configuration that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverQueryLogConfig = list(
+    Id = "string",
+    OwnerId = "string",
+    Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+    AssociationCount = 123,
+    Arn = "string",
+    Name = "string",
+    DestinationArn = "string",
+    CreatorRequestId = "string",
+    CreationTime = "string"
+  )
+)
+}
+}
 \description{
 Deletes a query logging configuration. When you delete a configuration,
 Resolver stops logging DNS queries for all of the Amazon VPCs that are

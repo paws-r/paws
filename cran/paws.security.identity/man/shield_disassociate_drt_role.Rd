@@ -6,6 +6,9 @@
 \usage{
 shield_disassociate_drt_role()
 }
+\value{
+An empty list.
+}
 \description{
 Removes the DDoS Response Team's (DRT) access to your AWS account.
 

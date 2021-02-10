@@ -15,6 +15,9 @@ server instance that has the user assigned to it.}
 \item{UserName}{[required] A unique string that identifies a user whose public key is being
 deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a user's Secure Shell (SSH) public key.
 

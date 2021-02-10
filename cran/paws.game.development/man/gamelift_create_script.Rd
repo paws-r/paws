@@ -46,6 +46,27 @@ use \code{\link[=gamelift_tag_resource]{tag_resource}},
 remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Script = list(
+    ScriptId = "string",
+    ScriptArn = "string",
+    Name = "string",
+    Version = "string",
+    SizeOnDisk = 123,
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    StorageLocation = list(
+      Bucket = "string",
+      Key = "string",
+      RoleArn = "string",
+      ObjectVersion = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a new script record for your Realtime Servers script. Realtime
 scripts are JavaScript that provide configuration settings and optional

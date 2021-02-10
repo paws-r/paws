@@ -10,6 +10,9 @@ guardduty_disassociate_from_master_account(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the current GuardDuty member account from its
 administrator account.

@@ -15,6 +15,9 @@ This must be of the form:
 
 \item{Tags}{[required] List of tags to be removed from the CA.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove one or more tags from your private CA. A tag consists of a
 key-value pair. If you do not specify the value portion of the tag when

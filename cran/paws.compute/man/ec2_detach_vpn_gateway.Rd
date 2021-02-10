@@ -16,6 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches a virtual private gateway from a VPC. You do this if you're
 planning to turn off the VPC and not use it anymore. You can confirm a

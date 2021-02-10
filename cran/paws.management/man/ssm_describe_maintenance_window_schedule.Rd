@@ -26,6 +26,19 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScheduledWindowExecutions = list(
+    list(
+      WindowId = "string",
+      Name = "string",
+      ExecutionTime = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves information about upcoming executions of a maintenance window.
 }

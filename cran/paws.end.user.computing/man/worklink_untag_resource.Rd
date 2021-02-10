@@ -11,6 +11,9 @@ worklink_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The list of tag keys to remove from the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags from the specified resource.
 }

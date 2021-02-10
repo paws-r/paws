@@ -9,6 +9,9 @@ apigatewayv2_delete_api(ApiId)
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an Api resource.
 }

@@ -16,6 +16,22 @@ plan in which a temporary extension is granted to the remaining quota.}
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  usagePlanId = "string",
+  startDate = "string",
+  endDate = "string",
+  position = "string",
+  items = list(
+    list(
+      list(
+        123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Grants a temporary extension to the remaining quota of a usage plan
 associated with a specified API key.

@@ -12,6 +12,20 @@ ssm_describe_document_permission(Name, PermissionType)
 \item{PermissionType}{[required] The permission type for the document. The permission type can be
 \emph{Share}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountIds = list(
+    "string"
+  ),
+  AccountSharingInfoList = list(
+    list(
+      AccountId = "string",
+      SharedDocumentVersion = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the permissions for a Systems Manager document. If you created
 the document, you are the owner. If a document is shared, it can either

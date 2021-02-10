@@ -64,6 +64,12 @@ resources:
 \item \verb{Storage Gateway} for AWS Storage Gateway
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RestoreJobId = "string"
+)
+}
+}
 \description{
 Recovers the saved resource identified by an Amazon Resource Name (ARN).
 }

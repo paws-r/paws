@@ -38,6 +38,12 @@ your service configuration.}
 \item{RemoveGatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of Gateway Load Balancers to remove
 from your service configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies the attributes of your VPC endpoint service configuration. You
 can change the Network Load Balancers or Gateway Load Balancers for your

@@ -15,6 +15,18 @@ For more information, see the \href{https://graphql.org/learn/schema/}{GraphQL S
 
 \item{format}{[required] The type format: SDL or JSON.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  type = list(
+    name = "string",
+    description = "string",
+    arn = "string",
+    definition = "string",
+    format = "SDL"|"JSON"
+  )
+)
+}
+}
 \description{
 Creates a \code{Type} object.
 }

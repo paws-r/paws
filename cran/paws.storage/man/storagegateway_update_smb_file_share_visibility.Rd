@@ -13,6 +13,12 @@ storagegateway_update_smb_file_share_visibility(GatewayARN,
 
 \item{FileSharesVisible}{[required] The shares on this gateway appear when listing shares.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Controls whether the shares on a gateway are visible in a net view or
 browse list.

@@ -15,6 +15,9 @@ connect_suspend_contact_recording(InstanceId, ContactId,
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 }
+\value{
+An empty list.
+}
 \description{
 When a contact is being recorded, this API suspends recording the call.
 For example, you might suspend the call recording while collecting

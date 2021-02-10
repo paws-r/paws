@@ -22,6 +22,19 @@ journey metrics.}
 response. This parameter is not supported for application, campaign, and
 journey metrics.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JourneyExecutionMetricsResponse = list(
+    ApplicationId = "string",
+    JourneyId = "string",
+    LastEvaluatedTime = "string",
+    Metrics = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves (queries) pre-aggregated data for a standard execution metric
 that applies to a journey.

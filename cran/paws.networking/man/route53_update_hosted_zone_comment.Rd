@@ -13,6 +13,25 @@ route53_update_hosted_zone_comment(Id, Comment)
 \code{Comment}, Amazon Route 53 deletes the existing value of the \code{Comment}
 element, if any.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HostedZone = list(
+    Id = "string",
+    Name = "string",
+    CallerReference = "string",
+    Config = list(
+      Comment = "string",
+      PrivateZone = TRUE|FALSE
+    ),
+    ResourceRecordSetCount = 123,
+    LinkedService = list(
+      ServicePrincipal = "string",
+      Description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the comment for a specified hosted zone.
 }

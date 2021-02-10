@@ -14,6 +14,25 @@ provide this token to receive the next set of results.}
 
 \item{MaxResults}{The maximum number of items to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Result = list(
+    list(
+      groupId = "string",
+      groupName = "string",
+      groupDesc = "string",
+      userRules = list(
+        list(
+          ipRule = "string",
+          ruleDesc = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your IP access control groups.
 }

@@ -19,6 +19,31 @@ pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterType = "DEFAULT"|"NODE_TYPE_SPECIFIC",
+      ParameterValue = "string",
+      NodeTypeSpecificValues = list(
+        list(
+          NodeType = "string",
+          Value = "string"
+        )
+      ),
+      Description = "string",
+      Source = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = "TRUE"|"FALSE"|"CONDITIONAL",
+      ChangeType = "IMMEDIATE"|"REQUIRES_REBOOT"
+    )
+  )
+)
+}
+}
 \description{
 Returns the default system parameter information for the DAX caching
 software.

@@ -14,6 +14,9 @@ workmail_create_alias(OrganizationId, EntityId, Alias)
 
 \item{Alias}{[required] The alias to add to the member set.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds an alias to the set of a given member (user or group) of Amazon
 WorkMail.

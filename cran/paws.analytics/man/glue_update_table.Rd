@@ -21,6 +21,9 @@ archived version of the table before updating it. However, if
 \code{skipArchive} is set to true, \code{\link[=glue_update_table]{update_table}} does
 not create the archived version.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a metadata table in the Data Catalog.
 }

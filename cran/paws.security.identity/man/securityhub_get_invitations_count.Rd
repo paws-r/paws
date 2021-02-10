@@ -8,6 +8,12 @@ invitation}
 \usage{
 securityhub_get_invitations_count()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InvitationsCount = 123
+)
+}
+}
 \description{
 Returns the count of all Security Hub membership invitations that were
 sent to the current member account, not including the currently accepted

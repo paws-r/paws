@@ -12,6 +12,9 @@ cloudfront_delete_field_level_encryption_config(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 configuration identity to delete. For example: \code{E2QWRUHAPOMQZL}.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove a field-level encryption configuration.
 }

@@ -18,6 +18,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{TagKeys}{A list of tag keys. Each corresponding tag is removed from the vault.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation removes one or more tags from the set of tags attached to
 a vault. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.

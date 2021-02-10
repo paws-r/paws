@@ -12,6 +12,9 @@ opsworks_assign_volume(VolumeId, InstanceId)
 
 \item{InstanceId}{The instance ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Assigns one of the stack's registered Amazon EBS volumes to a specified
 instance. The volume must first be registered with the stack by calling

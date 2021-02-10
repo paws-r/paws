@@ -58,6 +58,12 @@ before it is terminated and enters \code{TIMEOUT} status. The default is
 \item{MaxRetries}{The maximum number of times to retry a task for this transform after a
 task run fails.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformId = "string"
+)
+}
+}
 \description{
 Updates an existing machine learning transform. Call this operation to
 tune the algorithm parameters to achieve better results.

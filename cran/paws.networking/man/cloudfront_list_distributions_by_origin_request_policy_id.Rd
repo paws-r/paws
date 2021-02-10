@@ -20,6 +20,21 @@ page’s response.}
 \item{OriginRequestPolicyId}{[required] The ID of the origin request policy whose associated distribution IDs
 you want to list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DistributionIdList = list(
+    Marker = "string",
+    NextMarker = "string",
+    MaxItems = 123,
+    IsTruncated = TRUE|FALSE,
+    Quantity = 123,
+    Items = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of distribution IDs for distributions that have a cache
 behavior that’s associated with the specified origin request policy.

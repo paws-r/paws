@@ -12,6 +12,9 @@ workspaces_modify_workspace_creation_properties(ResourceId,
 
 \item{WorkspaceCreationProperties}{[required] The default properties for creating WorkSpaces.}
 }
+\value{
+An empty list.
+}
 \description{
 Modify the default properties used to create WorkSpaces.
 }

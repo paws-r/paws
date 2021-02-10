@@ -10,6 +10,68 @@ sms_get_app_validation_configuration(appId)
 \arguments{
 \item{appId}{[required] The ID of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  appValidationConfigurations = list(
+    list(
+      validationId = "string",
+      name = "string",
+      appValidationStrategy = "SSM",
+      ssmValidationParameters = list(
+        source = list(
+          s3Location = list(
+            bucket = "string",
+            key = "string"
+          )
+        ),
+        instanceId = "string",
+        scriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT",
+        command = "string",
+        executionTimeoutSeconds = 123,
+        outputS3BucketName = "string"
+      )
+    )
+  ),
+  serverGroupValidationConfigurations = list(
+    list(
+      serverGroupId = "string",
+      serverValidationConfigurations = list(
+        list(
+          server = list(
+            serverId = "string",
+            serverType = "VIRTUAL_MACHINE",
+            vmServer = list(
+              vmServerAddress = list(
+                vmManagerId = "string",
+                vmId = "string"
+              ),
+              vmName = "string",
+              vmManagerName = "string",
+              vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+              vmPath = "string"
+            ),
+            replicationJobId = "string",
+            replicationJobTerminated = TRUE|FALSE
+          ),
+          validationId = "string",
+          name = "string",
+          serverValidationStrategy = "USERDATA",
+          userDataValidationParameters = list(
+            source = list(
+              s3Location = list(
+                bucket = "string",
+                key = "string"
+              )
+            ),
+            scriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about a configuration for validating an
 application.

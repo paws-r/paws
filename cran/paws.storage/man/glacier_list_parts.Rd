@@ -28,6 +28,23 @@ previous List Parts request.}
 number of parts returned might be fewer than the specified limit, but
 the number of returned parts never exceeds the limit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MultipartUploadId = "string",
+  VaultARN = "string",
+  ArchiveDescription = "string",
+  PartSizeInBytes = 123,
+  CreationDate = "string",
+  Parts = list(
+    list(
+      RangeInBytes = "string",
+      SHA256TreeHash = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 This operation lists the parts of an archive that have been uploaded in
 a specific multipart upload. You can make this request at any time
@@ -70,7 +87,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 # The example lists all the parts of a multipart upload.
 svc$list_parts(
   accountId = "-",
-  uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ...",
+  uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYt...",
   vaultName = "examplevault"
 )
 }

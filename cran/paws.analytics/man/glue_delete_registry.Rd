@@ -10,6 +10,14 @@ glue_delete_registry(RegistryId)
 \item{RegistryId}{[required] This is a wrapper structure that may contain the registry name and
 Amazon Resource Name (ARN).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegistryName = "string",
+  RegistryArn = "string",
+  Status = "AVAILABLE"|"DELETING"
+)
+}
+}
 \description{
 Delete the entire registry including schema and all of its versions. To
 get the status of the delete operation, you can call the

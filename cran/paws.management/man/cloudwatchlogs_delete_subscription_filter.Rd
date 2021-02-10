@@ -11,6 +11,9 @@ cloudwatchlogs_delete_subscription_filter(logGroupName, filterName)
 
 \item{filterName}{[required] The name of the subscription filter.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified subscription filter.
 }

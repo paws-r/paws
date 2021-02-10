@@ -27,6 +27,12 @@ uploaded ThreatIntelSet.}
 
 \item{Tags}{The tags to be added to a new threat list resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThreatIntelSetId = "string"
+)
+}
+}
 \description{
 Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious
 IP addresses. GuardDuty generates findings based on ThreatIntelSets.

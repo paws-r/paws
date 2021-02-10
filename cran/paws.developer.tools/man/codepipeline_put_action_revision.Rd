@@ -18,6 +18,13 @@ revision.}
 
 \item{actionRevision}{[required] Represents information about the version (or revision) of an action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  newRevision = TRUE|FALSE,
+  pipelineExecutionId = "string"
+)
+}
+}
 \description{
 Provides information to AWS CodePipeline about new revisions to a
 source.

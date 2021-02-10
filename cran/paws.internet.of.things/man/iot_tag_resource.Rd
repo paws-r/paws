@@ -11,6 +11,9 @@ iot_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] The new or modified tags for the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds to or modifies the tags of the given resource. Tags are metadata
 which can be used to manage a resource.

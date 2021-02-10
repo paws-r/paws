@@ -26,6 +26,30 @@ object.}
 \item{FacetFilter}{Used to filter the list of object attributes that are associated with a
 certain facet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Key = list(
+        SchemaArn = "string",
+        FacetName = "string",
+        Name = "string"
+      ),
+      Value = list(
+        StringValue = "string",
+        BinaryValue = raw,
+        BooleanValue = TRUE|FALSE,
+        NumberValue = "string",
+        DatetimeValue = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all attributes that are associated with an object.
 }

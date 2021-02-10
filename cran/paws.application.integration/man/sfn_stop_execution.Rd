@@ -13,6 +13,14 @@ sfn_stop_execution(executionArn, error, cause)
 
 \item{cause}{A more detailed explanation of the cause of the failure.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  stopDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Stops an execution.
 

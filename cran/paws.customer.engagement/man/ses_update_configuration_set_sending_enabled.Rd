@@ -14,6 +14,9 @@ ses_update_configuration_set_sending_enabled(ConfigurationSetName,
 \item{Enabled}{[required] Describes whether email sending is enabled or disabled for the
 configuration set.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables or disables email sending for messages sent using a specific
 configuration set in a given AWS Region. You can use this operation in

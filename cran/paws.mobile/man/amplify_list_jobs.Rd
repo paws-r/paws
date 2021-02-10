@@ -17,6 +17,31 @@ in here to list more steps.}
 
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobSummaries = list(
+    list(
+      jobArn = "string",
+      jobId = "string",
+      commitId = "string",
+      commitMessage = "string",
+      commitTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+      endTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the jobs for a branch of an Amplify app.
 }

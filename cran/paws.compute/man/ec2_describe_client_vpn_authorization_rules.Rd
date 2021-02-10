@@ -30,6 +30,25 @@ authorization rule grants access.
 page. The remaining results can be seen by sending another request with
 the nextToken value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthorizationRules = list(
+    list(
+      ClientVpnEndpointId = "string",
+      Description = "string",
+      GroupId = "string",
+      AccessAll = TRUE|FALSE,
+      DestinationCidr = "string",
+      Status = list(
+        Code = "authorizing"|"active"|"failed"|"revoking",
+        Message = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the authorization rules for a specified Client VPN endpoint.
 }

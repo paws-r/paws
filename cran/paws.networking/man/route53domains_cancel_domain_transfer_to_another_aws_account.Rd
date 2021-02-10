@@ -11,6 +11,12 @@ route53domains_cancel_domain_transfer_to_another_aws_account(DomainName)
 \item{DomainName}{[required] The name of the domain for which you want to cancel the transfer to
 another AWS account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Cancels the transfer of a domain from the current AWS account to another
 AWS account. You initiate a transfer between AWS accounts using

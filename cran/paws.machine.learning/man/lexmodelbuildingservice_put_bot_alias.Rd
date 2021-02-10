@@ -36,6 +36,40 @@ create an alias, you can't use the
 update the tags on a bot alias. To update tags, use the
 \code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  description = "string",
+  botVersion = "string",
+  botName = "string",
+  lastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  checksum = "string",
+  conversationLogs = list(
+    logSettings = list(
+      list(
+        logType = "AUDIO"|"TEXT",
+        destination = "CLOUDWATCH_LOGS"|"S3",
+        kmsKeyArn = "string",
+        resourceArn = "string",
+        resourcePrefix = "string"
+      )
+    ),
+    iamRoleArn = "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates an alias for the specified version of the bot or replaces an
 alias for the specified bot. To change the version of the bot that the

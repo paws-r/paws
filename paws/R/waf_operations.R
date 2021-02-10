@@ -55,6 +55,29 @@ NULL
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByteMatchSet = list(
+#'     ByteMatchSetId = "string",
+#'     Name = "string",
+#'     ByteMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TargetString = raw,
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+#'         PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_byte_match_set(
@@ -130,6 +153,24 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 #' `Name` after you create the `GeoMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GeoMatchSet = list(
+#'     GeoMatchSetId = "string",
+#'     Name = "string",
+#'     GeoMatchConstraints = list(
+#'       list(
+#'         Type = "Country",
+#'         Value = "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -207,6 +248,24 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 #' after you create the `IPSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IPSet = list(
+#'     IPSetId = "string",
+#'     Name = "string",
+#'     IPSetDescriptors = list(
+#'       list(
+#'         Type = "IPV4"|"IPV6",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -342,7 +401,7 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
 #' maximum length 128 and minimum length one. It can't contain whitespace
 #' or metric names reserved for AWS WAF, including "All" and
-#' "Default\\_Action." You can't change the name of the metric after you
+#' "Default_Action." You can't change the name of the metric after you
 #' create the `RateBasedRule`.
 #' @param RateKey &#91;required&#93; The field that AWS WAF uses to determine if requests are likely arriving
 #' from a single source and thus subject to rate monitoring. The only valid
@@ -360,6 +419,28 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' information, see
 #' [`get_change_token_status`][waf_get_change_token_status].
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rule = list(
+#'     RuleId = "string",
+#'     Name = "string",
+#'     MetricName = "string",
+#'     MatchPredicates = list(
+#'       list(
+#'         Negated = TRUE|FALSE,
+#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+#'         DataId = "string"
+#'       )
+#'     ),
+#'     RateKey = "IP",
+#'     RateLimit = 123
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -418,8 +499,8 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #' values of the `User-Agent` header or the query string. For example, you
 #' can create a `RegexMatchSet` that contains a `RegexMatchTuple` that
 #' looks for any requests with `User-Agent` headers that match a
-#' `RegexPatternSet` with pattern `B\\[a@@\\]dB\\[o0\\]t`. You can then
-#' configure AWS WAF to reject those requests.
+#' `RegexPatternSet` with pattern `B[a@@]dB[o0]t`. You can then configure
+#' AWS WAF to reject those requests.
 #' 
 #' To create and configure a `RegexMatchSet`, perform the following steps:
 #' 
@@ -450,6 +531,28 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #' `Name` after you create a `RegexMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegexMatchSet = list(
+#'     RegexMatchSetId = "string",
+#'     Name = "string",
+#'     RegexMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+#'         RegexPatternSetId = "string"
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -496,8 +599,8 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 #' Creates a `RegexPatternSet`. You then use
 #' [`update_regex_pattern_set`][waf_update_regex_pattern_set] to specify
 #' the regular expression (regex) pattern that you want AWS WAF to search
-#' for, such as `B\\[a@@\\]dB\\[o0\\]t`. You can then configure AWS WAF to
-#' reject those requests.
+#' for, such as `B[a@@]dB[o0]t`. You can then configure AWS WAF to reject
+#' those requests.
 #' 
 #' To create and configure a `RegexPatternSet`, perform the following
 #' steps:
@@ -527,6 +630,21 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 #' `Name` after you create a `RegexPatternSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegexPatternSet = list(
+#'     RegexPatternSetId = "string",
+#'     Name = "string",
+#'     RegexPatternStrings = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -621,11 +739,31 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `Rule`. The name
 #' can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
 #' length 128 and minimum length one. It can't contain whitespace or metric
-#' names reserved for AWS WAF, including "All" and "Default\\_Action." You
+#' names reserved for AWS WAF, including "All" and "Default_Action." You
 #' can't change the name of the metric after you create the `Rule`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rule = list(
+#'     RuleId = "string",
+#'     Name = "string",
+#'     MetricName = "string",
+#'     Predicates = list(
+#'       list(
+#'         Negated = TRUE|FALSE,
+#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+#'         DataId = "string"
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -713,11 +851,24 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
 #' maximum length 128 and minimum length one. It can't contain whitespace
 #' or metric names reserved for AWS WAF, including "All" and
-#' "Default\\_Action." You can't change the name of the metric after you
+#' "Default_Action." You can't change the name of the metric after you
 #' create the `RuleGroup`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleGroup = list(
+#'     RuleGroupId = "string",
+#'     Name = "string",
+#'     MetricName = "string"
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -811,6 +962,29 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SizeConstraintSet = list(
+#'     SizeConstraintSetId = "string",
+#'     Name = "string",
+#'     SizeConstraints = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+#'         ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'         Size = 123
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_size_constraint_set(
@@ -902,6 +1076,27 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 #' `SqlInjectionMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SqlInjectionMatchSet = list(
+#'     SqlInjectionMatchSetId = "string",
+#'     Name = "string",
+#'     SqlInjectionMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1008,7 +1203,7 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
 #' maximum length 128 and minimum length one. It can't contain whitespace
 #' or metric names reserved for AWS WAF, including "All" and
-#' "Default\\_Action." You can't change `MetricName` after you create the
+#' "Default_Action." You can't change `MetricName` after you create the
 #' `WebACL`.
 #' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn't match
 #' the criteria specified in any of the `Rule` objects that are associated
@@ -1016,6 +1211,41 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebACL = list(
+#'     WebACLId = "string",
+#'     Name = "string",
+#'     MetricName = "string",
+#'     DefaultAction = list(
+#'       Type = "BLOCK"|"ALLOW"|"COUNT"
+#'     ),
+#'     Rules = list(
+#'       list(
+#'         Priority = 123,
+#'         RuleId = "string",
+#'         Action = list(
+#'           Type = "BLOCK"|"ALLOW"|"COUNT"
+#'         ),
+#'         OverrideAction = list(
+#'           Type = "NONE"|"COUNT"
+#'         ),
+#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
+#'         ExcludedRules = list(
+#'           list(
+#'             RuleId = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     WebACLArn = "string"
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1110,6 +1340,14 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tag
 #' web ACL during the migration. Otherwise, if AWS WAF encounters
 #' unsupported entities, it stops the process and throws an exception.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   S3ObjectUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_web_acl_migration_stack(
@@ -1185,6 +1423,27 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
 #' You can't change `Name` after you create the `XssMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   XssMatchSet = list(
+#'     XssMatchSetId = "string",
+#'     Name = "string",
+#'     XssMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'       )
+#'     )
+#'   ),
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1268,6 +1527,14 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_byte_match_set(
@@ -1348,6 +1615,14 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_geo_match_set(
@@ -1417,6 +1692,14 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_ip_set(
@@ -1477,6 +1760,9 @@ waf_delete_ip_set <- function(IPSetId, ChangeToken) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
 #' delete the LoggingConfiguration.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_logging_configuration(
@@ -1529,6 +1815,9 @@ waf_delete_logging_configuration <- function(ResourceArn) {
 #' delete the policy.
 #' 
 #' The user making the request must be the owner of the RuleGroup.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1600,6 +1889,14 @@ waf_delete_permission_policy <- function(ResourceArn) {
 #' by [`list_rate_based_rules`][waf_list_rate_based_rules].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1673,6 +1970,14 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_regex_match_set(
@@ -1728,6 +2033,14 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #' [`list_regex_pattern_sets`][waf_list_regex_pattern_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1798,6 +2111,14 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
 #' [`list_rules`][waf_list_rules].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1878,6 +2199,14 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_rule_group(
@@ -1952,6 +2281,14 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' [`list_size_constraint_sets`][waf_list_size_constraint_sets].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2039,6 +2376,14 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_sql_injection_match_set(
@@ -2113,6 +2458,14 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' [`list_web_ac_ls`][waf_list_web_ac_ls].
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2195,6 +2548,14 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_xss_match_set(
@@ -2256,6 +2617,28 @@ waf_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #' `ByteMatchSetId` is returned by
 #' [`create_byte_match_set`][waf_create_byte_match_set] and by
 #' [`list_byte_match_sets`][waf_list_byte_match_sets].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByteMatchSet = list(
+#'     ByteMatchSetId = "string",
+#'     Name = "string",
+#'     ByteMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TargetString = raw,
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+#'         PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2329,6 +2712,14 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
 #' @usage
 #' waf_get_change_token()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_change_token()
@@ -2395,6 +2786,14 @@ waf_get_change_token <- function() {
 #' was previously returned in the
 #' [`get_change_token`][waf_get_change_token] response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeTokenStatus = "PROVISIONED"|"PENDING"|"INSYNC"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_change_token_status(
@@ -2455,6 +2854,23 @@ waf_get_change_token_status <- function(ChangeToken) {
 #' [`create_geo_match_set`][waf_create_geo_match_set] and by
 #' [`list_geo_match_sets`][waf_list_geo_match_sets].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GeoMatchSet = list(
+#'     GeoMatchSetId = "string",
+#'     Name = "string",
+#'     GeoMatchConstraints = list(
+#'       list(
+#'         Type = "Country",
+#'         Value = "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_geo_match_set(
@@ -2504,6 +2920,23 @@ waf_get_geo_match_set <- function(GeoMatchSetId) {
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to get. `IPSetId` is returned
 #' by [`create_ip_set`][waf_create_ip_set] and by
 #' [`list_ip_sets`][waf_list_ip_sets].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IPSet = list(
+#'     IPSetId = "string",
+#'     Name = "string",
+#'     IPSetDescriptors = list(
+#'       list(
+#'         Type = "IPV4"|"IPV6",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2563,6 +2996,25 @@ waf_get_ip_set <- function(IPSetId) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
 #' the LoggingConfiguration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfiguration = list(
+#'     ResourceArn = "string",
+#'     LogDestinationConfigs = list(
+#'       "string"
+#'     ),
+#'     RedactedFields = list(
+#'       list(
+#'         Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'         Data = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_logging_configuration(
@@ -2611,6 +3063,14 @@ waf_get_logging_configuration <- function(ResourceArn) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup for which you want to
 #' get the policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2663,6 +3123,27 @@ waf_get_permission_policy <- function(ResourceArn) {
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to get. `RuleId` is
 #' returned by [`create_rate_based_rule`][waf_create_rate_based_rule] and
 #' by [`list_rate_based_rules`][waf_list_rate_based_rules].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rule = list(
+#'     RuleId = "string",
+#'     Name = "string",
+#'     MetricName = "string",
+#'     MatchPredicates = list(
+#'       list(
+#'         Negated = TRUE|FALSE,
+#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+#'         DataId = "string"
+#'       )
+#'     ),
+#'     RateKey = "IP",
+#'     RateLimit = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2721,6 +3202,17 @@ waf_get_rate_based_rule <- function(RuleId) {
 #' @param NextMarker A null value and not currently used. Do not include this in your
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedKeys = list(
+#'     "string"
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_rate_based_rule_managed_keys(
@@ -2773,6 +3265,27 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
 #' [`create_regex_match_set`][waf_create_regex_match_set] and by
 #' [`list_regex_match_sets`][waf_list_regex_match_sets].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegexMatchSet = list(
+#'     RegexMatchSetId = "string",
+#'     Name = "string",
+#'     RegexMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+#'         RegexPatternSetId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_regex_match_set(
@@ -2824,6 +3337,20 @@ waf_get_regex_match_set <- function(RegexMatchSetId) {
 #' [`create_regex_pattern_set`][waf_create_regex_pattern_set] and by
 #' [`list_regex_pattern_sets`][waf_list_regex_pattern_sets].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegexPatternSet = list(
+#'     RegexPatternSetId = "string",
+#'     Name = "string",
+#'     RegexPatternStrings = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_regex_pattern_set(
@@ -2873,6 +3400,25 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to get. `RuleId` is returned by
 #' [`create_rule`](waf_create_rule) and by [`list_rules`][waf_list_rules].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rule = list(
+#'     RuleId = "string",
+#'     Name = "string",
+#'     MetricName = "string",
+#'     Predicates = list(
+#'       list(
+#'         Negated = TRUE|FALSE,
+#'         Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+#'         DataId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2936,6 +3482,18 @@ waf_get_rule <- function(RuleId) {
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to get. `RuleGroupId`
 #' is returned by [`create_rule_group`][waf_create_rule_group] and by
 #' [`list_rule_groups`][waf_list_rule_groups].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleGroup = list(
+#'     RuleGroupId = "string",
+#'     Name = "string",
+#'     MetricName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3021,6 +3579,45 @@ waf_get_rule_group <- function(RuleGroupId) {
 #' `MaxItems`, [`get_sampled_requests`][waf_get_sampled_requests] returns
 #' information about all of them.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SampledRequests = list(
+#'     list(
+#'       Request = list(
+#'         ClientIP = "string",
+#'         Country = "string",
+#'         URI = "string",
+#'         Method = "string",
+#'         HTTPVersion = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       Weight = 123,
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Action = "string",
+#'       RuleWithinRuleGroup = "string"
+#'     )
+#'   ),
+#'   PopulationSize = 123,
+#'   TimeWindow = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sampled_requests(
@@ -3099,6 +3696,28 @@ waf_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
 #' [`create_size_constraint_set`][waf_create_size_constraint_set] and by
 #' [`list_size_constraint_sets`][waf_list_size_constraint_sets].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SizeConstraintSet = list(
+#'     SizeConstraintSetId = "string",
+#'     Name = "string",
+#'     SizeConstraints = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+#'         ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'         Size = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_size_constraint_set(
@@ -3161,6 +3780,26 @@ waf_get_size_constraint_set <- function(SizeConstraintSetId) {
 #' and by
 #' [`list_sql_injection_match_sets`][waf_list_sql_injection_match_sets].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SqlInjectionMatchSet = list(
+#'     SqlInjectionMatchSetId = "string",
+#'     Name = "string",
+#'     SqlInjectionMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sql_injection_match_set(
@@ -3219,6 +3858,40 @@ waf_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to get. `WebACLId` is
 #' returned by [`create_web_acl`][waf_create_web_acl] and by
 #' [`list_web_ac_ls`][waf_list_web_ac_ls].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebACL = list(
+#'     WebACLId = "string",
+#'     Name = "string",
+#'     MetricName = "string",
+#'     DefaultAction = list(
+#'       Type = "BLOCK"|"ALLOW"|"COUNT"
+#'     ),
+#'     Rules = list(
+#'       list(
+#'         Priority = 123,
+#'         RuleId = "string",
+#'         Action = list(
+#'           Type = "BLOCK"|"ALLOW"|"COUNT"
+#'         ),
+#'         OverrideAction = list(
+#'           Type = "NONE"|"COUNT"
+#'         ),
+#'         Type = "REGULAR"|"RATE_BASED"|"GROUP",
+#'         ExcludedRules = list(
+#'           list(
+#'             RuleId = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     WebACLArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3279,6 +3952,26 @@ waf_get_web_acl <- function(WebACLId) {
 #' `XssMatchSetId` is returned by
 #' [`create_xss_match_set`][waf_create_xss_match_set] and by
 #' [`list_xss_match_sets`][waf_list_xss_match_sets].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   XssMatchSet = list(
+#'     XssMatchSetId = "string",
+#'     Name = "string",
+#'     XssMatchTuples = list(
+#'       list(
+#'         FieldToMatch = list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         ),
+#'         TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3349,6 +4042,32 @@ waf_get_xss_match_set <- function(XssMatchSetId) {
 #' you specify for `Limit`, the response includes a `NextMarker` value that
 #' you can use to get another batch of `ActivatedRules`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   ActivatedRules = list(
+#'     list(
+#'       Priority = 123,
+#'       RuleId = "string",
+#'       Action = list(
+#'         Type = "BLOCK"|"ALLOW"|"COUNT"
+#'       ),
+#'       OverrideAction = list(
+#'         Type = "NONE"|"COUNT"
+#'       ),
+#'       Type = "REGULAR"|"RATE_BASED"|"GROUP",
+#'       ExcludedRules = list(
+#'         list(
+#'           RuleId = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_activated_rules_in_rule_group(
@@ -3409,6 +4128,20 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
 #' the number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `ByteMatchSet` objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   ByteMatchSets = list(
+#'     list(
+#'       ByteMatchSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_byte_match_sets(
@@ -3468,6 +4201,20 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `GeoMatchSet` objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   GeoMatchSets = list(
+#'     list(
+#'       GeoMatchSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_geo_match_sets(
@@ -3524,6 +4271,20 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' for this request. If you have more `IPSet` objects than the number you
 #' specify for `Limit`, the response includes a `NextMarker` value that you
 #' can use to get another batch of `IPSet` objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   IPSets = list(
+#'     list(
+#'       IPSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3594,6 +4355,28 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' `NextMarker` value that you can use to get another batch of
 #' `LoggingConfigurations`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfigurations = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       LogDestinationConfigs = list(
+#'         "string"
+#'       ),
+#'       RedactedFields = list(
+#'         list(
+#'           Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'           Data = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_logging_configurations(
@@ -3651,6 +4434,20 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
 #' request. If you have more `Rules` than the number that you specify for
 #' `Limit`, the response includes a `NextMarker` value that you can use to
 #' get another batch of `Rules`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   Rules = list(
+#'     list(
+#'       RuleId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3710,6 +4507,20 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' return for this request. If you have more `RegexMatchSet` objects than
 #' the number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `RegexMatchSet` objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   RegexMatchSets = list(
+#'     list(
+#'       RegexMatchSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3771,6 +4582,20 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' `NextMarker` value that you can use to get another batch of
 #' `RegexPatternSet` objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   RegexPatternSets = list(
+#'     list(
+#'       RegexPatternSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_regex_pattern_sets(
@@ -3829,6 +4654,20 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' specify for `Limit`, the response includes a `NextMarker` value that you
 #' can use to get another batch of `RuleGroups`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   RuleGroups = list(
+#'     list(
+#'       RuleGroupId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_rule_groups(
@@ -3886,6 +4725,20 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' request. If you have more `Rules` than the number that you specify for
 #' `Limit`, the response includes a `NextMarker` value that you can use to
 #' get another batch of `Rules`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   Rules = list(
+#'     list(
+#'       RuleId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3955,6 +4808,20 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' `NextMarker` value that you can use to get another batch of
 #' `SizeConstraintSet` objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   SizeConstraintSets = list(
+#'     list(
+#'       SizeConstraintSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_size_constraint_sets(
@@ -4022,6 +4889,20 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' WAF to return for this request. If you have more `SqlInjectionMatchSet`
 #' objects than the number you specify for `Limit`, the response includes a
 #' `NextMarker` value that you can use to get another batch of `Rules`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   SqlInjectionMatchSets = list(
+#'     list(
+#'       SqlInjectionMatchSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4091,6 +4972,21 @@ waf_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' specify for `Limit`, the response includes a `NextMarker` value that you
 #' can use to get another batch of objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   RuleGroups = list(
+#'     list(
+#'       RuleGroupId = "string",
+#'       Name = "string",
+#'       MetricName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_subscribed_rule_groups(
@@ -4152,6 +5048,23 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' @param Limit 
 #' @param ResourceARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   TagInfoForResource = list(
+#'     ResourceARN = "string",
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -4211,6 +5124,20 @@ waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resource
 #' for this request. If you have more `WebACL` objects than the number that
 #' you specify for `Limit`, the response includes a `NextMarker` value that
 #' you can use to get another batch of `WebACL` objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   WebACLs = list(
+#'     list(
+#'       WebACLId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4278,6 +5205,20 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #' return for this request. If you have more `XssMatchSet` objects than the
 #' number you specify for `Limit`, the response includes a `NextMarker`
 #' value that you can use to get another batch of `Rules`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   XssMatchSets = list(
+#'     list(
+#'       XssMatchSetId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4364,6 +5305,25 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' 
 #' When specifying `Type` in `RedactedFields`, you must use one of the
 #' following values: `URI`, `QUERY_STRING`, `HEADER`, or `METHOD`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfiguration = list(
+#'     ResourceArn = "string",
+#'     LogDestinationConfigs = list(
+#'       "string"
+#'     ),
+#'     RedactedFields = list(
+#'       list(
+#'         Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+#'         Data = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4457,6 +5417,9 @@ waf_put_logging_configuration <- function(LoggingConfiguration) {
 #' attach the policy.
 #' @param Policy &#91;required&#93; The policy to attach to the specified RuleGroup.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_permission_policy(
@@ -4516,6 +5479,9 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
 #' @param ResourceARN &#91;required&#93; 
 #' @param Tags &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -4568,6 +5534,9 @@ waf_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @param ResourceARN &#91;required&#93; 
 #' @param TagKeys &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4676,6 +5645,14 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
 #'     `TargetString`, and `TextTransformation`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4810,6 +5787,14 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 #'     To add multiple countries, include multiple `GeoMatchSetUpdate`
 #'     objects in your request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_geo_match_set(
@@ -4935,6 +5920,14 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #' -   IPSetDescriptor: Contains `Type` and `Value`
 #' 
 #' You can insert a maximum of 1000 addresses in a single request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5064,6 +6057,14 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' specified in the rule are also met, AWS WAF triggers the action that is
 #' specified for this rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_rate_based_rule(
@@ -5136,8 +6137,7 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 #' 
 #' For example, you can create a `RegexPatternSet` that matches any
 #' requests with `User-Agent` headers that contain the string
-#' `B\\[a@@\\]dB\\[o0\\]t`. You can then configure AWS WAF to reject those
-#' requests.
+#' `B[a@@]dB[o0]t`. You can then configure AWS WAF to reject those requests.
 #' 
 #' To create and configure a `RegexMatchSet`, perform the following steps:
 #' 
@@ -5170,6 +6170,14 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 #' RegexMatchTuple.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5235,7 +6243,7 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 #'     For more information, see RegexPatternSet.
 #' 
 #' For example, you can create a `RegexPatternString` such as
-#' `B\\[a@@\\]dB\\[o0\\]t`. AWS WAF will match this `RegexPatternString` to:
+#' `B[a@@]dB[o0]t`. AWS WAF will match this `RegexPatternString` to:
 #' 
 #' -   BadBot
 #' 
@@ -5274,6 +6282,14 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 #' or delete from a RegexPatternSet.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5380,6 +6396,14 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 #' -   Predicate: Contains `DataId`, `Negated`, and `Type`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5500,6 +6524,14 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' `ActivatedRule|OverrideAction`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
 #' [`get_change_token`][waf_get_change_token].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5637,6 +6669,14 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #'     `ComparisonOperator`, and `Size`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5786,6 +6826,14 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_sql_injection_match_set(
@@ -5924,7 +6972,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #'     the rule group from the web ACL, the re-insert it again, specifying
 #'     the excluded rules. For details, see ActivatedRule$ExcludedRules .
 #' 
-#' Be aware that if you try to add a RATE\\_BASED rule to a web ACL without
+#' Be aware that if you try to add a RATE_BASED rule to a web ACL without
 #' setting the rule type when first creating the rule, the
 #' [`update_web_acl`][waf_update_web_acl] request will fail because the
 #' request tries to add a REGULAR rule (the default rule type) with the
@@ -5961,6 +7009,14 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' @param DefaultAction A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
 #' performs the default action if a request doesn't match the criteria in
 #' any of the rules in a web ACL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6111,6 +7167,14 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 #' -   XssMatchTuple: Contains `FieldToMatch` and `TextTransformation`
 #' 
 #' -   FieldToMatch: Contains `Data` and `Type`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

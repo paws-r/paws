@@ -23,7 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ImageId}{[required] The ID of the image.}
 
 \item{S3ExportLocation}{[required] Information about the destination Amazon S3 bucket. The bucket must
-exist and grant WRITE and READ\\_ACP permissions to the AWS account
+exist and grant WRITE and READ_ACP permissions to the AWS account
 vm-import-export@amazon.com.}
 
 \item{RoleName}{The name of the role that grants VM Import/Export permission to export
@@ -31,6 +31,29 @@ images to your Amazon S3 bucket. If this parameter is not specified, the
 default role is named 'vmimport'.}
 
 \item{TagSpecifications}{The tags to apply to the image being exported.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Description = "string",
+  DiskImageFormat = "VMDK"|"RAW"|"VHD",
+  ExportImageTaskId = "string",
+  ImageId = "string",
+  RoleName = "string",
+  Progress = "string",
+  S3ExportLocation = list(
+    S3Bucket = "string",
+    S3Prefix = "string"
+  ),
+  Status = "string",
+  StatusMessage = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Exports an Amazon Machine Image (AMI) to a VM file. For more

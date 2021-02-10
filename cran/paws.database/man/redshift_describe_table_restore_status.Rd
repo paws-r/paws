@@ -27,6 +27,32 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by the \code{MaxRecords}
 parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableRestoreStatusDetails = list(
+    list(
+      TableRestoreRequestId = "string",
+      Status = "PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED",
+      Message = "string",
+      RequestTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ProgressInMegaBytes = 123,
+      TotalDataInMegaBytes = 123,
+      ClusterIdentifier = "string",
+      SnapshotIdentifier = "string",
+      SourceDatabaseName = "string",
+      SourceSchemaName = "string",
+      SourceTableName = "string",
+      TargetDatabaseName = "string",
+      TargetSchemaName = "string",
+      NewTableName = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists the status of one or more table restore requests made using the
 \code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}

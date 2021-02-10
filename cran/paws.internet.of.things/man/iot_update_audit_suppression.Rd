@@ -19,6 +19,9 @@ suppression to adhere to.}
 
 \item{description}{The description of the audit suppression.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a Device Defender audit suppression.
 }

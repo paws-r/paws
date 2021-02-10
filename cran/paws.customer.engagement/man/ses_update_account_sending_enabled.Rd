@@ -11,6 +11,9 @@ ses_update_account_sending_enabled(Enabled)
 \item{Enabled}{Describes whether email sending is enabled or disabled for your Amazon
 SES account in the current AWS Region.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables or disables email sending across your entire Amazon SES account
 in the current AWS Region. You can use this operation in conjunction

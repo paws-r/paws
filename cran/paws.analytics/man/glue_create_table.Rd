@@ -19,6 +19,9 @@ catalog.}
 \item{PartitionIndexes}{A list of partition indexes, \code{PartitionIndex} structures, to create in
 the table.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new table definition in the Data Catalog.
 }

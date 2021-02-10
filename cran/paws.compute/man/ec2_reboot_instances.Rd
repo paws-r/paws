@@ -14,6 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Requests a reboot of the specified instances. This operation is
 asynchronous; it only queues a request to reboot the specified

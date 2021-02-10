@@ -36,6 +36,42 @@ parameter, see ScheduledAction.}
 not trigger. For more information about \code{state} of the scheduled action,
 see ScheduledAction.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScheduledActionName = "string",
+  TargetAction = list(
+    ResizeCluster = list(
+      ClusterIdentifier = "string",
+      ClusterType = "string",
+      NodeType = "string",
+      NumberOfNodes = 123,
+      Classic = TRUE|FALSE
+    ),
+    PauseCluster = list(
+      ClusterIdentifier = "string"
+    ),
+    ResumeCluster = list(
+      ClusterIdentifier = "string"
+    )
+  ),
+  Schedule = "string",
+  IamRole = "string",
+  ScheduledActionDescription = "string",
+  State = "ACTIVE"|"DISABLED",
+  NextInvocations = list(
+    as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a scheduled action. A scheduled action contains a schedule and
 an Amazon Redshift API action. For example, you can create a schedule of

@@ -9,6 +9,21 @@ mediastore_describe_container(ContainerName)
 \arguments{
 \item{ContainerName}{The name of the container to query.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Container = list(
+    Endpoint = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ARN = "string",
+    Name = "string",
+    Status = "ACTIVE"|"CREATING"|"DELETING",
+    AccessLoggingEnabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Retrieves the properties of the requested container. This request is
 commonly used to retrieve the endpoint of a container. An endpoint is a

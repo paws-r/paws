@@ -33,6 +33,16 @@ empty, OpsWorks for Chef Automate uses the most current version. In
 Puppet, this parameter is ignored.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EngineAttribute = list(
+    Name = "string",
+    Value = "string"
+  ),
+  ServerName = "string"
+)
+}
+}
 \description{
 Exports a specified server engine attribute as a base64-encoded string.
 For example, you can export user data that you can use in EC2 to

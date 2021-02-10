@@ -13,6 +13,9 @@ iot_set_v2_logging_options(roleArn, defaultLogLevel, disableAllLogs)
 
 \item{disableAllLogs}{If true all logs are disabled. The default is false.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the logging options for the V2 logging service.
 }

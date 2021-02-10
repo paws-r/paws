@@ -10,6 +10,12 @@ clouddirectory_get_applied_schema_version(SchemaArn)
 \arguments{
 \item{SchemaArn}{[required] The ARN of the applied schema.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppliedSchemaArn = "string"
+)
+}
+}
 \description{
 Returns current applied schema version ARN, including the minor version
 in use.

@@ -9,6 +9,9 @@ servicecatalog_delete_tag_option(Id)
 \arguments{
 \item{Id}{[required] The TagOption identifier.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified TagOption.
 

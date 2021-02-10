@@ -18,6 +18,25 @@ statements must be complete. You cannot provide only the changes.}
 retrieve this information by using
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  approvalRuleTemplate = list(
+    approvalRuleTemplateId = "string",
+    approvalRuleTemplateName = "string",
+    approvalRuleTemplateDescription = "string",
+    approvalRuleTemplateContent = "string",
+    ruleContentSha256 = "string",
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedUser = "string"
+  )
+)
+}
+}
 \description{
 Updates the content of an approval rule template. You can change the
 number of required approvals, the membership of the approval rule, and

@@ -66,6 +66,29 @@ The following values are supported for \code{Key}:
 
 Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SavingsPlansCoverages = list(
+    list(
+      Attributes = list(
+        "string"
+      ),
+      Coverage = list(
+        SpendCoveredBySavingsPlans = "string",
+        OnDemandCost = "string",
+        TotalCost = "string",
+        CoveragePercentage = "string"
+      ),
+      TimePeriod = list(
+        Start = "string",
+        End = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the Savings Plans covered for your account. This enables you
 to see how much of your cost is covered by a Savings Plan. An

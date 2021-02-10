@@ -17,6 +17,9 @@ or components, but not a mix of both types.}
 components, use \code{PAUSE} or \code{RESUME}. For instances, use \code{TRY_CANCEL},
 \code{RERUN}, or \code{MARK_FINISHED}.}
 }
+\value{
+An empty list.
+}
 \description{
 Requests that the status of the specified physical or logical pipeline
 objects be updated in the specified pipeline. This update might not

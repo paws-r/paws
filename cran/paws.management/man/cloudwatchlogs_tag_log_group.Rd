@@ -11,6 +11,9 @@ cloudwatchlogs_tag_log_group(logGroupName, tags)
 
 \item{tags}{[required] The key-value pairs to use for the tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or updates the specified tags for the specified log group.
 

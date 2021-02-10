@@ -33,6 +33,35 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcEndpointConnections = list(
+    list(
+      ServiceId = "string",
+      VpcEndpointId = "string",
+      VpcEndpointOwner = "string",
+      VpcEndpointState = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
+      CreationTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      DnsEntries = list(
+        list(
+          DnsName = "string",
+          HostedZoneId = "string"
+        )
+      ),
+      NetworkLoadBalancerArns = list(
+        "string"
+      ),
+      GatewayLoadBalancerArns = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the VPC endpoint connections to your VPC endpoint services,
 including any endpoints that are pending your acceptance.

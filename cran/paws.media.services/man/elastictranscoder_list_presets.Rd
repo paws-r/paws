@@ -17,6 +17,77 @@ order, enter \code{false}.}
 \code{pageToken} in subsequent \code{GET} requests to get each successive page of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Presets = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Description = "string",
+      Container = "string",
+      Audio = list(
+        Codec = "string",
+        SampleRate = "string",
+        BitRate = "string",
+        Channels = "string",
+        AudioPackingMode = "string",
+        CodecOptions = list(
+          Profile = "string",
+          BitDepth = "string",
+          BitOrder = "string",
+          Signed = "string"
+        )
+      ),
+      Video = list(
+        Codec = "string",
+        CodecOptions = list(
+          "string"
+        ),
+        KeyframesMaxDist = "string",
+        FixedGOP = "string",
+        BitRate = "string",
+        FrameRate = "string",
+        MaxFrameRate = "string",
+        Resolution = "string",
+        AspectRatio = "string",
+        MaxWidth = "string",
+        MaxHeight = "string",
+        DisplayAspectRatio = "string",
+        SizingPolicy = "string",
+        PaddingPolicy = "string",
+        Watermarks = list(
+          list(
+            Id = "string",
+            MaxWidth = "string",
+            MaxHeight = "string",
+            SizingPolicy = "string",
+            HorizontalAlign = "string",
+            HorizontalOffset = "string",
+            VerticalAlign = "string",
+            VerticalOffset = "string",
+            Opacity = "string",
+            Target = "string"
+          )
+        )
+      ),
+      Thumbnails = list(
+        Format = "string",
+        Interval = "string",
+        Resolution = "string",
+        AspectRatio = "string",
+        MaxWidth = "string",
+        MaxHeight = "string",
+        SizingPolicy = "string",
+        PaddingPolicy = "string"
+      ),
+      Type = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 The ListPresets operation gets a list of the default presets included
 with Elastic Transcoder and the presets that you've added in an AWS

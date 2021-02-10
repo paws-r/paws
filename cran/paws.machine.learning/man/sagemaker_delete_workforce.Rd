@@ -9,6 +9,9 @@ sagemaker_delete_workforce(WorkforceName)
 \arguments{
 \item{WorkforceName}{[required] The name of the workforce.}
 }
+\value{
+An empty list.
+}
 \description{
 Use this operation to delete a workforce.
 

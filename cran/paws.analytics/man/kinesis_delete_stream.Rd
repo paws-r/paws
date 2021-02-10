@@ -14,6 +14,9 @@ stream has registered consumers, the call to
 \code{\link[=kinesis_delete_stream]{delete_stream}} fails with a
 \code{ResourceInUseException}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Kinesis data stream and all its shards and data. You must shut
 down any applications that are operating on the stream before you delete

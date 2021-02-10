@@ -24,6 +24,12 @@ you try to start a new task with the same token as a task that already
 exists, an exception occurs. If you omit this value, a unique client
 request token is generated automatically.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskId = "string"
+)
+}
+}
 \description{
 Starts a task that applies a set of mitigation actions to the specified
 target.

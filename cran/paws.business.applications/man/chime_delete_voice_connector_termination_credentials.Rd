@@ -14,6 +14,9 @@ chime_delete_voice_connector_termination_credentials(VoiceConnectorId,
 \item{Usernames}{[required] The RFC2617 compliant username associated with the SIP credentials, in
 US-ASCII format.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified SIP credentials used by your equipment to
 authenticate during call termination.

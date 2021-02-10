@@ -15,6 +15,16 @@ apigateway_get_model(restApiId, modelName, flatten)
 model references and returns a flattened model schema or not (\code{false})
 The default is \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  schema = "string",
+  contentType = "string"
+)
+}
+}
 \description{
 Describes an existing model defined for a RestApi resource.
 }

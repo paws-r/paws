@@ -15,6 +15,9 @@ register as a delegated administrator.}
 \item{ServicePrincipal}{[required] The service principal of the AWS service for which you want to make the
 member account a delegated administrator.}
 }
+\value{
+An empty list.
+}
 \description{
 Enables the specified member account to administer the Organizations
 features of the specified AWS service. It grants read-only access to AWS

@@ -31,6 +31,9 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 \item{SessionPolicyArn}{[required] The Amazon Resource Name (ARN) of the session policy to associate with
 the specified user or group.}
 }
+\value{
+An empty list.
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

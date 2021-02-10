@@ -14,6 +14,18 @@ Amazon Resource Name (ARN).}
 a previous call to ListTagOfResource. When provided in this manner, this
 API fetches the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all tags on an Amazon DynamoDB resource. You can call
 ListTagsOfResource up to 10 times per second, per account.

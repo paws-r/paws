@@ -14,6 +14,9 @@ associated with the group, without waiting for all instances to be
 terminated. This parameter also deletes any lifecycle actions associated
 with the group.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Auto Scaling group.
 

@@ -28,6 +28,26 @@ arguments unchanged. Each pagination token expires after 24 hours. Using
 an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  executions = list(
+    list(
+      executionArn = "string",
+      stateMachineArn = "string",
+      name = "string",
+      status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+      startDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      stopDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the executions of a state machine that meet the filtering
 criteria. Results are sorted by time, with the most recent execution

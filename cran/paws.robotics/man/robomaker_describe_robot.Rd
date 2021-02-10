@@ -9,6 +9,27 @@ robomaker_describe_robot(robot)
 \arguments{
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  fleetArn = "string",
+  status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+  greengrassGroupId = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  architecture = "X86_64"|"ARM64"|"ARMHF",
+  lastDeploymentJob = "string",
+  lastDeploymentTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a robot.
 }

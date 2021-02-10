@@ -40,6 +40,25 @@ devices that meet the criteria specified in the \code{rules} parameter.
 If you use this parameter in your request, you cannot use the
 \code{maxDevices} parameter in the same request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  devicePool = list(
+    arn = "string",
+    name = "string",
+    description = "string",
+    type = "CURATED"|"PRIVATE",
+    rules = list(
+      list(
+        attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+        operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+        value = "string"
+      )
+    ),
+    maxDevices = 123
+  )
+)
+}
+}
 \description{
 Modifies the name, description, and rules in a device pool given the
 attributes and the pool ARN. Rule updates are all-or-nothing, meaning

@@ -10,6 +10,9 @@ batch_delete_job_queue(jobQueue)
 \item{jobQueue}{[required] The short name or full Amazon Resource Name (ARN) of the queue to
 delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified job queue. You must first disable submissions for
 a queue with the \code{\link[=batch_update_job_queue]{update_job_queue}} operation.

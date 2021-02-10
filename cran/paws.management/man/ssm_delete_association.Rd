@@ -14,6 +14,9 @@ ssm_delete_association(Name, InstanceId, AssociationId)
 
 \item{AssociationId}{The association ID that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates the specified Systems Manager document from the specified
 instance.

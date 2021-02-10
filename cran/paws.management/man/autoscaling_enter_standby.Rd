@@ -15,6 +15,29 @@ autoscaling_enter_standby(InstanceIds, AutoScalingGroupName,
 \item{ShouldDecrementDesiredCapacity}{[required] Indicates whether to decrement the desired capacity of the Auto Scaling
 group by the number of instances moved to \code{Standby} mode.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Activities = list(
+    list(
+      ActivityId = "string",
+      AutoScalingGroupName = "string",
+      Description = "string",
+      Cause = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+      StatusMessage = "string",
+      Progress = 123,
+      Details = "string"
+    )
+  )
+)
+}
+}
 \description{
 Moves the specified instances into the standby state.
 

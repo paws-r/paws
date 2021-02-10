@@ -42,6 +42,40 @@ vault to copy from; for example,
 \item{ByAccountId}{The account ID to list the jobs from. Returns only copy jobs associated
 with the specified account ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CopyJobs = list(
+    list(
+      AccountId = "string",
+      CopyJobId = "string",
+      SourceBackupVaultArn = "string",
+      SourceRecoveryPointArn = "string",
+      DestinationBackupVaultArn = "string",
+      DestinationRecoveryPointArn = "string",
+      ResourceArn = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompletionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      State = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
+      StatusMessage = "string",
+      BackupSizeInBytes = 123,
+      IamRoleArn = "string",
+      CreatedBy = list(
+        BackupPlanId = "string",
+        BackupPlanArn = "string",
+        BackupPlanVersion = "string",
+        BackupRuleId = "string"
+      ),
+      ResourceType = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns metadata about your copy jobs.
 }

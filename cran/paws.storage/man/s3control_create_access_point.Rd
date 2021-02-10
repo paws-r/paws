@@ -36,9 +36,15 @@ buckets.}
 
 \item{PublicAccessBlockConfiguration}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessPointArn = "string"
+)
+}
+}
 \description{
 Creates an access point and associates it with the specified bucket. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{Managing Data Access with Amazon S3 Access Points}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Using this action with Amazon S3 on Outposts}
@@ -52,7 +58,7 @@ Outposts only supports VPC style access points.
 \item Does not support object lock for S3 on Outposts buckets.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide} .
 
 All Amazon S3 on Outposts REST API requests for this action require an

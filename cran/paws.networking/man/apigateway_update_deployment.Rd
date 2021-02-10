@@ -15,6 +15,24 @@ information about.}
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  description = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  apiSummary = list(
+    list(
+      list(
+        authorizationType = "string",
+        apiKeyRequired = TRUE|FALSE
+      )
+    )
+  )
+)
+}
+}
 \description{
 Changes information about a Deployment resource.
 }

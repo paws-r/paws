@@ -11,6 +11,111 @@ cloudsearch_define_index_field(DomainName, IndexField)
 
 \item{IndexField}{[required] The index field and field options you want to configure.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IndexField = list(
+    Options = list(
+      IndexFieldName = "string",
+      IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
+      IntOptions = list(
+        DefaultValue = 123,
+        SourceField = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE,
+        SortEnabled = TRUE|FALSE
+      ),
+      DoubleOptions = list(
+        DefaultValue = 123.0,
+        SourceField = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE,
+        SortEnabled = TRUE|FALSE
+      ),
+      LiteralOptions = list(
+        DefaultValue = "string",
+        SourceField = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE,
+        SortEnabled = TRUE|FALSE
+      ),
+      TextOptions = list(
+        DefaultValue = "string",
+        SourceField = "string",
+        ReturnEnabled = TRUE|FALSE,
+        SortEnabled = TRUE|FALSE,
+        HighlightEnabled = TRUE|FALSE,
+        AnalysisScheme = "string"
+      ),
+      DateOptions = list(
+        DefaultValue = "string",
+        SourceField = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE,
+        SortEnabled = TRUE|FALSE
+      ),
+      LatLonOptions = list(
+        DefaultValue = "string",
+        SourceField = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE,
+        SortEnabled = TRUE|FALSE
+      ),
+      IntArrayOptions = list(
+        DefaultValue = 123,
+        SourceFields = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE
+      ),
+      DoubleArrayOptions = list(
+        DefaultValue = 123.0,
+        SourceFields = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE
+      ),
+      LiteralArrayOptions = list(
+        DefaultValue = "string",
+        SourceFields = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE
+      ),
+      TextArrayOptions = list(
+        DefaultValue = "string",
+        SourceFields = "string",
+        ReturnEnabled = TRUE|FALSE,
+        HighlightEnabled = TRUE|FALSE,
+        AnalysisScheme = "string"
+      ),
+      DateArrayOptions = list(
+        DefaultValue = "string",
+        SourceFields = "string",
+        FacetEnabled = TRUE|FALSE,
+        SearchEnabled = TRUE|FALSE,
+        ReturnEnabled = TRUE|FALSE
+      )
+    ),
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Configures an \code{IndexField} for the search domain. Used to create new
 fields and modify existing ones. You must specify the name of the domain

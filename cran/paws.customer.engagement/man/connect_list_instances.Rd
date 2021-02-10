@@ -14,6 +14,27 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceSummaryList = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      IdentityManagementType = "SAML"|"CONNECT_MANAGED"|"EXISTING_DIRECTORY",
+      InstanceAlias = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceRole = "string",
+      InstanceStatus = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED",
+      InboundCallsEnabled = TRUE|FALSE,
+      OutboundCallsEnabled = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

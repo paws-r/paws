@@ -24,6 +24,9 @@ processed by the actions in that stage (outbound).}
 for manual approval or manual tests. This message is displayed in the
 pipeline console UI.}
 }
+\value{
+An empty list.
+}
 \description{
 Prevents artifacts in a pipeline from transitioning to the next stage in
 the pipeline.

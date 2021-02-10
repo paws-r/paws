@@ -14,6 +14,9 @@ are the virtual private cloud (VPC) subnet IDs.}
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
 from.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove endpoints from a custom routing accelerator.
 }

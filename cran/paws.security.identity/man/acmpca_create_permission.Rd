@@ -26,6 +26,9 @@ include \code{\link[=acmpca_issue_certificate]{issue_certificate}},
 \code{\link[=acmpca_get_certificate]{get_certificate}}, and
 \code{\link[=acmpca_list_permissions]{list_permissions}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Grants one or more permissions on a private CA to the AWS Certificate
 Manager (ACM) service principal (\code{acm.amazonaws.com}). These permissions

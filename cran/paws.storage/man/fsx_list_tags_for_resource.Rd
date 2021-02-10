@@ -20,6 +20,18 @@ the request and the service's internal maximum number of items per page.}
 (String). If a token present, the action continues the list from where
 the returning call left off.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists tags for an Amazon FSx file systems and backups in the case of
 Amazon FSx for Windows File Server.

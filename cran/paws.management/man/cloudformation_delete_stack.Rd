@@ -48,6 +48,9 @@ the console, each stack event would be assigned the same token in the
 following format:
 \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified stack. Once the call completes successfully, stack
 deletion starts. Deleted stacks do not show up in the

@@ -23,6 +23,9 @@ Connector service account is not changed.}
 This is only used for AD Connector directories. For more information,
 see the \emph{UserName} parameter.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables single-sign on for a directory.
 }

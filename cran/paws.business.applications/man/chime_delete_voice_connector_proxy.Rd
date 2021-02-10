@@ -10,6 +10,9 @@ chime_delete_voice_connector_proxy(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the proxy configuration from the specified Amazon Chime Voice
 Connector.

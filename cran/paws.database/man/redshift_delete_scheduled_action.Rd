@@ -9,6 +9,9 @@ redshift_delete_scheduled_action(ScheduledActionName)
 \arguments{
 \item{ScheduledActionName}{[required] The name of the scheduled action to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a scheduled action.
 }

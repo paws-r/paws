@@ -12,6 +12,12 @@ codepipeline_start_pipeline_execution(name, clientRequestToken)
 \item{clientRequestToken}{The system-generated unique ID used to identify a unique execution
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineExecutionId = "string"
+)
+}
+}
 \description{
 Starts the specified pipeline. Specifically, it begins processing the
 latest commit to the source location specified as part of the pipeline.

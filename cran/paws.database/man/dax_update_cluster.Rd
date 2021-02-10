@@ -28,6 +28,65 @@ within the maintenance window.}
 in the DAX cluster. If this parameter is not specified, DAX assigns the
 default VPC security group to each node.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Cluster = list(
+    ClusterName = "string",
+    Description = "string",
+    ClusterArn = "string",
+    TotalNodes = 123,
+    ActiveNodes = 123,
+    NodeType = "string",
+    Status = "string",
+    ClusterDiscoveryEndpoint = list(
+      Address = "string",
+      Port = 123
+    ),
+    NodeIdsToRemove = list(
+      "string"
+    ),
+    Nodes = list(
+      list(
+        NodeId = "string",
+        Endpoint = list(
+          Address = "string",
+          Port = 123
+        ),
+        NodeCreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        AvailabilityZone = "string",
+        NodeStatus = "string",
+        ParameterGroupStatus = "string"
+      )
+    ),
+    PreferredMaintenanceWindow = "string",
+    NotificationConfiguration = list(
+      TopicArn = "string",
+      TopicStatus = "string"
+    ),
+    SubnetGroup = "string",
+    SecurityGroups = list(
+      list(
+        SecurityGroupIdentifier = "string",
+        Status = "string"
+      )
+    ),
+    IamRoleArn = "string",
+    ParameterGroup = list(
+      ParameterGroupName = "string",
+      ParameterApplyStatus = "string",
+      NodeIdsToReboot = list(
+        "string"
+      )
+    ),
+    SSEDescription = list(
+      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the settings for a DAX cluster. You can use this action to
 change one or more cluster configuration parameters by specifying the

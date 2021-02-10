@@ -39,6 +39,34 @@ option cannot be used when you specify images with \code{imageIds}.}
 \item{filter}{An optional parameter that filters results based on image tag status and
 all tags, if tagged.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  lifecyclePolicyText = "string",
+  status = "IN_PROGRESS"|"COMPLETE"|"EXPIRED"|"FAILED",
+  nextToken = "string",
+  previewResults = list(
+    list(
+      imageTags = list(
+        "string"
+      ),
+      imageDigest = "string",
+      imagePushedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      action = list(
+        type = "EXPIRE"
+      ),
+      appliedRulePriority = 123
+    )
+  ),
+  summary = list(
+    expiringImageTotalCount = 123
+  )
+)
+}
+}
 \description{
 Retrieves the results of the lifecycle policy preview request for the
 specified repository.

@@ -38,6 +38,9 @@ information on how to format a JSON parameter for the various command
 line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags from the specified secret.
 

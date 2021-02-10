@@ -13,6 +13,40 @@ iotanalytics_list_datasets(nextToken, maxResults)
 
 The default value is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasetSummaries = list(
+    list(
+      datasetName = "string",
+      status = "CREATING"|"ACTIVE"|"DELETING",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      triggers = list(
+        list(
+          schedule = list(
+            expression = "string"
+          ),
+          dataset = list(
+            name = "string"
+          )
+        )
+      ),
+      actions = list(
+        list(
+          actionName = "string",
+          actionType = "QUERY"|"CONTAINER"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves information about data sets.
 }

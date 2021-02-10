@@ -10,6 +10,21 @@ securityhub_get_insight_results(InsightArn)
 \arguments{
 \item{InsightArn}{[required] The ARN of the insight for which to return results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InsightResults = list(
+    InsightArn = "string",
+    GroupByAttribute = "string",
+    ResultValues = list(
+      list(
+        GroupByAttributeValue = "string",
+        Count = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists the results of the Security Hub insight specified by the insight
 ARN.

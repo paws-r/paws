@@ -19,6 +19,39 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      Name = "string",
+      Type = "String"|"StringList"|"SecureString",
+      KeyId = "string",
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedUser = "string",
+      Description = "string",
+      Value = "string",
+      AllowedPattern = "string",
+      Version = 123,
+      Labels = list(
+        "string"
+      ),
+      Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
+      Policies = list(
+        list(
+          PolicyText = "string",
+          PolicyType = "string",
+          PolicyStatus = "string"
+        )
+      ),
+      DataType = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the history of all changes to a parameter.
 }

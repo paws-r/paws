@@ -14,6 +14,9 @@ find the cluster ID, use
 
 \item{TagList}{[required] A list of one or more tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or overwrites one or more tags for the specified AWS CloudHSM
 cluster.

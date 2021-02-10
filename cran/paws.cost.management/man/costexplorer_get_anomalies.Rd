@@ -28,6 +28,38 @@ page size.}
 
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Anomalies = list(
+    list(
+      AnomalyId = "string",
+      AnomalyStartDate = "string",
+      AnomalyEndDate = "string",
+      DimensionValue = "string",
+      RootCauses = list(
+        list(
+          Service = "string",
+          Region = "string",
+          LinkedAccount = "string",
+          UsageType = "string"
+        )
+      ),
+      AnomalyScore = list(
+        MaxScore = 123.0,
+        CurrentScore = 123.0
+      ),
+      Impact = list(
+        MaxImpact = 123.0,
+        TotalImpact = 123.0
+      ),
+      MonitorArn = "string",
+      Feedback = "YES"|"NO"|"PLANNED_ACTIVITY"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Retrieves all of the cost anomalies detected on your account, during the
 time period specified by the \code{DateInterval} object.

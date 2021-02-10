@@ -12,6 +12,28 @@ apigateway_get_sdk_types(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      friendlyName = "string",
+      description = "string",
+      configurationProperties = list(
+        list(
+          name = "string",
+          friendlyName = "string",
+          description = "string",
+          required = TRUE|FALSE,
+          defaultValue = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Get sdk types
 }

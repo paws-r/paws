@@ -29,7 +29,7 @@ attribute name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{\\#} character in an expression to dereference an
+Use the \strong{\#} character in an expression to dereference an
 attribute name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -41,7 +41,7 @@ reserved words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/deve
 in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
-\item \verb{\\\{"#P":"Percentile"\\\}}
+\item \code{{"#P":"Percentile"}}
 }
 
 You could then use this substitution in an expression, as in this
@@ -80,6 +80,104 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 }}
 
 \item{ReturnConsumedCapacity}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Responses = list(
+    list(
+      list(
+        list(
+          S = "string",
+          N = "string",
+          B = raw,
+          SS = list(
+            "string"
+          ),
+          NS = list(
+            "string"
+          ),
+          BS = list(
+            raw
+          ),
+          M = list(
+            list()
+          ),
+          L = list(
+            list()
+          ),
+          NULL = TRUE|FALSE,
+          BOOL = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  UnprocessedKeys = list(
+    list(
+      Keys = list(
+        list(
+          list(
+            S = "string",
+            N = "string",
+            B = raw,
+            SS = list(
+              "string"
+            ),
+            NS = list(
+              "string"
+            ),
+            BS = list(
+              raw
+            ),
+            M = list(
+              list()
+            ),
+            L = list(
+              list()
+            ),
+            NULL = TRUE|FALSE,
+            BOOL = TRUE|FALSE
+          )
+        )
+      ),
+      AttributesToGet = list(
+        "string"
+      ),
+      ConsistentRead = TRUE|FALSE,
+      ProjectionExpression = "string",
+      ExpressionAttributeNames = list(
+        "string"
+      )
+    )
+  ),
+  ConsumedCapacity = list(
+    list(
+      TableName = "string",
+      CapacityUnits = 123.0,
+      ReadCapacityUnits = 123.0,
+      WriteCapacityUnits = 123.0,
+      Table = list(
+        ReadCapacityUnits = 123.0,
+        WriteCapacityUnits = 123.0,
+        CapacityUnits = 123.0
+      ),
+      LocalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      ),
+      GlobalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 The \code{\link[=dynamodb_batch_get_item]{batch_get_item}} operation returns the

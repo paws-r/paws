@@ -10,6 +10,9 @@ glue_stop_crawler_schedule(CrawlerName)
 \arguments{
 \item{CrawlerName}{[required] Name of the crawler whose schedule state to set.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the schedule state of the specified crawler to \code{NOT_SCHEDULED}, but
 does not stop the crawler if it is already running.

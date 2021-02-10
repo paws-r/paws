@@ -23,6 +23,26 @@ The default value is 100.}
 
 \item{filter}{A \code{TestCaseFilter} object used to filter the returned reports.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  testCases = list(
+    list(
+      reportArn = "string",
+      testRawDataPath = "string",
+      prefix = "string",
+      name = "string",
+      status = "string",
+      durationInNanoSeconds = 123,
+      message = "string",
+      expired = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of details about test cases for a report.
 }

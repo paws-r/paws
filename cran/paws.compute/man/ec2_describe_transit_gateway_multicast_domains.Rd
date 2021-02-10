@@ -31,6 +31,35 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayMulticastDomains = list(
+    list(
+      TransitGatewayMulticastDomainId = "string",
+      TransitGatewayId = "string",
+      TransitGatewayMulticastDomainArn = "string",
+      OwnerId = "string",
+      Options = list(
+        Igmpv2Support = "enable"|"disable",
+        StaticSourcesSupport = "enable"|"disable",
+        AutoAcceptSharedAssociations = "enable"|"disable"
+      ),
+      State = "pending"|"available"|"deleting"|"deleted",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more transit gateway multicast domains.
 }

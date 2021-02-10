@@ -115,7 +115,7 @@ metric that does not have sub-minute resolution, the alarm still
 attempts to gather data at the period rate that you specify. In this
 case, it does not receive data for the attempts that do not correspond
 to a one-minute data resolution, and the alarm might often lapse into
-INSUFFICENT\\_DATA status. Specifying 10 or 30 also sets this alarm as a
+INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a
 high-resolution alarm, which has a higher charge than other alarms. For
 more information about pricing, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
@@ -224,6 +224,9 @@ For an example of how to use this parameter, see the \strong{Anomaly Detection
 Model Alarm} example on this page.
 
 If your alarm uses this parameter, it cannot have Auto Scaling actions.}
+}
+\value{
+An empty list.
 }
 \description{
 Creates or updates an alarm and associates it with the specified metric,

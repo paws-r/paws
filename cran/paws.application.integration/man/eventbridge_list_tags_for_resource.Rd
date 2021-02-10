@@ -9,6 +9,17 @@ eventbridge_list_tags_for_resource(ResourceARN)
 \arguments{
 \item{ResourceARN}{[required] The ARN of the EventBridge resource for which you want to view tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Displays the tags associated with an EventBridge resource. In
 EventBridge, rules and event buses can be tagged.

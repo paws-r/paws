@@ -23,6 +23,17 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{[required] The version number or alias name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestedProvisionedConcurrentExecutions = 123,
+  AvailableProvisionedConcurrentExecutions = 123,
+  AllocatedProvisionedConcurrentExecutions = 123,
+  Status = "IN_PROGRESS"|"READY"|"FAILED",
+  StatusReason = "string",
+  LastModified = "string"
+)
+}
+}
 \description{
 Retrieves the provisioned concurrency configuration for a function's
 alias or version.

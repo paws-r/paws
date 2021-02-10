@@ -21,6 +21,31 @@ the details will be returned.
 Plugin names are also referred to as step names in Systems Manager
 documents.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CommandId = "string",
+  InstanceId = "string",
+  Comment = "string",
+  DocumentName = "string",
+  DocumentVersion = "string",
+  PluginName = "string",
+  ResponseCode = 123,
+  ExecutionStartDateTime = "string",
+  ExecutionElapsedTime = "string",
+  ExecutionEndDateTime = "string",
+  Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
+  StatusDetails = "string",
+  StandardOutputContent = "string",
+  StandardOutputUrl = "string",
+  StandardErrorContent = "string",
+  StandardErrorUrl = "string",
+  CloudWatchOutputConfig = list(
+    CloudWatchLogGroupName = "string",
+    CloudWatchOutputEnabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Returns detailed information about command execution for an invocation
 or plugin.

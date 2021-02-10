@@ -17,6 +17,9 @@ cloudwatchlogs_put_metric_filter(logGroupName, filterName,
 
 \item{metricTransformations}{[required] A collection of information that defines how metric data gets emitted.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or updates a metric filter and associates it with the specified
 log group. Metric filters allow you to configure rules to extract metric

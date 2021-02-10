@@ -11,6 +11,13 @@ ssm_deregister_task_from_maintenance_window(WindowId, WindowTaskId)
 
 \item{WindowTaskId}{[required] The ID of the task to remove from the maintenance window.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowId = "string",
+  WindowTaskId = "string"
+)
+}
+}
 \description{
 Removes a task from a maintenance window.
 }

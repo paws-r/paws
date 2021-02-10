@@ -17,6 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches an internet gateway or a virtual private gateway to a VPC,
 enabling connectivity between the internet and the VPC. For more

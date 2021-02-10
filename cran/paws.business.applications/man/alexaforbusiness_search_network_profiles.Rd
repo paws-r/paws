@@ -24,6 +24,24 @@ filters are NetworkProfileName, Ssid, and SecurityType.}
 \item{SortCriteria}{The sort order to use to list the specified set of network profiles.
 Valid sort criteria includes NetworkProfileName, Ssid, and SecurityType.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkProfiles = list(
+    list(
+      NetworkProfileArn = "string",
+      NetworkProfileName = "string",
+      Description = "string",
+      Ssid = "string",
+      SecurityType = "OPEN"|"WEP"|"WPA_PSK"|"WPA2_PSK"|"WPA2_ENTERPRISE",
+      EapMethod = "EAP_TLS",
+      CertificateAuthorityArn = "string"
+    )
+  ),
+  NextToken = "string",
+  TotalCount = 123
+)
+}
+}
 \description{
 Searches network profiles and lists the ones that meet a set of filter
 and sort criteria.

@@ -23,10 +23,10 @@ ASCII character range.}
 \item{Type}{[required] The type of policy to create. You can specify one of the following
 values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 }}
 
 \item{Tags}{A list of tags that you want to attach to the newly created policy. For
@@ -38,6 +38,22 @@ in the AWS Organizations User Guide.
 If any one of the tags is invalid or if you exceed the allowed number of
 tags for a policy, then the entire request fails and the policy is not
 created.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    PolicySummary = list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Description = "string",
+      Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+      AwsManaged = TRUE|FALSE
+    ),
+    Content = "string"
+  )
+)
+}
 }
 \description{
 Creates a policy of a specified type that you can attach to a root, an
@@ -78,7 +94,7 @@ account.
 # 
 # 
 svc$create_policy(
-  Content = "\{\\\\\"Version\\\\\":\\\\\"2012-10-17\\\\\",\\\\\"Statement\\\\\":\{\\\\\"Effect\\\\\":...",
+  Content = "{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"s3:*"}}",
   Description = "Enables admins of attached accounts to delegate all S3 permissions",
   Name = "AllowAllS3Actions",
   Type = "SERVICE_CONTROL_POLICY"

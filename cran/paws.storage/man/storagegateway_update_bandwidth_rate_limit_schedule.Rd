@@ -14,6 +14,12 @@ storagegateway_update_bandwidth_rate_limit_schedule(GatewayARN,
 gateway. When no bandwidth rate limit intervals have been scheduled, the
 array is empty.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Updates the bandwidth rate limit schedule for a specified gateway. By
 default, gateways do not have bandwidth rate limit schedules, which

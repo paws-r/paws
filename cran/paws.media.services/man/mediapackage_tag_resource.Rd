@@ -11,6 +11,9 @@ mediapackage_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Tag resource
 }

@@ -14,6 +14,18 @@ in the \emph{AWS General Reference}.}
 \item{TagKeys}{[required] A list of the tag keys that you want to remove from the specified
 resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedResourcesMap = list(
+    list(
+      StatusCode = 123,
+      ErrorCode = "InternalServiceException"|"InvalidParameterException",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes the specified tags from the specified resources. When you
 specify a tag key, the action removes both that key and its associated

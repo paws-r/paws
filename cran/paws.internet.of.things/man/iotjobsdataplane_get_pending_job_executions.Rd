@@ -9,6 +9,31 @@ iotjobsdataplane_get_pending_job_executions(thingName)
 \arguments{
 \item{thingName}{[required] The name of the thing that is executing the job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  inProgressJobs = list(
+    list(
+      jobId = "string",
+      queuedAt = 123,
+      startedAt = 123,
+      lastUpdatedAt = 123,
+      versionNumber = 123,
+      executionNumber = 123
+    )
+  ),
+  queuedJobs = list(
+    list(
+      jobId = "string",
+      queuedAt = 123,
+      startedAt = 123,
+      lastUpdatedAt = 123,
+      versionNumber = 123,
+      executionNumber = 123
+    )
+  )
+)
+}
+}
 \description{
 Gets the list of all jobs for a thing that are not in a terminal status.
 }

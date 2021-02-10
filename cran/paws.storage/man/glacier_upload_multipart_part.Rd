@@ -27,6 +27,12 @@ follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.}
 
 \item{body}{The data to upload.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  checksum = "string"
+)
+}
+}
 \description{
 This operation uploads a part of an archive. You can upload archive
 parts in any order. You can also upload them in parallel. You can upload
@@ -94,7 +100,7 @@ svc$upload_multipart_part(
   body = "part1",
   checksum = "c06f7cd4baacb087002a99a5f48bf953",
   range = "bytes 0-1048575/*",
-  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
   vaultName = "examplevault"
 )
 }

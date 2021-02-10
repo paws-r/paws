@@ -24,6 +24,9 @@ For more information about the health check grace period, see
 \code{\link[=autoscaling_create_auto_scaling_group]{create_auto_scaling_group}} in
 the \emph{Amazon EC2 Auto Scaling API Reference}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the health status of the specified instance.
 

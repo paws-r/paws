@@ -2,9 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_delete_global_replication_group}
 \alias{elasticache_delete_global_replication_group}
-\title{Deleting a Global Datastore is a two-step process: - First, you must
-DisassociateGlobalReplicationGroup to remove the secondary clusters in
-the Global Datastore}
+\title{Deleting a Global Datastore is a two-step process:}
 \usage{
 elasticache_delete_global_replication_group(GlobalReplicationGroupId,
   RetainPrimaryReplicationGroup)
@@ -14,6 +12,39 @@ elasticache_delete_global_replication_group(GlobalReplicationGroupId,
 
 \item{RetainPrimaryReplicationGroup}{[required] The primary replication group is retained as a standalone replication
 group.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalReplicationGroup = list(
+    GlobalReplicationGroupId = "string",
+    GlobalReplicationGroupDescription = "string",
+    Status = "string",
+    CacheNodeType = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    Members = list(
+      list(
+        ReplicationGroupId = "string",
+        ReplicationGroupRegion = "string",
+        Role = "string",
+        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+        Status = "string"
+      )
+    ),
+    ClusterEnabled = TRUE|FALSE,
+    GlobalNodeGroups = list(
+      list(
+        GlobalNodeGroupId = "string",
+        Slots = "string"
+      )
+    ),
+    AuthTokenEnabled = TRUE|FALSE,
+    TransitEncryptionEnabled = TRUE|FALSE,
+    AtRestEncryptionEnabled = TRUE|FALSE,
+    ARN = "string"
+  )
+)
+}
 }
 \description{
 Deleting a Global Datastore is a two-step process:

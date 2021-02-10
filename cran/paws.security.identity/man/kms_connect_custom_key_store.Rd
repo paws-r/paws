@@ -13,6 +13,9 @@ To find the ID of a custom key store, use the
 \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.}
 }
+\value{
+An empty list.
+}
 \description{
 Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 to its associated AWS CloudHSM cluster.

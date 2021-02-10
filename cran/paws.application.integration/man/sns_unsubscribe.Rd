@@ -9,6 +9,9 @@ sns_unsubscribe(SubscriptionArn)
 \arguments{
 \item{SubscriptionArn}{[required] The ARN of the subscription to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a subscription. If the subscription requires authentication for
 deletion, only the owner of the subscription or the topic's owner can

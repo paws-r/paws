@@ -9,6 +9,9 @@ iot_delete_scheduled_audit(scheduledAuditName)
 \arguments{
 \item{scheduledAuditName}{[required] The name of the scheduled audit you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a scheduled audit.
 }

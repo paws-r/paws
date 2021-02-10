@@ -20,6 +20,91 @@ launched in any cluster other than the default cluster.}
 instance. If \code{TAGS} is specified, the tags are included in the response.
 If this field is omitted, tags are not included in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  containerInstances = list(
+    list(
+      containerInstanceArn = "string",
+      ec2InstanceId = "string",
+      capacityProviderName = "string",
+      version = 123,
+      versionInfo = list(
+        agentVersion = "string",
+        agentHash = "string",
+        dockerVersion = "string"
+      ),
+      remainingResources = list(
+        list(
+          name = "string",
+          type = "string",
+          doubleValue = 123.0,
+          longValue = 123,
+          integerValue = 123,
+          stringSetValue = list(
+            "string"
+          )
+        )
+      ),
+      registeredResources = list(
+        list(
+          name = "string",
+          type = "string",
+          doubleValue = 123.0,
+          longValue = 123,
+          integerValue = 123,
+          stringSetValue = list(
+            "string"
+          )
+        )
+      ),
+      status = "string",
+      statusReason = "string",
+      agentConnected = TRUE|FALSE,
+      runningTasksCount = 123,
+      pendingTasksCount = 123,
+      agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+      attributes = list(
+        list(
+          name = "string",
+          value = "string",
+          targetType = "container-instance",
+          targetId = "string"
+        )
+      ),
+      registeredAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      attachments = list(
+        list(
+          id = "string",
+          type = "string",
+          status = "string",
+          details = list(
+            list(
+              name = "string",
+              value = "string"
+            )
+          )
+        )
+      ),
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  ),
+  failures = list(
+    list(
+      arn = "string",
+      reason = "string",
+      detail = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes Amazon Elastic Container Service container instances. Returns
 metadata about registered and remaining resources on each container

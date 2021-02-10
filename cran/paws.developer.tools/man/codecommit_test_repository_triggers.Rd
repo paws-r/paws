@@ -12,6 +12,20 @@ codecommit_test_repository_triggers(repositoryName, triggers)
 
 \item{triggers}{[required] The list of triggers to test.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  successfulExecutions = list(
+    "string"
+  ),
+  failedExecutions = list(
+    list(
+      trigger = "string",
+      failureMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Tests the functionality of repository triggers by sending information to
 the trigger target. If real data is available in the repository, the

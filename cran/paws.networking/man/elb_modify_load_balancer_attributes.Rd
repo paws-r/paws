@@ -12,6 +12,36 @@ elb_modify_load_balancer_attributes(LoadBalancerName,
 
 \item{LoadBalancerAttributes}{[required] The attributes for the load balancer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBalancerName = "string",
+  LoadBalancerAttributes = list(
+    CrossZoneLoadBalancing = list(
+      Enabled = TRUE|FALSE
+    ),
+    AccessLog = list(
+      Enabled = TRUE|FALSE,
+      S3BucketName = "string",
+      EmitInterval = 123,
+      S3BucketPrefix = "string"
+    ),
+    ConnectionDraining = list(
+      Enabled = TRUE|FALSE,
+      Timeout = 123
+    ),
+    ConnectionSettings = list(
+      IdleTimeout = 123
+    ),
+    AdditionalAttributes = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies the attributes of the specified load balancer.
 

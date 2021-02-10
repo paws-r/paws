@@ -12,6 +12,49 @@ apigateway_get_domain_names(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      domainName = "string",
+      certificateName = "string",
+      certificateArn = "string",
+      certificateUploadDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      regionalDomainName = "string",
+      regionalHostedZoneId = "string",
+      regionalCertificateName = "string",
+      regionalCertificateArn = "string",
+      distributionDomainName = "string",
+      distributionHostedZoneId = "string",
+      endpointConfiguration = list(
+        types = list(
+          "REGIONAL"|"EDGE"|"PRIVATE"
+        ),
+        vpcEndpointIds = list(
+          "string"
+        )
+      ),
+      domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
+      domainNameStatusMessage = "string",
+      securityPolicy = "TLS_1_0"|"TLS_1_2",
+      tags = list(
+        "string"
+      ),
+      mutualTlsAuthentication = list(
+        truststoreUri = "string",
+        truststoreVersion = "string",
+        truststoreWarnings = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Represents a collection of DomainName resources.
 }

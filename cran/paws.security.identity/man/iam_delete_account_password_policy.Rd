@@ -6,6 +6,9 @@
 \usage{
 iam_delete_account_password_policy()
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the password policy for the AWS account. There are no
 parameters.

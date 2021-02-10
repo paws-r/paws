@@ -13,6 +13,9 @@ elbv2_deregister_targets(TargetGroupArn, Targets)
 target, you must specify both the target ID and the port when you
 deregister it.}
 }
+\value{
+An empty list.
+}
 \description{
 Deregisters the specified targets from the specified target group. After
 the targets are deregistered, they no longer receive traffic from the
@@ -37,7 +40,7 @@ load balancer.
 # This example deregisters the specified instance from the specified
 # target group.
 svc$deregister_targets(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
   Targets = list(
     list(
       Id = "i-0f76fade"

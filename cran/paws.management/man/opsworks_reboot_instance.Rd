@@ -9,6 +9,9 @@ opsworks_reboot_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Reboots a specified instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.
 

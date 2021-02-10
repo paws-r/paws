@@ -16,6 +16,27 @@ faces.}
 
 \item{MaxResults}{Maximum number of faces to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Faces = list(
+    list(
+      FaceId = "string",
+      BoundingBox = list(
+        Width = 123.0,
+        Height = 123.0,
+        Left = 123.0,
+        Top = 123.0
+      ),
+      ImageId = "string",
+      ExternalImageId = "string",
+      Confidence = 123.0
+    )
+  ),
+  NextToken = "string",
+  FaceModelVersion = "string"
+)
+}
+}
 \description{
 Returns metadata for faces in the specified collection. This metadata
 includes information such as the bounding box coordinates, the

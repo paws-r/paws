@@ -23,13 +23,24 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagSet = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 This operation gets an Amazon S3 on Outposts bucket's tags. To get an S3
 bucket tags, see \code{\link[=s3control_get_bucket_tagging]{get_bucket_tagging}} in
 the \emph{Amazon Simple Storage Service API}.
 
 Returns the tag set associated with the Outposts bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 To use this operation, you must have permission to perform the

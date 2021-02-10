@@ -11,6 +11,33 @@ chime_get_channel_message(ChannelArn, MessageId)
 
 \item{MessageId}{[required] The ID of the message.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelMessage = list(
+    ChannelArn = "string",
+    MessageId = "string",
+    Content = "string",
+    Metadata = "string",
+    Type = "STANDARD"|"CONTROL",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastEditedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Sender = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    Redacted = TRUE|FALSE,
+    Persistence = "PERSISTENT"|"NON_PERSISTENT"
+  )
+)
+}
+}
 \description{
 Gets the full details of a channel message.
 }

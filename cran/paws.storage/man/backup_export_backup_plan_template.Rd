@@ -10,6 +10,12 @@ backup_export_backup_plan_template(BackupPlanId)
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupPlanTemplateJson = "string"
+)
+}
+}
 \description{
 Returns the backup plan that is specified by the plan ID as a backup
 template.

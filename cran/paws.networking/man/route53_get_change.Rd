@@ -12,6 +12,19 @@ the value that
 \code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}
 returned in the \code{Id} element when you submitted the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Returns the current status of a change batch request. The status is one
 of the following values:

@@ -28,6 +28,9 @@ Streams by specifying the alias \code{aws/kinesis}.
 \item Master key owned by Kinesis Data Streams: \code{alias/aws/kinesis}
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Enables or updates server-side encryption using an AWS KMS key for a
 specified stream.

@@ -9,6 +9,25 @@ storagegateway_list_automatic_tape_creation_policies(GatewayARN)
 \arguments{
 \item{GatewayARN}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutomaticTapeCreationPolicyInfos = list(
+    list(
+      AutomaticTapeCreationRules = list(
+        list(
+          TapeBarcodePrefix = "string",
+          PoolId = "string",
+          TapeSizeInBytes = 123,
+          MinimumNumTapes = 123,
+          Worm = TRUE|FALSE
+        )
+      ),
+      GatewayARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the automatic tape creation policies for a gateway. If there are
 no automatic tape creation policies for the gateway, it returns an empty

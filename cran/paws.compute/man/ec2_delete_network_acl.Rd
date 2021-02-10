@@ -14,6 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkAclId}{[required] The ID of the network ACL.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified network ACL. You can't delete the ACL if it's
 associated with any subnets. You can't delete the default network ACL.

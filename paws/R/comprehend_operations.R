@@ -20,6 +20,31 @@ NULL
 #' characters and must contain fewer than 5,000 bytes of UTF-8 encoded
 #' characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResultList = list(
+#'     list(
+#'       Index = 123,
+#'       Languages = list(
+#'         list(
+#'           LanguageCode = "string",
+#'           Score = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ErrorList = list(
+#'     list(
+#'       Index = 123,
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_detect_dominant_language(
@@ -67,6 +92,34 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResultList = list(
+#'     list(
+#'       Index = 123,
+#'       Entities = list(
+#'         list(
+#'           Score = 123.0,
+#'           Type = "PERSON"|"LOCATION"|"ORGANIZATION"|"COMMERCIAL_ITEM"|"EVENT"|"DATE"|"QUANTITY"|"TITLE"|"OTHER",
+#'           Text = "string",
+#'           BeginOffset = 123,
+#'           EndOffset = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ErrorList = list(
+#'     list(
+#'       Index = 123,
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_detect_entities(
@@ -111,6 +164,33 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResultList = list(
+#'     list(
+#'       Index = 123,
+#'       KeyPhrases = list(
+#'         list(
+#'           Score = 123.0,
+#'           Text = "string",
+#'           BeginOffset = 123,
+#'           EndOffset = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ErrorList = list(
+#'     list(
+#'       Index = 123,
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -158,6 +238,32 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResultList = list(
+#'     list(
+#'       Index = 123,
+#'       Sentiment = "POSITIVE"|"NEGATIVE"|"NEUTRAL"|"MIXED",
+#'       SentimentScore = list(
+#'         Positive = 123.0,
+#'         Negative = 123.0,
+#'         Neutral = 123.0,
+#'         Mixed = 123.0
+#'       )
+#'     )
+#'   ),
+#'   ErrorList = list(
+#'     list(
+#'       Index = 123,
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -208,6 +314,37 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 #' Portuguese ("pt"). All documents must be in the same language.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResultList = list(
+#'     list(
+#'       Index = 123,
+#'       SyntaxTokens = list(
+#'         list(
+#'           TokenId = 123,
+#'           Text = "string",
+#'           BeginOffset = 123,
+#'           EndOffset = 123,
+#'           PartOfSpeech = list(
+#'             Tag = "ADJ"|"ADP"|"ADV"|"AUX"|"CONJ"|"CCONJ"|"DET"|"INTJ"|"NOUN"|"NUM"|"O"|"PART"|"PRON"|"PROPN"|"PUNCT"|"SCONJ"|"SYM"|"VERB",
+#'             Score = 123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ErrorList = list(
+#'     list(
+#'       Index = 123,
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_detect_syntax(
@@ -252,6 +389,25 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #'
 #' @param Text &#91;required&#93; The document text to be analyzed.
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Classes = list(
+#'     list(
+#'       Name = "string",
+#'       Score = 123.0
+#'     )
+#'   ),
+#'   Labels = list(
+#'     list(
+#'       Name = "string",
+#'       Score = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -332,6 +488,14 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' one or more labels for each document. In multi-label mode, multiple
 #' labels for an individual document are separated by a delimiter. The
 #' default delimiter between labels is a pipe (|).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentClassifierArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -422,6 +586,14 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' as the key might be added to an endpoint to indicate its use by the
 #' sales department.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_endpoint(
@@ -472,7 +644,7 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #'
 #' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be
 #' a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
-#' underscores (\\_) are allowed. The name must be unique in the
+#' underscores (_) are allowed. The name must be unique in the
 #' account/region.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
 #' role that grants Amazon Comprehend read access to your input data.
@@ -502,6 +674,14 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' (VPC) containing the resources you are using for your custom entity
 #' recognizer. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntityRecognizerArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -573,13 +753,12 @@ comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleAr
 }
 .comprehend$operations$create_entity_recognizer <- comprehend_create_entity_recognizer
 
-#' Deletes a previously created document classifier Only those classifiers
-#' that are in terminated states (IN_ERROR, TRAINED) will be deleted
+#' Deletes a previously created document classifier
 #'
 #' @description
 #' Deletes a previously created document classifier
 #' 
-#' Only those classifiers that are in terminated states (IN\\_ERROR,
+#' Only those classifiers that are in terminated states (IN_ERROR,
 #' TRAINED) will be deleted. If an active inference job is using the model,
 #' a `ResourceInUseException` will be returned.
 #' 
@@ -592,6 +771,9 @@ comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleAr
 #' comprehend_delete_document_classifier(DocumentClassifierArn)
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -631,6 +813,9 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_endpoint(
@@ -663,7 +848,7 @@ comprehend_delete_endpoint <- function(EndpointArn) {
 #' @description
 #' Deletes an entity recognizer.
 #' 
-#' Only those recognizers that are in terminated states (IN\\_ERROR,
+#' Only those recognizers that are in terminated states (IN_ERROR,
 #' TRAINED) will be deleted. If an active inference job is using the model,
 #' a `ResourceInUseException` will be returned.
 #' 
@@ -676,6 +861,9 @@ comprehend_delete_endpoint <- function(EndpointArn) {
 #' comprehend_delete_entity_recognizer(EntityRecognizerArn)
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -716,6 +904,44 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentClassificationJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DocumentClassifierArn = "string",
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_document_classification_job(
@@ -753,6 +979,74 @@ comprehend_describe_document_classification_job <- function(JobId) {
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
 #' The operation returns this identifier in its response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentClassifierProperties = list(
+#'     DocumentClassifierArn = "string",
+#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TrainingStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TrainingEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
+#'       S3Uri = "string",
+#'       LabelDelimiter = "string",
+#'       AugmentedManifests = list(
+#'         list(
+#'           S3Uri = "string",
+#'           AttributeNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     ClassifierMetadata = list(
+#'       NumberOfLabels = 123,
+#'       NumberOfTrainedDocuments = 123,
+#'       NumberOfTestDocuments = 123,
+#'       EvaluationMetrics = list(
+#'         Accuracy = 123.0,
+#'         Precision = 123.0,
+#'         Recall = 123.0,
+#'         F1Score = 123.0,
+#'         MicroPrecision = 123.0,
+#'         MicroRecall = 123.0,
+#'         MicroF1Score = 123.0,
+#'         HammingLoss = 123.0
+#'       )
+#'     ),
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Mode = "MULTI_CLASS"|"MULTI_LABEL"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -793,6 +1087,43 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DominantLanguageDetectionJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_dominant_language_detection_job(
@@ -830,6 +1161,27 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
 #' comprehend_describe_endpoint(EndpointArn)
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointProperties = list(
+#'     EndpointArn = "string",
+#'     Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
+#'     Message = "string",
+#'     ModelArn = "string",
+#'     DesiredInferenceUnits = 123,
+#'     CurrentInferenceUnits = 123,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -870,6 +1222,45 @@ comprehend_describe_endpoint <- function(EndpointArn) {
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntitiesDetectionJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EntityRecognizerArn = "string",
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_entities_detection_job(
@@ -909,6 +1300,86 @@ comprehend_describe_entities_detection_job <- function(JobId) {
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntityRecognizerProperties = list(
+#'     EntityRecognizerArn = "string",
+#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TrainingStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TrainingEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
+#'       EntityTypes = list(
+#'         list(
+#'           Type = "string"
+#'         )
+#'       ),
+#'       Documents = list(
+#'         S3Uri = "string"
+#'       ),
+#'       Annotations = list(
+#'         S3Uri = "string"
+#'       ),
+#'       EntityList = list(
+#'         S3Uri = "string"
+#'       ),
+#'       AugmentedManifests = list(
+#'         list(
+#'           S3Uri = "string",
+#'           AttributeNames = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RecognizerMetadata = list(
+#'       NumberOfTrainedDocuments = 123,
+#'       NumberOfTestDocuments = 123,
+#'       EvaluationMetrics = list(
+#'         Precision = 123.0,
+#'         Recall = 123.0,
+#'         F1Score = 123.0
+#'       ),
+#'       EntityTypes = list(
+#'         list(
+#'           Type = "string",
+#'           EvaluationMetrics = list(
+#'             Precision = 123.0,
+#'             Recall = 123.0,
+#'             F1Score = 123.0
+#'           ),
+#'           NumberOfTrainMentions = 123
+#'         )
+#'       )
+#'     ),
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_entity_recognizer(
@@ -945,6 +1416,38 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
 #' comprehend_describe_events_detection_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The identifier of the events detection job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventsDetectionJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'     DataAccessRoleArn = "string",
+#'     TargetEventTypes = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -985,6 +1488,44 @@ comprehend_describe_events_detection_job <- function(JobId) {
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyPhrasesDetectionJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_key_phrases_detection_job(
@@ -1023,6 +1564,43 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PiiEntitiesDetectionJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     RedactionConfig = list(
+#'       PiiEntityTypes = list(
+#'         "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
+#'       ),
+#'       MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
+#'       MaskCharacter = "string"
+#'     ),
+#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'     DataAccessRoleArn = "string",
+#'     Mode = "ONLY_REDACTION"|"ONLY_OFFSETS"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1063,6 +1641,44 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SentimentDetectionJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_sentiment_detection_job(
@@ -1100,6 +1716,44 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
 #' comprehend_describe_topics_detection_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The identifier assigned by the user to the detection job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TopicsDetectionJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     Message = "string",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'     ),
+#'     OutputDataConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     NumberOfTopics = 123,
+#'     DataAccessRoleArn = "string",
+#'     VolumeKmsKeyId = "string",
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1141,6 +1795,19 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string should contain at least 20 characters
 #' and must contain fewer that 5,000 bytes of UTF-8 encoded characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Languages = list(
+#'     list(
+#'       LanguageCode = "string",
+#'       Score = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1196,6 +1863,22 @@ comprehend_detect_dominant_language <- function(Text) {
 #' custom model, and it ignores any language code that you provide in your
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entities = list(
+#'     list(
+#'       Score = 123.0,
+#'       Type = "PERSON"|"LOCATION"|"ORGANIZATION"|"COMMERCIAL_ITEM"|"EVENT"|"DATE"|"QUANTITY"|"TITLE"|"OTHER",
+#'       Text = "string",
+#'       BeginOffset = 123,
+#'       EndOffset = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detect_entities(
@@ -1239,6 +1922,21 @@ comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = 
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyPhrases = list(
+#'     list(
+#'       Score = 123.0,
+#'       Text = "string",
+#'       BeginOffset = 123,
+#'       EndOffset = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detect_key_phrases(
@@ -1280,6 +1978,21 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entities = list(
+#'     list(
+#'       Score = 123.0,
+#'       Type = "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL",
+#'       BeginOffset = 123,
+#'       EndOffset = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1325,6 +2038,20 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sentiment = "POSITIVE"|"NEGATIVE"|"NEUTRAL"|"MIXED",
+#'   SentimentScore = list(
+#'     Positive = 123.0,
+#'     Negative = 123.0,
+#'     Neutral = 123.0,
+#'     Mixed = 123.0
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detect_sentiment(
@@ -1368,6 +2095,25 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' following languages supported by Amazon Comprehend: German ("de"),
 #' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 #' Portuguese ("pt").
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SyntaxTokens = list(
+#'     list(
+#'       TokenId = 123,
+#'       Text = "string",
+#'       BeginOffset = 123,
+#'       EndOffset = 123,
+#'       PartOfSpeech = list(
+#'         Tag = "ADJ"|"ADP"|"ADV"|"AUX"|"CONJ"|"CCONJ"|"DET"|"INTJ"|"NOUN"|"NUM"|"O"|"PART"|"PRON"|"PROPN"|"PUNCT"|"SCONJ"|"SYM"|"VERB",
+#'         Score = 123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1414,6 +2160,47 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentClassificationJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DocumentClassifierArn = "string",
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1467,6 +2254,77 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentClassifierPropertiesList = list(
+#'     list(
+#'       DocumentClassifierArn = "string",
+#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'       Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TrainingStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TrainingEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
+#'         S3Uri = "string",
+#'         LabelDelimiter = "string",
+#'         AugmentedManifests = list(
+#'           list(
+#'             S3Uri = "string",
+#'             AttributeNames = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       ClassifierMetadata = list(
+#'         NumberOfLabels = 123,
+#'         NumberOfTrainedDocuments = 123,
+#'         NumberOfTestDocuments = 123,
+#'         EvaluationMetrics = list(
+#'           Accuracy = 123.0,
+#'           Precision = 123.0,
+#'           Recall = 123.0,
+#'           F1Score = 123.0,
+#'           MicroPrecision = 123.0,
+#'           MicroRecall = 123.0,
+#'           MicroF1Score = 123.0,
+#'           HammingLoss = 123.0
+#'         )
+#'       ),
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Mode = "MULTI_CLASS"|"MULTI_LABEL"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1523,6 +2381,46 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DominantLanguageDetectionJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_dominant_language_detection_jobs(
@@ -1576,6 +2474,30 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointPropertiesList = list(
+#'     list(
+#'       EndpointArn = "string",
+#'       Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
+#'       Message = "string",
+#'       ModelArn = "string",
+#'       DesiredInferenceUnits = 123,
+#'       CurrentInferenceUnits = 123,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_endpoints(
@@ -1628,6 +2550,48 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntitiesDetectionJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EntityRecognizerArn = "string",
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1690,6 +2654,89 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 #' @param MaxResults The maximum number of results to return on each page. The default is
 #' 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntityRecognizerPropertiesList = list(
+#'     list(
+#'       EntityRecognizerArn = "string",
+#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'       Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TrainingStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TrainingEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
+#'         EntityTypes = list(
+#'           list(
+#'             Type = "string"
+#'           )
+#'         ),
+#'         Documents = list(
+#'           S3Uri = "string"
+#'         ),
+#'         Annotations = list(
+#'           S3Uri = "string"
+#'         ),
+#'         EntityList = list(
+#'           S3Uri = "string"
+#'         ),
+#'         AugmentedManifests = list(
+#'           list(
+#'             S3Uri = "string",
+#'             AttributeNames = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       RecognizerMetadata = list(
+#'         NumberOfTrainedDocuments = 123,
+#'         NumberOfTestDocuments = 123,
+#'         EvaluationMetrics = list(
+#'           Precision = 123.0,
+#'           Recall = 123.0,
+#'           F1Score = 123.0
+#'         ),
+#'         EntityTypes = list(
+#'           list(
+#'             Type = "string",
+#'             EvaluationMetrics = list(
+#'               Precision = 123.0,
+#'               Recall = 123.0,
+#'               F1Score = 123.0
+#'             ),
+#'             NumberOfTrainMentions = 123
+#'           )
+#'         )
+#'       ),
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_entity_recognizers(
@@ -1740,6 +2787,41 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
 #' one filter at a time.
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventsDetectionJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'       DataAccessRoleArn = "string",
+#'       TargetEventTypes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1795,6 +2877,47 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyPhrasesDetectionJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_key_phrases_detection_jobs(
@@ -1847,6 +2970,46 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
 #' one filter at a time.
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PiiEntitiesDetectionJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       RedactionConfig = list(
+#'         PiiEntityTypes = list(
+#'           "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
+#'         ),
+#'         MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
+#'         MaskCharacter = "string"
+#'       ),
+#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'       DataAccessRoleArn = "string",
+#'       Mode = "ONLY_REDACTION"|"ONLY_OFFSETS"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1901,6 +3064,47 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SentimentDetectionJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_sentiment_detection_jobs(
@@ -1950,6 +3154,20 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' you are querying.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1991,6 +3209,47 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TopicsDetectionJobPropertiesList = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'       Message = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+#'       ),
+#'       OutputDataConfig = list(
+#'         S3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       NumberOfTopics = 123,
+#'       DataAccessRoleArn = "string",
+#'       VolumeKmsKeyId = "string",
+#'       VpcConfig = list(
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2063,6 +3322,15 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' (VPC) containing the resources you are using for your document
 #' classification job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2145,6 +3413,15 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' (VPC) containing the resources you are using for your dominant language
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2241,6 +3518,15 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_entities_detection_job(
@@ -2309,6 +3595,15 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' @param ClientRequestToken An unique identifier for the request. If you don't set the client
 #' request token, Amazon Comprehend generates one.
 #' @param TargetEventTypes &#91;required&#93; The types of events to detect in the input documents.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2389,6 +3684,15 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_key_phrases_detection_job(
@@ -2464,6 +3768,15 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @param LanguageCode &#91;required&#93; The language of the input documents.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2548,6 +3861,15 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' (VPC) containing the resources you are using for your sentiment
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2634,6 +3956,15 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_topics_detection_job(
@@ -2703,6 +4034,15 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
 #'
 #' @param JobId &#91;required&#93; The identifier of the dominant language detection job to stop.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_dominant_language_detection_job(
@@ -2752,6 +4092,15 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
 #'
 #' @param JobId &#91;required&#93; The identifier of the entities detection job to stop.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_entities_detection_job(
@@ -2788,6 +4137,15 @@ comprehend_stop_entities_detection_job <- function(JobId) {
 #' comprehend_stop_events_detection_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The identifier of the events detection job to stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2838,6 +4196,15 @@ comprehend_stop_events_detection_job <- function(JobId) {
 #'
 #' @param JobId &#91;required&#93; The identifier of the key phrases detection job to stop.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_key_phrases_detection_job(
@@ -2874,6 +4241,15 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
 #' comprehend_stop_pii_entities_detection_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The identifier of the PII entities detection job to stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2924,6 +4300,15 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
 #'
 #' @param JobId &#91;required&#93; The identifier of the sentiment detection job to stop.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_sentiment_detection_job(
@@ -2967,6 +4352,9 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier
 #' currently being trained.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3013,6 +4401,9 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer
 #' currently being trained.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_training_entity_recognizer(
@@ -3056,6 +4447,9 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
 #' @param Tags &#91;required&#93; Tags being associated with a specific Amazon Comprehend resource. There
 #' can be a maximum of 50 tags (both existing and pending) associated with
 #' a specific resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3105,6 +4499,9 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
 #' added to a resource to indicate its use by the sales department. Keys
 #' must be unique and cannot be duplicated for a particular resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -3147,6 +4544,9 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param DesiredInferenceUnits &#91;required&#93; The desired number of inference units to be used by the model using this
 #' endpoint. Each inference unit represents of a throughput of 100
 #' characters per second.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

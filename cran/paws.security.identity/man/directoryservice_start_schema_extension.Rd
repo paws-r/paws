@@ -16,10 +16,16 @@ extension.}
 
 \item{LdifContent}{[required] The LDIF file represented as a string. To construct the LdifContent
 string, precede each line as it would be formatted in an ldif file with
-\verb{\\\\n}. See the example request below for more details. The file size can
+\\n. See the example request below for more details. The file size can
 be no larger than 1MB.}
 
 \item{Description}{[required] A description of the schema extension.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaExtensionId = "string"
+)
+}
 }
 \description{
 Applies a schema extension to a Microsoft AD directory.

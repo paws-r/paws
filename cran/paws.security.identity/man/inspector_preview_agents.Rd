@@ -19,6 +19,24 @@ listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  agentPreviews = list(
+    list(
+      hostname = "string",
+      agentId = "string",
+      autoScalingGroup = "string",
+      agentHealth = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+      agentVersion = "string",
+      operatingSystem = "string",
+      kernelVersion = "string",
+      ipv4Address = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Previews the agents installed on the EC2 instances that are part of the
 specified assessment target.

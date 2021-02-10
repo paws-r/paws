@@ -24,6 +24,33 @@ AWS Firewall Manager to return for this request. If you have more
 \code{MaxResults}, the response includes a \code{NextToken} value that you can use
 to get another batch of \code{PolicyComplianceStatus} objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyComplianceStatusList = list(
+    list(
+      PolicyOwner = "string",
+      PolicyId = "string",
+      PolicyName = "string",
+      MemberAccount = "string",
+      EvaluationResults = list(
+        list(
+          ComplianceStatus = "COMPLIANT"|"NON_COMPLIANT",
+          ViolatorCount = 123,
+          EvaluationLimitExceeded = TRUE|FALSE
+        )
+      ),
+      LastUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      IssueInfoMap = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of \code{PolicyComplianceStatus} objects. Use
 \code{PolicyComplianceStatus} to get a summary of which member accounts are

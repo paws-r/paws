@@ -9,7 +9,28 @@ greengrass_list_logger_definitions(MaxResults, NextToken)
 \arguments{
 \item{MaxResults}{The maximum number of results to be returned per request.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Definitions = list(
+    list(
+      Arn = "string",
+      CreationTimestamp = "string",
+      Id = "string",
+      LastUpdatedTimestamp = "string",
+      LatestVersion = "string",
+      LatestVersionArn = "string",
+      Name = "string",
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Retrieves a list of logger definitions.

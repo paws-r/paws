@@ -16,6 +16,43 @@ clouddirectory_list_facet_attributes(SchemaArn, Name, NextToken,
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Name = "string",
+      AttributeDefinition = list(
+        Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+        DefaultValue = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct(
+            "2015-01-01"
+          )
+        ),
+        IsImmutable = TRUE|FALSE,
+        Rules = list(
+          list(
+            Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+            Parameters = list(
+              "string"
+            )
+          )
+        )
+      ),
+      AttributeReference = list(
+        TargetFacetName = "string",
+        TargetAttributeName = "string"
+      ),
+      RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves attributes attached to the facet.
 }

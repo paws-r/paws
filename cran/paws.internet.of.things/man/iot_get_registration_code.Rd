@@ -6,6 +6,12 @@
 \usage{
 iot_get_registration_code()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registrationCode = "string"
+)
+}
+}
 \description{
 Gets a registration code used to register a CA certificate with AWS IoT.
 }

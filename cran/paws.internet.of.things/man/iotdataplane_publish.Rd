@@ -13,6 +13,9 @@ iotdataplane_publish(topic, qos, payload)
 
 \item{payload}{The state information, in JSON format.}
 }
+\value{
+An empty list.
+}
 \description{
 Publishes state information.
 

@@ -23,6 +23,16 @@ returned, the response does not contain a pagination token value.}
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
 inclusive.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  affectedAccounts = list(
+    "string"
+  ),
+  eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of accounts in the organization from AWS Organizations
 that are affected by the provided event. For more information about the

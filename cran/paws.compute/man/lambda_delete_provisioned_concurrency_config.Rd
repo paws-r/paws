@@ -22,6 +22,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{[required] The version number or alias name.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the provisioned concurrency configuration for a function.
 }

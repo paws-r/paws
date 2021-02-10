@@ -30,6 +30,39 @@ Some services do not support the \code{CustomSuffix} parameter. If you
 provide an optional suffix and the operation fails, try the operation
 again without the suffix.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Role = list(
+    Path = "string",
+    RoleName = "string",
+    RoleId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssumeRolePolicyDocument = "string",
+    Description = "string",
+    MaxSessionDuration = 123,
+    PermissionsBoundary = list(
+      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+      PermissionsBoundaryArn = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    RoleLastUsed = list(
+      LastUsedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Region = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates an IAM role that is linked to a specific AWS service. The
 service controls the attached policies and when the role can be deleted.

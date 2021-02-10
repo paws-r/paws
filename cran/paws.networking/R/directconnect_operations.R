@@ -26,6 +26,34 @@ NULL
 #' Prefixes](https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
 #' in the *AWS Direct Connect User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociation = list(
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayOwnerAccount = "string",
+#'     associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
+#'     stateChangeError = "string",
+#'     associatedGateway = list(
+#'       id = "string",
+#'       type = "virtualPrivateGateway"|"transitGateway",
+#'       ownerAccount = "string",
+#'       region = "string"
+#'     ),
+#'     associationId = "string",
+#'     allowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     virtualGatewayId = "string",
+#'     virtualGatewayRegion = "string",
+#'     virtualGatewayOwnerAccount = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_direct_connect_gateway_association_proposal(
@@ -89,6 +117,37 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #' @param interconnectId &#91;required&#93; The ID of the interconnect on which the connection will be provisioned.
 #' @param vlan &#91;required&#93; The dedicated VLAN provisioned to the connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$allocate_connection_on_interconnect(
@@ -150,6 +209,37 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #' @param vlan &#91;required&#93; The dedicated VLAN provisioned to the hosted connection.
 #' @param tags The tags associated with the connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$allocate_hosted_connection(
@@ -208,6 +298,58 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #' provisioned.
 #' @param ownerAccount &#91;required&#93; The ID of the AWS account that owns the virtual private interface.
 #' @param newPrivateVirtualInterfaceAllocation &#91;required&#93; Information about the private virtual interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   virtualInterfaceId = "string",
+#'   location = "string",
+#'   connectionId = "string",
+#'   virtualInterfaceType = "string",
+#'   virtualInterfaceName = "string",
+#'   vlan = 123,
+#'   asn = 123,
+#'   amazonSideAsn = 123,
+#'   authKey = "string",
+#'   amazonAddress = "string",
+#'   customerAddress = "string",
+#'   addressFamily = "ipv4"|"ipv6",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   customerRouterConfig = "string",
+#'   mtu = 123,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   virtualGatewayId = "string",
+#'   directConnectGatewayId = "string",
+#'   routeFilterPrefixes = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   bgpPeers = list(
+#'     list(
+#'       bgpPeerId = "string",
+#'       asn = 123,
+#'       authKey = "string",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       amazonAddress = "string",
+#'       customerAddress = "string",
+#'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'       bgpStatus = "up"|"down"|"unknown",
+#'       awsDeviceV2 = "string"
+#'     )
+#'   ),
+#'   region = "string",
+#'   awsDeviceV2 = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -281,6 +423,58 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #' provisioned.
 #' @param ownerAccount &#91;required&#93; The ID of the AWS account that owns the public virtual interface.
 #' @param newPublicVirtualInterfaceAllocation &#91;required&#93; Information about the public virtual interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   virtualInterfaceId = "string",
+#'   location = "string",
+#'   connectionId = "string",
+#'   virtualInterfaceType = "string",
+#'   virtualInterfaceName = "string",
+#'   vlan = 123,
+#'   asn = 123,
+#'   amazonSideAsn = 123,
+#'   authKey = "string",
+#'   amazonAddress = "string",
+#'   customerAddress = "string",
+#'   addressFamily = "ipv4"|"ipv6",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   customerRouterConfig = "string",
+#'   mtu = 123,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   virtualGatewayId = "string",
+#'   directConnectGatewayId = "string",
+#'   routeFilterPrefixes = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   bgpPeers = list(
+#'     list(
+#'       bgpPeerId = "string",
+#'       asn = 123,
+#'       authKey = "string",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       amazonAddress = "string",
+#'       customerAddress = "string",
+#'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'       bgpStatus = "up"|"down"|"unknown",
+#'       awsDeviceV2 = "string"
+#'     )
+#'   ),
+#'   region = "string",
+#'   awsDeviceV2 = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -356,6 +550,60 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #' @param ownerAccount &#91;required&#93; The ID of the AWS account that owns the transit virtual interface.
 #' @param newTransitVirtualInterfaceAllocation &#91;required&#93; Information about the transit virtual interface.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterface = list(
+#'     ownerAccount = "string",
+#'     virtualInterfaceId = "string",
+#'     location = "string",
+#'     connectionId = "string",
+#'     virtualInterfaceType = "string",
+#'     virtualInterfaceName = "string",
+#'     vlan = 123,
+#'     asn = 123,
+#'     amazonSideAsn = 123,
+#'     authKey = "string",
+#'     amazonAddress = "string",
+#'     customerAddress = "string",
+#'     addressFamily = "ipv4"|"ipv6",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     customerRouterConfig = "string",
+#'     mtu = 123,
+#'     jumboFrameCapable = TRUE|FALSE,
+#'     virtualGatewayId = "string",
+#'     directConnectGatewayId = "string",
+#'     routeFilterPrefixes = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     bgpPeers = list(
+#'       list(
+#'         bgpPeerId = "string",
+#'         asn = 123,
+#'         authKey = "string",
+#'         addressFamily = "ipv4"|"ipv6",
+#'         amazonAddress = "string",
+#'         customerAddress = "string",
+#'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'         bgpStatus = "up"|"down"|"unknown",
+#'         awsDeviceV2 = "string"
+#'       )
+#'     ),
+#'     region = "string",
+#'     awsDeviceV2 = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$allocate_transit_virtual_interface(
@@ -428,6 +676,37 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param lagId &#91;required&#93; The ID of the LAG with which to associate the connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_connection_with_lag(
@@ -474,6 +753,37 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #'
 #' @param connectionId &#91;required&#93; The ID of the hosted connection.
 #' @param parentConnectionId &#91;required&#93; The ID of the interconnect or the LAG.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -530,6 +840,58 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #' @param connectionId &#91;required&#93; The ID of the LAG or connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   virtualInterfaceId = "string",
+#'   location = "string",
+#'   connectionId = "string",
+#'   virtualInterfaceType = "string",
+#'   virtualInterfaceName = "string",
+#'   vlan = 123,
+#'   asn = 123,
+#'   amazonSideAsn = 123,
+#'   authKey = "string",
+#'   amazonAddress = "string",
+#'   customerAddress = "string",
+#'   addressFamily = "ipv4"|"ipv6",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   customerRouterConfig = "string",
+#'   mtu = 123,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   virtualGatewayId = "string",
+#'   directConnectGatewayId = "string",
+#'   routeFilterPrefixes = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   bgpPeers = list(
+#'     list(
+#'       bgpPeerId = "string",
+#'       asn = 123,
+#'       authKey = "string",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       amazonAddress = "string",
+#'       customerAddress = "string",
+#'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'       bgpStatus = "up"|"down"|"unknown",
+#'       awsDeviceV2 = "string"
+#'     )
+#'   ),
+#'   region = "string",
+#'   awsDeviceV2 = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_virtual_interface(
@@ -573,6 +935,14 @@ directconnect_associate_virtual_interface <- function(virtualInterfaceId, connec
 #' directconnect_confirm_connection(connectionId)
 #'
 #' @param connectionId &#91;required&#93; The ID of the hosted connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -620,6 +990,14 @@ directconnect_confirm_connection <- function(connectionId) {
 #' @param virtualGatewayId The ID of the virtual private gateway.
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$confirm_private_virtual_interface(
@@ -663,6 +1041,14 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
 #' directconnect_confirm_public_virtual_interface(virtualInterfaceId)
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -708,6 +1094,14 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -762,6 +1156,60 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #'
 #' @param virtualInterfaceId The ID of the virtual interface.
 #' @param newBGPPeer Information about the BGP peer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterface = list(
+#'     ownerAccount = "string",
+#'     virtualInterfaceId = "string",
+#'     location = "string",
+#'     connectionId = "string",
+#'     virtualInterfaceType = "string",
+#'     virtualInterfaceName = "string",
+#'     vlan = 123,
+#'     asn = 123,
+#'     amazonSideAsn = 123,
+#'     authKey = "string",
+#'     amazonAddress = "string",
+#'     customerAddress = "string",
+#'     addressFamily = "ipv4"|"ipv6",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     customerRouterConfig = "string",
+#'     mtu = 123,
+#'     jumboFrameCapable = TRUE|FALSE,
+#'     virtualGatewayId = "string",
+#'     directConnectGatewayId = "string",
+#'     routeFilterPrefixes = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     bgpPeers = list(
+#'       list(
+#'         bgpPeerId = "string",
+#'         asn = 123,
+#'         authKey = "string",
+#'         addressFamily = "ipv4"|"ipv6",
+#'         amazonAddress = "string",
+#'         customerAddress = "string",
+#'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'         bgpStatus = "up"|"down"|"unknown",
+#'         awsDeviceV2 = "string"
+#'       )
+#'     ),
+#'     region = "string",
+#'     awsDeviceV2 = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -830,6 +1278,37 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @param providerName The name of the service provider associated with the requested
 #' connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_connection(
@@ -891,6 +1370,21 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
 #' The default is 64512.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGateway = list(
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayName = "string",
+#'     amazonSideAsn = 123,
+#'     ownerAccount = "string",
+#'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
+#'     stateChangeError = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_direct_connect_gateway(
@@ -943,6 +1437,34 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #' Prefixes](https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
 #' in the *AWS Direct Connect User Guide*.
 #' @param virtualGatewayId The ID of the virtual private gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociation = list(
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayOwnerAccount = "string",
+#'     associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
+#'     stateChangeError = "string",
+#'     associatedGateway = list(
+#'       id = "string",
+#'       type = "virtualPrivateGateway"|"transitGateway",
+#'       ownerAccount = "string",
+#'       region = "string"
+#'     ),
+#'     associationId = "string",
+#'     allowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     virtualGatewayId = "string",
+#'     virtualGatewayRegion = "string",
+#'     virtualGatewayOwnerAccount = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1000,6 +1522,35 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway.
 #' @param removeAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to no longer advertise to the Direct Connect
 #' gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociationProposal = list(
+#'     proposalId = "string",
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayOwnerAccount = "string",
+#'     proposalState = "requested"|"accepted"|"deleted",
+#'     associatedGateway = list(
+#'       id = "string",
+#'       type = "virtualPrivateGateway"|"transitGateway",
+#'       ownerAccount = "string",
+#'       region = "string"
+#'     ),
+#'     existingAllowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     requestedAllowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1080,6 +1631,34 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' @param lagId The ID of the LAG.
 #' @param tags The tags to associate with the interconnect.
 #' @param providerName The name of the service provider associated with the interconnect.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   interconnectId = "string",
+#'   interconnectName = "string",
+#'   interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1166,6 +1745,62 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' @param childConnectionTags The tags to associate with the automtically created LAGs.
 #' @param providerName The name of the service provider associated with the LAG.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionsBandwidth = "string",
+#'   numberOfConnections = 123,
+#'   lagId = "string",
+#'   ownerAccount = "string",
+#'   lagName = "string",
+#'   lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+#'   location = "string",
+#'   region = "string",
+#'   minimumLinks = 123,
+#'   awsDevice = "string",
+#'   awsDeviceV2 = "string",
+#'   connections = list(
+#'     list(
+#'       ownerAccount = "string",
+#'       connectionId = "string",
+#'       connectionName = "string",
+#'       connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       region = "string",
+#'       location = "string",
+#'       bandwidth = "string",
+#'       vlan = 123,
+#'       partnerName = "string",
+#'       loaIssueTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lagId = "string",
+#'       awsDevice = "string",
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       awsDeviceV2 = "string",
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   ),
+#'   allowsHostedConnections = TRUE|FALSE,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_lag(
@@ -1239,6 +1874,58 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param newPrivateVirtualInterface &#91;required&#93; Information about the private virtual interface.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   virtualInterfaceId = "string",
+#'   location = "string",
+#'   connectionId = "string",
+#'   virtualInterfaceType = "string",
+#'   virtualInterfaceName = "string",
+#'   vlan = 123,
+#'   asn = 123,
+#'   amazonSideAsn = 123,
+#'   authKey = "string",
+#'   amazonAddress = "string",
+#'   customerAddress = "string",
+#'   addressFamily = "ipv4"|"ipv6",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   customerRouterConfig = "string",
+#'   mtu = 123,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   virtualGatewayId = "string",
+#'   directConnectGatewayId = "string",
+#'   routeFilterPrefixes = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   bgpPeers = list(
+#'     list(
+#'       bgpPeerId = "string",
+#'       asn = 123,
+#'       authKey = "string",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       amazonAddress = "string",
+#'       customerAddress = "string",
+#'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'       bgpStatus = "up"|"down"|"unknown",
+#'       awsDeviceV2 = "string"
+#'     )
+#'   ),
+#'   region = "string",
+#'   awsDeviceV2 = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_private_virtual_interface(
@@ -1301,6 +1988,58 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param newPublicVirtualInterface &#91;required&#93; Information about the public virtual interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   virtualInterfaceId = "string",
+#'   location = "string",
+#'   connectionId = "string",
+#'   virtualInterfaceType = "string",
+#'   virtualInterfaceName = "string",
+#'   vlan = 123,
+#'   asn = 123,
+#'   amazonSideAsn = 123,
+#'   authKey = "string",
+#'   amazonAddress = "string",
+#'   customerAddress = "string",
+#'   addressFamily = "ipv4"|"ipv6",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   customerRouterConfig = "string",
+#'   mtu = 123,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   virtualGatewayId = "string",
+#'   directConnectGatewayId = "string",
+#'   routeFilterPrefixes = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   bgpPeers = list(
+#'     list(
+#'       bgpPeerId = "string",
+#'       asn = 123,
+#'       authKey = "string",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       amazonAddress = "string",
+#'       customerAddress = "string",
+#'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'       bgpStatus = "up"|"down"|"unknown",
+#'       awsDeviceV2 = "string"
+#'     )
+#'   ),
+#'   region = "string",
+#'   awsDeviceV2 = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1380,6 +2119,60 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param newTransitVirtualInterface &#91;required&#93; Information about the transit virtual interface.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterface = list(
+#'     ownerAccount = "string",
+#'     virtualInterfaceId = "string",
+#'     location = "string",
+#'     connectionId = "string",
+#'     virtualInterfaceType = "string",
+#'     virtualInterfaceName = "string",
+#'     vlan = 123,
+#'     asn = 123,
+#'     amazonSideAsn = 123,
+#'     authKey = "string",
+#'     amazonAddress = "string",
+#'     customerAddress = "string",
+#'     addressFamily = "ipv4"|"ipv6",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     customerRouterConfig = "string",
+#'     mtu = 123,
+#'     jumboFrameCapable = TRUE|FALSE,
+#'     virtualGatewayId = "string",
+#'     directConnectGatewayId = "string",
+#'     routeFilterPrefixes = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     bgpPeers = list(
+#'       list(
+#'         bgpPeerId = "string",
+#'         asn = 123,
+#'         authKey = "string",
+#'         addressFamily = "ipv4"|"ipv6",
+#'         amazonAddress = "string",
+#'         customerAddress = "string",
+#'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'         bgpStatus = "up"|"down"|"unknown",
+#'         awsDeviceV2 = "string"
+#'       )
+#'     ),
+#'     region = "string",
+#'     awsDeviceV2 = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_transit_virtual_interface(
@@ -1443,6 +2236,60 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' @param customerAddress The IP address assigned to the customer interface.
 #' @param bgpPeerId The ID of the BGP peer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterface = list(
+#'     ownerAccount = "string",
+#'     virtualInterfaceId = "string",
+#'     location = "string",
+#'     connectionId = "string",
+#'     virtualInterfaceType = "string",
+#'     virtualInterfaceName = "string",
+#'     vlan = 123,
+#'     asn = 123,
+#'     amazonSideAsn = 123,
+#'     authKey = "string",
+#'     amazonAddress = "string",
+#'     customerAddress = "string",
+#'     addressFamily = "ipv4"|"ipv6",
+#'     virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'     customerRouterConfig = "string",
+#'     mtu = 123,
+#'     jumboFrameCapable = TRUE|FALSE,
+#'     virtualGatewayId = "string",
+#'     directConnectGatewayId = "string",
+#'     routeFilterPrefixes = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     bgpPeers = list(
+#'       list(
+#'         bgpPeerId = "string",
+#'         asn = 123,
+#'         authKey = "string",
+#'         addressFamily = "ipv4"|"ipv6",
+#'         amazonAddress = "string",
+#'         customerAddress = "string",
+#'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'         bgpStatus = "up"|"down"|"unknown",
+#'         awsDeviceV2 = "string"
+#'       )
+#'     ),
+#'     region = "string",
+#'     awsDeviceV2 = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_bgp_peer(
@@ -1488,6 +2335,37 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connection(
@@ -1527,6 +2405,21 @@ directconnect_delete_connection <- function(connectionId) {
 #' directconnect_delete_direct_connect_gateway(directConnectGatewayId)
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGateway = list(
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayName = "string",
+#'     amazonSideAsn = 123,
+#'     ownerAccount = "string",
+#'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
+#'     stateChangeError = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1575,6 +2468,34 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
 #' @param virtualGatewayId The ID of the virtual private gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociation = list(
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayOwnerAccount = "string",
+#'     associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
+#'     stateChangeError = "string",
+#'     associatedGateway = list(
+#'       id = "string",
+#'       type = "virtualPrivateGateway"|"transitGateway",
+#'       ownerAccount = "string",
+#'       region = "string"
+#'     ),
+#'     associationId = "string",
+#'     allowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     virtualGatewayId = "string",
+#'     virtualGatewayRegion = "string",
+#'     virtualGatewayOwnerAccount = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_direct_connect_gateway_association(
@@ -1617,6 +2538,35 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
 #'
 #' @param proposalId &#91;required&#93; The ID of the proposal.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociationProposal = list(
+#'     proposalId = "string",
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayOwnerAccount = "string",
+#'     proposalState = "requested"|"accepted"|"deleted",
+#'     associatedGateway = list(
+#'       id = "string",
+#'       type = "virtualPrivateGateway"|"transitGateway",
+#'       ownerAccount = "string",
+#'       region = "string"
+#'     ),
+#'     existingAllowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     requestedAllowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_direct_connect_gateway_association_proposal(
@@ -1656,6 +2606,14 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
 #'
 #' @param interconnectId &#91;required&#93; The ID of the interconnect.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_interconnect(
@@ -1694,6 +2652,62 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'
 #' @param lagId &#91;required&#93; The ID of the LAG.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionsBandwidth = "string",
+#'   numberOfConnections = 123,
+#'   lagId = "string",
+#'   ownerAccount = "string",
+#'   lagName = "string",
+#'   lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+#'   location = "string",
+#'   region = "string",
+#'   minimumLinks = 123,
+#'   awsDevice = "string",
+#'   awsDeviceV2 = "string",
+#'   connections = list(
+#'     list(
+#'       ownerAccount = "string",
+#'       connectionId = "string",
+#'       connectionName = "string",
+#'       connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       region = "string",
+#'       location = "string",
+#'       bandwidth = "string",
+#'       vlan = 123,
+#'       partnerName = "string",
+#'       loaIssueTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lagId = "string",
+#'       awsDevice = "string",
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       awsDeviceV2 = "string",
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   ),
+#'   allowsHostedConnections = TRUE|FALSE,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_lag(
@@ -1730,6 +2744,14 @@ directconnect_delete_lag <- function(lagId) {
 #' directconnect_delete_virtual_interface(virtualInterfaceId)
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1784,6 +2806,17 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 #' @param loaContentType The standard media type for the LOA-CFA document. The only supported
 #' value is application/pdf.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loa = list(
+#'     loaContent = raw,
+#'     loaContentType = "application/pdf"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_connection_loa(
@@ -1822,6 +2855,41 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #' directconnect_describe_connections(connectionId)
 #'
 #' @param connectionId The ID of the connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connections = list(
+#'     list(
+#'       ownerAccount = "string",
+#'       connectionId = "string",
+#'       connectionName = "string",
+#'       connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       region = "string",
+#'       location = "string",
+#'       bandwidth = "string",
+#'       vlan = 123,
+#'       partnerName = "string",
+#'       loaIssueTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lagId = "string",
+#'       awsDevice = "string",
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       awsDeviceV2 = "string",
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1866,6 +2934,41 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #' directconnect_describe_connections_on_interconnect(interconnectId)
 #'
 #' @param interconnectId &#91;required&#93; The ID of the interconnect.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connections = list(
+#'     list(
+#'       ownerAccount = "string",
+#'       connectionId = "string",
+#'       connectionName = "string",
+#'       connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       region = "string",
+#'       location = "string",
+#'       bandwidth = "string",
+#'       vlan = 123,
+#'       partnerName = "string",
+#'       loaIssueTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lagId = "string",
+#'       awsDevice = "string",
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       awsDeviceV2 = "string",
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1916,6 +3019,38 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 #' If `MaxResults` is given a value larger than 100, only 100 results are
 #' returned.
 #' @param nextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociationProposals = list(
+#'     list(
+#'       proposalId = "string",
+#'       directConnectGatewayId = "string",
+#'       directConnectGatewayOwnerAccount = "string",
+#'       proposalState = "requested"|"accepted"|"deleted",
+#'       associatedGateway = list(
+#'         id = "string",
+#'         type = "virtualPrivateGateway"|"transitGateway",
+#'         ownerAccount = "string",
+#'         region = "string"
+#'       ),
+#'       existingAllowedPrefixesToDirectConnectGateway = list(
+#'         list(
+#'           cidr = "string"
+#'         )
+#'       ),
+#'       requestedAllowedPrefixesToDirectConnectGateway = list(
+#'         list(
+#'           cidr = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1979,6 +3114,37 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #' @param nextToken The token provided in the previous call to retrieve the next page.
 #' @param virtualGatewayId The ID of the virtual private gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociations = list(
+#'     list(
+#'       directConnectGatewayId = "string",
+#'       directConnectGatewayOwnerAccount = "string",
+#'       associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
+#'       stateChangeError = "string",
+#'       associatedGateway = list(
+#'         id = "string",
+#'         type = "virtualPrivateGateway"|"transitGateway",
+#'         ownerAccount = "string",
+#'         region = "string"
+#'       ),
+#'       associationId = "string",
+#'       allowedPrefixesToDirectConnectGateway = list(
+#'         list(
+#'           cidr = "string"
+#'         )
+#'       ),
+#'       virtualGatewayId = "string",
+#'       virtualGatewayRegion = "string",
+#'       virtualGatewayOwnerAccount = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_direct_connect_gateway_associations(
@@ -2038,6 +3204,25 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
 #' returned.
 #' @param nextToken The token provided in the previous call to retrieve the next page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAttachments = list(
+#'     list(
+#'       directConnectGatewayId = "string",
+#'       virtualInterfaceId = "string",
+#'       virtualInterfaceRegion = "string",
+#'       virtualInterfaceOwnerAccount = "string",
+#'       attachmentState = "attaching"|"attached"|"detaching"|"detached",
+#'       attachmentType = "TransitVirtualInterface"|"PrivateVirtualInterface",
+#'       stateChangeError = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_direct_connect_gateway_attachments(
@@ -2088,6 +3273,24 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #' returned.
 #' @param nextToken The token provided in the previous call to retrieve the next page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGateways = list(
+#'     list(
+#'       directConnectGatewayId = "string",
+#'       directConnectGatewayName = "string",
+#'       amazonSideAsn = 123,
+#'       ownerAccount = "string",
+#'       directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
+#'       stateChangeError = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_direct_connect_gateways(
@@ -2130,6 +3333,41 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' directconnect_describe_hosted_connections(connectionId)
 #'
 #' @param connectionId &#91;required&#93; The ID of the interconnect or LAG.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connections = list(
+#'     list(
+#'       ownerAccount = "string",
+#'       connectionId = "string",
+#'       connectionName = "string",
+#'       connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       region = "string",
+#'       location = "string",
+#'       bandwidth = "string",
+#'       vlan = 123,
+#'       partnerName = "string",
+#'       loaIssueTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lagId = "string",
+#'       awsDevice = "string",
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       awsDeviceV2 = "string",
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2183,6 +3421,17 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 #' @param loaContentType The standard media type for the LOA-CFA document. The only supported
 #' value is application/pdf.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loa = list(
+#'     loaContent = raw,
+#'     loaContentType = "application/pdf"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_interconnect_loa(
@@ -2224,6 +3473,38 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #'
 #' @param interconnectId The ID of the interconnect.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   interconnects = list(
+#'     list(
+#'       interconnectId = "string",
+#'       interconnectName = "string",
+#'       interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+#'       region = "string",
+#'       location = "string",
+#'       bandwidth = "string",
+#'       loaIssueTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lagId = "string",
+#'       awsDevice = "string",
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       awsDeviceV2 = "string",
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_interconnects(
@@ -2260,6 +3541,66 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #' directconnect_describe_lags(lagId)
 #'
 #' @param lagId The ID of the LAG.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   lags = list(
+#'     list(
+#'       connectionsBandwidth = "string",
+#'       numberOfConnections = 123,
+#'       lagId = "string",
+#'       ownerAccount = "string",
+#'       lagName = "string",
+#'       lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+#'       location = "string",
+#'       region = "string",
+#'       minimumLinks = 123,
+#'       awsDevice = "string",
+#'       awsDeviceV2 = "string",
+#'       connections = list(
+#'         list(
+#'           ownerAccount = "string",
+#'           connectionId = "string",
+#'           connectionName = "string",
+#'           connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'           region = "string",
+#'           location = "string",
+#'           bandwidth = "string",
+#'           vlan = 123,
+#'           partnerName = "string",
+#'           loaIssueTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lagId = "string",
+#'           awsDevice = "string",
+#'           jumboFrameCapable = TRUE|FALSE,
+#'           awsDeviceV2 = "string",
+#'           hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'           tags = list(
+#'             list(
+#'               key = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           providerName = "string"
+#'         )
+#'       ),
+#'       allowsHostedConnections = TRUE|FALSE,
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2312,6 +3653,15 @@ directconnect_describe_lags <- function(lagId = NULL) {
 #' @param loaContentType The standard media type for the LOA-CFA document. The only supported
 #' value is application/pdf.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loaContent = raw,
+#'   loaContentType = "application/pdf"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_loa(
@@ -2354,6 +3704,26 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   locations = list(
+#'     list(
+#'       locationCode = "string",
+#'       locationName = "string",
+#'       region = "string",
+#'       availablePortSpeeds = list(
+#'         "string"
+#'       ),
+#'       availableProviders = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -2387,6 +3757,24 @@ directconnect_describe_locations <- function() {
 #' directconnect_describe_tags(resourceArns)
 #'
 #' @param resourceArns &#91;required&#93; The Amazon Resource Names (ARNs) of the resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceTags = list(
+#'     list(
+#'       resourceArn = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2430,6 +3818,19 @@ directconnect_describe_tags <- function(resourceArns) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualGateways = list(
+#'     list(
+#'       virtualGatewayId = "string",
+#'       virtualGatewayState = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -2470,6 +3871,62 @@ directconnect_describe_virtual_gateways <- function() {
 #'
 #' @param connectionId The ID of the connection.
 #' @param virtualInterfaceId The ID of the virtual interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaces = list(
+#'     list(
+#'       ownerAccount = "string",
+#'       virtualInterfaceId = "string",
+#'       location = "string",
+#'       connectionId = "string",
+#'       virtualInterfaceType = "string",
+#'       virtualInterfaceName = "string",
+#'       vlan = 123,
+#'       asn = 123,
+#'       amazonSideAsn = 123,
+#'       authKey = "string",
+#'       amazonAddress = "string",
+#'       customerAddress = "string",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       customerRouterConfig = "string",
+#'       mtu = 123,
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       virtualGatewayId = "string",
+#'       directConnectGatewayId = "string",
+#'       routeFilterPrefixes = list(
+#'         list(
+#'           cidr = "string"
+#'         )
+#'       ),
+#'       bgpPeers = list(
+#'         list(
+#'           bgpPeerId = "string",
+#'           asn = 123,
+#'           authKey = "string",
+#'           addressFamily = "ipv4"|"ipv6",
+#'           amazonAddress = "string",
+#'           customerAddress = "string",
+#'           bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'           bgpStatus = "up"|"down"|"unknown",
+#'           awsDeviceV2 = "string"
+#'         )
+#'       ),
+#'       region = "string",
+#'       awsDeviceV2 = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2522,6 +3979,37 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param lagId &#91;required&#93; The ID of the LAG.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_connection_from_lag(
@@ -2571,6 +4059,32 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 #' If `MaxResults` is given a value larger than 100, only 100 results are
 #' returned.
 #' @param nextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceTestHistory = list(
+#'     list(
+#'       testId = "string",
+#'       virtualInterfaceId = "string",
+#'       bgpPeers = list(
+#'         "string"
+#'       ),
+#'       status = "string",
+#'       ownerAccount = "string",
+#'       testDurationInMinutes = 123,
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2638,6 +4152,29 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
 #' 
 #' Default: 180 minutes (3 hours).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceTest = list(
+#'     testId = "string",
+#'     virtualInterfaceId = "string",
+#'     bgpPeers = list(
+#'       "string"
+#'     ),
+#'     status = "string",
+#'     ownerAccount = "string",
+#'     testDurationInMinutes = 123,
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_bgp_failover_test(
@@ -2678,6 +4215,29 @@ directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers =
 #' directconnect_stop_bgp_failover_test(virtualInterfaceId)
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface you no longer want to test.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualInterfaceTest = list(
+#'     testId = "string",
+#'     virtualInterfaceId = "string",
+#'     bgpPeers = list(
+#'       "string"
+#'     ),
+#'     status = "string",
+#'     ownerAccount = "string",
+#'     testDurationInMinutes = 123,
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2722,6 +4282,9 @@ directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; The tags to add.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2765,6 +4328,9 @@ directconnect_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; The tag keys of the tags to remove.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2814,6 +4380,34 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway.
 #' @param removeAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to no longer advertise to the Direct Connect
 #' gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGatewayAssociation = list(
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayOwnerAccount = "string",
+#'     associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
+#'     stateChangeError = "string",
+#'     associatedGateway = list(
+#'       id = "string",
+#'       type = "virtualPrivateGateway"|"transitGateway",
+#'       ownerAccount = "string",
+#'       region = "string"
+#'     ),
+#'     associationId = "string",
+#'     allowedPrefixesToDirectConnectGateway = list(
+#'       list(
+#'         cidr = "string"
+#'       )
+#'     ),
+#'     virtualGatewayId = "string",
+#'     virtualGatewayRegion = "string",
+#'     virtualGatewayOwnerAccount = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2879,6 +4473,62 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #' @param minimumLinks The minimum number of physical connections that must be operational for
 #' the LAG itself to be operational.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionsBandwidth = "string",
+#'   numberOfConnections = 123,
+#'   lagId = "string",
+#'   ownerAccount = "string",
+#'   lagName = "string",
+#'   lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
+#'   location = "string",
+#'   region = "string",
+#'   minimumLinks = 123,
+#'   awsDevice = "string",
+#'   awsDeviceV2 = "string",
+#'   connections = list(
+#'     list(
+#'       ownerAccount = "string",
+#'       connectionId = "string",
+#'       connectionName = "string",
+#'       connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'       region = "string",
+#'       location = "string",
+#'       bandwidth = "string",
+#'       vlan = 123,
+#'       partnerName = "string",
+#'       loaIssueTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lagId = "string",
+#'       awsDevice = "string",
+#'       jumboFrameCapable = TRUE|FALSE,
+#'       awsDeviceV2 = "string",
+#'       hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       providerName = "string"
+#'     )
+#'   ),
+#'   allowsHostedConnections = TRUE|FALSE,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_lag(
@@ -2932,6 +4582,58 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual private interface.
 #' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are
 #' 1500 and 9001. The default value is 1500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   virtualInterfaceId = "string",
+#'   location = "string",
+#'   connectionId = "string",
+#'   virtualInterfaceType = "string",
+#'   virtualInterfaceName = "string",
+#'   vlan = 123,
+#'   asn = 123,
+#'   amazonSideAsn = 123,
+#'   authKey = "string",
+#'   amazonAddress = "string",
+#'   customerAddress = "string",
+#'   addressFamily = "ipv4"|"ipv6",
+#'   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   customerRouterConfig = "string",
+#'   mtu = 123,
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   virtualGatewayId = "string",
+#'   directConnectGatewayId = "string",
+#'   routeFilterPrefixes = list(
+#'     list(
+#'       cidr = "string"
+#'     )
+#'   ),
+#'   bgpPeers = list(
+#'     list(
+#'       bgpPeerId = "string",
+#'       asn = 123,
+#'       authKey = "string",
+#'       addressFamily = "ipv4"|"ipv6",
+#'       amazonAddress = "string",
+#'       customerAddress = "string",
+#'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+#'       bgpStatus = "up"|"down"|"unknown",
+#'       awsDeviceV2 = "string"
+#'     )
+#'   ),
+#'   region = "string",
+#'   awsDeviceV2 = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

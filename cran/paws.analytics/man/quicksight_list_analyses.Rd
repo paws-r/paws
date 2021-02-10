@@ -13,6 +13,28 @@ quicksight_list_analyses(AwsAccountId, NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnalysisSummaryList = list(
+    list(
+      Arn = "string",
+      AnalysisId = "string",
+      Name = "string",
+      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Lists Amazon QuickSight analyses that exist in the specified AWS
 account.

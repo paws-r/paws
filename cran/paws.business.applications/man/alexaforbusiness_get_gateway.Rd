@@ -9,6 +9,18 @@ alexaforbusiness_get_gateway(GatewayArn)
 \arguments{
 \item{GatewayArn}{[required] The ARN of the gateway to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Gateway = list(
+    Arn = "string",
+    Name = "string",
+    Description = "string",
+    GatewayGroupArn = "string",
+    SoftwareVersion = "string"
+  )
+)
+}
+}
 \description{
 Retrieves the details of a gateway.
 }

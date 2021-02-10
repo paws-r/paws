@@ -17,6 +17,26 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserList = list(
+    list(
+      Arn = "string",
+      UserName = "string",
+      Email = "string",
+      Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
+      IdentityType = "IAM"|"QUICKSIGHT",
+      Active = TRUE|FALSE,
+      PrincipalId = "string",
+      CustomPermissionsName = "string"
+    )
+  ),
+  NextToken = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Returns a list of all of the Amazon QuickSight users belonging to this
 account.

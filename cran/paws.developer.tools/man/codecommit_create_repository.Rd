@@ -28,6 +28,27 @@ on a webpage.}
 
 \item{tags}{One or more tag key-value pairs to use when tagging this repository.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositoryMetadata = list(
+    accountId = "string",
+    repositoryId = "string",
+    repositoryName = "string",
+    repositoryDescription = "string",
+    defaultBranch = "string",
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    cloneUrlHttp = "string",
+    cloneUrlSsh = "string",
+    Arn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new, empty repository.
 }

@@ -12,7 +12,7 @@ organizations_invite_account_to_organization(Target, Notes, Tags)
 your organization. This is a JSON object that contains the following
 elements:
 
-\verb{\\\{ "Type": "ACCOUNT", "Id": "< account id number >" \\\}}
+\verb{\{ "Type": "ACCOUNT", "Id": "< account id number >" \}}
 
 If you use the AWS CLI, you can submit this as a single string, similar
 to the following example:
@@ -47,6 +47,36 @@ non-compliant.
 If any one of the tags is invalid or if you exceed the allowed number of
 tags for an account, then the entire request fails and invitations are
 not sent.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Handshake = list(
+    Id = "string",
+    Arn = "string",
+    Parties = list(
+      list(
+        Id = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+      )
+    ),
+    State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+    RequestedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ExpirationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+    Resources = list(
+      list(
+        Value = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+        Resources = list()
+      )
+    )
+  )
+)
+}
 }
 \description{
 Sends an invitation to another account to join your organization as a

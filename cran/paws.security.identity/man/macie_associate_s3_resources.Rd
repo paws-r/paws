@@ -14,6 +14,21 @@ want to associate with Macie Classic.}
 \item{s3Resources}{[required] The S3 resources that you want to associate with Amazon Macie Classic
 for monitoring and data classification.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  failedS3Resources = list(
+    list(
+      failedItem = list(
+        bucketName = "string",
+        prefix = "string"
+      ),
+      errorCode = "string",
+      errorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Associates specified S3 resources with Amazon Macie Classic for
 monitoring and data classification. If memberAccountId isn't specified,

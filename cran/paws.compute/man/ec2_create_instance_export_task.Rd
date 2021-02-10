@@ -19,6 +19,33 @@ The maximum length is 255 characters.}
 
 \item{TagSpecifications}{The tags to apply to the instance export task during creation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExportTask = list(
+    Description = "string",
+    ExportTaskId = "string",
+    ExportToS3Task = list(
+      ContainerFormat = "ova",
+      DiskImageFormat = "VMDK"|"RAW"|"VHD",
+      S3Bucket = "string",
+      S3Key = "string"
+    ),
+    InstanceExportDetails = list(
+      InstanceId = "string",
+      TargetEnvironment = "citrix"|"vmware"|"microsoft"
+    ),
+    State = "active"|"cancelling"|"cancelled"|"completed",
+    StatusMessage = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Exports a running or stopped instance to an Amazon S3 bucket.
 

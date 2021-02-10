@@ -18,6 +18,52 @@ applies to the overall length of the array.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Steps = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Config = list(
+        Jar = "string",
+        Properties = list(
+          "string"
+        ),
+        MainClass = "string",
+        Args = list(
+          "string"
+        )
+      ),
+      ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+      Status = list(
+        State = "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED",
+        StateChangeReason = list(
+          Code = "NONE",
+          Message = "string"
+        ),
+        FailureDetails = list(
+          Reason = "string",
+          Message = "string",
+          LogFile = "string"
+        ),
+        Timeline = list(
+          CreationDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          StartDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          EndDateTime = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Provides a list of steps for the cluster in reverse order unless you
 specify \code{stepIds} with the request of filter by \code{StepStates}. You can

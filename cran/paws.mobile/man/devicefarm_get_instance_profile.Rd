@@ -9,6 +9,21 @@ devicefarm_get_instance_profile(arn)
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of an instance profile.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  instanceProfile = list(
+    arn = "string",
+    packageCleanup = TRUE|FALSE,
+    excludeAppPackagesFromCleanup = list(
+      "string"
+    ),
+    rebootAfterUse = TRUE|FALSE,
+    name = "string",
+    description = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the specified instance profile.
 }

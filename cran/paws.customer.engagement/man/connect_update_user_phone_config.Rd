@@ -13,6 +13,9 @@ connect_update_user_phone_config(PhoneConfig, UserId, InstanceId)
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the phone configuration settings for the specified user.
 }

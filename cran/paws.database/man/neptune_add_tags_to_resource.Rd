@@ -13,6 +13,9 @@ Amazon Resource Name (ARN). For information about creating an ARN, see
 
 \item{Tags}{[required] The tags to be assigned to the Amazon Neptune resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds metadata tags to an Amazon Neptune resource. These tags can also be
 used with cost allocation reporting to track cost associated with Amazon

@@ -14,6 +14,24 @@ iot1clickprojects_list_placements(projectName, nextToken, maxResults)
 \item{maxResults}{The maximum number of results to return per request. If not set, a
 default value of 100 is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  placements = list(
+    list(
+      projectName = "string",
+      placementName = "string",
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      updatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the placement(s) of a project.
 }

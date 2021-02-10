@@ -13,6 +13,9 @@ elasticbeanstalk_associate_environment_operations_role(EnvironmentName,
 \item{OperationsRole}{[required] The Amazon Resource Name (ARN) of an existing IAM role to be used as the
 environment's operations role.}
 }
+\value{
+An empty list.
+}
 \description{
 Add or change the operations role used by an environment. After this
 call is made, Elastic Beanstalk uses the associated operations role for

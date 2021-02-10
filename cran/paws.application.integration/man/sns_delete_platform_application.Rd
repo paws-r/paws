@@ -10,6 +10,9 @@ sns_delete_platform_application(PlatformApplicationArn)
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn of platform application object to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a platform application object for one of the supported push
 notification services, such as APNS and GCM (Firebase Cloud Messaging).

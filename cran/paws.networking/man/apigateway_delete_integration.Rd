@@ -14,6 +14,9 @@ identifier.}
 
 \item{httpMethod}{[required] [Required] Specifies a delete integration request's HTTP method.}
 }
+\value{
+An empty list.
+}
 \description{
 Represents a delete integration.
 }

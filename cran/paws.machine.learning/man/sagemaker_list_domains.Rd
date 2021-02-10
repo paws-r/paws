@@ -12,6 +12,27 @@ it in your next request to receive the next set of results.}
 
 \item{MaxResults}{Returns a list up to a specified limit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Domains = list(
+    list(
+      DomainArn = "string",
+      DomainId = "string",
+      DomainName = "string",
+      Status = "Deleting"|"Failed"|"InService"|"Pending"|"Updating"|"Update_Failed"|"Delete_Failed",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Url = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the domains.
 }

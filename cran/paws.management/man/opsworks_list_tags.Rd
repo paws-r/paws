@@ -15,6 +15,15 @@ parameter to a \code{ListTagsRequest} call.}
 \item{NextToken}{Do not use. A validation exception occurs if you add a \code{NextToken}
 parameter to a \code{ListTagsRequest} call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of tags that are applied to the specified stack or layer.
 }

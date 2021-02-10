@@ -17,6 +17,9 @@ to put events to the default event bus.}
 \item{EventBusName}{The name of the event bus to revoke permissions for. If you omit this,
 the default event bus is used.}
 }
+\value{
+An empty list.
+}
 \description{
 Revokes the permission of another AWS account to be able to put events
 to the specified event bus. Specify the account to revoke by the

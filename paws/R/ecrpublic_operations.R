@@ -27,6 +27,28 @@ NULL
 #' check.
 #' @param layerDigests &#91;required&#93; The digests of the image layers to check.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   layers = list(
+#'     list(
+#'       layerDigest = "string",
+#'       layerAvailability = "AVAILABLE"|"UNAVAILABLE",
+#'       layerSize = 123,
+#'       mediaType = "string"
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       layerDigest = "string",
+#'       failureCode = "InvalidLayerDigest"|"MissingLayerDigest",
+#'       failureReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_check_layer_availability(
@@ -83,6 +105,29 @@ ecrpublic_batch_check_layer_availability <- function(registryId = NULL, reposito
 #' @param imageIds &#91;required&#93; A list of image ID references that correspond to images to delete. The
 #' format of the `imageIds` reference is `imageTag=tag` or
 #' `imageDigest=digest`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   imageIds = list(
+#'     list(
+#'       imageDigest = "string",
+#'       imageTag = "string"
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       imageId = list(
+#'         imageDigest = "string",
+#'         imageTag = "string"
+#'       ),
+#'       failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError",
+#'       failureReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -148,6 +193,17 @@ ecrpublic_batch_delete_image <- function(registryId = NULL, repositoryName, imag
 #' associate with the image layer.
 #' @param layerDigests &#91;required&#93; The `sha256` digest of the image layer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   uploadId = "string",
+#'   layerDigest = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$complete_layer_upload(
@@ -198,6 +254,35 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 #' `project-a/nginx-web-app`).
 #' @param catalogData The details about the repository that are publicly visible in the Amazon
 #' ECR Public Gallery.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     repositoryArn = "string",
+#'     registryId = "string",
+#'     repositoryName = "string",
+#'     repositoryUri = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   catalogData = list(
+#'     description = "string",
+#'     architectures = list(
+#'       "string"
+#'     ),
+#'     operatingSystems = list(
+#'       "string"
+#'     ),
+#'     logoUrl = "string",
+#'     aboutText = "string",
+#'     usageText = "string",
+#'     marketplaceCertified = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -255,6 +340,22 @@ ecrpublic_create_repository <- function(repositoryName, catalogData = NULL) {
 #' @param repositoryName &#91;required&#93; The name of the repository to delete.
 #' @param force If a repository contains images, forces the deletion.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     repositoryArn = "string",
+#'     registryId = "string",
+#'     repositoryName = "string",
+#'     repositoryUri = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_repository(
@@ -297,6 +398,16 @@ ecrpublic_delete_repository <- function(registryId = NULL, repositoryName, force
 #' default public registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository that is associated with the repository policy
 #' to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   policyText = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -359,6 +470,31 @@ ecrpublic_delete_repository_policy <- function(registryId = NULL, repositoryName
 #' [`describe_image_tags`][ecrpublic_describe_image_tags] returns up to 100
 #' results and a `nextToken` value, if applicable. This option cannot be
 #' used when you specify images with `imageIds`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   imageTagDetails = list(
+#'     list(
+#'       imageTag = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       imageDetail = list(
+#'         imageDigest = "string",
+#'         imageSizeInBytes = 123,
+#'         imagePushedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         imageManifestMediaType = "string",
+#'         artifactMediaType = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -430,6 +566,30 @@ ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nex
 #' and a `nextToken` value, if applicable. This option cannot be used when
 #' you specify images with `imageIds`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   imageDetails = list(
+#'     list(
+#'       registryId = "string",
+#'       repositoryName = "string",
+#'       imageDigest = "string",
+#'       imageTags = list(
+#'         "string"
+#'       ),
+#'       imageSizeInBytes = 123,
+#'       imagePushedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       imageManifestMediaType = "string",
+#'       artifactMediaType = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_images(
@@ -495,6 +655,30 @@ ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageId
 #' and 1000. If this parameter is not used, then
 #' [`describe_registries`][ecrpublic_describe_registries] returns up to 100
 #' results and a `nextToken` value, if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registries = list(
+#'     list(
+#'       registryId = "string",
+#'       registryArn = "string",
+#'       registryUri = "string",
+#'       verified = TRUE|FALSE,
+#'       aliases = list(
+#'         list(
+#'           name = "string",
+#'           status = "ACTIVE"|"PENDING"|"REJECTED",
+#'           primaryRegistryAlias = TRUE|FALSE,
+#'           defaultRegistryAlias = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -563,6 +747,25 @@ ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
 #' 100 results and a `nextToken` value, if applicable. This option cannot
 #' be used when you specify repositories with `repositoryNames`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositories = list(
+#'     list(
+#'       repositoryArn = "string",
+#'       registryId = "string",
+#'       repositoryName = "string",
+#'       repositoryUri = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_repositories(
@@ -608,6 +811,19 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
 #' @usage
 #' ecrpublic_get_authorization_token()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizationData = list(
+#'     authorizationToken = "string",
+#'     expiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_authorization_token()
@@ -640,6 +856,16 @@ ecrpublic_get_authorization_token <- function() {
 #'
 #' @usage
 #' ecrpublic_get_registry_catalog_data()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryCatalogData = list(
+#'     displayName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -679,6 +905,26 @@ ecrpublic_get_registry_catalog_data <- function() {
 #' repositories to be described. If you do not specify a registry, the
 #' default public registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to retrieve the catalog metadata for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   catalogData = list(
+#'     description = "string",
+#'     architectures = list(
+#'       "string"
+#'     ),
+#'     operatingSystems = list(
+#'       "string"
+#'     ),
+#'     logoUrl = "string",
+#'     aboutText = "string",
+#'     usageText = "string",
+#'     marketplaceCertified = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -720,6 +966,16 @@ ecrpublic_get_repository_catalog_data <- function(registryId = NULL, repositoryN
 #' repository. If you do not specify a registry, the default public
 #' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository with the policy to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   policyText = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -770,6 +1026,15 @@ ecrpublic_get_repository_policy <- function(registryId = NULL, repositoryName) {
 #' upload layers. If you do not specify a registry, the default public
 #' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to which you intend to upload layers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uploadId = "string",
+#'   partSize = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -829,6 +1094,23 @@ ecrpublic_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' Initiative (OCI) formats.
 #' @param imageDigest The image digest of the image manifest corresponding to the image.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   image = list(
+#'     registryId = "string",
+#'     repositoryName = "string",
+#'     imageId = list(
+#'       imageDigest = "string",
+#'       imageTag = "string"
+#'     ),
+#'     imageManifest = "string",
+#'     imageManifestMediaType = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_image(
@@ -875,6 +1157,16 @@ ecrpublic_put_image <- function(registryId = NULL, repositoryName, imageManifest
 #' The registry display name is only publicly visible in the Amazon ECR
 #' Public Gallery for verified accounts.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryCatalogData = list(
+#'     displayName = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_registry_catalog_data(
@@ -919,6 +1211,26 @@ ecrpublic_put_registry_catalog_data <- function(displayName = NULL) {
 #' @param repositoryName &#91;required&#93; The name of the repository to create or update the catalog data for.
 #' @param catalogData &#91;required&#93; An object containing the catalog data for a repository. This data is
 #' publicly visible in the Amazon ECR Public Gallery.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   catalogData = list(
+#'     description = "string",
+#'     architectures = list(
+#'       "string"
+#'     ),
+#'     operatingSystems = list(
+#'       "string"
+#'     ),
+#'     logoUrl = "string",
+#'     aboutText = "string",
+#'     usageText = "string",
+#'     marketplaceCertified = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -987,6 +1299,16 @@ ecrpublic_put_repository_catalog_data <- function(registryId = NULL, repositoryN
 #' the [`set_repository_policy`][ecrpublic_set_repository_policy]
 #' operation. This is intended to prevent accidental repository lock outs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   policyText = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_repository_policy(
@@ -1047,6 +1369,17 @@ ecrpublic_set_repository_policy <- function(registryId = NULL, repositoryName, p
 #' @param partLastByte &#91;required&#93; The position of the last byte of the layer part within the overall image
 #' layer.
 #' @param layerPartBlob &#91;required&#93; The base64-encoded layer part payload.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registryId = "string",
+#'   repositoryName = "string",
+#'   uploadId = "string",
+#'   lastByteReceived = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

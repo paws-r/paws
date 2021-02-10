@@ -17,6 +17,18 @@ characters}
 \item{WorkerIds}{[required] A list of Worker IDs you wish to notify. You can notify upto 100 Workers
 at a time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotifyWorkersFailureStatuses = list(
+    list(
+      NotifyWorkersFailureCode = "SoftFailure"|"HardFailure",
+      NotifyWorkersFailureMessage = "string",
+      WorkerId = "string"
+    )
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_notify_workers]{notify_workers}} operation sends an email to
 one or more Workers that you specify with the Worker ID. You can specify

@@ -23,6 +23,422 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInsightsAnalysis = list(
+    NetworkInsightsAnalysisId = "string",
+    NetworkInsightsAnalysisArn = "string",
+    NetworkInsightsPathId = "string",
+    FilterInArns = list(
+      "string"
+    ),
+    StartDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = "running"|"succeeded"|"failed",
+    StatusMessage = "string",
+    NetworkPathFound = TRUE|FALSE,
+    ForwardPathComponents = list(
+      list(
+        SequenceNumber = 123,
+        AclRule = list(
+          Cidr = "string",
+          Egress = TRUE|FALSE,
+          PortRange = list(
+            From = 123,
+            To = 123
+          ),
+          Protocol = "string",
+          RuleAction = "string",
+          RuleNumber = 123
+        ),
+        Component = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        DestinationVpc = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        OutboundHeader = list(
+          DestinationAddresses = list(
+            "string"
+          ),
+          DestinationPortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          ),
+          Protocol = "string",
+          SourceAddresses = list(
+            "string"
+          ),
+          SourcePortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          )
+        ),
+        InboundHeader = list(
+          DestinationAddresses = list(
+            "string"
+          ),
+          DestinationPortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          ),
+          Protocol = "string",
+          SourceAddresses = list(
+            "string"
+          ),
+          SourcePortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          )
+        ),
+        RouteTableRoute = list(
+          DestinationCidr = "string",
+          DestinationPrefixListId = "string",
+          EgressOnlyInternetGatewayId = "string",
+          GatewayId = "string",
+          InstanceId = "string",
+          NatGatewayId = "string",
+          NetworkInterfaceId = "string",
+          Origin = "string",
+          TransitGatewayId = "string",
+          VpcPeeringConnectionId = "string"
+        ),
+        SecurityGroupRule = list(
+          Cidr = "string",
+          Direction = "string",
+          SecurityGroupId = "string",
+          PortRange = list(
+            From = 123,
+            To = 123
+          ),
+          PrefixListId = "string",
+          Protocol = "string"
+        ),
+        SourceVpc = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Subnet = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Vpc = list(
+          Id = "string",
+          Arn = "string"
+        )
+      )
+    ),
+    ReturnPathComponents = list(
+      list(
+        SequenceNumber = 123,
+        AclRule = list(
+          Cidr = "string",
+          Egress = TRUE|FALSE,
+          PortRange = list(
+            From = 123,
+            To = 123
+          ),
+          Protocol = "string",
+          RuleAction = "string",
+          RuleNumber = 123
+        ),
+        Component = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        DestinationVpc = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        OutboundHeader = list(
+          DestinationAddresses = list(
+            "string"
+          ),
+          DestinationPortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          ),
+          Protocol = "string",
+          SourceAddresses = list(
+            "string"
+          ),
+          SourcePortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          )
+        ),
+        InboundHeader = list(
+          DestinationAddresses = list(
+            "string"
+          ),
+          DestinationPortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          ),
+          Protocol = "string",
+          SourceAddresses = list(
+            "string"
+          ),
+          SourcePortRanges = list(
+            list(
+              From = 123,
+              To = 123
+            )
+          )
+        ),
+        RouteTableRoute = list(
+          DestinationCidr = "string",
+          DestinationPrefixListId = "string",
+          EgressOnlyInternetGatewayId = "string",
+          GatewayId = "string",
+          InstanceId = "string",
+          NatGatewayId = "string",
+          NetworkInterfaceId = "string",
+          Origin = "string",
+          TransitGatewayId = "string",
+          VpcPeeringConnectionId = "string"
+        ),
+        SecurityGroupRule = list(
+          Cidr = "string",
+          Direction = "string",
+          SecurityGroupId = "string",
+          PortRange = list(
+            From = 123,
+            To = 123
+          ),
+          PrefixListId = "string",
+          Protocol = "string"
+        ),
+        SourceVpc = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Subnet = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Vpc = list(
+          Id = "string",
+          Arn = "string"
+        )
+      )
+    ),
+    Explanations = list(
+      list(
+        Acl = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        AclRule = list(
+          Cidr = "string",
+          Egress = TRUE|FALSE,
+          PortRange = list(
+            From = 123,
+            To = 123
+          ),
+          Protocol = "string",
+          RuleAction = "string",
+          RuleNumber = 123
+        ),
+        Address = "string",
+        Addresses = list(
+          "string"
+        ),
+        AttachedTo = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        AvailabilityZones = list(
+          "string"
+        ),
+        Cidrs = list(
+          "string"
+        ),
+        Component = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        CustomerGateway = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Destination = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        DestinationVpc = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Direction = "string",
+        ExplanationCode = "string",
+        IngressRouteTable = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        InternetGateway = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        LoadBalancerArn = "string",
+        ClassicLoadBalancerListener = list(
+          LoadBalancerPort = 123,
+          InstancePort = 123
+        ),
+        LoadBalancerListenerPort = 123,
+        LoadBalancerTarget = list(
+          Address = "string",
+          AvailabilityZone = "string",
+          Instance = list(
+            Id = "string",
+            Arn = "string"
+          ),
+          Port = 123
+        ),
+        LoadBalancerTargetGroup = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        LoadBalancerTargetGroups = list(
+          list(
+            Id = "string",
+            Arn = "string"
+          )
+        ),
+        LoadBalancerTargetPort = 123,
+        ElasticLoadBalancerListener = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        MissingComponent = "string",
+        NatGateway = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        NetworkInterface = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        PacketField = "string",
+        VpcPeeringConnection = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Port = 123,
+        PortRanges = list(
+          list(
+            From = 123,
+            To = 123
+          )
+        ),
+        PrefixList = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Protocols = list(
+          "string"
+        ),
+        RouteTableRoute = list(
+          DestinationCidr = "string",
+          DestinationPrefixListId = "string",
+          EgressOnlyInternetGatewayId = "string",
+          GatewayId = "string",
+          InstanceId = "string",
+          NatGatewayId = "string",
+          NetworkInterfaceId = "string",
+          Origin = "string",
+          TransitGatewayId = "string",
+          VpcPeeringConnectionId = "string"
+        ),
+        RouteTable = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        SecurityGroup = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        SecurityGroupRule = list(
+          Cidr = "string",
+          Direction = "string",
+          SecurityGroupId = "string",
+          PortRange = list(
+            From = 123,
+            To = 123
+          ),
+          PrefixListId = "string",
+          Protocol = "string"
+        ),
+        SecurityGroups = list(
+          list(
+            Id = "string",
+            Arn = "string"
+          )
+        ),
+        SourceVpc = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        State = "string",
+        Subnet = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        SubnetRouteTable = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        Vpc = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        VpcEndpoint = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        VpnConnection = list(
+          Id = "string",
+          Arn = "string"
+        ),
+        VpnGateway = list(
+          Id = "string",
+          Arn = "string"
+        )
+      )
+    ),
+    AlternatePathHints = list(
+      list(
+        ComponentId = "string",
+        ComponentArn = "string"
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Starts analyzing the specified path. If the path is reachable, the
 operation returns the shortest feasible path.

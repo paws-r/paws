@@ -29,7 +29,7 @@ For rate expressions, \emph{value} is a positive integer and \emph{unit} is
 
 For cron expressions, \emph{fields} is a cron expression. The supported cron
 format consists of six fields separated by white spaces: [Minutes]
-[Hours] [Day\\_of\\_Month] [Month] [Day\\_of\\_Week] [Year].
+[Hours] [Day_of_Month] [Month] [Day_of_Week] [Year].
 
 For more information and examples, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
 in the \emph{Application Auto Scaling User Guide}.}
@@ -136,6 +136,9 @@ one. At the scheduled time, if the current capacity is below the minimum
 capacity, Application Auto Scaling scales out to the minimum capacity.
 If the current capacity is above the maximum capacity, Application Auto
 Scaling scales in to the maximum capacity.}
+}
+\value{
+An empty list.
 }
 \description{
 Creates or updates a scheduled action for an Application Auto Scaling

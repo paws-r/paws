@@ -20,8 +20,41 @@ apigateway_create_usage_plan(name, description, apiStages, throttle,
 \item{quota}{The quota of the usage plan.}
 
 \item{tags}{The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  apiStages = list(
+    list(
+      apiId = "string",
+      stage = "string",
+      throttle = list(
+        list(
+          burstLimit = 123,
+          rateLimit = 123.0
+        )
+      )
+    )
+  ),
+  throttle = list(
+    burstLimit = 123,
+    rateLimit = 123.0
+  ),
+  quota = list(
+    limit = 123,
+    offset = 123,
+    period = "DAY"|"WEEK"|"MONTH"
+  ),
+  productCode = "string",
+  tags = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Creates a usage plan with the throttle and quota limits, as well as the

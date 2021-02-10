@@ -15,6 +15,9 @@ tag or tags to.}
 \item{Tags}{[required] A list of tags to associate with the specified stream. Each tag is a
 key-value pair (the value is optional).}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to a stream. A \emph{tag} is a key-value pair (the
 value is optional) that you can define and assign to AWS resources. If

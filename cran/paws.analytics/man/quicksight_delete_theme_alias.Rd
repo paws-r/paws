@@ -14,6 +14,16 @@ quicksight_delete_theme_alias(AwsAccountId, ThemeId, AliasName)
 
 \item{AliasName}{[required] The unique name for the theme alias to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AliasName = "string",
+  Arn = "string",
+  RequestId = "string",
+  Status = 123,
+  ThemeId = "string"
+)
+}
+}
 \description{
 Deletes the version of the theme that the specified theme alias points
 to. If you provide a specific alias, you delete the version of the theme

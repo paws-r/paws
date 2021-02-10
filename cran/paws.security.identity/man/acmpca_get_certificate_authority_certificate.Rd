@@ -12,6 +12,13 @@ acmpca_get_certificate_authority_certificate(CertificateAuthorityArn)
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = "string",
+  CertificateChain = "string"
+)
+}
+}
 \description{
 Retrieves the certificate and certificate chain for your private
 certificate authority (CA) or one that has been shared with you. Both

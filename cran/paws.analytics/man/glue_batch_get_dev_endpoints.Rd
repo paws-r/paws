@@ -11,6 +11,53 @@ glue_batch_get_dev_endpoints(DevEndpointNames)
 \item{DevEndpointNames}{[required] The list of \code{DevEndpoint} names, which might be the names returned from
 the \code{ListDevEndpoint} operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DevEndpoints = list(
+    list(
+      EndpointName = "string",
+      RoleArn = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      SubnetId = "string",
+      YarnEndpointAddress = "string",
+      PrivateAddress = "string",
+      ZeppelinRemoteSparkInterpreterPort = 123,
+      PublicAddress = "string",
+      Status = "string",
+      WorkerType = "Standard"|"G.1X"|"G.2X",
+      GlueVersion = "string",
+      NumberOfWorkers = 123,
+      NumberOfNodes = 123,
+      AvailabilityZone = "string",
+      VpcId = "string",
+      ExtraPythonLibsS3Path = "string",
+      ExtraJarsS3Path = "string",
+      FailureReason = "string",
+      LastUpdateStatus = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      PublicKey = "string",
+      PublicKeys = list(
+        "string"
+      ),
+      SecurityConfiguration = "string",
+      Arguments = list(
+        "string"
+      )
+    )
+  ),
+  DevEndpointsNotFound = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of resource metadata for a given list of development
 endpoint names. After calling the

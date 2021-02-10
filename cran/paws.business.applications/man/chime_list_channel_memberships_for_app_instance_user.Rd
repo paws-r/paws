@@ -15,6 +15,32 @@ chime_list_channel_memberships_for_app_instance_user(AppInstanceUserArn,
 \item{NextToken}{The token returned from previous API requests until the number of
 channel memberships is reached.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelMemberships = list(
+    list(
+      ChannelSummary = list(
+        Name = "string",
+        ChannelArn = "string",
+        Mode = "UNRESTRICTED"|"RESTRICTED",
+        Privacy = "PUBLIC"|"PRIVATE",
+        Metadata = "string",
+        LastMessageTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      AppInstanceUserMembershipSummary = list(
+        Type = "DEFAULT"|"HIDDEN",
+        ReadMarkerTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all channels that a particular \code{AppInstanceUser} is a part of.
 Only an \code{AppInstanceAdmin} can call the API with a user ARN that is not

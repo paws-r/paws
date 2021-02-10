@@ -11,12 +11,18 @@ sagemaker_create_image_version(BaseImage, ClientToken, ImageName)
 for this version. The path is an Amazon Container Registry (ECR) URI in
 the following format:
 
-\verb{<acct-id>.dkr.ecr.<region>.amazonaws.com/<repo-name\\\[:tag\\\] or \\\[@digest\\\]>}}
+\verb{<acct-id>.dkr.ecr.<region>.amazonaws.com/<repo-name[:tag] or [@digest]>}}
 
 \item{ClientToken}{[required] A unique ID. If not specified, the AWS CLI and AWS SDKs, such as the SDK
 for Python (Boto3), add a unique value to the call.}
 
 \item{ImageName}{[required] The \code{ImageName} of the \code{Image} to create a version of.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageVersionArn = "string"
+)
+}
 }
 \description{
 Creates a version of the SageMaker image specified by \code{ImageName}. The

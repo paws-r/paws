@@ -81,6 +81,24 @@ This feature is available only to QuickSight Enterprise edition
 subscriptions that use SAML 2.0-Based Federation for Single Sign-On
 (SSO).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    Arn = "string",
+    UserName = "string",
+    Email = "string",
+    Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
+    IdentityType = "IAM"|"QUICKSIGHT",
+    Active = TRUE|FALSE,
+    PrincipalId = "string",
+    CustomPermissionsName = "string"
+  ),
+  UserInvitationUrl = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Creates an Amazon QuickSight user, whose identity is associated with the
 AWS Identity and Access Management (IAM) identity or role specified in

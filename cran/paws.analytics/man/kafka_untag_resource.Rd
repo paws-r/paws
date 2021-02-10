@@ -7,34 +7,29 @@
 kafka_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies the resource that's associated with the tags.</p>}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the resource
+that's associated with the tags.}
 
-\item{TagKeys}{[required]
-<p>Tag keys must be unique for a given cluster. In addition, the following restrictions apply:</p>
-<ul>
-<li>
-<p>Each tag key must be unique. If you add a tag with a key that's already in
-use, your new tag overwrites the existing key-value pair. </p>
-</li>
-<li>
-<p>You can't start a tag key with aws: because this prefix is reserved for use
-by  AWS.  AWS creates tags that begin with this prefix on your behalf, but
-you can't edit or delete them.</p>
-</li>
-<li>
-<p>Tag keys must be between 1 and 128 Unicode characters in length.</p>
-</li>
-<li>
-<p>Tag keys must consist of the following characters: Unicode letters, digits,
-white space, and the following special characters: _ . / = + -
-@.</p>
-</li>
-</ul>}
+\item{TagKeys}{[required] Tag keys must be unique for a given cluster. In addition, the following
+restrictions apply:
+\itemize{
+\item Each tag key must be unique. If you add a tag with a key that's
+already in use, your new tag overwrites the existing key-value pair.
+\item You can't start a tag key with aws: because this prefix is reserved
+for use by AWS. AWS creates tags that begin with this prefix on your
+behalf, but you can't edit or delete them.
+\item Tag keys must be between 1 and 128 Unicode characters in length.
+\item Tag keys must consist of the following characters: Unicode letters,
+digits, white space, and the following special characters: _ . /
+= + - @.
+}}
+}
+\value{
+An empty list.
 }
 \description{
-\preformatted{        <p>Removes the tags associated with the keys that are provided in the query.</p>
-}
+Removes the tags associated with the keys that are provided in the
+query.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

@@ -149,6 +149,25 @@ resources.
 statistical calculation.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
+  metricData = list(
+    list(
+      average = 123.0,
+      maximum = 123.0,
+      minimum = 123.0,
+      sampleCount = 123.0,
+      sum = 123.0,
+      timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about health metrics for your Lightsail load
 balancer.

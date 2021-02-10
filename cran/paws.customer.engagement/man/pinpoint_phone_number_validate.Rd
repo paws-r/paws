@@ -9,6 +9,27 @@ pinpoint_phone_number_validate(NumberValidateRequest)
 \arguments{
 \item{NumberValidateRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NumberValidateResponse = list(
+    Carrier = "string",
+    City = "string",
+    CleansedPhoneNumberE164 = "string",
+    CleansedPhoneNumberNational = "string",
+    Country = "string",
+    CountryCodeIso2 = "string",
+    CountryCodeNumeric = "string",
+    County = "string",
+    OriginalCountryCodeIso2 = "string",
+    OriginalPhoneNumber = "string",
+    PhoneType = "string",
+    PhoneTypeCode = 123,
+    Timezone = "string",
+    ZipCode = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about a phone number.
 }

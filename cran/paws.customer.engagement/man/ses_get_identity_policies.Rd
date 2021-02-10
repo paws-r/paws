@@ -20,6 +20,14 @@ maximum of 20 policies at a time. If you do not know the names of the
 policies that are attached to the identity, you can use
 \code{\link[=ses_list_identity_policies]{list_identity_policies}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policies = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns the requested sending authorization policies for the given
 identity (an email address or a domain). The policies are returned as a

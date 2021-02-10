@@ -11,6 +11,17 @@ pinpointemail_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to retrieve
 tag information for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a
 specified resource. A \emph{tag} is a label that you optionally define and

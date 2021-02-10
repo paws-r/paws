@@ -28,6 +28,15 @@ This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  clusters = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the Amazon EKS clusters in your AWS account in the specified
 Region.

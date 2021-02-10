@@ -11,6 +11,35 @@ cloudsearch_delete_analysis_scheme(DomainName, AnalysisSchemeName)
 
 \item{AnalysisSchemeName}{[required] The name of the analysis scheme you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnalysisScheme = list(
+    Options = list(
+      AnalysisSchemeName = "string",
+      AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
+      AnalysisOptions = list(
+        Synonyms = "string",
+        Stopwords = "string",
+        StemmingDictionary = "string",
+        JapaneseTokenizationDictionary = "string",
+        AlgorithmicStemming = "none"|"minimal"|"light"|"full"
+      )
+    ),
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Deletes an analysis scheme. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
 in the \emph{Amazon CloudSearch Developer Guide}.

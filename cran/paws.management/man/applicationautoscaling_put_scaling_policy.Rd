@@ -132,6 +132,18 @@ customized metrics.
 This parameter is required if you are creating a policy and the policy
 type is \code{TargetTrackingScaling}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyARN = "string",
+  Alarms = list(
+    list(
+      AlarmName = "string",
+      AlarmARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates or updates a scaling policy for an Application Auto Scaling
 scalable target.

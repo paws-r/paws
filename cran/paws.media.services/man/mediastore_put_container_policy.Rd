@@ -16,6 +16,9 @@ mediastore_put_container_policy(ContainerName, Policy)
 \item One \code{Statement} tag that contains the standard tags for the policy.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Creates an access policy for the specified container to restrict the
 users and clients that can access it. For information about the data

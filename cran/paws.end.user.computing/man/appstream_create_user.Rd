@@ -30,6 +30,9 @@ welcome email.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new user in the user pool.
 }

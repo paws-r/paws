@@ -18,6 +18,33 @@ associated with a resource share.}
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceShare = list(
+    resourceShareArn = "string",
+    name = "string",
+    owningAccountId = "string",
+    allowExternalPrincipals = TRUE|FALSE,
+    status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
+    statusMessage = "string",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    creationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
+  ),
+  clientToken = "string"
+)
+}
+}
 \description{
 Updates the specified resource share that you own.
 }

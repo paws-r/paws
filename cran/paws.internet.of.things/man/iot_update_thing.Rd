@@ -18,7 +18,7 @@ create a new thing, give it the new name, and then delete the old thing.}
 \item{attributePayload}{A list of thing attributes, a JSON string containing name-value pairs.
 For example:
 
-\verb{\\\{\\"attributes\\":\\\{\\"name1\\":\\"value2\\"\\\}\\\}}
+\verb{\{\\"attributes\\":\{\\"name1\\":\\"value2\\"\}\}}
 
 This data is used to add new attributes or update existing attributes.}
 
@@ -29,6 +29,9 @@ is rejected with a \code{VersionConflictException}.}
 
 \item{removeThingType}{Remove a thing type association. If \strong{true}, the association is
 removed.}
+}
+\value{
+An empty list.
 }
 \description{
 Updates the data for a thing.

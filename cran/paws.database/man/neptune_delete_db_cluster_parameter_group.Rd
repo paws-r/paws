@@ -16,6 +16,9 @@ Constraints:
 \item Cannot be associated with any DB clusters.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified DB cluster parameter group. The DB cluster parameter
 group to be deleted can't be associated with any DB clusters.

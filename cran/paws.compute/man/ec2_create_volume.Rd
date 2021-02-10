@@ -112,6 +112,45 @@ This parameter is valid only for \code{gp3} volumes.
 
 Valid Range: Minimum value of 125. Maximum value of 1000.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attachments = list(
+    list(
+      AttachTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Device = "string",
+      InstanceId = "string",
+      State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+      VolumeId = "string",
+      DeleteOnTermination = TRUE|FALSE
+    )
+  ),
+  AvailabilityZone = "string",
+  CreateTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Encrypted = TRUE|FALSE,
+  KmsKeyId = "string",
+  OutpostArn = "string",
+  Size = 123,
+  SnapshotId = "string",
+  State = "creating"|"available"|"in-use"|"deleting"|"deleted"|"error",
+  VolumeId = "string",
+  Iops = 123,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+  FastRestored = TRUE|FALSE,
+  MultiAttachEnabled = TRUE|FALSE,
+  Throughput = 123
+)
+}
+}
 \description{
 Creates an EBS volume that can be attached to an instance in the same
 Availability Zone.

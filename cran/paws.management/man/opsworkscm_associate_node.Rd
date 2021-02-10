@@ -28,6 +28,12 @@ required for the \code{chef-client} agent to access the Chef API.
 that is created by the node.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NodeAssociationStatusToken = "string"
+)
+}
+}
 \description{
 Associates a new node with the server. For more information about how to
 disassociate a node, see

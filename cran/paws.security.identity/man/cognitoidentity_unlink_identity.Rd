@@ -14,6 +14,9 @@ tokens.}
 
 \item{LoginsToRemove}{[required] Provider names to unlink from this identity.}
 }
+\value{
+An empty list.
+}
 \description{
 Unlinks a federated identity from an existing account. Unlinked logins
 will be considered new identities next time they are seen. Removing the

@@ -131,6 +131,24 @@ pass the \code{department}=\code{engineering} session tag. \code{Department} and
 \code{department} are not saved as separate tags, and the session tag passed
 in the request takes precedence over the role tag.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Credentials = list(
+    AccessKeyId = "string",
+    SecretAccessKey = "string",
+    SessionToken = "string",
+    Expiration = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  FederatedUser = list(
+    FederatedUserId = "string",
+    Arn = "string"
+  ),
+  PackedPolicySize = 123
+)
+}
+}
 \description{
 Returns a set of temporary security credentials (consisting of an access
 key ID, a secret access key, and a security token) for a federated user.
@@ -252,7 +270,7 @@ the user tag.
 svc$get_federation_token(
   DurationSeconds = 3600L,
   Name = "testFedUserSession",
-  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
+  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
   Tags = list(
     list(
       Key = "Project",

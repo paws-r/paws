@@ -27,6 +27,39 @@ DocumentationParts from an imported API, set \code{ignore=documentation} as a
 Currently, only OpenAPI definition JSON/YAML files are supported. The
 maximum size of the API definition file is 6MB.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  version = "string",
+  warnings = list(
+    "string"
+  ),
+  binaryMediaTypes = list(
+    "string"
+  ),
+  minimumCompressionSize = 123,
+  apiKeySource = "HEADER"|"AUTHORIZER",
+  endpointConfiguration = list(
+    types = list(
+      "REGIONAL"|"EDGE"|"PRIVATE"
+    ),
+    vpcEndpointIds = list(
+      "string"
+    )
+  ),
+  policy = "string",
+  tags = list(
+    "string"
+  ),
+  disableExecuteApiEndpoint = TRUE|FALSE
+)
+}
+}
 \description{
 A feature of the API Gateway control service for updating an existing
 API with an input of external API definitions. The update can take the

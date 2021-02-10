@@ -22,6 +22,32 @@ servicecatalog_scan_provisioned_products(AcceptLanguage,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisionedProducts = list(
+    list(
+      Name = "string",
+      Arn = "string",
+      Type = "string",
+      Id = "string",
+      Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
+      StatusMessage = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      IdempotencyToken = "string",
+      LastRecordId = "string",
+      LastProvisioningRecordId = "string",
+      LastSuccessfulProvisioningRecordId = "string",
+      ProductId = "string",
+      ProvisioningArtifactId = "string",
+      LaunchRoleArn = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists the provisioned products that are available (not terminated).
 

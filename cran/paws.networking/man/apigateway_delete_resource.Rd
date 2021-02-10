@@ -11,6 +11,9 @@ apigateway_delete_resource(restApiId, resourceId)
 
 \item{resourceId}{[required] [Required] The identifier of the Resource resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Resource resource.
 }

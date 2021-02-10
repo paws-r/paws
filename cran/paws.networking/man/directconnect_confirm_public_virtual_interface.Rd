@@ -10,6 +10,12 @@ directconnect_confirm_public_virtual_interface(virtualInterfaceId)
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+)
+}
+}
 \description{
 Accepts ownership of a public virtual interface created by another AWS
 account.

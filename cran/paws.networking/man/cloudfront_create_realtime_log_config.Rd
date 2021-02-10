@@ -23,6 +23,28 @@ rate determines the percentage of viewer requests that are represented
 in the real-time log data. You must provide an integer between 1 and
 100, inclusive.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RealtimeLogConfig = list(
+    ARN = "string",
+    Name = "string",
+    SamplingRate = 123,
+    EndPoints = list(
+      list(
+        StreamType = "string",
+        KinesisStreamConfig = list(
+          RoleARN = "string",
+          StreamARN = "string"
+        )
+      )
+    ),
+    Fields = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a real-time log configuration.
 

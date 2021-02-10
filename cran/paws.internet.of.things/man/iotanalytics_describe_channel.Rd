@@ -13,6 +13,45 @@ iotanalytics_describe_channel(channelName, includeStatistics)
 included in the response. This feature cannot be used with a channel
 whose S3 storage is customer-managed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  channel = list(
+    name = "string",
+    storage = list(
+      serviceManagedS3 = list(),
+      customerManagedS3 = list(
+        bucket = "string",
+        keyPrefix = "string",
+        roleArn = "string"
+      )
+    ),
+    arn = "string",
+    status = "CREATING"|"ACTIVE"|"DELETING",
+    retentionPeriod = list(
+      unlimited = TRUE|FALSE,
+      numberOfDays = 123
+    ),
+    creationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastMessageArrivalTime = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  statistics = list(
+    size = list(
+      estimatedSizeInBytes = 123.0,
+      estimatedOn = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about a channel.
 }

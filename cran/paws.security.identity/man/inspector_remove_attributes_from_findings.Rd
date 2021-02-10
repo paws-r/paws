@@ -15,6 +15,17 @@ from.}
 \item{attributeKeys}{[required] The array of attribute keys that you want to remove from specified
 findings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  failedItems = list(
+    list(
+      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+      retryable = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Removes entire attributes (key and value pairs) from the findings that
 are specified by the ARNs of the findings where an attribute with the
@@ -42,7 +53,7 @@ svc$remove_attributes_from_findings(
     "key=Example,value=example"
   ),
   findingArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
+    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/r..."
   )
 )
 }

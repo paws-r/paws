@@ -11,8 +11,52 @@ mediaconnect_add_flow_outputs(FlowArn, Outputs)
 
 \item{Outputs}{[required] A list of outputs that you want to add.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  Outputs = list(
+    list(
+      DataTransferSubscriberFeePercent = 123,
+      Description = "string",
+      Destination = "string",
+      Encryption = list(
+        Algorithm = "aes128"|"aes192"|"aes256",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SecretArn = "string",
+        Url = "string"
+      ),
+      EntitlementArn = "string",
+      MediaLiveInputArn = "string",
+      Name = "string",
+      OutputArn = "string",
+      Port = 123,
+      Transport = list(
+        CidrAllowList = list(
+          "string"
+        ),
+        MaxBitrate = 123,
+        MaxLatency = 123,
+        Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+        RemoteId = "string",
+        SmoothingLatency = 123,
+        StreamId = "string"
+      ),
+      VpcInterfaceAttachment = list(
+        VpcInterfaceName = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
-Adds outputs to an existing flow. You can create up to 50 outputs per flow.
+Adds outputs to an existing flow. You can create up to 50 outputs per
+flow.
 }
 \section{Request syntax}{
 \preformatted{svc$add_flow_outputs(

@@ -26,7 +26,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
-single quotes ('), at-signs (@), or underscores(\\_)}
+single quotes ('), at-signs (@), or underscores(_)}
 
 \item{NoReboot}{By default, Amazon EC2 attempts to shut down and reboot the instance
 before creating the image. If the \verb{No Reboot} option is set, Amazon EC2
@@ -48,6 +48,12 @@ If you specify other values for \code{ResourceType}, the request fails.
 
 To tag an AMI or snapshot after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageId = "string"
+)
+}
 }
 \description{
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that

@@ -20,6 +20,50 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Successful = list(
+    list(
+      SnapshotId = "string",
+      AvailabilityZone = "string",
+      State = "enabling"|"optimizing"|"enabled"|"disabling"|"disabled",
+      StateTransitionReason = "string",
+      OwnerId = "string",
+      OwnerAlias = "string",
+      EnablingTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      OptimizingTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EnabledTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DisablingTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DisabledTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Unsuccessful = list(
+    list(
+      SnapshotId = "string",
+      FastSnapshotRestoreStateErrors = list(
+        list(
+          AvailabilityZone = "string",
+          Error = list(
+            Code = "string",
+            Message = "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Enables fast snapshot restores for the specified snapshots in the
 specified Availability Zones.

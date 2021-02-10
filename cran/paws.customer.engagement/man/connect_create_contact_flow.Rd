@@ -22,6 +22,13 @@ in the \emph{Amazon Connect Administrator Guide}.}
 
 \item{Tags}{One or more tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContactFlowId = "string",
+  ContactFlowArn = "string"
+)
+}
+}
 \description{
 Creates a contact flow for the specified Amazon Connect instance.
 

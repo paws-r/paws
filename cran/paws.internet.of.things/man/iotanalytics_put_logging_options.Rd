@@ -9,6 +9,9 @@ iotanalytics_put_logging_options(loggingOptions)
 \arguments{
 \item{loggingOptions}{[required] The new values of the AWS IoT Analytics logging options.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets or updates the AWS IoT Analytics logging options.
 

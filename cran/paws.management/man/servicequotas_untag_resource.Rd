@@ -17,6 +17,9 @@ operation.}
 
 \item{TagKeys}{[required] The keys of the tags that you want to remove from the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from the specified applied quota. You can specify one or
 more tags to remove.

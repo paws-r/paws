@@ -63,6 +63,15 @@ value of \code{PENDING}).}
 
 \item{launchType}{The launch type for services to list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of tasks for a specified cluster. You can filter the
 results by family name, by a particular container instance, or by the

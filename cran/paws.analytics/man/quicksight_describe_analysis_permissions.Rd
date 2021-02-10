@@ -14,6 +14,23 @@ is in.}
 \item{AnalysisId}{[required] The ID of the analysis whose permissions you're describing. The ID is
 part of the analysis URL.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnalysisId = "string",
+  AnalysisArn = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Provides the read and write permissions for an analysis.
 }

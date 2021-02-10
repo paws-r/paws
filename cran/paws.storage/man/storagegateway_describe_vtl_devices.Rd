@@ -24,6 +24,27 @@ describing the VTL devices.}
 \item{Limit}{Specifies that the number of VTL devices described be limited to the
 specified number.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  VTLDevices = list(
+    list(
+      VTLDeviceARN = "string",
+      VTLDeviceType = "string",
+      VTLDeviceVendor = "string",
+      VTLDeviceProductIdentifier = "string",
+      DeviceiSCSIAttributes = list(
+        TargetARN = "string",
+        NetworkInterfaceId = "string",
+        NetworkInterfacePort = 123,
+        ChapEnabled = TRUE|FALSE
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a description of virtual tape library (VTL) devices for the
 specified tape gateway. In the response, AWS Storage Gateway returns VTL

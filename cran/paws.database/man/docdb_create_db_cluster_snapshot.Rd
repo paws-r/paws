@@ -32,6 +32,36 @@ Example: \code{my-cluster}}
 
 \item{Tags}{The tags to be assigned to the cluster snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshot = list(
+    AvailabilityZones = list(
+      "string"
+    ),
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterIdentifier = "string",
+    SnapshotCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Engine = "string",
+    Status = "string",
+    Port = 123,
+    VpcId = "string",
+    ClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    EngineVersion = "string",
+    SnapshotType = "string",
+    PercentProgress = 123,
+    StorageEncrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    DBClusterSnapshotArn = "string",
+    SourceDBClusterSnapshotArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a snapshot of a cluster.
 }

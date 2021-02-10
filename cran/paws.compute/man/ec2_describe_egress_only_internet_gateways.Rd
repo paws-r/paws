@@ -33,6 +33,29 @@ filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EgressOnlyInternetGateways = list(
+    list(
+      Attachments = list(
+        list(
+          State = "attaching"|"attached"|"detaching"|"detached",
+          VpcId = "string"
+        )
+      ),
+      EgressOnlyInternetGatewayId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your egress-only internet gateways.
 }

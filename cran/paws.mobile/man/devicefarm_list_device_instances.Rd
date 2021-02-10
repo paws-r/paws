@@ -15,6 +15,33 @@ in the API response.}
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deviceInstances = list(
+    list(
+      arn = "string",
+      deviceArn = "string",
+      labels = list(
+        "string"
+      ),
+      status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+      udid = "string",
+      instanceProfile = list(
+        arn = "string",
+        packageCleanup = TRUE|FALSE,
+        excludeAppPackagesFromCleanup = list(
+          "string"
+        ),
+        rebootAfterUse = TRUE|FALSE,
+        name = "string",
+        description = "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns information about the private device instances associated with
 one or more AWS accounts.

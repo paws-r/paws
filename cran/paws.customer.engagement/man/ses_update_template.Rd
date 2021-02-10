@@ -9,6 +9,9 @@ ses_update_template(Template)
 \arguments{
 \item{Template}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Updates an email template. Email templates enable you to send
 personalized email to one or more destinations in a single API

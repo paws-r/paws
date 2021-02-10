@@ -18,6 +18,9 @@ signer_revoke_signing_profile(profileName, profileVersion, reason,
 effective. Signatures generated using the signing profile after this
 timestamp are not trusted.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the state of a signing profile to REVOKED. This indicates that
 signatures generated using the signing profile after an effective start

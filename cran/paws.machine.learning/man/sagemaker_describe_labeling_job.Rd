@@ -9,6 +9,100 @@ sagemaker_describe_labeling_job(LabelingJobName)
 \arguments{
 \item{LabelingJobName}{[required] The name of the labeling job to return information for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LabelingJobStatus = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+  LabelCounters = list(
+    TotalLabeled = 123,
+    HumanLabeled = 123,
+    MachineLabeled = 123,
+    FailedNonRetryableError = 123,
+    Unlabeled = 123
+  ),
+  FailureReason = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  JobReferenceCode = "string",
+  LabelingJobName = "string",
+  LabelingJobArn = "string",
+  LabelAttributeName = "string",
+  InputConfig = list(
+    DataSource = list(
+      S3DataSource = list(
+        ManifestS3Uri = "string"
+      ),
+      SnsDataSource = list(
+        SnsTopicArn = "string"
+      )
+    ),
+    DataAttributes = list(
+      ContentClassifiers = list(
+        "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+      )
+    )
+  ),
+  OutputConfig = list(
+    S3OutputPath = "string",
+    KmsKeyId = "string",
+    SnsTopicArn = "string"
+  ),
+  RoleArn = "string",
+  LabelCategoryConfigS3Uri = "string",
+  StoppingConditions = list(
+    MaxHumanLabeledObjectCount = 123,
+    MaxPercentageOfInputDatasetLabeled = 123
+  ),
+  LabelingJobAlgorithmsConfig = list(
+    LabelingJobAlgorithmSpecificationArn = "string",
+    InitialActiveLearningModelArn = "string",
+    LabelingJobResourceConfig = list(
+      VolumeKmsKeyId = "string"
+    )
+  ),
+  HumanTaskConfig = list(
+    WorkteamArn = "string",
+    UiConfig = list(
+      UiTemplateS3Uri = "string",
+      HumanTaskUiArn = "string"
+    ),
+    PreHumanTaskLambdaArn = "string",
+    TaskKeywords = list(
+      "string"
+    ),
+    TaskTitle = "string",
+    TaskDescription = "string",
+    NumberOfHumanWorkersPerDataObject = 123,
+    TaskTimeLimitInSeconds = 123,
+    TaskAvailabilityLifetimeInSeconds = 123,
+    MaxConcurrentTaskCount = 123,
+    AnnotationConsolidationConfig = list(
+      AnnotationConsolidationLambdaArn = "string"
+    ),
+    PublicWorkforceTaskPrice = list(
+      AmountInUsd = list(
+        Dollars = 123,
+        Cents = 123,
+        TenthFractionsOfACent = 123
+      )
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  LabelingJobOutput = list(
+    OutputDatasetS3Uri = "string",
+    FinalActiveLearningModelArn = "string"
+  )
+)
+}
+}
 \description{
 Gets information about a labeling job.
 }

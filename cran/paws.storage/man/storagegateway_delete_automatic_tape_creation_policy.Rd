@@ -9,6 +9,12 @@ storagegateway_delete_automatic_tape_creation_policy(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Deletes the automatic tape creation policy of a gateway. If you delete
 this policy, new virtual tapes must be created manually. Use the Amazon

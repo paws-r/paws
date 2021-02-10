@@ -15,6 +15,24 @@ list.}
 
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  functions = list(
+    list(
+      functionId = "string",
+      functionArn = "string",
+      name = "string",
+      description = "string",
+      dataSourceName = "string",
+      requestMappingTemplate = "string",
+      responseMappingTemplate = "string",
+      functionVersion = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 List multiple functions.
 }

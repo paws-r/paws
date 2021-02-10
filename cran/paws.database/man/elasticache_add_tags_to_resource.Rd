@@ -18,6 +18,17 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 \item{Tags}{[required] A list of cost allocation tags to be added to this resource. A tag is a
 key-value pair. A tag key must be accompanied by a tag value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds up to 50 cost allocation tags to the named resource. A cost
 allocation tag is a key-value pair where the key and value are

@@ -14,6 +14,25 @@ cloudfront_update_key_group(KeyGroupConfig, Id, IfMatch)
 \item{IfMatch}{The version of the key group that you are updating. The version is the
 key group’s \code{ETag} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyGroup = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    KeyGroupConfig = list(
+      Name = "string",
+      Items = list(
+        "string"
+      ),
+      Comment = "string"
+    )
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Updates a key group.
 

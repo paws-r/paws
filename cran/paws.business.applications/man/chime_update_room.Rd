@@ -14,6 +14,23 @@ chime_update_room(AccountId, RoomId, Name)
 
 \item{Name}{The room name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Room = list(
+    RoomId = "string",
+    Name = "string",
+    AccountId = "string",
+    CreatedBy = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates room details, such as the room name, for a room in an Amazon
 Chime Enterprise account.

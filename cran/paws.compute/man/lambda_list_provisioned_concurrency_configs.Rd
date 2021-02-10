@@ -27,6 +27,23 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Specify a number to limit the number of configurations returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisionedConcurrencyConfigs = list(
+    list(
+      FunctionArn = "string",
+      RequestedProvisionedConcurrentExecutions = 123,
+      AvailableProvisionedConcurrentExecutions = 123,
+      AllocatedProvisionedConcurrentExecutions = 123,
+      Status = "IN_PROGRESS"|"READY"|"FAILED",
+      StatusReason = "string",
+      LastModified = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Retrieves a list of provisioned concurrency configurations for a
 function.

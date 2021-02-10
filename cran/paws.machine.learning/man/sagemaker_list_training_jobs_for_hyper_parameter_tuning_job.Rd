@@ -28,6 +28,40 @@ jobs that did not return an objective metric are not listed.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrainingJobSummaries = list(
+    list(
+      TrainingJobDefinitionName = "string",
+      TrainingJobName = "string",
+      TrainingJobArn = "string",
+      TuningJobName = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+      TunedHyperParameters = list(
+        "string"
+      ),
+      FailureReason = "string",
+      FinalHyperParameterTuningJobObjectiveMetric = list(
+        Type = "Maximize"|"Minimize",
+        MetricName = "string",
+        Value = 123.0
+      ),
+      ObjectiveStatus = "Succeeded"|"Pending"|"Failed"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of TrainingJobSummary objects that describe the training
 jobs that a hyperparameter tuning job launched.

@@ -29,6 +29,18 @@ the \code{nextToken} value.}
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource to list the
 tags for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 List the tags for an App Mesh resource.
 }

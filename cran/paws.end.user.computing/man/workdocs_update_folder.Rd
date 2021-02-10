@@ -20,6 +20,9 @@ administrator credentials to access the API.}
 \item{ResourceState}{The resource state of the folder. Only ACTIVE and RECYCLED are accepted
 values from the API.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the specified attributes of the specified folder. The user must
 have access to both the folder and its parent folder, if applicable.

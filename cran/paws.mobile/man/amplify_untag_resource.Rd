@@ -11,6 +11,9 @@ amplify_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The tag keys to use to untag a resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Untags a resource with a specified Amazon Resource Name (ARN).
 }

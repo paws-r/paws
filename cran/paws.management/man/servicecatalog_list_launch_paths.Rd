@@ -22,6 +22,30 @@ servicecatalog_list_launch_paths(AcceptLanguage, ProductId, PageSize,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LaunchPathSummaries = list(
+    list(
+      Id = "string",
+      ConstraintSummaries = list(
+        list(
+          Type = "string",
+          Description = "string"
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      Name = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists the paths to the specified product. A path is how the user has
 access to a specified product, and is necessary when provisioning a

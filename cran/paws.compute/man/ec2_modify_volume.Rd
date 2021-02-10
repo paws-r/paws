@@ -61,6 +61,33 @@ in the same Availability Zone. This parameter is supported with \code{io1}
 and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeModification = list(
+    VolumeId = "string",
+    ModificationState = "modifying"|"optimizing"|"completed"|"failed",
+    StatusMessage = "string",
+    TargetSize = 123,
+    TargetIops = 123,
+    TargetVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+    TargetThroughput = 123,
+    TargetMultiAttachEnabled = TRUE|FALSE,
+    OriginalSize = 123,
+    OriginalIops = 123,
+    OriginalVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+    OriginalThroughput = 123,
+    OriginalMultiAttachEnabled = TRUE|FALSE,
+    Progress = 123,
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 You can modify several parameters of an existing EBS volume, including
 volume size, volume type, and IOPS capacity. If your EBS volume is

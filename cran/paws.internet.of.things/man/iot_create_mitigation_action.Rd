@@ -17,6 +17,13 @@ describes the action (for example, \code{EnableLoggingAction}).}
 
 \item{tags}{Metadata that can be used to manage the mitigation action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actionArn = "string",
+  actionId = "string"
+)
+}
+}
 \description{
 Defines an action that can be applied to audit findings by using
 StartAuditMitigationActionsTask. Only certain types of mitigation

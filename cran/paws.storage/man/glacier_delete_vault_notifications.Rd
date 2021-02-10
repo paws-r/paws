@@ -15,6 +15,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation deletes the notification configuration set for a vault.
 The operation is eventually consistent; that is, it might take some time

@@ -14,6 +14,17 @@ using the returned token in \code{NextToken}.}
 
 \item{MaxResults}{Filter to limit the maximum number of results to list per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProgressUpdateStreamSummaryList = list(
+    list(
+      ProgressUpdateStreamName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists progress update streams associated with the user account making
 this call.

@@ -11,6 +11,18 @@ cognitoidentity_list_identity_pools(MaxResults, NextToken)
 
 \item{NextToken}{A pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPools = list(
+    list(
+      IdentityPoolId = "string",
+      IdentityPoolName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all of the Cognito identity pools registered for your account.
 

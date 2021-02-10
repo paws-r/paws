@@ -9,6 +9,14 @@ apigatewayv2_get_tags(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The resource ARN for the tag.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets a collection of Tag resources.
 }

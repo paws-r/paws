@@ -9,6 +9,41 @@ robomaker_describe_fleet(fleet)
 \arguments{
 \item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  arn = "string",
+  robots = list(
+    list(
+      arn = "string",
+      name = "string",
+      fleetArn = "string",
+      status = "Available"|"Registered"|"PendingNewDeployment"|"Deploying"|"Failed"|"InSync"|"NoResponse",
+      greenGrassGroupId = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      architecture = "X86_64"|"ARM64"|"ARMHF",
+      lastDeploymentJob = "string",
+      lastDeploymentTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastDeploymentStatus = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+  lastDeploymentJob = "string",
+  lastDeploymentTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a fleet.
 }

@@ -11,6 +11,13 @@ ssm_get_connection_status(Target)
 \arguments{
 \item{Target}{[required] The ID of the instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Target = "string",
+  Status = "Connected"|"NotConnected"
+)
+}
+}
 \description{
 Retrieves the Session Manager connection status for an instance to
 determine whether it is running and ready to receive Session Manager

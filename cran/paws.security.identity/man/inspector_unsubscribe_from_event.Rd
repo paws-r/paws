@@ -15,6 +15,9 @@ which you want to stop receiving SNS notifications.}
 
 \item{topicArn}{[required] The ARN of the SNS topic to which SNS notifications are sent.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables the process of sending Amazon Simple Notification Service (SNS)
 notifications about a specified event to a specified SNS topic.
@@ -34,7 +37,7 @@ notifications about a specified event to a specified SNS topic.
 # notifications about a specified event to a specified SNS topic.
 svc$unsubscribe_from_event(
   event = "ASSESSMENT_RUN_COMPLETED",
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2...",
+  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/...",
   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
 )
 }

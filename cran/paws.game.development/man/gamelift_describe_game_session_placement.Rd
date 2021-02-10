@@ -10,6 +10,51 @@ gamelift_describe_game_session_placement(PlacementId)
 \arguments{
 \item{PlacementId}{[required] A unique identifier for a game session placement to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSessionPlacement = list(
+    PlacementId = "string",
+    GameSessionQueueName = "string",
+    Status = "PENDING"|"FULFILLED"|"CANCELLED"|"TIMED_OUT"|"FAILED",
+    GameProperties = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    MaximumPlayerSessionCount = 123,
+    GameSessionName = "string",
+    GameSessionId = "string",
+    GameSessionArn = "string",
+    GameSessionRegion = "string",
+    PlayerLatencies = list(
+      list(
+        PlayerId = "string",
+        RegionIdentifier = "string",
+        LatencyInMilliseconds = 123.0
+      )
+    ),
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    IpAddress = "string",
+    DnsName = "string",
+    Port = 123,
+    PlacedPlayerSessions = list(
+      list(
+        PlayerId = "string",
+        PlayerSessionId = "string"
+      )
+    ),
+    GameSessionData = "string",
+    MatchmakerData = "string"
+  )
+)
+}
+}
 \description{
 Retrieves properties and current status of a game session placement
 request. To get game session placement details, specify the placement

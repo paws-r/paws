@@ -18,6 +18,28 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceRefreshes = list(
+    list(
+      InstanceRefreshId = "string",
+      AutoScalingGroupName = "string",
+      Status = "Pending"|"InProgress"|"Successful"|"Failed"|"Cancelling"|"Cancelled",
+      StatusReason = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      PercentageComplete = 123,
+      InstancesToUpdate = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more instance refreshes.
 

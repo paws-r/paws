@@ -9,6 +9,9 @@ chime_delete_account(AccountId)
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Amazon Chime account. You must suspend all users
 before deleting a \code{Team} account. You can use the

@@ -9,6 +9,35 @@ cloudsearch_describe_domains(DomainNames)
 \arguments{
 \item{DomainNames}{The names of the domains you want to include in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainStatusList = list(
+    list(
+      DomainId = "string",
+      DomainName = "string",
+      ARN = "string",
+      Created = TRUE|FALSE,
+      Deleted = TRUE|FALSE,
+      DocService = list(
+        Endpoint = "string"
+      ),
+      SearchService = list(
+        Endpoint = "string"
+      ),
+      RequiresIndexDocuments = TRUE|FALSE,
+      Processing = TRUE|FALSE,
+      SearchInstanceType = "string",
+      SearchPartitionCount = 123,
+      SearchInstanceCount = 123,
+      Limits = list(
+        MaximumReplicationCount = 123,
+        MaximumPartitionCount = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about the search domains owned by this account. Can be
 limited to specific domains. Shows all domains by default. To get the

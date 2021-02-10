@@ -9,6 +9,9 @@ athena_delete_data_catalog(Name)
 \arguments{
 \item{Name}{[required] The name of the data catalog to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a data catalog.
 }

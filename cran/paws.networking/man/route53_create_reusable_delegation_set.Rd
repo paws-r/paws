@@ -21,6 +21,19 @@ date/time stamp.}
 \item{HostedZoneId}{If you want to mark the delegation set for an existing hosted zone as
 reusable, the ID for that hosted zone.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DelegationSet = list(
+    Id = "string",
+    CallerReference = "string",
+    NameServers = list(
+      "string"
+    )
+  ),
+  Location = "string"
+)
+}
+}
 \description{
 Creates a delegation set (a group of four name servers) that can be
 reused by multiple hosted zones that were created by the same AWS

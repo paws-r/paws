@@ -12,6 +12,9 @@ operation modifies the tags only, not the file system.}
 
 \item{Tags}{[required] An array of \code{Tag} objects to add. Each \code{Tag} object is a key-value pair.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates or overwrites tags associated with a file system. Each tag is a
 key-value pair. If a tag key specified in the request already exists on

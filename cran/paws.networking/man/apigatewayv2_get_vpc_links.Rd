@@ -12,6 +12,33 @@ apigatewayv2_get_vpc_links(MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      SubnetIds = list(
+        "string"
+      ),
+      Tags = list(
+        "string"
+      ),
+      VpcLinkId = "string",
+      VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
+      VpcLinkStatusMessage = "string",
+      VpcLinkVersion = "V2"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a collection of VPC links.
 }

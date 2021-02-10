@@ -23,6 +23,24 @@ idempotency of the request.}
 
 \item{NodeId}{Node ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CheckoutType = "PROVISIONAL",
+  LicenseConsumptionToken = "string",
+  EntitlementsAllowed = list(
+    list(
+      Name = "string",
+      Value = "string",
+      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
+    )
+  ),
+  SignedToken = "string",
+  NodeId = "string",
+  IssuedAt = "string",
+  Expiration = "string"
+)
+}
+}
 \description{
 Checks out the specified license.
 }

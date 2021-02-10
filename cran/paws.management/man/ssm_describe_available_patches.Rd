@@ -14,6 +14,47 @@ ssm_describe_available_patches(Filters, MaxResults, NextToken)
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Patches = list(
+    list(
+      Id = "string",
+      ReleaseDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Title = "string",
+      Description = "string",
+      ContentUrl = "string",
+      Vendor = "string",
+      ProductFamily = "string",
+      Product = "string",
+      Classification = "string",
+      MsrcSeverity = "string",
+      KbNumber = "string",
+      MsrcNumber = "string",
+      Language = "string",
+      AdvisoryIds = list(
+        "string"
+      ),
+      BugzillaIds = list(
+        "string"
+      ),
+      CVEIds = list(
+        "string"
+      ),
+      Name = "string",
+      Epoch = 123,
+      Version = "string",
+      Release = "string",
+      Arch = "string",
+      Severity = "string",
+      Repository = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all patches eligible to be included in a patch baseline.
 }

@@ -20,6 +20,9 @@ lambda_delete_function_concurrency(FunctionName)
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a concurrent execution limit from a function.
 }

@@ -30,6 +30,28 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocalGatewayRouteTables = list(
+    list(
+      LocalGatewayRouteTableId = "string",
+      LocalGatewayRouteTableArn = "string",
+      LocalGatewayId = "string",
+      OutpostArn = "string",
+      OwnerId = "string",
+      State = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more local gateway route tables. By default, all local
 gateway route tables are described. Alternatively, you can filter the

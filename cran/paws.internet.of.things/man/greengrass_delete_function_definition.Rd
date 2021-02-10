@@ -9,6 +9,9 @@ greengrass_delete_function_definition(FunctionDefinitionId)
 \arguments{
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Lambda function definition.
 }

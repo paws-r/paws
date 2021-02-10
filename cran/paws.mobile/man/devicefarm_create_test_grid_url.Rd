@@ -15,6 +15,15 @@ associate with the short-term URL.}
 
 \item{expiresInSeconds}{[required] Lifetime, in seconds, of the URL.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  url = "string",
+  expires = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a signed, short-term URL that can be passed to a Selenium
 \code{RemoteWebDriver} constructor.

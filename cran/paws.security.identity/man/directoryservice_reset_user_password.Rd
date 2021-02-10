@@ -15,6 +15,9 @@ which the user resides.}
 
 \item{NewPassword}{[required] The new password that will be reset.}
 }
+\value{
+An empty list.
+}
 \description{
 Resets the password for any user in your AWS Managed Microsoft AD or
 Simple AD directory.

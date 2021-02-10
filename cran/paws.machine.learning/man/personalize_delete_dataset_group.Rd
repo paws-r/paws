@@ -9,6 +9,9 @@ personalize_delete_dataset_group(datasetGroupArn)
 \arguments{
 \item{datasetGroupArn}{[required] The ARN of the dataset group to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a dataset group. Before you delete a dataset group, you must
 delete the following:

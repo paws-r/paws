@@ -38,6 +38,15 @@ NULL
 #' base64-encoded string. The value for `fileName` is the name of the
 #' attachment, such as `troubleshoot-screenshot.png`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attachmentSetId = "string",
+#'   expiryTime = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_attachments_to_set(
@@ -102,6 +111,14 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #' @param attachmentSetId The ID of a set of one or more attachments for the communication to add
 #' to the case. Create the set by calling
 #' [`add_attachments_to_set`][support_add_attachments_to_set]
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -212,6 +229,14 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' by using the [`add_attachments_to_set`][support_add_attachments_to_set]
 #' operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   caseId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_case(
@@ -273,6 +298,17 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #'
 #' @param attachmentId &#91;required&#93; The ID of the attachment to return. Attachment IDs are returned by the
 #' [`describe_communications`][support_describe_communications] operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attachment = list(
+#'     fileName = "string",
+#'     data = raw
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -356,6 +392,48 @@ support_describe_attachment <- function(attachmentId) {
 #' [`describe_cases`][support_describe_cases] response. By default,
 #' communications are incuded.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cases = list(
+#'     list(
+#'       caseId = "string",
+#'       displayId = "string",
+#'       subject = "string",
+#'       status = "string",
+#'       serviceCode = "string",
+#'       categoryCode = "string",
+#'       severityCode = "string",
+#'       submittedBy = "string",
+#'       timeCreated = "string",
+#'       recentCommunications = list(
+#'         communications = list(
+#'           list(
+#'             caseId = "string",
+#'             body = "string",
+#'             submittedBy = "string",
+#'             timeCreated = "string",
+#'             attachmentSet = list(
+#'               list(
+#'                 attachmentId = "string",
+#'                 fileName = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         nextToken = "string"
+#'       ),
+#'       ccEmailAddresses = list(
+#'         "string"
+#'       ),
+#'       language = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_cases(
@@ -434,6 +512,28 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   communications = list(
+#'     list(
+#'       caseId = "string",
+#'       body = "string",
+#'       submittedBy = "string",
+#'       timeCreated = "string",
+#'       attachmentSet = list(
+#'         list(
+#'           attachmentId = "string",
+#'           fileName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_communications(
@@ -500,6 +600,25 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   services = list(
+#'     list(
+#'       code = "string",
+#'       name = "string",
+#'       categories = list(
+#'         list(
+#'           code = "string",
+#'           name = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_services(
@@ -554,6 +673,19 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   severityLevels = list(
+#'     list(
+#'       code = "string",
+#'       name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -614,6 +746,20 @@ support_describe_severity_levels <- function(language = NULL) {
 #' If you specify the check ID of a check that is automatically refreshed,
 #' you might see an `InvalidParameterValue` error.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statuses = list(
+#'     list(
+#'       checkId = "string",
+#'       status = "string",
+#'       millisUntilNextRefreshable = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_trusted_advisor_check_refresh_statuses(
@@ -664,13 +810,12 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' In addition, the response contains these fields:
 #' 
 #' -   **status** - The alert status of the check: "ok" (green), "warning"
-#'     (yellow), "error" (red), or "not\\_available".
+#'     (yellow), "error" (red), or "not_available".
 #' 
 #' -   **timestamp** - The time of the last refresh of the check.
 #' 
 #' -   **checkId** - The unique identifier for the check.
 #' 
-#' <!-- -->
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
 #'     Support API.
@@ -688,6 +833,41 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = list(
+#'     checkId = "string",
+#'     timestamp = "string",
+#'     status = "string",
+#'     resourcesSummary = list(
+#'       resourcesProcessed = 123,
+#'       resourcesFlagged = 123,
+#'       resourcesIgnored = 123,
+#'       resourcesSuppressed = 123
+#'     ),
+#'     categorySpecificSummary = list(
+#'       costOptimizing = list(
+#'         estimatedMonthlySavings = 123.0,
+#'         estimatedPercentMonthlySavings = 123.0
+#'       )
+#'     ),
+#'     flaggedResources = list(
+#'       list(
+#'         status = "string",
+#'         region = "string",
+#'         resourceId = "string",
+#'         isSuppressed = TRUE|FALSE,
+#'         metadata = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -741,6 +921,33 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #' support_describe_trusted_advisor_check_summaries(checkIds)
 #'
 #' @param checkIds &#91;required&#93; The IDs of the Trusted Advisor checks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       checkId = "string",
+#'       timestamp = "string",
+#'       status = "string",
+#'       hasFlaggedResources = TRUE|FALSE,
+#'       resourcesSummary = list(
+#'         resourcesProcessed = 123,
+#'         resourcesFlagged = 123,
+#'         resourcesIgnored = 123,
+#'         resourcesSuppressed = 123
+#'       ),
+#'       categorySpecificSummary = list(
+#'         costOptimizing = list(
+#'           estimatedMonthlySavings = 123.0,
+#'           estimatedPercentMonthlySavings = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -797,6 +1004,24 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' @param language &#91;required&#93; The ISO 639-1 code for the language in which AWS provides support. AWS
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   checks = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       category = "string",
+#'       metadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -857,6 +1082,18 @@ support_describe_trusted_advisor_checks <- function(language) {
 #' **Note:** Specifying the check ID of a check that is automatically
 #' refreshed causes an `InvalidParameterValue` error.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = list(
+#'     checkId = "string",
+#'     status = "string",
+#'     millisUntilNextRefreshable = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$refresh_trusted_advisor_check(
@@ -905,6 +1142,15 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #' @param caseId The AWS Support case ID requested or returned in the call. The case ID
 #' is an alphanumeric string formatted as shown in this example:
 #' case-*12345678910-2013-c4c1d2bf33c5cf47*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   initialCaseStatus = "string",
+#'   finalCaseStatus = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

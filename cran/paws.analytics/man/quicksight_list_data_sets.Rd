@@ -15,6 +15,34 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSetSummaries = list(
+    list(
+      Arn = "string",
+      DataSetId = "string",
+      Name = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ImportMode = "SPICE"|"DIRECT_QUERY",
+      RowLevelPermissionDataSet = list(
+        Namespace = "string",
+        Arn = "string",
+        PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
+      ),
+      ColumnLevelPermissionRulesApplied = TRUE|FALSE
+    )
+  ),
+  NextToken = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Lists all of the datasets belonging to the current AWS account in an AWS
 Region.

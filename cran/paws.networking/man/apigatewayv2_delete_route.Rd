@@ -11,6 +11,9 @@ apigatewayv2_delete_route(ApiId, RouteId)
 
 \item{RouteId}{[required] The route ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Route.
 }

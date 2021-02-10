@@ -13,6 +13,9 @@ s3_delete_bucket(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the S3 bucket. All objects (including all object versions and
 delete markers) in the bucket must be deleted before the bucket itself

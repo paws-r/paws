@@ -137,6 +137,29 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReservedCacheNodesOfferings = list(
+    list(
+      ReservedCacheNodesOfferingId = "string",
+      CacheNodeType = "string",
+      Duration = 123,
+      FixedPrice = 123.0,
+      UsagePrice = 123.0,
+      ProductDescription = "string",
+      OfferingType = "string",
+      RecurringCharges = list(
+        list(
+          RecurringChargeAmount = 123.0,
+          RecurringChargeFrequency = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists available reserved cache node offerings.
 }

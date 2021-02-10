@@ -12,6 +12,65 @@ description of.}
 
 \item{BudgetName}{[required] The name of the budget that you want a description of.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Budget = list(
+    BudgetName = "string",
+    BudgetLimit = list(
+      Amount = "string",
+      Unit = "string"
+    ),
+    PlannedBudgetLimits = list(
+      list(
+        Amount = "string",
+        Unit = "string"
+      )
+    ),
+    CostFilters = list(
+      list(
+        "string"
+      )
+    ),
+    CostTypes = list(
+      IncludeTax = TRUE|FALSE,
+      IncludeSubscription = TRUE|FALSE,
+      UseBlended = TRUE|FALSE,
+      IncludeRefund = TRUE|FALSE,
+      IncludeCredit = TRUE|FALSE,
+      IncludeUpfront = TRUE|FALSE,
+      IncludeRecurring = TRUE|FALSE,
+      IncludeOtherSubscription = TRUE|FALSE,
+      IncludeSupport = TRUE|FALSE,
+      IncludeDiscount = TRUE|FALSE,
+      UseAmortized = TRUE|FALSE
+    ),
+    TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+    TimePeriod = list(
+      Start = as.POSIXct(
+        "2015-01-01"
+      ),
+      End = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    CalculatedSpend = list(
+      ActualSpend = list(
+        Amount = "string",
+        Unit = "string"
+      ),
+      ForecastedSpend = list(
+        Amount = "string",
+        Unit = "string"
+      )
+    ),
+    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes a budget.
 

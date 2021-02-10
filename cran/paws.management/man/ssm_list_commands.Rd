@@ -25,6 +25,66 @@ this token from a previous call.)}
 \item{Filters}{(Optional) One or more filters. Use a filter to return a more specific
 list of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Commands = list(
+    list(
+      CommandId = "string",
+      DocumentName = "string",
+      DocumentVersion = "string",
+      Comment = "string",
+      ExpiresAfter = as.POSIXct(
+        "2015-01-01"
+      ),
+      Parameters = list(
+        list(
+          "string"
+        )
+      ),
+      InstanceIds = list(
+        "string"
+      ),
+      Targets = list(
+        list(
+          Key = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      RequestedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "Pending"|"InProgress"|"Success"|"Cancelled"|"Failed"|"TimedOut"|"Cancelling",
+      StatusDetails = "string",
+      OutputS3Region = "string",
+      OutputS3BucketName = "string",
+      OutputS3KeyPrefix = "string",
+      MaxConcurrency = "string",
+      MaxErrors = "string",
+      TargetCount = 123,
+      CompletedCount = 123,
+      ErrorCount = 123,
+      DeliveryTimedOutCount = 123,
+      ServiceRole = "string",
+      NotificationConfig = list(
+        NotificationArn = "string",
+        NotificationEvents = list(
+          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+        ),
+        NotificationType = "Command"|"Invocation"
+      ),
+      CloudWatchOutputConfig = list(
+        CloudWatchLogGroupName = "string",
+        CloudWatchOutputEnabled = TRUE|FALSE
+      ),
+      TimeoutSeconds = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the commands requested by users of the AWS account.
 }

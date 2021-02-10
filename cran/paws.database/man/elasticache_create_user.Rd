@@ -21,6 +21,24 @@ each user.}
 
 \item{NoPasswordRequired}{Indicates a password is not required for this user.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserId = "string",
+  UserName = "string",
+  Status = "string",
+  Engine = "string",
+  AccessString = "string",
+  UserGroupIds = list(
+    "string"
+  ),
+  Authentication = list(
+    Type = "password"|"no-password",
+    PasswordCount = 123
+  ),
+  ARN = "string"
+)
+}
+}
 \description{
 For Redis engine version 6.x onwards: Creates a Redis user. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.

@@ -28,7 +28,7 @@ Amazon S3 path. If you only specify a target, it will be displayed as
 is. You will need to also make sure that your IAM role provides access
 to paths in \code{Target}. The following is an example.
 
-\verb{'\\\[ "/bucket2/documentation", \\\{ "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/$\\\{transfer:UserName\\\}.pdf" \\\} \\\]'}
+\code{'[ "/bucket2/documentation", { "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/${transfer:UserName}.pdf" } ]'}
 
 In most cases, you can use this value instead of the scope-down policy
 to lock your user down to the designated home directory ("chroot"). To
@@ -47,8 +47,8 @@ folder.}
 \item{Policy}{Allows you to supply a scope-down policy for your user so you can use
 the same IAM role across multiple users. The policy scopes down user
 access to portions of your Amazon S3 bucket. Variables you can use
-inside this policy include \verb{$\\\{Transfer:UserName\\\}},
-\verb{$\\\{Transfer:HomeDirectory\\\}}, and \verb{$\\\{Transfer:HomeBucket\\\}}.
+inside this policy include \verb{$\{Transfer:UserName\}},
+\verb{$\{Transfer:HomeDirectory\}}, and \verb{$\{Transfer:HomeBucket\}}.
 
 For scope-down policies, AWS Transfer Family stores the policy as a JSON
 blob, instead of the Amazon Resource Name (ARN) of the policy. You save
@@ -75,9 +75,16 @@ account is assigned to.}
 \item{UserName}{[required] A unique string that identifies a user and is associated with a server
 as specified by the \code{ServerId}. This user name must be a minimum of 3
 and a maximum of 100 characters long. The following are valid
-characters: a-z, A-Z, 0-9, underscore '\\_', hyphen '-', period '.', and
+characters: a-z, A-Z, 0-9, underscore '_', hyphen '-', period '.', and
 at sign '@'. The user name can't start with a hyphen, period, or at
 sign.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerId = "string",
+  UserName = "string"
+)
+}
 }
 \description{
 Assigns new properties to a user. Parameters you pass modify any or all

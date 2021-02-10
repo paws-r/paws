@@ -17,6 +17,18 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceId = "string",
+  Metadata = list(
+    list(
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 View operational metadata related to an application in Application
 Manager.

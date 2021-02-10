@@ -9,6 +9,9 @@ rekognition_start_stream_processor(Name)
 \arguments{
 \item{Name}{[required] The name of the stream processor to start processing.}
 }
+\value{
+An empty list.
+}
 \description{
 Starts processing a stream processor. You create a stream processor by
 calling

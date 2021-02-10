@@ -24,6 +24,25 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Roots = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      PolicyTypes = list(
+        list(
+          Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+          Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the roots that are defined in the current organization.
 

@@ -9,6 +9,25 @@ codecommit_get_repository_triggers(repositoryName)
 \arguments{
 \item{repositoryName}{[required] The name of the repository for which the trigger is configured.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  configurationId = "string",
+  triggers = list(
+    list(
+      name = "string",
+      destinationArn = "string",
+      customData = "string",
+      branches = list(
+        "string"
+      ),
+      events = list(
+        "all"|"updateReference"|"createReference"|"deleteReference"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about triggers configured for a repository.
 }

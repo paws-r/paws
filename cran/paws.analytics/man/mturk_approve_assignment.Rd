@@ -18,6 +18,9 @@ of the web site.}
 \item{OverrideRejection}{A flag indicating that an assignment should be approved even if it was
 previously rejected. Defaults to \code{False}.}
 }
+\value{
+An empty list.
+}
 \description{
 The \code{\link[=mturk_approve_assignment]{approve_assignment}} operation approves
 the results of a completed assignment.

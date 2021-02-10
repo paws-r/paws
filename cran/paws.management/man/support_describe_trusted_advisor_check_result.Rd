@@ -14,6 +14,39 @@ support_describe_trusted_advisor_check_result(checkId, language)
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  result = list(
+    checkId = "string",
+    timestamp = "string",
+    status = "string",
+    resourcesSummary = list(
+      resourcesProcessed = 123,
+      resourcesFlagged = 123,
+      resourcesIgnored = 123,
+      resourcesSuppressed = 123
+    ),
+    categorySpecificSummary = list(
+      costOptimizing = list(
+        estimatedMonthlySavings = 123.0,
+        estimatedPercentMonthlySavings = 123.0
+      )
+    ),
+    flaggedResources = list(
+      list(
+        status = "string",
+        region = "string",
+        resourceId = "string",
+        isSuppressed = TRUE|FALSE,
+        metadata = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the results of the AWS Trusted Advisor check that has the
 specified check ID. You can get the check IDs by calling the
@@ -31,12 +64,9 @@ these three objects:
 In addition, the response contains these fields:
 \itemize{
 \item \strong{status} - The alert status of the check: "ok" (green), "warning"
-(yellow), "error" (red), or "not\\_available".
+(yellow), "error" (red), or "not_available".
 \item \strong{timestamp} - The time of the last refresh of the check.
 \item \strong{checkId} - The unique identifier for the check.
-}<!-- -->
-
-\itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.
 \item If you call the AWS Support API from an account that does not have a

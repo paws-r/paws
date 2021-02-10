@@ -51,6 +51,12 @@ the function.}
 specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Statement = "string"
+)
+}
+}
 \description{
 Grants an AWS service or another account permission to use a function.
 You can apply the policy at the function level, or specify a qualifier

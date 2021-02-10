@@ -11,6 +11,181 @@ snowball_describe_job(JobId)
 \item{JobId}{[required] The automatically generated ID for a job, for example
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobMetadata = list(
+    JobId = "string",
+    JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
+    JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+    SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Resources = list(
+      S3Resources = list(
+        list(
+          BucketArn = "string",
+          KeyRange = list(
+            BeginMarker = "string",
+            EndMarker = "string"
+          )
+        )
+      ),
+      LambdaResources = list(
+        list(
+          LambdaArn = "string",
+          EventTriggers = list(
+            list(
+              EventResourceARN = "string"
+            )
+          )
+        )
+      ),
+      Ec2AmiResources = list(
+        list(
+          AmiId = "string",
+          SnowballAmiId = "string"
+        )
+      )
+    ),
+    Description = "string",
+    KmsKeyARN = "string",
+    RoleARN = "string",
+    AddressId = "string",
+    ShippingDetails = list(
+      ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+      InboundShipment = list(
+        Status = "string",
+        TrackingNumber = "string"
+      ),
+      OutboundShipment = list(
+        Status = "string",
+        TrackingNumber = "string"
+      )
+    ),
+    SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+    Notification = list(
+      SnsTopicARN = "string",
+      JobStatesToNotify = list(
+        "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+      ),
+      NotifyAll = TRUE|FALSE
+    ),
+    DataTransferProgress = list(
+      BytesTransferred = 123,
+      ObjectsTransferred = 123,
+      TotalBytes = 123,
+      TotalObjects = 123
+    ),
+    JobLogInfo = list(
+      JobCompletionReportURI = "string",
+      JobSuccessLogURI = "string",
+      JobFailureLogURI = "string"
+    ),
+    ClusterId = "string",
+    ForwardingAddressId = "string",
+    TaxDocuments = list(
+      IND = list(
+        GSTIN = "string"
+      )
+    ),
+    DeviceConfiguration = list(
+      SnowconeDeviceConfiguration = list(
+        WirelessConnection = list(
+          IsWifiEnabled = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  SubJobMetadata = list(
+    list(
+      JobId = "string",
+      JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
+      JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
+      SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Resources = list(
+        S3Resources = list(
+          list(
+            BucketArn = "string",
+            KeyRange = list(
+              BeginMarker = "string",
+              EndMarker = "string"
+            )
+          )
+        ),
+        LambdaResources = list(
+          list(
+            LambdaArn = "string",
+            EventTriggers = list(
+              list(
+                EventResourceARN = "string"
+              )
+            )
+          )
+        ),
+        Ec2AmiResources = list(
+          list(
+            AmiId = "string",
+            SnowballAmiId = "string"
+          )
+        )
+      ),
+      Description = "string",
+      KmsKeyARN = "string",
+      RoleARN = "string",
+      AddressId = "string",
+      ShippingDetails = list(
+        ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
+        InboundShipment = list(
+          Status = "string",
+          TrackingNumber = "string"
+        ),
+        OutboundShipment = list(
+          Status = "string",
+          TrackingNumber = "string"
+        )
+      ),
+      SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
+      Notification = list(
+        SnsTopicARN = "string",
+        JobStatesToNotify = list(
+          "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending"
+        ),
+        NotifyAll = TRUE|FALSE
+      ),
+      DataTransferProgress = list(
+        BytesTransferred = 123,
+        ObjectsTransferred = 123,
+        TotalBytes = 123,
+        TotalObjects = 123
+      ),
+      JobLogInfo = list(
+        JobCompletionReportURI = "string",
+        JobSuccessLogURI = "string",
+        JobFailureLogURI = "string"
+      ),
+      ClusterId = "string",
+      ForwardingAddressId = "string",
+      TaxDocuments = list(
+        IND = list(
+          GSTIN = "string"
+        )
+      ),
+      DeviceConfiguration = list(
+        SnowconeDeviceConfiguration = list(
+          WirelessConnection = list(
+            IsWifiEnabled = TRUE|FALSE
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a specific job including shipping information,
 job status, and other important metadata.

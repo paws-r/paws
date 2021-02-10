@@ -37,6 +37,35 @@ you can apply to identity pools to categorize and manage them in
 different ways, such as by purpose, owner, environment, or other
 criteria.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPoolId = "string",
+  IdentityPoolName = "string",
+  AllowUnauthenticatedIdentities = TRUE|FALSE,
+  AllowClassicFlow = TRUE|FALSE,
+  SupportedLoginProviders = list(
+    "string"
+  ),
+  DeveloperProviderName = "string",
+  OpenIdConnectProviderARNs = list(
+    "string"
+  ),
+  CognitoIdentityProviders = list(
+    list(
+      ProviderName = "string",
+      ClientId = "string",
+      ServerSideTokenCheck = TRUE|FALSE
+    )
+  ),
+  SamlProviderARNs = list(
+    "string"
+  ),
+  IdentityPoolTags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Updates an identity pool.
 

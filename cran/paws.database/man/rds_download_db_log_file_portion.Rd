@@ -45,6 +45,14 @@ Marker value for the next request, continuing until the
 AdditionalDataPending response element returns false.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LogFileData = "string",
+  Marker = "string",
+  AdditionalDataPending = TRUE|FALSE
+)
+}
+}
 \description{
 Downloads all or a portion of the specified log file, up to 1 MB in
 size.

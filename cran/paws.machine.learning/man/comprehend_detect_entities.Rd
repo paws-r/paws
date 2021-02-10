@@ -27,6 +27,20 @@ If you specify an endpoint, Amazon Comprehend uses the language of your
 custom model, and it ignores any language code that you provide in your
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Entities = list(
+    list(
+      Score = 123.0,
+      Type = "PERSON"|"LOCATION"|"ORGANIZATION"|"COMMERCIAL_ITEM"|"EVENT"|"DATE"|"QUANTITY"|"TITLE"|"OTHER",
+      Text = "string",
+      BeginOffset = 123,
+      EndOffset = 123
+    )
+  )
+)
+}
+}
 \description{
 Inspects text for named entities, and returns information about them.
 For more information, about named entities, see how-entities.

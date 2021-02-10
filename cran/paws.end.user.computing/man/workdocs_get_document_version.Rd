@@ -20,6 +20,41 @@ the source document.}
 
 \item{IncludeCustomMetadata}{Set this to TRUE to include custom metadata in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metadata = list(
+    Id = "string",
+    Name = "string",
+    ContentType = "string",
+    Size = 123,
+    Signature = "string",
+    Status = "INITIALIZED"|"ACTIVE",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModifiedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ContentCreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ContentModifiedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatorId = "string",
+    Thumbnail = list(
+      "string"
+    ),
+    Source = list(
+      "string"
+    )
+  ),
+  CustomMetadata = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves version metadata for the specified document.
 }

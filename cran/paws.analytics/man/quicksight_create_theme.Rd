@@ -33,6 +33,17 @@ version in the \code{VersionDescription} field.}
 \item{Tags}{A map of the key-value pairs for the resource tag or tags that you want
 to add to the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  VersionArn = "string",
+  ThemeId = "string",
+  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Creates a theme.
 

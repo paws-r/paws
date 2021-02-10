@@ -9,6 +9,48 @@ sms_get_app_validation_output(appId)
 \arguments{
 \item{appId}{[required] The ID of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  validationOutputList = list(
+    list(
+      validationId = "string",
+      name = "string",
+      status = "READY_FOR_VALIDATION"|"PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+      statusMessage = "string",
+      latestValidationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      appValidationOutput = list(
+        ssmOutput = list(
+          s3Location = list(
+            bucket = "string",
+            key = "string"
+          )
+        )
+      ),
+      serverValidationOutput = list(
+        server = list(
+          serverId = "string",
+          serverType = "VIRTUAL_MACHINE",
+          vmServer = list(
+            vmServerAddress = list(
+              vmManagerId = "string",
+              vmId = "string"
+            ),
+            vmName = "string",
+            vmManagerName = "string",
+            vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+            vmPath = "string"
+          ),
+          replicationJobId = "string",
+          replicationJobTerminated = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves output from validating an application.
 }

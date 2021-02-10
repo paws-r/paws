@@ -16,6 +16,18 @@ When the client sends the token back to AWS CodeCommit, another page of
 
 \item{order}{The order in which to sort the results of a list repositories operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositories = list(
+    list(
+      repositoryName = "string",
+      repositoryId = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about one or more repositories.
 }

@@ -26,6 +26,40 @@ scale-down event.
 it cannot be terminated during a scale-down event.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSession = list(
+    GameSessionId = "string",
+    Name = "string",
+    FleetId = "string",
+    FleetArn = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    TerminationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CurrentPlayerSessionCount = 123,
+    MaximumPlayerSessionCount = 123,
+    Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+    StatusReason = "INTERRUPTED",
+    GameProperties = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    IpAddress = "string",
+    DnsName = "string",
+    Port = 123,
+    PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+    CreatorId = "string",
+    GameSessionData = "string",
+    MatchmakerData = "string"
+  )
+)
+}
+}
 \description{
 Updates game session properties. This includes the session name, maximum
 player count, protection policy, which controls whether or not an active

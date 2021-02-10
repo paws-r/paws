@@ -173,6 +173,41 @@ To use this parameter, you must have
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:TagResource}
 permission in an IAM policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyMetadata = list(
+    AWSAccountId = "string",
+    KeyId = "string",
+    Arn = "string",
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Enabled = TRUE|FALSE,
+    Description = "string",
+    KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+    KeyState = "Enabled"|"Disabled"|"PendingDeletion"|"PendingImport"|"Unavailable",
+    DeletionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ValidTo = as.POSIXct(
+      "2015-01-01"
+    ),
+    Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
+    CustomKeyStoreId = "string",
+    CloudHsmClusterId = "string",
+    ExpirationModel = "KEY_MATERIAL_EXPIRES"|"KEY_MATERIAL_DOES_NOT_EXPIRE",
+    KeyManager = "AWS"|"CUSTOMER",
+    CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
+    EncryptionAlgorithms = list(
+      "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+    ),
+    SigningAlgorithms = list(
+      "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+    )
+  )
+)
+}
+}
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
 (CMK) in your AWS account and Region.

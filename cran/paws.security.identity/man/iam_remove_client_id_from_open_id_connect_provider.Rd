@@ -23,6 +23,9 @@ in the \emph{AWS General Reference}.}
 provider resource. For more information about client IDs, see
 \code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified client ID (also known as audience) from the list
 of client IDs registered for the specified IAM OpenID Connect (OIDC)

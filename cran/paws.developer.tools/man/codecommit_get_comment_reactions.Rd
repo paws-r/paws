@@ -19,6 +19,25 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results. The default is the same as the allowed maximum, 1,000.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  reactionsForComment = list(
+    list(
+      reaction = list(
+        emoji = "string",
+        shortCode = "string",
+        unicode = "string"
+      ),
+      reactionUsers = list(
+        "string"
+      ),
+      reactionsFromDeletedUsersCount = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns information about reactions to a specified comment ID. Reactions
 from users who have been deleted will not be included in the count.

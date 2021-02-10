@@ -20,6 +20,23 @@ maximum value is 100.}
 \item{nextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      configurationType = "SERVER"|"PROCESS"|"CONNECTION"|"APPLICATION",
+      configurationId = "string",
+      key = "string",
+      value = "string",
+      timeOfCreation = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of configuration items that have tags as specified by
 the key-value pairs, name and value, passed to the optional parameter

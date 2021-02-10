@@ -27,6 +27,13 @@ updating an external account to account type share.}
 If this field is not provided, the current state of TagOptions sharing
 on the portfolio share will not be modified.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortfolioShareToken = "string",
+  Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR"
+)
+}
+}
 \description{
 Updates the specified portfolio share. You can use this API to enable or
 disable TagOptions sharing for an existing portfolio share.

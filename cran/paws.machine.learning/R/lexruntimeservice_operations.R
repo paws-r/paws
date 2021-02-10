@@ -15,6 +15,17 @@ NULL
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
 #' @param userId &#91;required&#93; The identifier of the user associated with the session data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botName = "string",
+#'   botAlias = "string",
+#'   userId = "string",
+#'   sessionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_session(
@@ -62,6 +73,53 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
 #' 
 #' When you specify a filter, only intents with their `checkpointLabel`
 #' field set to that string are returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recentIntentSummaryView = list(
+#'     list(
+#'       intentName = "string",
+#'       checkpointLabel = "string",
+#'       slots = list(
+#'         "string"
+#'       ),
+#'       confirmationStatus = "None"|"Confirmed"|"Denied",
+#'       dialogActionType = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
+#'       fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
+#'       slotToElicit = "string"
+#'     )
+#'   ),
+#'   sessionAttributes = list(
+#'     "string"
+#'   ),
+#'   sessionId = "string",
+#'   dialogAction = list(
+#'     type = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
+#'     intentName = "string",
+#'     slots = list(
+#'       "string"
+#'     ),
+#'     slotToElicit = "string",
+#'     fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
+#'     message = "string",
+#'     messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite"
+#'   ),
+#'   activeContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLive = list(
+#'         timeToLiveInSeconds = 123,
+#'         turnsToLive = 123
+#'       ),
+#'       parameters = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -271,6 +329,29 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' list of contexts for the session. If you specify an empty list, all
 #' contexts for the session are cleared.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contentType = "string",
+#'   intentName = "string",
+#'   nluIntentConfidence = "string",
+#'   alternativeIntents = "string",
+#'   slots = "string",
+#'   sessionAttributes = "string",
+#'   sentimentResponse = "string",
+#'   message = "string",
+#'   messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
+#'   dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
+#'   slotToElicit = "string",
+#'   inputTranscript = "string",
+#'   audioStream = raw,
+#'   botVersion = "string",
+#'   sessionId = "string",
+#'   activeContexts = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$post_content(
@@ -414,6 +495,74 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' list of contexts for the session. If you specify an empty list, all
 #' contexts for the session are cleared.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   intentName = "string",
+#'   nluIntentConfidence = list(
+#'     score = 123.0
+#'   ),
+#'   alternativeIntents = list(
+#'     list(
+#'       intentName = "string",
+#'       nluIntentConfidence = list(
+#'         score = 123.0
+#'       ),
+#'       slots = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   slots = list(
+#'     "string"
+#'   ),
+#'   sessionAttributes = list(
+#'     "string"
+#'   ),
+#'   message = "string",
+#'   sentimentResponse = list(
+#'     sentimentLabel = "string",
+#'     sentimentScore = "string"
+#'   ),
+#'   messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
+#'   dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
+#'   slotToElicit = "string",
+#'   responseCard = list(
+#'     version = "string",
+#'     contentType = "application/vnd.amazonaws.card.generic",
+#'     genericAttachments = list(
+#'       list(
+#'         title = "string",
+#'         subTitle = "string",
+#'         attachmentLinkUrl = "string",
+#'         imageUrl = "string",
+#'         buttons = list(
+#'           list(
+#'             text = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   sessionId = "string",
+#'   botVersion = "string",
+#'   activeContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLive = list(
+#'         timeToLiveInSeconds = 123,
+#'         turnsToLive = 123
+#'       ),
+#'       parameters = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$post_text(
@@ -544,6 +693,24 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' If you don't specify a list of contexts, Amazon Lex will use the current
 #' list of contexts for the session. If you specify an empty list, all
 #' contexts for the session are cleared.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contentType = "string",
+#'   intentName = "string",
+#'   slots = "string",
+#'   sessionAttributes = "string",
+#'   message = "string",
+#'   messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
+#'   dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
+#'   slotToElicit = "string",
+#'   audioStream = raw,
+#'   sessionId = "string",
+#'   activeContexts = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

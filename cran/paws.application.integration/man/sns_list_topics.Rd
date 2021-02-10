@@ -9,6 +9,17 @@ sns_list_topics(NextToken)
 \arguments{
 \item{NextToken}{Token returned by the previous \code{\link[=sns_list_topics]{list_topics}} request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Topics = list(
+    list(
+      TopicArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the requester's topics. Each call returns a limited
 list of topics, up to 100. If there are more topics, a \code{NextToken} is

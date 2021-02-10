@@ -12,6 +12,20 @@ provided, the AWS account ID is used by default.}
 
 \item{ConnectionNameList}{[required] A list of names of the connections to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Succeeded = list(
+    "string"
+  ),
+  Errors = list(
+    list(
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a list of connection definitions from the Data Catalog.
 }

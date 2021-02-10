@@ -21,6 +21,18 @@ pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  ParameterGroups = list(
+    list(
+      ParameterGroupName = "string",
+      Description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of parameter group descriptions. If a parameter group
 name is specified, the list will contain only the descriptions for that

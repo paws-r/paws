@@ -64,6 +64,28 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBClusterBacktracks = list(
+    list(
+      DBClusterIdentifier = "string",
+      BacktrackIdentifier = "string",
+      BacktrackTo = as.POSIXct(
+        "2015-01-01"
+      ),
+      BacktrackedFrom = as.POSIXct(
+        "2015-01-01"
+      ),
+      BacktrackRequestCreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about backtracks for a DB cluster.
 

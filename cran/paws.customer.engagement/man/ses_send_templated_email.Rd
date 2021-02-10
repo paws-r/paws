@@ -92,6 +92,12 @@ you can publish email sending events.}
 a JSON object, typically consisting of key-value pairs in which the keys
 correspond to replacement tags in the email template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageId = "string"
+)
+}
+}
 \description{
 Composes an email message using an email template and immediately queues
 it for sending.

@@ -12,6 +12,9 @@ retrieve this ID from \code{\link[=fms_put_apps_list]{put_apps_list}},
 \code{\link[=fms_list_apps_lists]{list_apps_lists}}, and
 \code{\link[=fms_get_apps_list]{get_apps_list}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Permanently deletes an AWS Firewall Manager applications list.
 }

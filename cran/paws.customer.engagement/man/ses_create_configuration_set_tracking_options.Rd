@@ -14,6 +14,9 @@ associated with.}
 
 \item{TrackingOptions}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Creates an association between a configuration set and a custom domain
 for open and click event tracking.

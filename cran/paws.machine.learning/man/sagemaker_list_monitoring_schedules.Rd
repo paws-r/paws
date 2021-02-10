@@ -47,6 +47,28 @@ definition.}
 \item{MonitoringTypeEquals}{A filter that returns only the monitoring schedules for the specified
 monitoring type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitoringScheduleSummaries = list(
+    list(
+      MonitoringScheduleName = "string",
+      MonitoringScheduleArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      MonitoringScheduleStatus = "Pending"|"Failed"|"Scheduled"|"Stopped",
+      EndpointName = "string",
+      MonitoringJobDefinitionName = "string",
+      MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns list of all monitoring schedules.
 }

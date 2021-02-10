@@ -12,6 +12,15 @@ rekognition_get_celebrity_info(Id)
 \code{\link[=rekognition_recognize_celebrities]{recognize_celebrities}} operation,
 which recognizes celebrities in an image.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Urls = list(
+    "string"
+  ),
+  Name = "string"
+)
+}
+}
 \description{
 Gets the name and additional information about a celebrity based on his
 or her Amazon Rekognition ID. The additional information is returned as

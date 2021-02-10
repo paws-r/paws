@@ -26,6 +26,15 @@ layer.}
 
 \item{layerPartBlob}{[required] The base64-encoded layer part payload.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  uploadId = "string",
+  lastByteReceived = 123
+)
+}
+}
 \description{
 Uploads an image layer part to Amazon ECR.
 

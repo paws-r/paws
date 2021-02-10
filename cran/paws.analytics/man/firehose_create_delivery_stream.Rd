@@ -58,6 +58,12 @@ in the AWS Billing and Cost Management User Guide.
 
 You can specify up to 50 tags when creating a delivery stream.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeliveryStreamARN = "string"
+)
+}
+}
 \description{
 Creates a Kinesis Data Firehose delivery stream.
 

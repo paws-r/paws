@@ -15,6 +15,9 @@ CodeDeploy.}
 
 \item{version}{[required] The version of the custom action to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Marks a custom action as deleted.
 \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} for the custom action

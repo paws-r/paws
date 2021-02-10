@@ -32,6 +32,24 @@ specify the \code{NextToken} value.
 
 Tokens expire after 15 minutes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      Name = "string",
+      Type = "OBJECT"|"FOLDER",
+      ETag = "string",
+      LastModified = as.POSIXct(
+        "2015-01-01"
+      ),
+      ContentType = "string",
+      ContentLength = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides a list of metadata entries about folders and objects in the
 specified folder.

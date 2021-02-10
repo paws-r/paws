@@ -16,6 +16,12 @@ rdsdataservice_begin_transaction(database, resourceArn, schema,
 
 \item{secretArn}{[required] The name or ARN of the secret that enables access to the DB cluster.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  transactionId = "string"
+)
+}
+}
 \description{
 Starts a SQL transaction.\preformatted{ <important> <p>A transaction can run for a maximum of 24 hours. A transaction is terminated and rolled back automatically after 24 hours.</p> <p>A transaction times out if no calls use its transaction ID in three minutes. If a transaction times out before it's committed, it's rolled back automatically.</p> <p>DDL statements inside a transaction cause an implicit commit. We recommend that you run each DDL statement in a separate <code>ExecuteStatement</code> call with <code>continueAfterTimeout</code> enabled.</p> </important> 
 }

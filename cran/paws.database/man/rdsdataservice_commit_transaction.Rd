@@ -14,6 +14,12 @@ rdsdataservice_commit_transaction(resourceArn, secretArn, transactionId)
 
 \item{transactionId}{[required] The identifier of the transaction to end and commit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  transactionStatus = "string"
+)
+}
+}
 \description{
 Ends a SQL transaction started with the
 \code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation and

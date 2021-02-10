@@ -46,6 +46,65 @@ The value must be either -1 or an integer between 1 and 3,653.
 
 The default value is -1.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Snapshot = list(
+    SnapshotIdentifier = "string",
+    ClusterIdentifier = "string",
+    SnapshotCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = "string",
+    Port = 123,
+    AvailabilityZone = "string",
+    ClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    ClusterVersion = "string",
+    EngineFullVersion = "string",
+    SnapshotType = "string",
+    NodeType = "string",
+    NumberOfNodes = 123,
+    DBName = "string",
+    VpcId = "string",
+    Encrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    EncryptedWithHSM = TRUE|FALSE,
+    AccountsWithRestoreAccess = list(
+      list(
+        AccountId = "string",
+        AccountAlias = "string"
+      )
+    ),
+    OwnerAccount = "string",
+    TotalBackupSizeInMegaBytes = 123.0,
+    ActualIncrementalBackupSizeInMegaBytes = 123.0,
+    BackupProgressInMegaBytes = 123.0,
+    CurrentBackupRateInMegaBytesPerSecond = 123.0,
+    EstimatedSecondsToCompletion = 123,
+    ElapsedTimeInSeconds = 123,
+    SourceRegion = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    RestorableNodeTypes = list(
+      "string"
+    ),
+    EnhancedVpcRouting = TRUE|FALSE,
+    MaintenanceTrackName = "string",
+    ManualSnapshotRetentionPeriod = 123,
+    ManualSnapshotRemainingDays = 123,
+    SnapshotRetentionStartTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Copies the specified automated cluster snapshot to a new manual cluster
 snapshot. The source must be an automated snapshot and it must be in the

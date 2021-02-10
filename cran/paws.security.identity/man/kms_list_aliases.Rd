@@ -37,6 +37,26 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Aliases = list(
+    list(
+      AliasName = "string",
+      AliasArn = "string",
+      TargetKeyId = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Gets a list of aliases in the caller's AWS account and region. For more
 information about aliases, see \code{\link[=kms_create_alias]{create_alias}}.

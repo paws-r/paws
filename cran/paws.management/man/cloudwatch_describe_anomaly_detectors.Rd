@@ -30,6 +30,39 @@ associated with the specified metric dimensions. If there are multiple
 metrics that have these dimensions and have anomaly detection models
 associated, they're all returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnomalyDetectors = list(
+    list(
+      Namespace = "string",
+      MetricName = "string",
+      Dimensions = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      Stat = "string",
+      Configuration = list(
+        ExcludedTimeRanges = list(
+          list(
+            StartTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            EndTime = as.POSIXct(
+              "2015-01-01"
+            )
+          )
+        ),
+        MetricTimezone = "string"
+      ),
+      StateValue = "PENDING_TRAINING"|"TRAINED_INSUFFICIENT_DATA"|"TRAINED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the anomaly detection models that you have created in your
 account. You can list all models in your account or filter the results

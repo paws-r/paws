@@ -11,6 +11,9 @@ cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 
 \item{Username}{[required] The user name.}
 }
+\value{
+An empty list.
+}
 \description{
 Signs out users from all devices, as an administrator. It also
 invalidates all refresh tokens issued to a user. The user's current

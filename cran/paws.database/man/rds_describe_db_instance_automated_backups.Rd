@@ -53,6 +53,55 @@ is specified the response includes only records beyond the marker, up to
 example,
 \code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBInstanceAutomatedBackups = list(
+    list(
+      DBInstanceArn = "string",
+      DbiResourceId = "string",
+      Region = "string",
+      DBInstanceIdentifier = "string",
+      RestoreWindow = list(
+        EarliestTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LatestTime = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      AllocatedStorage = 123,
+      Status = "string",
+      Port = 123,
+      AvailabilityZone = "string",
+      VpcId = "string",
+      InstanceCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      MasterUsername = "string",
+      Engine = "string",
+      EngineVersion = "string",
+      LicenseModel = "string",
+      Iops = 123,
+      OptionGroupName = "string",
+      TdeCredentialArn = "string",
+      Encrypted = TRUE|FALSE,
+      StorageType = "string",
+      KmsKeyId = "string",
+      Timezone = "string",
+      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+      BackupRetentionPeriod = 123,
+      DBInstanceAutomatedBackupsArn = "string",
+      DBInstanceAutomatedBackupsReplications = list(
+        list(
+          DBInstanceAutomatedBackupsArn = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Displays backups for both current and deleted instances. For example,
 use this operation to find details about automated backups for

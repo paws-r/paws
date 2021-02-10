@@ -9,6 +9,20 @@ iot_create_provisioning_claim(templateName)
 \arguments{
 \item{templateName}{[required] The name of the provisioning template to use.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificateId = "string",
+  certificatePem = "string",
+  keyPair = list(
+    PublicKey = "string",
+    PrivateKey = "string"
+  ),
+  expiration = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a provisioning claim.
 }

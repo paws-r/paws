@@ -16,31 +16,158 @@ devicefarm_get_device_pool_compatibility(devicePoolArn, appArn,
 
 Allowed values include the following:
 \itemize{
-\item BUILTIN\\_FUZZ.
-\item BUILTIN\\_EXPLORER. For Android, an app explorer that traverses an
+\item BUILTIN_FUZZ.
+\item BUILTIN_EXPLORER. For Android, an app explorer that traverses an
 Android app, interacting with it and capturing screenshots at the
 same time.
-\item APPIUM\\_JAVA\\_JUNIT.
-\item APPIUM\\_JAVA\\_TESTNG.
-\item APPIUM\\_PYTHON.
-\item APPIUM\\_NODE.
-\item APPIUM\\_RUBY.
-\item APPIUM\\_WEB\\_JAVA\\_JUNIT.
-\item APPIUM\\_WEB\\_JAVA\\_TESTNG.
-\item APPIUM\\_WEB\\_PYTHON.
-\item APPIUM\\_WEB\\_NODE.
-\item APPIUM\\_WEB\\_RUBY.
+\item APPIUM_JAVA_JUNIT.
+\item APPIUM_JAVA_TESTNG.
+\item APPIUM_PYTHON.
+\item APPIUM_NODE.
+\item APPIUM_RUBY.
+\item APPIUM_WEB_JAVA_JUNIT.
+\item APPIUM_WEB_JAVA_TESTNG.
+\item APPIUM_WEB_PYTHON.
+\item APPIUM_WEB_NODE.
+\item APPIUM_WEB_RUBY.
 \item CALABASH.
 \item INSTRUMENTATION.
 \item UIAUTOMATION.
 \item UIAUTOMATOR.
 \item XCTEST.
-\item XCTEST\\_UI.
+\item XCTEST_UI.
 }}
 
 \item{test}{Information about the uploaded test to be run against the device pool.}
 
 \item{configuration}{An object that contains information about the settings for a run.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  compatibleDevices = list(
+    list(
+      device = list(
+        arn = "string",
+        name = "string",
+        manufacturer = "string",
+        model = "string",
+        modelId = "string",
+        formFactor = "PHONE"|"TABLET",
+        platform = "ANDROID"|"IOS",
+        os = "string",
+        cpu = list(
+          frequency = "string",
+          architecture = "string",
+          clock = 123.0
+        ),
+        resolution = list(
+          width = 123,
+          height = 123
+        ),
+        heapSize = 123,
+        memory = 123,
+        image = "string",
+        carrier = "string",
+        radio = "string",
+        remoteAccessEnabled = TRUE|FALSE,
+        remoteDebugEnabled = TRUE|FALSE,
+        fleetType = "string",
+        fleetName = "string",
+        instances = list(
+          list(
+            arn = "string",
+            deviceArn = "string",
+            labels = list(
+              "string"
+            ),
+            status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+            udid = "string",
+            instanceProfile = list(
+              arn = "string",
+              packageCleanup = TRUE|FALSE,
+              excludeAppPackagesFromCleanup = list(
+                "string"
+              ),
+              rebootAfterUse = TRUE|FALSE,
+              name = "string",
+              description = "string"
+            )
+          )
+        ),
+        availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+      ),
+      compatible = TRUE|FALSE,
+      incompatibilityMessages = list(
+        list(
+          message = "string",
+          type = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY"
+        )
+      )
+    )
+  ),
+  incompatibleDevices = list(
+    list(
+      device = list(
+        arn = "string",
+        name = "string",
+        manufacturer = "string",
+        model = "string",
+        modelId = "string",
+        formFactor = "PHONE"|"TABLET",
+        platform = "ANDROID"|"IOS",
+        os = "string",
+        cpu = list(
+          frequency = "string",
+          architecture = "string",
+          clock = 123.0
+        ),
+        resolution = list(
+          width = 123,
+          height = 123
+        ),
+        heapSize = 123,
+        memory = 123,
+        image = "string",
+        carrier = "string",
+        radio = "string",
+        remoteAccessEnabled = TRUE|FALSE,
+        remoteDebugEnabled = TRUE|FALSE,
+        fleetType = "string",
+        fleetName = "string",
+        instances = list(
+          list(
+            arn = "string",
+            deviceArn = "string",
+            labels = list(
+              "string"
+            ),
+            status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+            udid = "string",
+            instanceProfile = list(
+              arn = "string",
+              packageCleanup = TRUE|FALSE,
+              excludeAppPackagesFromCleanup = list(
+                "string"
+              ),
+              rebootAfterUse = TRUE|FALSE,
+              name = "string",
+              description = "string"
+            )
+          )
+        ),
+        availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+      ),
+      compatible = TRUE|FALSE,
+      incompatibilityMessages = list(
+        list(
+          message = "string",
+          type = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY"
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Gets information about compatibility with a device pool.

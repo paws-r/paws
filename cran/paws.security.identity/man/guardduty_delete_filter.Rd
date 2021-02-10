@@ -11,6 +11,9 @@ guardduty_delete_filter(DetectorId, FilterName)
 
 \item{FilterName}{[required] The name of the filter that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the filter specified by the filter name.
 }

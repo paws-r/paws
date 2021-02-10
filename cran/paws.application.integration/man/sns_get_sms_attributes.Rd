@@ -15,6 +15,14 @@ For all attribute names, see
 
 If you don't use this parameter, Amazon SNS returns all SMS attributes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  attributes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns the settings for sending SMS messages from your account.
 

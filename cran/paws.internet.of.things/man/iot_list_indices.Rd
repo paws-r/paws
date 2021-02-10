@@ -12,6 +12,15 @@ additional results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  indexNames = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the search indices.
 }

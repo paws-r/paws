@@ -18,6 +18,26 @@ does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Members = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Type = "GROUP"|"USER",
+      State = "ENABLED"|"DISABLED"|"DELETED",
+      EnabledDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DisabledDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an overview of the members of a group. Users and groups can be
 members of a group.

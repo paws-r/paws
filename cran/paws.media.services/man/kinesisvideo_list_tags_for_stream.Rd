@@ -17,6 +17,15 @@ for.}
 
 \item{StreamName}{The name of the stream that you want to list tags for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of tags associated with the specified stream.
 

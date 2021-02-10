@@ -12,6 +12,9 @@ value must be a cluster identifier.}
 
 \item{TagKeys}{[required] A list of tag keys to remove from a resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from an Amazon EMR resource. Tags make it easier to
 associate clusters in various ways, such as grouping clusters to track

@@ -22,6 +22,22 @@ default value of 100 is used.}
 \item{ToTimeStamp}{[required] The end date for the device event query, in ISO8061 format. For example,
 2018-03-28T15:45:12.880Z}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Events = list(
+    list(
+      Device = list(
+        Attributes = list(),
+        DeviceId = "string",
+        Type = "string"
+      ),
+      StdEvent = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Using a device ID, returns a DeviceEventsResponse object containing an
 array of events for the device.

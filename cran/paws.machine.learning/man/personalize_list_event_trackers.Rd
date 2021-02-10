@@ -15,6 +15,25 @@ next set of event trackers (if they exist).}
 
 \item{maxResults}{The maximum number of event trackers to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  eventTrackers = list(
+    list(
+      name = "string",
+      eventTrackerArn = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the list of event trackers associated with the account. The
 response provides the properties for each event tracker, including the

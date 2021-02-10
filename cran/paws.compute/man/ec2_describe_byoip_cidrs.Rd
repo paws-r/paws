@@ -19,6 +19,20 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ByoipCidrs = list(
+    list(
+      Cidr = "string",
+      Description = "string",
+      StatusMessage = "string",
+      State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the IP address ranges that were specified in calls to
 \code{\link[=ec2_provision_byoip_cidr]{provision_byoip_cidr}}.

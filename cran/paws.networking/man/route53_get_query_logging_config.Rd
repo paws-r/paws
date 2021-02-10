@@ -10,6 +10,16 @@ route53_get_query_logging_config(Id)
 \item{Id}{[required] The ID of the configuration for DNS query logging that you want to get
 information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueryLoggingConfig = list(
+    Id = "string",
+    HostedZoneId = "string",
+    CloudWatchLogsLogGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Gets information about a specified configuration for DNS query logging.
 

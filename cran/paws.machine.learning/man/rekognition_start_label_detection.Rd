@@ -35,6 +35,12 @@ that's published to your Amazon Simple Notification Service topic. For
 example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Starts asynchronous detection of labels in a stored video.
 

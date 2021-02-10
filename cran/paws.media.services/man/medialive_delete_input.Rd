@@ -9,6 +9,9 @@ medialive_delete_input(InputId)
 \arguments{
 \item{InputId}{[required] Unique ID of the input}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the input end point
 }

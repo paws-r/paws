@@ -18,6 +18,14 @@ NULL
 #' @param QueryId &#91;required&#93; The id of the query that needs to be cancelled. `QueryID` is returned as
 #' part of QueryResult.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CancellationMessage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_query(
@@ -68,6 +76,19 @@ timestreamquery_cancel_query <- function(QueryId) {
 #'
 #' @usage
 #' timestreamquery_describe_endpoints()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoints = list(
+#'     list(
+#'       Address = "string",
+#'       CachePeriodInMinutes = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -127,6 +148,49 @@ timestreamquery_describe_endpoints <- function() {
 #' rows available is more than the value specified, a NextToken is provided
 #' in the command's output. To resume pagination, provide the NextToken
 #' value in the starting-token argument of a subsequent command.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryId = "string",
+#'   NextToken = "string",
+#'   Rows = list(
+#'     list(
+#'       Data = list(
+#'         list(
+#'           ScalarValue = "string",
+#'           TimeSeriesValue = list(
+#'             list(
+#'               Time = "string",
+#'               Value = list()
+#'             )
+#'           ),
+#'           ArrayValue = list(),
+#'           RowValue = list(),
+#'           NullValue = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ColumnInfo = list(
+#'     list(
+#'       Name = "string",
+#'       Type = list(
+#'         ScalarType = "VARCHAR"|"BOOLEAN"|"BIGINT"|"DOUBLE"|"TIMESTAMP"|"DATE"|"TIME"|"INTERVAL_DAY_TO_SECOND"|"INTERVAL_YEAR_TO_MONTH"|"UNKNOWN"|"INTEGER",
+#'         ArrayColumnInfo = list(),
+#'         TimeSeriesMeasureValueColumnInfo = list(),
+#'         RowColumnInfo = list()
+#'       )
+#'     )
+#'   ),
+#'   QueryStatus = list(
+#'     ProgressPercentage = 123.0,
+#'     CumulativeBytesScanned = 123,
+#'     CumulativeBytesMetered = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

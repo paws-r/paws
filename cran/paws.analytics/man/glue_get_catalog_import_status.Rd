@@ -10,6 +10,18 @@ glue_get_catalog_import_status(CatalogId)
 \item{CatalogId}{The ID of the catalog to migrate. Currently, this should be the AWS
 account ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImportStatus = list(
+    ImportCompleted = TRUE|FALSE,
+    ImportTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ImportedBy = "string"
+  )
+)
+}
+}
 \description{
 Retrieves the status of a migration operation.
 }

@@ -9,6 +9,20 @@ greengrass_get_connectivity_info(ThingName)
 \arguments{
 \item{ThingName}{[required] The thing name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConnectivityInfo = list(
+    list(
+      HostAddress = "string",
+      Id = "string",
+      Metadata = "string",
+      PortNumber = 123
+    )
+  ),
+  Message = "string"
+)
+}
+}
 \description{
 Retrieves the connectivity information for a core.
 }

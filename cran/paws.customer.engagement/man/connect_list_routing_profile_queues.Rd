@@ -18,6 +18,22 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  RoutingProfileQueueConfigSummaryList = list(
+    list(
+      QueueId = "string",
+      QueueArn = "string",
+      QueueName = "string",
+      Priority = 123,
+      Delay = 123,
+      Channel = "VOICE"|"CHAT"|"TASK"
+    )
+  )
+)
+}
+}
 \description{
 List the queues associated with a routing profile.
 }

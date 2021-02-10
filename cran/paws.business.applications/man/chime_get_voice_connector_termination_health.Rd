@@ -11,6 +11,17 @@ chime_get_voice_connector_termination_health(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TerminationHealth = list(
+    Timestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Source = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about the last time a SIP \code{OPTIONS} ping was
 received from your SIP infrastructure for the specified Amazon Chime

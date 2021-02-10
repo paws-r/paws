@@ -27,6 +27,25 @@ a minimum of 90 days. Therefore, the “expire after days” setting must be
 “transition to cold after days” setting cannot be changed after a backup
 has been transitioned to cold.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupVaultArn = "string",
+  RecoveryPointArn = "string",
+  Lifecycle = list(
+    MoveToColdStorageAfterDays = 123,
+    DeleteAfterDays = 123
+  ),
+  CalculatedLifecycle = list(
+    MoveToColdStorageAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    DeleteAt = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Sets the transition lifecycle of a recovery point.
 

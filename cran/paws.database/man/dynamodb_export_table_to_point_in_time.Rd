@@ -49,6 +49,38 @@ export data will be stored (if applicable).}
 \item{ExportFormat}{The format for the exported data. Valid values for \code{ExportFormat} are
 \code{DYNAMODB_JSON} or \code{ION}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExportDescription = list(
+    ExportArn = "string",
+    ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ExportManifest = "string",
+    TableArn = "string",
+    TableId = "string",
+    ExportTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ClientToken = "string",
+    S3Bucket = "string",
+    S3BucketOwner = "string",
+    S3Prefix = "string",
+    S3SseAlgorithm = "AES256"|"KMS",
+    S3SseKmsKeyId = "string",
+    FailureCode = "string",
+    FailureMessage = "string",
+    ExportFormat = "DYNAMODB_JSON"|"ION",
+    BilledSizeBytes = 123,
+    ItemCount = 123
+  )
+)
+}
+}
 \description{
 Exports table data to an S3 bucket. The table must have point in time
 recovery enabled, and you can export data from any time within the point

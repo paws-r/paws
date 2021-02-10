@@ -11,6 +11,26 @@ iot_list_provisioning_templates(maxResults, nextToken)
 
 \item{nextToken}{A token to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  templates = list(
+    list(
+      templateArn = "string",
+      templateName = "string",
+      description = "string",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      enabled = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the fleet provisioning templates in your AWS account.
 }

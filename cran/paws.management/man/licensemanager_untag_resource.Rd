@@ -11,6 +11,9 @@ licensemanager_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] Keys identifying the tags to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified tags from the specified license configuration.
 }

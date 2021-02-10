@@ -18,6 +18,9 @@ alexaforbusiness_update_conference_provider(ConferenceProviderArn,
 
 \item{MeetingSetting}{[required] The meeting settings for the conference provider.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates an existing conference provider's settings.
 }

@@ -13,6 +13,9 @@ Amazon Resource Name (ARN). For information about creating an ARN, see
 
 \item{Tags}{[required] The tags to be assigned to the Amazon RDS resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds metadata tags to an Amazon RDS resource. These tags can also be
 used with cost allocation reporting to track cost associated with Amazon

@@ -33,6 +33,42 @@ filter.}
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Workspaces = list(
+    list(
+      WorkspaceId = "string",
+      DirectoryId = "string",
+      UserName = "string",
+      IpAddress = "string",
+      State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
+      BundleId = "string",
+      SubnetId = "string",
+      ErrorMessage = "string",
+      ErrorCode = "string",
+      ComputerName = "string",
+      VolumeEncryptionKey = "string",
+      UserVolumeEncryptionEnabled = TRUE|FALSE,
+      RootVolumeEncryptionEnabled = TRUE|FALSE,
+      WorkspaceProperties = list(
+        RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+        RunningModeAutoStopTimeoutInMinutes = 123,
+        RootVolumeSizeGib = 123,
+        UserVolumeSizeGib = 123,
+        ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+      ),
+      ModificationStates = list(
+        list(
+          Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
+          State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the specified WorkSpaces.
 

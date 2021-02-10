@@ -9,6 +9,72 @@ ssm_get_patch_baseline(BaselineId)
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineId = "string",
+  Name = "string",
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+  GlobalFilters = list(
+    PatchFilters = list(
+      list(
+        Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+        Values = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ApprovalRules = list(
+    PatchRules = list(
+      list(
+        PatchFilterGroup = list(
+          PatchFilters = list(
+            list(
+              Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+              Values = list(
+                "string"
+              )
+            )
+          )
+        ),
+        ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+        ApproveAfterDays = 123,
+        ApproveUntilDate = "string",
+        EnableNonSecurity = TRUE|FALSE
+      )
+    )
+  ),
+  ApprovedPatches = list(
+    "string"
+  ),
+  ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+  ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+  RejectedPatches = list(
+    "string"
+  ),
+  RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+  PatchGroups = list(
+    "string"
+  ),
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ModifiedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Description = "string",
+  Sources = list(
+    list(
+      Name = "string",
+      Products = list(
+        "string"
+      ),
+      Configuration = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about a patch baseline.
 }

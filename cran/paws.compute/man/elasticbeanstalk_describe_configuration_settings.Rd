@@ -27,6 +27,36 @@ If you specify both, AWS Elastic Beanstalk returns an
 \code{InvalidParameterCombination} error. If you do not specify either, AWS
 Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigurationSettings = list(
+    list(
+      SolutionStackName = "string",
+      PlatformArn = "string",
+      ApplicationName = "string",
+      TemplateName = "string",
+      Description = "string",
+      EnvironmentName = "string",
+      DeploymentStatus = "deployed"|"pending"|"failed",
+      DateCreated = as.POSIXct(
+        "2015-01-01"
+      ),
+      DateUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      OptionSettings = list(
+        list(
+          ResourceName = "string",
+          Namespace = "string",
+          OptionName = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a description of the settings for the specified configuration
 set, that is, either a configuration template or the configuration set

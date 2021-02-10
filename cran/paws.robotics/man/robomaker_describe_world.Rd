@@ -9,6 +9,20 @@ robomaker_describe_world(world)
 \arguments{
 \item{world}{[required] The Amazon Resource Name (arn) of the world you want to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  generationJob = "string",
+  template = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a world.
 }

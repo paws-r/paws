@@ -38,6 +38,9 @@ available to a limited preview audience.)}
 
 \item{MeetingRoomConfiguration}{The updated meeting room settings of a room profile.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates an existing room profile by room profile ARN.
 }

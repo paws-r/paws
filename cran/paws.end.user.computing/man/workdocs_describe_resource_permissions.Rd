@@ -20,6 +20,24 @@ administrator credentials to access the API.}
 \item{Marker}{The marker for the next set of results. (You received this marker from a
 previous call)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Principals = list(
+    list(
+      Id = "string",
+      Type = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION",
+      Roles = list(
+        list(
+          Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
+          Type = "DIRECT"|"INHERITED"
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Describes the permissions of a specified resource.
 }

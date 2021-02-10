@@ -11,6 +11,14 @@ licensemanager_delete_grant(GrantArn, Version)
 
 \item{Version}{[required] Current version of the grant.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GrantArn = "string",
+  Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+  Version = "string"
+)
+}
+}
 \description{
 Deletes the specified grant.
 }

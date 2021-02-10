@@ -11,6 +11,9 @@ applicationinsights_delete_component(ResourceGroupName, ComponentName)
 
 \item{ComponentName}{[required] The name of the component.}
 }
+\value{
+An empty list.
+}
 \description{
 Ungroups a custom component. When you ungroup custom components, all
 applicable monitors that are set up for the component are removed and

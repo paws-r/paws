@@ -11,6 +11,9 @@ workmail_delete_user(OrganizationId, UserId)
 
 \item{UserId}{[required] The identifier of the user to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a user from Amazon WorkMail and all subsequent systems. Before
 you can delete a user, the user state must be \code{DISABLED}. Use the

@@ -10,6 +10,9 @@ snowball_cancel_cluster(ClusterId)
 \item{ClusterId}{[required] The 39-character ID for the cluster that you want to cancel, for example
 \verb{CID123e4567-e89b-12d3-a456-426655440000}.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels a cluster job. You can only cancel a cluster job while it's in
 the \code{AwaitingQuorum} status. You'll have at least an hour after creating

@@ -10,6 +10,21 @@ glue_get_data_catalog_encryption_settings(CatalogId)
 \item{CatalogId}{The ID of the Data Catalog to retrieve the security configuration for.
 If none is provided, the AWS account ID is used by default.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataCatalogEncryptionSettings = list(
+    EncryptionAtRest = list(
+      CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
+      SseAwsKmsKeyId = "string"
+    ),
+    ConnectionPasswordEncryption = list(
+      ReturnConnectionPasswordEncrypted = TRUE|FALSE,
+      AwsKmsKeyId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the security configuration for a specified catalog.
 }

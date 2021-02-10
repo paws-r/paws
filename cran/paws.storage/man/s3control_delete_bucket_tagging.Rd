@@ -23,6 +23,9 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
+\value{
+An empty list.
+}
 \description{
 This operation deletes an Amazon S3 on Outposts bucket's tags. To delete
 an S3 bucket tags, see
@@ -30,7 +33,7 @@ an S3 bucket tags, see
 \emph{Amazon Simple Storage Service API}.
 
 Deletes the tags from the Outposts bucket. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 To use this operation, you must have permission to perform the

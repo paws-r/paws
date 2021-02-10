@@ -26,6 +26,49 @@ batch of the results.}
 results. The default is 100 comments. You can return up to 500 comments
 with a single request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commentsForPullRequestData = list(
+    list(
+      pullRequestId = "string",
+      repositoryName = "string",
+      beforeCommitId = "string",
+      afterCommitId = "string",
+      beforeBlobId = "string",
+      afterBlobId = "string",
+      location = list(
+        filePath = "string",
+        filePosition = 123,
+        relativeFileVersion = "BEFORE"|"AFTER"
+      ),
+      comments = list(
+        list(
+          commentId = "string",
+          content = "string",
+          inReplyTo = "string",
+          creationDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          lastModifiedDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          authorArn = "string",
+          deleted = TRUE|FALSE,
+          clientRequestToken = "string",
+          callerReactions = list(
+            "string"
+          ),
+          reactionCounts = list(
+            123
+          )
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns comments made on a pull request.
 

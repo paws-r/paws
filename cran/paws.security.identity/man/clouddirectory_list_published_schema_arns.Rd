@@ -17,6 +17,15 @@ version.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArns = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the major version families of each published schema. If a major
 version ARN is provided as \code{SchemaArn}, the minor version revisions in

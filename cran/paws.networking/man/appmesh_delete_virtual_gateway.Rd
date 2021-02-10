@@ -15,6 +15,103 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 
 \item{virtualGatewayName}{[required] The name of the virtual gateway to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualGateway = list(
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    spec = list(
+      backendDefaults = list(
+        clientPolicy = list(
+          tls = list(
+            enforce = TRUE|FALSE,
+            ports = list(
+              123
+            ),
+            validation = list(
+              trust = list(
+                acm = list(
+                  certificateAuthorityArns = list(
+                    "string"
+                  )
+                ),
+                file = list(
+                  certificateChain = "string"
+                )
+              )
+            )
+          )
+        )
+      ),
+      listeners = list(
+        list(
+          connectionPool = list(
+            grpc = list(
+              maxRequests = 123
+            ),
+            http = list(
+              maxConnections = 123,
+              maxPendingRequests = 123
+            ),
+            http2 = list(
+              maxRequests = 123
+            )
+          ),
+          healthCheck = list(
+            healthyThreshold = 123,
+            intervalMillis = 123,
+            path = "string",
+            port = 123,
+            protocol = "http"|"http2"|"grpc",
+            timeoutMillis = 123,
+            unhealthyThreshold = 123
+          ),
+          portMapping = list(
+            port = 123,
+            protocol = "http"|"http2"|"grpc"
+          ),
+          tls = list(
+            certificate = list(
+              acm = list(
+                certificateArn = "string"
+              ),
+              file = list(
+                certificateChain = "string",
+                privateKey = "string"
+              )
+            ),
+            mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+          )
+        )
+      ),
+      logging = list(
+        accessLog = list(
+          file = list(
+            path = "string"
+          )
+        )
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    ),
+    virtualGatewayName = "string"
+  )
+)
+}
+}
 \description{
 Deletes an existing virtual gateway. You cannot delete a virtual gateway
 if any gateway routes are associated to it.

@@ -16,6 +16,18 @@ NULL
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   status = list(
+#'     statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
+#'   ),
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_workspace(
@@ -56,6 +68,9 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL)
 #' idempotency of the request.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_workspace(
@@ -93,6 +108,25 @@ prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) 
 #' prometheusservice_describe_workspace(workspaceId)
 #'
 #' @param workspaceId &#91;required&#93; The ID of the workspace to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   workspace = list(
+#'     alias = "string",
+#'     arn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     prometheusEndpoint = "string",
+#'     status = list(
+#'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
+#'     ),
+#'     workspaceId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -136,6 +170,27 @@ prometheusservice_describe_workspace <- function(workspaceId) {
 #' token is obtained from the output of the previous ListWorkspaces
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   workspaces = list(
+#'     list(
+#'       alias = "string",
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = list(
+#'         statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
+#'       ),
+#'       workspaceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_workspaces(
@@ -178,6 +233,9 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
 #' @param workspaceId &#91;required&#93; The ID of the workspace being updated.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

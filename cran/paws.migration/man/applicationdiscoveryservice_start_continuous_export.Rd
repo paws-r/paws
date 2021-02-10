@@ -6,6 +6,20 @@
 \usage{
 applicationdiscoveryservice_start_continuous_export()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  exportId = "string",
+  s3Bucket = "string",
+  startTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  dataSource = "AGENT",
+  schemaStorageConfig = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Start the continuous flow of agent's discovered data into Amazon Athena.
 }

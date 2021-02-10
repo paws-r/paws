@@ -10,6 +10,28 @@ cognitoidentityprovider_get_user(AccessToken)
 \item{AccessToken}{[required] The access token returned by the server response to get information
 about the user.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Username = "string",
+  UserAttributes = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  MFAOptions = list(
+    list(
+      DeliveryMedium = "SMS"|"EMAIL",
+      AttributeName = "string"
+    )
+  ),
+  PreferredMfaSetting = "string",
+  UserMFASettingList = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets the user attributes and metadata for a user.
 }

@@ -11,6 +11,12 @@ glue_update_job(JobName, JobUpdate)
 
 \item{JobUpdate}{[required] Specifies the values with which to update the job definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobName = "string"
+)
+}
+}
 \description{
 Updates an existing job definition.
 }

@@ -23,6 +23,46 @@ month remaining in the Reserved Instance term.}
 
 \item{ReservedInstancesId}{[required] The ID of the active Standard Reserved Instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedInstancesListings = list(
+    list(
+      ClientToken = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      InstanceCounts = list(
+        list(
+          InstanceCount = 123,
+          State = "available"|"sold"|"cancelled"|"pending"
+        )
+      ),
+      PriceSchedules = list(
+        list(
+          Active = TRUE|FALSE,
+          CurrencyCode = "USD",
+          Price = 123.0,
+          Term = 123
+        )
+      ),
+      ReservedInstancesId = "string",
+      ReservedInstancesListingId = "string",
+      Status = "active"|"pending"|"cancelled"|"closed",
+      StatusMessage = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
 in the Reserved Instance Marketplace. You can submit one Standard

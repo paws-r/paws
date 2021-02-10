@@ -28,6 +28,12 @@ maximum of 20 parameters can be modified in a single request.
 
 Valid Values (for Apply method): \code{pending-reboot}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBParameterGroupName = "string"
+)
+}
+}
 \description{
 Modifies the parameters of a DB parameter group to the engine/system
 default value. To reset specific parameters, provide a list of the

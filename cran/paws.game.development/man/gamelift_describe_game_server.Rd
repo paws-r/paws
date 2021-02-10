@@ -14,6 +14,30 @@ running. Use either the GameServerGroup name or ARN value.}
 \item{GameServerId}{[required] A custom string that uniquely identifies the game server information to
 be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameServer = list(
+    GameServerGroupName = "string",
+    GameServerGroupArn = "string",
+    GameServerId = "string",
+    InstanceId = "string",
+    ConnectionInfo = "string",
+    GameServerData = "string",
+    ClaimStatus = "CLAIMED",
+    UtilizationStatus = "AVAILABLE"|"UTILIZED",
+    RegistrationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastClaimTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastHealthCheckTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}

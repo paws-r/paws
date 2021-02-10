@@ -27,7 +27,7 @@ When the key is \code{SearchQuery}, the searchable fields are \code{arn},
 \code{lastSuccessfulProvisioningRecordId}, \code{productName}, and
 \code{provisioningArtifactName}.
 
-Example: \verb{"SearchQuery":\\\["status:AVAILABLE"\\\]}}
+Example: \verb{"SearchQuery":["status:AVAILABLE"]}}
 
 \item{SortBy}{The sort field. If no value is specified, the results are not sorted.
 The valid values are \code{arn}, \code{id}, \code{name}, and \code{lastRecordId}.}
@@ -38,6 +38,43 @@ The valid values are \code{arn}, \code{id}, \code{name}, and \code{lastRecordId}
 
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisionedProducts = list(
+    list(
+      Name = "string",
+      Arn = "string",
+      Type = "string",
+      Id = "string",
+      Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
+      StatusMessage = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      IdempotencyToken = "string",
+      LastRecordId = "string",
+      LastProvisioningRecordId = "string",
+      LastSuccessfulProvisioningRecordId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      PhysicalId = "string",
+      ProductId = "string",
+      ProductName = "string",
+      ProvisioningArtifactId = "string",
+      ProvisioningArtifactName = "string",
+      UserArn = "string",
+      UserArnSession = "string"
+    )
+  ),
+  TotalResultsCount = 123,
+  NextPageToken = "string"
+)
+}
 }
 \description{
 Gets information about the provisioned products that meet the specified

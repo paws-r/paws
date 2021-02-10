@@ -19,6 +19,17 @@ NULL
 #' from Synthea.
 #' @param ClientToken Optional user provided token used for ensuring idempotency.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatastoreId = "string",
+#'   DatastoreArn = "string",
+#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'   DatastoreEndpoint = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_fhir_datastore(
@@ -60,6 +71,17 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' healthlake_delete_fhir_datastore(DatastoreId)
 #'
 #' @param DatastoreId The AWS-generated ID for the Data Store to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatastoreId = "string",
+#'   DatastoreArn = "string",
+#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'   DatastoreEndpoint = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -103,6 +125,27 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #' @param DatastoreId The AWS-generated Data Store id. This is part of the
 #' ‘CreateFHIRDatastore’ output.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatastoreProperties = list(
+#'     DatastoreId = "string",
+#'     DatastoreArn = "string",
+#'     DatastoreName = "string",
+#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DatastoreTypeVersion = "R4",
+#'     DatastoreEndpoint = "string",
+#'     PreloadDataConfig = list(
+#'       PreloadDataType = "SYNTHEA"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fhir_datastore(
@@ -144,6 +187,30 @@ healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
 #' exported from for an export job.
 #' @param JobId &#91;required&#93; The AWS generated ID for an export job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DatastoreId = "string",
+#'     OutputDataConfig = list(
+#'       S3Uri = "string"
+#'     ),
+#'     DataAccessRoleArn = "string",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fhir_export_job(
@@ -184,6 +251,30 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #'
 #' @param DatastoreId &#91;required&#93; The AWS-generated ID of the Data Store.
 #' @param JobId &#91;required&#93; The AWS-generated job ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportJobProperties = list(
+#'     JobId = "string",
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DatastoreId = "string",
+#'     InputDataConfig = list(
+#'       S3Uri = "string"
+#'     ),
+#'     DataAccessRoleArn = "string",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -227,6 +318,30 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #' @param NextToken Fetches the next page of Data Stores when results are paginated.
 #' @param MaxResults The maximum number of Data Stores returned in a single page of a
 #' ListFHIRDatastoresRequest call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatastorePropertiesList = list(
+#'     list(
+#'       DatastoreId = "string",
+#'       DatastoreArn = "string",
+#'       DatastoreName = "string",
+#'       DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DatastoreTypeVersion = "R4",
+#'       DatastoreEndpoint = "string",
+#'       PreloadDataConfig = list(
+#'         PreloadDataType = "SYNTHEA"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -283,6 +398,16 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name used during the initiation of the job.
 #' @param ClientToken &#91;required&#93; An optional user provided token used for ensuring idempotency.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   DatastoreId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_fhir_export_job(
@@ -332,6 +457,16 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that gives Amazon HealthLake access
 #' permission.
 #' @param ClientToken &#91;required&#93; Optional user provided token used for ensuring idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   DatastoreId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

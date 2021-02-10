@@ -9,6 +9,19 @@ dynamodb_describe_kinesis_streaming_destination(TableName)
 \arguments{
 \item{TableName}{[required] The name of the table being described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableName = "string",
+  KinesisDataStreamDestinations = list(
+    list(
+      StreamArn = "string",
+      DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED",
+      DestinationStatusDescription = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about the status of Kinesis streaming.
 }

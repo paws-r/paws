@@ -65,6 +65,20 @@ To get a page token, perform an initial
 results are paginated, the response will return a next page token that
 you can specify as the page token in a subsequent request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  logEvents = list(
+    list(
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      message = "string"
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns the log events of a container of your Amazon Lightsail container
 service.

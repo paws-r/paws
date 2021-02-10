@@ -17,6 +17,26 @@ check.}
 
 \item{layerDigests}{[required] The digests of the image layers to check.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  layers = list(
+    list(
+      layerDigest = "string",
+      layerAvailability = "AVAILABLE"|"UNAVAILABLE",
+      layerSize = 123,
+      mediaType = "string"
+    )
+  ),
+  failures = list(
+    list(
+      layerDigest = "string",
+      failureCode = "InvalidLayerDigest"|"MissingLayerDigest",
+      failureReason = "string"
+    )
+  )
+)
+}
+}
 \description{
 Checks the availability of one or more image layers in a repository.
 

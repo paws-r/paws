@@ -13,6 +13,20 @@ endpoint.}
 
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RefreshSchemasStatus = list(
+    EndpointArn = "string",
+    ReplicationInstanceArn = "string",
+    Status = "successful"|"failed"|"refreshing",
+    LastRefreshDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastFailureMessage = "string"
+  )
+)
+}
+}
 \description{
 Populates the schema for the specified endpoint. This is an asynchronous
 operation and can take several minutes. You can check the status of this

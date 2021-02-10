@@ -15,6 +15,27 @@ be retrieved.}
 
 \item{InvocationId}{[required] The invocation ID to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowExecutionId = "string",
+  TaskExecutionId = "string",
+  InvocationId = "string",
+  ExecutionId = "string",
+  TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+  Parameters = "string",
+  Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+  StatusDetails = "string",
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  OwnerInformation = "string",
+  WindowTargetId = "string"
+)
+}
+}
 \description{
 Retrieves information about a specific task running on a specific
 target.

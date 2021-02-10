@@ -14,6 +14,9 @@ data. For more information, see \href{https://docs.aws.amazon.com/general/latest
 
 \item{tags}{The key-value pairs to use for the tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a log group with the specified name. You can create up to 20,000
 log groups per account.
@@ -23,8 +26,8 @@ You must use the following guidelines when naming a log group:
 \item Log group names must be unique within a region for an AWS account.
 \item Log group names can be between 1 and 512 characters long.
 \item Log group names consist of the following characters: a-z, A-Z, 0-9,
-'\\_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
-and '\\#' (number sign)
+'_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
+and '\#' (number sign)
 }
 
 When you create a log group, by default the log events in the log group

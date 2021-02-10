@@ -16,6 +16,26 @@ must specify USERPOOL.}
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Users = list(
+    list(
+      Arn = "string",
+      UserName = "string",
+      Enabled = TRUE|FALSE,
+      Status = "string",
+      FirstName = "string",
+      LastName = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AuthenticationType = "API"|"SAML"|"USERPOOL"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list that describes one or more specified users in the user
 pool.

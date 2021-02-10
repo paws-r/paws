@@ -14,6 +14,9 @@ user assigned to it.}
 \item{UserName}{[required] A unique string that identifies a user that is being deleted from a
 server.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the user belonging to a file transfer protocol-enabled server
 you specify.

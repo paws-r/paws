@@ -9,6 +9,9 @@ swf_undeprecate_domain(name)
 \arguments{
 \item{name}{[required] The name of the domain of the deprecated workflow type.}
 }
+\value{
+An empty list.
+}
 \description{
 Undeprecates a previously deprecated domain. After a domain has been
 undeprecated it can be used to create new workflow executions or

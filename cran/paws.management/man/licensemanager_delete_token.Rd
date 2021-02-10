@@ -9,6 +9,9 @@ licensemanager_delete_token(TokenId)
 \arguments{
 \item{TokenId}{[required] Token ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified token. Must be called in the license home Region.
 }

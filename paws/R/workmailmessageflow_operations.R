@@ -14,6 +14,14 @@ NULL
 #'
 #' @param messageId &#91;required&#93; The identifier of the email message to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   messageContent = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_raw_message_content(

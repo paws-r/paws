@@ -21,6 +21,12 @@ sagemaker_start_pipeline_execution(PipelineName,
 idempotency of the operation. An idempotent operation completes no more
 than one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineExecutionArn = "string"
+)
+}
+}
 \description{
 Starts a pipeline execution.
 }

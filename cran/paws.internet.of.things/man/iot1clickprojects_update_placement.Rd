@@ -15,6 +15,9 @@ iot1clickprojects_update_placement(placementName, projectName,
 \item{attributes}{The user-defined object of attributes used to update the placement. The
 maximum number of key/value pairs is 50.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a placement with the given attributes. To clear an attribute,
 pass an empty value (i.e., "").

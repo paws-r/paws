@@ -18,6 +18,17 @@ form:
 \code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}
 action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuditReportStatus = "CREATING"|"SUCCESS"|"FAILED",
+  S3BucketName = "string",
+  S3Key = "string",
+  CreatedAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Lists information about a specific audit report created by calling the
 \code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}

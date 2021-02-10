@@ -38,6 +38,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the specified attribute of the specified AMI. You can specify
 only one attribute at a time. You can use the \code{Attribute} parameter to

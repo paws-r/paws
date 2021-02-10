@@ -12,6 +12,30 @@ chime_list_sip_media_applications(MaxResults, NextToken)
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipMediaApplications = list(
+    list(
+      SipMediaApplicationId = "string",
+      AwsRegion = "string",
+      Name = "string",
+      Endpoints = list(
+        list(
+          LambdaArn = "string"
+        )
+      ),
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the SIP media applications under the administrator's AWS account.
 }

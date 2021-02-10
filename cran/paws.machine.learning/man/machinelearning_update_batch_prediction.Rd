@@ -12,6 +12,12 @@ machinelearning_update_batch_prediction(BatchPredictionId,
 
 \item{BatchPredictionName}{[required] A new user-supplied name or description of the \code{BatchPrediction}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BatchPredictionId = "string"
+)
+}
+}
 \description{
 Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.
 

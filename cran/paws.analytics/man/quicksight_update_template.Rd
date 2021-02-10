@@ -36,6 +36,17 @@ field.}
 
 \item{Name}{The name for the template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateId = "string",
+  Arn = "string",
+  VersionArn = "string",
+  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Updates a template from an existing Amazon QuickSight analysis or
 another template.

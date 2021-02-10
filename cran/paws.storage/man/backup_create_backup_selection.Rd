@@ -18,6 +18,16 @@ plan.}
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
 to be retried without the risk of running the operation twice.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SelectionId = "string",
+  BackupPlanId = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a JSON document that specifies a set of resources to assign to a
 backup plan. Resources can be included by specifying patterns for a

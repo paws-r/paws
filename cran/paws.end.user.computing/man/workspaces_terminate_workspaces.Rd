@@ -9,6 +9,18 @@ workspaces_terminate_workspaces(TerminateWorkspaceRequests)
 \arguments{
 \item{TerminateWorkspaceRequests}{[required] The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedRequests = list(
+    list(
+      WorkspaceId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Terminates the specified WorkSpaces.
 

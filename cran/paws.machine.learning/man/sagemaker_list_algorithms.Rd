@@ -29,6 +29,23 @@ algorithms, use the token in the next request.}
 
 \item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AlgorithmSummaryList = list(
+    list(
+      AlgorithmName = "string",
+      AlgorithmArn = "string",
+      AlgorithmDescription = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AlgorithmStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the machine learning algorithms that have been created.
 }

@@ -12,6 +12,13 @@ details are being requested.}
 
 \item{UserId}{[required] The identifier for the user whose mailbox details are being requested.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MailboxQuota = 123,
+  MailboxSize = 123.0
+)
+}
+}
 \description{
 Requests a user's mailbox details for a specified organization and user.
 }

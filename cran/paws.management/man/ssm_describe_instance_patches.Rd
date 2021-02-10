@@ -21,6 +21,25 @@ from a previous call.)}
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Patches = list(
+    list(
+      Title = "string",
+      KBId = "string",
+      Classification = "string",
+      Severity = "string",
+      State = "INSTALLED"|"INSTALLED_OTHER"|"INSTALLED_PENDING_REBOOT"|"INSTALLED_REJECTED"|"MISSING"|"NOT_APPLICABLE"|"FAILED",
+      InstalledTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CVEIds = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves information about the patches on the specified instance and
 their state relative to the patch baseline being used for the instance.

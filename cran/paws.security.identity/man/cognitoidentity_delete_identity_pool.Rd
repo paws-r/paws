@@ -9,6 +9,9 @@ cognitoidentity_delete_identity_pool(IdentityPoolId)
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an identity pool. Once a pool is deleted, users will not be able
 to authenticate with the pool.

@@ -11,6 +11,15 @@ apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 
 \item{DomainName}{[required] The domain name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiId = "string",
+  ApiMappingId = "string",
+  ApiMappingKey = "string",
+  Stage = "string"
+)
+}
+}
 \description{
 Gets an API mapping.
 }

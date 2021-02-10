@@ -12,6 +12,36 @@ guardduty_get_member_detectors(DetectorId, AccountIds)
 
 \item{AccountIds}{[required] The account ID of the member account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MemberDataSourceConfigurations = list(
+    list(
+      AccountId = "string",
+      DataSources = list(
+        CloudTrail = list(
+          Status = "ENABLED"|"DISABLED"
+        ),
+        DNSLogs = list(
+          Status = "ENABLED"|"DISABLED"
+        ),
+        FlowLogs = list(
+          Status = "ENABLED"|"DISABLED"
+        ),
+        S3Logs = list(
+          Status = "ENABLED"|"DISABLED"
+        )
+      )
+    )
+  ),
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes which data sources are enabled for the member account's
 detector.

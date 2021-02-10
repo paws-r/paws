@@ -9,6 +9,9 @@ redshift_delete_hsm_client_certificate(HsmClientCertificateIdentifier)
 \arguments{
 \item{HsmClientCertificateIdentifier}{[required] The identifier of the HSM client certificate to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified HSM client certificate.
 }

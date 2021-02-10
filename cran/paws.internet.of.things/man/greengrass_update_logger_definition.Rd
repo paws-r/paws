@@ -11,6 +11,9 @@ greengrass_update_logger_definition(LoggerDefinitionId, Name)
 
 \item{Name}{The name of the definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a logger definition.
 }

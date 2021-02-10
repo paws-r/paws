@@ -20,6 +20,20 @@ idempotency of the request.}
 \item{tags}{A map that contains tag keys and tag values that are attached to the
 world template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  clientRequestToken = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  name = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a world template.
 }

@@ -9,6 +9,24 @@ sagemaker_describe_code_repository(CodeRepositoryName)
 \arguments{
 \item{CodeRepositoryName}{[required] The name of the Git repository to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeRepositoryName = "string",
+  CodeRepositoryArn = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  GitConfig = list(
+    RepositoryUrl = "string",
+    Branch = "string",
+    SecretArn = "string"
+  )
+)
+}
+}
 \description{
 Gets details about the specified Git repository.
 }

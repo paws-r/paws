@@ -15,6 +15,38 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cloudFormationStackRecords = list(
+    list(
+      name = "string",
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      location = list(
+        availabilityZone = "string",
+        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+      ),
+      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+      state = "Started"|"Succeeded"|"Failed",
+      sourceInfo = list(
+        list(
+          resourceType = "ExportSnapshotRecord",
+          name = "string",
+          arn = "string"
+        )
+      ),
+      destinationInfo = list(
+        id = "string",
+        service = "string"
+      )
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns the CloudFormation stack record created as a result of the
 \verb{create cloud formation stack} operation.

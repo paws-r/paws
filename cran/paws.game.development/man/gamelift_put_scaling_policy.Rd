@@ -80,6 +80,12 @@ parameters: \emph{MetricName}, \emph{ComparisonOperator}, \emph{Threshold},
 
 \item{TargetConfiguration}{The settings for a target-based scaling policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Creates or updates a scaling policy for a fleet. Scaling policies are
 used to automatically scale a fleet's hosting capacity to meet player
@@ -98,7 +104,7 @@ because multiple auto-scaling policies can have unintended consequences.
 
 You can temporarily suspend all scaling policies for a fleet by calling
 \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} with the fleet
-action AUTO\\_SCALING. To resume scaling policies, call
+action AUTO_SCALING. To resume scaling policies, call
 \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} with the same
 fleet action. To stop just one scaling policy--or to permanently remove
 it, you must delete the policy with
@@ -147,15 +153,14 @@ minutes, then reduce the fleet capacity by 10\%."
 
 A policy's rule statement has the following structure:
 
-If \verb{\\\[MetricName\\\]} is \verb{\\\[ComparisonOperator\\\]} \verb{\\\[Threshold\\\]}
-for \verb{\\\[EvaluationPeriods\\\]} minutes, then
-\verb{\\\[ScalingAdjustmentType\\\]} to/by \verb{\\\[ScalingAdjustment\\\]}.
+If \verb{[MetricName]} is \verb{[ComparisonOperator]} \verb{[Threshold]} for
+\verb{[EvaluationPeriods]} minutes, then \verb{[ScalingAdjustmentType]} to/by
+\verb{[ScalingAdjustment]}.
 
 To implement the example, the rule statement would look like this:
 
-If \verb{\\\[PercentIdleInstances\\\]} is \verb{\\\[GreaterThanThreshold\\\]}
-\verb{\\\[20\\\]} for \verb{\\\[15\\\]} minutes, then \verb{\\\[PercentChangeInCapacity\\\]}
-to/by \verb{\\\[10\\\]}.
+If \verb{[PercentIdleInstances]} is \verb{[GreaterThanThreshold]} \verb{[20]} for
+\verb{[15]} minutes, then \verb{[PercentChangeInCapacity]} to/by \verb{[10]}.
 
 To create or update a scaling policy, specify a unique combination of
 name and fleet ID, and set the policy type to "RuleBased". Specify the

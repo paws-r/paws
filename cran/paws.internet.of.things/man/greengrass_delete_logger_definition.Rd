@@ -9,6 +9,9 @@ greengrass_delete_logger_definition(LoggerDefinitionId)
 \arguments{
 \item{LoggerDefinitionId}{[required] The ID of the logger definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a logger definition.
 }

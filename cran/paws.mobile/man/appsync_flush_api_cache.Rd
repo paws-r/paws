@@ -9,6 +9,9 @@ appsync_flush_api_cache(apiId)
 \arguments{
 \item{apiId}{[required] The API ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Flushes an \code{ApiCache} object.
 }

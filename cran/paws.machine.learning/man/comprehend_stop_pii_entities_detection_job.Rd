@@ -9,6 +9,13 @@ comprehend_stop_pii_entities_detection_job(JobId)
 \arguments{
 \item{JobId}{[required] The identifier of the PII entities detection job to stop.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+)
+}
+}
 \description{
 Stops a PII entities detection job in progress.
 }

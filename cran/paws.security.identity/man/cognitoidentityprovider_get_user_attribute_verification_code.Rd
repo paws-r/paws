@@ -45,6 +45,16 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeDeliveryDetails = list(
+    Destination = "string",
+    DeliveryMedium = "SMS"|"EMAIL",
+    AttributeName = "string"
+  )
+)
+}
+}
 \description{
 Gets the user attribute verification code for the specified attribute
 name.

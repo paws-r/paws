@@ -9,6 +9,17 @@ workmail_list_tags_for_resource(ResourceARN)
 \arguments{
 \item{ResourceARN}{[required] The resource ARN.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the tags applied to an Amazon WorkMail organization resource.
 }

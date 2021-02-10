@@ -22,6 +22,9 @@ types that are currently within their opt-in period for longer IDs.}
 
 \item{UseLongIds}{[required] Indicate whether the resource should use longer IDs (17-character IDs).}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the ID format for the specified resource on a per-Region basis.
 You can specify that resources should receive longer IDs (17-character

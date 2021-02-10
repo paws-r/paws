@@ -15,6 +15,12 @@ sagemaker_create_app_image_config(AppImageConfigName, Tags,
 
 \item{KernelGatewayImageConfig}{The KernelGatewayImageConfig.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppImageConfigArn = "string"
+)
+}
+}
 \description{
 Creates a configuration for running a SageMaker image as a KernelGateway
 app. The configuration specifies the Amazon Elastic File System (EFS)

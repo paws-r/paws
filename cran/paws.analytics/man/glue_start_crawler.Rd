@@ -10,6 +10,9 @@ glue_start_crawler(Name)
 \arguments{
 \item{Name}{[required] Name of the crawler to start.}
 }
+\value{
+An empty list.
+}
 \description{
 Starts a crawl using the specified crawler, regardless of what is
 scheduled. If the crawler is already running, returns a

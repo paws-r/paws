@@ -9,6 +9,9 @@ opsworks_deregister_ecs_cluster(EcsClusterArn)
 \arguments{
 \item{EcsClusterArn}{[required] The cluster's Amazon Resource Number (ARN).}
 }
+\value{
+An empty list.
+}
 \description{
 Deregisters a specified Amazon ECS cluster from a stack. For more
 information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete}{Resource Management}.

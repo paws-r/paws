@@ -27,6 +27,35 @@ filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PublicIpv4Pools = list(
+    list(
+      PoolId = "string",
+      Description = "string",
+      PoolAddressRanges = list(
+        list(
+          FirstAddress = "string",
+          LastAddress = "string",
+          AddressCount = 123,
+          AvailableAddressCount = 123
+        )
+      ),
+      TotalAddressCount = 123,
+      TotalAvailableAddressCount = 123,
+      NetworkBorderGroup = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the specified IPv4 address pools.
 }

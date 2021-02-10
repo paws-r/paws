@@ -23,6 +23,21 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Schemas = list(
+    list(
+      SchemaArn = "string",
+      SchemaVersionId = "string",
+      VersionNumber = 123,
+      Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
+      CreatedTime = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of schema versions that you have created, with minimal
 information. Schema versions in Deleted status will not be included in

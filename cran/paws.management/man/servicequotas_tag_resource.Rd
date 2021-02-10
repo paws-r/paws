@@ -17,6 +17,9 @@ operation.}
 
 \item{Tags}{[required] The tags that you want to add to the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds tags to the specified applied quota. You can include one or more
 tags to add to the quota.

@@ -15,6 +15,21 @@ includes all TagOptions.}
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagOptionDetails = list(
+    list(
+      Key = "string",
+      Value = "string",
+      Active = TRUE|FALSE,
+      Id = "string",
+      Owner = "string"
+    )
+  ),
+  PageToken = "string"
+)
+}
+}
 \description{
 Lists the specified TagOptions or all TagOptions.
 }

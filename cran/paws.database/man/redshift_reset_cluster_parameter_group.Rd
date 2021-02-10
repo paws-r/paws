@@ -23,6 +23,13 @@ option is not used, then at least one parameter name must be supplied.
 Constraints: A maximum of 20 parameters can be reset in a single
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ParameterGroupName = "string",
+  ParameterGroupStatus = "string"
+)
+}
+}
 \description{
 Sets one or more parameters of the specified parameter group to their
 default values and sets the source values of the parameters to

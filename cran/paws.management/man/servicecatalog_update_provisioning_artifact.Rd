@@ -40,6 +40,26 @@ that the product version is deprecated. Users are able to make updates
 to a provisioned product of a deprecated version but cannot launch new
 provisioned products using a deprecated version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisioningArtifactDetail = list(
+    Id = "string",
+    Name = "string",
+    Description = "string",
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Active = TRUE|FALSE,
+    Guidance = "DEFAULT"|"DEPRECATED"
+  ),
+  Info = list(
+    "string"
+  ),
+  Status = "AVAILABLE"|"CREATING"|"FAILED"
+)
+}
+}
 \description{
 Updates the specified provisioning artifact (also known as a version)
 for the specified product.

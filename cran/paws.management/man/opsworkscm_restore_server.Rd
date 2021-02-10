@@ -13,13 +13,16 @@ opsworkscm_restore_server(BackupId, ServerName, InstanceType, KeyPair)
 \item{ServerName}{[required] The name of the server that you want to restore.}
 
 \item{InstanceType}{The type of instance to restore. Valid values must be specified in the
-following format: \verb{^(\\\[cm\\\]\\\[34\\\]|t2).*} For example, \code{m5.large}.
-Valid values are \code{m5.large}, \code{r5.xlarge}, and \code{r5.2xlarge}. If you do
-not specify this parameter, RestoreServer uses the instance type from
-the specified backup.}
+following format: \verb{^([cm][34]|t2).*} For example, \code{m5.large}. Valid
+values are \code{m5.large}, \code{r5.xlarge}, and \code{r5.2xlarge}. If you do not
+specify this parameter, RestoreServer uses the instance type from the
+specified backup.}
 
 \item{KeyPair}{The name of the key pair to set on the new EC2 instance. This can be
 helpful if the administrator no longer has the SSH key.}
+}
+\value{
+An empty list.
 }
 \description{
 Restores a backup to a server that is in a \code{CONNECTION_LOST}, \code{HEALTHY},

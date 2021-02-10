@@ -24,6 +24,12 @@ Fleet request, then omit this parameter.}
 
 \item{OnDemandTargetCapacity}{The number of On-Demand Instances in the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies the specified Spot Fleet request.
 

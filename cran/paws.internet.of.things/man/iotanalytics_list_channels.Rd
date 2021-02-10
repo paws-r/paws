@@ -13,6 +13,35 @@ iotanalytics_list_channels(nextToken, maxResults)
 
 The default value is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  channelSummaries = list(
+    list(
+      channelName = "string",
+      channelStorage = list(
+        serviceManagedS3 = list(),
+        customerManagedS3 = list(
+          bucket = "string",
+          keyPrefix = "string",
+          roleArn = "string"
+        )
+      ),
+      status = "CREATING"|"ACTIVE"|"DELETING",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastMessageArrivalTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of channels.
 }

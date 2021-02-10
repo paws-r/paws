@@ -17,6 +17,29 @@ To get a page token, perform an initial
 paginated, the response will return a next page token that you can
 specify as the page token in a subsequent request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  bundles = list(
+    list(
+      price = 123.0,
+      cpuCount = 123,
+      diskSizeInGb = 123,
+      bundleId = "string",
+      instanceType = "string",
+      isActive = TRUE|FALSE,
+      name = "string",
+      power = 123,
+      ramSizeInGb = 123.0,
+      transferPerMonthInGb = 123,
+      supportedPlatforms = list(
+        "LINUX_UNIX"|"WINDOWS"
+      )
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns the list of bundles that are available for purchase. A bundle
 describes the specs for your virtual private server (or \emph{instance}).

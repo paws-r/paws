@@ -7,6 +7,15 @@ such as the default outbound calling name}
 \usage{
 chime_get_phone_number_settings()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CallingName = "string",
+  CallingNameUpdatedTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves the phone number settings for the administrator's AWS account,
 such as the default outbound calling name.

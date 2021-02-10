@@ -11,6 +11,28 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection(
 \arguments{
 \item{CrossClusterSearchConnectionId}{[required] The id of the inbound connection that you want to accept.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CrossClusterSearchConnection = list(
+    SourceDomainInfo = list(
+      OwnerId = "string",
+      DomainName = "string",
+      Region = "string"
+    ),
+    DestinationDomainInfo = list(
+      OwnerId = "string",
+      DomainName = "string",
+      Region = "string"
+    ),
+    CrossClusterSearchConnectionId = "string",
+    ConnectionStatus = list(
+      StatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Allows the destination domain owner to accept an inbound cross-cluster
 search connection request.

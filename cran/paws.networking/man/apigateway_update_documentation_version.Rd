@@ -16,6 +16,16 @@ version.}
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  version = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  description = "string"
+)
+}
+}
 \description{
 Update documentation version
 }

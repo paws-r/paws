@@ -12,6 +12,9 @@ activity.}
 
 \item{tagKeys}{[required] The list of tags to remove from the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove a tag from a Step Functions resource
 }

@@ -15,6 +15,14 @@ result set.}
 \item{limit}{(Not currently supported) The maximum number of returned results per
 page. The default value is 25 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets the Tags collection for a given resource.
 }

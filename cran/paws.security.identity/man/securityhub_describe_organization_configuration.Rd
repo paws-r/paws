@@ -7,6 +7,13 @@ Hub}
 \usage{
 securityhub_describe_organization_configuration()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoEnable = TRUE|FALSE,
+  MemberAccountLimitReached = TRUE|FALSE
+)
+}
+}
 \description{
 Returns information about the Organizations configuration for Security
 Hub. Can only be called from a Security Hub administrator account.

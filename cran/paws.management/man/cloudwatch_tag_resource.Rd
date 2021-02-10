@@ -21,6 +21,9 @@ in the \emph{Amazon Web Services General Reference}.}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the alarm.}
 }
+\value{
+An empty list.
+}
 \description{
 Assigns one or more tags (key-value pairs) to the specified CloudWatch
 resource. Currently, the only CloudWatch resources that can be tagged

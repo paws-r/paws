@@ -13,6 +13,20 @@ iot_list_streams(maxResults, nextToken, ascendingOrder)
 
 \item{ascendingOrder}{Set to true to return the list of streams in ascending order.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  streams = list(
+    list(
+      streamId = "string",
+      streamArn = "string",
+      streamVersion = 123,
+      description = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all of the streams in your AWS account.
 }

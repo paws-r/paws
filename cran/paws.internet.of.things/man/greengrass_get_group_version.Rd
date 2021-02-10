@@ -9,7 +9,29 @@ greengrass_get_group_version(GroupId, GroupVersionId)
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
 
-\item{GroupVersionId}{[required] The ID of the group version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListGroupVersions'' requests. If the version is the last one that was associated with a group, the value also maps to the ''LatestVersion'' property of the corresponding ''GroupInformation'' object.}
+\item{GroupVersionId}{[required] The ID of the group version. This value maps to the ''Version'' property
+of the corresponding ''VersionInformation'' object, which is returned by
+''ListGroupVersions'' requests. If the version is the last one that was
+associated with a group, the value also maps to the ''LatestVersion''
+property of the corresponding ''GroupInformation'' object.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Definition = list(
+    ConnectorDefinitionVersionArn = "string",
+    CoreDefinitionVersionArn = "string",
+    DeviceDefinitionVersionArn = "string",
+    FunctionDefinitionVersionArn = "string",
+    LoggerDefinitionVersionArn = "string",
+    ResourceDefinitionVersionArn = "string",
+    SubscriptionDefinitionVersionArn = "string"
+  ),
+  Id = "string",
+  Version = "string"
+)
+}
 }
 \description{
 Retrieves information about a group version.

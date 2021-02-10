@@ -20,6 +20,13 @@ predictive inbox placement test.}
 \item{Tags}{An array of objects that define the tags (keys and values) that you want
 to associate with the predictive inbox placement test.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReportId = "string",
+  DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+)
+}
+}
 \description{
 Create a new predictive inbox placement test. Predictive inbox placement
 tests can help you predict how your messages will be handled by various

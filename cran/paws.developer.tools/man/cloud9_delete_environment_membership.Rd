@@ -12,6 +12,9 @@ cloud9_delete_environment_membership(environmentId, userArn)
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the environment member to delete from
 the environment.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an environment member from an AWS Cloud9 development
 environment.

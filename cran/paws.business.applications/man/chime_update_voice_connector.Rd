@@ -13,6 +13,24 @@ chime_update_voice_connector(VoiceConnectorId, Name, RequireEncryption)
 
 \item{RequireEncryption}{[required] When enabled, requires encryption for the Amazon Chime Voice Connector.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceConnector = list(
+    VoiceConnectorId = "string",
+    AwsRegion = "us-east-1"|"us-west-2",
+    Name = "string",
+    OutboundHostName = "string",
+    RequireEncryption = TRUE|FALSE,
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates details for the specified Amazon Chime Voice Connector.
 }

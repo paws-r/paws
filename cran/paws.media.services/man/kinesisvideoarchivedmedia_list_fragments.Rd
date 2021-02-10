@@ -22,6 +22,25 @@ ListFragmentsOutput$NextToken from a previously truncated response.}
 \item{FragmentSelector}{Describes the timestamp range and timestamp origin for the range of
 fragments to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Fragments = list(
+    list(
+      FragmentNumber = "string",
+      FragmentSizeInBytes = 123,
+      ProducerTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServerTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      FragmentLengthInMilliseconds = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of Fragment objects from the specified stream and
 timestamp range within the archived data.

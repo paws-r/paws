@@ -22,6 +22,14 @@ parameters named \code{groupId}, \code{artifactId}, \code{artifactVersion}, and
 \code{invokerPackage} are required. For \code{sdkType} of \code{java}, parameters named
 \code{serviceName} and \code{javaPackageName} are required.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  contentType = "string",
+  contentDisposition = "string",
+  body = raw
+)
+}
+}
 \description{
 Generates a client SDK for a RestApi and Stage.
 }

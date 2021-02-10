@@ -11,6 +11,9 @@ appsync_delete_data_source(apiId, name)
 
 \item{name}{[required] The name of the data source.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a \code{DataSource} object.
 }

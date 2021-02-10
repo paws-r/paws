@@ -18,6 +18,9 @@ to complete before initiating a scaling activity to set your Auto
 Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling
 does not honor the cooldown period during manual scaling activities.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the size of the specified Auto Scaling group.
 

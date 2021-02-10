@@ -16,6 +16,12 @@ soon the device is returned to AWS. This speed represents how quickly it
 moves to its destination while in transit. Regional shipping speeds are
 as follows:}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "InProgress"|"TimedOut"|"Succeeded"|"Failed"
+)
+}
+}
 \description{
 Creates a shipping label that will be used to return the Snow device to
 AWS.

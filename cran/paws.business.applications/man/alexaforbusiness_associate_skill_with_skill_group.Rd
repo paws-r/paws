@@ -12,6 +12,9 @@ alexaforbusiness_associate_skill_with_skill_group(SkillGroupArn,
 
 \item{SkillId}{[required] The unique identifier of the skill.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a skill with a skill group.
 }

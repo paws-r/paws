@@ -11,6 +11,9 @@ iot_delete_policy_version(policyName, policyVersionId)
 
 \item{policyVersionId}{[required] The policy version ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified version of the specified policy. You cannot delete
 the default version of a policy using this API. To delete the default

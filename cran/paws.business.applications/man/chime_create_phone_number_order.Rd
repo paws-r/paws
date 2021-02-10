@@ -11,6 +11,28 @@ chime_create_phone_number_order(ProductType, E164PhoneNumbers)
 
 \item{E164PhoneNumbers}{[required] List of phone numbers, in E.164 format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumberOrder = list(
+    PhoneNumberOrderId = "string",
+    ProductType = "BusinessCalling"|"VoiceConnector",
+    Status = "Processing"|"Successful"|"Failed"|"Partial",
+    OrderedPhoneNumbers = list(
+      list(
+        E164PhoneNumber = "string",
+        Status = "Processing"|"Acquired"|"Failed"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates an order for phone numbers to be provisioned. Choose from Amazon
 Chime Business Calling and Amazon Chime Voice Connector product types.

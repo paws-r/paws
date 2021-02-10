@@ -17,6 +17,21 @@ administrator credentials to access the API.}
 
 \item{NotificationOptions}{The notification options.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ShareResults = list(
+    list(
+      PrincipalId = "string",
+      InviteePrincipalId = "string",
+      Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
+      Status = "SUCCESS"|"FAILURE",
+      ShareId = "string",
+      StatusMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a set of permissions for the specified folder or document. The
 resource permissions are overwritten if the principals already have

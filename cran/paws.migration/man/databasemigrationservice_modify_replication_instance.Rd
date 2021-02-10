@@ -79,6 +79,68 @@ An outage does result if these factors apply:
 \item{ReplicationInstanceIdentifier}{The replication instance identifier. This parameter is stored as a
 lowercase string.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationInstance = list(
+    ReplicationInstanceIdentifier = "string",
+    ReplicationInstanceClass = "string",
+    ReplicationInstanceStatus = "string",
+    AllocatedStorage = 123,
+    InstanceCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    VpcSecurityGroups = list(
+      list(
+        VpcSecurityGroupId = "string",
+        Status = "string"
+      )
+    ),
+    AvailabilityZone = "string",
+    ReplicationSubnetGroup = list(
+      ReplicationSubnetGroupIdentifier = "string",
+      ReplicationSubnetGroupDescription = "string",
+      VpcId = "string",
+      SubnetGroupStatus = "string",
+      Subnets = list(
+        list(
+          SubnetIdentifier = "string",
+          SubnetAvailabilityZone = list(
+            Name = "string"
+          ),
+          SubnetStatus = "string"
+        )
+      )
+    ),
+    PreferredMaintenanceWindow = "string",
+    PendingModifiedValues = list(
+      ReplicationInstanceClass = "string",
+      AllocatedStorage = 123,
+      MultiAZ = TRUE|FALSE,
+      EngineVersion = "string"
+    ),
+    MultiAZ = TRUE|FALSE,
+    EngineVersion = "string",
+    AutoMinorVersionUpgrade = TRUE|FALSE,
+    KmsKeyId = "string",
+    ReplicationInstanceArn = "string",
+    ReplicationInstancePublicIpAddress = "string",
+    ReplicationInstancePrivateIpAddress = "string",
+    ReplicationInstancePublicIpAddresses = list(
+      "string"
+    ),
+    ReplicationInstancePrivateIpAddresses = list(
+      "string"
+    ),
+    PubliclyAccessible = TRUE|FALSE,
+    SecondaryAvailabilityZone = "string",
+    FreeUntil = as.POSIXct(
+      "2015-01-01"
+    ),
+    DnsNameServers = "string"
+  )
+)
+}
+}
 \description{
 Modifies the replication instance to apply new settings. You can change
 one or more parameters by specifying these parameters and the new values
@@ -118,7 +180,7 @@ svc$modify_replication_instance(
   EngineVersion = "1.5.0",
   MultiAZ = TRUE,
   PreferredMaintenanceWindow = "sun:06:00-sun:14:00",
-  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ...",
+  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
   ReplicationInstanceClass = "dms.t2.micro",
   ReplicationInstanceIdentifier = "test-rep-1",
   VpcSecurityGroupIds = list()

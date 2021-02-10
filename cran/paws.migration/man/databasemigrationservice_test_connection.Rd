@@ -13,6 +13,19 @@ databasemigrationservice_test_connection(ReplicationInstanceArn,
 \item{EndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the
 endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Connection = list(
+    ReplicationInstanceArn = "string",
+    EndpointArn = "string",
+    Status = "string",
+    LastFailureMessage = "string",
+    EndpointIdentifier = "string",
+    ReplicationInstanceIdentifier = "string"
+  )
+)
+}
+}
 \description{
 Tests the connection between the replication instance and the endpoint.
 }
@@ -29,7 +42,7 @@ Tests the connection between the replication instance and the endpoint.
 # Tests the connection between the replication instance and the endpoint.
 svc$test_connection(
   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
-  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
+  ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
 )
 }
 

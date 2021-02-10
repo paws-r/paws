@@ -50,6 +50,13 @@ This is not supported by Amazon S3 on Outposts buckets.}
 
 This is required by Amazon S3 on Outposts buckets.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Location = "string",
+  BucketArn = "string"
+)
+}
+}
 \description{
 This API operation creates an Amazon S3 on Outposts bucket. To create an
 S3 bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{Create Bucket}
@@ -57,11 +64,11 @@ in the \emph{Amazon Simple Storage Service API}.
 
 Creates a new Outposts bucket. By creating the bucket, you become the
 bucket owner. To create an Outposts bucket, you must have S3 on
-Outposts. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+Outposts. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 Not every string is an acceptable bucket name. For information on bucket
-naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules}{Working with Amazon S3 Buckets}.
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules}{Working with Amazon S3 Buckets}.
 
 S3 on Outposts buckets do not support
 \itemize{

@@ -50,6 +50,22 @@ list the consumers for.
 
 You can't specify this parameter if you specify the NextToken parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Consumers = list(
+    list(
+      ConsumerName = "string",
+      ConsumerARN = "string",
+      ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
+      ConsumerCreationTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the consumers registered to receive data from a stream using
 enhanced fan-out, and provides information about each consumer.

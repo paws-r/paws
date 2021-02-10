@@ -37,12 +37,15 @@ images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-
 
 \item{Tags}{The tags associated with the directory.}
 }
+\value{
+An empty list.
+}
 \description{
 Registers the specified directory. This operation is asynchronous and
 returns before the WorkSpace directory is registered. If this is the
 first time you are registering a directory, you will need to create the
-workspaces\\_DefaultRole role before you can register a directory. For
-more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role}{Creating the workspaces\\_DefaultRole Role}.
+workspaces_DefaultRole role before you can register a directory. For
+more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role}{Creating the workspaces_DefaultRole Role}.
 }
 \section{Request syntax}{
 \preformatted{svc$register_workspace_directory(

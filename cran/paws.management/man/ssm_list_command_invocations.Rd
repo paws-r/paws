@@ -25,6 +25,62 @@ list of results.}
 \item{Details}{(Optional) If set this returns the response of the command executions
 and any command output. By default this is set to False.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CommandInvocations = list(
+    list(
+      CommandId = "string",
+      InstanceId = "string",
+      InstanceName = "string",
+      Comment = "string",
+      DocumentName = "string",
+      DocumentVersion = "string",
+      RequestedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
+      StatusDetails = "string",
+      TraceOutput = "string",
+      StandardOutputUrl = "string",
+      StandardErrorUrl = "string",
+      CommandPlugins = list(
+        list(
+          Name = "string",
+          Status = "Pending"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed",
+          StatusDetails = "string",
+          ResponseCode = 123,
+          ResponseStartDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          ResponseFinishDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          Output = "string",
+          StandardOutputUrl = "string",
+          StandardErrorUrl = "string",
+          OutputS3Region = "string",
+          OutputS3BucketName = "string",
+          OutputS3KeyPrefix = "string"
+        )
+      ),
+      ServiceRole = "string",
+      NotificationConfig = list(
+        NotificationArn = "string",
+        NotificationEvents = list(
+          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+        ),
+        NotificationType = "Command"|"Invocation"
+      ),
+      CloudWatchOutputConfig = list(
+        CloudWatchLogGroupName = "string",
+        CloudWatchOutputEnabled = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 An invocation is copy of a command sent to a specific instance. A
 command can apply to one or more instances. A command invocation applies

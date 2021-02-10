@@ -9,18 +9,23 @@ kafka_update_cluster_configuration(ClusterArn, ConfigurationInfo,
   CurrentVersion)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
+\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 
-\item{ConfigurationInfo}{[required]
-<p>Represents the configuration that you want MSK to use for the brokers in a cluster.</p>}
+\item{ConfigurationInfo}{[required] Represents the configuration that you want MSK to use for the brokers in
+a cluster.}
 
-\item{CurrentVersion}{[required]
-<p>The version of the cluster that needs to be updated.</p>}
+\item{CurrentVersion}{[required] The version of the cluster that needs to be updated.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterArn = "string",
+  ClusterOperationArn = "string"
+)
+}
 }
 \description{
-\preformatted{        <p>Updates the cluster with the configuration that is specified in the request body.</p>
-}
+Updates the cluster with the configuration that is specified in the
+request body.
 }
 \section{Request syntax}{
 \preformatted{svc$update_cluster_configuration(

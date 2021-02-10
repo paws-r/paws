@@ -31,6 +31,9 @@ the payload. For example:
 
 \code{StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"}}
 }
+\value{
+An empty list.
+}
 \description{
 Sends a signal to an Automation execution to change the current behavior
 or status of the execution.

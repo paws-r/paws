@@ -20,6 +20,9 @@ names must be unique within an account.}
 Each notification can have one SNS subscriber and up to 10 email
 subscribers.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a notification. You must create the budget before you create the
 associated notification.

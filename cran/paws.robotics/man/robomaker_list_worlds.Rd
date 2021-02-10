@@ -26,6 +26,22 @@ with the returned \code{nextToken} value. This value can be between 1 and
 
 \item{filters}{Optional filters to limit results. You can use \code{status}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  worldSummaries = list(
+    list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      generationJob = "string",
+      template = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists worlds.
 }

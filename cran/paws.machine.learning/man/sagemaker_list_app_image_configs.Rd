@@ -35,6 +35,37 @@ specified time.}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  AppImageConfigs = list(
+    list(
+      AppImageConfigArn = "string",
+      AppImageConfigName = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      KernelGatewayImageConfig = list(
+        KernelSpecs = list(
+          list(
+            Name = "string",
+            DisplayName = "string"
+          )
+        ),
+        FileSystemConfig = list(
+          MountPath = "string",
+          DefaultUid = 123,
+          DefaultGid = 123
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists the AppImageConfigs in your account and their properties. The list
 can be filtered by creation time or modified time, and whether the

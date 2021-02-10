@@ -70,7 +70,7 @@ NULL
 #' # my-vault:
 #' svc$abort_multipart_upload(
 #'   accountId = "-",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -92,11 +92,11 @@ NULL
 #'  \link[=glacier_get_data_retrieval_policy]{get_data_retrieval_policy} \tab This operation returns the current data retrieval policy for the account and region specified in the GET request\cr
 #'  \link[=glacier_get_job_output]{get_job_output} \tab This operation downloads the output of the job you initiated using InitiateJob\cr
 #'  \link[=glacier_get_vault_access_policy]{get_vault_access_policy} \tab This operation retrieves the access-policy subresource set on the vault; for more information on setting this subresource, see Set Vault Access Policy (PUT access-policy)\cr
-#'  \link[=glacier_get_vault_lock]{get_vault_lock} \tab This operation retrieves the following attributes from the lock-policy subresource set on the specified vault: - The vault lock policy set on the vault\cr
+#'  \link[=glacier_get_vault_lock]{get_vault_lock} \tab This operation retrieves the following attributes from the lock-policy subresource set on the specified vault:\cr
 #'  \link[=glacier_get_vault_notifications]{get_vault_notifications} \tab This operation retrieves the notification-configuration subresource of the specified vault\cr
 #'  \link[=glacier_initiate_job]{initiate_job} \tab This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval\cr
 #'  \link[=glacier_initiate_multipart_upload]{initiate_multipart_upload} \tab This operation initiates a multipart upload\cr
-#'  \link[=glacier_initiate_vault_lock]{initiate_vault_lock} \tab This operation initiates the vault locking process by doing the following: - Installing a vault lock policy on the specified vault\cr
+#'  \link[=glacier_initiate_vault_lock]{initiate_vault_lock} \tab This operation initiates the vault locking process by doing the following:\cr
 #'  \link[=glacier_list_jobs]{list_jobs} \tab This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished\cr
 #'  \link[=glacier_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads for the specified vault\cr
 #'  \link[=glacier_list_parts]{list_parts} \tab This operation lists the parts of an archive that have been uploaded in a specific multipart upload\cr

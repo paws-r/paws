@@ -9,6 +9,13 @@ cloud9_describe_environment_status(environmentId)
 \arguments{
 \item{environmentId}{[required] The ID of the environment to get status information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "error"|"creating"|"connecting"|"ready"|"stopping"|"stopped"|"deleting",
+  message = "string"
+)
+}
+}
 \description{
 Gets status information for an AWS Cloud9 development environment.
 }

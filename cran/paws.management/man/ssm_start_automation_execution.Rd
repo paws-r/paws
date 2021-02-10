@@ -71,6 +71,12 @@ following key name/value pairs:
 To add tags to an existing patch baseline, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutomationExecutionId = "string"
+)
+}
+}
 \description{
 Initiates execution of an Automation document.
 }

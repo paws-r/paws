@@ -11,7 +11,7 @@ NULL
 #' user.
 #' 
 #' The solution backing the campaign must have been created using a recipe
-#' of type PERSONALIZED\\_RANKING.
+#' of type PERSONALIZED_RANKING.
 #'
 #' @usage
 #' personalizeruntime_get_personalized_ranking(campaignArn, inputList,
@@ -46,6 +46,20 @@ NULL
 #' 
 #' For more information, see [Filtering
 #' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   personalizedRanking = list(
+#'     list(
+#'       itemId = "string",
+#'       score = 123.0
+#'     )
+#'   ),
+#'   recommendationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -92,12 +106,12 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' recipe type used to create the solution backing the campaign, as
 #' follows:
 #' 
-#' -   RELATED\\_ITEMS - `itemId` required, `userId` not used
+#' -   RELATED_ITEMS - `itemId` required, `userId` not used
 #' 
-#' -   USER\\_PERSONALIZATION - `itemId` optional, `userId` required
+#' -   USER_PERSONALIZATION - `itemId` optional, `userId` required
 #' 
 #' Campaigns that are backed by a solution created using a recipe of type
-#' PERSONALIZED\\_RANKING use the API.
+#' PERSONALIZED_RANKING use the API.
 #'
 #' @usage
 #' personalizeruntime_get_recommendations(campaignArn, itemId, userId,
@@ -135,6 +149,20 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' 
 #' For more information, see [Filtering
 #' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   itemList = list(
+#'     list(
+#'       itemId = "string",
+#'       score = 123.0
+#'     )
+#'   ),
+#'   recommendationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

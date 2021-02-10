@@ -17,6 +17,9 @@ elb_set_load_balancer_policies_of_listener(LoadBalancerName,
 enabled. If you omit a policy that is currently enabled, it is disabled.
 If the list is empty, all current policies are disabled.}
 }
+\value{
+An empty list.
+}
 \description{
 Replaces the current set of policies for the specified load balancer
 port with the specified set of policies.

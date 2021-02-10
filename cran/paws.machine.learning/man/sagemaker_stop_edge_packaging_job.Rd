@@ -9,6 +9,9 @@ sagemaker_stop_edge_packaging_job(EdgePackagingJobName)
 \arguments{
 \item{EdgePackagingJobName}{[required] The name of the edge packaging job.}
 }
+\value{
+An empty list.
+}
 \description{
 Request to stop an edge packaging job.
 }

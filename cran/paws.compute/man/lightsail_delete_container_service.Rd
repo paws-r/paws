@@ -9,6 +9,9 @@ lightsail_delete_container_service(serviceName)
 \arguments{
 \item{serviceName}{[required] The name of the container service to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes your Amazon Lightsail container service.
 }

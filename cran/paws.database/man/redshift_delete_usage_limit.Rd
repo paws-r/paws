@@ -9,6 +9,9 @@ redshift_delete_usage_limit(UsageLimitId)
 \arguments{
 \item{UsageLimitId}{[required] The identifier of the usage limit to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a usage limit from a cluster.
 }

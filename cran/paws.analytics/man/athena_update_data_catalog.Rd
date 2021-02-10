@@ -43,6 +43,9 @@ Lambda function.
 \item The \code{GLUE} type has no parameters.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the data catalog that has the specified name.
 }

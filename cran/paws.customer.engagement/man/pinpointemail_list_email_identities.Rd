@@ -21,6 +21,19 @@ can use to obtain additional results.
 The value you specify has to be at least 0, and can be no more than
 1000.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EmailIdentities = list(
+    list(
+      IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+      IdentityName = "string",
+      SendingEnabled = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of all of the email identities that are associated with
 your Amazon Pinpoint account. An identity can be either an email address

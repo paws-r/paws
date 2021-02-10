@@ -23,6 +23,17 @@ call \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} twice within a
 narrow time period using the same value for \code{sequenceToken}, both calls
 might be successful or one might be rejected.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextSequenceToken = "string",
+  rejectedLogEventsInfo = list(
+    tooNewLogEventStartIndex = 123,
+    tooOldLogEventEndIndex = 123,
+    expiredLogEventEndIndex = 123
+  )
+)
+}
+}
 \description{
 Uploads a batch of log events to the specified log stream.
 

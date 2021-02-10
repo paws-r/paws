@@ -14,6 +14,28 @@ located. If none is provided, the AWS account ID is used by default.}
 
 \item{FunctionName}{[required] The name of the function.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserDefinedFunction = list(
+    FunctionName = "string",
+    DatabaseName = "string",
+    ClassName = "string",
+    OwnerName = "string",
+    OwnerType = "USER"|"ROLE"|"GROUP",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ResourceUris = list(
+      list(
+        ResourceType = "JAR"|"FILE"|"ARCHIVE",
+        Uri = "string"
+      )
+    ),
+    CatalogId = "string"
+  )
+)
+}
+}
 \description{
 Retrieves a specified function definition from the Data Catalog.
 }

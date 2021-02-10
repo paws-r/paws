@@ -31,6 +31,9 @@ This is not supported by Amazon S3 on Outposts buckets.}
 
 \item{Policy}{[required] The bucket policy as a JSON document.}
 }
+\value{
+An empty list.
+}
 \description{
 This action puts a bucket policy to an Amazon S3 on Outposts bucket. To
 put a policy on an S3 bucket, see
@@ -38,7 +41,7 @@ put a policy on an S3 bucket, see
 Storage Service API}.
 
 Applies an Amazon S3 bucket policy to an Outposts bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 If you are using an identity other than the root user of the AWS account
@@ -57,7 +60,7 @@ As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
 denies the root user the ability to perform this action.
 
-For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies and User Policies}.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request

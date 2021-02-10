@@ -20,6 +20,9 @@ Condition: You must specify either this or an EnvironmentId, or both. If
 you do not specify either, AWS Elastic Beanstalk returns
 \code{MissingRequiredParameter} error.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes and recreates all of the AWS resources (for example: the Auto
 Scaling group, load balancer, etc.) for a specified environment and

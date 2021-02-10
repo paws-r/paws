@@ -14,6 +14,29 @@ workmail_list_mailbox_export_jobs(OrganizationId, NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Jobs = list(
+    list(
+      JobId = "string",
+      EntityId = "string",
+      Description = "string",
+      S3BucketName = "string",
+      S3Path = "string",
+      EstimatedProgress = 123,
+      State = "RUNNING"|"COMPLETED"|"FAILED"|"CANCELLED",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the mailbox export jobs started for the specified organization
 within the last seven days.

@@ -14,6 +14,19 @@ Valid values: replication-instance | replication-task}
 
 \item{Filters}{Filters applied to the event categories.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventCategoryGroupList = list(
+    list(
+      SourceType = "string",
+      EventCategories = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists categories for all event source types, or, if specified, for a
 specified source type. You can see a list of the event categories and

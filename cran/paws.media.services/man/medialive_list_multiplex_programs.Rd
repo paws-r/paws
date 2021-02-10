@@ -13,6 +13,18 @@ medialive_list_multiplex_programs(MaxResults, MultiplexId, NextToken)
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MultiplexPrograms = list(
+    list(
+      ChannelId = "string",
+      ProgramName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the programs that currently exist for a specific multiplex.
 }

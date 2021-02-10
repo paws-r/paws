@@ -78,6 +78,39 @@ restore, and otherwise \code{false}. The default is \code{false}.}
 can be copied or restored by any AWS account, and otherwise \code{false}. The
 default is \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBClusterSnapshots = list(
+    list(
+      AvailabilityZones = list(
+        "string"
+      ),
+      DBClusterSnapshotIdentifier = "string",
+      DBClusterIdentifier = "string",
+      SnapshotCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Engine = "string",
+      Status = "string",
+      Port = 123,
+      VpcId = "string",
+      ClusterCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      MasterUsername = "string",
+      EngineVersion = "string",
+      SnapshotType = "string",
+      PercentProgress = 123,
+      StorageEncrypted = TRUE|FALSE,
+      KmsKeyId = "string",
+      DBClusterSnapshotArn = "string",
+      SourceDBClusterSnapshotArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about cluster snapshots. This API operation supports
 pagination.

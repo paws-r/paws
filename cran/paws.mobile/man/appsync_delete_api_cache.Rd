@@ -9,6 +9,9 @@ appsync_delete_api_cache(apiId)
 \arguments{
 \item{apiId}{[required] The API ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an \code{ApiCache} object.
 }

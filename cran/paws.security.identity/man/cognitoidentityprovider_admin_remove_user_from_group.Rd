@@ -14,6 +14,9 @@ cognitoidentityprovider_admin_remove_user_from_group(UserPoolId,
 
 \item{GroupName}{[required] The group name.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified user from the specified group.
 

@@ -16,6 +16,18 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LexBots = list(
+    list(
+      Name = "string",
+      LexRegion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

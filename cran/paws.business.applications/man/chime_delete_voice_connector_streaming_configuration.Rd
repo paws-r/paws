@@ -10,6 +10,9 @@ chime_delete_voice_connector_streaming_configuration(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the streaming configuration for the specified Amazon Chime Voice
 Connector.

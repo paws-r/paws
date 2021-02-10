@@ -15,7 +15,7 @@ container. Format: <folder name>/<folder name>/<file
 name>
 
 For example, to upload the file \code{mlaw.avi} to the folder path
-\verb{premium\\\\canada} in the container \code{movies}, enter the path
+\verb{premium\\canada} in the container \code{movies}, enter the path
 \code{premium/canada/mlaw.avi}.
 
 Do not include the container name in this path.
@@ -59,6 +59,14 @@ for this header is \code{standard}.
 
 To use this header, you must also set the HTTP \code{Transfer-Encoding}
 header to \code{chunked}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentSHA256 = "string",
+  ETag = "string",
+  StorageClass = "TEMPORAL"
+)
+}
 }
 \description{
 Uploads an object to the specified path. Object sizes are limited to 25

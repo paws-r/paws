@@ -11,6 +11,30 @@ medialive_list_input_security_groups(MaxResults, NextToken)
 
 \item{NextToken}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InputSecurityGroups = list(
+    list(
+      Arn = "string",
+      Id = "string",
+      Inputs = list(
+        "string"
+      ),
+      State = "IDLE"|"IN_USE"|"UPDATING"|"DELETED",
+      Tags = list(
+        "string"
+      ),
+      WhitelistRules = list(
+        list(
+          Cidr = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Produces a list of Input Security Groups for an account
 }

@@ -26,6 +26,12 @@ passed, only \code{TemplateBody} is used.}
 
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Url = "string"
+)
+}
+}
 \description{
 Returns the estimated monthly cost of a template. The return value is an
 AWS Simple Monthly Calculator URL with a query string that describes the

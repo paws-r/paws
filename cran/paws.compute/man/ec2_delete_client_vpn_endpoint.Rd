@@ -14,6 +14,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = list(
+    Code = "pending-associate"|"available"|"deleting"|"deleted",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Deletes the specified Client VPN endpoint. You must disassociate all
 target networks before you can delete a Client VPN endpoint.

@@ -22,6 +22,26 @@ the number that you specify for \code{Limit}, the response includes a
 \code{NextMarker} value that you can use to get another batch of
 \code{LoggingConfigurations}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoggingConfigurations = list(
+    list(
+      ResourceArn = "string",
+      LogDestinationConfigs = list(
+        "string"
+      ),
+      RedactedFields = list(
+        list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        )
+      )
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

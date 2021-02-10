@@ -11,6 +11,24 @@ cognitosync_list_identity_pool_usage(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPoolUsages = list(
+    list(
+      IdentityPoolId = "string",
+      SyncSessionsCount = 123,
+      DataStorage = 123,
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  MaxResults = 123,
+  Count = 123,
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of identity pools registered with Cognito.
 

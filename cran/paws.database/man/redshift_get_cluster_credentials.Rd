@@ -78,6 +78,16 @@ period (dot), at symbol (@), or hyphen.
 in the Amazon Redshift Database Developer Guide.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DbUser = "string",
+  DbPassword = "string",
+  Expiration = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns a database user name and temporary password with temporary
 authorization to log on to an Amazon Redshift database. The action

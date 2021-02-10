@@ -20,6 +20,17 @@ channel is created.}
 
 \item{tags}{Metadata which can be used to manage the channel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  channelName = "string",
+  channelArn = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
+}
+}
 \description{
 Creates a channel. A channel collects data from an MQTT topic and
 archives the raw, unprocessed messages before publishing the data to a

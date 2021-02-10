@@ -14,6 +14,17 @@ want to disassociate from the administrator account.}
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
 disassociate from the administrator account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Disassociates GuardDuty member accounts (to the current GuardDuty
 administrator account) specified by the account IDs.

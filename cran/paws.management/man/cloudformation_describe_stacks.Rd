@@ -21,6 +21,80 @@ Default: There is no default value.}
 \item{NextToken}{A string that identifies the next page of stacks that you want to
 retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Stacks = list(
+    list(
+      StackId = "string",
+      StackName = "string",
+      ChangeSetId = "string",
+      Description = "string",
+      Parameters = list(
+        list(
+          ParameterKey = "string",
+          ParameterValue = "string",
+          UsePreviousValue = TRUE|FALSE,
+          ResolvedValue = "string"
+        )
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeletionTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      RollbackConfiguration = list(
+        RollbackTriggers = list(
+          list(
+            Arn = "string",
+            Type = "string"
+          )
+        ),
+        MonitoringTimeInMinutes = 123
+      ),
+      StackStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"|"IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
+      StackStatusReason = "string",
+      DisableRollback = TRUE|FALSE,
+      NotificationARNs = list(
+        "string"
+      ),
+      TimeoutInMinutes = 123,
+      Capabilities = list(
+        "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+      ),
+      Outputs = list(
+        list(
+          OutputKey = "string",
+          OutputValue = "string",
+          Description = "string",
+          ExportName = "string"
+        )
+      ),
+      RoleARN = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      EnableTerminationProtection = TRUE|FALSE,
+      ParentId = "string",
+      RootId = "string",
+      DriftInformation = list(
+        StackDriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
+        LastCheckTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the description for the specified stack; if no stack name was
 specified, then it returns the description for all the stacks created.

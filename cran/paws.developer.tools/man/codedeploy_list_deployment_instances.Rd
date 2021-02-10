@@ -31,6 +31,15 @@ state.
 original environment ("BLUE") or those in the replacement environment
 ("GREEN"), for which you want to view instance information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  instancesList = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 The newer
 \code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}}

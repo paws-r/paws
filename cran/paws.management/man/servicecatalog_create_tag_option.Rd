@@ -11,6 +11,18 @@ servicecatalog_create_tag_option(Key, Value)
 
 \item{Value}{[required] The TagOption value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagOptionDetail = list(
+    Key = "string",
+    Value = "string",
+    Active = TRUE|FALSE,
+    Id = "string",
+    Owner = "string"
+  )
+)
+}
+}
 \description{
 Creates a TagOption.
 }

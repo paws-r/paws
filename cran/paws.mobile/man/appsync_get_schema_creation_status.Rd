@@ -9,6 +9,13 @@ appsync_get_schema_creation_status(apiId)
 \arguments{
 \item{apiId}{[required] The API ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "PROCESSING"|"ACTIVE"|"DELETING"|"FAILED"|"SUCCESS"|"NOT_APPLICABLE",
+  details = "string"
+)
+}
+}
 \description{
 Retrieves the current status of a schema creation operation.
 }

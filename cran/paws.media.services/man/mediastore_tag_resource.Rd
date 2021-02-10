@@ -17,6 +17,9 @@ tag (type:Contract). For TagResource, you specify the following tags:
 priority:Medium, type:Contract. The result is that your container has
 three tags: customer:CompanyA, priority:Medium, and type:Contract.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds tags to the specified AWS Elemental MediaStore container. Tags are
 key:value pairs that you can associate with AWS resources. For example,

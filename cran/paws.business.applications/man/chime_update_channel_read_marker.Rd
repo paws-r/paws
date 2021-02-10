@@ -10,6 +10,12 @@ chime_update_channel_read_marker(ChannelArn)
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string"
+)
+}
+}
 \description{
 Sets the timestamp to the point when a user last read messages in a
 channel.

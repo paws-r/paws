@@ -11,6 +11,9 @@ elb_add_tags(LoadBalancerNames, Tags)
 
 \item{Tags}{[required] The tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds the specified tags to the specified load balancer. Each load
 balancer can have a maximum of 10 tags.

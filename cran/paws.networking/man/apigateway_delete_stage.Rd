@@ -11,6 +11,9 @@ apigateway_delete_stage(restApiId, stageName)
 
 \item{stageName}{[required] [Required] The name of the Stage resource to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Stage resource.
 }

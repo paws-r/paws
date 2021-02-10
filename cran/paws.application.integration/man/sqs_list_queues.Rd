@@ -18,6 +18,15 @@ Queue URLs and names are case-sensitive.}
 to 1000. You must set \code{MaxResults} to receive a value for \code{NextToken} in
 the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueueUrls = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of your queues in the current region. The response
 includes a maximum of 1,000 results. If you specify a value for the

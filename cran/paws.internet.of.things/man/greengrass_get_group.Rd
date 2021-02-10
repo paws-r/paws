@@ -9,6 +9,21 @@ greengrass_get_group(GroupId)
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  LastUpdatedTimestamp = "string",
+  LatestVersion = "string",
+  LatestVersionArn = "string",
+  Name = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about a group.
 }

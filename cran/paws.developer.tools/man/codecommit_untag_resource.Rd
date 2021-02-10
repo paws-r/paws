@@ -12,6 +12,9 @@ remove tags.}
 
 \item{tagKeys}{[required] The tag key for each tag that you want to remove from the resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags for a resource in AWS CodeCommit. For a list of valid
 resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations}

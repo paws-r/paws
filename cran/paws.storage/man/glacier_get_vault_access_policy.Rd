@@ -17,6 +17,14 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policy = list(
+    Policy = "string"
+  )
+)
+}
+}
 \description{
 This operation retrieves the \code{access-policy} subresource set on the
 vault; for more information on setting this subresource, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-SetVaultAccessPolicy.html}{Set Vault Access Policy (PUT access-policy)}.

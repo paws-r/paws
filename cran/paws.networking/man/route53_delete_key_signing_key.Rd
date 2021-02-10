@@ -11,6 +11,19 @@ route53_delete_key_signing_key(HostedZoneId, Name)
 
 \item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Deletes a key signing key (KSK). Before you can delete a KSK, you must
 deactivate it. The KSK must be deactived before you can delete it

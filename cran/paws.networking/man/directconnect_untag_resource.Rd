@@ -11,6 +11,9 @@ directconnect_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The tag keys of the tags to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags from the specified AWS Direct Connect resource.
 }

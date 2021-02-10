@@ -9,6 +9,9 @@ applicationinsights_delete_application(ResourceGroupName)
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified application from monitoring. Does not delete the
 application.

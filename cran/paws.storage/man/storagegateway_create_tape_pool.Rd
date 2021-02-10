@@ -29,8 +29,14 @@ key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \\_ : / @. The maximum length of a tag's key is 128 characters, and
+= . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PoolARN = "string"
+)
+}
 }
 \description{
 Creates a new custom tape pool. You can use custom tape pool to enable

@@ -30,6 +30,15 @@ The default value is 100.}
 
 \item{filter}{A \code{ReportFilter} object used to filter the returned reports.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  reports = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of ARNs for the reports in the current AWS account.
 }

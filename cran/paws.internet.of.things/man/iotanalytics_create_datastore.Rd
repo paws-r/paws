@@ -28,6 +28,17 @@ The default file format is JSON. You can specify only one format.
 
 You can't change the file format after you create the data store.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datastoreName = "string",
+  datastoreArn = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
+}
+}
 \description{
 Creates a data store, which is a repository for messages.
 }

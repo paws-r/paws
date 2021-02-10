@@ -15,6 +15,9 @@ alexaforbusiness_put_room_skill_parameter(RoomArn, SkillId,
 
 \item{RoomSkillParameter}{[required] The updated room skill parameter. Required.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates room skill parameter details by room, skill, and parameter key
 ID. Not all skills have a room skill parameter.

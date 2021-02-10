@@ -19,6 +19,20 @@ request. For more information about the JSON format, see
 \code{\link[=route53_create_traffic_policy_version]{create_traffic_policy_version}}
 request, if any.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicy = list(
+    Id = "string",
+    Version = 123,
+    Name = "string",
+    Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+    Document = "string",
+    Comment = "string"
+  ),
+  Location = "string"
+)
+}
+}
 \description{
 Creates a new version of an existing traffic policy. When you create a
 new version of a traffic policy, you specify the ID of the traffic

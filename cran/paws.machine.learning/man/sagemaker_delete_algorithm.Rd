@@ -9,6 +9,9 @@ sagemaker_delete_algorithm(AlgorithmName)
 \arguments{
 \item{AlgorithmName}{[required] The name of the algorithm to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified algorithm from your account.
 }

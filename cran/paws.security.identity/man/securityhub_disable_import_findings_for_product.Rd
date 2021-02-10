@@ -9,6 +9,9 @@ securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
 \arguments{
 \item{ProductSubscriptionArn}{[required] The ARN of the integrated product to disable the integration for.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables the integration of the specified product with Security Hub.
 After the integration is disabled, findings from that product are no

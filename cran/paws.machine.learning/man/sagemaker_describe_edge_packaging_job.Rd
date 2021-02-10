@@ -9,6 +9,32 @@ sagemaker_describe_edge_packaging_job(EdgePackagingJobName)
 \arguments{
 \item{EdgePackagingJobName}{[required] The name of the edge packaging job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EdgePackagingJobArn = "string",
+  EdgePackagingJobName = "string",
+  CompilationJobName = "string",
+  ModelName = "string",
+  ModelVersion = "string",
+  RoleArn = "string",
+  OutputConfig = list(
+    S3OutputLocation = "string",
+    KmsKeyId = "string"
+  ),
+  ResourceKey = "string",
+  EdgePackagingJobStatus = "STARTING"|"INPROGRESS"|"COMPLETED"|"FAILED"|"STOPPING"|"STOPPED",
+  EdgePackagingJobStatusMessage = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ModelArtifact = "string",
+  ModelSignature = "string"
+)
+}
+}
 \description{
 A description of edge packaging jobs.
 }

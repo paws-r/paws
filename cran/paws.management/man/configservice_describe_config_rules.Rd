@@ -13,6 +13,43 @@ not specify any names, AWS Config returns details for all your rules.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigRules = list(
+    list(
+      ConfigRuleName = "string",
+      ConfigRuleArn = "string",
+      ConfigRuleId = "string",
+      Description = "string",
+      Scope = list(
+        ComplianceResourceTypes = list(
+          "string"
+        ),
+        TagKey = "string",
+        TagValue = "string",
+        ComplianceResourceId = "string"
+      ),
+      Source = list(
+        Owner = "CUSTOM_LAMBDA"|"AWS",
+        SourceIdentifier = "string",
+        SourceDetails = list(
+          list(
+            EventSource = "aws.config",
+            MessageType = "ConfigurationItemChangeNotification"|"ConfigurationSnapshotDeliveryCompleted"|"ScheduledNotification"|"OversizedConfigurationItemChangeNotification",
+            MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
+          )
+        )
+      ),
+      InputParameters = "string",
+      MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+      ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
+      CreatedBy = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns details about your AWS Config rules.
 }

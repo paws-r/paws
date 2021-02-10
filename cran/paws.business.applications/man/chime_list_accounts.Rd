@@ -16,6 +16,32 @@ chime_list_accounts(Name, UserEmail, NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return in a single call. Defaults to
 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Accounts = list(
+    list(
+      AwsAccountId = "string",
+      AccountId = "string",
+      Name = "string",
+      AccountType = "Team"|"EnterpriseDirectory"|"EnterpriseLWA"|"EnterpriseOIDC",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      DefaultLicense = "Basic"|"Plus"|"Pro"|"ProTrial",
+      SupportedLicenses = list(
+        "Basic"|"Plus"|"Pro"|"ProTrial"
+      ),
+      SigninDelegateGroups = list(
+        list(
+          GroupName = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the Amazon Chime accounts under the administrator's AWS account.
 You can filter accounts by account name prefix. To find out which Amazon

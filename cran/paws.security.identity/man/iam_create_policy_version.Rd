@@ -26,11 +26,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{SetAsDefault}{Specifies whether to set this version as the policy's default version.
@@ -41,6 +41,19 @@ the IAM users, groups, and roles that the policy is attached to.
 
 For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyVersion = list(
+    Document = "string",
+    VersionId = "string",
+    IsDefaultVersion = TRUE|FALSE,
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new version of the specified managed policy. To update a

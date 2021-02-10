@@ -35,6 +35,9 @@ the \code{DestinationEnvironmentName}. You may also specify both. You must
 specify the \code{SourceEnvironmentName} with the
 \code{DestinationEnvironmentName}.}
 }
+\value{
+An empty list.
+}
 \description{
 Swaps the CNAMEs of two environments.
 }

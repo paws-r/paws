@@ -18,6 +18,9 @@ Aurora DB cluster, for example,
 associated with. For the list of supported feature names, see
 DBEngineVersion.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates an Identity and Access Management (IAM) role from an Amazon
 Aurora DB cluster. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html}{Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf}

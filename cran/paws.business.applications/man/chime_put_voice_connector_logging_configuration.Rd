@@ -13,6 +13,14 @@ chime_put_voice_connector_logging_configuration(VoiceConnectorId,
 
 \item{LoggingConfiguration}{[required] The logging configuration details to add.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoggingConfiguration = list(
+    EnableSIPLogs = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Adds a logging configuration for the specified Amazon Chime Voice
 Connector. The logging configuration specifies whether SIP message logs

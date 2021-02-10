@@ -24,6 +24,9 @@ signaling a wait condition), each signal requires a different unique ID.}
 signal causes AWS CloudFormation to immediately fail the stack creation
 or update.}
 }
+\value{
+An empty list.
+}
 \description{
 Sends a signal to the specified resource with a success or failure
 status. You can use the SignalResource API in conjunction with a

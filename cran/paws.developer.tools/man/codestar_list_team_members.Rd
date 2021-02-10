@@ -14,6 +14,19 @@ cannot be returned in one response.}
 
 \item{maxResults}{The maximum number of team members you want returned in a response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  teamMembers = list(
+    list(
+      userArn = "string",
+      projectRole = "string",
+      remoteAccessAllowed = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all team members associated with a project.
 }

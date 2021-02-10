@@ -35,6 +35,23 @@ token that is returned, until no more next tokens are returned.}
 
 \item{maxResults}{The maximum number of environment members to get information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  memberships = list(
+    list(
+      permissions = "owner"|"read-write"|"read-only",
+      userId = "string",
+      userArn = "string",
+      environmentId = "string",
+      lastAccess = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about environment members for an AWS Cloud9 development
 environment.

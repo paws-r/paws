@@ -17,10 +17,18 @@ s3control_update_job_status(AccountId, JobId, RequestedJobStatus,
 \item{StatusUpdateReason}{A description of the reason why you want to change the specified job's
 status. This field can be any string up to the maximum length.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  Status = "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended",
+  StatusUpdateReason = "string"
+)
+}
+}
 \description{
 Updates the status for the specified job. Use this operation to confirm
 that you want to run a job or to cancel an existing job. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{S3 Batch Operations}
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:

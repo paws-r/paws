@@ -2,8 +2,7 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_get_origin_request_policy}
 \alias{cloudfront_get_origin_request_policy}
-\title{Gets an origin request policy, including the following metadata: - The
-policy’s identifier}
+\title{Gets an origin request policy, including the following metadata:}
 \usage{
 cloudfront_get_origin_request_policy(Id)
 }
@@ -16,6 +15,49 @@ get the policy’s identifier using
 policy is not attached to a cache behavior, you can get the identifier
 using
 \code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  OriginRequestPolicy = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    OriginRequestPolicyConfig = list(
+      Comment = "string",
+      Name = "string",
+      HeadersConfig = list(
+        HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+        Headers = list(
+          Quantity = 123,
+          Items = list(
+            "string"
+          )
+        )
+      ),
+      CookiesConfig = list(
+        CookieBehavior = "none"|"whitelist"|"all",
+        Cookies = list(
+          Quantity = 123,
+          Items = list(
+            "string"
+          )
+        )
+      ),
+      QueryStringsConfig = list(
+        QueryStringBehavior = "none"|"whitelist"|"all",
+        QueryStrings = list(
+          Quantity = 123,
+          Items = list(
+            "string"
+          )
+        )
+      )
+    )
+  ),
+  ETag = "string"
+)
+}
 }
 \description{
 Gets an origin request policy, including the following metadata:

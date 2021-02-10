@@ -17,6 +17,42 @@ chime_update_proxy_session(VoiceConnectorId, ProxySessionId,
 
 \item{ExpiryMinutes}{The number of minutes allowed for the proxy session.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProxySession = list(
+    VoiceConnectorId = "string",
+    ProxySessionId = "string",
+    Name = "string",
+    Status = "Open"|"InProgress"|"Closed",
+    ExpiryMinutes = 123,
+    Capabilities = list(
+      "Voice"|"SMS"
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Participants = list(
+      list(
+        PhoneNumber = "string",
+        ProxyPhoneNumber = "string"
+      )
+    ),
+    NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+    GeoMatchLevel = "Country"|"AreaCode",
+    GeoMatchParams = list(
+      Country = "string",
+      AreaCode = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the specified proxy session details, such as voice or SMS
 capabilities.

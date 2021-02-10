@@ -20,6 +20,49 @@ to retrieve), Amazon Rekognition Video returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
 text.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+  StatusMessage = "string",
+  VideoMetadata = list(
+    Codec = "string",
+    DurationMillis = 123,
+    Format = "string",
+    FrameRate = 123.0,
+    FrameHeight = 123,
+    FrameWidth = 123
+  ),
+  TextDetections = list(
+    list(
+      Timestamp = 123,
+      TextDetection = list(
+        DetectedText = "string",
+        Type = "LINE"|"WORD",
+        Id = 123,
+        ParentId = 123,
+        Confidence = 123.0,
+        Geometry = list(
+          BoundingBox = list(
+            Width = 123.0,
+            Height = 123.0,
+            Left = 123.0,
+            Top = 123.0
+          ),
+          Polygon = list(
+            list(
+              X = 123.0,
+              Y = 123.0
+            )
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string",
+  TextModelVersion = "string"
+)
+}
+}
 \description{
 Gets the text detection results of a Amazon Rekognition Video analysis
 started by \code{\link[=rekognition_start_text_detection]{start_text_detection}}.

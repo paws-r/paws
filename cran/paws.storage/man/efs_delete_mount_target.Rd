@@ -9,6 +9,9 @@ efs_delete_mount_target(MountTargetId)
 \arguments{
 \item{MountTargetId}{[required] The ID of the mount target to delete (String).}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified mount target.
 

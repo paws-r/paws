@@ -9,6 +9,24 @@ iot_describe_role_alias(roleAlias)
 \arguments{
 \item{roleAlias}{[required] The role alias to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  roleAliasDescription = list(
+    roleAlias = "string",
+    roleAliasArn = "string",
+    roleArn = "string",
+    owner = "string",
+    credentialDurationSeconds = 123,
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes a role alias.
 }

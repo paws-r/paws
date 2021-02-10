@@ -12,6 +12,25 @@ codecommit_update_approval_rule_template_name(
 
 \item{newApprovalRuleTemplateName}{[required] The new name you want to apply to the approval rule template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  approvalRuleTemplate = list(
+    approvalRuleTemplateId = "string",
+    approvalRuleTemplateName = "string",
+    approvalRuleTemplateDescription = "string",
+    approvalRuleTemplateContent = "string",
+    ruleContentSha256 = "string",
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedUser = "string"
+  )
+)
+}
+}
 \description{
 Updates the name of a specified approval rule template.
 }

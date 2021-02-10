@@ -24,11 +24,55 @@ this request.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = list(
+    list(
+      Id = "string",
+      Ec2InstanceId = "string",
+      PublicDnsName = "string",
+      PublicIpAddress = "string",
+      PrivateDnsName = "string",
+      PrivateIpAddress = "string",
+      Status = list(
+        State = "AWAITING_FULFILLMENT"|"PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"TERMINATED",
+        StateChangeReason = list(
+          Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"BOOTSTRAP_FAILURE"|"CLUSTER_TERMINATED",
+          Message = "string"
+        ),
+        Timeline = list(
+          CreationDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          ReadyDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          EndDateTime = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      ),
+      InstanceGroupId = "string",
+      InstanceFleetId = "string",
+      Market = "ON_DEMAND"|"SPOT",
+      InstanceType = "string",
+      EbsVolumes = list(
+        list(
+          Device = "string",
+          VolumeId = "string"
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Provides information for all active EC2 instances and EC2 instances
 terminated in the last 30 days, up to a maximum of 2,000. EC2 instances
 in any of the following states are considered active:
-AWAITING\\_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
+AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 }
 \section{Request syntax}{
 \preformatted{svc$list_instances(

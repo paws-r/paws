@@ -10,6 +10,12 @@ gamelift_get_game_session_log_url(GameSessionId)
 \arguments{
 \item{GameSessionId}{[required] A unique identifier for the game session to get logs for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PreSignedUrl = "string"
+)
+}
+}
 \description{
 Retrieves the location of stored game session logs for a specified game
 session. When a game session is terminated, Amazon GameLift

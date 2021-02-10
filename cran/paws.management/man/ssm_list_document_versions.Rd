@@ -16,6 +16,27 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentVersions = list(
+    list(
+      Name = "string",
+      DocumentVersion = "string",
+      VersionName = "string",
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      IsDefaultVersion = TRUE|FALSE,
+      DocumentFormat = "YAML"|"JSON"|"TEXT",
+      Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+      StatusInformation = "string",
+      ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all versions for a document.
 }

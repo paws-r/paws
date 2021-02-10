@@ -14,6 +14,15 @@ greengrass_create_device_definition_version(AmznClientToken,
 
 \item{Devices}{A list of devices in the definition version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
+}
 \description{
 Creates a version of a device definition that has already been defined.
 }

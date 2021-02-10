@@ -7,6 +7,12 @@ current region}
 \usage{
 ses_get_account_sending_enabled()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Enabled = TRUE|FALSE
+)
+}
+}
 \description{
 Returns the email sending status of the Amazon SES account for the
 current region.

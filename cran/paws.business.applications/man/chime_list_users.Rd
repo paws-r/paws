@@ -18,6 +18,36 @@ chime_list_users(AccountId, UserEmail, UserType, MaxResults, NextToken)
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Users = list(
+    list(
+      UserId = "string",
+      AccountId = "string",
+      PrimaryEmail = "string",
+      PrimaryProvisionedNumber = "string",
+      DisplayName = "string",
+      LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+      UserType = "PrivateUser"|"SharedDevice",
+      UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+      UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+      RegisteredOn = as.POSIXct(
+        "2015-01-01"
+      ),
+      InvitedOn = as.POSIXct(
+        "2015-01-01"
+      ),
+      AlexaForBusinessMetadata = list(
+        IsAlexaForBusinessEnabled = TRUE|FALSE,
+        AlexaForBusinessRoomArn = "string"
+      ),
+      PersonalPIN = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the users that belong to the specified Amazon Chime account. You
 can specify an email address to list only the user that the email

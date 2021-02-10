@@ -35,6 +35,16 @@ Only one policy can be attached to a key.}
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyNames = list(
+    "string"
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Gets the names of the key policies that are attached to a customer
 master key (CMK). This operation is designed to get policy names that

@@ -17,6 +17,22 @@ elasticsearchservice_get_package_version_history(PackageID, MaxResults,
 non-null NextToken value. If provided, returns results for the next
 page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PackageID = "string",
+  PackageVersionHistoryList = list(
+    list(
+      PackageVersion = "string",
+      CommitMessage = "string",
+      CreatedAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of versions of the package, along with their creation
 time and commit message.

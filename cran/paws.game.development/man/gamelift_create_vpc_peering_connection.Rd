@@ -21,6 +21,9 @@ Amazon GameLift fleet. The VPC must be in the same Region where your
 fleet is deployed. Look up a VPC ID using the \href{https://console.aws.amazon.com/vpc/home}{VPC Dashboard} in the AWS
 Management Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
 }
+\value{
+An empty list.
+}
 \description{
 Establishes a VPC peering connection between a virtual private cloud
 (VPC) in an AWS account with the VPC for your Amazon GameLift fleet. VPC

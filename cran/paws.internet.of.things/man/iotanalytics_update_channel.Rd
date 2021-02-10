@@ -19,6 +19,9 @@ channel is created.}
 period cannot be updated if the channel's S3 storage is
 customer-managed.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the settings of a channel.
 }

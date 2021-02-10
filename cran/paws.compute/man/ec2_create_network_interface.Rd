@@ -55,6 +55,82 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{TagSpecifications}{The tags to apply to the new network interface.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInterface = list(
+    Association = list(
+      AllocationId = "string",
+      AssociationId = "string",
+      IpOwnerId = "string",
+      PublicDnsName = "string",
+      PublicIp = "string",
+      CustomerOwnedIp = "string",
+      CarrierIp = "string"
+    ),
+    Attachment = list(
+      AttachTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AttachmentId = "string",
+      DeleteOnTermination = TRUE|FALSE,
+      DeviceIndex = 123,
+      NetworkCardIndex = 123,
+      InstanceId = "string",
+      InstanceOwnerId = "string",
+      Status = "attaching"|"attached"|"detaching"|"detached"
+    ),
+    AvailabilityZone = "string",
+    Description = "string",
+    Groups = list(
+      list(
+        GroupName = "string",
+        GroupId = "string"
+      )
+    ),
+    InterfaceType = "interface"|"natGateway"|"efa",
+    Ipv6Addresses = list(
+      list(
+        Ipv6Address = "string"
+      )
+    ),
+    MacAddress = "string",
+    NetworkInterfaceId = "string",
+    OutpostArn = "string",
+    OwnerId = "string",
+    PrivateDnsName = "string",
+    PrivateIpAddress = "string",
+    PrivateIpAddresses = list(
+      list(
+        Association = list(
+          AllocationId = "string",
+          AssociationId = "string",
+          IpOwnerId = "string",
+          PublicDnsName = "string",
+          PublicIp = "string",
+          CustomerOwnedIp = "string",
+          CarrierIp = "string"
+        ),
+        Primary = TRUE|FALSE,
+        PrivateDnsName = "string",
+        PrivateIpAddress = "string"
+      )
+    ),
+    RequesterId = "string",
+    RequesterManaged = TRUE|FALSE,
+    SourceDestCheck = TRUE|FALSE,
+    Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
+    SubnetId = "string",
+    TagSet = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    VpcId = "string"
+  )
+)
+}
+}
 \description{
 Creates a network interface in the specified subnet.
 

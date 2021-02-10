@@ -17,6 +17,41 @@ also the ID of the last profile on that page).}
 \item{MaxItems}{The maximum number of field-level encryption profiles you want in the
 response body.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldLevelEncryptionProfileList = list(
+    NextMarker = "string",
+    MaxItems = 123,
+    Quantity = 123,
+    Items = list(
+      list(
+        Id = "string",
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        Name = "string",
+        EncryptionEntities = list(
+          Quantity = 123,
+          Items = list(
+            list(
+              PublicKeyId = "string",
+              ProviderId = "string",
+              FieldPatterns = list(
+                Quantity = 123,
+                Items = list(
+                  "string"
+                )
+              )
+            )
+          )
+        ),
+        Comment = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Request a list of field-level encryption profiles that have been created
 in CloudFront for this account.

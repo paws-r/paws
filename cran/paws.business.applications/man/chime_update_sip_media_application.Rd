@@ -14,6 +14,27 @@ chime_update_sip_media_application(SipMediaApplicationId, Name,
 
 \item{Endpoints}{The new set of endpoints for the specified SIP media application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipMediaApplication = list(
+    SipMediaApplicationId = "string",
+    AwsRegion = "string",
+    Name = "string",
+    Endpoints = list(
+      list(
+        LambdaArn = "string"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates the details for the specified SIP media application.
 }

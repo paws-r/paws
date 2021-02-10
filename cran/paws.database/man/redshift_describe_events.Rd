@@ -77,6 +77,27 @@ the response. You can retrieve the next set of response records by
 providing the returned marker value in the \code{Marker} parameter and
 retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Events = list(
+    list(
+      SourceIdentifier = "string",
+      SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot"|"scheduled-action",
+      Message = "string",
+      EventCategories = list(
+        "string"
+      ),
+      Severity = "string",
+      Date = as.POSIXct(
+        "2015-01-01"
+      ),
+      EventId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns events related to clusters, security groups, snapshots, and
 parameter groups for the past 14 days. Events specific to a particular

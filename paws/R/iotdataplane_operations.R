@@ -18,6 +18,14 @@ NULL
 #' @param thingName &#91;required&#93; The name of the thing.
 #' @param shadowName The name of the shadow.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   payload = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_thing_shadow(
@@ -61,6 +69,14 @@ iotdataplane_delete_thing_shadow <- function(thingName, shadowName = NULL) {
 #' @param thingName &#91;required&#93; The name of the thing.
 #' @param shadowName The name of the shadow.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   payload = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_thing_shadow(
@@ -101,6 +117,18 @@ iotdataplane_get_thing_shadow <- function(thingName, shadowName = NULL) {
 #' @param thingName &#91;required&#93; The name of the thing.
 #' @param nextToken The token to retrieve the next set of results.
 #' @param pageSize The result page size.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   results = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string",
+#'   timestamp = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -147,6 +175,9 @@ iotdataplane_list_named_shadows_for_thing <- function(thingName, nextToken = NUL
 #' @param qos The Quality of Service (QoS) level.
 #' @param payload The state information, in JSON format.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$publish(
@@ -191,6 +222,14 @@ iotdataplane_publish <- function(topic, qos = NULL, payload = NULL) {
 #' @param thingName &#91;required&#93; The name of the thing.
 #' @param shadowName The name of the shadow.
 #' @param payload &#91;required&#93; The state information, in JSON format.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   payload = raw
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

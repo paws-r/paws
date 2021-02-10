@@ -12,6 +12,9 @@ sqs_delete_queue(QueueUrl)
 
 Queue URLs and names are case-sensitive.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the queue specified by the \code{QueueUrl}, regardless of the queue's
 contents.

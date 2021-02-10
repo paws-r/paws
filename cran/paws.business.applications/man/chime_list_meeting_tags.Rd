@@ -9,6 +9,17 @@ chime_list_meeting_tags(MeetingId)
 \arguments{
 \item{MeetingId}{[required] The Amazon Chime SDK meeting ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the tags applied to an Amazon Chime SDK meeting resource.
 }

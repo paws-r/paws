@@ -11,6 +11,9 @@ autoscaling_attach_instances(InstanceIds, AutoScalingGroupName)
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches one or more EC2 instances to the specified Auto Scaling group.
 

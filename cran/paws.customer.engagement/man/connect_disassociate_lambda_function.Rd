@@ -13,6 +13,9 @@ connect_disassociate_lambda_function(InstanceId, FunctionArn)
 \item{FunctionArn}{[required] The Amazon Resource Name (ARN) of the Lambda function being
 disassociated.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

@@ -19,6 +19,24 @@ For more information, see arns.}
 \item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an
 approximate number.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyToPathList = list(
+    list(
+      Path = "string",
+      Policies = list(
+        list(
+          PolicyId = "string",
+          ObjectIdentifier = "string",
+          PolicyType = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all policies from the root of the Directory to the object
 specified. If there are no policies present, an empty list is returned.

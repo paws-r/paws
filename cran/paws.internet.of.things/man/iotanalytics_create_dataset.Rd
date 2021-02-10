@@ -42,6 +42,17 @@ data arrives late. To specify \code{lateDataRules}, the dataset must use a
 \href{https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html}{DeltaTimer}
 filter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasetName = "string",
+  datasetArn = "string",
+  retentionPeriod = list(
+    unlimited = TRUE|FALSE,
+    numberOfDays = 123
+  )
+)
+}
+}
 \description{
 Creates a dataset. A dataset stores data retrieved from a data store by
 applying a \code{queryAction} (a SQL query) or a \code{containerAction} (executing

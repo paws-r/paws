@@ -47,6 +47,25 @@ these tag values in the request, Amazon Redshift returns a response with
 the parameter groups that have either or both of these tag values
 associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ParameterGroups = list(
+    list(
+      ParameterGroupName = "string",
+      ParameterGroupFamily = "string",
+      Description = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of Amazon Redshift parameter groups, including parameter
 groups you created and the default parameter group. For each parameter

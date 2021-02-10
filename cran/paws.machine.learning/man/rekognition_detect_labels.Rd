@@ -27,6 +27,35 @@ specified value.
 If \code{MinConfidence} is not specified, the operation returns labels with a
 confidence values greater than or equal to 55 percent.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Labels = list(
+    list(
+      Name = "string",
+      Confidence = 123.0,
+      Instances = list(
+        list(
+          BoundingBox = list(
+            Width = 123.0,
+            Height = 123.0,
+            Left = 123.0,
+            Top = 123.0
+          ),
+          Confidence = 123.0
+        )
+      ),
+      Parents = list(
+        list(
+          Name = "string"
+        )
+      )
+    )
+  ),
+  OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
+  LabelModelVersion = "string"
+)
+}
+}
 \description{
 Detects instances of real-world entities within an image (JPEG or PNG)
 provided as input. This includes objects like flower, tree, and table;
@@ -52,11 +81,11 @@ the image contains the object. For example, suppose the input image has
 a lighthouse, the sea, and a rock. The response includes all three
 labels, one for each object.
 
-\verb{\\\{Name: lighthouse, Confidence: 98.4629\\\}}
+\verb{\{Name: lighthouse, Confidence: 98.4629\}}
 
-\verb{\\\{Name: rock,Confidence: 79.2097\\\}}
+\verb{\{Name: rock,Confidence: 79.2097\}}
 
-\verb{ \\\{Name: sea,Confidence: 75.061\\\}}
+\verb{ \{Name: sea,Confidence: 75.061\}}
 
 In the preceding example, the operation returns one label for each of
 the three objects. The operation can also return multiple labels for the
@@ -64,11 +93,11 @@ same object in the image. For example, if the input image shows a flower
 (for example, a tulip), the operation might return the following three
 labels.
 
-\verb{\\\{Name: flower,Confidence: 99.0562\\\}}
+\verb{\{Name: flower,Confidence: 99.0562\}}
 
-\verb{\\\{Name: plant,Confidence: 99.0562\\\}}
+\verb{\{Name: plant,Confidence: 99.0562\}}
 
-\verb{\\\{Name: tulip,Confidence: 99.0562\\\}}
+\verb{\{Name: tulip,Confidence: 99.0562\}}
 
 In this example, the detection algorithm more precisely identifies the
 flower as a tulip.

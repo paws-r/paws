@@ -18,6 +18,15 @@ are returned.}
 
 \item{Tags}{Specifies to return only these tagged resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TriggerNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the names of all trigger resources in this AWS account, or the
 resources with the specified tag. This operation allows you to see which

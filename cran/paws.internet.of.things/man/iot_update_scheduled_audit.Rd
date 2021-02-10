@@ -33,6 +33,12 @@ to select which checks are enabled.)}
 
 \item{scheduledAuditName}{[required] The name of the scheduled audit. (Max. 128 chars)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  scheduledAuditArn = "string"
+)
+}
+}
 \description{
 Updates a scheduled audit, including which checks are performed and how
 often the audit takes place.

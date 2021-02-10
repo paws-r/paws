@@ -20,6 +20,30 @@ Example: \code{mySubnetgroup}}
 
 \item{SubnetIds}{[required] The EC2 subnet IDs for the DB subnet group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSubnetGroup = list(
+    DBSubnetGroupName = "string",
+    DBSubnetGroupDescription = "string",
+    VpcId = "string",
+    SubnetGroupStatus = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = list(
+          Name = "string"
+        ),
+        SubnetOutpost = list(
+          Arn = "string"
+        ),
+        SubnetStatus = "string"
+      )
+    ),
+    DBSubnetGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Modifies an existing DB subnet group. DB subnet groups must contain at
 least one subnet in at least two AZs in the AWS Region.

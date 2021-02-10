@@ -11,6 +11,24 @@ cognitoidentityprovider_get_group(GroupName, UserPoolId)
 
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupName = "string",
+    UserPoolId = "string",
+    Description = "string",
+    RoleArn = "string",
+    Precedence = 123,
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets a group.
 

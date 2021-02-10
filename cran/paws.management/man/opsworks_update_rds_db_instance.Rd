@@ -13,6 +13,9 @@ opsworks_update_rds_db_instance(RdsDbInstanceArn, DbUser, DbPassword)
 
 \item{DbPassword}{The database password.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates an Amazon RDS instance.
 

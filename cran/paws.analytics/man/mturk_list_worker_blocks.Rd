@@ -12,6 +12,19 @@ mturk_list_worker_blocks(NextToken, MaxResults)
 
 \item{MaxResults}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  NumResults = 123,
+  WorkerBlocks = list(
+    list(
+      WorkerId = "string",
+      Reason = "string"
+    )
+  )
+)
+}
+}
 \description{
 The \code{ListWorkersBlocks} operation retrieves a list of Workers who are
 blocked from working on your HITs.

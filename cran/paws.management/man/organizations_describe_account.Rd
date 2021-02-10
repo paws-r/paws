@@ -17,6 +17,22 @@ operations.
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
 ID string requires exactly 12 digits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Account = list(
+    Id = "string",
+    Arn = "string",
+    Email = "string",
+    Name = "string",
+    Status = "ACTIVE"|"SUSPENDED",
+    JoinedMethod = "INVITED"|"CREATED",
+    JoinedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves AWS Organizations-related information about the specified
 account.

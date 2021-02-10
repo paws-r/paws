@@ -10,6 +10,14 @@ securityhub_describe_hub(HubArn)
 \arguments{
 \item{HubArn}{The ARN of the Hub resource to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HubArn = "string",
+  SubscribedAt = "string",
+  AutoEnableControls = TRUE|FALSE
+)
+}
+}
 \description{
 Returns details about the Hub resource in your account, including the
 \code{HubArn} and the time when you enabled Security Hub.

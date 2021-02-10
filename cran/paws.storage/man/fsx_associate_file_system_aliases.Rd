@@ -30,6 +30,17 @@ lowercase letters (a-z), regardless of how you specify them: as
 uppercase letters, lowercase letters, or the corresponding letters in
 escape codes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Aliases = list(
+    list(
+      Name = "string",
+      Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+    )
+  )
+)
+}
+}
 \description{
 Use this action to associate one or more Domain Name Server (DNS)
 aliases with an existing Amazon FSx for Windows File Server file system.

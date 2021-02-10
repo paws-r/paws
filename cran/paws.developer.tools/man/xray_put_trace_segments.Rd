@@ -10,6 +10,18 @@ xray_put_trace_segments(TraceSegmentDocuments)
 \item{TraceSegmentDocuments}{[required] A string containing a JSON document defining one or more segments or
 subsegments.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedTraceSegments = list(
+    list(
+      Id = "string",
+      ErrorCode = "string",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Uploads segment documents to AWS X-Ray. The \href{https://docs.aws.amazon.com/xray/index.html}{X-Ray SDK} generates segment
 documents and sends them to the X-Ray daemon, which uploads them in

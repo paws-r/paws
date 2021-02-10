@@ -20,6 +20,21 @@ does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Permissions = list(
+    list(
+      GranteeId = "string",
+      GranteeType = "GROUP"|"USER",
+      PermissionValues = list(
+        "FULL_ACCESS"|"SEND_AS"|"SEND_ON_BEHALF"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the mailbox permissions associated with a user, group, or resource
 mailbox.

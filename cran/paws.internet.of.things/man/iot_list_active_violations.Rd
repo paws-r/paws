@@ -21,6 +21,81 @@ are listed.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  activeViolations = list(
+    list(
+      violationId = "string",
+      thingName = "string",
+      securityProfileName = "string",
+      behavior = list(
+        name = "string",
+        metric = "string",
+        metricDimension = list(
+          dimensionName = "string",
+          operator = "IN"|"NOT_IN"
+        ),
+        criteria = list(
+          comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
+          value = list(
+            count = 123,
+            cidrs = list(
+              "string"
+            ),
+            ports = list(
+              123
+            ),
+            number = 123.0,
+            numbers = list(
+              123.0
+            ),
+            strings = list(
+              "string"
+            )
+          ),
+          durationSeconds = 123,
+          consecutiveDatapointsToAlarm = 123,
+          consecutiveDatapointsToClear = 123,
+          statisticalThreshold = list(
+            statistic = "string"
+          ),
+          mlDetectionConfig = list(
+            confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+          )
+        ),
+        suppressAlerts = TRUE|FALSE
+      ),
+      lastViolationValue = list(
+        count = 123,
+        cidrs = list(
+          "string"
+        ),
+        ports = list(
+          123
+        ),
+        number = 123.0,
+        numbers = list(
+          123.0
+        ),
+        strings = list(
+          "string"
+        )
+      ),
+      violationEventAdditionalInfo = list(
+        confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+      ),
+      lastViolationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      violationStartTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the active violations for a given Device Defender security
 profile.

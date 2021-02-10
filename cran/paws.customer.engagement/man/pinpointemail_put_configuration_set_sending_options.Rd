@@ -15,6 +15,9 @@ email sending for.}
 \item{SendingEnabled}{If \code{true}, email sending is enabled for the configuration set. If
 \code{false}, email sending is disabled for the configuration set.}
 }
+\value{
+An empty list.
+}
 \description{
 Enable or disable email sending for messages that use a particular
 configuration set in a specific AWS Region.

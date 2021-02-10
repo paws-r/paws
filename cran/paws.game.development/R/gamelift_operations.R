@@ -61,6 +61,9 @@ NULL
 #' can include one or multiple player IDs.
 #' @param AcceptanceType &#91;required&#93; Player response to the proposed match.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_match(
@@ -171,6 +174,32 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #' [`list_game_servers`][gamelift_list_game_servers] or
 #' [`claim_game_server`][gamelift_claim_game_server].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServer = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     GameServerId = "string",
+#'     InstanceId = "string",
+#'     ConnectionInfo = "string",
+#'     GameServerData = "string",
+#'     ClaimStatus = "CLAIMED",
+#'     UtilizationStatus = "AVAILABLE"|"UTILIZED",
+#'     RegistrationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastClaimTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastHealthCheckTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$claim_game_server(
@@ -253,6 +282,30 @@ gamelift_claim_game_server <- function(GameServerGroupName, GameServerId = NULL,
 #' remove, and view tags. The maximum tag limit may be lower than stated.
 #' See the AWS General Reference for actual tagging limits.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Alias = list(
+#'     AliasId = "string",
+#'     Name = "string",
+#'     AliasArn = "string",
+#'     Description = "string",
+#'     RoutingStrategy = list(
+#'       Type = "SIMPLE"|"TERMINAL",
+#'       FleetId = "string",
+#'       Message = "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_alias(
@@ -324,7 +377,7 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy, Tag
 #'     temporary access credentials. Use the credentials to manually upload
 #'     your build files to the specified S3 location. For more information,
 #'     see [Uploading
-#'     Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)
+#'     Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html)
 #'     in the *Amazon S3 Developer Guide*. Build files can be uploaded to
 #'     the GameLift S3 location once only; that can't be updated.
 #' 
@@ -376,7 +429,7 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy, Tag
 #' this build. If your game build contains multiple executables, they all
 #' must run on the same operating system. If an operating system is not
 #' specified when creating a build, Amazon GameLift uses the default value
-#' (WINDOWS\\_2012). This value cannot be changed later.
+#' (WINDOWS_2012). This value cannot be changed later.
 #' @param Tags A list of labels to assign to the new build resource. Tags are
 #' developer-defined key-value pairs. Tagging AWS resources are useful for
 #' resource management, access management and cost allocation. For more
@@ -388,6 +441,36 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy, Tag
 #' [`list_tags_for_resource`][gamelift_list_tags_for_resource] to add,
 #' remove, and view tags. The maximum tag limit may be lower than stated.
 #' See the AWS General Reference for actual tagging limits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Build = list(
+#'     BuildId = "string",
+#'     BuildArn = "string",
+#'     Name = "string",
+#'     Version = "string",
+#'     Status = "INITIALIZED"|"READY"|"FAILED",
+#'     SizeOnDisk = 123,
+#'     OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   UploadCredentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string"
+#'   ),
+#'   StorageLocation = list(
+#'     Bucket = "string",
+#'     Key = "string",
+#'     RoleArn = "string",
+#'     ObjectVersion = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -630,6 +713,53 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' remove, and view tags. The maximum tag limit may be lower than stated.
 #' See the AWS General Reference for actual tagging limits.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetAttributes = list(
+#'     FleetId = "string",
+#'     FleetArn = "string",
+#'     FleetType = "ON_DEMAND"|"SPOT",
+#'     InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
+#'     Description = "string",
+#'     Name = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TerminationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "NEW"|"DOWNLOADING"|"VALIDATING"|"BUILDING"|"ACTIVATING"|"ACTIVE"|"DELETING"|"ERROR"|"TERMINATED",
+#'     BuildId = "string",
+#'     BuildArn = "string",
+#'     ScriptId = "string",
+#'     ScriptArn = "string",
+#'     ServerLaunchPath = "string",
+#'     ServerLaunchParameters = "string",
+#'     LogPaths = list(
+#'       "string"
+#'     ),
+#'     NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
+#'     OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'     ResourceCreationLimitPolicy = list(
+#'       NewGameSessionsPerCreator = 123,
+#'       PolicyPeriodInMinutes = 123
+#'     ),
+#'     MetricGroups = list(
+#'       "string"
+#'     ),
+#'     StoppedActions = list(
+#'       "AUTO_SCALING"
+#'     ),
+#'     InstanceRoleArn = "string",
+#'     CertificateConfiguration = list(
+#'       CertificateType = "DISABLED"|"GENERATED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_fleet(
@@ -783,7 +913,7 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #' GameLift FleetIQ game server group. The name must be unique per Region
 #' per AWS account.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html))
 #' for an IAM role that allows Amazon GameLift to access your EC2 Auto
 #' Scaling groups.
 #' @param MinSize &#91;required&#93; The minimum number of instances allowed in the EC2 Auto Scaling group.
@@ -870,6 +1000,38 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #' [`list_tags_for_resource`][gamelift_list_tags_for_resource] to add,
 #' remove, and view tags, respectively. The maximum tag limit may be lower
 #' than stated. See the AWS General Reference for actual tagging limits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerGroup = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     RoleArn = "string",
+#'     InstanceDefinitions = list(
+#'       list(
+#'         InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'         WeightedCapacity = "string"
+#'       )
+#'     ),
+#'     BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+#'     GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+#'     AutoScalingGroupArn = "string",
+#'     Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+#'     StatusReason = "string",
+#'     SuspendedActions = list(
+#'       "REPLACE_INSTANCE_TYPES"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1030,6 +1192,42 @@ gamelift_create_game_server_group <- function(GameServerGroupName, RoleArn, MinS
 #' object with a request to start a new game session (see [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSession = list(
+#'     GameSessionId = "string",
+#'     Name = "string",
+#'     FleetId = "string",
+#'     FleetArn = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TerminationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CurrentPlayerSessionCount = 123,
+#'     MaximumPlayerSessionCount = 123,
+#'     Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+#'     StatusReason = "INTERRUPTED",
+#'     GameProperties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     IpAddress = "string",
+#'     DnsName = "string",
+#'     Port = 123,
+#'     PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+#'     CreatorId = "string",
+#'     GameSessionData = "string",
+#'     MatchmakerData = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_game_session(
@@ -1160,6 +1358,29 @@ gamelift_create_game_session <- function(FleetId = NULL, AliasId = NULL, Maximum
 #' [`list_tags_for_resource`][gamelift_list_tags_for_resource] to add,
 #' remove, and view tags. The maximum tag limit may be lower than stated.
 #' See the AWS General Reference for actual tagging limits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessionQueue = list(
+#'     Name = "string",
+#'     GameSessionQueueArn = "string",
+#'     TimeoutInSeconds = 123,
+#'     PlayerLatencyPolicies = list(
+#'       list(
+#'         MaximumIndividualPlayerLatencyMilliseconds = 123,
+#'         PolicyDurationSeconds = 123
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         DestinationArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1341,7 +1562,7 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'     [MatchmakingSucceeded](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html#match-events-matchmakingsucceeded)
 #'     event.
 #' 
-#' -   **WITH\\_QUEUE** - FlexMatch forms matches and uses the specified
+#' -   **WITH_QUEUE** - FlexMatch forms matches and uses the specified
 #'     GameLift queue to start a game session for the match.
 #' @param Tags A list of labels to assign to the new matchmaking configuration
 #' resource. Tags are developer-defined key-value pairs. Tagging AWS
@@ -1354,6 +1575,41 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' [`list_tags_for_resource`][gamelift_list_tags_for_resource] to add,
 #' remove, and view tags. The maximum tag limit may be lower than stated.
 #' See the AWS General Reference for actual tagging limits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configuration = list(
+#'     Name = "string",
+#'     ConfigurationArn = "string",
+#'     Description = "string",
+#'     GameSessionQueueArns = list(
+#'       "string"
+#'     ),
+#'     RequestTimeoutSeconds = 123,
+#'     AcceptanceTimeoutSeconds = 123,
+#'     AcceptanceRequired = TRUE|FALSE,
+#'     RuleSetName = "string",
+#'     RuleSetArn = "string",
+#'     NotificationTarget = "string",
+#'     AdditionalPlayerCount = 123,
+#'     CustomEventData = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     GameProperties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GameSessionData = "string",
+#'     BackfillMode = "AUTOMATIC"|"MANUAL",
+#'     FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1476,6 +1732,21 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 #' remove, and view tags. The maximum tag limit may be lower than stated.
 #' See the AWS General Reference for actual tagging limits.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleSet = list(
+#'     RuleSetName = "string",
+#'     RuleSetArn = "string",
+#'     RuleSetBody = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_matchmaking_rule_set(
@@ -1551,6 +1822,31 @@ gamelift_create_matchmaking_rule_set <- function(Name, RuleSetBody, Tags = NULL)
 #' @param PlayerData Developer-defined information related to a player. Amazon GameLift does
 #' not use this data, so it can be formatted as needed for use in the game.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlayerSession = list(
+#'     PlayerSessionId = "string",
+#'     PlayerId = "string",
+#'     GameSessionId = "string",
+#'     FleetId = "string",
+#'     FleetArn = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TerminationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "RESERVED"|"ACTIVE"|"COMPLETED"|"TIMEDOUT",
+#'     IpAddress = "string",
+#'     DnsName = "string",
+#'     Port = 123,
+#'     PlayerData = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_player_session(
@@ -1623,6 +1919,33 @@ gamelift_create_player_session <- function(GameSessionId, PlayerId, PlayerData =
 #' does not use this data, so it can be formatted as needed for use in the
 #' game. Player data strings for player IDs not included in the `PlayerIds`
 #' parameter are ignored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlayerSessions = list(
+#'     list(
+#'       PlayerSessionId = "string",
+#'       PlayerId = "string",
+#'       GameSessionId = "string",
+#'       FleetId = "string",
+#'       FleetArn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TerminationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "RESERVED"|"ACTIVE"|"COMPLETED"|"TIMEDOUT",
+#'       IpAddress = "string",
+#'       DnsName = "string",
+#'       Port = 123,
+#'       PlayerData = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1746,6 +2069,29 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
 #' remove, and view tags. The maximum tag limit may be lower than stated.
 #' See the AWS General Reference for actual tagging limits.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Script = list(
+#'     ScriptId = "string",
+#'     ScriptArn = "string",
+#'     Name = "string",
+#'     Version = "string",
+#'     SizeOnDisk = 123,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StorageLocation = list(
+#'       Bucket = "string",
+#'       Key = "string",
+#'       RoleArn = "string",
+#'       ObjectVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_script(
@@ -1854,6 +2200,24 @@ gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation 
 #' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcPeeringAuthorization = list(
+#'     GameLiftAwsAccountId = "string",
+#'     PeerVpcAwsAccountId = "string",
+#'     PeerVpcId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpc_peering_authorization(
@@ -1944,6 +2308,9 @@ gamelift_create_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpc_peering_connection(
@@ -1998,6 +2365,9 @@ gamelift_create_vpc_peering_connection <- function(FleetId, PeerVpcAwsAccountId,
 #'
 #' @param AliasId &#91;required&#93; A unique identifier of the alias that you want to delete. You can use
 #' either the alias ID or ARN value.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2058,6 +2428,9 @@ gamelift_delete_alias <- function(AliasId) {
 #'
 #' @param BuildId &#91;required&#93; A unique identifier for a build to delete. You can use either the build
 #' ID or ARN value.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2127,6 +2500,9 @@ gamelift_delete_build <- function(BuildId) {
 #'
 #' @param FleetId &#91;required&#93; A unique identifier for a fleet to be deleted. You can use either the
 #' fleet ID or ARN value.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2228,6 +2604,38 @@ gamelift_delete_fleet <- function(FleetId) {
 #' -   `RETAIN` – Does a safe delete of the game server group but retains
 #'     the EC2 Auto Scaling group as is.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerGroup = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     RoleArn = "string",
+#'     InstanceDefinitions = list(
+#'       list(
+#'         InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'         WeightedCapacity = "string"
+#'       )
+#'     ),
+#'     BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+#'     GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+#'     AutoScalingGroupArn = "string",
+#'     Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+#'     StatusReason = "string",
+#'     SuspendedActions = list(
+#'       "REPLACE_INSTANCE_TYPES"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_game_server_group(
@@ -2287,6 +2695,9 @@ gamelift_delete_game_server_group <- function(GameServerGroupName, DeleteOption 
 #' names must be unique within each Region. You can use either the queue ID
 #' or ARN value.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_game_session_queue(
@@ -2344,6 +2755,9 @@ gamelift_delete_game_session_queue <- function(Name) {
 #'
 #' @param Name &#91;required&#93; A unique identifier for a matchmaking configuration. You can use either
 #' the configuration name or ARN value.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2408,6 +2822,9 @@ gamelift_delete_matchmaking_configuration <- function(Name) {
 #' @param Name &#91;required&#93; A unique identifier for a matchmaking rule set to be deleted. (Note: The
 #' rule set name is different from the optional "name" field in the rule
 #' set body.) You can use either the rule set name or ARN value.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2479,6 +2896,9 @@ gamelift_delete_matchmaking_rule_set <- function(Name) {
 #' @param FleetId &#91;required&#93; A unique identifier for a fleet to be deleted. You can use either the
 #' fleet ID or ARN value.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scaling_policy(
@@ -2543,6 +2963,9 @@ gamelift_delete_scaling_policy <- function(Name, FleetId) {
 #' @param ScriptId &#91;required&#93; A unique identifier for a Realtime script to delete. You can use either
 #' the script ID or ARN value.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_script(
@@ -2603,6 +3026,9 @@ gamelift_delete_script <- function(ScriptId) {
 #' Management Console. Learn more about VPC peering in [VPC Peering with
 #' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2668,6 +3094,9 @@ gamelift_delete_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' @param VpcPeeringConnectionId &#91;required&#93; A unique identifier for a VPC peering connection. This value is included
 #' in the VpcPeeringConnection object, which can be retrieved by calling
 #' [`describe_vpc_peering_connections`][gamelift_describe_vpc_peering_connections].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2738,6 +3167,9 @@ gamelift_delete_vpc_peering_connection <- function(FleetId, VpcPeeringConnection
 #' running. Use either the GameServerGroup name or ARN value.
 #' @param GameServerId &#91;required&#93; A custom string that uniquely identifies the game server to deregister.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_game_server(
@@ -2793,6 +3225,30 @@ gamelift_deregister_game_server <- function(GameServerGroupName, GameServerId) {
 #'
 #' @param AliasId &#91;required&#93; The unique identifier for the fleet alias that you want to retrieve. You
 #' can use either the alias ID or ARN value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Alias = list(
+#'     AliasId = "string",
+#'     Name = "string",
+#'     AliasArn = "string",
+#'     Description = "string",
+#'     RoutingStrategy = list(
+#'       Type = "SIMPLE"|"TERMINAL",
+#'       FleetId = "string",
+#'       Message = "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2851,6 +3307,25 @@ gamelift_describe_alias <- function(AliasId) {
 #' @param BuildId &#91;required&#93; A unique identifier for a build to retrieve properties for. You can use
 #' either the build ID or ARN value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Build = list(
+#'     BuildId = "string",
+#'     BuildArn = "string",
+#'     Name = "string",
+#'     Version = "string",
+#'     Status = "INITIALIZED"|"READY"|"FAILED",
+#'     SizeOnDisk = 123,
+#'     OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_build(
@@ -2879,7 +3354,6 @@ gamelift_describe_build <- function(BuildId) {
 .gamelift$operations$describe_build <- gamelift_describe_build
 
 #' Retrieves the following information for the specified EC2 instance type:
-#' - Maximum number of instances allowed per AWS account (service limit)
 #'
 #' @description
 #' Retrieves the following information for the specified EC2 instance type:
@@ -2922,6 +3396,20 @@ gamelift_describe_build <- function(BuildId) {
 #' EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/) for
 #' detailed descriptions. Leave this parameter blank to retrieve limits for
 #' all types.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EC2InstanceLimits = list(
+#'     list(
+#'       EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
+#'       CurrentInstances = 123,
+#'       InstanceLimit = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3018,6 +3506,56 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #' To start at the beginning of the result set, do not specify a value.
 #' This parameter is ignored when the request specifies one or a list of
 #' fleet IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetAttributes = list(
+#'     list(
+#'       FleetId = "string",
+#'       FleetArn = "string",
+#'       FleetType = "ON_DEMAND"|"SPOT",
+#'       InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
+#'       Description = "string",
+#'       Name = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TerminationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "NEW"|"DOWNLOADING"|"VALIDATING"|"BUILDING"|"ACTIVATING"|"ACTIVE"|"DELETING"|"ERROR"|"TERMINATED",
+#'       BuildId = "string",
+#'       BuildArn = "string",
+#'       ScriptId = "string",
+#'       ScriptArn = "string",
+#'       ServerLaunchPath = "string",
+#'       ServerLaunchParameters = "string",
+#'       LogPaths = list(
+#'         "string"
+#'       ),
+#'       NewGameSessionProtectionPolicy = "NoProtection"|"FullProtection",
+#'       OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'       ResourceCreationLimitPolicy = list(
+#'         NewGameSessionsPerCreator = 123,
+#'         PolicyPeriodInMinutes = 123
+#'       ),
+#'       MetricGroups = list(
+#'         "string"
+#'       ),
+#'       StoppedActions = list(
+#'         "AUTO_SCALING"
+#'       ),
+#'       InstanceRoleArn = "string",
+#'       CertificateConfiguration = list(
+#'         CertificateType = "DISABLED"|"GENERATED"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3121,6 +3659,29 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 #' This parameter is ignored when the request specifies one or a list of
 #' fleet IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetCapacity = list(
+#'     list(
+#'       FleetId = "string",
+#'       InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
+#'       InstanceCounts = list(
+#'         DESIRED = 123,
+#'         MINIMUM = 123,
+#'         MAXIMUM = 123,
+#'         PENDING = 123,
+#'         ACTIVE = 123,
+#'         IDLE = 123,
+#'         TERMINATING = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fleet_capacity(
@@ -3214,6 +3775,26 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Events = list(
+#'     list(
+#'       EventId = "string",
+#'       ResourceId = "string",
+#'       EventCode = "GENERIC_EVENT"|"FLEET_CREATED"|"FLEET_DELETED"|"FLEET_SCALING_EVENT"|"FLEET_STATE_DOWNLOADING"|"FLEET_STATE_VALIDATING"|"FLEET_STATE_BUILDING"|"FLEET_STATE_ACTIVATING"|"FLEET_STATE_ACTIVE"|"FLEET_STATE_ERROR"|"FLEET_INITIALIZATION_FAILED"|"FLEET_BINARY_DOWNLOAD_FAILED"|"FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND"|"FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE"|"FLEET_VALIDATION_TIMED_OUT"|"FLEET_ACTIVATION_FAILED"|"FLEET_ACTIVATION_FAILED_NO_INSTANCES"|"FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED"|"SERVER_PROCESS_INVALID_PATH"|"SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT"|"SERVER_PROCESS_PROCESS_READY_TIMEOUT"|"SERVER_PROCESS_CRASHED"|"SERVER_PROCESS_TERMINATED_UNHEALTHY"|"SERVER_PROCESS_FORCE_TERMINATED"|"SERVER_PROCESS_PROCESS_EXIT_TIMEOUT"|"GAME_SESSION_ACTIVATION_TIMEOUT"|"FLEET_CREATION_EXTRACTING_BUILD"|"FLEET_CREATION_RUNNING_INSTALLER"|"FLEET_CREATION_VALIDATING_RUNTIME_CONFIG"|"FLEET_VPC_PEERING_SUCCEEDED"|"FLEET_VPC_PEERING_FAILED"|"FLEET_VPC_PEERING_DELETED"|"INSTANCE_INTERRUPTED",
+#'       Message = "string",
+#'       EventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PreSignedLogUrl = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fleet_events(
@@ -3302,6 +3883,21 @@ gamelift_describe_fleet_events <- function(FleetId, StartTime = NULL, EndTime = 
 #'
 #' @param FleetId &#91;required&#93; A unique identifier for a fleet to retrieve port settings for. You can
 #' use either the fleet ID or ARN value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InboundPermissions = list(
+#'     list(
+#'       FromPort = 123,
+#'       ToPort = 123,
+#'       IpRange = "string",
+#'       Protocol = "TCP"|"UDP"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3402,6 +3998,23 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 #' This parameter is ignored when the request specifies one or a list of
 #' fleet IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetUtilization = list(
+#'     list(
+#'       FleetId = "string",
+#'       ActiveServerProcessCount = 123,
+#'       ActiveGameSessionCount = 123,
+#'       CurrentPlayerSessionCount = 123,
+#'       MaximumPlayerSessionCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fleet_utilization(
@@ -3473,6 +4086,32 @@ gamelift_describe_fleet_utilization <- function(FleetIds = NULL, Limit = NULL, N
 #' running. Use either the GameServerGroup name or ARN value.
 #' @param GameServerId &#91;required&#93; A custom string that uniquely identifies the game server information to
 #' be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServer = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     GameServerId = "string",
+#'     InstanceId = "string",
+#'     ConnectionInfo = "string",
+#'     GameServerData = "string",
+#'     ClaimStatus = "CLAIMED",
+#'     UtilizationStatus = "AVAILABLE"|"UTILIZED",
+#'     RegistrationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastClaimTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastHealthCheckTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3546,6 +4185,38 @@ gamelift_describe_game_server <- function(GameServerGroupName, GameServerId) {
 #'
 #' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
 #' GameServerGroup name or ARN value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerGroup = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     RoleArn = "string",
+#'     InstanceDefinitions = list(
+#'       list(
+#'         InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'         WeightedCapacity = "string"
+#'       )
+#'     ),
+#'     BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+#'     GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+#'     AutoScalingGroupArn = "string",
+#'     Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+#'     StatusReason = "string",
+#'     SuspendedActions = list(
+#'       "REPLACE_INSTANCE_TYPES"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3639,6 +4310,22 @@ gamelift_describe_game_server_group <- function(GameServerGroupName) {
 #' operation. To start at the beginning of the result set, do not specify a
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerInstances = list(
+#'     list(
+#'       GameServerGroupName = "string",
+#'       GameServerGroupArn = "string",
+#'       InstanceId = "string",
+#'       InstanceStatus = "ACTIVE"|"DRAINING"|"SPOT_TERMINATING"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_game_server_instances(
@@ -3725,6 +4412,48 @@ gamelift_describe_game_server_instances <- function(GameServerGroupName, Instanc
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessionDetails = list(
+#'     list(
+#'       GameSession = list(
+#'         GameSessionId = "string",
+#'         Name = "string",
+#'         FleetId = "string",
+#'         FleetArn = "string",
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         TerminationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CurrentPlayerSessionCount = 123,
+#'         MaximumPlayerSessionCount = 123,
+#'         Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+#'         StatusReason = "INTERRUPTED",
+#'         GameProperties = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         IpAddress = "string",
+#'         DnsName = "string",
+#'         Port = 123,
+#'         PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+#'         CreatorId = "string",
+#'         GameSessionData = "string",
+#'         MatchmakerData = "string"
+#'       ),
+#'       ProtectionPolicy = "NoProtection"|"FullProtection"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_game_session_details(
@@ -3790,6 +4519,53 @@ gamelift_describe_game_session_details <- function(FleetId = NULL, GameSessionId
 #'
 #' @param PlacementId &#91;required&#93; A unique identifier for a game session placement to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessionPlacement = list(
+#'     PlacementId = "string",
+#'     GameSessionQueueName = "string",
+#'     Status = "PENDING"|"FULFILLED"|"CANCELLED"|"TIMED_OUT"|"FAILED",
+#'     GameProperties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     MaximumPlayerSessionCount = 123,
+#'     GameSessionName = "string",
+#'     GameSessionId = "string",
+#'     GameSessionArn = "string",
+#'     GameSessionRegion = "string",
+#'     PlayerLatencies = list(
+#'       list(
+#'         PlayerId = "string",
+#'         RegionIdentifier = "string",
+#'         LatencyInMilliseconds = 123.0
+#'       )
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IpAddress = "string",
+#'     DnsName = "string",
+#'     Port = 123,
+#'     PlacedPlayerSessions = list(
+#'       list(
+#'         PlayerId = "string",
+#'         PlayerSessionId = "string"
+#'       )
+#'     ),
+#'     GameSessionData = "string",
+#'     MatchmakerData = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_game_session_placement(
@@ -3854,6 +4630,32 @@ gamelift_describe_game_session_placement <- function(PlacementId) {
 #' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessionQueues = list(
+#'     list(
+#'       Name = "string",
+#'       GameSessionQueueArn = "string",
+#'       TimeoutInSeconds = 123,
+#'       PlayerLatencyPolicies = list(
+#'         list(
+#'           MaximumIndividualPlayerLatencyMilliseconds = 123,
+#'           PolicyDurationSeconds = 123
+#'         )
+#'       ),
+#'       Destinations = list(
+#'         list(
+#'           DestinationArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3942,6 +4744,45 @@ gamelift_describe_game_session_queues <- function(Names = NULL, Limit = NULL, Ne
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessions = list(
+#'     list(
+#'       GameSessionId = "string",
+#'       Name = "string",
+#'       FleetId = "string",
+#'       FleetArn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TerminationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CurrentPlayerSessionCount = 123,
+#'       MaximumPlayerSessionCount = 123,
+#'       Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+#'       StatusReason = "INTERRUPTED",
+#'       GameProperties = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IpAddress = "string",
+#'       DnsName = "string",
+#'       Port = 123,
+#'       PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+#'       CreatorId = "string",
+#'       GameSessionData = "string",
+#'       MatchmakerData = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_game_sessions(
@@ -4012,6 +4853,28 @@ gamelift_describe_game_sessions <- function(FleetId = NULL, GameSessionId = NULL
 #' @param NextToken Token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = list(
+#'     list(
+#'       FleetId = "string",
+#'       InstanceId = "string",
+#'       IpAddress = "string",
+#'       DnsName = "string",
+#'       OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'       Type = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
+#'       Status = "PENDING"|"ACTIVE"|"TERMINATING",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4088,6 +4951,63 @@ gamelift_describe_instances <- function(FleetId, InstanceId = NULL, Limit = NULL
 #'
 #' @param TicketIds &#91;required&#93; A unique identifier for a matchmaking ticket. You can include up to 10
 #' ID values.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TicketList = list(
+#'     list(
+#'       TicketId = "string",
+#'       ConfigurationName = "string",
+#'       ConfigurationArn = "string",
+#'       Status = "CANCELLED"|"COMPLETED"|"FAILED"|"PLACING"|"QUEUED"|"REQUIRES_ACCEPTANCE"|"SEARCHING"|"TIMED_OUT",
+#'       StatusReason = "string",
+#'       StatusMessage = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Players = list(
+#'         list(
+#'           PlayerId = "string",
+#'           PlayerAttributes = list(
+#'             list(
+#'               S = "string",
+#'               N = 123.0,
+#'               SL = list(
+#'                 "string"
+#'               ),
+#'               SDM = list(
+#'                 123.0
+#'               )
+#'             )
+#'           ),
+#'           Team = "string",
+#'           LatencyInMs = list(
+#'             123
+#'           )
+#'         )
+#'       ),
+#'       GameSessionConnectionInfo = list(
+#'         GameSessionArn = "string",
+#'         IpAddress = "string",
+#'         DnsName = "string",
+#'         Port = 123,
+#'         MatchedPlayerSessions = list(
+#'           list(
+#'             PlayerId = "string",
+#'             PlayerSessionId = "string"
+#'           )
+#'         )
+#'       ),
+#'       EstimatedWaitTime = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4173,6 +5093,44 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configurations = list(
+#'     list(
+#'       Name = "string",
+#'       ConfigurationArn = "string",
+#'       Description = "string",
+#'       GameSessionQueueArns = list(
+#'         "string"
+#'       ),
+#'       RequestTimeoutSeconds = 123,
+#'       AcceptanceTimeoutSeconds = 123,
+#'       AcceptanceRequired = TRUE|FALSE,
+#'       RuleSetName = "string",
+#'       RuleSetArn = "string",
+#'       NotificationTarget = "string",
+#'       AdditionalPlayerCount = 123,
+#'       CustomEventData = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       GameProperties = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       GameSessionData = "string",
+#'       BackfillMode = "AUTOMATIC"|"MANUAL",
+#'       FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_matchmaking_configurations(
@@ -4249,6 +5207,24 @@ gamelift_describe_matchmaking_configurations <- function(Names = NULL, RuleSetNa
 #' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleSets = list(
+#'     list(
+#'       RuleSetName = "string",
+#'       RuleSetArn = "string",
+#'       RuleSetBody = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4345,6 +5321,34 @@ gamelift_describe_matchmaking_rule_sets <- function(Names = NULL, Limit = NULL, 
 #' To start at the beginning of the result set, do not specify a value. If
 #' a player session ID is specified, this parameter is ignored.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlayerSessions = list(
+#'     list(
+#'       PlayerSessionId = "string",
+#'       PlayerId = "string",
+#'       GameSessionId = "string",
+#'       FleetId = "string",
+#'       FleetArn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TerminationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "RESERVED"|"ACTIVE"|"COMPLETED"|"TIMEDOUT",
+#'       IpAddress = "string",
+#'       DnsName = "string",
+#'       Port = 123,
+#'       PlayerData = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_player_sessions(
@@ -4431,6 +5435,24 @@ gamelift_describe_player_sessions <- function(GameSessionId = NULL, PlayerId = N
 #'
 #' @param FleetId &#91;required&#93; A unique identifier for a fleet to get the runtime configuration for.
 #' You can use either the fleet ID or ARN value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuntimeConfiguration = list(
+#'     ServerProcesses = list(
+#'       list(
+#'         LaunchPath = "string",
+#'         Parameters = "string",
+#'         ConcurrentExecutions = 123
+#'       )
+#'     ),
+#'     MaxConcurrentGameSessionActivations = 123,
+#'     GameSessionActivationTimeoutSeconds = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4532,6 +5554,31 @@ gamelift_describe_runtime_configuration <- function(FleetId) {
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalingPolicies = list(
+#'     list(
+#'       FleetId = "string",
+#'       Name = "string",
+#'       Status = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
+#'       ScalingAdjustment = 123,
+#'       ScalingAdjustmentType = "ChangeInCapacity"|"ExactCapacity"|"PercentChangeInCapacity",
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+#'       Threshold = 123.0,
+#'       EvaluationPeriods = 123,
+#'       MetricName = "ActivatingGameSessions"|"ActiveGameSessions"|"ActiveInstances"|"AvailableGameSessions"|"AvailablePlayerSessions"|"CurrentPlayerSessions"|"IdleInstances"|"PercentAvailableGameSessions"|"PercentIdleInstances"|"QueueDepth"|"WaitTime",
+#'       PolicyType = "RuleBased"|"TargetBased",
+#'       TargetConfiguration = list(
+#'         TargetValue = 123.0
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_scaling_policies(
@@ -4593,6 +5640,29 @@ gamelift_describe_scaling_policies <- function(FleetId, StatusFilter = NULL, Lim
 #' @param ScriptId &#91;required&#93; A unique identifier for a Realtime script to retrieve properties for.
 #' You can use either the script ID or ARN value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Script = list(
+#'     ScriptId = "string",
+#'     ScriptArn = "string",
+#'     Name = "string",
+#'     Version = "string",
+#'     SizeOnDisk = 123,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StorageLocation = list(
+#'       Bucket = "string",
+#'       Key = "string",
+#'       RoleArn = "string",
+#'       ObjectVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_script(
@@ -4643,6 +5713,26 @@ gamelift_describe_script <- function(ScriptId) {
 #'
 #' @usage
 #' gamelift_describe_vpc_peering_authorizations()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcPeeringAuthorizations = list(
+#'     list(
+#'       GameLiftAwsAccountId = "string",
+#'       PeerVpcAwsAccountId = "string",
+#'       PeerVpcId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4699,6 +5789,27 @@ gamelift_describe_vpc_peering_authorizations <- function() {
 #'
 #' @param FleetId A unique identifier for a fleet. You can use either the fleet ID or ARN
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcPeeringConnections = list(
+#'     list(
+#'       FleetId = "string",
+#'       FleetArn = "string",
+#'       IpV4CidrBlock = "string",
+#'       VpcPeeringConnectionId = "string",
+#'       Status = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       PeerVpcId = "string",
+#'       GameLiftVpcId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4765,6 +5876,14 @@ gamelift_describe_vpc_peering_connections <- function(FleetId = NULL) {
 #' gamelift_get_game_session_log_url(GameSessionId)
 #'
 #' @param GameSessionId &#91;required&#93; A unique identifier for the game session to get logs for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PreSignedUrl = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4842,6 +5961,23 @@ gamelift_get_game_session_log_url <- function(GameSessionId) {
 #' @param InstanceId &#91;required&#93; A unique identifier for an instance you want to get access to. You can
 #' access an instance in any status.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceAccess = list(
+#'     FleetId = "string",
+#'     InstanceId = "string",
+#'     IpAddress = "string",
+#'     OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'     Credentials = list(
+#'       UserName = "string",
+#'       Secret = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_instance_access(
@@ -4914,6 +6050,33 @@ gamelift_get_instance_access <- function(FleetId, InstanceId) {
 #' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Aliases = list(
+#'     list(
+#'       AliasId = "string",
+#'       Name = "string",
+#'       AliasArn = "string",
+#'       Description = "string",
+#'       RoutingStrategy = list(
+#'         Type = "SIMPLE"|"TERMINAL",
+#'         FleetId = "string",
+#'         Message = "string"
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4997,6 +6160,28 @@ gamelift_list_aliases <- function(RoutingStrategyType = NULL, Name = NULL, Limit
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Builds = list(
+#'     list(
+#'       BuildId = "string",
+#'       BuildArn = "string",
+#'       Name = "string",
+#'       Version = "string",
+#'       Status = "INITIALIZED"|"READY"|"FAILED",
+#'       SizeOnDisk = 123,
+#'       OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_builds(
@@ -5073,6 +6258,17 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_fleets(
@@ -5146,6 +6342,41 @@ gamelift_list_fleets <- function(BuildId = NULL, ScriptId = NULL, Limit = NULL, 
 #' results. Use the token returned with the previous call to this
 #' operation. To start at the beginning of the result set, do not specify a
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerGroups = list(
+#'     list(
+#'       GameServerGroupName = "string",
+#'       GameServerGroupArn = "string",
+#'       RoleArn = "string",
+#'       InstanceDefinitions = list(
+#'         list(
+#'           InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'           WeightedCapacity = "string"
+#'         )
+#'       ),
+#'       BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+#'       GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+#'       AutoScalingGroupArn = "string",
+#'       Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+#'       StatusReason = "string",
+#'       SuspendedActions = list(
+#'         "REPLACE_INSTANCE_TYPES"
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5224,6 +6455,35 @@ gamelift_list_game_server_groups <- function(Limit = NULL, NextToken = NULL) {
 #' operation. To start at the beginning of the result set, do not specify a
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServers = list(
+#'     list(
+#'       GameServerGroupName = "string",
+#'       GameServerGroupArn = "string",
+#'       GameServerId = "string",
+#'       InstanceId = "string",
+#'       ConnectionInfo = "string",
+#'       GameServerData = "string",
+#'       ClaimStatus = "CLAIMED",
+#'       UtilizationStatus = "AVAILABLE"|"UTILIZED",
+#'       RegistrationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastClaimTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastHealthCheckTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_game_servers(
@@ -5286,6 +6546,32 @@ gamelift_list_game_servers <- function(GameServerGroupName, SortOrder = NULL, Li
 #' @param NextToken A token that indicates the start of the next sequential page of results.
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Scripts = list(
+#'     list(
+#'       ScriptId = "string",
+#'       ScriptArn = "string",
+#'       Name = "string",
+#'       Version = "string",
+#'       SizeOnDisk = 123,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StorageLocation = list(
+#'         Bucket = "string",
+#'         Key = "string",
+#'         RoleArn = "string",
+#'         ObjectVersion = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5361,11 +6647,24 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
 #' gamelift_list_tags_for_resource(ResourceARN)
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html))
 #' that is assigned to and uniquely identifies the GameLift resource that
 #' you want to retrieve tags for. GameLift resource ARNs are included in
 #' the data object for the resource, which can be retrieved by calling a
 #' List or Describe operation for the resource type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5414,7 +6713,7 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' You can temporarily suspend all scaling policies for a fleet by calling
 #' [`stop_fleet_actions`][gamelift_stop_fleet_actions] with the fleet
-#' action AUTO\\_SCALING. To resume scaling policies, call
+#' action AUTO_SCALING. To resume scaling policies, call
 #' [`start_fleet_actions`][gamelift_start_fleet_actions] with the same
 #' fleet action. To stop just one scaling policy--or to permanently remove
 #' it, you must delete the policy with
@@ -5465,15 +6764,14 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' A policy's rule statement has the following structure:
 #' 
-#' If `\\[MetricName\\]` is `\\[ComparisonOperator\\]` `\\[Threshold\\]`
-#' for `\\[EvaluationPeriods\\]` minutes, then
-#' `\\[ScalingAdjustmentType\\]` to/by `\\[ScalingAdjustment\\]`.
+#' If `[MetricName]` is `[ComparisonOperator]` `[Threshold]` for
+#' `[EvaluationPeriods]` minutes, then `[ScalingAdjustmentType]` to/by
+#' `[ScalingAdjustment]`.
 #' 
 #' To implement the example, the rule statement would look like this:
 #' 
-#' If `\\[PercentIdleInstances\\]` is `\\[GreaterThanThreshold\\]`
-#' `\\[20\\]` for `\\[15\\]` minutes, then `\\[PercentChangeInCapacity\\]`
-#' to/by `\\[10\\]`.
+#' If `[PercentIdleInstances]` is `[GreaterThanThreshold]` `[20]` for
+#' `[15]` minutes, then `[PercentChangeInCapacity]` to/by `[10]`.
 #' 
 #' To create or update a scaling policy, specify a unique combination of
 #' name and fleet ID, and set the policy type to "RuleBased". Specify the
@@ -5584,6 +6882,14 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' *EvaluationPeriods*, *ScalingAdjustmentType*, and *ScalingAdjustment*.
 #' @param TargetConfiguration The settings for a target-based scaling policy.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_scaling_policy(
@@ -5688,6 +6994,32 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #' [`list_game_servers`][gamelift_list_game_servers] or
 #' [`claim_game_server`][gamelift_claim_game_server].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServer = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     GameServerId = "string",
+#'     InstanceId = "string",
+#'     ConnectionInfo = "string",
+#'     GameServerData = "string",
+#'     ClaimStatus = "CLAIMED",
+#'     UtilizationStatus = "AVAILABLE"|"UTILIZED",
+#'     RegistrationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastClaimTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastHealthCheckTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_game_server(
@@ -5755,6 +7087,24 @@ gamelift_register_game_server <- function(GameServerGroupName, GameServerId, Ins
 #' @param BuildId &#91;required&#93; A unique identifier for a build to get credentials for. You can use
 #' either the build ID or ARN value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UploadCredentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string"
+#'   ),
+#'   StorageLocation = list(
+#'     Bucket = "string",
+#'     Key = "string",
+#'     RoleArn = "string",
+#'     ObjectVersion = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$request_upload_credentials(
@@ -5804,6 +7154,15 @@ gamelift_request_upload_credentials <- function(BuildId) {
 #'
 #' @param AliasId &#91;required&#93; The unique identifier of the alias that you want to retrieve a fleet ID
 #' for. You can use either the alias ID or ARN value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetId = "string",
+#'   FleetArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5882,6 +7241,38 @@ gamelift_resolve_alias <- function(AliasId) {
 #' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
 #' GameServerGroup name or ARN value.
 #' @param ResumeActions &#91;required&#93; The activity to resume for this game server group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerGroup = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     RoleArn = "string",
+#'     InstanceDefinitions = list(
+#'       list(
+#'         InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'         WeightedCapacity = "string"
+#'       )
+#'     ),
+#'     BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+#'     GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+#'     AutoScalingGroupArn = "string",
+#'     Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+#'     StatusReason = "string",
+#'     SuspendedActions = list(
+#'       "REPLACE_INSTANCE_TYPES"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6073,6 +7464,45 @@ gamelift_resume_game_server_group <- function(GameServerGroupName, ResumeActions
 #' Use the token that is returned with a previous call to this operation.
 #' To start at the beginning of the result set, do not specify a value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessions = list(
+#'     list(
+#'       GameSessionId = "string",
+#'       Name = "string",
+#'       FleetId = "string",
+#'       FleetArn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TerminationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CurrentPlayerSessionCount = 123,
+#'       MaximumPlayerSessionCount = 123,
+#'       Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+#'       StatusReason = "INTERRUPTED",
+#'       GameProperties = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       IpAddress = "string",
+#'       DnsName = "string",
+#'       Port = 123,
+#'       PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+#'       CreatorId = "string",
+#'       GameSessionData = "string",
+#'       MatchmakerData = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_game_sessions(
@@ -6145,6 +7575,9 @@ gamelift_search_game_sessions <- function(FleetId = NULL, AliasId = NULL, Filter
 #' @param FleetId &#91;required&#93; A unique identifier for a fleet to start actions on. You can use either
 #' the fleet ID or ARN value.
 #' @param Actions &#91;required&#93; List of actions to restart on the fleet.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -6277,6 +7710,53 @@ gamelift_start_fleet_actions <- function(FleetId, Actions) {
 #' object with a request to start a new game session (see [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessionPlacement = list(
+#'     PlacementId = "string",
+#'     GameSessionQueueName = "string",
+#'     Status = "PENDING"|"FULFILLED"|"CANCELLED"|"TIMED_OUT"|"FAILED",
+#'     GameProperties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     MaximumPlayerSessionCount = 123,
+#'     GameSessionName = "string",
+#'     GameSessionId = "string",
+#'     GameSessionArn = "string",
+#'     GameSessionRegion = "string",
+#'     PlayerLatencies = list(
+#'       list(
+#'         PlayerId = "string",
+#'         RegionIdentifier = "string",
+#'         LatencyInMilliseconds = 123.0
+#'       )
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IpAddress = "string",
+#'     DnsName = "string",
+#'     Port = 123,
+#'     PlacedPlayerSessions = list(
+#'       list(
+#'         PlayerId = "string",
+#'         PlayerSessionId = "string"
+#'       )
+#'     ),
+#'     GameSessionData = "string",
+#'     MatchmakerData = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_game_session_placement(
@@ -6407,6 +7887,61 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #'     latency value, in milliseconds, for the Region that the game session
 #'     is currently in. Do not include latency values for any other Region.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MatchmakingTicket = list(
+#'     TicketId = "string",
+#'     ConfigurationName = "string",
+#'     ConfigurationArn = "string",
+#'     Status = "CANCELLED"|"COMPLETED"|"FAILED"|"PLACING"|"QUEUED"|"REQUIRES_ACCEPTANCE"|"SEARCHING"|"TIMED_OUT",
+#'     StatusReason = "string",
+#'     StatusMessage = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Players = list(
+#'       list(
+#'         PlayerId = "string",
+#'         PlayerAttributes = list(
+#'           list(
+#'             S = "string",
+#'             N = 123.0,
+#'             SL = list(
+#'               "string"
+#'             ),
+#'             SDM = list(
+#'               123.0
+#'             )
+#'           )
+#'         ),
+#'         Team = "string",
+#'         LatencyInMs = list(
+#'           123
+#'         )
+#'       )
+#'     ),
+#'     GameSessionConnectionInfo = list(
+#'       GameSessionArn = "string",
+#'       IpAddress = "string",
+#'       DnsName = "string",
+#'       Port = 123,
+#'       MatchedPlayerSessions = list(
+#'         list(
+#'           PlayerId = "string",
+#'           PlayerSessionId = "string"
+#'         )
+#'       )
+#'     ),
+#'     EstimatedWaitTime = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_match_backfill(
@@ -6524,6 +8059,61 @@ gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, Ga
 #' used in the matchmaking process. After a successful match, `Player`
 #' objects contain the name of the team the player is assigned to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MatchmakingTicket = list(
+#'     TicketId = "string",
+#'     ConfigurationName = "string",
+#'     ConfigurationArn = "string",
+#'     Status = "CANCELLED"|"COMPLETED"|"FAILED"|"PLACING"|"QUEUED"|"REQUIRES_ACCEPTANCE"|"SEARCHING"|"TIMED_OUT",
+#'     StatusReason = "string",
+#'     StatusMessage = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Players = list(
+#'       list(
+#'         PlayerId = "string",
+#'         PlayerAttributes = list(
+#'           list(
+#'             S = "string",
+#'             N = 123.0,
+#'             SL = list(
+#'               "string"
+#'             ),
+#'             SDM = list(
+#'               123.0
+#'             )
+#'           )
+#'         ),
+#'         Team = "string",
+#'         LatencyInMs = list(
+#'           123
+#'         )
+#'       )
+#'     ),
+#'     GameSessionConnectionInfo = list(
+#'       GameSessionArn = "string",
+#'       IpAddress = "string",
+#'       DnsName = "string",
+#'       Port = 123,
+#'       MatchedPlayerSessions = list(
+#'         list(
+#'           PlayerId = "string",
+#'           PlayerSessionId = "string"
+#'         )
+#'       )
+#'     ),
+#'     EstimatedWaitTime = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_matchmaking(
@@ -6616,6 +8206,9 @@ gamelift_start_matchmaking <- function(TicketId = NULL, ConfigurationName, Playe
 #' the fleet ID or ARN value.
 #' @param Actions &#91;required&#93; List of actions to suspend on the fleet.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_fleet_actions(
@@ -6677,6 +8270,53 @@ gamelift_stop_fleet_actions <- function(FleetId, Actions) {
 #' gamelift_stop_game_session_placement(PlacementId)
 #'
 #' @param PlacementId &#91;required&#93; A unique identifier for a game session placement to cancel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessionPlacement = list(
+#'     PlacementId = "string",
+#'     GameSessionQueueName = "string",
+#'     Status = "PENDING"|"FULFILLED"|"CANCELLED"|"TIMED_OUT"|"FAILED",
+#'     GameProperties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     MaximumPlayerSessionCount = 123,
+#'     GameSessionName = "string",
+#'     GameSessionId = "string",
+#'     GameSessionArn = "string",
+#'     GameSessionRegion = "string",
+#'     PlayerLatencies = list(
+#'       list(
+#'         PlayerId = "string",
+#'         RegionIdentifier = "string",
+#'         LatencyInMilliseconds = 123.0
+#'       )
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IpAddress = "string",
+#'     DnsName = "string",
+#'     Port = 123,
+#'     PlacedPlayerSessions = list(
+#'       list(
+#'         PlayerId = "string",
+#'         PlayerSessionId = "string"
+#'       )
+#'     ),
+#'     GameSessionData = "string",
+#'     MatchmakerData = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6744,6 +8384,9 @@ gamelift_stop_game_session_placement <- function(PlacementId) {
 #' gamelift_stop_matchmaking(TicketId)
 #'
 #' @param TicketId &#91;required&#93; A unique identifier for a matchmaking ticket.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -6828,6 +8471,38 @@ gamelift_stop_matchmaking <- function(TicketId) {
 #' GameServerGroup name or ARN value.
 #' @param SuspendActions &#91;required&#93; The activity to suspend for this game server group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerGroup = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     RoleArn = "string",
+#'     InstanceDefinitions = list(
+#'       list(
+#'         InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'         WeightedCapacity = "string"
+#'       )
+#'     ),
+#'     BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+#'     GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+#'     AutoScalingGroupArn = "string",
+#'     Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+#'     StatusReason = "string",
+#'     SuspendedActions = list(
+#'       "REPLACE_INSTANCE_TYPES"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$suspend_game_server_group(
@@ -6908,7 +8583,7 @@ gamelift_suspend_game_server_group <- function(GameServerGroupName, SuspendActio
 #' gamelift_tag_resource(ResourceARN, Tags)
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html))
 #' that is assigned to and uniquely identifies the GameLift resource that
 #' you want to assign tags to. GameLift resource ARNs are included in the
 #' data object for the resource, which can be retrieved by calling a List
@@ -6918,6 +8593,9 @@ gamelift_suspend_game_server_group <- function(GameServerGroupName, SuspendActio
 #' maximum tag limit may be lower than stated. See [Tagging AWS
 #' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
 #' for actual tagging limits.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7000,7 +8678,7 @@ gamelift_tag_resource <- function(ResourceARN, Tags) {
 #' gamelift_untag_resource(ResourceARN, TagKeys)
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html))
 #' that is assigned to and uniquely identifies the GameLift resource that
 #' you want to remove tags from. GameLift resource ARNs are included in the
 #' data object for the resource, which can be retrieved by calling a List
@@ -7008,6 +8686,9 @@ gamelift_tag_resource <- function(ResourceARN, Tags) {
 #' @param TagKeys &#91;required&#93; A list of one or more tag keys to remove from the specified GameLift
 #' resource. An AWS resource can have only one tag with a specific tag key,
 #' so specifying the tag key identifies which tag to remove.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7069,6 +8750,30 @@ gamelift_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param Description A human-readable description of the alias.
 #' @param RoutingStrategy The routing configuration, including routing type and fleet target, for
 #' the alias.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Alias = list(
+#'     AliasId = "string",
+#'     Name = "string",
+#'     AliasArn = "string",
+#'     Description = "string",
+#'     RoutingStrategy = list(
+#'       Type = "SIMPLE"|"TERMINAL",
+#'       FleetId = "string",
+#'       Message = "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7139,6 +8844,25 @@ gamelift_update_alias <- function(AliasId, Name = NULL, Description = NULL, Rout
 #' need to be unique.
 #' @param Version Version information that is associated with a build or script. Version
 #' strings do not need to be unique.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Build = list(
+#'     BuildId = "string",
+#'     BuildArn = "string",
+#'     Name = "string",
+#'     Version = "string",
+#'     Status = "INITIALIZED"|"READY"|"FAILED",
+#'     SizeOnDisk = 123,
+#'     OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7232,6 +8956,14 @@ gamelift_update_build <- function(BuildId, Name = NULL, Version = NULL) {
 #' an existing metric group name to add this fleet to the group. Or use a
 #' new name to create a new metric group. A fleet can only be included in
 #' one metric group at a time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7335,6 +9067,14 @@ gamelift_update_fleet_attributes <- function(FleetId, Name = NULL, Description =
 #' @param MaxSize The maximum value allowed for the fleet's instance count. Default if not
 #' set is 1.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_fleet_capacity(
@@ -7411,6 +9151,14 @@ gamelift_update_fleet_capacity <- function(FleetId, DesiredInstances = NULL, Min
 #' either the fleet ID or ARN value.
 #' @param InboundPermissionAuthorizations A collection of port settings to be added to the fleet resource.
 #' @param InboundPermissionRevocations A collection of port settings to be removed from the fleet resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7525,6 +9273,32 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #' @param HealthCheck Indicates health status of the game server. A request that includes this
 #' parameter updates the game server's *LastHealthCheckTime* timestamp.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServer = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     GameServerId = "string",
+#'     InstanceId = "string",
+#'     ConnectionInfo = "string",
+#'     GameServerData = "string",
+#'     ClaimStatus = "CLAIMED",
+#'     UtilizationStatus = "AVAILABLE"|"UTILIZED",
+#'     RegistrationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastClaimTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastHealthCheckTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_game_server(
@@ -7604,7 +9378,7 @@ gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameS
 #' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
 #' GameServerGroup name or ARN value.
 #' @param RoleArn The Amazon Resource Name
-#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+#' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html))
 #' for an IAM role that allows Amazon GameLift to access your EC2 Auto
 #' Scaling groups.
 #' @param InstanceDefinitions An updated list of EC2 instance types to use in the Auto Scaling group.
@@ -7649,6 +9423,38 @@ gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameS
 #' -   `ON_DEMAND_ONLY` - Only On-Demand Instances are used in the game
 #'     server group. No Spot Instances are used, even when available, while
 #'     this balancing strategy is in force.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameServerGroup = list(
+#'     GameServerGroupName = "string",
+#'     GameServerGroupArn = "string",
+#'     RoleArn = "string",
+#'     InstanceDefinitions = list(
+#'       list(
+#'         InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'         WeightedCapacity = "string"
+#'       )
+#'     ),
+#'     BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+#'     GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+#'     AutoScalingGroupArn = "string",
+#'     Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+#'     StatusReason = "string",
+#'     SuspendedActions = list(
+#'       "REPLACE_INSTANCE_TYPES"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7735,6 +9541,42 @@ gamelift_update_game_server_group <- function(GameServerGroupName, RoleArn = NUL
 #' -   **FullProtection** -- If the game session is in an `ACTIVE` status,
 #'     it cannot be terminated during a scale-down event.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSession = list(
+#'     GameSessionId = "string",
+#'     Name = "string",
+#'     FleetId = "string",
+#'     FleetArn = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TerminationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CurrentPlayerSessionCount = 123,
+#'     MaximumPlayerSessionCount = 123,
+#'     Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+#'     StatusReason = "INTERRUPTED",
+#'     GameProperties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     IpAddress = "string",
+#'     DnsName = "string",
+#'     Port = 123,
+#'     PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+#'     CreatorId = "string",
+#'     GameSessionData = "string",
+#'     MatchmakerData = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_game_session(
@@ -7814,6 +9656,29 @@ gamelift_update_game_session <- function(GameSessionId, MaximumPlayerSessionCoun
 #' requests in the queue. Fleets are identified by either a fleet ARN or a
 #' fleet alias ARN. Destinations are listed in default preference order.
 #' When updating this list, provide a complete list of destinations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GameSessionQueue = list(
+#'     Name = "string",
+#'     GameSessionQueueArn = "string",
+#'     TimeoutInSeconds = 123,
+#'     PlayerLatencyPolicies = list(
+#'       list(
+#'         MaximumIndividualPlayerLatencyMilliseconds = 123,
+#'         PolicyDurationSeconds = 123
+#'       )
+#'     ),
+#'     Destinations = list(
+#'       list(
+#'         DestinationArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7963,8 +9828,43 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'     [MatchmakingSucceeded](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html#match-events-matchmakingsucceeded)
 #'     event.
 #' 
-#' -   **WITH\\_QUEUE** - FlexMatch forms matches and uses the specified
+#' -   **WITH_QUEUE** - FlexMatch forms matches and uses the specified
 #'     GameLift queue to start a game session for the match.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Configuration = list(
+#'     Name = "string",
+#'     ConfigurationArn = "string",
+#'     Description = "string",
+#'     GameSessionQueueArns = list(
+#'       "string"
+#'     ),
+#'     RequestTimeoutSeconds = 123,
+#'     AcceptanceTimeoutSeconds = 123,
+#'     AcceptanceRequired = TRUE|FALSE,
+#'     RuleSetName = "string",
+#'     RuleSetArn = "string",
+#'     NotificationTarget = "string",
+#'     AdditionalPlayerCount = 123,
+#'     CustomEventData = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     GameProperties = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     GameSessionData = "string",
+#'     BackfillMode = "AUTOMATIC"|"MANUAL",
+#'     FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8076,6 +9976,24 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #' each instance. A CreateFleet request must include a runtime
 #' configuration with at least one server process configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuntimeConfiguration = list(
+#'     ServerProcesses = list(
+#'       list(
+#'         LaunchPath = "string",
+#'         Parameters = "string",
+#'         ConcurrentExecutions = 123
+#'       )
+#'     ),
+#'     MaxConcurrentGameSessionActivations = 123,
+#'     GameSessionActivationTimeoutSeconds = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_runtime_configuration(
@@ -8179,6 +10097,29 @@ gamelift_update_runtime_configuration <- function(FleetId, RuntimeConfiguration)
 #' indicate that the file data is a binary object. For example:
 #' `--zip-file fileb://myRealtimeScript.zip`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Script = list(
+#'     ScriptId = "string",
+#'     ScriptArn = "string",
+#'     Name = "string",
+#'     Version = "string",
+#'     SizeOnDisk = 123,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StorageLocation = list(
+#'       Bucket = "string",
+#'       Key = "string",
+#'       RoleArn = "string",
+#'       ObjectVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_script(
@@ -8251,6 +10192,14 @@ gamelift_update_script <- function(ScriptId, Name = NULL, Version = NULL, Storag
 #'
 #' @param RuleSetBody &#91;required&#93; A collection of matchmaking rules to validate, formatted as a JSON
 #' string.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Valid = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

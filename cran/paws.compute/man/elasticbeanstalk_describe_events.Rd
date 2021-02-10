@@ -47,6 +47,27 @@ with the most recent event.}
 \item{NextToken}{Pagination token. If specified, the events return the next batch of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Events = list(
+    list(
+      EventDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Message = "string",
+      ApplicationName = "string",
+      VersionLabel = "string",
+      TemplateName = "string",
+      EnvironmentName = "string",
+      PlatformArn = "string",
+      RequestId = "string",
+      Severity = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns list of event descriptions matching criteria up to the last 6
 weeks.

@@ -11,6 +11,9 @@ codedeploy_remove_tags_from_on_premises_instances(tags, instanceNames)
 
 \item{instanceNames}{[required] The names of the on-premises instances from which to remove tags.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags from one or more on-premises instances.
 }

@@ -38,6 +38,35 @@ optional value, both of which you define. Fargate profile tags do not
 propagate to any other resources associated with the Fargate profile,
 such as the pods that are scheduled with it.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  fargateProfile = list(
+    fargateProfileName = "string",
+    fargateProfileArn = "string",
+    clusterName = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    podExecutionRoleArn = "string",
+    subnets = list(
+      "string"
+    ),
+    selectors = list(
+      list(
+        namespace = "string",
+        labels = list(
+          "string"
+        )
+      )
+    ),
+    status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+    tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates an AWS Fargate profile for your Amazon EKS cluster. You must
 have at least one Fargate profile in a cluster to be able to run pods on

@@ -20,6 +20,338 @@ enter \code{false}.}
 \code{pageToken} in subsequent \code{GET} requests to get each successive page of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Jobs = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      PipelineId = "string",
+      Input = list(
+        Key = "string",
+        FrameRate = "string",
+        Resolution = "string",
+        AspectRatio = "string",
+        Interlaced = "string",
+        Container = "string",
+        Encryption = list(
+          Mode = "string",
+          Key = "string",
+          KeyMd5 = "string",
+          InitializationVector = "string"
+        ),
+        TimeSpan = list(
+          StartTime = "string",
+          Duration = "string"
+        ),
+        InputCaptions = list(
+          MergePolicy = "string",
+          CaptionSources = list(
+            list(
+              Key = "string",
+              Language = "string",
+              TimeOffset = "string",
+              Label = "string",
+              Encryption = list(
+                Mode = "string",
+                Key = "string",
+                KeyMd5 = "string",
+                InitializationVector = "string"
+              )
+            )
+          )
+        ),
+        DetectedProperties = list(
+          Width = 123,
+          Height = 123,
+          FrameRate = "string",
+          FileSize = 123,
+          DurationMillis = 123
+        )
+      ),
+      Inputs = list(
+        list(
+          Key = "string",
+          FrameRate = "string",
+          Resolution = "string",
+          AspectRatio = "string",
+          Interlaced = "string",
+          Container = "string",
+          Encryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          ),
+          TimeSpan = list(
+            StartTime = "string",
+            Duration = "string"
+          ),
+          InputCaptions = list(
+            MergePolicy = "string",
+            CaptionSources = list(
+              list(
+                Key = "string",
+                Language = "string",
+                TimeOffset = "string",
+                Label = "string",
+                Encryption = list(
+                  Mode = "string",
+                  Key = "string",
+                  KeyMd5 = "string",
+                  InitializationVector = "string"
+                )
+              )
+            )
+          ),
+          DetectedProperties = list(
+            Width = 123,
+            Height = 123,
+            FrameRate = "string",
+            FileSize = 123,
+            DurationMillis = 123
+          )
+        )
+      ),
+      Output = list(
+        Id = "string",
+        Key = "string",
+        ThumbnailPattern = "string",
+        ThumbnailEncryption = list(
+          Mode = "string",
+          Key = "string",
+          KeyMd5 = "string",
+          InitializationVector = "string"
+        ),
+        Rotate = "string",
+        PresetId = "string",
+        SegmentDuration = "string",
+        Status = "string",
+        StatusDetail = "string",
+        Duration = 123,
+        Width = 123,
+        Height = 123,
+        FrameRate = "string",
+        FileSize = 123,
+        DurationMillis = 123,
+        Watermarks = list(
+          list(
+            PresetWatermarkId = "string",
+            InputKey = "string",
+            Encryption = list(
+              Mode = "string",
+              Key = "string",
+              KeyMd5 = "string",
+              InitializationVector = "string"
+            )
+          )
+        ),
+        AlbumArt = list(
+          MergePolicy = "string",
+          Artwork = list(
+            list(
+              InputKey = "string",
+              MaxWidth = "string",
+              MaxHeight = "string",
+              SizingPolicy = "string",
+              PaddingPolicy = "string",
+              AlbumArtFormat = "string",
+              Encryption = list(
+                Mode = "string",
+                Key = "string",
+                KeyMd5 = "string",
+                InitializationVector = "string"
+              )
+            )
+          )
+        ),
+        Composition = list(
+          list(
+            TimeSpan = list(
+              StartTime = "string",
+              Duration = "string"
+            )
+          )
+        ),
+        Captions = list(
+          MergePolicy = "string",
+          CaptionSources = list(
+            list(
+              Key = "string",
+              Language = "string",
+              TimeOffset = "string",
+              Label = "string",
+              Encryption = list(
+                Mode = "string",
+                Key = "string",
+                KeyMd5 = "string",
+                InitializationVector = "string"
+              )
+            )
+          ),
+          CaptionFormats = list(
+            list(
+              Format = "string",
+              Pattern = "string",
+              Encryption = list(
+                Mode = "string",
+                Key = "string",
+                KeyMd5 = "string",
+                InitializationVector = "string"
+              )
+            )
+          )
+        ),
+        Encryption = list(
+          Mode = "string",
+          Key = "string",
+          KeyMd5 = "string",
+          InitializationVector = "string"
+        ),
+        AppliedColorSpaceConversion = "string"
+      ),
+      Outputs = list(
+        list(
+          Id = "string",
+          Key = "string",
+          ThumbnailPattern = "string",
+          ThumbnailEncryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          ),
+          Rotate = "string",
+          PresetId = "string",
+          SegmentDuration = "string",
+          Status = "string",
+          StatusDetail = "string",
+          Duration = 123,
+          Width = 123,
+          Height = 123,
+          FrameRate = "string",
+          FileSize = 123,
+          DurationMillis = 123,
+          Watermarks = list(
+            list(
+              PresetWatermarkId = "string",
+              InputKey = "string",
+              Encryption = list(
+                Mode = "string",
+                Key = "string",
+                KeyMd5 = "string",
+                InitializationVector = "string"
+              )
+            )
+          ),
+          AlbumArt = list(
+            MergePolicy = "string",
+            Artwork = list(
+              list(
+                InputKey = "string",
+                MaxWidth = "string",
+                MaxHeight = "string",
+                SizingPolicy = "string",
+                PaddingPolicy = "string",
+                AlbumArtFormat = "string",
+                Encryption = list(
+                  Mode = "string",
+                  Key = "string",
+                  KeyMd5 = "string",
+                  InitializationVector = "string"
+                )
+              )
+            )
+          ),
+          Composition = list(
+            list(
+              TimeSpan = list(
+                StartTime = "string",
+                Duration = "string"
+              )
+            )
+          ),
+          Captions = list(
+            MergePolicy = "string",
+            CaptionSources = list(
+              list(
+                Key = "string",
+                Language = "string",
+                TimeOffset = "string",
+                Label = "string",
+                Encryption = list(
+                  Mode = "string",
+                  Key = "string",
+                  KeyMd5 = "string",
+                  InitializationVector = "string"
+                )
+              )
+            ),
+            CaptionFormats = list(
+              list(
+                Format = "string",
+                Pattern = "string",
+                Encryption = list(
+                  Mode = "string",
+                  Key = "string",
+                  KeyMd5 = "string",
+                  InitializationVector = "string"
+                )
+              )
+            )
+          ),
+          Encryption = list(
+            Mode = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string"
+          ),
+          AppliedColorSpaceConversion = "string"
+        )
+      ),
+      OutputKeyPrefix = "string",
+      Playlists = list(
+        list(
+          Name = "string",
+          Format = "string",
+          OutputKeys = list(
+            "string"
+          ),
+          HlsContentProtection = list(
+            Method = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            InitializationVector = "string",
+            LicenseAcquisitionUrl = "string",
+            KeyStoragePolicy = "string"
+          ),
+          PlayReadyDrm = list(
+            Format = "string",
+            Key = "string",
+            KeyMd5 = "string",
+            KeyId = "string",
+            InitializationVector = "string",
+            LicenseAcquisitionUrl = "string"
+          ),
+          Status = "string",
+          StatusDetail = "string"
+        )
+      ),
+      Status = "string",
+      UserMetadata = list(
+        "string"
+      ),
+      Timing = list(
+        SubmitTimeMillis = 123,
+        StartTimeMillis = 123,
+        FinishTimeMillis = 123
+      )
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 The ListJobsByStatus operation gets a list of jobs that have a specified
 status. The response body contains one element for each job that

@@ -9,6 +9,107 @@ iotanalytics_describe_dataset(datasetName)
 \arguments{
 \item{datasetName}{[required] The name of the data set whose information is retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  dataset = list(
+    name = "string",
+    arn = "string",
+    actions = list(
+      list(
+        actionName = "string",
+        queryAction = list(
+          sqlQuery = "string",
+          filters = list(
+            list(
+              deltaTime = list(
+                offsetSeconds = 123,
+                timeExpression = "string"
+              )
+            )
+          )
+        ),
+        containerAction = list(
+          image = "string",
+          executionRoleArn = "string",
+          resourceConfiguration = list(
+            computeType = "ACU_1"|"ACU_2",
+            volumeSizeInGB = 123
+          ),
+          variables = list(
+            list(
+              name = "string",
+              stringValue = "string",
+              doubleValue = 123.0,
+              datasetContentVersionValue = list(
+                datasetName = "string"
+              ),
+              outputFileUriValue = list(
+                fileName = "string"
+              )
+            )
+          )
+        )
+      )
+    ),
+    triggers = list(
+      list(
+        schedule = list(
+          expression = "string"
+        ),
+        dataset = list(
+          name = "string"
+        )
+      )
+    ),
+    contentDeliveryRules = list(
+      list(
+        entryName = "string",
+        destination = list(
+          iotEventsDestinationConfiguration = list(
+            inputName = "string",
+            roleArn = "string"
+          ),
+          s3DestinationConfiguration = list(
+            bucket = "string",
+            key = "string",
+            glueConfiguration = list(
+              tableName = "string",
+              databaseName = "string"
+            ),
+            roleArn = "string"
+          )
+        )
+      )
+    ),
+    status = "CREATING"|"ACTIVE"|"DELETING",
+    creationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    retentionPeriod = list(
+      unlimited = TRUE|FALSE,
+      numberOfDays = 123
+    ),
+    versioningConfiguration = list(
+      unlimited = TRUE|FALSE,
+      maxVersions = 123
+    ),
+    lateDataRules = list(
+      list(
+        ruleName = "string",
+        ruleConfiguration = list(
+          deltaTimeSessionWindowConfiguration = list(
+            timeoutInMinutes = 123
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about a dataset.
 }

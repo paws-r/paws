@@ -28,6 +28,28 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CreateAccountStatuses = list(
+    list(
+      Id = "string",
+      AccountName = "string",
+      State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+      RequestedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompletedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      AccountId = "string",
+      GovCloudAccountId = "string",
+      FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the account creation requests that match the specified status that
 is currently being tracked for the organization.

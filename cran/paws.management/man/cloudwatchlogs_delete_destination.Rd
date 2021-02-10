@@ -10,6 +10,9 @@ cloudwatchlogs_delete_destination(destinationName)
 \arguments{
 \item{destinationName}{[required] The name of the destination.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified destination, and eventually disables all the
 subscription filters that publish to it. This operation does not delete

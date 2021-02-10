@@ -25,6 +25,29 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  EventSubscriptionsList = list(
+    list(
+      CustomerAwsId = "string",
+      CustSubscriptionId = "string",
+      SnsTopicArn = "string",
+      Status = "string",
+      SubscriptionCreationTime = "string",
+      SourceType = "string",
+      SourceIdsList = list(
+        "string"
+      ),
+      EventCategoriesList = list(
+        "string"
+      ),
+      Enabled = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Lists all the event subscriptions for a customer account. The
 description of a subscription includes \code{SubscriptionName},

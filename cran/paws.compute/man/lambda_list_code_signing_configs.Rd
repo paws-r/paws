@@ -12,6 +12,28 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Maximum number of items to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  CodeSigningConfigs = list(
+    list(
+      CodeSigningConfigId = "string",
+      CodeSigningConfigArn = "string",
+      Description = "string",
+      AllowedPublishers = list(
+        SigningProfileVersionArns = list(
+          "string"
+        )
+      ),
+      CodeSigningPolicies = list(
+        UntrustedArtifactOnDeployment = "Warn"|"Enforce"
+      ),
+      LastModified = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/}{code signing configurations}. A
 request returns up to 10,000 configurations per call. You can use the

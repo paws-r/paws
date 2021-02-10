@@ -16,6 +16,22 @@ configservice_select_resource_config(Expression, Limit, NextToken)
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Results = list(
+    "string"
+  ),
+  QueryInfo = list(
+    SelectFields = list(
+      list(
+        Name = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Accepts a structured query language (SQL) \code{SELECT} command, performs the
 corresponding search, and returns resource configurations matching the

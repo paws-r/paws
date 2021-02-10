@@ -29,6 +29,28 @@ in the \code{Marker} field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DefaultClusterParameters = list(
+    ParameterGroupFamily = "string",
+    Marker = "string",
+    Parameters = list(
+      list(
+        ParameterName = "string",
+        ParameterValue = "string",
+        Description = "string",
+        Source = "string",
+        DataType = "string",
+        AllowedValues = "string",
+        ApplyType = "static"|"dynamic",
+        IsModifiable = TRUE|FALSE,
+        MinimumEngineVersion = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of parameter settings for the specified parameter group
 family.

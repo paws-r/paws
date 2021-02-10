@@ -20,6 +20,33 @@ models.}
 
 \item{DeviceFleetName}{Filter for fleets containing this name in their device fleet name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceSummaries = list(
+    list(
+      DeviceName = "string",
+      DeviceArn = "string",
+      Description = "string",
+      DeviceFleetName = "string",
+      IotThingName = "string",
+      RegistrationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LatestHeartbeat = as.POSIXct(
+        "2015-01-01"
+      ),
+      Models = list(
+        list(
+          ModelName = "string",
+          ModelVersion = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 A list of devices.
 }

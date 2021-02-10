@@ -26,6 +26,26 @@ confidence values greater than or equal to 50 percent.}
 \item{HumanLoopConfig}{Sets up the configuration for human evaluation, including the
 FlowDefinition the image will be sent to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModerationLabels = list(
+    list(
+      Confidence = 123.0,
+      Name = "string",
+      ParentName = "string"
+    )
+  ),
+  ModerationModelVersion = "string",
+  HumanLoopActivationOutput = list(
+    HumanLoopArn = "string",
+    HumanLoopActivationReasons = list(
+      "string"
+    ),
+    HumanLoopActivationConditionsEvaluationResults = "string"
+  )
+)
+}
+}
 \description{
 Detects unsafe content in a specified JPEG or PNG format image. Use
 \code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to

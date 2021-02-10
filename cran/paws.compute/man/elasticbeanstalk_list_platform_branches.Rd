@@ -50,6 +50,23 @@ identical to the ones specified in the initial request.
 
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlatformBranchSummaryList = list(
+    list(
+      PlatformName = "string",
+      BranchName = "string",
+      LifecycleState = "string",
+      BranchOrder = 123,
+      SupportedTierList = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the platform branches available for your account in an AWS Region.
 Provides summary information about each platform branch.

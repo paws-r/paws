@@ -9,6 +9,9 @@ apigateway_delete_usage_plan(usagePlanId)
 \arguments{
 \item{usagePlanId}{[required] [Required] The Id of the to-be-deleted usage plan.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a usage plan of a given plan Id.
 }

@@ -17,6 +17,9 @@ passed.}
 the closest AWS Region to users, which may be outside of your home
 Region.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates fleet metadata, such as DisplayName.
 }

@@ -27,6 +27,70 @@ existing data.}
 \item{virtualGatewayName}{[required] The name of the virtual gateway that the gateway route is associated
 with.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  gatewayRoute = list(
+    gatewayRouteName = "string",
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    spec = list(
+      grpcRoute = list(
+        action = list(
+          target = list(
+            virtualService = list(
+              virtualServiceName = "string"
+            )
+          )
+        ),
+        match = list(
+          serviceName = "string"
+        )
+      ),
+      http2Route = list(
+        action = list(
+          target = list(
+            virtualService = list(
+              virtualServiceName = "string"
+            )
+          )
+        ),
+        match = list(
+          prefix = "string"
+        )
+      ),
+      httpRoute = list(
+        action = list(
+          target = list(
+            virtualService = list(
+              virtualServiceName = "string"
+            )
+          )
+        ),
+        match = list(
+          prefix = "string"
+        )
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    ),
+    virtualGatewayName = "string"
+  )
+)
+}
+}
 \description{
 Updates an existing gateway route that is associated to a specified
 virtual gateway in a service mesh.

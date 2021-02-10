@@ -55,6 +55,36 @@ deployment group.
 \code{\link[=codedeploy_list_application_revisions]{list_application_revisions}}
 call. It can be used to return the next set of applications in the list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  revisions = list(
+    list(
+      revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
+      s3Location = list(
+        bucket = "string",
+        key = "string",
+        bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
+        version = "string",
+        eTag = "string"
+      ),
+      gitHubLocation = list(
+        repository = "string",
+        commitId = "string"
+      ),
+      string = list(
+        content = "string",
+        sha256 = "string"
+      ),
+      appSpecContent = list(
+        content = "string",
+        sha256 = "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists information about revisions for an application.
 }

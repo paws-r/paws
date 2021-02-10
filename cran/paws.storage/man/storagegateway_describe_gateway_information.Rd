@@ -11,6 +11,40 @@ storagegateway_describe_gateway_information(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  GatewayId = "string",
+  GatewayName = "string",
+  GatewayTimezone = "string",
+  GatewayState = "string",
+  GatewayNetworkInterfaces = list(
+    list(
+      Ipv4Address = "string",
+      MacAddress = "string",
+      Ipv6Address = "string"
+    )
+  ),
+  GatewayType = "string",
+  NextUpdateAvailabilityDate = "string",
+  LastSoftwareUpdate = "string",
+  Ec2InstanceId = "string",
+  Ec2InstanceRegion = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  VPCEndpoint = "string",
+  CloudWatchLogGroupARN = "string",
+  HostEnvironment = "VMWARE"|"HYPER-V"|"EC2"|"KVM"|"OTHER",
+  EndpointType = "string",
+  SoftwareUpdatesEndDate = "string",
+  DeprecationDate = "string"
+)
+}
+}
 \description{
 Returns metadata about a gateway such as its name, network interfaces,
 configured time zone, and the state (whether the gateway is running or

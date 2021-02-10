@@ -21,6 +21,48 @@ the value to \code{true} to upgrade the server to Chef Automate 2. For
 more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html}{Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2}.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Server = list(
+    AssociatePublicIpAddress = TRUE|FALSE,
+    BackupRetentionCount = 123,
+    ServerName = "string",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    CloudFormationStackArn = "string",
+    CustomDomain = "string",
+    DisableAutomatedBackup = TRUE|FALSE,
+    Endpoint = "string",
+    Engine = "string",
+    EngineModel = "string",
+    EngineAttributes = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    ),
+    EngineVersion = "string",
+    InstanceProfileArn = "string",
+    InstanceType = "string",
+    KeyPair = "string",
+    MaintenanceStatus = "SUCCESS"|"FAILED",
+    PreferredMaintenanceWindow = "string",
+    PreferredBackupWindow = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    ServiceRoleArn = "string",
+    Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+    StatusReason = "string",
+    SubnetIds = list(
+      "string"
+    ),
+    ServerArn = "string"
+  )
+)
+}
+}
 \description{
 Manually starts server maintenance. This command can be useful if an
 earlier maintenance attempt failed, and the underlying cause of

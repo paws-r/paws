@@ -11,6 +11,52 @@ amplify_delete_branch(appId, branchName)
 
 \item{branchName}{[required] The name for the branch.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  branch = list(
+    branchArn = "string",
+    branchName = "string",
+    description = "string",
+    tags = list(
+      "string"
+    ),
+    stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+    displayName = "string",
+    enableNotification = TRUE|FALSE,
+    createTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    updateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    environmentVariables = list(
+      "string"
+    ),
+    enableAutoBuild = TRUE|FALSE,
+    customDomains = list(
+      "string"
+    ),
+    framework = "string",
+    activeJobId = "string",
+    totalNumberOfJobs = "string",
+    enableBasicAuth = TRUE|FALSE,
+    enablePerformanceMode = TRUE|FALSE,
+    thumbnailUrl = "string",
+    basicAuthCredentials = "string",
+    buildSpec = "string",
+    ttl = "string",
+    associatedResources = list(
+      "string"
+    ),
+    enablePullRequestPreview = TRUE|FALSE,
+    pullRequestEnvironmentName = "string",
+    destinationBranch = "string",
+    sourceBranch = "string",
+    backendEnvironmentArn = "string"
+  )
+)
+}
+}
 \description{
 Deletes a branch for an Amplify app.
 }

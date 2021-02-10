@@ -25,6 +25,18 @@ If you have more than \code{MaxResults} tags, you can submit another
 request to get the next group of tags for the resource. In the next
 request, specify the value of \code{NextToken} from the previous response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the tags that you associated with the specified resource.
 }

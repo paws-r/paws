@@ -27,6 +27,12 @@ field: ':', '//', '/./', '/../'.
 Amazon ML needs permissions to store and retrieve the logs on your
 behalf. For information about how to set permissions, see the \href{https://docs.aws.amazon.com/machine-learning/latest/dg/}{Amazon Machine Learning Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BatchPredictionId = "string"
+)
+}
+}
 \description{
 Generates predictions for a group of observations. The observations to
 process exist in one or more data files referenced by a \code{DataSource}.

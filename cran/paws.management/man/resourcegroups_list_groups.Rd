@@ -40,6 +40,25 @@ indicates that more output is available. Set this parameter to the value
 provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupIdentifiers = list(
+    list(
+      GroupName = "string",
+      GroupArn = "string"
+    )
+  ),
+  Groups = list(
+    list(
+      GroupArn = "string",
+      Name = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of existing resource groups in your account.
 

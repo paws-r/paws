@@ -11,6 +11,9 @@ signer_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] A list of tag keys to be removed from the signing profile.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags from a signing profile. To remove the tags,
 specify a list of tag keys.

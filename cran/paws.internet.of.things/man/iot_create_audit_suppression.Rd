@@ -20,6 +20,9 @@ iot_create_audit_suppression(checkName, resourceIdentifier,
 
 \item{clientRequestToken}{[required] The epoch timestamp in seconds at which this suppression expires.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a Device Defender audit suppression.
 }

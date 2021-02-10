@@ -9,10 +9,13 @@ comprehend_delete_entity_recognizer(EntityRecognizerArn)
 \arguments{
 \item{EntityRecognizerArn}{[required] The Amazon Resource Name (ARN) that identifies the entity recognizer.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an entity recognizer.
 
-Only those recognizers that are in terminated states (IN\\_ERROR,
+Only those recognizers that are in terminated states (IN_ERROR,
 TRAINED) will be deleted. If an active inference job is using the model,
 a \code{ResourceInUseException} will be returned.
 

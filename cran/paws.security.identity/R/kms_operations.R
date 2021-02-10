@@ -48,6 +48,14 @@ NULL
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_key_deletion(
@@ -165,6 +173,9 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' operation.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$connect_custom_key_store(
@@ -256,7 +267,7 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #' by a name, such as `alias/ExampleAlias`.
 #' 
 #' The `AliasName` value must be string of 1-256 characters. It can contain
-#' only alphanumeric characters, forward slashes (/), underscores (\\_), and
+#' only alphanumeric characters, forward slashes (/), underscores (_), and
 #' dashes (-). The alias name cannot begin with `alias/aws/`. The
 #' `alias/aws/` prefix is reserved for [AWS managed
 #' CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
@@ -282,6 +293,9 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -400,6 +414,14 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' 
 #' This parameter tells AWS KMS the `kmsuser` account password; it does not
 #' change the password in the AWS CloudHSM cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomKeyStoreId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -586,6 +608,15 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' every [`create_grant`][kms_create_grant] request, even when a duplicate
 #' `GrantId` is returned. All grant tokens for the same grant ID can be
 #' used interchangeably.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GrantToken = "string",
+#'   GrantId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -928,6 +959,43 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' [kms:TagResource](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
 #' permission in an IAM policy.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyMetadata = list(
+#'     AWSAccountId = "string",
+#'     KeyId = "string",
+#'     Arn = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     Description = "string",
+#'     KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+#'     KeyState = "Enabled"|"Disabled"|"PendingDeletion"|"PendingImport"|"Unavailable",
+#'     DeletionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ValidTo = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
+#'     CustomKeyStoreId = "string",
+#'     CloudHsmClusterId = "string",
+#'     ExpirationModel = "KEY_MATERIAL_EXPIRES"|"KEY_MATERIAL_DOES_NOT_EXPIRE",
+#'     KeyManager = "AWS"|"CUSTOMER",
+#'     CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
+#'     EncryptionAlgorithms = list(
+#'       "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+#'     ),
+#'     SigningAlgorithms = list(
+#'       "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_key(
@@ -981,11 +1049,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 .kms$operations$create_key <- kms_create_key
 
 #' Decrypts ciphertext that was encrypted by a AWS KMS customer master key
-#' (CMK) using any of the following operations: - Encrypt - GenerateDataKey
-#' - GenerateDataKeyPair - GenerateDataKeyWithoutPlaintext -
-#' GenerateDataKeyPairWithoutPlaintext You can use this operation to
-#' decrypt ciphertext that was encrypted under a symmetric or asymmetric
-#' CMK
+#' (CMK) using any of the following operations:
 #'
 #' @description
 #' Decrypts ciphertext that was encrypted by a AWS KMS customer master key
@@ -1015,7 +1079,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' as the [AWS Encryption
 #' SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/)
 #' or [Amazon S3 client-side
-#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
+#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html).
 #' These libraries return a ciphertext format that is incompatible with AWS
 #' KMS.
 #' 
@@ -1129,6 +1193,16 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' an asymmetric CMK. The default value, `SYMMETRIC_DEFAULT`, represents
 #' the only supported algorithm that is valid for symmetric CMKs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string",
+#'   Plaintext = raw,
+#'   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$decrypt(
@@ -1219,6 +1293,9 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 #'
 #' @param AliasName &#91;required&#93; The alias to be deleted. The alias name must begin with `alias/`
 #' followed by the alias name, such as `alias/ExampleAlias`.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1327,6 +1404,9 @@ kms_delete_alias <- function(AliasName) {
 #' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' operation.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_key_store(
@@ -1406,6 +1486,9 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1524,6 +1607,28 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' @param Marker Use this parameter in a subsequent request after you receive a response
 #' with truncated results. Set it to the value of `NextMarker` from the
 #' truncated response you just received.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomKeyStores = list(
+#'     list(
+#'       CustomKeyStoreId = "string",
+#'       CustomKeyStoreName = "string",
+#'       CloudHsmClusterId = "string",
+#'       TrustAnchorCertificate = "string",
+#'       ConnectionState = "CONNECTED"|"CONNECTING"|"FAILED"|"DISCONNECTED"|"DISCONNECTING",
+#'       ConnectionErrorCode = "INVALID_CREDENTIALS"|"CLUSTER_NOT_FOUND"|"NETWORK_ERRORS"|"INTERNAL_ERROR"|"INSUFFICIENT_CLOUDHSM_HSMS"|"USER_LOCKED_OUT"|"USER_NOT_FOUND"|"USER_LOGGED_IN"|"SUBNET_NOT_FOUND",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1662,6 +1767,43 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyMetadata = list(
+#'     AWSAccountId = "string",
+#'     KeyId = "string",
+#'     Arn = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     Description = "string",
+#'     KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+#'     KeyState = "Enabled"|"Disabled"|"PendingDeletion"|"PendingImport"|"Unavailable",
+#'     DeletionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ValidTo = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Origin = "AWS_KMS"|"EXTERNAL"|"AWS_CLOUDHSM",
+#'     CustomKeyStoreId = "string",
+#'     CloudHsmClusterId = "string",
+#'     ExpirationModel = "KEY_MATERIAL_EXPIRES"|"KEY_MATERIAL_DOES_NOT_EXPIRE",
+#'     KeyManager = "AWS"|"CUSTOMER",
+#'     CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
+#'     EncryptionAlgorithms = list(
+#'       "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+#'     ),
+#'     SigningAlgorithms = list(
+#'       "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_key(
@@ -1743,6 +1885,9 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1831,6 +1976,9 @@ kms_disable_key <- function(KeyId) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1926,6 +2074,9 @@ kms_disable_key_rotation <- function(KeyId) {
 #' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' operation.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disconnect_custom_key_store(
@@ -1990,6 +2141,9 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2075,6 +2229,9 @@ kms_enable_key <- function(KeyId) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2264,7 +2421,17 @@ kms_enable_key_rotation <- function(KeyId) {
 #' 
 #' This parameter is required only for asymmetric CMKs. The default value,
 #' `SYMMETRIC_DEFAULT`, is the algorithm used for symmetric CMKs. If you
-#' are using an asymmetric CMK, we recommend RSAES\\_OAEP\\_SHA\\_256.
+#' are using an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CiphertextBlob = raw,
+#'   KeyId = "string",
+#'   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2363,7 +2530,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' the [Amazon DynamoDB Encryption
 #' Client](https://docs.aws.amazon.com/dynamodb-encryption-client/latest/devguide/),
 #' or [Amazon S3 client-side
-#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html)
+#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html)
 #' to do these tasks for you.
 #' 
 #' To encrypt data outside of AWS KMS:
@@ -2464,6 +2631,16 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' For more information, see [Grant
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CiphertextBlob = raw,
+#'   Plaintext = raw,
+#'   KeyId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2638,6 +2815,18 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrivateKeyCiphertextBlob = raw,
+#'   PrivateKeyPlaintext = raw,
+#'   PublicKey = raw,
+#'   KeyId = "string",
+#'   KeyPairSpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_data_key_pair(
@@ -2787,6 +2976,17 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' For more information, see [Grant
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrivateKeyCiphertextBlob = raw,
+#'   PublicKey = raw,
+#'   KeyId = "string",
+#'   KeyPairSpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2947,6 +3147,15 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CiphertextBlob = raw,
+#'   KeyId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_data_key_without_plaintext(
@@ -3022,6 +3231,14 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Plaintext = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_random(
@@ -3091,6 +3308,14 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
 #' @param PolicyName &#91;required&#93; Specifies the name of the key policy. The only valid name is `default`.
 #' To get the names of key policies, use
 #' [`list_key_policies`][kms_list_key_policies].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3189,6 +3414,14 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyRotationEnabled = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3299,6 +3532,19 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' in the *AWS Key Management Service Developer Guide*.
 #' @param WrappingKeySpec &#91;required&#93; The type of wrapping key (public key) to return in the response. Only
 #' 2048-bit RSA public keys are supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string",
+#'   ImportToken = raw,
+#'   PublicKey = raw,
+#'   ParametersValidTo = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3433,6 +3679,23 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' For more information, see [Grant
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string",
+#'   PublicKey = raw,
+#'   CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
+#'   KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+#'   EncryptionAlgorithms = list(
+#'     "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+#'   ),
+#'   SigningAlgorithms = list(
+#'     "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3582,6 +3845,9 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' parameter. When this parameter is set to `KEY_MATERIAL_DOES_NOT_EXPIRE`,
 #' you must omit the `ValidTo` parameter.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_key_material(
@@ -3698,6 +3964,28 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #' with truncated results. Set it to the value of `NextMarker` from the
 #' truncated response you just received.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Aliases = list(
+#'     list(
+#'       AliasName = "string",
+#'       AliasArn = "string",
+#'       TargetKeyId = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_aliases(
@@ -3790,6 +4078,39 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grants = list(
+#'     list(
+#'       KeyId = "string",
+#'       GrantId = "string",
+#'       Name = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       GranteePrincipal = "string",
+#'       RetiringPrincipal = "string",
+#'       IssuingAccount = "string",
+#'       Operations = list(
+#'         "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"Sign"|"Verify"|"GetPublicKey"|"CreateGrant"|"RetireGrant"|"DescribeKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"
+#'       ),
+#'       Constraints = list(
+#'         EncryptionContextSubset = list(
+#'           "string"
+#'         ),
+#'         EncryptionContextEquals = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_grants(
@@ -3877,6 +4198,18 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId) {
 #' with truncated results. Set it to the value of `NextMarker` from the
 #' truncated response you just received.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyNames = list(
+#'     "string"
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_key_policies(
@@ -3950,6 +4283,21 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' @param Marker Use this parameter in a subsequent request after you receive a response
 #' with truncated results. Set it to the value of `NextMarker` from the
 #' truncated response you just received.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Keys = list(
+#'     list(
+#'       KeyId = "string",
+#'       KeyArn = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4038,6 +4386,21 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #' 
 #' Do not attempt to construct this value. Use only the value of
 #' `NextMarker` from the truncated response you just received.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       TagKey = "string",
+#'       TagValue = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4133,6 +4496,39 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' (IAM)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
 #' in the Example ARNs section of the *Amazon Web Services General
 #' Reference*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grants = list(
+#'     list(
+#'       KeyId = "string",
+#'       GrantId = "string",
+#'       Name = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       GranteePrincipal = "string",
+#'       RetiringPrincipal = "string",
+#'       IssuingAccount = "string",
+#'       Operations = list(
+#'         "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"Sign"|"Verify"|"GetPublicKey"|"CreateGrant"|"RetireGrant"|"DescribeKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"
+#'       ),
+#'       Constraints = list(
+#'         EncryptionContextSubset = list(
+#'           "string"
+#'         ),
+#'         EncryptionContextEquals = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4257,6 +4653,9 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' The default value is false.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_key_policy(
@@ -4272,7 +4671,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' # The following example attaches a key policy to the specified CMK.
 #' svc$put_key_policy(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   Policy = "\{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n...",
+#'   Policy = "\{\n    "Version": "2012-10-17",\n    "Id": "custom-policy-2016-12-07",\n ...",
 #'   PolicyName = "default"
 #' )
 #' }
@@ -4320,7 +4719,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' other libraries, such as the [AWS Encryption
 #' SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/)
 #' or [Amazon S3 client-side
-#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
+#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html).
 #' These libraries return a ciphertext format that is incompatible with AWS
 #' KMS.
 #' 
@@ -4509,6 +4908,18 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CiphertextBlob = raw,
+#'   SourceKeyId = "string",
+#'   KeyId = "string",
+#'   SourceEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
+#'   DestinationEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$re_encrypt(
@@ -4612,6 +5023,9 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' -   Grant ID Example -
 #'     0123456789012345678901234567890123456789012345678901234567890123
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$retire_grant(
@@ -4693,6 +5107,9 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
 #' @param GrantId &#91;required&#93; Identifier of the grant to be revoked.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4803,6 +5220,17 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' 
 #' This value is optional. If you include a value, it must be between 7 and
 #' 30, inclusive. If you do not include a value, it defaults to 30.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string",
+#'   DeletionDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4949,6 +5377,16 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' Choose an algorithm that is compatible with the type and size of the
 #' specified asymmetric CMK.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string",
+#'   Signature = raw,
+#'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$sign(
@@ -5052,6 +5490,9 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #' specify an existing tag key with a different tag value, AWS KMS replaces
 #' the current tag value with the specified one.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -5154,6 +5595,9 @@ kms_tag_resource <- function(KeyId, Tags) {
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
 #' @param TagKeys &#91;required&#93; One or more tag keys. Specify only the tag keys, not the tag values.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5285,6 +5729,9 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' 
 #' To verify that the alias is mapped to the correct CMK, use
 #' [`list_aliases`][kms_list_aliases].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5419,6 +5866,9 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
 #' operation.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_custom_key_store(
@@ -5490,6 +5940,9 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 #' To get the key ID and key ARN for a CMK, use
 #' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
 #' @param Description &#91;required&#93; New description for the CMK.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5627,6 +6080,16 @@ kms_update_key_description <- function(KeyId, Description) {
 #' For more information, see [Grant
 #' Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 #' in the *AWS Key Management Service Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string",
+#'   SignatureValid = TRUE|FALSE,
+#'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

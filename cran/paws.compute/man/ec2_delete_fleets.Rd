@@ -24,6 +24,27 @@ specify \code{NoTerminateInstances}. Supported only for fleets of type
 For \code{instant} fleets, you cannot specify \code{NoTerminateInstances}. A
 deleted \code{instant} fleet with running instances is not supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SuccessfulFleetDeletions = list(
+    list(
+      CurrentFleetState = "submitted"|"active"|"deleted"|"failed"|"deleted_running"|"deleted_terminating"|"modifying",
+      PreviousFleetState = "submitted"|"active"|"deleted"|"failed"|"deleted_running"|"deleted_terminating"|"modifying",
+      FleetId = "string"
+    )
+  ),
+  UnsuccessfulFleetDeletions = list(
+    list(
+      Error = list(
+        Code = "fleetIdDoesNotExist"|"fleetIdMalformed"|"fleetNotInDeletableState"|"unexpectedError",
+        Message = "string"
+      ),
+      FleetId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes the specified EC2 Fleet.
 

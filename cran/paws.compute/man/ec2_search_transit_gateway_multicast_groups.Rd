@@ -42,6 +42,27 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MulticastGroups = list(
+    list(
+      GroupIpAddress = "string",
+      TransitGatewayAttachmentId = "string",
+      SubnetId = "string",
+      ResourceId = "string",
+      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+      ResourceOwnerId = "string",
+      NetworkInterfaceId = "string",
+      GroupMember = TRUE|FALSE,
+      GroupSource = TRUE|FALSE,
+      MemberType = "static"|"igmp",
+      SourceType = "static"|"igmp"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Searches one or more transit gateway multicast groups and returns the
 group membership information.

@@ -37,6 +37,49 @@ Conditional: You must specify only one of the following parameters:
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      DefaultValue = "string",
+      ParameterType = "string",
+      NoEcho = TRUE|FALSE,
+      Description = "string",
+      ParameterConstraints = list(
+        AllowedValues = list(
+          "string"
+        )
+      )
+    )
+  ),
+  Description = "string",
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  CapabilitiesReason = "string",
+  ResourceTypes = list(
+    "string"
+  ),
+  Version = "string",
+  Metadata = "string",
+  DeclaredTransforms = list(
+    "string"
+  ),
+  ResourceIdentifierSummaries = list(
+    list(
+      ResourceType = "string",
+      LogicalResourceIds = list(
+        "string"
+      ),
+      ResourceIdentifiers = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a new or existing template. The
 \code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is

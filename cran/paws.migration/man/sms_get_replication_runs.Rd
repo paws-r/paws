@@ -15,6 +15,88 @@ sms_get_replication_runs(replicationJobId, nextToken, maxResults)
 value is 50. To retrieve the remaining results, make another call with
 the returned \code{NextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  replicationJob = list(
+    replicationJobId = "string",
+    serverId = "string",
+    serverType = "VIRTUAL_MACHINE",
+    vmServer = list(
+      vmServerAddress = list(
+        vmManagerId = "string",
+        vmId = "string"
+      ),
+      vmName = "string",
+      vmManagerName = "string",
+      vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+      vmPath = "string"
+    ),
+    seedReplicationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    frequency = 123,
+    runOnce = TRUE|FALSE,
+    nextReplicationRunStartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    licenseType = "AWS"|"BYOL",
+    roleName = "string",
+    latestAmiId = "string",
+    state = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED"|"COMPLETED"|"PAUSED_ON_FAILURE"|"FAILING",
+    statusMessage = "string",
+    description = "string",
+    numberOfRecentAmisToKeep = 123,
+    encrypted = TRUE|FALSE,
+    kmsKeyId = "string",
+    replicationRunList = list(
+      list(
+        replicationRunId = "string",
+        state = "PENDING"|"MISSED"|"ACTIVE"|"FAILED"|"COMPLETED"|"DELETING"|"DELETED",
+        type = "ON_DEMAND"|"AUTOMATIC",
+        stageDetails = list(
+          stage = "string",
+          stageProgress = "string"
+        ),
+        statusMessage = "string",
+        amiId = "string",
+        scheduledStartTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        completedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        description = "string",
+        encrypted = TRUE|FALSE,
+        kmsKeyId = "string"
+      )
+    )
+  ),
+  replicationRunList = list(
+    list(
+      replicationRunId = "string",
+      state = "PENDING"|"MISSED"|"ACTIVE"|"FAILED"|"COMPLETED"|"DELETING"|"DELETED",
+      type = "ON_DEMAND"|"AUTOMATIC",
+      stageDetails = list(
+        stage = "string",
+        stageProgress = "string"
+      ),
+      statusMessage = "string",
+      amiId = "string",
+      scheduledStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      completedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      description = "string",
+      encrypted = TRUE|FALSE,
+      kmsKeyId = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Describes the replication runs for the specified replication job.
 }

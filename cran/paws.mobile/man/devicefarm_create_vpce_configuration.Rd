@@ -21,6 +21,18 @@ Farm to test.}
 \item{vpceConfigurationDescription}{An optional description that provides details about your VPC endpoint
 configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  vpceConfiguration = list(
+    arn = "string",
+    vpceConfigurationName = "string",
+    vpceServiceName = "string",
+    serviceDnsName = "string",
+    vpceConfigurationDescription = "string"
+  )
+)
+}
+}
 \description{
 Creates a configuration record in Device Farm for your Amazon Virtual
 Private Cloud (VPC) endpoint.

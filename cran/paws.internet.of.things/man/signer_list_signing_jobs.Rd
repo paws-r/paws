@@ -38,6 +38,47 @@ after a specified timestamp.}
 \item{jobInvoker}{Filters results to return only signing jobs initiated by a specified IAM
 entity.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobs = list(
+    list(
+      jobId = "string",
+      source = list(
+        s3 = list(
+          bucketName = "string",
+          key = "string",
+          version = "string"
+        )
+      ),
+      signedObject = list(
+        s3 = list(
+          bucketName = "string",
+          key = "string"
+        )
+      ),
+      signingMaterial = list(
+        certificateArn = "string"
+      ),
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "InProgress"|"Failed"|"Succeeded",
+      isRevoked = TRUE|FALSE,
+      profileName = "string",
+      profileVersion = "string",
+      platformId = "string",
+      platformDisplayName = "string",
+      signatureExpiresAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      jobOwner = "string",
+      jobInvoker = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all your signing jobs. You can use the \code{maxResults} parameter to
 limit the number of signing jobs that are returned in the response. If

@@ -36,6 +36,71 @@ separated by launch type, is included:
 If \code{TAGS} is specified, the metadata tags associated with the cluster
 are included.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  clusters = list(
+    list(
+      clusterArn = "string",
+      clusterName = "string",
+      status = "string",
+      registeredContainerInstancesCount = 123,
+      runningTasksCount = 123,
+      pendingTasksCount = 123,
+      activeServicesCount = 123,
+      statistics = list(
+        list(
+          name = "string",
+          value = "string"
+        )
+      ),
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      settings = list(
+        list(
+          name = "containerInsights",
+          value = "string"
+        )
+      ),
+      capacityProviders = list(
+        "string"
+      ),
+      defaultCapacityProviderStrategy = list(
+        list(
+          capacityProvider = "string",
+          weight = 123,
+          base = 123
+        )
+      ),
+      attachments = list(
+        list(
+          id = "string",
+          type = "string",
+          status = "string",
+          details = list(
+            list(
+              name = "string",
+              value = "string"
+            )
+          )
+        )
+      ),
+      attachmentsStatus = "string"
+    )
+  ),
+  failures = list(
+    list(
+      arn = "string",
+      reason = "string",
+      detail = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes one or more of your clusters.
 }

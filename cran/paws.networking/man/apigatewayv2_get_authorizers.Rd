@@ -14,6 +14,34 @@ apigatewayv2_get_authorizers(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      AuthorizerCredentialsArn = "string",
+      AuthorizerId = "string",
+      AuthorizerPayloadFormatVersion = "string",
+      AuthorizerResultTtlInSeconds = 123,
+      AuthorizerType = "REQUEST"|"JWT",
+      AuthorizerUri = "string",
+      EnableSimpleResponses = TRUE|FALSE,
+      IdentitySource = list(
+        "string"
+      ),
+      IdentityValidationExpression = "string",
+      JwtConfiguration = list(
+        Audience = list(
+          "string"
+        ),
+        Issuer = "string"
+      ),
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets the Authorizers for an API.
 }

@@ -19,6 +19,9 @@ method.}
 \item{statusCode}{[required] [Required] Specifies a delete integration response request's status
 code.}
 }
+\value{
+An empty list.
+}
 \description{
 Represents a delete integration response.
 }

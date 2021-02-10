@@ -19,6 +19,12 @@ destination and the KMS key used for encryption.}
 
 \item{ClientToken}{The idempotency token for the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DestinationId = "string"
+)
+}
+}
 \description{
 Creates a publishing destination to export findings to. The resource to
 export findings to must exist before you use this operation.

@@ -14,6 +14,15 @@ template.}
 
 \item{templateFormat}{The format for generating the AWS CloudFormation template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  s3Location = list(
+    bucket = "string",
+    key = "string"
+  )
+)
+}
+}
 \description{
 Generates an AWS CloudFormation template based on the current launch
 configuration and writes it to an Amazon S3 object in the customer’s

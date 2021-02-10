@@ -9,6 +9,9 @@ cognitoidentityprovider_delete_user(AccessToken)
 \arguments{
 \item{AccessToken}{[required] The access token from a request to delete a user.}
 }
+\value{
+An empty list.
+}
 \description{
 Allows a user to delete himself or herself.
 }

@@ -9,6 +9,9 @@ iot1clickprojects_delete_project(projectName)
 \arguments{
 \item{projectName}{[required] The name of the empty project to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a project. To delete a project, it must not have any placements
 associated with it.

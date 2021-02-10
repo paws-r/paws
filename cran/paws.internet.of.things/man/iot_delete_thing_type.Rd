@@ -9,6 +9,9 @@ iot_delete_thing_type(thingTypeName)
 \arguments{
 \item{thingTypeName}{[required] The name of the thing type.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified thing type. You cannot delete a thing type if it
 has things associated with it. To delete a thing type, first mark it as

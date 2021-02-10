@@ -11,6 +11,25 @@ chime_batch_create_attendee(MeetingId, Attendees)
 
 \item{Attendees}{[required] The request containing the attendees to create.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attendees = list(
+    list(
+      ExternalUserId = "string",
+      AttendeeId = "string",
+      JoinToken = "string"
+    )
+  ),
+  Errors = list(
+    list(
+      ExternalUserId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates up to 100 new attendees for an active Amazon Chime SDK meeting.
 For more information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in

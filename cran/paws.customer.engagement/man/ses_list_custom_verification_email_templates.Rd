@@ -16,6 +16,21 @@ This value must be at least 1 and less than or equal to 50. If you do
 not specify a value, or if you specify a value less than 1 or greater
 than 50, the operation will return up to 50 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomVerificationEmailTemplates = list(
+    list(
+      TemplateName = "string",
+      FromEmailAddress = "string",
+      TemplateSubject = "string",
+      SuccessRedirectionURL = "string",
+      FailureRedirectionURL = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the existing custom verification email templates for your account
 in the current AWS Region.

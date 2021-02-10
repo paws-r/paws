@@ -33,6 +33,18 @@ specified start date and end date.
 If you specify more than one filter, an operation must match all filters
 to be returned by \code{\link[=servicediscovery_list_operations]{list_operations}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Operations = list(
+    list(
+      Id = "string",
+      Status = "SUBMITTED"|"PENDING"|"SUCCESS"|"FAIL"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists operations that match the criteria that you specify.
 }

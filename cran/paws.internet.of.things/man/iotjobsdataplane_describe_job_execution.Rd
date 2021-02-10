@@ -20,6 +20,26 @@ default is false.}
 particular device. If not specified, the latest job execution is
 returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  execution = list(
+    jobId = "string",
+    thingName = "string",
+    status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+    statusDetails = list(
+      "string"
+    ),
+    queuedAt = 123,
+    startedAt = 123,
+    lastUpdatedAt = 123,
+    approximateSecondsBeforeTimedOut = 123,
+    versionNumber = 123,
+    executionNumber = 123,
+    jobDocument = "string"
+  )
+)
+}
+}
 \description{
 Gets details of a job execution.
 }

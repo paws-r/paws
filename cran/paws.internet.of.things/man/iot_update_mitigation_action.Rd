@@ -16,6 +16,13 @@ name.}
 
 \item{actionParams}{Defines the type of action and the parameters for that action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  actionArn = "string",
+  actionId = "string"
+)
+}
+}
 \description{
 Updates the definition for the specified mitigation action.
 }

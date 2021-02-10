@@ -44,6 +44,12 @@ For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/la
 and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WorkteamArn = "string"
+)
+}
+}
 \description{
 Creates a new work team for labeling your data. A work team is defined
 by one or more Amazon Cognito user pools. You must first create the user

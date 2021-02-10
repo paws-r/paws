@@ -9,6 +9,31 @@ medialive_describe_offering(OfferingId)
 \arguments{
 \item{OfferingId}{[required] Unique offering ID, e.g. '87654321'}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CurrencyCode = "string",
+  Duration = 123,
+  DurationUnits = "MONTHS",
+  FixedPrice = 123.0,
+  OfferingDescription = "string",
+  OfferingId = "string",
+  OfferingType = "NO_UPFRONT",
+  Region = "string",
+  ResourceSpecification = list(
+    ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
+    Codec = "MPEG2"|"AVC"|"HEVC"|"AUDIO"|"LINK",
+    MaximumBitrate = "MAX_10_MBPS"|"MAX_20_MBPS"|"MAX_50_MBPS",
+    MaximumFramerate = "MAX_30_FPS"|"MAX_60_FPS",
+    Resolution = "SD"|"HD"|"FHD"|"UHD",
+    ResourceType = "INPUT"|"OUTPUT"|"MULTIPLEX"|"CHANNEL",
+    SpecialFeature = "ADVANCED_AUDIO"|"AUDIO_NORMALIZATION",
+    VideoQuality = "STANDARD"|"ENHANCED"|"PREMIUM"
+  ),
+  UsagePrice = 123.0
+)
+}
+}
 \description{
 Get details for an offering.
 }

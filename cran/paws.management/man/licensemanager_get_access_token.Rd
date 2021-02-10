@@ -11,6 +11,12 @@ licensemanager_get_access_token(Token, TokenProperties)
 
 \item{TokenProperties}{Token properties to validate against those present in the JWT token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessToken = "string"
+)
+}
+}
 \description{
 Gets a temporary access token to use with AssumeRoleWithWebIdentity.
 Access tokens are valid for one hour.

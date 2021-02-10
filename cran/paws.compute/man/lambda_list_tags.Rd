@@ -9,6 +9,14 @@ lambda_list_tags(Resource)
 \arguments{
 \item{Resource}{[required] The function's Amazon Resource Name (ARN).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}.

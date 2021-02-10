@@ -23,6 +23,12 @@ For example:
 To get the key ID and key ARN for a CMK, use
 \href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyRotationEnabled = TRUE|FALSE
+)
+}
+}
 \description{
 Gets a Boolean value that indicates whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
 is enabled for the specified customer master key (CMK).

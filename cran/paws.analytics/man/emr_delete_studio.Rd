@@ -10,6 +10,9 @@ emr_delete_studio(StudioId)
 \arguments{
 \item{StudioId}{[required] The ID of the Amazon EMR Studio.}
 }
+\value{
+An empty list.
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

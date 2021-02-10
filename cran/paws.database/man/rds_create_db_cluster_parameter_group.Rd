@@ -35,6 +35,17 @@ Example: \code{aurora-postgresql9.6}}
 
 \item{Tags}{Tags to assign to the DB cluster parameter group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterParameterGroup = list(
+    DBClusterParameterGroupName = "string",
+    DBParameterGroupFamily = "string",
+    Description = "string",
+    DBClusterParameterGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new DB cluster parameter group.
 

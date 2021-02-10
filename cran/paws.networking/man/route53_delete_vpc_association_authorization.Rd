@@ -17,6 +17,9 @@ account, the ID of the hosted zone.}
 AWS account with a hosted zone that was created with a different AWS
 account, a complex type that includes the ID and region of the VPC.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes authorization to submit an
 \code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}

@@ -20,6 +20,9 @@ you want to update.}
 \item{Activate}{The updated Boolean value that specifies whether the ThreateIntelSet is
 active or not.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 }

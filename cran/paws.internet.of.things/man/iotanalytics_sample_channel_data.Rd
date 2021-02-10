@@ -18,6 +18,14 @@ default is also 10.}
 
 \item{endTime}{The end of the time window from which sample messages are retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  payloads = list(
+    raw
+  )
+)
+}
+}
 \description{
 Retrieves a sample of messages from the specified channel ingested
 during the specified timeframe. Up to 10 messages can be retrieved.

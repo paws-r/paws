@@ -12,6 +12,9 @@ ec2_delete_vpn_connection_route(DestinationCidrBlock, VpnConnectionId)
 
 \item{VpnConnectionId}{[required] The ID of the VPN connection.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified static route associated with a VPN connection
 between an existing virtual private gateway and a VPN customer gateway.

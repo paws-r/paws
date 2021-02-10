@@ -29,6 +29,47 @@ receive a response indicating that the results are truncated. Set it to
 the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+  JobType = "SERVICE_LEVEL"|"ACTION_LEVEL",
+  JobCreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ServicesLastAccessed = list(
+    list(
+      ServiceName = "string",
+      LastAuthenticated = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceNamespace = "string",
+      LastAuthenticatedEntity = "string",
+      LastAuthenticatedRegion = "string",
+      TotalAuthenticatedEntities = 123,
+      TrackedActionsLastAccessed = list(
+        list(
+          ActionName = "string",
+          LastAccessedEntity = "string",
+          LastAccessedTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          LastAccessedRegion = "string"
+        )
+      )
+    )
+  ),
+  JobCompletionDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string",
+  Error = list(
+    Message = "string",
+    Code = "string"
+  )
+)
+}
+}
 \description{
 Retrieves a service last accessed report that was created using the
 \code{\link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details}}

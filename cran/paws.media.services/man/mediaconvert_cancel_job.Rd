@@ -9,8 +9,12 @@ mediaconvert_cancel_job(Id)
 \arguments{
 \item{Id}{[required] The Job ID of the job to be cancelled.}
 }
+\value{
+An empty list.
+}
 \description{
-Permanently cancel a job. Once you have canceled a job, you can't start it again.
+Permanently cancel a job. Once you have canceled a job, you can't start
+it again.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_job(

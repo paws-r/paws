@@ -17,6 +17,9 @@ connect_update_routing_profile_name(InstanceId, RoutingProfileId, Name,
 \item{Description}{The description of the routing profile. Must not be more than 250
 characters.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the name and description of a routing profile. The request
 accepts the following data in JSON format. At least \code{Name} or

@@ -9,6 +9,12 @@ storagegateway_start_gateway(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Starts a gateway that you previously shut down (see
 \code{\link[=storagegateway_shutdown_gateway]{shutdown_gateway}}). After the

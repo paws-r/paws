@@ -14,6 +14,21 @@ apigateway_get_models(restApiId, position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      name = "string",
+      description = "string",
+      schema = "string",
+      contentType = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes existing Models defined for a RestApi resource.
 }

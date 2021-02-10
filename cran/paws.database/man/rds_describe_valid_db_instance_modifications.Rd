@@ -10,6 +10,46 @@ rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
 \arguments{
 \item{DBInstanceIdentifier}{[required] The customer identifier or the ARN of your DB instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ValidDBInstanceModificationsMessage = list(
+    Storage = list(
+      list(
+        StorageType = "string",
+        StorageSize = list(
+          list(
+            From = 123,
+            To = 123,
+            Step = 123
+          )
+        ),
+        ProvisionedIops = list(
+          list(
+            From = 123,
+            To = 123,
+            Step = 123
+          )
+        ),
+        IopsToStorageRatio = list(
+          list(
+            From = 123.0,
+            To = 123.0
+          )
+        ),
+        SupportsStorageAutoscaling = TRUE|FALSE
+      )
+    ),
+    ValidProcessorFeatures = list(
+      list(
+        Name = "string",
+        DefaultValue = "string",
+        AllowedValues = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 You can call
 \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}}

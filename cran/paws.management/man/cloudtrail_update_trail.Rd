@@ -14,7 +14,7 @@ cloudtrail_update_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,
 the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\\_), or dashes (-)
+underscores (_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
@@ -90,6 +90,24 @@ is set to true, the trail will be created in all AWS accounts that
 belong to the organization. If the trail is an organization trail and
 this is set to false, the trail will remain in the current AWS account
 but be deleted from all member accounts in the organization.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  S3BucketName = "string",
+  S3KeyPrefix = "string",
+  SnsTopicName = "string",
+  SnsTopicARN = "string",
+  IncludeGlobalServiceEvents = TRUE|FALSE,
+  IsMultiRegionTrail = TRUE|FALSE,
+  TrailARN = "string",
+  LogFileValidationEnabled = TRUE|FALSE,
+  CloudWatchLogsLogGroupArn = "string",
+  CloudWatchLogsRoleArn = "string",
+  KmsKeyId = "string",
+  IsOrganizationTrail = TRUE|FALSE
+)
+}
 }
 \description{
 Updates the settings that specify delivery of log files. Changes to a

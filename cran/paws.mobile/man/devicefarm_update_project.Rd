@@ -16,6 +16,19 @@ updating.}
 \item{defaultJobTimeoutMinutes}{The number of minutes a test run in the project executes before it times
 out.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  project = list(
+    arn = "string",
+    name = "string",
+    defaultJobTimeoutMinutes = 123,
+    created = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the specified project name, given the project ARN and a new
 name.
@@ -34,7 +47,7 @@ name.
 # The following example updates the specified project with a new name.
 svc$update_project(
   name = "NewName",
-  arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAM..."
+  arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12..."
 )
 }
 

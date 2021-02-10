@@ -21,6 +21,41 @@ time and end time can't be more than six hours.}
 \item{NextToken}{Specify the pagination token returned by a previous request to retrieve
 the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InsightId = "string",
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ServiceGraphStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ServiceGraphEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Services = list(
+    list(
+      ReferenceId = 123,
+      Type = "string",
+      Name = "string",
+      Names = list(
+        "string"
+      ),
+      AccountId = "string",
+      Edges = list(
+        list(
+          ReferenceId = 123
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a service graph structure filtered by the specified insight.
 The service graph is limited to only structural information. For a

@@ -22,8 +22,8 @@ creation.}
 
 \item{apiCachingBehavior}{[required] Caching behavior.
 \itemize{
-\item \strong{FULL\\_REQUEST\\_CACHING}: All requests are fully cached.
-\item \strong{PER\\_RESOLVER\\_CACHING}: Individual resolvers that you specify
+\item \strong{FULL_REQUEST_CACHING}: All requests are fully cached.
+\item \strong{PER_RESOLVER_CACHING}: Individual resolvers that you specify
 are cached.
 }}
 
@@ -46,14 +46,27 @@ should be used.
 The following legacy instance types are available, but their use is
 discouraged:
 \itemize{
-\item \strong{T2\\_SMALL}: A t2.small instance type.
-\item \strong{T2\\_MEDIUM}: A t2.medium instance type.
-\item \strong{R4\\_LARGE}: A r4.large instance type.
-\item \strong{R4\\_XLARGE}: A r4.xlarge instance type.
-\item \strong{R4\\_2XLARGE}: A r4.2xlarge instance type.
-\item \strong{R4\\_4XLARGE}: A r4.4xlarge instance type.
-\item \strong{R4\\_8XLARGE}: A r4.8xlarge instance type.
+\item \strong{T2_SMALL}: A t2.small instance type.
+\item \strong{T2_MEDIUM}: A t2.medium instance type.
+\item \strong{R4_LARGE}: A r4.large instance type.
+\item \strong{R4_XLARGE}: A r4.xlarge instance type.
+\item \strong{R4_2XLARGE}: A r4.2xlarge instance type.
+\item \strong{R4_4XLARGE}: A r4.4xlarge instance type.
+\item \strong{R4_8XLARGE}: A r4.8xlarge instance type.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  apiCache = list(
+    ttl = 123,
+    apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
+    transitEncryptionEnabled = TRUE|FALSE,
+    atRestEncryptionEnabled = TRUE|FALSE,
+    type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X",
+    status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
+  )
+)
+}
 }
 \description{
 Creates a cache for the GraphQL API.

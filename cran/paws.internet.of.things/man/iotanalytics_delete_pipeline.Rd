@@ -9,6 +9,9 @@ iotanalytics_delete_pipeline(pipelineName)
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified pipeline.
 }

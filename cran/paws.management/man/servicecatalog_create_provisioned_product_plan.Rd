@@ -49,6 +49,16 @@ If the plan is for an existing provisioned product, the product must
 have a \code{RESOURCE_UPDATE} constraint with
 \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to allow tag updates.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlanName = "string",
+  PlanId = "string",
+  ProvisionProductId = "string",
+  ProvisionedProductName = "string",
+  ProvisioningArtifactId = "string"
+)
+}
+}
 \description{
 Creates a plan. A plan includes the list of resources to be created
 (when provisioning a new product) or modified (when updating a

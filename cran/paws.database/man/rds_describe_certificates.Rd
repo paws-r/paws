@@ -34,6 +34,30 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificates = list(
+    list(
+      CertificateIdentifier = "string",
+      CertificateType = "string",
+      Thumbprint = "string",
+      ValidFrom = as.POSIXct(
+        "2015-01-01"
+      ),
+      ValidTill = as.POSIXct(
+        "2015-01-01"
+      ),
+      CertificateArn = "string",
+      CustomerOverride = TRUE|FALSE,
+      CustomerOverrideValidTill = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists the set of CA certificates provided by Amazon RDS for this AWS
 account.

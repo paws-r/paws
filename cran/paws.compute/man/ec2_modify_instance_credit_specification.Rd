@@ -19,6 +19,25 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 
 \item{InstanceCreditSpecifications}{[required] Information about the credit option for CPU usage.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SuccessfulInstanceCreditSpecifications = list(
+    list(
+      InstanceId = "string"
+    )
+  ),
+  UnsuccessfulInstanceCreditSpecifications = list(
+    list(
+      InstanceId = "string",
+      Error = list(
+        Code = "InvalidInstanceID.Malformed"|"InvalidInstanceID.NotFound"|"IncorrectInstanceState"|"InstanceCreditSpecification.NotSupported",
+        Message = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies the credit option for CPU usage on a running or stopped
 burstable performance instance. The credit options are \code{standard} and

@@ -16,6 +16,23 @@ The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Listeners = list(
+    list(
+      ListenerArn = "string",
+      PortRanges = list(
+        list(
+          FromPort = 123,
+          ToPort = 123
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the listeners for a custom routing accelerator.
 }

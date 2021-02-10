@@ -14,6 +14,9 @@ connect_disassociate_lex_bot(InstanceId, BotName, LexRegion)
 
 \item{LexRegion}{[required] The Region in which the Amazon Lex bot has been created.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

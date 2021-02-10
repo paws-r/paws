@@ -21,6 +21,9 @@ document version.}
 \item{DeleteAll}{Flag to indicate removal of all custom metadata properties from the
 specified resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes custom metadata from the specified resource.
 }

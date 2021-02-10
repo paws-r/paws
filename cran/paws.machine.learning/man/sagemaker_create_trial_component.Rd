@@ -40,6 +40,12 @@ metrics, snapshots, logs, and images.}
 \item{Tags}{A list of tags to associate with the component. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialComponentArn = "string"
+)
+}
+}
 \description{
 Creates a \emph{trial component}, which is a stage of a machine learning
 \emph{trial}. A trial is composed of one or more trial components. A trial

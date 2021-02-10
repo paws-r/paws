@@ -6,6 +6,17 @@
 \usage{
 backup_describe_global_settings()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalSettings = list(
+    "string"
+  ),
+  LastUpdateTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 The current feature settings for the AWS Account.
 }

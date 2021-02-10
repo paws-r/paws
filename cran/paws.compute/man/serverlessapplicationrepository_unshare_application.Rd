@@ -12,6 +12,9 @@ serverlessapplicationrepository_unshare_application(ApplicationId,
 
 \item{OrganizationId}{[required] The AWS Organization ID to unshare the application from.}
 }
+\value{
+An empty list.
+}
 \description{
 Unshares an application from an AWS Organization.
 

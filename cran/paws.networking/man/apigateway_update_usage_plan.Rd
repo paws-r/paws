@@ -12,6 +12,39 @@ apigateway_update_usage_plan(usagePlanId, patchOperations)
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  apiStages = list(
+    list(
+      apiId = "string",
+      stage = "string",
+      throttle = list(
+        list(
+          burstLimit = 123,
+          rateLimit = 123.0
+        )
+      )
+    )
+  ),
+  throttle = list(
+    burstLimit = 123,
+    rateLimit = 123.0
+  ),
+  quota = list(
+    limit = 123,
+    offset = 123,
+    period = "DAY"|"WEEK"|"MONTH"
+  ),
+  productCode = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Updates a usage plan of a given plan Id.
 }

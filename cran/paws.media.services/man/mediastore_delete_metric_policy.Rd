@@ -11,6 +11,9 @@ mediastore_delete_metric_policy(ContainerName)
 \item{ContainerName}{[required] The name of the container that is associated with the metric policy that
 you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the metric policy that is associated with the specified
 container. If there is no metric policy associated with the container,

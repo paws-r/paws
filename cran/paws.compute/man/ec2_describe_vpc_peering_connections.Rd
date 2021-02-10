@@ -53,6 +53,72 @@ Default: Describes all your VPC peering connections.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcPeeringConnections = list(
+    list(
+      AccepterVpcInfo = list(
+        CidrBlock = "string",
+        Ipv6CidrBlockSet = list(
+          list(
+            Ipv6CidrBlock = "string"
+          )
+        ),
+        CidrBlockSet = list(
+          list(
+            CidrBlock = "string"
+          )
+        ),
+        OwnerId = "string",
+        PeeringOptions = list(
+          AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+          AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+          AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+        ),
+        VpcId = "string",
+        Region = "string"
+      ),
+      ExpirationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      RequesterVpcInfo = list(
+        CidrBlock = "string",
+        Ipv6CidrBlockSet = list(
+          list(
+            Ipv6CidrBlock = "string"
+          )
+        ),
+        CidrBlockSet = list(
+          list(
+            CidrBlock = "string"
+          )
+        ),
+        OwnerId = "string",
+        PeeringOptions = list(
+          AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+          AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+          AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+        ),
+        VpcId = "string",
+        Region = "string"
+      ),
+      Status = list(
+        Code = "initiating-request"|"pending-acceptance"|"active"|"deleted"|"rejected"|"failed"|"expired"|"provisioning"|"deleting",
+        Message = "string"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      VpcPeeringConnectionId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your VPC peering connections.
 }

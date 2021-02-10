@@ -27,6 +27,12 @@ in the \emph{Amazon EventBridge User Guide}.}
 \item{EventBusName}{The name or ARN of the event bus to associate with this rule. If you
 omit this, the default event bus is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuleArn = "string"
+)
+}
+}
 \description{
 Creates or updates the specified rule. Rules are enabled by default, or
 based on value of the state. You can disable a rule using

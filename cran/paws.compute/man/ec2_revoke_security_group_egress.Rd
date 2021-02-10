@@ -35,6 +35,48 @@ security group.}
 \item{SourceSecurityGroupOwnerId}{Not supported. Use a set of IP permissions to specify a destination
 security group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE,
+  UnknownIpPermissions = list(
+    list(
+      FromPort = 123,
+      IpProtocol = "string",
+      IpRanges = list(
+        list(
+          CidrIp = "string",
+          Description = "string"
+        )
+      ),
+      Ipv6Ranges = list(
+        list(
+          CidrIpv6 = "string",
+          Description = "string"
+        )
+      ),
+      PrefixListIds = list(
+        list(
+          Description = "string",
+          PrefixListId = "string"
+        )
+      ),
+      ToPort = 123,
+      UserIdGroupPairs = list(
+        list(
+          Description = "string",
+          GroupId = "string",
+          GroupName = "string",
+          PeeringStatus = "string",
+          UserId = "string",
+          VpcId = "string",
+          VpcPeeringConnectionId = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 [VPC only] Removes the specified egress rules from a security group
 for EC2-VPC. This action does not apply to security groups for use in

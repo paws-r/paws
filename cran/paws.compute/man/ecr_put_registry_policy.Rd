@@ -11,6 +11,13 @@ ecr_put_registry_policy(policyText)
 the same format as IAM policy text. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html}{Registry permissions}
 in the \emph{Amazon Elastic Container Registry User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  policyText = "string"
+)
+}
+}
 \description{
 Creates or updates the permissions policy for your registry.
 

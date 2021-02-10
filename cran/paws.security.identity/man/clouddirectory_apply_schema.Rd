@@ -14,6 +14,13 @@ more information, see arns.}
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
 into which the schema is copied. For more information, see arns.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppliedSchemaArn = "string",
+  DirectoryArn = "string"
+)
+}
+}
 \description{
 Copies the input published schema, at the specified version, into the
 Directory with the same name and version as that of the published

@@ -15,6 +15,13 @@ costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
 see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CostCategoryArn = "string",
+  EffectiveStart = "string"
+)
+}
+}
 \description{
 Creates a new Cost Category with the requested name and rules.
 }

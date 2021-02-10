@@ -30,6 +30,58 @@ requests require the EntitySelectorExpression ID be provided.}
 
 \item{NextToken}{Pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TimeSeriesServiceStatistics = list(
+    list(
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      EdgeSummaryStatistics = list(
+        OkCount = 123,
+        ErrorStatistics = list(
+          ThrottleCount = 123,
+          OtherCount = 123,
+          TotalCount = 123
+        ),
+        FaultStatistics = list(
+          OtherCount = 123,
+          TotalCount = 123
+        ),
+        TotalCount = 123,
+        TotalResponseTime = 123.0
+      ),
+      ServiceSummaryStatistics = list(
+        OkCount = 123,
+        ErrorStatistics = list(
+          ThrottleCount = 123,
+          OtherCount = 123,
+          TotalCount = 123
+        ),
+        FaultStatistics = list(
+          OtherCount = 123,
+          TotalCount = 123
+        ),
+        TotalCount = 123,
+        TotalResponseTime = 123.0
+      ),
+      ServiceForecastStatistics = list(
+        FaultCountHigh = 123,
+        FaultCountLow = 123
+      ),
+      ResponseTimeHistogram = list(
+        list(
+          Value = 123.0,
+          Count = 123
+        )
+      )
+    )
+  ),
+  ContainsOldGroupVersions = TRUE|FALSE,
+  NextToken = "string"
+)
+}
+}
 \description{
 Get an aggregation of service statistics defined by a specific time
 range.

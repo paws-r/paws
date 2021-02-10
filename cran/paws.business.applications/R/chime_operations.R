@@ -16,6 +16,9 @@ NULL
 #' @param UserId &#91;required&#93; The user ID.
 #' @param E164PhoneNumber &#91;required&#93; The phone number, in E.164 format.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_phone_number_with_user(
@@ -61,6 +64,20 @@ chime_associate_phone_number_with_user <- function(AccountId, UserId, E164PhoneN
 #' Chime Voice Connector and removes any previously existing associations.
 #' If false, does not associate any phone numbers that have previously
 #' existing associations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberErrors = list(
+#'     list(
+#'       PhoneNumberId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -111,6 +128,20 @@ chime_associate_phone_numbers_with_voice_connector <- function(VoiceConnectorId,
 #' associations. If false, does not associate any phone numbers that have
 #' previously existing associations.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberErrors = list(
+#'     list(
+#'       PhoneNumberId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_phone_numbers_with_voice_connector_group(
@@ -155,6 +186,9 @@ chime_associate_phone_numbers_with_voice_connector_group <- function(VoiceConnec
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param SigninDelegateGroups &#91;required&#93; The sign-in delegate groups.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -202,6 +236,27 @@ chime_associate_signin_delegate_groups_with_account <- function(AccountId, Signi
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param Attendees &#91;required&#93; The request containing the attendees to create.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attendees = list(
+#'     list(
+#'       ExternalUserId = "string",
+#'       AttendeeId = "string",
+#'       JoinToken = "string"
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ExternalUserId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -258,6 +313,20 @@ chime_batch_create_attendee <- function(MeetingId, Attendees) {
 #' @param RoomId &#91;required&#93; The room ID.
 #' @param MembershipItemList &#91;required&#93; The list of membership items.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       MemberId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_create_room_membership(
@@ -306,6 +375,20 @@ chime_batch_create_room_membership <- function(AccountId, RoomId, MembershipItem
 #' chime_batch_delete_phone_number(PhoneNumberIds)
 #'
 #' @param PhoneNumberIds &#91;required&#93; List of phone number IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberErrors = list(
+#'     list(
+#'       PhoneNumberId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -366,6 +449,20 @@ chime_batch_delete_phone_number <- function(PhoneNumberIds) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserIdList &#91;required&#93; The request containing the user IDs to suspend.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserErrors = list(
+#'     list(
+#'       UserId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_suspend_user(
@@ -418,6 +515,20 @@ chime_batch_suspend_user <- function(AccountId, UserIdList) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserIdList &#91;required&#93; The request containing the user IDs to unsuspend.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserErrors = list(
+#'     list(
+#'       UserId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_unsuspend_user(
@@ -469,6 +580,20 @@ chime_batch_unsuspend_user <- function(AccountId, UserIdList) {
 #' @param UpdatePhoneNumberRequestItems &#91;required&#93; The request containing the phone number IDs and product types or calling
 #' names to update.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberErrors = list(
+#'     list(
+#'       PhoneNumberId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_update_phone_number(
@@ -515,6 +640,20 @@ chime_batch_update_phone_number <- function(UpdatePhoneNumberRequestItems) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UpdateUserRequestItems &#91;required&#93; The request containing the user IDs and details to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserErrors = list(
+#'     list(
+#'       UserId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -569,6 +708,31 @@ chime_batch_update_user <- function(AccountId, UpdateUserRequestItems) {
 #'
 #' @param Name &#91;required&#93; The name of the Amazon Chime account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Account = list(
+#'     AwsAccountId = "string",
+#'     AccountId = "string",
+#'     Name = "string",
+#'     AccountType = "Team"|"EnterpriseDirectory"|"EnterpriseLWA"|"EnterpriseOIDC",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DefaultLicense = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'     SupportedLicenses = list(
+#'       "Basic"|"Plus"|"Pro"|"ProTrial"
+#'     ),
+#'     SigninDelegateGroups = list(
+#'       list(
+#'         GroupName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_account(
@@ -610,6 +774,14 @@ chime_create_account <- function(Name) {
 #' @param Name &#91;required&#93; The name of the app instance.
 #' @param Metadata The metadata of the app instance. Limited to a 1KB string in UTF-8.
 #' @param ClientRequestToken &#91;required&#93; The `ClientRequestToken` of the app instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -658,6 +830,18 @@ chime_create_app_instance <- function(Name, Metadata = NULL, ClientRequestToken)
 #' @param AppInstanceAdminArn &#91;required&#93; The ARN of the administrator of the current app instance.
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceAdmin = list(
+#'     Arn = "string",
+#'     Name = "string"
+#'   ),
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_app_instance_admin(
@@ -701,6 +885,14 @@ chime_create_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceArn)
 #' @param Name &#91;required&#93; The user's name.
 #' @param Metadata The request's metadata. Limited to a 1KB string in UTF-8.
 #' @param ClientRequestToken &#91;required&#93; The token assigned to the user requesting an app instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceUserArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -751,6 +943,18 @@ chime_create_app_instance_user <- function(AppInstanceArn, AppInstanceUserId, Na
 #' existing record.
 #' @param Tags The tag key-value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attendee = list(
+#'     ExternalUserId = "string",
+#'     AttendeeId = "string",
+#'     JoinToken = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_attendee(
@@ -796,6 +1000,28 @@ chime_create_attendee <- function(MeetingId, ExternalUserId, Tags = NULL) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param DisplayName &#91;required&#93; The bot display name.
 #' @param Domain The domain of the Amazon Chime Enterprise account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Bot = list(
+#'     BotId = "string",
+#'     UserId = "string",
+#'     DisplayName = "string",
+#'     BotType = "ChatBot",
+#'     Disabled = TRUE|FALSE,
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BotEmail = "string",
+#'     SecurityToken = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -849,6 +1075,14 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 #' @param Metadata The metadata of the creation request. Limited to 1KB and UTF-8.
 #' @param ClientRequestToken &#91;required&#93; The client token for the request. An `Idempotency` token.
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -905,6 +1139,18 @@ chime_create_channel <- function(AppInstanceArn, Name, Mode = NULL, Privacy = NU
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the ban request.
 #' @param MemberArn &#91;required&#93; The ARN of the member being banned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   Member = list(
+#'     Arn = "string",
+#'     Name = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -970,6 +1216,18 @@ chime_create_channel_ban <- function(ChannelArn, MemberArn) {
 #' `HIDDEN`. Otherwise hidden members are not returned. This is only
 #' supported by moderators.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   Member = list(
+#'     Arn = "string",
+#'     Name = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_channel_membership(
@@ -1019,6 +1277,18 @@ chime_create_channel_membership <- function(ChannelArn, MemberArn, Type) {
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
 #' @param ChannelModeratorArn &#91;required&#93; The ARN of the moderator.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   ChannelModerator = list(
+#'     Arn = "string",
+#'     Name = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1079,6 +1349,27 @@ chime_create_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
 #' @param Tags The tag key-value pairs.
 #' @param NotificationsConfiguration The configuration for resource targets to receive notifications when
 #' meeting and attendee events occur.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Meeting = list(
+#'     MeetingId = "string",
+#'     ExternalMeetingId = "string",
+#'     MediaPlacement = list(
+#'       AudioHostUrl = "string",
+#'       AudioFallbackUrl = "string",
+#'       ScreenDataUrl = "string",
+#'       ScreenSharingUrl = "string",
+#'       ScreenViewingUrl = "string",
+#'       SignalingUrl = "string",
+#'       TurnControlUrl = "string"
+#'     ),
+#'     MediaRegion = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1143,7 +1434,8 @@ chime_create_meeting <- function(ClientRequestToken, ExternalMeetingId = NULL, M
 #' 
 #' Type: String
 #' 
-#' Pattern: \[a-fA-F0-9\]\{8\}(?:-\[a-fA-F0-9\]\{4\})\{3\}-\[a-fA-F0-9\]\{12\}
+#' Pattern:
+#' \[a-fA-F0-9\]\{8\}(?:-\[a-fA-F0-9\]\{4\})\{3\}-\[a-fA-F0-9\]\{12\}
 #' 
 #' Required: No
 #' @param FromPhoneNumber &#91;required&#93; Phone number used as the caller ID when the remote party receives a
@@ -1151,6 +1443,14 @@ chime_create_meeting <- function(ClientRequestToken, ExternalMeetingId = NULL, M
 #' @param ToPhoneNumber &#91;required&#93; Phone number called when inviting someone to a meeting.
 #' @param JoinToken &#91;required&#93; Token used by the Amazon Chime SDK attendee. Call the CreateAttendee API
 #' to get a join token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransactionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1214,6 +1514,41 @@ chime_create_meeting_dial_out <- function(MeetingId, FromPhoneNumber, ToPhoneNum
 #' @param Tags The tag key-value pairs.
 #' @param NotificationsConfiguration 
 #' @param Attendees The request containing the attendees to create.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Meeting = list(
+#'     MeetingId = "string",
+#'     ExternalMeetingId = "string",
+#'     MediaPlacement = list(
+#'       AudioHostUrl = "string",
+#'       AudioFallbackUrl = "string",
+#'       ScreenDataUrl = "string",
+#'       ScreenSharingUrl = "string",
+#'       ScreenViewingUrl = "string",
+#'       SignalingUrl = "string",
+#'       TurnControlUrl = "string"
+#'     ),
+#'     MediaRegion = "string"
+#'   ),
+#'   Attendees = list(
+#'     list(
+#'       ExternalUserId = "string",
+#'       AttendeeId = "string",
+#'       JoinToken = "string"
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ExternalUserId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1280,6 +1615,30 @@ chime_create_meeting_with_attendees <- function(ClientRequestToken, ExternalMeet
 #' @param ProductType &#91;required&#93; The phone number product type.
 #' @param E164PhoneNumbers &#91;required&#93; List of phone numbers, in E.164 format.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberOrder = list(
+#'     PhoneNumberOrderId = "string",
+#'     ProductType = "BusinessCalling"|"VoiceConnector",
+#'     Status = "Processing"|"Successful"|"Failed"|"Partial",
+#'     OrderedPhoneNumbers = list(
+#'       list(
+#'         E164PhoneNumber = "string",
+#'         Status = "Processing"|"Acquired"|"Failed"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_phone_number_order(
@@ -1332,6 +1691,44 @@ chime_create_phone_number_order <- function(ProductType, E164PhoneNumbers) {
 #' @param GeoMatchLevel The preference for matching the country or area code of the proxy phone
 #' number with that of the first participant.
 #' @param GeoMatchParams The country and area code for the proxy phone number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProxySession = list(
+#'     VoiceConnectorId = "string",
+#'     ProxySessionId = "string",
+#'     Name = "string",
+#'     Status = "Open"|"InProgress"|"Closed",
+#'     ExpiryMinutes = 123,
+#'     Capabilities = list(
+#'       "Voice"|"SMS"
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Participants = list(
+#'       list(
+#'         PhoneNumber = "string",
+#'         ProxyPhoneNumber = "string"
+#'       )
+#'     ),
+#'     NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+#'     GeoMatchLevel = "Country"|"AreaCode",
+#'     GeoMatchParams = list(
+#'       Country = "string",
+#'       AreaCode = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1386,6 +1783,25 @@ chime_create_proxy_session <- function(VoiceConnectorId, ParticipantPhoneNumbers
 #' @param Name &#91;required&#93; The room name.
 #' @param ClientRequestToken The idempotency token for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Room = list(
+#'     RoomId = "string",
+#'     Name = "string",
+#'     AccountId = "string",
+#'     CreatedBy = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_room(
@@ -1430,6 +1846,28 @@ chime_create_room <- function(AccountId, Name, ClientRequestToken = NULL) {
 #' @param MemberId &#91;required&#93; The Amazon Chime member ID (user ID or bot ID).
 #' @param Role The role of the member.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoomMembership = list(
+#'     RoomId = "string",
+#'     Member = list(
+#'       MemberId = "string",
+#'       MemberType = "User"|"Bot"|"Webhook",
+#'       Email = "string",
+#'       FullName = "string",
+#'       AccountId = "string"
+#'     ),
+#'     Role = "Administrator"|"Member",
+#'     InvitedBy = "string",
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_room_membership(
@@ -1472,6 +1910,29 @@ chime_create_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
 #' @param Name The SIP media application name.
 #' @param Endpoints &#91;required&#93; List of endpoints (Lambda Amazon Resource Names) specified for the SIP
 #' media application. Currently, only one endpoint is supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipMediaApplication = list(
+#'     SipMediaApplicationId = "string",
+#'     AwsRegion = "string",
+#'     Name = "string",
+#'     Endpoints = list(
+#'       list(
+#'         LambdaArn = "string"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1522,6 +1983,16 @@ chime_create_sip_media_application <- function(AwsRegion, Name = NULL, Endpoints
 #' @param FromPhoneNumber The phone number that a user calls from.
 #' @param ToPhoneNumber The phone number that the user dials in order to connect to a meeting
 #' @param SipMediaApplicationId &#91;required&#93; The ID of the SIP media application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipMediaApplicationCall = list(
+#'     TransactionId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1582,6 +2053,33 @@ chime_create_sip_media_application_call <- function(FromPhoneNumber = NULL, ToPh
 #' @param TargetApplications &#91;required&#93; List of SIP media applications with priority and AWS Region. Only one
 #' SIP application per AWS Region can be used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipRule = list(
+#'     SipRuleId = "string",
+#'     Name = "string",
+#'     Disabled = TRUE|FALSE,
+#'     TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+#'     TriggerValue = "string",
+#'     TargetApplications = list(
+#'       list(
+#'         SipMediaApplicationId = "string",
+#'         Priority = 123,
+#'         AwsRegion = "string"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_sip_rule(
@@ -1631,6 +2129,35 @@ chime_create_sip_rule <- function(Name, TriggerType, TriggerValue, Disabled = NU
 #' @param Username The user name.
 #' @param Email The user's email address.
 #' @param UserType The user type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     UserId = "string",
+#'     AccountId = "string",
+#'     PrimaryEmail = "string",
+#'     PrimaryProvisionedNumber = "string",
+#'     DisplayName = "string",
+#'     LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'     UserType = "PrivateUser"|"SharedDevice",
+#'     UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+#'     UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+#'     RegisteredOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvitedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AlexaForBusinessMetadata = list(
+#'       IsAlexaForBusinessEnabled = TRUE|FALSE,
+#'       AlexaForBusinessRoomArn = "string"
+#'     ),
+#'     PersonalPIN = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1683,6 +2210,26 @@ chime_create_user <- function(AccountId, Username = NULL, Email = NULL, UserType
 #' Default value: `us-east-1`.
 #' @param RequireEncryption &#91;required&#93; When enabled, requires encryption for the Amazon Chime Voice Connector.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnector = list(
+#'     VoiceConnectorId = "string",
+#'     AwsRegion = "us-east-1"|"us-west-2",
+#'     Name = "string",
+#'     OutboundHostName = "string",
+#'     RequireEncryption = TRUE|FALSE,
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_voice_connector(
@@ -1730,6 +2277,29 @@ chime_create_voice_connector <- function(Name, AwsRegion = NULL, RequireEncrypti
 #'
 #' @param Name &#91;required&#93; The name of the Amazon Chime Voice Connector group.
 #' @param VoiceConnectorItems The Amazon Chime Voice Connectors to route inbound calls to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnectorGroup = list(
+#'     VoiceConnectorGroupId = "string",
+#'     Name = "string",
+#'     VoiceConnectorItems = list(
+#'       list(
+#'         VoiceConnectorId = "string",
+#'         Priority = 123
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1787,6 +2357,9 @@ chime_create_voice_connector_group <- function(Name, VoiceConnectorItems = NULL)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_account(
@@ -1823,6 +2396,9 @@ chime_delete_account <- function(AccountId) {
 #' chime_delete_app_instance(AppInstanceArn)
 #'
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1863,6 +2439,9 @@ chime_delete_app_instance <- function(AppInstanceArn) {
 #' @param AppInstanceAdminArn &#91;required&#93; The ARN of the app instance's administrator.
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_app_instance_admin(
@@ -1901,6 +2480,9 @@ chime_delete_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceArn)
 #'
 #' @param AppInstanceArn &#91;required&#93; The ARN of the streaming configurations being deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_app_instance_streaming_configurations(
@@ -1937,6 +2519,9 @@ chime_delete_app_instance_streaming_configurations <- function(AppInstanceArn) {
 #' chime_delete_app_instance_user(AppInstanceUserArn)
 #'
 #' @param AppInstanceUserArn &#91;required&#93; The ARN of the user request being deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1982,6 +2567,9 @@ chime_delete_app_instance_user <- function(AppInstanceUserArn) {
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_attendee(
@@ -2022,6 +2610,9 @@ chime_delete_attendee <- function(MeetingId, AttendeeId) {
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel being deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_channel(
@@ -2059,6 +2650,9 @@ chime_delete_channel <- function(ChannelArn) {
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel from which the app instance user was banned.
 #' @param MemberArn &#91;required&#93; The ARN of the app instance user that you want to reinstate.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2098,6 +2692,9 @@ chime_delete_channel_ban <- function(ChannelArn, MemberArn) {
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel from which you want to remove the user.
 #' @param MemberArn &#91;required&#93; The ARN of the member that you're removing from the channel.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2141,6 +2738,9 @@ chime_delete_channel_membership <- function(ChannelArn, MemberArn) {
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
 #' @param MessageId &#91;required&#93; The ID of the message being deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_channel_message(
@@ -2179,6 +2779,9 @@ chime_delete_channel_message <- function(ChannelArn, MessageId) {
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
 #' @param ChannelModeratorArn &#91;required&#93; The ARN of the moderator being deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2220,6 +2823,9 @@ chime_delete_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param BotId &#91;required&#93; The bot ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2264,6 +2870,9 @@ chime_delete_events_configuration <- function(AccountId, BotId) {
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_meeting(
@@ -2306,6 +2915,9 @@ chime_delete_meeting <- function(MeetingId) {
 #'
 #' @param PhoneNumberId &#91;required&#93; The phone number ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_phone_number(
@@ -2346,6 +2958,9 @@ chime_delete_phone_number <- function(PhoneNumberId) {
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
 #' @param ProxySessionId &#91;required&#93; The proxy session ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_proxy_session(
@@ -2384,6 +2999,9 @@ chime_delete_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param RoomId &#91;required&#93; The chat room ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2425,6 +3043,9 @@ chime_delete_room <- function(AccountId, RoomId) {
 #' @param RoomId &#91;required&#93; The room ID.
 #' @param MemberId &#91;required&#93; The member ID (user ID or bot ID).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_room_membership(
@@ -2464,6 +3085,9 @@ chime_delete_room_membership <- function(AccountId, RoomId, MemberId) {
 #'
 #' @param SipMediaApplicationId &#91;required&#93; The SIP media application ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_sip_media_application(
@@ -2501,6 +3125,9 @@ chime_delete_sip_media_application <- function(SipMediaApplicationId) {
 #' chime_delete_sip_rule(SipRuleId)
 #'
 #' @param SipRuleId &#91;required&#93; The SIP rule ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2540,6 +3167,9 @@ chime_delete_sip_rule <- function(SipRuleId) {
 #' chime_delete_voice_connector(VoiceConnectorId)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2581,6 +3211,9 @@ chime_delete_voice_connector <- function(VoiceConnectorId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_voice_connector_emergency_calling_configuration(
@@ -2619,6 +3252,9 @@ chime_delete_voice_connector_emergency_calling_configuration <- function(VoiceCo
 #' chime_delete_voice_connector_group(VoiceConnectorGroupId)
 #'
 #' @param VoiceConnectorGroupId &#91;required&#93; The Amazon Chime Voice Connector group ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2662,6 +3298,9 @@ chime_delete_voice_connector_group <- function(VoiceConnectorGroupId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_voice_connector_origination(
@@ -2701,6 +3340,9 @@ chime_delete_voice_connector_origination <- function(VoiceConnectorId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_voice_connector_proxy(
@@ -2739,6 +3381,9 @@ chime_delete_voice_connector_proxy <- function(VoiceConnectorId) {
 #' chime_delete_voice_connector_streaming_configuration(VoiceConnectorId)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2782,6 +3427,9 @@ chime_delete_voice_connector_streaming_configuration <- function(VoiceConnectorI
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_voice_connector_termination(
@@ -2824,6 +3472,9 @@ chime_delete_voice_connector_termination <- function(VoiceConnectorId) {
 #' @param Usernames &#91;required&#93; The RFC2617 compliant username associated with the SIP credentials, in
 #' US-ASCII format.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_voice_connector_termination_credentials(
@@ -2864,6 +3515,24 @@ chime_delete_voice_connector_termination_credentials <- function(VoiceConnectorI
 #'
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstance = list(
+#'     AppInstanceArn = "string",
+#'     Name = "string",
+#'     Metadata = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_app_instance(
@@ -2901,6 +3570,23 @@ chime_describe_app_instance <- function(AppInstanceArn) {
 #'
 #' @param AppInstanceAdminArn &#91;required&#93; The ARN of the app instance administrator.
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceAdmin = list(
+#'     Admin = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     AppInstanceArn = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2940,6 +3626,24 @@ chime_describe_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceAr
 #'
 #' @param AppInstanceUserArn &#91;required&#93; The ARN of the app instance user.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceUser = list(
+#'     AppInstanceUserArn = "string",
+#'     Name = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Metadata = "string",
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_app_instance_user(
@@ -2976,6 +3680,33 @@ chime_describe_app_instance_user <- function(AppInstanceUserArn) {
 #' chime_describe_channel(ChannelArn)
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Channel = list(
+#'     Name = "string",
+#'     ChannelArn = "string",
+#'     Mode = "UNRESTRICTED"|"RESTRICTED",
+#'     Privacy = "PUBLIC"|"PRIVATE",
+#'     Metadata = "string",
+#'     CreatedBy = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastMessageTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3015,6 +3746,27 @@ chime_describe_channel <- function(ChannelArn) {
 #' @param ChannelArn &#91;required&#93; The ARN of the channel from which the user is banned.
 #' @param MemberArn &#91;required&#93; The ARN of the member being banned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelBan = list(
+#'     Member = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     ChannelArn = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_channel_ban(
@@ -3053,6 +3805,31 @@ chime_describe_channel_ban <- function(ChannelArn, MemberArn) {
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
 #' @param MemberArn &#91;required&#93; The ARN of the member.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelMembership = list(
+#'     InvitedBy = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     Type = "DEFAULT"|"HIDDEN",
+#'     Member = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     ChannelArn = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3096,6 +3873,31 @@ chime_describe_channel_membership <- function(ChannelArn, MemberArn) {
 #' @param ChannelArn &#91;required&#93; The ARN of the channel to which the user belongs.
 #' @param AppInstanceUserArn &#91;required&#93; The ARN of the user in a channel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelMembership = list(
+#'     ChannelSummary = list(
+#'       Name = "string",
+#'       ChannelArn = "string",
+#'       Mode = "UNRESTRICTED"|"RESTRICTED",
+#'       Privacy = "PUBLIC"|"PRIVATE",
+#'       Metadata = "string",
+#'       LastMessageTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     AppInstanceUserMembershipSummary = list(
+#'       Type = "DEFAULT"|"HIDDEN",
+#'       ReadMarkerTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_channel_membership_for_app_instance_user(
@@ -3138,6 +3940,25 @@ chime_describe_channel_membership_for_app_instance_user <- function(ChannelArn, 
 #' @param ChannelArn &#91;required&#93; The ARN of the moderated channel.
 #' @param AppInstanceUserArn &#91;required&#93; The ARN of the app instance user in the moderated channel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Channel = list(
+#'     ChannelSummary = list(
+#'       Name = "string",
+#'       ChannelArn = "string",
+#'       Mode = "UNRESTRICTED"|"RESTRICTED",
+#'       Privacy = "PUBLIC"|"PRIVATE",
+#'       Metadata = "string",
+#'       LastMessageTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_channel_moderated_by_app_instance_user(
@@ -3176,6 +3997,27 @@ chime_describe_channel_moderated_by_app_instance_user <- function(ChannelArn, Ap
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
 #' @param ChannelModeratorArn &#91;required&#93; The ARN of the channel moderator.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelModerator = list(
+#'     Moderator = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     ChannelArn = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3218,6 +4060,9 @@ chime_describe_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserId &#91;required&#93; The user ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_phone_number_from_user(
@@ -3259,6 +4104,20 @@ chime_disassociate_phone_number_from_user <- function(AccountId, UserId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #' @param E164PhoneNumbers &#91;required&#93; List of phone numbers, in E.164 format.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberErrors = list(
+#'     list(
+#'       PhoneNumberId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3304,6 +4163,20 @@ chime_disassociate_phone_numbers_from_voice_connector <- function(VoiceConnector
 #' @param VoiceConnectorGroupId &#91;required&#93; The Amazon Chime Voice Connector group ID.
 #' @param E164PhoneNumbers &#91;required&#93; List of phone numbers, in E.164 format.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberErrors = list(
+#'     list(
+#'       PhoneNumberId = "string",
+#'       ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_phone_numbers_from_voice_connector_group(
@@ -3348,6 +4221,9 @@ chime_disassociate_phone_numbers_from_voice_connector_group <- function(VoiceCon
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param GroupNames &#91;required&#93; The sign-in delegate group names.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_signin_delegate_groups_from_account(
@@ -3389,6 +4265,31 @@ chime_disassociate_signin_delegate_groups_from_account <- function(AccountId, Gr
 #' chime_get_account(AccountId)
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Account = list(
+#'     AwsAccountId = "string",
+#'     AccountId = "string",
+#'     Name = "string",
+#'     AccountType = "Team"|"EnterpriseDirectory"|"EnterpriseLWA"|"EnterpriseOIDC",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DefaultLicense = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'     SupportedLicenses = list(
+#'       "Basic"|"Plus"|"Pro"|"ProTrial"
+#'     ),
+#'     SigninDelegateGroups = list(
+#'       list(
+#'         GroupName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3432,6 +4333,17 @@ chime_get_account <- function(AccountId) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountSettings = list(
+#'     DisableRemoteControl = TRUE|FALSE,
+#'     EnableDialOut = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_account_settings(
@@ -3469,6 +4381,21 @@ chime_get_account_settings <- function(AccountId) {
 #'
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceRetentionSettings = list(
+#'     ChannelRetentionSettings = list(
+#'       RetentionDays = 123
+#'     )
+#'   ),
+#'   InitiateDeletionTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_app_instance_retention_settings(
@@ -3505,6 +4432,19 @@ chime_get_app_instance_retention_settings <- function(AppInstanceArn) {
 #' chime_get_app_instance_streaming_configurations(AppInstanceArn)
 #'
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceStreamingConfigurations = list(
+#'     list(
+#'       AppInstanceDataType = "Channel"|"ChannelMessage",
+#'       ResourceArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3549,6 +4489,18 @@ chime_get_app_instance_streaming_configurations <- function(AppInstanceArn) {
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attendee = list(
+#'     ExternalUserId = "string",
+#'     AttendeeId = "string",
+#'     JoinToken = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_attendee(
@@ -3590,6 +4542,28 @@ chime_get_attendee <- function(MeetingId, AttendeeId) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param BotId &#91;required&#93; The bot ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Bot = list(
+#'     BotId = "string",
+#'     UserId = "string",
+#'     DisplayName = "string",
+#'     BotType = "ChatBot",
+#'     Disabled = TRUE|FALSE,
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BotEmail = "string",
+#'     SecurityToken = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_bot(
@@ -3628,6 +4602,35 @@ chime_get_bot <- function(AccountId, BotId) {
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
 #' @param MessageId &#91;required&#93; The ID of the message.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelMessage = list(
+#'     ChannelArn = "string",
+#'     MessageId = "string",
+#'     Content = "string",
+#'     Metadata = "string",
+#'     Type = "STANDARD"|"CONTROL",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastEditedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Sender = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     Redacted = TRUE|FALSE,
+#'     Persistence = "PERSISTENT"|"NON_PERSISTENT"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3670,6 +4673,18 @@ chime_get_channel_message <- function(ChannelArn, MessageId) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param BotId &#91;required&#93; The bot ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventsConfiguration = list(
+#'     BotId = "string",
+#'     OutboundEventsHTTPSEndpoint = "string",
+#'     LambdaFunctionArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_events_configuration(
@@ -3710,6 +4725,19 @@ chime_get_events_configuration <- function(AccountId, BotId) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BusinessCalling = list(
+#'     CdrBucket = "string"
+#'   ),
+#'   VoiceConnector = list(
+#'     CdrBucket = "string"
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -3746,6 +4774,27 @@ chime_get_global_settings <- function() {
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Meeting = list(
+#'     MeetingId = "string",
+#'     ExternalMeetingId = "string",
+#'     MediaPlacement = list(
+#'       AudioHostUrl = "string",
+#'       AudioFallbackUrl = "string",
+#'       ScreenDataUrl = "string",
+#'       ScreenSharingUrl = "string",
+#'       ScreenViewingUrl = "string",
+#'       SignalingUrl = "string",
+#'       TurnControlUrl = "string"
+#'     ),
+#'     MediaRegion = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_meeting(
@@ -3780,6 +4829,16 @@ chime_get_meeting <- function(MeetingId) {
 #'
 #' @usage
 #' chime_get_messaging_session_endpoint()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoint = list(
+#'     Url = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3817,6 +4876,48 @@ chime_get_messaging_session_endpoint <- function() {
 #' chime_get_phone_number(PhoneNumberId)
 #'
 #' @param PhoneNumberId &#91;required&#93; The phone number ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumber = list(
+#'     PhoneNumberId = "string",
+#'     E164PhoneNumber = "string",
+#'     Type = "Local"|"TollFree",
+#'     ProductType = "BusinessCalling"|"VoiceConnector",
+#'     Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
+#'     Capabilities = list(
+#'       InboundCall = TRUE|FALSE,
+#'       OutboundCall = TRUE|FALSE,
+#'       InboundSMS = TRUE|FALSE,
+#'       OutboundSMS = TRUE|FALSE,
+#'       InboundMMS = TRUE|FALSE,
+#'       OutboundMMS = TRUE|FALSE
+#'     ),
+#'     Associations = list(
+#'       list(
+#'         Value = "string",
+#'         Name = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
+#'         AssociatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     CallingName = "string",
+#'     CallingNameStatus = "Unassigned"|"UpdateInProgress"|"UpdateSucceeded"|"UpdateFailed",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletionTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3858,6 +4959,30 @@ chime_get_phone_number <- function(PhoneNumberId) {
 #'
 #' @param PhoneNumberOrderId &#91;required&#93; The ID for the phone number order.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberOrder = list(
+#'     PhoneNumberOrderId = "string",
+#'     ProductType = "BusinessCalling"|"VoiceConnector",
+#'     Status = "Processing"|"Successful"|"Failed"|"Partial",
+#'     OrderedPhoneNumbers = list(
+#'       list(
+#'         E164PhoneNumber = "string",
+#'         Status = "Processing"|"Acquired"|"Failed"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_phone_number_order(
@@ -3897,6 +5022,17 @@ chime_get_phone_number_order <- function(PhoneNumberOrderId) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CallingName = "string",
+#'   CallingNameUpdatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -3931,6 +5067,44 @@ chime_get_phone_number_settings <- function() {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
 #' @param ProxySessionId &#91;required&#93; The proxy session ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProxySession = list(
+#'     VoiceConnectorId = "string",
+#'     ProxySessionId = "string",
+#'     Name = "string",
+#'     Status = "Open"|"InProgress"|"Closed",
+#'     ExpiryMinutes = 123,
+#'     Capabilities = list(
+#'       "Voice"|"SMS"
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Participants = list(
+#'       list(
+#'         PhoneNumber = "string",
+#'         ProxyPhoneNumber = "string"
+#'       )
+#'     ),
+#'     NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+#'     GeoMatchLevel = "Country"|"AreaCode",
+#'     GeoMatchParams = list(
+#'       Country = "string",
+#'       AreaCode = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3974,6 +5148,24 @@ chime_get_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RetentionSettings = list(
+#'     RoomRetentionSettings = list(
+#'       RetentionDays = 123
+#'     ),
+#'     ConversationRetentionSettings = list(
+#'       RetentionDays = 123
+#'     )
+#'   ),
+#'   InitiateDeletionTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_retention_settings(
@@ -4013,6 +5205,25 @@ chime_get_retention_settings <- function(AccountId) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param RoomId &#91;required&#93; The room ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Room = list(
+#'     RoomId = "string",
+#'     Name = "string",
+#'     AccountId = "string",
+#'     CreatedBy = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4054,6 +5265,29 @@ chime_get_room <- function(AccountId, RoomId) {
 #'
 #' @param SipMediaApplicationId &#91;required&#93; The SIP media application ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipMediaApplication = list(
+#'     SipMediaApplicationId = "string",
+#'     AwsRegion = "string",
+#'     Name = "string",
+#'     Endpoints = list(
+#'       list(
+#'         LambdaArn = "string"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sip_media_application(
@@ -4094,6 +5328,16 @@ chime_get_sip_media_application <- function(SipMediaApplicationId) {
 #'
 #' @param SipMediaApplicationId &#91;required&#93; The ID of the SIP media application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipMediaApplicationLoggingConfiguration = list(
+#'     EnableSipMediaApplicationMessageLogs = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sip_media_application_logging_configuration(
@@ -4132,6 +5376,33 @@ chime_get_sip_media_application_logging_configuration <- function(SipMediaApplic
 #' chime_get_sip_rule(SipRuleId)
 #'
 #' @param SipRuleId &#91;required&#93; The SIP rule ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipRule = list(
+#'     SipRuleId = "string",
+#'     Name = "string",
+#'     Disabled = TRUE|FALSE,
+#'     TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+#'     TriggerValue = "string",
+#'     TargetApplications = list(
+#'       list(
+#'         SipMediaApplicationId = "string",
+#'         Priority = 123,
+#'         AwsRegion = "string"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4177,6 +5448,35 @@ chime_get_sip_rule <- function(SipRuleId) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserId &#91;required&#93; The user ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     UserId = "string",
+#'     AccountId = "string",
+#'     PrimaryEmail = "string",
+#'     PrimaryProvisionedNumber = "string",
+#'     DisplayName = "string",
+#'     LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'     UserType = "PrivateUser"|"SharedDevice",
+#'     UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+#'     UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+#'     RegisteredOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvitedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AlexaForBusinessMetadata = list(
+#'       IsAlexaForBusinessEnabled = TRUE|FALSE,
+#'       AlexaForBusinessRoomArn = "string"
+#'     ),
+#'     PersonalPIN = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_user(
@@ -4218,6 +5518,20 @@ chime_get_user <- function(AccountId, UserId) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserId &#91;required&#93; The user ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserSettings = list(
+#'     Telephony = list(
+#'       InboundCalling = TRUE|FALSE,
+#'       OutboundCalling = TRUE|FALSE,
+#'       SMS = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_user_settings(
@@ -4257,6 +5571,26 @@ chime_get_user_settings <- function(AccountId, UserId) {
 #' chime_get_voice_connector(VoiceConnectorId)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnector = list(
+#'     VoiceConnectorId = "string",
+#'     AwsRegion = "us-east-1"|"us-west-2",
+#'     Name = "string",
+#'     OutboundHostName = "string",
+#'     RequireEncryption = TRUE|FALSE,
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4298,6 +5632,22 @@ chime_get_voice_connector <- function(VoiceConnectorId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EmergencyCallingConfiguration = list(
+#'     DNIS = list(
+#'       list(
+#'         EmergencyPhoneNumber = "string",
+#'         TestPhoneNumber = "string",
+#'         CallingCountry = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_voice_connector_emergency_calling_configuration(
@@ -4336,6 +5686,29 @@ chime_get_voice_connector_emergency_calling_configuration <- function(VoiceConne
 #' chime_get_voice_connector_group(VoiceConnectorGroupId)
 #'
 #' @param VoiceConnectorGroupId &#91;required&#93; The Amazon Chime Voice Connector group ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnectorGroup = list(
+#'     VoiceConnectorGroupId = "string",
+#'     Name = "string",
+#'     VoiceConnectorItems = list(
+#'       list(
+#'         VoiceConnectorId = "string",
+#'         Priority = 123
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4377,6 +5750,16 @@ chime_get_voice_connector_group <- function(VoiceConnectorGroupId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfiguration = list(
+#'     EnableSIPLogs = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_voice_connector_logging_configuration(
@@ -4416,6 +5799,25 @@ chime_get_voice_connector_logging_configuration <- function(VoiceConnectorId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Origination = list(
+#'     Routes = list(
+#'       list(
+#'         Host = "string",
+#'         Port = 123,
+#'         Protocol = "TCP"|"UDP",
+#'         Priority = 123,
+#'         Weight = 123
+#'       )
+#'     ),
+#'     Disabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_voice_connector_origination(
@@ -4454,6 +5856,21 @@ chime_get_voice_connector_origination <- function(VoiceConnectorId) {
 #' chime_get_voice_connector_proxy(VoiceConnectorId)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Proxy = list(
+#'     DefaultSessionExpiryMinutes = 123,
+#'     Disabled = TRUE|FALSE,
+#'     FallBackPhoneNumber = "string",
+#'     PhoneNumberCountries = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4496,6 +5913,22 @@ chime_get_voice_connector_proxy <- function(VoiceConnectorId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingConfiguration = list(
+#'     DataRetentionInHours = 123,
+#'     Disabled = TRUE|FALSE,
+#'     StreamingNotificationTargets = list(
+#'       list(
+#'         NotificationTarget = "EventBridge"|"SNS"|"SQS"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_voice_connector_streaming_configuration(
@@ -4534,6 +5967,24 @@ chime_get_voice_connector_streaming_configuration <- function(VoiceConnectorId) 
 #' chime_get_voice_connector_termination(VoiceConnectorId)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Termination = list(
+#'     CpsLimit = 123,
+#'     DefaultPhoneNumber = "string",
+#'     CallingRegions = list(
+#'       "string"
+#'     ),
+#'     CidrAllowedList = list(
+#'       "string"
+#'     ),
+#'     Disabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4576,6 +6027,19 @@ chime_get_voice_connector_termination <- function(VoiceConnectorId) {
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TerminationHealth = list(
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Source = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_voice_connector_termination_health(
@@ -4617,6 +6081,21 @@ chime_get_voice_connector_termination_health <- function(VoiceConnectorId) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserEmailList &#91;required&#93; The user email addresses to which to send the email invitation.
 #' @param UserType The user type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Invites = list(
+#'     list(
+#'       InviteId = "string",
+#'       Status = "Pending"|"Accepted"|"Failed",
+#'       EmailAddress = "string",
+#'       EmailStatus = "NotSent"|"Sent"|"Failed"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4666,6 +6145,34 @@ chime_invite_users <- function(AccountId, UserEmailList, UserType = NULL) {
 #' @param MaxResults The maximum number of results to return in a single call. Defaults to
 #' 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accounts = list(
+#'     list(
+#'       AwsAccountId = "string",
+#'       AccountId = "string",
+#'       Name = "string",
+#'       AccountType = "Team"|"EnterpriseDirectory"|"EnterpriseLWA"|"EnterpriseOIDC",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DefaultLicense = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'       SupportedLicenses = list(
+#'         "Basic"|"Plus"|"Pro"|"ProTrial"
+#'       ),
+#'       SigninDelegateGroups = list(
+#'         list(
+#'           GroupName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_accounts(
@@ -4709,6 +6216,23 @@ chime_list_accounts <- function(Name = NULL, UserEmail = NULL, NextToken = NULL,
 #' @param NextToken The token returned from previous API requests until the number of
 #' administrators is reached.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceArn = "string",
+#'   AppInstanceAdmins = list(
+#'     list(
+#'       Admin = list(
+#'         Arn = "string",
+#'         Name = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_app_instance_admins(
@@ -4751,6 +6275,22 @@ chime_list_app_instance_admins <- function(AppInstanceArn, MaxResults = NULL, Ne
 #' @param NextToken The token passed by previous API calls until all requested users are
 #' returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceArn = "string",
+#'   AppInstanceUsers = list(
+#'     list(
+#'       AppInstanceUserArn = "string",
+#'       Name = "string",
+#'       Metadata = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_app_instance_users(
@@ -4792,6 +6332,21 @@ chime_list_app_instance_users <- function(AppInstanceArn, MaxResults = NULL, Nex
 #' @param NextToken The token passed by previous API requests until you reach the maximum
 #' number of app instances.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstances = list(
+#'     list(
+#'       AppInstanceArn = "string",
+#'       Name = "string",
+#'       Metadata = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_app_instances(
@@ -4830,6 +6385,19 @@ chime_list_app_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4873,6 +6441,21 @@ chime_list_attendee_tags <- function(MeetingId, AttendeeId) {
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attendees = list(
+#'     list(
+#'       ExternalUserId = "string",
+#'       AttendeeId = "string",
+#'       JoinToken = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4918,6 +6501,31 @@ chime_list_attendees <- function(MeetingId, NextToken = NULL, MaxResults = NULL)
 #' 10.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Bots = list(
+#'     list(
+#'       BotId = "string",
+#'       UserId = "string",
+#'       DisplayName = "string",
+#'       BotType = "ChatBot",
+#'       Disabled = TRUE|FALSE,
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       BotEmail = "string",
+#'       SecurityToken = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_bots(
@@ -4959,6 +6567,23 @@ chime_list_bots <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
 #' @param MaxResults The maximum number of bans that you want returned.
 #' @param NextToken The token passed by previous API calls until all requested bans are
 #' returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   NextToken = "string",
+#'   ChannelBans = list(
+#'     list(
+#'       Member = list(
+#'         Arn = "string",
+#'         Name = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5008,6 +6633,23 @@ chime_list_channel_bans <- function(ChannelArn, MaxResults = NULL, NextToken = N
 #' @param NextToken The token passed by previous API calls until all requested channel
 #' memberships are returned..
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   ChannelMemberships = list(
+#'     list(
+#'       Member = list(
+#'         Arn = "string",
+#'         Name = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_channel_memberships(
@@ -5053,6 +6695,34 @@ chime_list_channel_memberships <- function(ChannelArn, Type = NULL, MaxResults =
 #' @param MaxResults The maximum number of users that you want returned.
 #' @param NextToken The token returned from previous API requests until the number of
 #' channel memberships is reached.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelMemberships = list(
+#'     list(
+#'       ChannelSummary = list(
+#'         Name = "string",
+#'         ChannelArn = "string",
+#'         Mode = "UNRESTRICTED"|"RESTRICTED",
+#'         Privacy = "PUBLIC"|"PRIVATE",
+#'         Metadata = "string",
+#'         LastMessageTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       AppInstanceUserMembershipSummary = list(
+#'         Type = "DEFAULT"|"HIDDEN",
+#'         ReadMarkerTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5107,6 +6777,37 @@ chime_list_channel_memberships_for_app_instance_user <- function(AppInstanceUser
 #' @param NextToken The token passed by previous API calls until all requested messages are
 #' returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   NextToken = "string",
+#'   ChannelMessages = list(
+#'     list(
+#'       MessageId = "string",
+#'       Content = "string",
+#'       Metadata = "string",
+#'       Type = "STANDARD"|"CONTROL",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastEditedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Sender = list(
+#'         Arn = "string",
+#'         Name = "string"
+#'       ),
+#'       Redacted = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_channel_messages(
@@ -5155,6 +6856,23 @@ chime_list_channel_messages <- function(ChannelArn, SortOrder = NULL, NotBefore 
 #' @param MaxResults The maximum number of moderators that you want returned.
 #' @param NextToken The token passed by previous API calls until all requested moderators
 #' are returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   NextToken = "string",
+#'   ChannelModerators = list(
+#'     list(
+#'       Moderator = list(
+#'         Arn = "string",
+#'         Name = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5210,6 +6928,26 @@ chime_list_channel_moderators <- function(ChannelArn, MaxResults = NULL, NextTok
 #' @param NextToken The token passed by previous API calls until all requested channels are
 #' returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Channels = list(
+#'     list(
+#'       Name = "string",
+#'       ChannelArn = "string",
+#'       Mode = "UNRESTRICTED"|"RESTRICTED",
+#'       Privacy = "PUBLIC"|"PRIVATE",
+#'       Metadata = "string",
+#'       LastMessageTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_channels(
@@ -5254,6 +6992,28 @@ chime_list_channels <- function(AppInstanceArn, Privacy = NULL, MaxResults = NUL
 #' @param NextToken The token returned from previous API requests until the number of
 #' channels moderated by the user is reached.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Channels = list(
+#'     list(
+#'       ChannelSummary = list(
+#'         Name = "string",
+#'         ChannelArn = "string",
+#'         Mode = "UNRESTRICTED"|"RESTRICTED",
+#'         Privacy = "PUBLIC"|"PRIVATE",
+#'         Metadata = "string",
+#'         LastMessageTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_channels_moderated_by_app_instance_user(
@@ -5292,6 +7052,19 @@ chime_list_channels_moderated_by_app_instance_user <- function(AppInstanceUserAr
 #' chime_list_meeting_tags(MeetingId)
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5334,6 +7107,30 @@ chime_list_meeting_tags <- function(MeetingId) {
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Meetings = list(
+#'     list(
+#'       MeetingId = "string",
+#'       ExternalMeetingId = "string",
+#'       MediaPlacement = list(
+#'         AudioHostUrl = "string",
+#'         AudioFallbackUrl = "string",
+#'         ScreenDataUrl = "string",
+#'         ScreenSharingUrl = "string",
+#'         ScreenViewingUrl = "string",
+#'         SignalingUrl = "string",
+#'         TurnControlUrl = "string"
+#'       ),
+#'       MediaRegion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_meetings(
@@ -5374,6 +7171,33 @@ chime_list_meetings <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumberOrders = list(
+#'     list(
+#'       PhoneNumberOrderId = "string",
+#'       ProductType = "BusinessCalling"|"VoiceConnector",
+#'       Status = "Processing"|"Successful"|"Failed"|"Partial",
+#'       OrderedPhoneNumbers = list(
+#'         list(
+#'           E164PhoneNumber = "string",
+#'           Status = "Processing"|"Acquired"|"Failed"
+#'         )
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5423,6 +7247,51 @@ chime_list_phone_number_orders <- function(NextToken = NULL, MaxResults = NULL) 
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumbers = list(
+#'     list(
+#'       PhoneNumberId = "string",
+#'       E164PhoneNumber = "string",
+#'       Type = "Local"|"TollFree",
+#'       ProductType = "BusinessCalling"|"VoiceConnector",
+#'       Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
+#'       Capabilities = list(
+#'         InboundCall = TRUE|FALSE,
+#'         OutboundCall = TRUE|FALSE,
+#'         InboundSMS = TRUE|FALSE,
+#'         OutboundSMS = TRUE|FALSE,
+#'         InboundMMS = TRUE|FALSE,
+#'         OutboundMMS = TRUE|FALSE
+#'       ),
+#'       Associations = list(
+#'         list(
+#'           Value = "string",
+#'           Name = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
+#'           AssociatedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       CallingName = "string",
+#'       CallingNameStatus = "Unassigned"|"UpdateInProgress"|"UpdateSucceeded"|"UpdateFailed",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeletionTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_phone_numbers(
@@ -5468,6 +7337,47 @@ chime_list_phone_numbers <- function(Status = NULL, ProductType = NULL, FilterNa
 #' @param Status The proxy session status.
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProxySessions = list(
+#'     list(
+#'       VoiceConnectorId = "string",
+#'       ProxySessionId = "string",
+#'       Name = "string",
+#'       Status = "Open"|"InProgress"|"Closed",
+#'       ExpiryMinutes = 123,
+#'       Capabilities = list(
+#'         "Voice"|"SMS"
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Participants = list(
+#'         list(
+#'           PhoneNumber = "string",
+#'           ProxyPhoneNumber = "string"
+#'         )
+#'       ),
+#'       NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+#'       GeoMatchLevel = "Country"|"AreaCode",
+#'       GeoMatchParams = list(
+#'         Country = "string",
+#'         AreaCode = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5515,6 +7425,31 @@ chime_list_proxy_sessions <- function(VoiceConnectorId, Status = NULL, NextToken
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoomMemberships = list(
+#'     list(
+#'       RoomId = "string",
+#'       Member = list(
+#'         MemberId = "string",
+#'         MemberType = "User"|"Bot"|"Webhook",
+#'         Email = "string",
+#'         FullName = "string",
+#'         AccountId = "string"
+#'       ),
+#'       Role = "Administrator"|"Member",
+#'       InvitedBy = "string",
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_room_memberships(
@@ -5560,6 +7495,28 @@ chime_list_room_memberships <- function(AccountId, RoomId, MaxResults = NULL, Ne
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rooms = list(
+#'     list(
+#'       RoomId = "string",
+#'       Name = "string",
+#'       AccountId = "string",
+#'       CreatedBy = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_rooms(
@@ -5602,6 +7559,32 @@ chime_list_rooms <- function(AccountId, MemberId = NULL, MaxResults = NULL, Next
 #' 100.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipMediaApplications = list(
+#'     list(
+#'       SipMediaApplicationId = "string",
+#'       AwsRegion = "string",
+#'       Name = "string",
+#'       Endpoints = list(
+#'         list(
+#'           LambdaArn = "string"
+#'         )
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_sip_media_applications(
@@ -5643,6 +7626,36 @@ chime_list_sip_media_applications <- function(MaxResults = NULL, NextToken = NUL
 #' 100.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipRules = list(
+#'     list(
+#'       SipRuleId = "string",
+#'       Name = "string",
+#'       Disabled = TRUE|FALSE,
+#'       TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+#'       TriggerValue = "string",
+#'       TargetApplications = list(
+#'         list(
+#'           SipMediaApplicationId = "string",
+#'           Priority = 123,
+#'           AwsRegion = "string"
+#'         )
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_sip_rules(
@@ -5681,6 +7694,19 @@ chime_list_sip_rules <- function(SipMediaApplicationId = NULL, MaxResults = NULL
 #' chime_list_tags_for_resource(ResourceARN)
 #'
 #' @param ResourceARN &#91;required&#93; The resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5726,6 +7752,38 @@ chime_list_tags_for_resource <- function(ResourceARN) {
 #' 100.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       UserId = "string",
+#'       AccountId = "string",
+#'       PrimaryEmail = "string",
+#'       PrimaryProvisionedNumber = "string",
+#'       DisplayName = "string",
+#'       LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'       UserType = "PrivateUser"|"SharedDevice",
+#'       UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+#'       UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+#'       RegisteredOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InvitedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AlexaForBusinessMetadata = list(
+#'         IsAlexaForBusinessEnabled = TRUE|FALSE,
+#'         AlexaForBusinessRoomArn = "string"
+#'       ),
+#'       PersonalPIN = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_users(
@@ -5770,6 +7828,32 @@ chime_list_users <- function(AccountId, UserEmail = NULL, UserType = NULL, MaxRe
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnectorGroups = list(
+#'     list(
+#'       VoiceConnectorGroupId = "string",
+#'       Name = "string",
+#'       VoiceConnectorItems = list(
+#'         list(
+#'           VoiceConnectorId = "string",
+#'           Priority = 123
+#'         )
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_voice_connector_groups(
@@ -5808,6 +7892,16 @@ chime_list_voice_connector_groups <- function(NextToken = NULL, MaxResults = NUL
 #' chime_list_voice_connector_termination_credentials(VoiceConnectorId)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Usernames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5848,6 +7942,29 @@ chime_list_voice_connector_termination_credentials <- function(VoiceConnectorId)
 #'
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnectors = list(
+#'     list(
+#'       VoiceConnectorId = "string",
+#'       AwsRegion = "us-east-1"|"us-west-2",
+#'       Name = "string",
+#'       OutboundHostName = "string",
+#'       RequireEncryption = TRUE|FALSE,
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5890,6 +8007,9 @@ chime_list_voice_connectors <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserId &#91;required&#93; The user ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$logout_user(
@@ -5929,6 +8049,21 @@ chime_logout_user <- function(AccountId, UserId) {
 #'
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
 #' @param AppInstanceRetentionSettings &#91;required&#93; The time in days to retain data. Data type: number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceRetentionSettings = list(
+#'     ChannelRetentionSettings = list(
+#'       RetentionDays = 123
+#'     )
+#'   ),
+#'   InitiateDeletionTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5973,6 +8108,19 @@ chime_put_app_instance_retention_settings <- function(AppInstanceArn, AppInstanc
 #'
 #' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
 #' @param AppInstanceStreamingConfigurations &#91;required&#93; The streaming configurations set for an app instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceStreamingConfigurations = list(
+#'     list(
+#'       AppInstanceDataType = "Channel"|"ChannelMessage",
+#'       ResourceArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6023,6 +8171,18 @@ chime_put_app_instance_streaming_configurations <- function(AppInstanceArn, AppI
 #' @param BotId &#91;required&#93; The bot ID.
 #' @param OutboundEventsHTTPSEndpoint HTTPS endpoint that allows the bot to receive outgoing events.
 #' @param LambdaFunctionArn Lambda function ARN that allows the bot to receive outgoing events.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventsConfiguration = list(
+#'     BotId = "string",
+#'     OutboundEventsHTTPSEndpoint = "string",
+#'     LambdaFunctionArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6077,6 +8237,24 @@ chime_put_events_configuration <- function(AccountId, BotId, OutboundEventsHTTPS
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param RetentionSettings &#91;required&#93; The retention settings.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RetentionSettings = list(
+#'     RoomRetentionSettings = list(
+#'       RetentionDays = 123
+#'     ),
+#'     ConversationRetentionSettings = list(
+#'       RetentionDays = 123
+#'     )
+#'   ),
+#'   InitiateDeletionTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_retention_settings(
@@ -6126,6 +8304,16 @@ chime_put_retention_settings <- function(AccountId, RetentionSettings) {
 #' @param SipMediaApplicationId &#91;required&#93; The ID of the specified SIP media application
 #' @param SipMediaApplicationLoggingConfiguration The actual logging configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipMediaApplicationLoggingConfiguration = list(
+#'     EnableSipMediaApplicationMessageLogs = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_sip_media_application_logging_configuration(
@@ -6172,6 +8360,22 @@ chime_put_sip_media_application_logging_configuration <- function(SipMediaApplic
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #' @param EmergencyCallingConfiguration &#91;required&#93; The emergency calling configuration details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EmergencyCallingConfiguration = list(
+#'     DNIS = list(
+#'       list(
+#'         EmergencyPhoneNumber = "string",
+#'         TestPhoneNumber = "string",
+#'         CallingCountry = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6224,6 +8428,16 @@ chime_put_voice_connector_emergency_calling_configuration <- function(VoiceConne
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #' @param LoggingConfiguration &#91;required&#93; The logging configuration details to add.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfiguration = list(
+#'     EnableSIPLogs = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_voice_connector_logging_configuration(
@@ -6268,6 +8482,25 @@ chime_put_voice_connector_logging_configuration <- function(VoiceConnectorId, Lo
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #' @param Origination &#91;required&#93; The origination setting details to add.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Origination = list(
+#'     Routes = list(
+#'       list(
+#'         Host = "string",
+#'         Port = 123,
+#'         Protocol = "TCP"|"UDP",
+#'         Priority = 123,
+#'         Weight = 123
+#'       )
+#'     ),
+#'     Disabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6327,6 +8560,21 @@ chime_put_voice_connector_origination <- function(VoiceConnectorId, Origination)
 #' @param Disabled When true, stops proxy sessions from being created on the specified
 #' Amazon Chime Voice Connector.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Proxy = list(
+#'     DefaultSessionExpiryMinutes = 123,
+#'     Disabled = TRUE|FALSE,
+#'     FallBackPhoneNumber = "string",
+#'     PhoneNumberCountries = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_voice_connector_proxy(
@@ -6375,6 +8623,22 @@ chime_put_voice_connector_proxy <- function(VoiceConnectorId, DefaultSessionExpi
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #' @param StreamingConfiguration &#91;required&#93; The streaming configuration details to add.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingConfiguration = list(
+#'     DataRetentionInHours = 123,
+#'     Disabled = TRUE|FALSE,
+#'     StreamingNotificationTargets = list(
+#'       list(
+#'         NotificationTarget = "EventBridge"|"SNS"|"SQS"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6426,6 +8690,24 @@ chime_put_voice_connector_streaming_configuration <- function(VoiceConnectorId, 
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #' @param Termination &#91;required&#93; The termination setting details to add.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Termination = list(
+#'     CpsLimit = 123,
+#'     DefaultPhoneNumber = "string",
+#'     CallingRegions = list(
+#'       "string"
+#'     ),
+#'     CidrAllowedList = list(
+#'       "string"
+#'     ),
+#'     Disabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6479,6 +8761,9 @@ chime_put_voice_connector_termination <- function(VoiceConnectorId, Termination)
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
 #' @param Credentials The termination SIP credentials.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_voice_connector_termination_credentials(
@@ -6525,6 +8810,15 @@ chime_put_voice_connector_termination_credentials <- function(VoiceConnectorId, 
 #' @param ChannelArn &#91;required&#93; The ARN of the channel containing the messages that you want to redact.
 #' @param MessageId &#91;required&#93; The ID of the message being redacted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$redact_channel_message(
@@ -6567,6 +8861,9 @@ chime_redact_channel_message <- function(ChannelArn, MessageId) {
 #' @param ConversationId &#91;required&#93; The conversation ID.
 #' @param MessageId &#91;required&#93; The message ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$redact_conversation_message(
@@ -6608,6 +8905,9 @@ chime_redact_conversation_message <- function(AccountId, ConversationId, Message
 #' @param RoomId &#91;required&#93; The room ID.
 #' @param MessageId &#91;required&#93; The message ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$redact_room_message(
@@ -6647,6 +8947,28 @@ chime_redact_room_message <- function(AccountId, RoomId, MessageId) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param BotId &#91;required&#93; The bot ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Bot = list(
+#'     BotId = "string",
+#'     UserId = "string",
+#'     DisplayName = "string",
+#'     BotType = "ChatBot",
+#'     Disabled = TRUE|FALSE,
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BotEmail = "string",
+#'     SecurityToken = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6690,6 +9012,35 @@ chime_regenerate_security_token <- function(AccountId, BotId) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param UserId &#91;required&#93; The user ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     UserId = "string",
+#'     AccountId = "string",
+#'     PrimaryEmail = "string",
+#'     PrimaryProvisionedNumber = "string",
+#'     DisplayName = "string",
+#'     LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'     UserType = "PrivateUser"|"SharedDevice",
+#'     UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+#'     UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+#'     RegisteredOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvitedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AlexaForBusinessMetadata = list(
+#'       IsAlexaForBusinessEnabled = TRUE|FALSE,
+#'       AlexaForBusinessRoomArn = "string"
+#'     ),
+#'     PersonalPIN = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_personal_pin(
@@ -6729,6 +9080,48 @@ chime_reset_personal_pin <- function(AccountId, UserId) {
 #' chime_restore_phone_number(PhoneNumberId)
 #'
 #' @param PhoneNumberId &#91;required&#93; The phone number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumber = list(
+#'     PhoneNumberId = "string",
+#'     E164PhoneNumber = "string",
+#'     Type = "Local"|"TollFree",
+#'     ProductType = "BusinessCalling"|"VoiceConnector",
+#'     Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
+#'     Capabilities = list(
+#'       InboundCall = TRUE|FALSE,
+#'       OutboundCall = TRUE|FALSE,
+#'       InboundSMS = TRUE|FALSE,
+#'       OutboundSMS = TRUE|FALSE,
+#'       InboundMMS = TRUE|FALSE,
+#'       OutboundMMS = TRUE|FALSE
+#'     ),
+#'     Associations = list(
+#'       list(
+#'         Value = "string",
+#'         Name = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
+#'         AssociatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     CallingName = "string",
+#'     CallingNameStatus = "Unassigned"|"UpdateInProgress"|"UpdateSucceeded"|"UpdateFailed",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletionTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6773,6 +9166,16 @@ chime_restore_phone_number <- function(PhoneNumberId) {
 #' @param TollFreePrefix The toll-free prefix that you use to filter results.
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken The token to use to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   E164PhoneNumbers = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6827,6 +9230,15 @@ chime_search_available_phone_numbers <- function(AreaCode = NULL, City = NULL, C
 #' @param Metadata The optional metadata for each message.
 #' @param ClientRequestToken &#91;required&#93; The `Idempotency` token for each client request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_channel_message(
@@ -6870,6 +9282,9 @@ chime_send_channel_message <- function(ChannelArn, Content, Type, Persistence, M
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
 #' @param Tags &#91;required&#93; The tag key-value pairs.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -6915,6 +9330,9 @@ chime_tag_attendee <- function(MeetingId, AttendeeId, Tags) {
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param Tags &#91;required&#93; The tag key-value pairs.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -6962,6 +9380,9 @@ chime_tag_meeting <- function(MeetingId, Tags) {
 #' @param ResourceARN &#91;required&#93; The resource ARN.
 #' @param Tags &#91;required&#93; The tag key-value pairs.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -7007,6 +9428,9 @@ chime_tag_resource <- function(ResourceARN, Tags) {
 #' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
 #' @param TagKeys &#91;required&#93; The tag keys.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_attendee(
@@ -7048,6 +9472,9 @@ chime_untag_attendee <- function(MeetingId, AttendeeId, TagKeys) {
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7092,6 +9519,9 @@ chime_untag_meeting <- function(MeetingId, TagKeys) {
 #' @param ResourceARN &#91;required&#93; The resource ARN.
 #' @param TagKeys &#91;required&#93; The tag keys.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -7133,6 +9563,31 @@ chime_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param Name The new name for the specified Amazon Chime account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Account = list(
+#'     AwsAccountId = "string",
+#'     AccountId = "string",
+#'     Name = "string",
+#'     AccountType = "Team"|"EnterpriseDirectory"|"EnterpriseLWA"|"EnterpriseOIDC",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DefaultLicense = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'     SupportedLicenses = list(
+#'       "Basic"|"Plus"|"Pro"|"ProTrial"
+#'     ),
+#'     SigninDelegateGroups = list(
+#'       list(
+#'         GroupName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7178,6 +9633,9 @@ chime_update_account <- function(AccountId, Name = NULL) {
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param AccountSettings &#91;required&#93; The Amazon Chime account settings to update.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_account_settings(
@@ -7221,6 +9679,14 @@ chime_update_account_settings <- function(AccountId, AccountSettings) {
 #' @param Name &#91;required&#93; The name that you want to change.
 #' @param Metadata The metadata that you want to change.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_app_instance(
@@ -7262,6 +9728,14 @@ chime_update_app_instance <- function(AppInstanceArn, Name, Metadata = NULL) {
 #' @param AppInstanceUserArn &#91;required&#93; The ARN of the app instance user.
 #' @param Name &#91;required&#93; The name of the app instance user.
 #' @param Metadata The metadata of the app instance user.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppInstanceUserArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7305,6 +9779,28 @@ chime_update_app_instance_user <- function(AppInstanceUserArn, Name, Metadata = 
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param BotId &#91;required&#93; The bot ID.
 #' @param Disabled When true, stops the specified bot from running in your account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Bot = list(
+#'     BotId = "string",
+#'     UserId = "string",
+#'     DisplayName = "string",
+#'     BotType = "ChatBot",
+#'     Disabled = TRUE|FALSE,
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     BotEmail = "string",
+#'     SecurityToken = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7350,6 +9846,14 @@ chime_update_bot <- function(AccountId, BotId, Disabled = NULL) {
 #' @param Mode &#91;required&#93; The mode of the update request.
 #' @param Metadata The metadata of the channel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_channel(
@@ -7393,6 +9897,15 @@ chime_update_channel <- function(ChannelArn, Name, Mode, Metadata = NULL) {
 #' @param Content The content of the message being updated.
 #' @param Metadata The metadata of the message being updated.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_channel_message(
@@ -7435,6 +9948,14 @@ chime_update_channel_message <- function(ChannelArn, MessageId, Content = NULL, 
 #'
 #' @param ChannelArn &#91;required&#93; The ARN of the channel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_channel_read_marker(
@@ -7474,6 +9995,9 @@ chime_update_channel_read_marker <- function(ChannelArn) {
 #'
 #' @param BusinessCalling &#91;required&#93; The Amazon Chime Business Calling settings.
 #' @param VoiceConnector &#91;required&#93; The Amazon Chime Voice Connector settings.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7530,6 +10054,48 @@ chime_update_global_settings <- function(BusinessCalling, VoiceConnector) {
 #' @param ProductType The product type.
 #' @param CallingName The outbound calling name associated with the phone number.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PhoneNumber = list(
+#'     PhoneNumberId = "string",
+#'     E164PhoneNumber = "string",
+#'     Type = "Local"|"TollFree",
+#'     ProductType = "BusinessCalling"|"VoiceConnector",
+#'     Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
+#'     Capabilities = list(
+#'       InboundCall = TRUE|FALSE,
+#'       OutboundCall = TRUE|FALSE,
+#'       InboundSMS = TRUE|FALSE,
+#'       OutboundSMS = TRUE|FALSE,
+#'       InboundMMS = TRUE|FALSE,
+#'       OutboundMMS = TRUE|FALSE
+#'     ),
+#'     Associations = list(
+#'       list(
+#'         Value = "string",
+#'         Name = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
+#'         AssociatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     CallingName = "string",
+#'     CallingNameStatus = "Unassigned"|"UpdateInProgress"|"UpdateSucceeded"|"UpdateFailed",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletionTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_phone_number(
@@ -7573,6 +10139,9 @@ chime_update_phone_number <- function(PhoneNumberId, ProductType = NULL, Calling
 #'
 #' @param CallingName &#91;required&#93; The default outbound calling name for the account.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_phone_number_settings(
@@ -7615,6 +10184,44 @@ chime_update_phone_number_settings <- function(CallingName) {
 #' @param ProxySessionId &#91;required&#93; The proxy session ID.
 #' @param Capabilities &#91;required&#93; The proxy session capabilities.
 #' @param ExpiryMinutes The number of minutes allowed for the proxy session.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProxySession = list(
+#'     VoiceConnectorId = "string",
+#'     ProxySessionId = "string",
+#'     Name = "string",
+#'     Status = "Open"|"InProgress"|"Closed",
+#'     ExpiryMinutes = 123,
+#'     Capabilities = list(
+#'       "Voice"|"SMS"
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Participants = list(
+#'       list(
+#'         PhoneNumber = "string",
+#'         ProxyPhoneNumber = "string"
+#'       )
+#'     ),
+#'     NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+#'     GeoMatchLevel = "Country"|"AreaCode",
+#'     GeoMatchParams = list(
+#'       Country = "string",
+#'       AreaCode = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7662,6 +10269,25 @@ chime_update_proxy_session <- function(VoiceConnectorId, ProxySessionId, Capabil
 #' @param RoomId &#91;required&#93; The room ID.
 #' @param Name The room name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Room = list(
+#'     RoomId = "string",
+#'     Name = "string",
+#'     AccountId = "string",
+#'     CreatedBy = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_room(
@@ -7708,6 +10334,28 @@ chime_update_room <- function(AccountId, RoomId, Name = NULL) {
 #' @param MemberId &#91;required&#93; The member ID.
 #' @param Role The role of the member.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoomMembership = list(
+#'     RoomId = "string",
+#'     Member = list(
+#'       MemberId = "string",
+#'       MemberType = "User"|"Bot"|"Webhook",
+#'       Email = "string",
+#'       FullName = "string",
+#'       AccountId = "string"
+#'     ),
+#'     Role = "Administrator"|"Member",
+#'     InvitedBy = "string",
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_room_membership(
@@ -7750,6 +10398,29 @@ chime_update_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
 #' @param SipMediaApplicationId &#91;required&#93; The SIP media application ID.
 #' @param Name The new name for the specified SIP media application.
 #' @param Endpoints The new set of endpoints for the specified SIP media application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipMediaApplication = list(
+#'     SipMediaApplicationId = "string",
+#'     AwsRegion = "string",
+#'     Name = "string",
+#'     Endpoints = list(
+#'       list(
+#'         LambdaArn = "string"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7796,6 +10467,33 @@ chime_update_sip_media_application <- function(SipMediaApplicationId, Name = NUL
 #' @param Name &#91;required&#93; The new name for the specified SIP rule.
 #' @param Disabled The new value specified to indicate whether the rule is disabled.
 #' @param TargetApplications The new value of the list of target applications.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SipRule = list(
+#'     SipRuleId = "string",
+#'     Name = "string",
+#'     Disabled = TRUE|FALSE,
+#'     TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+#'     TriggerValue = "string",
+#'     TargetApplications = list(
+#'       list(
+#'         SipMediaApplicationId = "string",
+#'         Priority = 123,
+#'         AwsRegion = "string"
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7850,6 +10548,35 @@ chime_update_sip_rule <- function(SipRuleId, Name, Disabled = NULL, TargetApplic
 #' @param UserType The user type.
 #' @param AlexaForBusinessMetadata The Alexa for Business metadata.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     UserId = "string",
+#'     AccountId = "string",
+#'     PrimaryEmail = "string",
+#'     PrimaryProvisionedNumber = "string",
+#'     DisplayName = "string",
+#'     LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+#'     UserType = "PrivateUser"|"SharedDevice",
+#'     UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+#'     UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+#'     RegisteredOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvitedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AlexaForBusinessMetadata = list(
+#'       IsAlexaForBusinessEnabled = TRUE|FALSE,
+#'       AlexaForBusinessRoomArn = "string"
+#'     ),
+#'     PersonalPIN = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_user(
@@ -7898,6 +10625,9 @@ chime_update_user <- function(AccountId, UserId, LicenseType = NULL, UserType = 
 #' @param UserId &#91;required&#93; The user ID.
 #' @param UserSettings &#91;required&#93; The user settings to update.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_user_settings(
@@ -7945,6 +10675,26 @@ chime_update_user_settings <- function(AccountId, UserId, UserSettings) {
 #' @param Name &#91;required&#93; The name of the Amazon Chime Voice Connector.
 #' @param RequireEncryption &#91;required&#93; When enabled, requires encryption for the Amazon Chime Voice Connector.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnector = list(
+#'     VoiceConnectorId = "string",
+#'     AwsRegion = "us-east-1"|"us-west-2",
+#'     Name = "string",
+#'     OutboundHostName = "string",
+#'     RequireEncryption = TRUE|FALSE,
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_voice_connector(
@@ -7988,6 +10738,29 @@ chime_update_voice_connector <- function(VoiceConnectorId, Name, RequireEncrypti
 #' @param VoiceConnectorGroupId &#91;required&#93; The Amazon Chime Voice Connector group ID.
 #' @param Name &#91;required&#93; The name of the Amazon Chime Voice Connector group.
 #' @param VoiceConnectorItems &#91;required&#93; The `VoiceConnectorItems` to associate with the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VoiceConnectorGroup = list(
+#'     VoiceConnectorGroupId = "string",
+#'     Name = "string",
+#'     VoiceConnectorItems = list(
+#'       list(
+#'         VoiceConnectorId = "string",
+#'         Priority = 123
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

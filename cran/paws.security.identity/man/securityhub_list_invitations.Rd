@@ -18,6 +18,22 @@ For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous
 response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Invitations = list(
+    list(
+      AccountId = "string",
+      InvitationId = "string",
+      InvitedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      MemberStatus = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all Security Hub membership invitations that were sent to the
 current AWS account.

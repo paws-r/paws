@@ -11,6 +11,9 @@ elastictranscoder_delete_preset(Id)
 \item{Id}{[required] The identifier of the preset for which you want to get detailed
 information.}
 }
+\value{
+An empty list.
+}
 \description{
 The DeletePreset operation removes a preset that you've added in an AWS
 region.

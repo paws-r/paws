@@ -27,6 +27,16 @@ and there are 20 matches in the database. The service will return a
 pagination token as a part of the response. This token can be used to
 call the API again and get results starting from the 11th match.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityId = "string",
+  DeveloperUserIdentifierList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier}
 or the list of \code{DeveloperUserIdentifier} values associated with an

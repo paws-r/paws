@@ -7,15 +7,25 @@
 kafka_describe_configuration_revision(Arn, Revision)
 }
 \arguments{
-\item{Arn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies an MSK configuration and all of its revisions.</p>}
+\item{Arn}{[required] The Amazon Resource Name (ARN) that uniquely identifies an MSK
+configuration and all of its revisions.}
 
-\item{Revision}{[required]
-<p>A string that uniquely identifies a revision of an MSK configuration.</p>}
+\item{Revision}{[required] A string that uniquely identifies a revision of an MSK configuration.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Description = "string",
+  Revision = 123,
+  ServerProperties = raw
+)
+}
 }
 \description{
-\preformatted{        <p>Returns a description of this revision of the configuration.</p>
-}
+Returns a description of this revision of the configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_configuration_revision(

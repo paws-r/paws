@@ -12,6 +12,34 @@ connect_describe_quick_connect(InstanceId, QuickConnectId)
 
 \item{QuickConnectId}{[required] The identifier for the quick connect.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QuickConnect = list(
+    QuickConnectARN = "string",
+    QuickConnectId = "string",
+    Name = "string",
+    Description = "string",
+    QuickConnectConfig = list(
+      QuickConnectType = "USER"|"QUEUE"|"PHONE_NUMBER",
+      UserConfig = list(
+        UserId = "string",
+        ContactFlowId = "string"
+      ),
+      QueueConfig = list(
+        QueueId = "string",
+        ContactFlowId = "string"
+      ),
+      PhoneConfig = list(
+        PhoneNumber = "string"
+      )
+    ),
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

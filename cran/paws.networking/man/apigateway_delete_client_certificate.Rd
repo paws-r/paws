@@ -10,6 +10,9 @@ apigateway_delete_client_certificate(clientCertificateId)
 \item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be
 deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the ClientCertificate resource.
 }

@@ -27,6 +27,186 @@ requests that meet certain requirements.}
 \item{NextToken}{Specify the pagination token returned by a previous request to retrieve
 the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TraceSummaries = list(
+    list(
+      Id = "string",
+      Duration = 123.0,
+      ResponseTime = 123.0,
+      HasFault = TRUE|FALSE,
+      HasError = TRUE|FALSE,
+      HasThrottle = TRUE|FALSE,
+      IsPartial = TRUE|FALSE,
+      Http = list(
+        HttpURL = "string",
+        HttpStatus = 123,
+        HttpMethod = "string",
+        UserAgent = "string",
+        ClientIp = "string"
+      ),
+      Annotations = list(
+        list(
+          list(
+            AnnotationValue = list(
+              NumberValue = 123.0,
+              BooleanValue = TRUE|FALSE,
+              StringValue = "string"
+            ),
+            ServiceIds = list(
+              list(
+                Name = "string",
+                Names = list(
+                  "string"
+                ),
+                AccountId = "string",
+                Type = "string"
+              )
+            )
+          )
+        )
+      ),
+      Users = list(
+        list(
+          UserName = "string",
+          ServiceIds = list(
+            list(
+              Name = "string",
+              Names = list(
+                "string"
+              ),
+              AccountId = "string",
+              Type = "string"
+            )
+          )
+        )
+      ),
+      ServiceIds = list(
+        list(
+          Name = "string",
+          Names = list(
+            "string"
+          ),
+          AccountId = "string",
+          Type = "string"
+        )
+      ),
+      ResourceARNs = list(
+        list(
+          ARN = "string"
+        )
+      ),
+      InstanceIds = list(
+        list(
+          Id = "string"
+        )
+      ),
+      AvailabilityZones = list(
+        list(
+          Name = "string"
+        )
+      ),
+      EntryPoint = list(
+        Name = "string",
+        Names = list(
+          "string"
+        ),
+        AccountId = "string",
+        Type = "string"
+      ),
+      FaultRootCauses = list(
+        list(
+          Services = list(
+            list(
+              Name = "string",
+              Names = list(
+                "string"
+              ),
+              Type = "string",
+              AccountId = "string",
+              EntityPath = list(
+                list(
+                  Name = "string",
+                  Exceptions = list(
+                    list(
+                      Name = "string",
+                      Message = "string"
+                    )
+                  ),
+                  Remote = TRUE|FALSE
+                )
+              ),
+              Inferred = TRUE|FALSE
+            )
+          ),
+          ClientImpacting = TRUE|FALSE
+        )
+      ),
+      ErrorRootCauses = list(
+        list(
+          Services = list(
+            list(
+              Name = "string",
+              Names = list(
+                "string"
+              ),
+              Type = "string",
+              AccountId = "string",
+              EntityPath = list(
+                list(
+                  Name = "string",
+                  Exceptions = list(
+                    list(
+                      Name = "string",
+                      Message = "string"
+                    )
+                  ),
+                  Remote = TRUE|FALSE
+                )
+              ),
+              Inferred = TRUE|FALSE
+            )
+          ),
+          ClientImpacting = TRUE|FALSE
+        )
+      ),
+      ResponseTimeRootCauses = list(
+        list(
+          Services = list(
+            list(
+              Name = "string",
+              Names = list(
+                "string"
+              ),
+              Type = "string",
+              AccountId = "string",
+              EntityPath = list(
+                list(
+                  Name = "string",
+                  Coverage = 123.0,
+                  Remote = TRUE|FALSE
+                )
+              ),
+              Inferred = TRUE|FALSE
+            )
+          ),
+          ClientImpacting = TRUE|FALSE
+        )
+      ),
+      Revision = 123,
+      MatchedEventTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  ApproximateTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  TracesProcessedCount = 123,
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves IDs and annotations for traces available for a specified time
 frame using an optional filter. To get the full traces, pass the trace

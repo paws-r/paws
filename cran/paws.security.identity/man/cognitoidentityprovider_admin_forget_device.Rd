@@ -14,6 +14,9 @@ cognitoidentityprovider_admin_forget_device(UserPoolId, Username,
 
 \item{DeviceKey}{[required] The device key.}
 }
+\value{
+An empty list.
+}
 \description{
 Forgets the device, as an administrator.
 

@@ -42,6 +42,22 @@ The default value is \code{NONE}.}
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Listener = list(
+    ListenerArn = "string",
+    PortRanges = list(
+      list(
+        FromPort = 123,
+        ToPort = 123
+      )
+    ),
+    Protocol = "TCP"|"UDP",
+    ClientAffinity = "NONE"|"SOURCE_IP"
+  )
+)
+}
+}
 \description{
 Create a listener to process inbound connections from clients to an
 accelerator. Connections arrive to assigned static IP addresses on a

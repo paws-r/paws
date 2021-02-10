@@ -11,6 +11,22 @@ storagegateway_describe_snapshot_schedule(VolumeARN)
 \code{\link[=storagegateway_list_volumes]{list_volumes}} operation to return a list
 of gateway volumes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string",
+  StartAt = 123,
+  RecurrenceInHours = 123,
+  Description = "string",
+  Timezone = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the snapshot schedule for the specified gateway volume. The
 snapshot schedule information includes intervals at which snapshots are
@@ -29,7 +45,7 @@ in the cached volume and stored volume types.
 # Describes the snapshot schedule for the specified gateway volume
 # including intervals at which snapshots are automatically initiated.
 svc$describe_snapshot_schedule(
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 )
 }
 

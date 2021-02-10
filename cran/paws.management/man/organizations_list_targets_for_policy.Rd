@@ -13,7 +13,7 @@ know.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
-letters, digits, or the underscore character (\\_).}
+letters, digits, or the underscore character (_).}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
@@ -31,6 +31,20 @@ results. Note that Organizations might return fewer results than the
 maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Targets = list(
+    list(
+      TargetId = "string",
+      Arn = "string",
+      Name = "string",
+      Type = "ACCOUNT"|"ORGANIZATIONAL_UNIT"|"ROOT"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists all the roots, organizational units (OUs), and accounts that the

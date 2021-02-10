@@ -16,6 +16,18 @@ lists all available tags in one call and does not use pagination.}
 
 \item{maxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the set of key-value pairs (metadata) that are used to manage the
 resource.

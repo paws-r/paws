@@ -32,6 +32,105 @@ required in a request.}
 \item{executionConfiguration}{Specifies configuration information about a test run, such as the
 execution timeout (in minutes).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  run = list(
+    arn = "string",
+    name = "string",
+    type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+    platform = "ANDROID"|"IOS",
+    created = as.POSIXct(
+      "2015-01-01"
+    ),
+    status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+    result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+    started = as.POSIXct(
+      "2015-01-01"
+    ),
+    stopped = as.POSIXct(
+      "2015-01-01"
+    ),
+    counters = list(
+      total = 123,
+      passed = 123,
+      failed = 123,
+      warned = 123,
+      errored = 123,
+      stopped = 123,
+      skipped = 123
+    ),
+    message = "string",
+    totalJobs = 123,
+    completedJobs = 123,
+    billingMethod = "METERED"|"UNMETERED",
+    deviceMinutes = list(
+      total = 123.0,
+      metered = 123.0,
+      unmetered = 123.0
+    ),
+    networkProfile = list(
+      arn = "string",
+      name = "string",
+      description = "string",
+      type = "CURATED"|"PRIVATE",
+      uplinkBandwidthBits = 123,
+      downlinkBandwidthBits = 123,
+      uplinkDelayMs = 123,
+      downlinkDelayMs = 123,
+      uplinkJitterMs = 123,
+      downlinkJitterMs = 123,
+      uplinkLossPercent = 123,
+      downlinkLossPercent = 123
+    ),
+    parsingResultUrl = "string",
+    resultCode = "PARSING_FAILED"|"VPC_ENDPOINT_SETUP_FAILED",
+    seed = 123,
+    appUpload = "string",
+    eventCount = 123,
+    jobTimeoutMinutes = 123,
+    devicePoolArn = "string",
+    locale = "string",
+    radios = list(
+      wifi = TRUE|FALSE,
+      bluetooth = TRUE|FALSE,
+      nfc = TRUE|FALSE,
+      gps = TRUE|FALSE
+    ),
+    location = list(
+      latitude = 123.0,
+      longitude = 123.0
+    ),
+    customerArtifactPaths = list(
+      iosPaths = list(
+        "string"
+      ),
+      androidPaths = list(
+        "string"
+      ),
+      deviceHostPaths = list(
+        "string"
+      )
+    ),
+    webUrl = "string",
+    skipAppResign = TRUE|FALSE,
+    testSpecArn = "string",
+    deviceSelectionResult = list(
+      filters = list(
+        list(
+          attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+          operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+          values = list(
+            "string"
+          )
+        )
+      ),
+      matchedDevicesCount = 123,
+      maxDevices = 123
+    )
+  )
+)
+}
+}
 \description{
 Schedules a run.
 }

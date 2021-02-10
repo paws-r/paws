@@ -10,6 +10,14 @@ mobile_export_project(projectId)
 \arguments{
 \item{projectId}{[required] Unique project identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  downloadUrl = "string",
+  shareUrl = "string",
+  snapshotId = "string"
+)
+}
+}
 \description{
 Exports project configuration to a snapshot which can be downloaded and
 shared. Note that mobile app push credentials are encrypted in exported

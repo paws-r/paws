@@ -9,6 +9,21 @@ greengrass_get_logger_definition(LoggerDefinitionId)
 \arguments{
 \item{LoggerDefinitionId}{[required] The ID of the logger definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  LastUpdatedTimestamp = "string",
+  LatestVersion = "string",
+  LatestVersionArn = "string",
+  Name = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about a logger definition.
 }

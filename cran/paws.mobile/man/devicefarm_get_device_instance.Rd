@@ -11,6 +11,30 @@ devicefarm_get_device_instance(arn)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the instance you're requesting
 information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deviceInstance = list(
+    arn = "string",
+    deviceArn = "string",
+    labels = list(
+      "string"
+    ),
+    status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+    udid = "string",
+    instanceProfile = list(
+      arn = "string",
+      packageCleanup = TRUE|FALSE,
+      excludeAppPackagesFromCleanup = list(
+        "string"
+      ),
+      rebootAfterUse = TRUE|FALSE,
+      name = "string",
+      description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a device instance that belongs to a private
 device fleet.

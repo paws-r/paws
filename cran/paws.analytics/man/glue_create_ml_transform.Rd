@@ -107,6 +107,12 @@ the developer guide.}
 user data. Machine learning transforms can access user data encrypted in
 Amazon S3 using KMS.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformId = "string"
+)
+}
+}
 \description{
 Creates an AWS Glue machine learning transform. This operation creates
 the transform and all the necessary parameters to train it.

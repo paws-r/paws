@@ -9,6 +9,12 @@ securityhub_delete_action_target(ActionTargetArn)
 \arguments{
 \item{ActionTargetArn}{[required] The ARN of the custom action target to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionTargetArn = "string"
+)
+}
+}
 \description{
 Deletes a custom action target from Security Hub.
 

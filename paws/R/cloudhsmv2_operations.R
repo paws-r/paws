@@ -18,6 +18,21 @@ NULL
 #' do not specify tags, the service copies tags from the source backup to
 #' the destination backup.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DestinationBackup = list(
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SourceRegion = "string",
+#'     SourceBackup = "string",
+#'     SourceCluster = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_backup_to_region(
@@ -76,6 +91,59 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' 
 #' -   You can specify only one subnet per Availability Zone.
 #' @param TagList Tags to apply to the CloudHSM cluster during creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     BackupPolicy = "DEFAULT",
+#'     BackupRetentionPolicy = list(
+#'       Type = "DAYS",
+#'       Value = "string"
+#'     ),
+#'     ClusterId = "string",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Hsms = list(
+#'       list(
+#'         AvailabilityZone = "string",
+#'         ClusterId = "string",
+#'         SubnetId = "string",
+#'         EniId = "string",
+#'         EniIp = "string",
+#'         HsmId = "string",
+#'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+#'         StateMessage = "string"
+#'       )
+#'     ),
+#'     HsmType = "string",
+#'     PreCoPassword = "string",
+#'     SecurityGroup = "string",
+#'     SourceBackupId = "string",
+#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'     StateMessage = "string",
+#'     SubnetMapping = list(
+#'       "string"
+#'     ),
+#'     VpcId = "string",
+#'     Certificates = list(
+#'       ClusterCsr = "string",
+#'       HsmCertificate = "string",
+#'       AwsHardwareCertificate = "string",
+#'       ManufacturerHardwareCertificate = "string",
+#'       ClusterCertificate = "string"
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -138,6 +206,23 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #' creating the HSM. If you don't specify an IP address, one is chosen for
 #' you from that subnet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Hsm = list(
+#'     AvailabilityZone = "string",
+#'     ClusterId = "string",
+#'     SubnetId = "string",
+#'     EniId = "string",
+#'     EniIp = "string",
+#'     HsmId = "string",
+#'     State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+#'     StateMessage = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_hsm(
@@ -180,6 +265,37 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #' @param BackupId &#91;required&#93; The ID of the backup to be deleted. To find the ID of a backup, use the
 #' [`describe_backups`][cloudhsmv2_describe_backups] operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backup = list(
+#'     BackupId = "string",
+#'     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
+#'     ClusterId = "string",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CopyTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NeverExpires = TRUE|FALSE,
+#'     SourceRegion = "string",
+#'     SourceBackup = "string",
+#'     SourceCluster = "string",
+#'     DeleteTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_backup(
@@ -221,6 +337,59 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are deleting. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     BackupPolicy = "DEFAULT",
+#'     BackupRetentionPolicy = list(
+#'       Type = "DAYS",
+#'       Value = "string"
+#'     ),
+#'     ClusterId = "string",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Hsms = list(
+#'       list(
+#'         AvailabilityZone = "string",
+#'         ClusterId = "string",
+#'         SubnetId = "string",
+#'         EniId = "string",
+#'         EniIp = "string",
+#'         HsmId = "string",
+#'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+#'         StateMessage = "string"
+#'       )
+#'     ),
+#'     HsmType = "string",
+#'     PreCoPassword = "string",
+#'     SecurityGroup = "string",
+#'     SourceBackupId = "string",
+#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'     StateMessage = "string",
+#'     SubnetMapping = list(
+#'       "string"
+#'     ),
+#'     VpcId = "string",
+#'     Certificates = list(
+#'       ClusterCsr = "string",
+#'       HsmCertificate = "string",
+#'       AwsHardwareCertificate = "string",
+#'       ManufacturerHardwareCertificate = "string",
+#'       ClusterCertificate = "string"
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -268,6 +437,14 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #' that you are deleting.
 #' @param EniIp The IP address of the elastic network interface (ENI) of the HSM that
 #' you are deleting.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HsmId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -344,6 +521,40 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' @param SortAscending Designates whether or not to sort the return backups by ascending
 #' chronological order of generation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backups = list(
+#'     list(
+#'       BackupId = "string",
+#'       BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
+#'       ClusterId = "string",
+#'       CreateTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CopyTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NeverExpires = TRUE|FALSE,
+#'       SourceRegion = "string",
+#'       SourceBackup = "string",
+#'       SourceCluster = "string",
+#'       DeleteTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TagList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_backups(
@@ -411,6 +622,62 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #' more clusters than the number you specify, the response contains a
 #' `NextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Clusters = list(
+#'     list(
+#'       BackupPolicy = "DEFAULT",
+#'       BackupRetentionPolicy = list(
+#'         Type = "DAYS",
+#'         Value = "string"
+#'       ),
+#'       ClusterId = "string",
+#'       CreateTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Hsms = list(
+#'         list(
+#'           AvailabilityZone = "string",
+#'           ClusterId = "string",
+#'           SubnetId = "string",
+#'           EniId = "string",
+#'           EniIp = "string",
+#'           HsmId = "string",
+#'           State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+#'           StateMessage = "string"
+#'         )
+#'       ),
+#'       HsmType = "string",
+#'       PreCoPassword = "string",
+#'       SecurityGroup = "string",
+#'       SourceBackupId = "string",
+#'       State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'       StateMessage = "string",
+#'       SubnetMapping = list(
+#'         "string"
+#'       ),
+#'       VpcId = "string",
+#'       Certificates = list(
+#'         ClusterCsr = "string",
+#'         HsmCertificate = "string",
+#'         AwsHardwareCertificate = "string",
+#'         ManufacturerHardwareCertificate = "string",
+#'         ClusterCertificate = "string"
+#'       ),
+#'       TagList = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_clusters(
@@ -469,6 +736,15 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' available, and thus must be the root certificate. The certificate must
 #' be in PEM format and can contain a maximum of 5000 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'   StateMessage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$initialize_cluster(
@@ -522,6 +798,20 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #' more tags than the number you specify, the response contains a
 #' `NextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags(
@@ -566,6 +856,37 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #' policy. `False` means the service applies the backup retention policy
 #' defined at the cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backup = list(
+#'     BackupId = "string",
+#'     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
+#'     ClusterId = "string",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CopyTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NeverExpires = TRUE|FALSE,
+#'     SourceRegion = "string",
+#'     SourceBackup = "string",
+#'     SourceCluster = "string",
+#'     DeleteTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_backup_attributes(
@@ -605,6 +926,59 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #' @param BackupRetentionPolicy &#91;required&#93; A policy that defines how the service retains backups.
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     BackupPolicy = "DEFAULT",
+#'     BackupRetentionPolicy = list(
+#'       Type = "DAYS",
+#'       Value = "string"
+#'     ),
+#'     ClusterId = "string",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Hsms = list(
+#'       list(
+#'         AvailabilityZone = "string",
+#'         ClusterId = "string",
+#'         SubnetId = "string",
+#'         EniId = "string",
+#'         EniIp = "string",
+#'         HsmId = "string",
+#'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+#'         StateMessage = "string"
+#'       )
+#'     ),
+#'     HsmType = "string",
+#'     PreCoPassword = "string",
+#'     SecurityGroup = "string",
+#'     SourceBackupId = "string",
+#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'     StateMessage = "string",
+#'     SubnetMapping = list(
+#'       "string"
+#'     ),
+#'     VpcId = "string",
+#'     Certificates = list(
+#'       ClusterCsr = "string",
+#'       HsmCertificate = "string",
+#'       AwsHardwareCertificate = "string",
+#'       ManufacturerHardwareCertificate = "string",
+#'       ClusterCertificate = "string"
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -651,6 +1025,37 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
 #' @param BackupId &#91;required&#93; The ID of the backup to be restored. To find the ID of a backup, use the
 #' [`describe_backups`][cloudhsmv2_describe_backups] operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backup = list(
+#'     BackupId = "string",
+#'     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
+#'     ClusterId = "string",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CopyTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NeverExpires = TRUE|FALSE,
+#'     SourceRegion = "string",
+#'     SourceBackup = "string",
+#'     SourceCluster = "string",
+#'     DeleteTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$restore_backup(
@@ -692,6 +1097,9 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #' find the cluster ID, use
 #' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param TagList &#91;required&#93; A list of one or more tags.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -741,6 +1149,9 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param TagKeyList &#91;required&#93; A list of one or more tag keys for the tags that you are removing.
 #' Specify only the tag keys, not the tag values.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

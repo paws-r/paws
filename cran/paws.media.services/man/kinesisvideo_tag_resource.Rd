@@ -13,6 +13,9 @@ want to add tags.}
 \item{Tags}{[required] A list of tags to associate with the specified signaling channel. Each
 tag is a key-value pair.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to a signaling channel. A \emph{tag} is a key-value
 pair (the value is optional) that you can define and assign to AWS

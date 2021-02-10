@@ -34,6 +34,25 @@ the remaining results, make another request with the returned
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConnectionNotificationSet = list(
+    list(
+      ConnectionNotificationId = "string",
+      ServiceId = "string",
+      VpcEndpointId = "string",
+      ConnectionNotificationType = "Topic",
+      ConnectionNotificationArn = "string",
+      ConnectionEvents = list(
+        "string"
+      ),
+      ConnectionNotificationState = "Enabled"|"Disabled"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the connection notifications for VPC endpoints and VPC
 endpoint services.

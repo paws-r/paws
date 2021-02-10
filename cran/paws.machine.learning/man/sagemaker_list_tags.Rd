@@ -16,6 +16,18 @@ the next set of tags, use it in the subsequent request.}
 
 \item{MaxResults}{Maximum number of tags to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the tags for the specified Amazon SageMaker resource.
 }

@@ -19,6 +19,9 @@ of the descriptions of all the consumers that are currently registered
 with a given data stream. The description of a consumer contains its
 ARN.}
 }
+\value{
+An empty list.
+}
 \description{
 To deregister a consumer, provide its ARN. Alternatively, you can
 provide the ARN of the data stream and the name you gave the consumer

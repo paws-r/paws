@@ -11,6 +11,23 @@ chime_put_voice_connector_origination(VoiceConnectorId, Origination)
 
 \item{Origination}{[required] The origination setting details to add.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Origination = list(
+    Routes = list(
+      list(
+        Host = "string",
+        Port = 123,
+        Protocol = "TCP"|"UDP",
+        Priority = 123,
+        Weight = 123
+      )
+    ),
+    Disabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Adds origination settings for the specified Amazon Chime Voice
 Connector.

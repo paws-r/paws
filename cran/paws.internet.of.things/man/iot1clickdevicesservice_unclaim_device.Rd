@@ -9,6 +9,12 @@ iot1clickdevicesservice_unclaim_device(DeviceId)
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  State = "string"
+)
+}
+}
 \description{
 Disassociates a device from your AWS account using its device ID.
 }

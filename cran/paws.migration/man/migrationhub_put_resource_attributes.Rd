@@ -39,6 +39,9 @@ maximize the chances of matching.
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+An empty list.
+}
 \description{
 Provides identifying details of the resource being migrated so that it
 can be associated in the Application Discovery Service repository. This

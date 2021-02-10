@@ -9,6 +9,40 @@ iot_describe_thing_group(thingGroupName)
 \arguments{
 \item{thingGroupName}{[required] The name of the thing group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingGroupName = "string",
+  thingGroupId = "string",
+  thingGroupArn = "string",
+  version = 123,
+  thingGroupProperties = list(
+    thingGroupDescription = "string",
+    attributePayload = list(
+      attributes = list(
+        "string"
+      ),
+      merge = TRUE|FALSE
+    )
+  ),
+  thingGroupMetadata = list(
+    parentGroupName = "string",
+    rootToParentThingGroups = list(
+      list(
+        groupName = "string",
+        groupArn = "string"
+      )
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  indexName = "string",
+  queryString = "string",
+  queryVersion = "string",
+  status = "ACTIVE"|"BUILDING"|"REBUILDING"
+)
+}
+}
 \description{
 Describe a thing group.
 }

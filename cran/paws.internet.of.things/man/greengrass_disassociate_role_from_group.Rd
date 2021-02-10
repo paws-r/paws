@@ -9,6 +9,12 @@ greengrass_disassociate_role_from_group(GroupId)
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DisassociatedAt = "string"
+)
+}
+}
 \description{
 Disassociates the role from a group.
 }

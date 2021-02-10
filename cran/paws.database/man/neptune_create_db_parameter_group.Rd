@@ -28,6 +28,17 @@ version compatible with that DB parameter group family.}
 
 \item{Tags}{The tags to be assigned to the new DB parameter group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBParameterGroup = list(
+    DBParameterGroupName = "string",
+    DBParameterGroupFamily = "string",
+    Description = "string",
+    DBParameterGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new DB parameter group.
 

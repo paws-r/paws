@@ -75,6 +75,9 @@ to a stack with the same name. You might retry
 \code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}
 requests to ensure that AWS CloudFormation successfully received them.}
 }
+\value{
+An empty list.
+}
 \description{
 For a specified stack that is in the \code{UPDATE_ROLLBACK_FAILED} state,
 continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state.

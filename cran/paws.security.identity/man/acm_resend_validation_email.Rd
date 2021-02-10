@@ -34,6 +34,9 @@ WHOIS and the following five addresses:
 \item webmaster@subdomain.example.com
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Resends the email that requests domain ownership validation. The domain
 owner or an authorized representative must approve the ACM certificate

@@ -9,6 +9,9 @@ medialive_delete_input_security_group(InputSecurityGroupId)
 \arguments{
 \item{InputSecurityGroupId}{[required] The Input Security Group to delete}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an Input Security Group
 }

@@ -15,6 +15,15 @@ NULL
 #' @param id &#91;required&#93; The ID of the job run to cancel.
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster for which the job run will be canceled.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   virtualClusterId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_job_run(
@@ -65,6 +74,17 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 #' configurations.
 #' @param clientToken &#91;required&#93; The client idempotency token for this create call.
 #' @param tags The tags of the managed endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   arn = "string",
+#'   virtualClusterId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -142,6 +162,16 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #' @param clientToken &#91;required&#93; The client token of the virtual cluster.
 #' @param tags The tags assigned to the virtual cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   arn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_virtual_cluster(
@@ -195,6 +225,15 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
 #' @param id &#91;required&#93; The ID of the managed endpoint.
 #' @param virtualClusterId &#91;required&#93; The ID of the endpoint's virtual cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   virtualClusterId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_managed_endpoint(
@@ -238,6 +277,14 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
 #'
 #' @param id &#91;required&#93; The ID of the virtual cluster that will be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_virtual_cluster(
@@ -277,6 +324,65 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 #'
 #' @param id &#91;required&#93; The ID of the job run request.
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster for which the job run is submitted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobRun = list(
+#'     id = "string",
+#'     name = "string",
+#'     virtualClusterId = "string",
+#'     arn = "string",
+#'     state = "PENDING"|"SUBMITTED"|"RUNNING"|"FAILED"|"CANCELLED"|"CANCEL_PENDING"|"COMPLETED",
+#'     clientToken = "string",
+#'     executionRoleArn = "string",
+#'     releaseLabel = "string",
+#'     configurationOverrides = list(
+#'       applicationConfiguration = list(
+#'         list(
+#'           classification = "string",
+#'           properties = list(
+#'             "string"
+#'           ),
+#'           configurations = list()
+#'         )
+#'       ),
+#'       monitoringConfiguration = list(
+#'         persistentAppUI = "ENABLED"|"DISABLED",
+#'         cloudWatchMonitoringConfiguration = list(
+#'           logGroupName = "string",
+#'           logStreamNamePrefix = "string"
+#'         ),
+#'         s3MonitoringConfiguration = list(
+#'           logUri = "string"
+#'         )
+#'       )
+#'     ),
+#'     jobDriver = list(
+#'       sparkSubmitJobDriver = list(
+#'         entryPoint = "string",
+#'         entryPointArguments = list(
+#'           "string"
+#'         ),
+#'         sparkSubmitParameters = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     finishedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stateDetails = "string",
+#'     failureReason = "INTERNAL_ERROR"|"USER_ERROR"|"VALIDATION_ERROR"|"CLUSTER_UNAVAILABLE",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -318,6 +424,56 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
 #'
 #' @param id &#91;required&#93; This output displays ID of the managed endpoint.
 #' @param virtualClusterId &#91;required&#93; The ID of the endpoint's virtual cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoint = list(
+#'     id = "string",
+#'     name = "string",
+#'     arn = "string",
+#'     virtualClusterId = "string",
+#'     type = "string",
+#'     state = "CREATING"|"ACTIVE"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS",
+#'     releaseLabel = "string",
+#'     executionRoleArn = "string",
+#'     certificateArn = "string",
+#'     configurationOverrides = list(
+#'       applicationConfiguration = list(
+#'         list(
+#'           classification = "string",
+#'           properties = list(
+#'             "string"
+#'           ),
+#'           configurations = list()
+#'         )
+#'       ),
+#'       monitoringConfiguration = list(
+#'         persistentAppUI = "ENABLED"|"DISABLED",
+#'         cloudWatchMonitoringConfiguration = list(
+#'           logGroupName = "string",
+#'           logStreamNamePrefix = "string"
+#'         ),
+#'         s3MonitoringConfiguration = list(
+#'           logUri = "string"
+#'         )
+#'       )
+#'     ),
+#'     serverUrl = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     securityGroup = "string",
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -362,6 +518,34 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
 #' emrcontainers_describe_virtual_cluster(id)
 #'
 #' @param id &#91;required&#93; The ID of the virtual cluster that will be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualCluster = list(
+#'     id = "string",
+#'     name = "string",
+#'     arn = "string",
+#'     state = "RUNNING"|"TERMINATING"|"TERMINATED"|"ARRESTED",
+#'     containerProvider = list(
+#'       type = "EKS",
+#'       id = "string",
+#'       info = list(
+#'         eksInfo = list(
+#'           namespace = "string"
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -408,6 +592,68 @@ emrcontainers_describe_virtual_cluster <- function(id) {
 #' @param states The states of the job run.
 #' @param maxResults The maximum number of job runs that can be listed.
 #' @param nextToken The token for the next set of job runs to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobRuns = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       virtualClusterId = "string",
+#'       arn = "string",
+#'       state = "PENDING"|"SUBMITTED"|"RUNNING"|"FAILED"|"CANCELLED"|"CANCEL_PENDING"|"COMPLETED",
+#'       clientToken = "string",
+#'       executionRoleArn = "string",
+#'       releaseLabel = "string",
+#'       configurationOverrides = list(
+#'         applicationConfiguration = list(
+#'           list(
+#'             classification = "string",
+#'             properties = list(
+#'               "string"
+#'             ),
+#'             configurations = list()
+#'           )
+#'         ),
+#'         monitoringConfiguration = list(
+#'           persistentAppUI = "ENABLED"|"DISABLED",
+#'           cloudWatchMonitoringConfiguration = list(
+#'             logGroupName = "string",
+#'             logStreamNamePrefix = "string"
+#'           ),
+#'           s3MonitoringConfiguration = list(
+#'             logUri = "string"
+#'           )
+#'         )
+#'       ),
+#'       jobDriver = list(
+#'         sparkSubmitJobDriver = list(
+#'           entryPoint = "string",
+#'           entryPointArguments = list(
+#'             "string"
+#'           ),
+#'           sparkSubmitParameters = "string"
+#'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       finishedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stateDetails = "string",
+#'       failureReason = "INTERNAL_ERROR"|"USER_ERROR"|"VALIDATION_ERROR"|"CLUSTER_UNAVAILABLE",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -467,6 +713,59 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
 #' @param maxResults The maximum number of managed endpoints that can be listed.
 #' @param nextToken The token for the next set of managed endpoints to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoints = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       arn = "string",
+#'       virtualClusterId = "string",
+#'       type = "string",
+#'       state = "CREATING"|"ACTIVE"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS",
+#'       releaseLabel = "string",
+#'       executionRoleArn = "string",
+#'       certificateArn = "string",
+#'       configurationOverrides = list(
+#'         applicationConfiguration = list(
+#'           list(
+#'             classification = "string",
+#'             properties = list(
+#'               "string"
+#'             ),
+#'             configurations = list()
+#'           )
+#'         ),
+#'         monitoringConfiguration = list(
+#'           persistentAppUI = "ENABLED"|"DISABLED",
+#'           cloudWatchMonitoringConfiguration = list(
+#'             logGroupName = "string",
+#'             logStreamNamePrefix = "string"
+#'           ),
+#'           s3MonitoringConfiguration = list(
+#'             logUri = "string"
+#'           )
+#'         )
+#'       ),
+#'       serverUrl = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       securityGroup = "string",
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_managed_endpoints(
@@ -518,6 +817,16 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
 #'
 #' @param resourceArn &#91;required&#93; The ARN of tagged resources.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -568,6 +877,37 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' @param states The states of the requested virtual clusters.
 #' @param maxResults The maximum number of virtual clusters that can be listed.
 #' @param nextToken The token for the next set of virtual clusters to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   virtualClusters = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       arn = "string",
+#'       state = "RUNNING"|"TERMINATING"|"TERMINATED"|"ARRESTED",
+#'       containerProvider = list(
+#'         type = "EKS",
+#'         id = "string",
+#'         info = list(
+#'           eksInfo = list(
+#'             namespace = "string"
+#'           )
+#'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -626,6 +966,17 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #' @param jobDriver &#91;required&#93; The job driver for the job run.
 #' @param configurationOverrides The configuration overrides for the job run.
 #' @param tags The tags assigned to job runs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   arn = "string",
+#'   virtualClusterId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -711,6 +1062,9 @@ emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientTok
 #' @param resourceArn &#91;required&#93; The ARN of resources.
 #' @param tags &#91;required&#93; The tags assigned to resources.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -751,6 +1105,9 @@ emrcontainers_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of resources.
 #' @param tagKeys &#91;required&#93; The tag keys of the resources.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

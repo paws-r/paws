@@ -9,6 +9,14 @@ mediapackage_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 List tags for resource
 }

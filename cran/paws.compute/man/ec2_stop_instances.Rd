@@ -28,6 +28,24 @@ option is not recommended for Windows instances.
 
 Default: \code{false}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StoppingInstances = list(
+    list(
+      CurrentState = list(
+        Code = 123,
+        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+      ),
+      InstanceId = "string",
+      PreviousState = list(
+        Code = 123,
+        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Stops an Amazon EBS-backed instance.
 

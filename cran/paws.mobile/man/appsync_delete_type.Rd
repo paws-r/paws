@@ -11,6 +11,9 @@ appsync_delete_type(apiId, typeName)
 
 \item{typeName}{[required] The type name.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a \code{Type} object.
 }

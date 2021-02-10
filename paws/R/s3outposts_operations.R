@@ -28,6 +28,14 @@ NULL
 #' @param SubnetId &#91;required&#93; The ID of the subnet in the selected VPC.
 #' @param SecurityGroupId &#91;required&#93; The ID of the security group to use with the endpoint.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_endpoint(
@@ -80,6 +88,9 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId) {
 #' @param EndpointId &#91;required&#93; The ID of the end point.
 #' @param OutpostId &#91;required&#93; The ID of the AWS Outpost.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_endpoint(
@@ -130,6 +141,30 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 #'
 #' @param NextToken The next endpoint requested in the list.
 #' @param MaxResults The max number of endpoints that can be returned on the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoints = list(
+#'     list(
+#'       EndpointArn = "string",
+#'       OutpostsId = "string",
+#'       CidrBlock = "string",
+#'       Status = "PENDING"|"AVAILABLE",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NetworkInterfaces = list(
+#'         list(
+#'           NetworkInterfaceId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

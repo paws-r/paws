@@ -9,6 +9,28 @@ iot_describe_authorizer(authorizerName)
 \arguments{
 \item{authorizerName}{[required] The name of the authorizer to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authorizerDescription = list(
+    authorizerName = "string",
+    authorizerArn = "string",
+    authorizerFunctionArn = "string",
+    tokenKeyName = "string",
+    tokenSigningPublicKeys = list(
+      "string"
+    ),
+    status = "ACTIVE"|"INACTIVE",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    signingDisabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Describes an authorizer.
 }

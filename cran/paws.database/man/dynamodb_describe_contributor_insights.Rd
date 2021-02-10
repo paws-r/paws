@@ -12,6 +12,24 @@ dynamodb_describe_contributor_insights(TableName, IndexName)
 
 \item{IndexName}{The name of the global secondary index to describe, if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableName = "string",
+  IndexName = "string",
+  ContributorInsightsRuleList = list(
+    "string"
+  ),
+  ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED",
+  LastUpdateDateTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  FailureException = list(
+    ExceptionName = "string",
+    ExceptionDescription = "string"
+  )
+)
+}
+}
 \description{
 Returns information about contributor insights, for a given table or
 global secondary index.

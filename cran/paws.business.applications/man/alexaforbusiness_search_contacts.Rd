@@ -25,6 +25,34 @@ specified by MaxResults.}
 results exist than the specified MaxResults value, a token is included
 in the response so that the remaining results can be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Contacts = list(
+    list(
+      ContactArn = "string",
+      DisplayName = "string",
+      FirstName = "string",
+      LastName = "string",
+      PhoneNumber = "string",
+      PhoneNumbers = list(
+        list(
+          Number = "string",
+          Type = "MOBILE"|"WORK"|"HOME"
+        )
+      ),
+      SipAddresses = list(
+        list(
+          Uri = "string",
+          Type = "WORK"
+        )
+      )
+    )
+  ),
+  NextToken = "string",
+  TotalCount = 123
+)
+}
+}
 \description{
 Searches contacts and lists the ones that meet a set of filter and sort
 criteria.

@@ -11,6 +11,23 @@ ec2_associate_iam_instance_profile(IamInstanceProfile, InstanceId)
 
 \item{InstanceId}{[required] The ID of the instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IamInstanceProfileAssociation = list(
+    AssociationId = "string",
+    InstanceId = "string",
+    IamInstanceProfile = list(
+      Arn = "string",
+      Id = "string"
+    ),
+    State = "associating"|"associated"|"disassociating"|"disassociated",
+    Timestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Associates an IAM instance profile with a running or stopped instance.
 You cannot associate more than one IAM instance profile with an

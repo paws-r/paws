@@ -14,6 +14,9 @@ for.}
 \item{repositoryDescription}{The new comment or description for the specified repository. Repository
 descriptions are limited to 1,000 characters.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets or changes the comment or description for a repository.
 

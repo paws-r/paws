@@ -17,6 +17,13 @@ see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}
 .}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CostCategoryArn = "string",
+  EffectiveStart = "string"
+)
+}
+}
 \description{
 Updates an existing Cost Category. Changes made to the Cost Category
 rules will be used to categorize the current month’s expenses and future

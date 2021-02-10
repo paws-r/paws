@@ -24,6 +24,22 @@ subsequent call to get the next batch of objects.
 If you don't specify this, AWS Firewall Manager returns all available
 objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProtocolsLists = list(
+    list(
+      ListArn = "string",
+      ListId = "string",
+      ListName = "string",
+      ProtocolsList = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of \code{ProtocolsListDataSummary} objects.
 }

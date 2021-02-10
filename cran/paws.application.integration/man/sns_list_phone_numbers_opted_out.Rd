@@ -13,6 +13,15 @@ sns_list_phone_numbers_opted_out(nextToken)
 action to retrieve additional records that are available after the first
 page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  phoneNumbers = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of phone numbers that are opted out, meaning you cannot
 send SMS messages to them.

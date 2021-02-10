@@ -16,6 +16,42 @@ retrieve an InsightId.}
 \item{NextToken}{Specify the pagination token returned by a previous request to retrieve
 the next page of events.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InsightEvents = list(
+    list(
+      Summary = "string",
+      EventTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ClientRequestImpactStatistics = list(
+        FaultCount = 123,
+        OkCount = 123,
+        TotalCount = 123
+      ),
+      RootCauseServiceRequestImpactStatistics = list(
+        FaultCount = 123,
+        OkCount = 123,
+        TotalCount = 123
+      ),
+      TopAnomalousServices = list(
+        list(
+          ServiceId = list(
+            Name = "string",
+            Names = list(
+              "string"
+            ),
+            AccountId = "string",
+            Type = "string"
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 X-Ray reevaluates insights periodically until they're resolved, and
 records each intermediate state as an event. You can review an insight's

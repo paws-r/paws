@@ -14,6 +14,28 @@ cloudsearch_describe_domain_endpoint_options(DomainName, Deployed)
 Processing state) or the current, active configuration. Defaults to
 \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainEndpointOptions = list(
+    Options = list(
+      EnforceHTTPS = TRUE|FALSE,
+      TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+    ),
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns the domain's endpoint options, specifically whether all requests
 to the domain must arrive over HTTPS. For more information, see

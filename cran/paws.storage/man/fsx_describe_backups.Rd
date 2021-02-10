@@ -23,6 +23,132 @@ the request and the service's internal maximum number of items per page.}
 token present, the action continues the list from where the returning
 call left off.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Backups = list(
+    list(
+      BackupId = "string",
+      Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
+      FailureDetails = list(
+        Message = "string"
+      ),
+      Type = "AUTOMATIC"|"USER_INITIATED"|"AWS_BACKUP",
+      ProgressPercent = 123,
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      KmsKeyId = "string",
+      ResourceARN = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      FileSystem = list(
+        OwnerId = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        FileSystemId = "string",
+        FileSystemType = "WINDOWS"|"LUSTRE",
+        Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+        FailureDetails = list(
+          Message = "string"
+        ),
+        StorageCapacity = 123,
+        StorageType = "SSD"|"HDD",
+        VpcId = "string",
+        SubnetIds = list(
+          "string"
+        ),
+        NetworkInterfaceIds = list(
+          "string"
+        ),
+        DNSName = "string",
+        KmsKeyId = "string",
+        ResourceARN = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        WindowsConfiguration = list(
+          ActiveDirectoryId = "string",
+          SelfManagedActiveDirectoryConfiguration = list(
+            DomainName = "string",
+            OrganizationalUnitDistinguishedName = "string",
+            FileSystemAdministratorsGroup = "string",
+            UserName = "string",
+            DnsIps = list(
+              "string"
+            )
+          ),
+          DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+          RemoteAdministrationEndpoint = "string",
+          PreferredSubnetId = "string",
+          PreferredFileServerIp = "string",
+          ThroughputCapacity = 123,
+          MaintenanceOperationsInProgress = list(
+            "PATCHING"|"BACKING_UP"
+          ),
+          WeeklyMaintenanceStartTime = "string",
+          DailyAutomaticBackupStartTime = "string",
+          AutomaticBackupRetentionDays = 123,
+          CopyTagsToBackups = TRUE|FALSE,
+          Aliases = list(
+            list(
+              Name = "string",
+              Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+            )
+          )
+        ),
+        LustreConfiguration = list(
+          WeeklyMaintenanceStartTime = "string",
+          DataRepositoryConfiguration = list(
+            Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+            ImportPath = "string",
+            ExportPath = "string",
+            ImportedFileChunkSize = 123,
+            AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+            FailureDetails = list(
+              Message = "string"
+            )
+          ),
+          DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+          PerUnitStorageThroughput = 123,
+          MountName = "string",
+          DailyAutomaticBackupStartTime = "string",
+          AutomaticBackupRetentionDays = 123,
+          CopyTagsToBackups = TRUE|FALSE,
+          DriveCacheType = "NONE"|"READ"
+        ),
+        AdministrativeActions = list(
+          list(
+            AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+            ProgressPercent = 123,
+            RequestTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+            TargetFileSystemValues = list(),
+            FailureDetails = list(
+              Message = "string"
+            )
+          )
+        )
+      ),
+      DirectoryInformation = list(
+        DomainName = "string",
+        ActiveDirectoryId = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the description of specific Amazon FSx backups, if a \code{BackupIds}
 value is provided for that backup. Otherwise, it returns all backups

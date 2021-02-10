@@ -23,6 +23,19 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MetadataInfoMap = list(
+    list(
+      MetadataValue = "string",
+      CreatedTime = "string"
+    )
+  ),
+  SchemaVersionId = "string",
+  NextToken = "string"
+)
+}
+}
 \description{
 Queries for the schema version metadata information.
 }

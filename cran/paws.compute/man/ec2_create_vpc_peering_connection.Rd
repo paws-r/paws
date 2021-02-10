@@ -31,6 +31,69 @@ Default: The Region in which you make the request.}
 
 \item{TagSpecifications}{The tags to assign to the peering connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcPeeringConnection = list(
+    AccepterVpcInfo = list(
+      CidrBlock = "string",
+      Ipv6CidrBlockSet = list(
+        list(
+          Ipv6CidrBlock = "string"
+        )
+      ),
+      CidrBlockSet = list(
+        list(
+          CidrBlock = "string"
+        )
+      ),
+      OwnerId = "string",
+      PeeringOptions = list(
+        AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+      ),
+      VpcId = "string",
+      Region = "string"
+    ),
+    ExpirationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    RequesterVpcInfo = list(
+      CidrBlock = "string",
+      Ipv6CidrBlockSet = list(
+        list(
+          Ipv6CidrBlock = "string"
+        )
+      ),
+      CidrBlockSet = list(
+        list(
+          CidrBlock = "string"
+        )
+      ),
+      OwnerId = "string",
+      PeeringOptions = list(
+        AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+        AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+      ),
+      VpcId = "string",
+      Region = "string"
+    ),
+    Status = list(
+      Code = "initiating-request"|"pending-acceptance"|"active"|"deleted"|"rejected"|"failed"|"expired"|"provisioning"|"deleting",
+      Message = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    VpcPeeringConnectionId = "string"
+  )
+)
+}
+}
 \description{
 Requests a VPC peering connection between two VPCs: a requester VPC that
 you own and an accepter VPC with which to create the connection. The

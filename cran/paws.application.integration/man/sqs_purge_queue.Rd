@@ -12,6 +12,9 @@ action deletes messages.
 
 Queue URLs and names are case-sensitive.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the messages in a queue specified by the \code{QueueURL} parameter.
 

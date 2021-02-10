@@ -16,6 +16,12 @@ applicationinsights_describe_component_configuration_recommendation(
 \code{DOT_NET_CORE}, \code{DOT_NET_WORKER}, \code{DOT_NET_WEB}, \code{SQL_SERVER}, and
 \code{DEFAULT}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComponentConfiguration = "string"
+)
+}
+}
 \description{
 Describes the recommended monitoring configuration of the component.
 }

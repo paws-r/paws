@@ -10,6 +10,12 @@ cloudformation_get_stack_policy(StackName)
 \item{StackName}{[required] The name or unique stack ID that is associated with the stack whose
 policy you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackPolicyBody = "string"
+)
+}
+}
 \description{
 Returns the stack policy for a specified stack. If a stack doesn't have
 a policy, a null value is returned.

@@ -10,6 +10,9 @@ connect_delete_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

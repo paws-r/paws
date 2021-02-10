@@ -14,6 +14,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@:/-}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a virtual MFA device.
 

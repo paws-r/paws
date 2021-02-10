@@ -13,6 +13,9 @@ NULL
 #'
 #' @param ConnectionId &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connection(
@@ -49,6 +52,23 @@ apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
 #' apigatewaymanagementapi_get_connection(ConnectionId)
 #'
 #' @param ConnectionId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Identity = list(
+#'     SourceIp = "string",
+#'     UserAgent = "string"
+#'   ),
+#'   LastActiveAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -87,6 +107,9 @@ apigatewaymanagementapi_get_connection <- function(ConnectionId) {
 #'
 #' @param Data &#91;required&#93; The data to be sent to the client specified by its connection id.
 #' @param ConnectionId &#91;required&#93; The identifier of the connection that a specific client is using.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

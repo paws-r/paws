@@ -15,6 +15,35 @@ NULL
 #' @param Id &#91;required&#93; The ID of the channel to log subscription.
 #' @param IngressAccessLogs 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Description = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   HlsIngest = list(
+#'     IngestEndpoints = list(
+#'       list(
+#'         Id = "string",
+#'         Password = "string",
+#'         Url = "string",
+#'         Username = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IngressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$configure_logs(
@@ -61,6 +90,35 @@ mediapackage_configure_logs <- function(EgressAccessLogs = NULL, Id, IngressAcce
 #' cannot be changed after a Channel is created.
 #' @param Tags 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Description = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   HlsIngest = list(
+#'     IngestEndpoints = list(
+#'       list(
+#'         Id = "string",
+#'         Password = "string",
+#'         Url = "string",
+#'         Username = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IngressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_channel(
@@ -102,12 +160,32 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #'   S3Destination, StartTime)
 #'
 #' @param EndTime &#91;required&#93; The end of the time-window which will be harvested
-#' @param Id &#91;required&#93; The ID of the HarvestJob. The ID must be unique within the region
-#' and it cannot be changed after the HarvestJob is submitted
-#' @param OriginEndpointId &#91;required&#93; The ID of the OriginEndpoint that the HarvestJob will harvest from.
-#' This cannot be changed after the HarvestJob is submitted.
+#' @param Id &#91;required&#93; The ID of the HarvestJob. The ID must be unique within the region and it
+#' cannot be changed after the HarvestJob is submitted
+#' @param OriginEndpointId &#91;required&#93; The ID of the OriginEndpoint that the HarvestJob will harvest from. This
+#' cannot be changed after the HarvestJob is submitted.
 #' @param S3Destination &#91;required&#93; 
 #' @param StartTime &#91;required&#93; The start of the time-window which will be harvested
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   ChannelId = "string",
+#'   CreatedAt = "string",
+#'   EndTime = "string",
+#'   Id = "string",
+#'   OriginEndpointId = "string",
+#'   S3Destination = list(
+#'     BucketName = "string",
+#'     ManifestKey = "string",
+#'     RoleArn = "string"
+#'   ),
+#'   StartTime = "string",
+#'   Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -162,19 +240,173 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #' @param DashPackage 
 #' @param Description A short text description of the OriginEndpoint.
 #' @param HlsPackage 
-#' @param Id &#91;required&#93; The ID of the OriginEndpoint.  The ID must be unique within the region
+#' @param Id &#91;required&#93; The ID of the OriginEndpoint. The ID must be unique within the region
 #' and it cannot be changed after the OriginEndpoint is created.
-#' @param ManifestName A short string that will be used as the filename of the OriginEndpoint URL (defaults to "index").
+#' @param ManifestName A short string that will be used as the filename of the OriginEndpoint
+#' URL (defaults to "index").
 #' @param MssPackage 
-#' @param Origination Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint
-#' may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
-#' requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+#' @param Origination Control whether origination of video is allowed for this OriginEndpoint.
+#' If set to ALLOW, the OriginEndpoint may by requested, pursuant to any
+#' other form of access control. If set to DENY, the OriginEndpoint may not
+#' be requested. This can be helpful for Live to VOD harvesting, or for
+#' temporarily disabling origination
 #' @param StartoverWindowSeconds Maximum duration (seconds) of content to retain for startover playback.
-#' If not specified, startover playback will be disabled for the OriginEndpoint.
+#' If not specified, startover playback will be disabled for the
+#' OriginEndpoint.
 #' @param Tags 
-#' @param TimeDelaySeconds Amount of delay (seconds) to enforce on the playback of live content.
-#' If not specified, there will be no time delay in effect for the OriginEndpoint.
-#' @param Whitelist A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
+#' @param TimeDelaySeconds Amount of delay (seconds) to enforce on the playback of live content. If
+#' not specified, there will be no time delay in effect for the
+#' OriginEndpoint.
+#' @param Whitelist A list of source IP CIDR blocks that will be allowed to access the
+#' OriginEndpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   ChannelId = "string",
+#'   CmafPackage = list(
+#'     Encryption = list(
+#'       KeyRotationIntervalSeconds = 123,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     HlsManifests = list(
+#'       list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'         Id = "string",
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         ManifestName = "string",
+#'         PlaylistType = "NONE"|"EVENT"|"VOD",
+#'         PlaylistWindowSeconds = 123,
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         Url = "string"
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     SegmentPrefix = "string",
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     )
+#'   ),
+#'   DashPackage = list(
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'     Encryption = list(
+#'       KeyRotationIntervalSeconds = 123,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     ManifestLayout = "FULL"|"COMPACT",
+#'     ManifestWindowSeconds = 123,
+#'     MinBufferTimeSeconds = 123,
+#'     MinUpdatePeriodSeconds = 123,
+#'     PeriodTriggers = list(
+#'       "ADS"
+#'     ),
+#'     Profile = "NONE"|"HBBTV_1_5",
+#'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION",
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     ),
+#'     SuggestedPresentationDelaySeconds = 123,
+#'     UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+#'     UtcTimingUri = "string"
+#'   ),
+#'   Description = "string",
+#'   HlsPackage = list(
+#'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'     Encryption = list(
+#'       ConstantInitializationVector = "string",
+#'       EncryptionMethod = "AES_128"|"SAMPLE_AES",
+#'       KeyRotationIntervalSeconds = 123,
+#'       RepeatExtXKey = TRUE|FALSE,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     IncludeIframeOnlyStream = TRUE|FALSE,
+#'     PlaylistType = "NONE"|"EVENT"|"VOD",
+#'     PlaylistWindowSeconds = 123,
+#'     ProgramDateTimeIntervalSeconds = 123,
+#'     SegmentDurationSeconds = 123,
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     ),
+#'     UseAudioRenditionGroup = TRUE|FALSE
+#'   ),
+#'   Id = "string",
+#'   ManifestName = "string",
+#'   MssPackage = list(
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     ManifestWindowSeconds = 123,
+#'     SegmentDurationSeconds = 123,
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     )
+#'   ),
+#'   Origination = "ALLOW"|"DENY",
+#'   StartoverWindowSeconds = 123,
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   TimeDelaySeconds = 123,
+#'   Url = "string",
+#'   Whitelist = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -354,6 +586,9 @@ mediapackage_create_origin_endpoint <- function(Authorization = NULL, ChannelId,
 #'
 #' @param Id &#91;required&#93; The ID of the Channel to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_channel(
@@ -390,6 +625,9 @@ mediapackage_delete_channel <- function(Id) {
 #' mediapackage_delete_origin_endpoint(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the OriginEndpoint to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -428,6 +666,35 @@ mediapackage_delete_origin_endpoint <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of a Channel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Description = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   HlsIngest = list(
+#'     IngestEndpoints = list(
+#'       list(
+#'         Id = "string",
+#'         Password = "string",
+#'         Url = "string",
+#'         Username = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IngressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_channel(
@@ -465,6 +732,26 @@ mediapackage_describe_channel <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of the HarvestJob.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   ChannelId = "string",
+#'   CreatedAt = "string",
+#'   EndTime = "string",
+#'   Id = "string",
+#'   OriginEndpointId = "string",
+#'   S3Destination = list(
+#'     BucketName = "string",
+#'     ManifestKey = "string",
+#'     RoleArn = "string"
+#'   ),
+#'   StartTime = "string",
+#'   Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_harvest_job(
@@ -501,6 +788,154 @@ mediapackage_describe_harvest_job <- function(Id) {
 #' mediapackage_describe_origin_endpoint(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the OriginEndpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   ChannelId = "string",
+#'   CmafPackage = list(
+#'     Encryption = list(
+#'       KeyRotationIntervalSeconds = 123,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     HlsManifests = list(
+#'       list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'         Id = "string",
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         ManifestName = "string",
+#'         PlaylistType = "NONE"|"EVENT"|"VOD",
+#'         PlaylistWindowSeconds = 123,
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         Url = "string"
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     SegmentPrefix = "string",
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     )
+#'   ),
+#'   DashPackage = list(
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'     Encryption = list(
+#'       KeyRotationIntervalSeconds = 123,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     ManifestLayout = "FULL"|"COMPACT",
+#'     ManifestWindowSeconds = 123,
+#'     MinBufferTimeSeconds = 123,
+#'     MinUpdatePeriodSeconds = 123,
+#'     PeriodTriggers = list(
+#'       "ADS"
+#'     ),
+#'     Profile = "NONE"|"HBBTV_1_5",
+#'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION",
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     ),
+#'     SuggestedPresentationDelaySeconds = 123,
+#'     UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+#'     UtcTimingUri = "string"
+#'   ),
+#'   Description = "string",
+#'   HlsPackage = list(
+#'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'     Encryption = list(
+#'       ConstantInitializationVector = "string",
+#'       EncryptionMethod = "AES_128"|"SAMPLE_AES",
+#'       KeyRotationIntervalSeconds = 123,
+#'       RepeatExtXKey = TRUE|FALSE,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     IncludeIframeOnlyStream = TRUE|FALSE,
+#'     PlaylistType = "NONE"|"EVENT"|"VOD",
+#'     PlaylistWindowSeconds = 123,
+#'     ProgramDateTimeIntervalSeconds = 123,
+#'     SegmentDurationSeconds = 123,
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     ),
+#'     UseAudioRenditionGroup = TRUE|FALSE
+#'   ),
+#'   Id = "string",
+#'   ManifestName = "string",
+#'   MssPackage = list(
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     ManifestWindowSeconds = 123,
+#'     SegmentDurationSeconds = 123,
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     )
+#'   ),
+#'   Origination = "ALLOW"|"DENY",
+#'   StartoverWindowSeconds = 123,
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   TimeDelaySeconds = 123,
+#'   Url = "string",
+#'   Whitelist = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -540,6 +975,40 @@ mediapackage_describe_origin_endpoint <- function(Id) {
 #' @param MaxResults Upper bound on number of records to return.
 #' @param NextToken A token used to resume pagination from the end of a previous request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Channels = list(
+#'     list(
+#'       Arn = "string",
+#'       Description = "string",
+#'       EgressAccessLogs = list(
+#'         LogGroupName = "string"
+#'       ),
+#'       HlsIngest = list(
+#'         IngestEndpoints = list(
+#'           list(
+#'             Id = "string",
+#'             Password = "string",
+#'             Url = "string",
+#'             Username = "string"
+#'           )
+#'         )
+#'       ),
+#'       Id = "string",
+#'       IngressAccessLogs = list(
+#'         LogGroupName = "string"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_channels(
@@ -577,10 +1046,37 @@ mediapackage_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
 #' mediapackage_list_harvest_jobs(IncludeChannelId, IncludeStatus,
 #'   MaxResults, NextToken)
 #'
-#' @param IncludeChannelId When specified, the request will return only HarvestJobs associated with the given Channel ID.
-#' @param IncludeStatus When specified, the request will return only HarvestJobs in the given status.
+#' @param IncludeChannelId When specified, the request will return only HarvestJobs associated with
+#' the given Channel ID.
+#' @param IncludeStatus When specified, the request will return only HarvestJobs in the given
+#' status.
 #' @param MaxResults The upper bound on the number of records to return.
 #' @param NextToken A token used to resume pagination from the end of a previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HarvestJobs = list(
+#'     list(
+#'       Arn = "string",
+#'       ChannelId = "string",
+#'       CreatedAt = "string",
+#'       EndTime = "string",
+#'       Id = "string",
+#'       OriginEndpointId = "string",
+#'       S3Destination = list(
+#'         BucketName = "string",
+#'         ManifestKey = "string",
+#'         RoleArn = "string"
+#'       ),
+#'       StartTime = "string",
+#'       Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -620,9 +1116,163 @@ mediapackage_list_harvest_jobs <- function(IncludeChannelId = NULL, IncludeStatu
 #' @usage
 #' mediapackage_list_origin_endpoints(ChannelId, MaxResults, NextToken)
 #'
-#' @param ChannelId When specified, the request will return only OriginEndpoints associated with the given Channel ID.
+#' @param ChannelId When specified, the request will return only OriginEndpoints associated
+#' with the given Channel ID.
 #' @param MaxResults The upper bound on the number of records to return.
 #' @param NextToken A token used to resume pagination from the end of a previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   OriginEndpoints = list(
+#'     list(
+#'       Arn = "string",
+#'       Authorization = list(
+#'         CdnIdentifierSecret = "string",
+#'         SecretsRoleArn = "string"
+#'       ),
+#'       ChannelId = "string",
+#'       CmafPackage = list(
+#'         Encryption = list(
+#'           KeyRotationIntervalSeconds = 123,
+#'           SpekeKeyProvider = list(
+#'             CertificateArn = "string",
+#'             ResourceId = "string",
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         HlsManifests = list(
+#'           list(
+#'             AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'             Id = "string",
+#'             IncludeIframeOnlyStream = TRUE|FALSE,
+#'             ManifestName = "string",
+#'             PlaylistType = "NONE"|"EVENT"|"VOD",
+#'             PlaylistWindowSeconds = 123,
+#'             ProgramDateTimeIntervalSeconds = 123,
+#'             Url = "string"
+#'           )
+#'         ),
+#'         SegmentDurationSeconds = 123,
+#'         SegmentPrefix = "string",
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       ),
+#'       DashPackage = list(
+#'         AdTriggers = list(
+#'           "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'         ),
+#'         AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'         Encryption = list(
+#'           KeyRotationIntervalSeconds = 123,
+#'           SpekeKeyProvider = list(
+#'             CertificateArn = "string",
+#'             ResourceId = "string",
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         ManifestLayout = "FULL"|"COMPACT",
+#'         ManifestWindowSeconds = 123,
+#'         MinBufferTimeSeconds = 123,
+#'         MinUpdatePeriodSeconds = 123,
+#'         PeriodTriggers = list(
+#'           "ADS"
+#'         ),
+#'         Profile = "NONE"|"HBBTV_1_5",
+#'         SegmentDurationSeconds = 123,
+#'         SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION",
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         ),
+#'         SuggestedPresentationDelaySeconds = 123,
+#'         UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+#'         UtcTimingUri = "string"
+#'       ),
+#'       Description = "string",
+#'       HlsPackage = list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'         AdTriggers = list(
+#'           "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'         ),
+#'         AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'         Encryption = list(
+#'           ConstantInitializationVector = "string",
+#'           EncryptionMethod = "AES_128"|"SAMPLE_AES",
+#'           KeyRotationIntervalSeconds = 123,
+#'           RepeatExtXKey = TRUE|FALSE,
+#'           SpekeKeyProvider = list(
+#'             CertificateArn = "string",
+#'             ResourceId = "string",
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         PlaylistType = "NONE"|"EVENT"|"VOD",
+#'         PlaylistWindowSeconds = 123,
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         SegmentDurationSeconds = 123,
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         ),
+#'         UseAudioRenditionGroup = TRUE|FALSE
+#'       ),
+#'       Id = "string",
+#'       ManifestName = "string",
+#'       MssPackage = list(
+#'         Encryption = list(
+#'           SpekeKeyProvider = list(
+#'             CertificateArn = "string",
+#'             ResourceId = "string",
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         ManifestWindowSeconds = 123,
+#'         SegmentDurationSeconds = 123,
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       ),
+#'       Origination = "ALLOW"|"DENY",
+#'       StartoverWindowSeconds = 123,
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       TimeDelaySeconds = 123,
+#'       Url = "string",
+#'       Whitelist = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -663,6 +1313,16 @@ mediapackage_list_origin_endpoints <- function(ChannelId = NULL, MaxResults = NU
 #'
 #' @param ResourceArn &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -693,12 +1353,43 @@ mediapackage_list_tags_for_resource <- function(ResourceArn) {
 #' Changes the Channel's first IngestEndpoint's username and password
 #'
 #' @description
-#' Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is deprecated. Please use RotateIngestEndpointCredentials instead
+#' Changes the Channel's first IngestEndpoint's username and password.
+#' WARNING - This API is deprecated. Please use
+#' RotateIngestEndpointCredentials instead
 #'
 #' @usage
 #' mediapackage_rotate_channel_credentials(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the channel to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Description = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   HlsIngest = list(
+#'     IngestEndpoints = list(
+#'       list(
+#'         Id = "string",
+#'         Password = "string",
+#'         Url = "string",
+#'         Username = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IngressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -731,13 +1422,43 @@ mediapackage_rotate_channel_credentials <- function(Id) {
 #' IngestEndpoint's id
 #'
 #' @description
-#' Rotate the IngestEndpoint's username and password, as specified by the IngestEndpoint's id.
+#' Rotate the IngestEndpoint's username and password, as specified by the
+#' IngestEndpoint's id.
 #'
 #' @usage
 #' mediapackage_rotate_ingest_endpoint_credentials(Id, IngestEndpointId)
 #'
 #' @param Id &#91;required&#93; The ID of the channel the IngestEndpoint is on.
 #' @param IngestEndpointId &#91;required&#93; The id of the IngestEndpoint whose credentials should be rotated
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Description = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   HlsIngest = list(
+#'     IngestEndpoints = list(
+#'       list(
+#'         Id = "string",
+#'         Password = "string",
+#'         Url = "string",
+#'         Username = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IngressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -777,6 +1498,9 @@ mediapackage_rotate_ingest_endpoint_credentials <- function(Id, IngestEndpointId
 #'
 #' @param ResourceArn &#91;required&#93; 
 #' @param Tags &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -819,6 +1543,9 @@ mediapackage_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; 
 #' @param TagKeys &#91;required&#93; The key(s) of tag to be deleted
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -859,6 +1586,35 @@ mediapackage_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @param Description A short text description of the Channel.
 #' @param Id &#91;required&#93; The ID of the Channel to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Description = "string",
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   HlsIngest = list(
+#'     IngestEndpoints = list(
+#'       list(
+#'         Id = "string",
+#'         Password = "string",
+#'         Url = "string",
+#'         Username = "string"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IngressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -906,14 +1662,167 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #' @param Id &#91;required&#93; The ID of the OriginEndpoint to update.
 #' @param ManifestName A short string that will be appended to the end of the Endpoint URL.
 #' @param MssPackage 
-#' @param Origination Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint
-#' may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
-#' requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
-#' @param StartoverWindowSeconds Maximum duration (in seconds) of content to retain for startover playback.
-#' If not specified, startover playback will be disabled for the OriginEndpoint.
+#' @param Origination Control whether origination of video is allowed for this OriginEndpoint.
+#' If set to ALLOW, the OriginEndpoint may by requested, pursuant to any
+#' other form of access control. If set to DENY, the OriginEndpoint may not
+#' be requested. This can be helpful for Live to VOD harvesting, or for
+#' temporarily disabling origination
+#' @param StartoverWindowSeconds Maximum duration (in seconds) of content to retain for startover
+#' playback. If not specified, startover playback will be disabled for the
+#' OriginEndpoint.
 #' @param TimeDelaySeconds Amount of delay (in seconds) to enforce on the playback of live content.
-#' If not specified, there will be no time delay in effect for the OriginEndpoint.
-#' @param Whitelist A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
+#' If not specified, there will be no time delay in effect for the
+#' OriginEndpoint.
+#' @param Whitelist A list of source IP CIDR blocks that will be allowed to access the
+#' OriginEndpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   ChannelId = "string",
+#'   CmafPackage = list(
+#'     Encryption = list(
+#'       KeyRotationIntervalSeconds = 123,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     HlsManifests = list(
+#'       list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'         Id = "string",
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         ManifestName = "string",
+#'         PlaylistType = "NONE"|"EVENT"|"VOD",
+#'         PlaylistWindowSeconds = 123,
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         Url = "string"
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     SegmentPrefix = "string",
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     )
+#'   ),
+#'   DashPackage = list(
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'     Encryption = list(
+#'       KeyRotationIntervalSeconds = 123,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     ManifestLayout = "FULL"|"COMPACT",
+#'     ManifestWindowSeconds = 123,
+#'     MinBufferTimeSeconds = 123,
+#'     MinUpdatePeriodSeconds = 123,
+#'     PeriodTriggers = list(
+#'       "ADS"
+#'     ),
+#'     Profile = "NONE"|"HBBTV_1_5",
+#'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION",
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     ),
+#'     SuggestedPresentationDelaySeconds = 123,
+#'     UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+#'     UtcTimingUri = "string"
+#'   ),
+#'   Description = "string",
+#'   HlsPackage = list(
+#'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+#'     Encryption = list(
+#'       ConstantInitializationVector = "string",
+#'       EncryptionMethod = "AES_128"|"SAMPLE_AES",
+#'       KeyRotationIntervalSeconds = 123,
+#'       RepeatExtXKey = TRUE|FALSE,
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     IncludeIframeOnlyStream = TRUE|FALSE,
+#'     PlaylistType = "NONE"|"EVENT"|"VOD",
+#'     PlaylistWindowSeconds = 123,
+#'     ProgramDateTimeIntervalSeconds = 123,
+#'     SegmentDurationSeconds = 123,
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     ),
+#'     UseAudioRenditionGroup = TRUE|FALSE
+#'   ),
+#'   Id = "string",
+#'   ManifestName = "string",
+#'   MssPackage = list(
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         CertificateArn = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     ManifestWindowSeconds = 123,
+#'     SegmentDurationSeconds = 123,
+#'     StreamSelection = list(
+#'       MaxVideoBitsPerSecond = 123,
+#'       MinVideoBitsPerSecond = 123,
+#'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'     )
+#'   ),
+#'   Origination = "ALLOW"|"DENY",
+#'   StartoverWindowSeconds = 123,
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   TimeDelaySeconds = 123,
+#'   Url = "string",
+#'   Whitelist = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

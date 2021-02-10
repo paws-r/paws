@@ -47,6 +47,71 @@ If you submit a request with the same client token but a change in other
 parameters within the 10-minute idempotency window, DynamoDB returns an
 \code{IdempotentParameterMismatch} exception.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConsumedCapacity = list(
+    list(
+      TableName = "string",
+      CapacityUnits = 123.0,
+      ReadCapacityUnits = 123.0,
+      WriteCapacityUnits = 123.0,
+      Table = list(
+        ReadCapacityUnits = 123.0,
+        WriteCapacityUnits = 123.0,
+        CapacityUnits = 123.0
+      ),
+      LocalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      ),
+      GlobalSecondaryIndexes = list(
+        list(
+          ReadCapacityUnits = 123.0,
+          WriteCapacityUnits = 123.0,
+          CapacityUnits = 123.0
+        )
+      )
+    )
+  ),
+  ItemCollectionMetrics = list(
+    list(
+      list(
+        ItemCollectionKey = list(
+          list(
+            S = "string",
+            N = "string",
+            B = raw,
+            SS = list(
+              "string"
+            ),
+            NS = list(
+              "string"
+            ),
+            BS = list(
+              raw
+            ),
+            M = list(
+              list()
+            ),
+            L = list(
+              list()
+            ),
+            NULL = TRUE|FALSE,
+            BOOL = TRUE|FALSE
+          )
+        ),
+        SizeEstimateRangeGB = list(
+          123.0
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 \code{\link[=dynamodb_transact_write_items]{transact_write_items}} is a synchronous
 write operation that groups up to 25 action requests. These actions can

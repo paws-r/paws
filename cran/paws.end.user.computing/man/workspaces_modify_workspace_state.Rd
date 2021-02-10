@@ -11,6 +11,9 @@ workspaces_modify_workspace_state(WorkspaceId, WorkspaceState)
 
 \item{WorkspaceState}{[required] The WorkSpace state.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the state of the specified WorkSpace.
 

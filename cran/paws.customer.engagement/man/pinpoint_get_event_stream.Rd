@@ -10,6 +10,19 @@ pinpoint_get_event_stream(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventStream = list(
+    ApplicationId = "string",
+    DestinationStreamArn = "string",
+    ExternalId = "string",
+    LastModifiedDate = "string",
+    LastUpdatedBy = "string",
+    RoleArn = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about the event stream settings for an
 application.

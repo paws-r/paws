@@ -12,6 +12,9 @@ connect_delete_quick_connect(InstanceId, QuickConnectId)
 
 \item{QuickConnectId}{[required] The identifier for the quick connect.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

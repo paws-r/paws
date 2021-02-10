@@ -15,6 +15,18 @@ serverlessapplicationrepository_get_cloud_formation_template(
 Pattern:
 [0-9a-fA-F]\{8\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{12\}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationId = "string",
+  CreationTime = "string",
+  ExpirationTime = "string",
+  SemanticVersion = "string",
+  Status = "PREPARING"|"ACTIVE"|"EXPIRED",
+  TemplateId = "string",
+  TemplateUrl = "string"
+)
+}
+}
 \description{
 Gets the specified AWS CloudFormation template.
 }

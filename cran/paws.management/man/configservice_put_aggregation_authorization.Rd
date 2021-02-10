@@ -15,6 +15,19 @@ configservice_put_aggregation_authorization(AuthorizedAccountId,
 
 \item{Tags}{An array of tag object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AggregationAuthorization = list(
+    AggregationAuthorizationArn = "string",
+    AuthorizedAccountId = "string",
+    AuthorizedAwsRegion = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Authorizes the aggregator account and region to collect data from the
 source account and region.

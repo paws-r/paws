@@ -11,6 +11,26 @@ elb_describe_load_balancer_policy_types(PolicyTypeNames)
 \item{PolicyTypeNames}{The names of the policy types. If no names are specified, describes all
 policy types defined by Elastic Load Balancing.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyTypeDescriptions = list(
+    list(
+      PolicyTypeName = "string",
+      Description = "string",
+      PolicyAttributeTypeDescriptions = list(
+        list(
+          AttributeName = "string",
+          AttributeType = "string",
+          Description = "string",
+          DefaultValue = "string",
+          Cardinality = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified load balancer policy types or all load balancer
 policy types.

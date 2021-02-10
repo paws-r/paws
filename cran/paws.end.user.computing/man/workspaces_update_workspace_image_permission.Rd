@@ -19,6 +19,9 @@ after an image has been shared.}
 Before sharing the image, confirm that you are sharing to the correct
 AWS account ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Shares or unshares an image with one account in the same AWS Region by
 specifying whether that account has permission to copy the image. If the

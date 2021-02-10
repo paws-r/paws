@@ -9,6 +9,14 @@ ssm_resume_session(SessionId)
 \arguments{
 \item{SessionId}{[required] The ID of the disconnected session to resume.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SessionId = "string",
+  TokenValue = "string",
+  StreamUrl = "string"
+)
+}
+}
 \description{
 Reconnects a session to an instance after it has been disconnected.
 Connections can be resumed for disconnected sessions, but not terminated

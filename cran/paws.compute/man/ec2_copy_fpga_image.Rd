@@ -24,6 +24,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FpgaImageId = "string"
+)
+}
+}
 \description{
 Copies the specified Amazon FPGA Image (AFI) to the current Region.
 }

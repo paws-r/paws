@@ -18,6 +18,56 @@ If true, \code{DataSourceSchema} is returned.
 
 If false, \code{DataSourceSchema} is not returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSourceId = "string",
+  DataLocationS3 = "string",
+  DataRearrangement = "string",
+  CreatedByIamUser = "string",
+  CreatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  DataSizeInBytes = 123,
+  NumberOfFiles = 123,
+  Name = "string",
+  Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+  LogUri = "string",
+  Message = "string",
+  RedshiftMetadata = list(
+    RedshiftDatabase = list(
+      DatabaseName = "string",
+      ClusterIdentifier = "string"
+    ),
+    DatabaseUserName = "string",
+    SelectSqlQuery = "string"
+  ),
+  RDSMetadata = list(
+    Database = list(
+      InstanceIdentifier = "string",
+      DatabaseName = "string"
+    ),
+    DatabaseUserName = "string",
+    SelectSqlQuery = "string",
+    ResourceRole = "string",
+    ServiceRole = "string",
+    DataPipelineId = "string"
+  ),
+  RoleARN = "string",
+  ComputeStatistics = TRUE|FALSE,
+  ComputeTime = 123,
+  FinishedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  StartedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  DataSourceSchema = "string"
+)
+}
+}
 \description{
 Returns a \code{DataSource} that includes metadata and data file information,
 as well as the current status of the \code{DataSource}.

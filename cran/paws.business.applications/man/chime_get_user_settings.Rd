@@ -12,6 +12,18 @@ chime_get_user_settings(AccountId, UserId)
 
 \item{UserId}{[required] The user ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserSettings = list(
+    Telephony = list(
+      InboundCalling = TRUE|FALSE,
+      OutboundCalling = TRUE|FALSE,
+      SMS = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Retrieves settings for the specified user ID, such as any associated
 phone number settings.

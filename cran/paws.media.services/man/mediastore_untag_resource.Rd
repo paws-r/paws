@@ -15,6 +15,9 @@ container. For example, if your container has two tags
 tags (priority:High), you specify the key for the tag that you want to
 remove (priority).}
 }
+\value{
+An empty list.
+}
 \description{
 Removes tags from the specified container. You can specify one or more
 tags to remove.

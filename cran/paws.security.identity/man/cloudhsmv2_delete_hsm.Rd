@@ -18,6 +18,12 @@ that you are deleting.}
 \item{EniIp}{The IP address of the elastic network interface (ENI) of the HSM that
 you are deleting.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HsmId = "string"
+)
+}
+}
 \description{
 Deletes the specified HSM. To specify an HSM, you can use its identifier
 (ID), the IP address of the HSM's elastic network interface (ENI), or

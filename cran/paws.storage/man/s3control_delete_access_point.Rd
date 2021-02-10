@@ -23,6 +23,9 @@ the URL encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap}.
 The value must be URL encoded.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified access point.
 

@@ -14,6 +14,9 @@ update.}
 
 \item{RecordState}{The updated record state for the finding.}
 }
+\value{
+An empty list.
+}
 \description{
 \code{\link[=securityhub_update_findings]{update_findings}} is deprecated. Instead
 of \code{\link[=securityhub_update_findings]{update_findings}}, use

@@ -12,6 +12,9 @@ chime_tag_resource(ResourceARN, Tags)
 
 \item{Tags}{[required] The tag key-value pairs.}
 }
+\value{
+An empty list.
+}
 \description{
 Applies the specified tags to the specified Amazon Chime SDK meeting
 resource.

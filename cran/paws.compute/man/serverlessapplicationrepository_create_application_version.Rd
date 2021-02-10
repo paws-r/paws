@@ -25,6 +25,42 @@ for example the URL of a specific GitHub commit.}
 
 \item{TemplateUrl}{A link to the packaged AWS SAM template of your application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationId = "string",
+  CreationTime = "string",
+  ParameterDefinitions = list(
+    list(
+      AllowedPattern = "string",
+      AllowedValues = list(
+        "string"
+      ),
+      ConstraintDescription = "string",
+      DefaultValue = "string",
+      Description = "string",
+      MaxLength = 123,
+      MaxValue = 123,
+      MinLength = 123,
+      MinValue = 123,
+      Name = "string",
+      NoEcho = TRUE|FALSE,
+      ReferencedByResources = list(
+        "string"
+      ),
+      Type = "string"
+    )
+  ),
+  RequiredCapabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
+  ),
+  ResourcesSupported = TRUE|FALSE,
+  SemanticVersion = "string",
+  SourceCodeArchiveUrl = "string",
+  SourceCodeUrl = "string",
+  TemplateUrl = "string"
+)
+}
+}
 \description{
 Creates an application version.
 }

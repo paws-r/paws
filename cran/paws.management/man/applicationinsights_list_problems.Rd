@@ -23,6 +23,32 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProblemList = list(
+    list(
+      Id = "string",
+      Title = "string",
+      Insights = "string",
+      Status = "IGNORE"|"RESOLVED"|"PENDING",
+      AffectedResource = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      SeverityLevel = "Low"|"Medium"|"High",
+      ResourceGroupName = "string",
+      Feedback = list(
+        "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the problems with your application.
 }

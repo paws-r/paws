@@ -15,6 +15,12 @@ dataset content, the dataset must use a
 \href{https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html}{DeltaTimer}
 filter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  versionId = "string"
+)
+}
+}
 \description{
 Creates the content of a data set by applying a \code{queryAction} (a SQL
 query) or a \code{containerAction} (executing a containerized application).

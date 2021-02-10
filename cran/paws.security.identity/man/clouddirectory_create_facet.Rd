@@ -19,19 +19,10 @@ information, see arns.}
 node, leaf node, policy or index.
 \itemize{
 \item Node: Can have multiple children but one parent.
-}<!-- -->
-
-\itemize{
 \item Leaf node: Cannot have children but can have multiple parents.
-}<!-- -->
-
-\itemize{
 \item Policy: Allows you to store a policy document and policy type. For
 more information, see
 \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies}{Policies}.
-}<!-- -->
-
-\itemize{
 \item Index: Can be created with the Index API.
 }}
 
@@ -39,6 +30,9 @@ more information, see
 \code{Static} and \code{Dynamic}. For static facets, all attributes must be
 defined in the schema. For dynamic facets, attributes can be defined
 during data plane operations.}
+}
+\value{
+An empty list.
 }
 \description{
 Creates a new Facet in a schema. Facet creation is allowed only in

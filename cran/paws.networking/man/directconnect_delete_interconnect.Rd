@@ -9,6 +9,12 @@ directconnect_delete_interconnect(interconnectId)
 \arguments{
 \item{interconnectId}{[required] The ID of the interconnect.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown"
+)
+}
+}
 \description{
 Deletes the specified interconnect.
 

@@ -19,6 +19,23 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  subscriptionFilters = list(
+    list(
+      filterName = "string",
+      logGroupName = "string",
+      filterPattern = "string",
+      destinationArn = "string",
+      roleArn = "string",
+      distribution = "Random"|"ByLogStream",
+      creationTime = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the subscription filters for the specified log group. You can list
 all the subscription filters or filter the results by prefix. The

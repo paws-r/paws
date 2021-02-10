@@ -13,6 +13,17 @@ to.}
 
 \item{attributes}{[required] The array of attributes that you want to assign to specified findings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  failedItems = list(
+    list(
+      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+      retryable = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Assigns attributes (key and value pairs) to the findings that are
 specified by the ARNs of the findings.
@@ -44,7 +55,7 @@ svc$add_attributes_to_findings(
     )
   ),
   findingArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
+    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/r..."
   )
 )
 }

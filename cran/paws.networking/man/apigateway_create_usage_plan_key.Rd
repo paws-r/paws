@@ -16,6 +16,15 @@ customer.}
 
 \item{keyType}{[required] [Required] The type of a UsagePlanKey resource for a plan customer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  type = "string",
+  value = "string",
+  name = "string"
+)
+}
+}
 \description{
 Creates a usage plan key for adding an existing API key to a usage plan.
 }

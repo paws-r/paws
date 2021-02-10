@@ -19,6 +19,13 @@ publication you must have the matching private key.}
 
 \item{AvailabilityZone}{[required] The availability zone the EC2 instance was launched in.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestId = "string",
+  Success = TRUE|FALSE
+)
+}
+}
 \description{
 Pushes an SSH public key to a particular OS user on a given EC2 instance
 for 60 seconds.
@@ -41,7 +48,7 @@ svc$send_ssh_public_key(
   AvailabilityZone = "us-west-2a",
   InstanceId = "i-abcd1234",
   InstanceOSUser = "ec2-user",
-  SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5lXEIRHa..."
+  SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5..."
 )
 }
 

@@ -41,6 +41,12 @@ Control Panel (CCP).}
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContactId = "string"
+)
+}
+}
 \description{
 Initiates a contact flow to start a new task.
 }

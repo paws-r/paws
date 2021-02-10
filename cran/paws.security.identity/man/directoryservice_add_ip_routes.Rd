@@ -51,6 +51,9 @@ Outbound:
 These security rules impact an internal network interface that is not
 exposed publicly.}
 }
+\value{
+An empty list.
+}
 \description{
 If the DNS server for your on-premises domain uses a publicly
 addressable IP address, you must add a CIDR address block to correctly

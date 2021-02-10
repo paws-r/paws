@@ -18,6 +18,30 @@ retrieve.}
 \item{Marker}{A value that indicates the starting point for the next set of
 ReservedNodeOfferings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReservedNodeOfferings = list(
+    list(
+      ReservedNodeOfferingId = "string",
+      NodeType = "string",
+      Duration = 123,
+      FixedPrice = 123.0,
+      UsagePrice = 123.0,
+      CurrencyCode = "string",
+      OfferingType = "string",
+      RecurringCharges = list(
+        list(
+          RecurringChargeAmount = 123.0,
+          RecurringChargeFrequency = "string"
+        )
+      ),
+      ReservedNodeOfferingType = "Regular"|"Upgradable"
+    )
+  )
+)
+}
+}
 \description{
 Returns an array of DC2 ReservedNodeOfferings that matches the payment
 type, term, and usage price of the given DC1 reserved node.

@@ -12,6 +12,19 @@ chime_list_app_instances(MaxResults, NextToken)
 \item{NextToken}{The token passed by previous API requests until you reach the maximum
 number of app instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstances = list(
+    list(
+      AppInstanceArn = "string",
+      Name = "string",
+      Metadata = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all Amazon Chime app instances created under a single AWS account.
 }

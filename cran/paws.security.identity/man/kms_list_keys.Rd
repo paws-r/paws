@@ -19,6 +19,19 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Keys = list(
+    list(
+      KeyId = "string",
+      KeyArn = "string"
+    )
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Gets a list of all customer master keys (CMKs) in the caller's AWS
 account and Region.

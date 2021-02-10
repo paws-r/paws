@@ -12,6 +12,76 @@ group.}
 
 \item{nodegroupName}{[required] The name of the node group to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nodegroup = list(
+    nodegroupName = "string",
+    nodegroupArn = "string",
+    clusterName = "string",
+    version = "string",
+    releaseVersion = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    modifiedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
+    capacityType = "ON_DEMAND"|"SPOT",
+    scalingConfig = list(
+      minSize = 123,
+      maxSize = 123,
+      desiredSize = 123
+    ),
+    instanceTypes = list(
+      "string"
+    ),
+    subnets = list(
+      "string"
+    ),
+    remoteAccess = list(
+      ec2SshKey = "string",
+      sourceSecurityGroups = list(
+        "string"
+      )
+    ),
+    amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+    nodeRole = "string",
+    labels = list(
+      "string"
+    ),
+    resources = list(
+      autoScalingGroups = list(
+        list(
+          name = "string"
+        )
+      ),
+      remoteAccessSecurityGroup = "string"
+    ),
+    diskSize = 123,
+    health = list(
+      issues = list(
+        list(
+          code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable",
+          message = "string",
+          resourceIds = list(
+            "string"
+          )
+        )
+      )
+    ),
+    launchTemplate = list(
+      name = "string",
+      version = "string",
+      id = "string"
+    ),
+    tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes an Amazon EKS node group for a cluster.
 }

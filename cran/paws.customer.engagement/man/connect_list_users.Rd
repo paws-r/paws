@@ -16,6 +16,19 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserSummaryList = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Username = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides summary information about the users for the specified Amazon
 Connect instance.

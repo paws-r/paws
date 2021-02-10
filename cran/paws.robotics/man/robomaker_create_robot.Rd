@@ -16,6 +16,21 @@ robomaker_create_robot(name, architecture, greengrassGroupId, tags)
 \item{tags}{A map that contains tag keys and tag values that are attached to the
 robot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  greengrassGroupId = "string",
+  architecture = "X86_64"|"ARM64"|"ARMHF",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a robot.
 }

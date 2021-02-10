@@ -16,6 +16,17 @@ eventbridge_update_archive(ArchiveName, Description, EventPattern,
 
 \item{RetentionDays}{The number of days to retain events in the archive.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ArchiveArn = "string",
+  State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+  StateReason = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Updates the specified archive.
 }

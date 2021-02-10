@@ -11,6 +11,15 @@ apigateway_get_request_validator(restApiId, requestValidatorId)
 
 \item{requestValidatorId}{[required] [Required] The identifier of the RequestValidator to be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  validateRequestBody = TRUE|FALSE,
+  validateRequestParameters = TRUE|FALSE
+)
+}
+}
 \description{
 Gets a RequestValidator of a given RestApi.
 }

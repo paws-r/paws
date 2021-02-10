@@ -29,6 +29,25 @@ the remaining results, make another call with the returned \code{NextToken}
 value. If this parameter is not specified, up to 50 results are returned
 by default.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInterfacePermissions = list(
+    list(
+      NetworkInterfacePermissionId = "string",
+      NetworkInterfaceId = "string",
+      AwsAccountId = "string",
+      AwsService = "string",
+      Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
+      PermissionState = list(
+        State = "pending"|"granted"|"revoking"|"revoked",
+        StatusMessage = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the permissions for your network interfaces.
 }

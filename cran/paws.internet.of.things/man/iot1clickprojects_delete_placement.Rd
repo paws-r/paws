@@ -11,6 +11,9 @@ iot1clickprojects_delete_placement(placementName, projectName)
 
 \item{projectName}{[required] The project containing the empty placement to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a placement. To delete a placement, it must not have any devices
 associated with it.

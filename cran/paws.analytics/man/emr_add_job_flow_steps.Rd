@@ -13,6 +13,14 @@ from \code{\link[=emr_list_clusters]{list_clusters}}.}
 
 \item{Steps}{[required] A list of StepConfig to be executed by the job flow.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StepIds = list(
+    "string"
+  )
+)
+}
+}
 \description{
 AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
 steps are allowed in each job flow.

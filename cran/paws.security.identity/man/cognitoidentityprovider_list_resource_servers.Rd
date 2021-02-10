@@ -14,6 +14,25 @@ cognitoidentityprovider_list_resource_servers(UserPoolId, MaxResults,
 
 \item{NextToken}{A pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceServers = list(
+    list(
+      UserPoolId = "string",
+      Identifier = "string",
+      Name = "string",
+      Scopes = list(
+        list(
+          ScopeName = "string",
+          ScopeDescription = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the resource servers for a user pool.
 }

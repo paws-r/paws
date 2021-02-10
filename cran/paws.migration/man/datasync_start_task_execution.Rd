@@ -16,6 +16,12 @@ running a task. The pattern should contain a single filter string that
 consists of the patterns to include. The patterns are delimited by "|"
 (that is, a pipe). For example: \code{"/folder1|/folder2"}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskExecutionArn = "string"
+)
+}
+}
 \description{
 Starts a specific invocation of a task. A \code{TaskExecution} value
 represents an individual run of a task. Each task can have at most one

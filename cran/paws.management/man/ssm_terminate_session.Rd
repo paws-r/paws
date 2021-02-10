@@ -10,6 +10,12 @@ ssm_terminate_session(SessionId)
 \arguments{
 \item{SessionId}{[required] The ID of the session to terminate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SessionId = "string"
+)
+}
+}
 \description{
 Permanently ends a session and closes the data connection between the
 Session Manager client and SSM Agent on the instance. A terminated

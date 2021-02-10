@@ -36,6 +36,12 @@ product are copied to the target product.}
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CopyProductToken = "string"
+)
+}
+}
 \description{
 Copies the specified source product to the specified target product or a
 new product.

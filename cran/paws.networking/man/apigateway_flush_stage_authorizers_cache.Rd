@@ -11,6 +11,9 @@ apigateway_flush_stage_authorizers_cache(restApiId, stageName)
 
 \item{stageName}{[required] The name of the stage to flush.}
 }
+\value{
+An empty list.
+}
 \description{
 Flushes all authorizer cache entries on a stage.
 }

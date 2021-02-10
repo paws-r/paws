@@ -7,6 +7,24 @@ account}
 \usage{
 iot_describe_account_audit_configuration()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  roleArn = "string",
+  auditNotificationTargetConfigurations = list(
+    list(
+      targetArn = "string",
+      roleArn = "string",
+      enabled = TRUE|FALSE
+    )
+  ),
+  auditCheckConfigurations = list(
+    list(
+      enabled = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Gets information about the Device Defender audit settings for this
 account. Settings include how audit notifications are sent and which

@@ -11,6 +11,9 @@ cloudwatchlogs_create_log_stream(logGroupName, logStreamName)
 
 \item{logStreamName}{[required] The name of the log stream.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a log stream for the specified log group. A log stream is a
 sequence of log events that originate from a single source, such as an

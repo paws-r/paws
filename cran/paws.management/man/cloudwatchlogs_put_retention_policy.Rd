@@ -11,6 +11,9 @@ cloudwatchlogs_put_retention_policy(logGroupName, retentionInDays)
 
 \item{retentionInDays}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the retention of the specified log group. A retention policy allows
 you to configure the number of days for which to retain log events in

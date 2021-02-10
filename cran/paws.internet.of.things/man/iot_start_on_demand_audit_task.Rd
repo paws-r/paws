@@ -14,6 +14,12 @@ to see the list of all checks, including those that are enabled or
 \code{\link[=iot_update_account_audit_configuration]{update_account_audit_configuration}}
 to select which checks are enabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskId = "string"
+)
+}
+}
 \description{
 Starts an on-demand Device Defender audit.
 }

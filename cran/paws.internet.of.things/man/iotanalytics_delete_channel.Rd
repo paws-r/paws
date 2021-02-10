@@ -9,6 +9,9 @@ iotanalytics_delete_channel(channelName)
 \arguments{
 \item{channelName}{[required] The name of the channel to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified channel.
 }

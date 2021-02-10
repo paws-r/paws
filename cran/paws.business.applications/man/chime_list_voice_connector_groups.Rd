@@ -12,6 +12,30 @@ chime_list_voice_connector_groups(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceConnectorGroups = list(
+    list(
+      VoiceConnectorGroupId = "string",
+      Name = "string",
+      VoiceConnectorItems = list(
+        list(
+          VoiceConnectorId = "string",
+          Priority = 123
+        )
+      ),
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the Amazon Chime Voice Connector groups for the administrator's
 AWS account.

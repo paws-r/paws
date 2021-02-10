@@ -17,6 +17,20 @@ and less than or equal to 10. If you do not specify a value, or if you
 specify a value less than 1 or greater than 10, the operation will
 return up to 10 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplatesMetadata = list(
+    list(
+      Name = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the email templates present in your Amazon SES account in the
 current AWS Region.

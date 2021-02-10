@@ -15,6 +15,9 @@ resources: \code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PR
 
 \item{TagKeys}{[required] The keys of the tags to be removed.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified tags from a resource.
 }

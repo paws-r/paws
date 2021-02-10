@@ -15,6 +15,9 @@ Pinpoint account. To enable the dashboard, set this value to \code{true}.}
 \item{SubscribedDomains}{An array of objects, one for each verified domain that you use to send
 email and enabled the Deliverability dashboard for.}
 }
+\value{
+An empty list.
+}
 \description{
 Enable or disable the Deliverability dashboard for your Amazon Pinpoint
 account. When you enable the Deliverability dashboard, you gain access

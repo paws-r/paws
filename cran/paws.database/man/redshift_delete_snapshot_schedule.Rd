@@ -9,6 +9,9 @@ redshift_delete_snapshot_schedule(ScheduleIdentifier)
 \arguments{
 \item{ScheduleIdentifier}{[required] A unique identifier of the snapshot schedule to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a snapshot schedule.
 }

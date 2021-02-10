@@ -22,6 +22,35 @@ based on time created.}
 \item{NextToken}{The token passed by previous API calls until all requested messages are
 returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  NextToken = "string",
+  ChannelMessages = list(
+    list(
+      MessageId = "string",
+      Content = "string",
+      Metadata = "string",
+      Type = "STANDARD"|"CONTROL",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastEditedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Sender = list(
+        Arn = "string",
+        Name = "string"
+      ),
+      Redacted = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 List all the messages in a channel. Returns a paginated list of
 \code{ChannelMessages}. Sorted in descending order by default, based on the

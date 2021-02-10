@@ -16,6 +16,24 @@ cognitoidentityprovider_set_ui_customization(UserPoolId, ClientId, CSS,
 
 \item{ImageFile}{The uploaded logo image for the UI customization.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UICustomization = list(
+    UserPoolId = "string",
+    ClientId = "string",
+    ImageUrl = "string",
+    CSS = "string",
+    CSSVersion = "string",
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Sets the UI customization information for a user pool's built-in app UI.
 

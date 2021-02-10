@@ -54,6 +54,14 @@ NULL
 #' with IAM to manage permissions, see [Controlling Access Using IAM
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateAuthorityArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_certificate_authority(
@@ -200,6 +208,15 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' @param AuditReportResponseFormat &#91;required&#93; The format in which to create the report. This can be either **JSON** or
 #' **CSV**.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuditReportId = "string",
+#'   S3Key = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_certificate_authority_audit_report(
@@ -278,6 +295,9 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' include [`issue_certificate`][acmpca_issue_certificate],
 #' [`get_certificate`][acmpca_get_certificate], and
 #' [`list_permissions`][acmpca_list_permissions].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -360,6 +380,9 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' @param PermanentDeletionTimeInDays The number of days to make a CA restorable after it has been deleted.
 #' This can be anywhere from 7 to 30 days, with 30 being the default.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_certificate_authority(
@@ -436,6 +459,9 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #' @param Principal &#91;required&#93; The AWS service or identity that will have its CA permissions revoked.
 #' At this time, the only valid service principal is `acm.amazonaws.com`
 #' @param SourceAccount The AWS account that calls this action.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -515,6 +541,9 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' action. The ARN value must have the form
 #' `arn:aws:acm-pca:region:account:certificate-authority/01234567-89ab-cdef-0123-0123456789ab`.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_policy(
@@ -582,6 +611,116 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateAuthority = list(
+#'     Arn = "string",
+#'     OwnerAccount = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastStateChangeAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Type = "ROOT"|"SUBORDINATE",
+#'     Serial = "string",
+#'     Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED",
+#'     NotBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NotAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
+#'     CertificateAuthorityConfiguration = list(
+#'       KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
+#'       SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
+#'       Subject = list(
+#'         Country = "string",
+#'         Organization = "string",
+#'         OrganizationalUnit = "string",
+#'         DistinguishedNameQualifier = "string",
+#'         State = "string",
+#'         CommonName = "string",
+#'         SerialNumber = "string",
+#'         Locality = "string",
+#'         Title = "string",
+#'         Surname = "string",
+#'         GivenName = "string",
+#'         Initials = "string",
+#'         Pseudonym = "string",
+#'         GenerationQualifier = "string"
+#'       ),
+#'       CsrExtensions = list(
+#'         KeyUsage = list(
+#'           DigitalSignature = TRUE|FALSE,
+#'           NonRepudiation = TRUE|FALSE,
+#'           KeyEncipherment = TRUE|FALSE,
+#'           DataEncipherment = TRUE|FALSE,
+#'           KeyAgreement = TRUE|FALSE,
+#'           KeyCertSign = TRUE|FALSE,
+#'           CRLSign = TRUE|FALSE,
+#'           EncipherOnly = TRUE|FALSE,
+#'           DecipherOnly = TRUE|FALSE
+#'         ),
+#'         SubjectInformationAccess = list(
+#'           list(
+#'             AccessMethod = list(
+#'               CustomObjectIdentifier = "string",
+#'               AccessMethodType = "CA_REPOSITORY"|"RESOURCE_PKI_MANIFEST"|"RESOURCE_PKI_NOTIFY"
+#'             ),
+#'             AccessLocation = list(
+#'               OtherName = list(
+#'                 TypeId = "string",
+#'                 Value = "string"
+#'               ),
+#'               Rfc822Name = "string",
+#'               DnsName = "string",
+#'               DirectoryName = list(
+#'                 Country = "string",
+#'                 Organization = "string",
+#'                 OrganizationalUnit = "string",
+#'                 DistinguishedNameQualifier = "string",
+#'                 State = "string",
+#'                 CommonName = "string",
+#'                 SerialNumber = "string",
+#'                 Locality = "string",
+#'                 Title = "string",
+#'                 Surname = "string",
+#'                 GivenName = "string",
+#'                 Initials = "string",
+#'                 Pseudonym = "string",
+#'                 GenerationQualifier = "string"
+#'               ),
+#'               EdiPartyName = list(
+#'                 PartyName = "string",
+#'                 NameAssigner = "string"
+#'               ),
+#'               UniformResourceIdentifier = "string",
+#'               IpAddress = "string",
+#'               RegisteredId = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RevocationConfiguration = list(
+#'       CrlConfiguration = list(
+#'         Enabled = TRUE|FALSE,
+#'         ExpirationInDays = 123,
+#'         CustomCname = "string",
+#'         S3BucketName = "string"
+#'       )
+#'     ),
+#'     RestorableUntil = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_certificate_authority(
@@ -631,6 +770,19 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #' @param AuditReportId &#91;required&#93; The report ID returned by calling the
 #' [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report]
 #' action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuditReportStatus = "CREATING"|"SUCCESS"|"FAILED",
+#'   S3BucketName = "string",
+#'   S3Key = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -687,6 +839,15 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 `
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = "string",
+#'   CertificateChain = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_certificate(
@@ -731,6 +892,15 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of your private CA. This is of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = "string",
+#'   CertificateChain = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -780,6 +950,14 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
 #' action. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Csr = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -848,6 +1026,14 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
 #' policy retrieved. You can find the CA's ARN by calling the
 #' ListCertificateAuthorities action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -994,6 +1180,9 @@ acmpca_get_policy <- function(ResourceArn) {
 #' This parameter must be supplied when you import a subordinate CA. When
 #' you import a root CA, there is no chain.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_certificate_authority_certificate(
@@ -1080,33 +1269,33 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' 
 #' -   arn:aws:acm-pca:::template/CodeSigningCertificate/V1
 #' 
-#' -   arn:aws:acm-pca:::template/CodeSigningCertificate\\_CSRPassthrough/V1
+#' -   arn:aws:acm-pca:::template/CodeSigningCertificate_CSRPassthrough/V1
 #' 
 #' -   arn:aws:acm-pca:::template/EndEntityCertificate/V1
 #' 
-#' -   arn:aws:acm-pca:::template/EndEntityCertificate\\_CSRPassthrough/V1
+#' -   arn:aws:acm-pca:::template/EndEntityCertificate_CSRPassthrough/V1
 #' 
 #' -   arn:aws:acm-pca:::template/EndEntityClientAuthCertificate/V1
 #' 
-#' -   arn:aws:acm-pca:::template/EndEntityClientAuthCertificate\\_CSRPassthrough/V1
+#' -   arn:aws:acm-pca:::template/EndEntityClientAuthCertificate_CSRPassthrough/V1
 #' 
 #' -   arn:aws:acm-pca:::template/EndEntityServerAuthCertificate/V1
 #' 
-#' -   arn:aws:acm-pca:::template/EndEntityServerAuthCertificate\\_CSRPassthrough/V1
+#' -   arn:aws:acm-pca:::template/EndEntityServerAuthCertificate_CSRPassthrough/V1
 #' 
 #' -   arn:aws:acm-pca:::template/OCSPSigningCertificate/V1
 #' 
-#' -   arn:aws:acm-pca:::template/OCSPSigningCertificate\\_CSRPassthrough/V1
+#' -   arn:aws:acm-pca:::template/OCSPSigningCertificate_CSRPassthrough/V1
 #' 
 #' -   arn:aws:acm-pca:::template/RootCACertificate/V1
 #' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen0/V1
+#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
 #' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen1/V1
+#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
 #' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen2/V1
+#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
 #' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate\\_PathLen3/V1
+#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
 #' 
 #' For more information, see [Using
 #' Templates](https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html).
@@ -1126,6 +1315,14 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' are requesting only one certificate and will issue only one. If you
 #' change the idempotency token for each call, PCA recognizes that you are
 #' requesting multiple certificates.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1184,6 +1381,119 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #' retrieve additional items.
 #' @param ResourceOwner Use this parameter to filter the returned set of certificate authorities
 #' based on their owner. The default is SELF.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateAuthorities = list(
+#'     list(
+#'       Arn = "string",
+#'       OwnerAccount = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastStateChangeAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Type = "ROOT"|"SUBORDINATE",
+#'       Serial = "string",
+#'       Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED",
+#'       NotBefore = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NotAfter = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
+#'       CertificateAuthorityConfiguration = list(
+#'         KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
+#'         SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
+#'         Subject = list(
+#'           Country = "string",
+#'           Organization = "string",
+#'           OrganizationalUnit = "string",
+#'           DistinguishedNameQualifier = "string",
+#'           State = "string",
+#'           CommonName = "string",
+#'           SerialNumber = "string",
+#'           Locality = "string",
+#'           Title = "string",
+#'           Surname = "string",
+#'           GivenName = "string",
+#'           Initials = "string",
+#'           Pseudonym = "string",
+#'           GenerationQualifier = "string"
+#'         ),
+#'         CsrExtensions = list(
+#'           KeyUsage = list(
+#'             DigitalSignature = TRUE|FALSE,
+#'             NonRepudiation = TRUE|FALSE,
+#'             KeyEncipherment = TRUE|FALSE,
+#'             DataEncipherment = TRUE|FALSE,
+#'             KeyAgreement = TRUE|FALSE,
+#'             KeyCertSign = TRUE|FALSE,
+#'             CRLSign = TRUE|FALSE,
+#'             EncipherOnly = TRUE|FALSE,
+#'             DecipherOnly = TRUE|FALSE
+#'           ),
+#'           SubjectInformationAccess = list(
+#'             list(
+#'               AccessMethod = list(
+#'                 CustomObjectIdentifier = "string",
+#'                 AccessMethodType = "CA_REPOSITORY"|"RESOURCE_PKI_MANIFEST"|"RESOURCE_PKI_NOTIFY"
+#'               ),
+#'               AccessLocation = list(
+#'                 OtherName = list(
+#'                   TypeId = "string",
+#'                   Value = "string"
+#'                 ),
+#'                 Rfc822Name = "string",
+#'                 DnsName = "string",
+#'                 DirectoryName = list(
+#'                   Country = "string",
+#'                   Organization = "string",
+#'                   OrganizationalUnit = "string",
+#'                   DistinguishedNameQualifier = "string",
+#'                   State = "string",
+#'                   CommonName = "string",
+#'                   SerialNumber = "string",
+#'                   Locality = "string",
+#'                   Title = "string",
+#'                   Surname = "string",
+#'                   GivenName = "string",
+#'                   Initials = "string",
+#'                   Pseudonym = "string",
+#'                   GenerationQualifier = "string"
+#'                 ),
+#'                 EdiPartyName = list(
+#'                   PartyName = "string",
+#'                   NameAssigner = "string"
+#'                 ),
+#'                 UniformResourceIdentifier = "string",
+#'                 IpAddress = "string",
+#'                 RegisteredId = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       RevocationConfiguration = list(
+#'         CrlConfiguration = list(
+#'           Enabled = TRUE|FALSE,
+#'           ExpirationInDays = 123,
+#'           CustomCname = "string",
+#'           S3BucketName = "string"
+#'         )
+#'       ),
+#'       RestorableUntil = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1267,6 +1577,28 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #' response. Use this **NextToken** value in a subsequent request to
 #' retrieve additional items.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Permissions = list(
+#'     list(
+#'       CertificateAuthorityArn = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Principal = "string",
+#'       SourceAccount = "string",
+#'       Actions = list(
+#'         "IssueCertificate"|"GetCertificate"|"ListPermissions"
+#'       ),
+#'       Policy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_permissions(
@@ -1325,6 +1657,20 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
 #' number you specify, the **NextToken** element is sent in the response.
 #' Use this **NextToken** value in a subsequent request to retrieve
 #' additional items.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1406,6 +1752,9 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #' structure, see [Overview of JSON
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_policy(
@@ -1467,6 +1816,9 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
 #' action. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1545,6 +1897,9 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #' action in the *AWS Certificate Manager API Reference*.
 #' @param RevocationReason &#91;required&#93; Specifies why you revoked the certificate.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$revoke_certificate(
@@ -1598,6 +1953,9 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Tags &#91;required&#93; List of tags to be associated with the CA.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1653,6 +2011,9 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Tags &#91;required&#93; List of tags to be removed from the CA.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1712,6 +2073,9 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param RevocationConfiguration Revocation information for your private CA.
 #' @param Status Status of your private CA.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

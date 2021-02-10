@@ -9,6 +9,21 @@ greengrass_get_subscription_definition(SubscriptionDefinitionId)
 \arguments{
 \item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  LastUpdatedTimestamp = "string",
+  LatestVersion = "string",
+  LatestVersionArn = "string",
+  Name = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about a subscription definition.
 }

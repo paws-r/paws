@@ -22,6 +22,12 @@ unique per resource.}
 \item{ResourceSpec}{The instance type and the Amazon Resource Name (ARN) of the SageMaker
 image created on the instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppArn = "string"
+)
+}
+}
 \description{
 Creates a running App for the specified UserProfile. Supported Apps are
 JupyterServer and KernelGateway. This operation is automatically invoked

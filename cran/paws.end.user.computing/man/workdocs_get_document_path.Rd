@@ -21,6 +21,19 @@ the parent folders.}
 
 \item{Marker}{This value is not supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Path = list(
+    Components = list(
+      list(
+        Id = "string",
+        Name = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the path information (the hierarchy from the root folder) for
 the requested document.

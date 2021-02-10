@@ -17,6 +17,36 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attachment = list(
+    AttachTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    AttachmentId = "string",
+    DeleteOnTermination = TRUE|FALSE,
+    DeviceIndex = 123,
+    NetworkCardIndex = 123,
+    InstanceId = "string",
+    InstanceOwnerId = "string",
+    Status = "attaching"|"attached"|"detaching"|"detached"
+  ),
+  Description = list(
+    Value = "string"
+  ),
+  Groups = list(
+    list(
+      GroupName = "string",
+      GroupId = "string"
+    )
+  ),
+  NetworkInterfaceId = "string",
+  SourceDestCheck = list(
+    Value = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Describes a network interface attribute. You can specify only one
 attribute at a time.

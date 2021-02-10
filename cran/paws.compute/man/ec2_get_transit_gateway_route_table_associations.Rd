@@ -30,6 +30,20 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Associations = list(
+    list(
+      TransitGatewayAttachmentId = "string",
+      ResourceId = "string",
+      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+      State = "associating"|"associated"|"disassociating"|"disassociated"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about the associations for the specified transit
 gateway route table.

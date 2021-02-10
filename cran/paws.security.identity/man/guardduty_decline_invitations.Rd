@@ -11,6 +11,17 @@ guardduty_decline_invitations(AccountIds)
 \item{AccountIds}{[required] A list of account IDs of the AWS accounts that sent invitations to the
 current member account that you want to decline invitations from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Declines invitations sent to the current member account by AWS accounts
 specified by their account IDs.

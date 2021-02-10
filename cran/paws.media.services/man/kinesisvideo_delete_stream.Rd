@@ -18,6 +18,9 @@ correct stream. To get the stream version, use the
 If not specified, only the \code{CreationTime} is checked before deleting the
 stream.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Kinesis video stream and the data contained in the stream.
 

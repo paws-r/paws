@@ -33,7 +33,51 @@ characters.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-.\\_~:/?\\#&=,]+.}
+[A-Za-z0-9-._~:/?\#&=,]+.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessLogSettings = list(
+    DestinationArn = "string",
+    Format = "string"
+  ),
+  ApiGatewayManaged = TRUE|FALSE,
+  AutoDeploy = TRUE|FALSE,
+  ClientCertificateId = "string",
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DefaultRouteSettings = list(
+    DataTraceEnabled = TRUE|FALSE,
+    DetailedMetricsEnabled = TRUE|FALSE,
+    LoggingLevel = "ERROR"|"INFO"|"OFF",
+    ThrottlingBurstLimit = 123,
+    ThrottlingRateLimit = 123.0
+  ),
+  DeploymentId = "string",
+  Description = "string",
+  LastDeploymentStatusMessage = "string",
+  LastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  RouteSettings = list(
+    list(
+      DataTraceEnabled = TRUE|FALSE,
+      DetailedMetricsEnabled = TRUE|FALSE,
+      LoggingLevel = "ERROR"|"INFO"|"OFF",
+      ThrottlingBurstLimit = 123,
+      ThrottlingRateLimit = 123.0
+    )
+  ),
+  StageName = "string",
+  StageVariables = list(
+    "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Updates a Stage.

@@ -22,6 +22,14 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{body}{The data to upload.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  location = "string",
+  checksum = "string",
+  archiveId = "string"
+)
+}
+}
 \description{
 This operation adds an archive to a vault. This is a synchronous
 operation, and for a successful upload, your data is durably persisted.

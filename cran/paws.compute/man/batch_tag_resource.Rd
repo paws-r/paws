@@ -18,6 +18,9 @@ organize your resources. Each tag consists of a key and an optional
 value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in \emph{AWS General Reference}.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates the specified tags to a resource with the specified
 \code{resourceArn}. If existing tags on a resource aren't specified in the

@@ -67,15 +67,15 @@ server, the valid value is \code{2017}.}
 \itemize{
 \item \code{CHEF_AUTOMATE_PIVOTAL_KEY}: A base64-encoded RSA public key. The
 corresponding private key is required to access the Chef API. When
-no CHEF\\_AUTOMATE\\_PIVOTAL\\_KEY is set, a private key is generated
+no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated
 and returned in the response.
 \item \code{CHEF_AUTOMATE_ADMIN_PASSWORD}: The password for the administrative
 user in the Chef Automate web-based dashboard. The password length
 is a minimum of eight characters, and a maximum of 32. The password
 can contain letters, numbers, and special characters
-(!/@\\#$\%^&+=\\_). The password must contain at least one lower case
+(!/@\#$\%^&+=_). The password must contain at least one lower case
 letter, one upper case letter, one number, and one special
-character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
+character. When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is
 generated and returned in the response.
 }
 
@@ -88,7 +88,7 @@ repository (for example,
 ssh://git@your.git-repo.com:user/control-repo.git). Specifying an
 r10k remote opens TCP port 8170.
 \item \code{PUPPET_R10K_PRIVATE_KEY}: If you are using a private Git
-repository, add PUPPET\\_R10K\\_PRIVATE\\_KEY to specify a PEM-encoded
+repository, add PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded
 private SSH key.
 }}
 
@@ -189,6 +189,48 @@ server.
 
 \item{BackupId}{If you specify this field, AWS OpsWorks CM creates the server by using
 the backup represented by BackupId.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Server = list(
+    AssociatePublicIpAddress = TRUE|FALSE,
+    BackupRetentionCount = 123,
+    ServerName = "string",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    CloudFormationStackArn = "string",
+    CustomDomain = "string",
+    DisableAutomatedBackup = TRUE|FALSE,
+    Endpoint = "string",
+    Engine = "string",
+    EngineModel = "string",
+    EngineAttributes = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    ),
+    EngineVersion = "string",
+    InstanceProfileArn = "string",
+    InstanceType = "string",
+    KeyPair = "string",
+    MaintenanceStatus = "SUCCESS"|"FAILED",
+    PreferredMaintenanceWindow = "string",
+    PreferredBackupWindow = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    ServiceRoleArn = "string",
+    Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+    StatusReason = "string",
+    SubnetIds = list(
+      "string"
+    ),
+    ServerArn = "string"
+  )
+)
+}
 }
 \description{
 Creates and immedately starts a new server. The server is ready to use

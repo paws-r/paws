@@ -17,6 +17,16 @@ NULL
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param InstanceFleet &#91;required&#93; Specifies the configuration of the instance fleet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterId = "string",
+#'   InstanceFleetId = "string",
+#'   ClusterArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_instance_fleet(
@@ -101,6 +111,18 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'
 #' @param InstanceGroups &#91;required&#93; Instance groups to add.
 #' @param JobFlowId &#91;required&#93; Job flow in which to add the instance groups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobFlowId = "string",
+#'   InstanceGroupIds = list(
+#'     "string"
+#'   ),
+#'   ClusterArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -236,6 +258,16 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' from [`list_clusters`][emr_list_clusters].
 #' @param Steps &#91;required&#93; A list of StepConfig to be executed by the job flow.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StepIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_job_flow_steps(
@@ -300,6 +332,9 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps) {
 #' required key string with a maximum of 128 characters, and an optional
 #' value string with a maximum of 256 characters.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_tags(
@@ -354,6 +389,20 @@ emr_add_tags <- function(ResourceId, Tags) {
 #' @param StepCancellationOption The option to choose to cancel `RUNNING` steps. By default, the value is
 #' `SEND_INTERRUPT`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CancelStepsInfoList = list(
+#'     list(
+#'       StepId = "string",
+#'       Status = "SUBMITTED"|"FAILED",
+#'       Reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_steps(
@@ -400,6 +449,17 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
 #' and examples, see [Use Security Configurations to Set Up Cluster
 #' Security](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html)
 #' in the *Amazon EMR Management Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   CreationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -473,6 +533,15 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' key-value pairs that consist of a required key string with a maximum of
 #' 128 characters, and an optional value string with a maximum of 256
 #' characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StudioId = "string",
+#'   Url = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -554,6 +623,9 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 #' applied to the user or group. Session policies refine Studio user
 #' permissions without the need to use multiple IAM user roles.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_studio_session_mapping(
@@ -595,6 +667,9 @@ emr_create_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #'
 #' @param Name &#91;required&#93; The name of the security configuration.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_security_configuration(
@@ -635,6 +710,9 @@ emr_delete_security_configuration <- function(Name) {
 #' emr_delete_studio(StudioId)
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -694,6 +772,9 @@ emr_delete_studio <- function(StudioId) {
 #' @param IdentityType &#91;required&#93; Specifies whether the identity to delete from the Studio is a user or a
 #' group.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_studio_session_mapping(
@@ -735,6 +816,117 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #' emr_describe_cluster(ClusterId)
 #'
 #' @param ClusterId &#91;required&#93; The identifier of the cluster to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Status = list(
+#'       State = "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS",
+#'       StateChangeReason = list(
+#'         Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"INSTANCE_FLEET_TIMEOUT"|"BOOTSTRAP_FAILURE"|"USER_REQUEST"|"STEP_FAILURE"|"ALL_STEPS_COMPLETED",
+#'         Message = "string"
+#'       ),
+#'       Timeline = list(
+#'         CreationDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ReadyDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     Ec2InstanceAttributes = list(
+#'       Ec2KeyName = "string",
+#'       Ec2SubnetId = "string",
+#'       RequestedEc2SubnetIds = list(
+#'         "string"
+#'       ),
+#'       Ec2AvailabilityZone = "string",
+#'       RequestedEc2AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       IamInstanceProfile = "string",
+#'       EmrManagedMasterSecurityGroup = "string",
+#'       EmrManagedSlaveSecurityGroup = "string",
+#'       ServiceAccessSecurityGroup = "string",
+#'       AdditionalMasterSecurityGroups = list(
+#'         "string"
+#'       ),
+#'       AdditionalSlaveSecurityGroups = list(
+#'         "string"
+#'       )
+#'     ),
+#'     InstanceCollectionType = "INSTANCE_FLEET"|"INSTANCE_GROUP",
+#'     LogUri = "string",
+#'     LogEncryptionKmsKeyId = "string",
+#'     RequestedAmiVersion = "string",
+#'     RunningAmiVersion = "string",
+#'     ReleaseLabel = "string",
+#'     AutoTerminate = TRUE|FALSE,
+#'     TerminationProtected = TRUE|FALSE,
+#'     VisibleToAllUsers = TRUE|FALSE,
+#'     Applications = list(
+#'       list(
+#'         Name = "string",
+#'         Version = "string",
+#'         Args = list(
+#'           "string"
+#'         ),
+#'         AdditionalInfo = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ServiceRole = "string",
+#'     NormalizedInstanceHours = 123,
+#'     MasterPublicDnsName = "string",
+#'     Configurations = list(
+#'       list(
+#'         Classification = "string",
+#'         Configurations = list(),
+#'         Properties = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     SecurityConfiguration = "string",
+#'     AutoScalingRole = "string",
+#'     ScaleDownBehavior = "TERMINATE_AT_INSTANCE_HOUR"|"TERMINATE_AT_TASK_COMPLETION",
+#'     CustomAmiId = "string",
+#'     EbsRootVolumeSize = 123,
+#'     RepoUpgradeOnBoot = "SECURITY"|"NONE",
+#'     KerberosAttributes = list(
+#'       Realm = "string",
+#'       KdcAdminPassword = "string",
+#'       CrossRealmTrustPrincipalPassword = "string",
+#'       ADDomainJoinUser = "string",
+#'       ADDomainJoinPassword = "string"
+#'     ),
+#'     ClusterArn = "string",
+#'     OutpostArn = "string",
+#'     StepConcurrencyLevel = 123,
+#'     PlacementGroups = list(
+#'       list(
+#'         InstanceRole = "MASTER"|"CORE"|"TASK",
+#'         PlacementStrategy = "SPREAD"|"PARTITION"|"CLUSTER"|"NONE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -799,6 +991,138 @@ emr_describe_cluster <- function(ClusterId) {
 #' @param JobFlowIds Return only job flows whose job flow ID is contained in this list.
 #' @param JobFlowStates Return only job flows whose state is contained in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobFlows = list(
+#'     list(
+#'       JobFlowId = "string",
+#'       Name = "string",
+#'       LogUri = "string",
+#'       LogEncryptionKmsKeyId = "string",
+#'       AmiVersion = "string",
+#'       ExecutionStatusDetail = list(
+#'         State = "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"SHUTTING_DOWN"|"TERMINATED"|"COMPLETED"|"FAILED",
+#'         CreationDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StartDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ReadyDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastStateChangeReason = "string"
+#'       ),
+#'       Instances = list(
+#'         MasterInstanceType = "string",
+#'         MasterPublicDnsName = "string",
+#'         MasterInstanceId = "string",
+#'         SlaveInstanceType = "string",
+#'         InstanceCount = 123,
+#'         InstanceGroups = list(
+#'           list(
+#'             InstanceGroupId = "string",
+#'             Name = "string",
+#'             Market = "ON_DEMAND"|"SPOT",
+#'             InstanceRole = "MASTER"|"CORE"|"TASK",
+#'             BidPrice = "string",
+#'             InstanceType = "string",
+#'             InstanceRequestCount = 123,
+#'             InstanceRunningCount = 123,
+#'             State = "PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"RECONFIGURING"|"RESIZING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"ARRESTED"|"SHUTTING_DOWN"|"ENDED",
+#'             LastStateChangeReason = "string",
+#'             CreationDateTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             StartDateTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             ReadyDateTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             EndDateTime = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         NormalizedInstanceHours = 123,
+#'         Ec2KeyName = "string",
+#'         Ec2SubnetId = "string",
+#'         Placement = list(
+#'           AvailabilityZone = "string",
+#'           AvailabilityZones = list(
+#'             "string"
+#'           )
+#'         ),
+#'         KeepJobFlowAliveWhenNoSteps = TRUE|FALSE,
+#'         TerminationProtected = TRUE|FALSE,
+#'         HadoopVersion = "string"
+#'       ),
+#'       Steps = list(
+#'         list(
+#'           StepConfig = list(
+#'             Name = "string",
+#'             ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+#'             HadoopJarStep = list(
+#'               Properties = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               Jar = "string",
+#'               MainClass = "string",
+#'               Args = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           ExecutionStatusDetail = list(
+#'             State = "PENDING"|"RUNNING"|"CONTINUE"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED",
+#'             CreationDateTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             StartDateTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             EndDateTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             LastStateChangeReason = "string"
+#'           )
+#'         )
+#'       ),
+#'       BootstrapActions = list(
+#'         list(
+#'           BootstrapActionConfig = list(
+#'             Name = "string",
+#'             ScriptBootstrapAction = list(
+#'               Path = "string",
+#'               Args = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       SupportedProducts = list(
+#'         "string"
+#'       ),
+#'       VisibleToAllUsers = TRUE|FALSE,
+#'       JobFlowRole = "string",
+#'       ServiceRole = "string",
+#'       AutoScalingRole = "string",
+#'       ScaleDownBehavior = "TERMINATE_AT_INSTANCE_HOUR"|"TERMINATE_AT_TASK_COMPLETION"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job_flows(
@@ -847,6 +1171,41 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
 #'
 #' @param NotebookExecutionId &#91;required&#93; The unique identifier of the notebook execution.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotebookExecution = list(
+#'     NotebookExecutionId = "string",
+#'     EditorId = "string",
+#'     ExecutionEngine = list(
+#'       Id = "string",
+#'       Type = "EMR",
+#'       MasterInstanceSecurityGroupId = "string"
+#'     ),
+#'     NotebookExecutionName = "string",
+#'     NotebookParams = "string",
+#'     Status = "START_PENDING"|"STARTING"|"RUNNING"|"FINISHING"|"FINISHED"|"FAILING"|"FAILED"|"STOP_PENDING"|"STOPPING"|"STOPPED",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Arn = "string",
+#'     OutputNotebookURI = "string",
+#'     LastStateChangeReason = "string",
+#'     NotebookInstanceSecurityGroupId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_notebook_execution(
@@ -886,6 +1245,18 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
 #'
 #' @param Name &#91;required&#93; The name of the security configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   SecurityConfiguration = "string",
+#'   CreationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_security_configuration(
@@ -923,6 +1294,51 @@ emr_describe_security_configuration <- function(Name) {
 #'
 #' @param ClusterId &#91;required&#93; The identifier of the cluster with steps to describe.
 #' @param StepId &#91;required&#93; The identifier of the step to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Step = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Config = list(
+#'       Jar = "string",
+#'       Properties = list(
+#'         "string"
+#'       ),
+#'       MainClass = "string",
+#'       Args = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+#'     Status = list(
+#'       State = "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED",
+#'       StateChangeReason = list(
+#'         Code = "NONE",
+#'         Message = "string"
+#'       ),
+#'       FailureDetails = list(
+#'         Reason = "string",
+#'         Message = "string",
+#'         LogFile = "string"
+#'       ),
+#'       Timeline = list(
+#'         CreationDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StartDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -967,6 +1383,39 @@ emr_describe_step <- function(ClusterId, StepId) {
 #'
 #' @param StudioId &#91;required&#93; The Amazon EMR Studio ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Studio = list(
+#'     StudioId = "string",
+#'     StudioArn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     AuthMode = "SSO"|"IAM",
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     ServiceRole = "string",
+#'     UserRole = "string",
+#'     WorkspaceSecurityGroupId = "string",
+#'     EngineSecurityGroupId = "string",
+#'     Url = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DefaultS3Location = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_studio(
@@ -1007,6 +1456,28 @@ emr_describe_studio <- function(StudioId) {
 #' @usage
 #' emr_get_block_public_access_configuration()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BlockPublicAccessConfiguration = list(
+#'     BlockPublicSecurityGroupRules = TRUE|FALSE,
+#'     PermittedPublicSecurityGroupRuleRanges = list(
+#'       list(
+#'         MinRange = 123,
+#'         MaxRange = 123
+#'       )
+#'     )
+#'   ),
+#'   BlockPublicAccessConfigurationMetadata = list(
+#'     CreationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedByArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_block_public_access_configuration()
@@ -1042,6 +1513,22 @@ emr_get_block_public_access_configuration <- function() {
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of the cluster for which the managed scaling policy
 #' will be fetched.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedScalingPolicy = list(
+#'     ComputeLimits = list(
+#'       UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
+#'       MinimumCapacityUnits = 123,
+#'       MaximumCapacityUnits = 123,
+#'       MaximumOnDemandCapacityUnits = 123,
+#'       MaximumCoreCapacityUnits = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1100,6 +1587,26 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 #' `IdentityId` must be specified.
 #' @param IdentityType &#91;required&#93; Specifies whether the identity to fetch is a user or a group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SessionMapping = list(
+#'     StudioId = "string",
+#'     IdentityId = "string",
+#'     IdentityName = "string",
+#'     IdentityType = "USER"|"GROUP",
+#'     SessionPolicyArn = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_studio_session_mapping(
@@ -1142,6 +1649,23 @@ emr_get_studio_session_mapping <- function(StudioId, IdentityId = NULL, Identity
 #'
 #' @param ClusterId &#91;required&#93; The cluster identifier for the bootstrap actions to list.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BootstrapActions = list(
+#'     list(
+#'       Name = "string",
+#'       ScriptPath = "string",
+#'       Args = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1187,6 +1711,41 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
 #' @param CreatedBefore The creation date and time end value filter for listing clusters.
 #' @param ClusterStates The cluster state filters to apply when listing clusters.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Clusters = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Status = list(
+#'         State = "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS",
+#'         StateChangeReason = list(
+#'           Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"INSTANCE_FLEET_TIMEOUT"|"BOOTSTRAP_FAILURE"|"USER_REQUEST"|"STEP_FAILURE"|"ALL_STEPS_COMPLETED",
+#'           Message = "string"
+#'         ),
+#'         Timeline = list(
+#'           CreationDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ReadyDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       NormalizedInstanceHours = 123,
+#'       ClusterArn = "string",
+#'       OutpostArn = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1238,6 +1797,82 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceFleets = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Status = list(
+#'         State = "PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"RESIZING"|"SUSPENDED"|"TERMINATING"|"TERMINATED",
+#'         StateChangeReason = list(
+#'           Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"CLUSTER_TERMINATED",
+#'           Message = "string"
+#'         ),
+#'         Timeline = list(
+#'           CreationDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ReadyDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       InstanceFleetType = "MASTER"|"CORE"|"TASK",
+#'       TargetOnDemandCapacity = 123,
+#'       TargetSpotCapacity = 123,
+#'       ProvisionedOnDemandCapacity = 123,
+#'       ProvisionedSpotCapacity = 123,
+#'       InstanceTypeSpecifications = list(
+#'         list(
+#'           InstanceType = "string",
+#'           WeightedCapacity = 123,
+#'           BidPrice = "string",
+#'           BidPriceAsPercentageOfOnDemandPrice = 123.0,
+#'           Configurations = list(
+#'             list(
+#'               Classification = "string",
+#'               Configurations = list(),
+#'               Properties = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           EbsBlockDevices = list(
+#'             list(
+#'               VolumeSpecification = list(
+#'                 VolumeType = "string",
+#'                 Iops = 123,
+#'                 SizeInGB = 123
+#'               ),
+#'               Device = "string"
+#'             )
+#'           ),
+#'           EbsOptimized = TRUE|FALSE
+#'         )
+#'       ),
+#'       LaunchSpecifications = list(
+#'         SpotSpecification = list(
+#'           TimeoutDurationMinutes = 123,
+#'           TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
+#'           BlockDurationMinutes = 123,
+#'           AllocationStrategy = "capacity-optimized"
+#'         ),
+#'         OnDemandSpecification = list(
+#'           AllocationStrategy = "lowest-price"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_instance_fleets(
@@ -1277,6 +1912,132 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
 #' @param ClusterId &#91;required&#93; The identifier of the cluster for which to list the instance groups.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceGroups = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Market = "ON_DEMAND"|"SPOT",
+#'       InstanceGroupType = "MASTER"|"CORE"|"TASK",
+#'       BidPrice = "string",
+#'       InstanceType = "string",
+#'       RequestedInstanceCount = 123,
+#'       RunningInstanceCount = 123,
+#'       Status = list(
+#'         State = "PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"RECONFIGURING"|"RESIZING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"ARRESTED"|"SHUTTING_DOWN"|"ENDED",
+#'         StateChangeReason = list(
+#'           Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"CLUSTER_TERMINATED",
+#'           Message = "string"
+#'         ),
+#'         Timeline = list(
+#'           CreationDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ReadyDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       Configurations = list(
+#'         list(
+#'           Classification = "string",
+#'           Configurations = list(),
+#'           Properties = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ConfigurationsVersion = 123,
+#'       LastSuccessfullyAppliedConfigurations = list(
+#'         list(
+#'           Classification = "string",
+#'           Configurations = list(),
+#'           Properties = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       LastSuccessfullyAppliedConfigurationsVersion = 123,
+#'       EbsBlockDevices = list(
+#'         list(
+#'           VolumeSpecification = list(
+#'             VolumeType = "string",
+#'             Iops = 123,
+#'             SizeInGB = 123
+#'           ),
+#'           Device = "string"
+#'         )
+#'       ),
+#'       EbsOptimized = TRUE|FALSE,
+#'       ShrinkPolicy = list(
+#'         DecommissionTimeout = 123,
+#'         InstanceResizePolicy = list(
+#'           InstancesToTerminate = list(
+#'             "string"
+#'           ),
+#'           InstancesToProtect = list(
+#'             "string"
+#'           ),
+#'           InstanceTerminationTimeout = 123
+#'         )
+#'       ),
+#'       AutoScalingPolicy = list(
+#'         Status = list(
+#'           State = "PENDING"|"ATTACHING"|"ATTACHED"|"DETACHING"|"DETACHED"|"FAILED",
+#'           StateChangeReason = list(
+#'             Code = "USER_REQUEST"|"PROVISION_FAILURE"|"CLEANUP_FAILURE",
+#'             Message = "string"
+#'           )
+#'         ),
+#'         Constraints = list(
+#'           MinCapacity = 123,
+#'           MaxCapacity = 123
+#'         ),
+#'         Rules = list(
+#'           list(
+#'             Name = "string",
+#'             Description = "string",
+#'             Action = list(
+#'               Market = "ON_DEMAND"|"SPOT",
+#'               SimpleScalingPolicyConfiguration = list(
+#'                 AdjustmentType = "CHANGE_IN_CAPACITY"|"PERCENT_CHANGE_IN_CAPACITY"|"EXACT_CAPACITY",
+#'                 ScalingAdjustment = 123,
+#'                 CoolDown = 123
+#'               )
+#'             ),
+#'             Trigger = list(
+#'               CloudWatchAlarmDefinition = list(
+#'                 ComparisonOperator = "GREATER_THAN_OR_EQUAL"|"GREATER_THAN"|"LESS_THAN"|"LESS_THAN_OR_EQUAL",
+#'                 EvaluationPeriods = 123,
+#'                 MetricName = "string",
+#'                 Namespace = "string",
+#'                 Period = 123,
+#'                 Statistic = "SAMPLE_COUNT"|"AVERAGE"|"SUM"|"MINIMUM"|"MAXIMUM",
+#'                 Threshold = 123.0,
+#'                 Unit = "NONE"|"SECONDS"|"MICRO_SECONDS"|"MILLI_SECONDS"|"BYTES"|"KILO_BYTES"|"MEGA_BYTES"|"GIGA_BYTES"|"TERA_BYTES"|"BITS"|"KILO_BITS"|"MEGA_BITS"|"GIGA_BITS"|"TERA_BITS"|"PERCENT"|"COUNT"|"BYTES_PER_SECOND"|"KILO_BYTES_PER_SECOND"|"MEGA_BYTES_PER_SECOND"|"GIGA_BYTES_PER_SECOND"|"TERA_BYTES_PER_SECOND"|"BITS_PER_SECOND"|"KILO_BITS_PER_SECOND"|"MEGA_BITS_PER_SECOND"|"GIGA_BITS_PER_SECOND"|"TERA_BITS_PER_SECOND"|"COUNT_PER_SECOND",
+#'                 Dimensions = list(
+#'                   list(
+#'                     Key = "string",
+#'                     Value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_instance_groups(
@@ -1312,7 +2073,7 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
 #' Provides information for all active EC2 instances and EC2 instances
 #' terminated in the last 30 days, up to a maximum of 2,000. EC2 instances
 #' in any of the following states are considered active:
-#' AWAITING\\_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
+#' AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 #'
 #' @usage
 #' emr_list_instances(ClusterId, InstanceGroupId, InstanceGroupTypes,
@@ -1326,6 +2087,52 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
 #' @param InstanceStates A list of instance states that will filter the instances returned with
 #' this request.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = list(
+#'     list(
+#'       Id = "string",
+#'       Ec2InstanceId = "string",
+#'       PublicDnsName = "string",
+#'       PublicIpAddress = "string",
+#'       PrivateDnsName = "string",
+#'       PrivateIpAddress = "string",
+#'       Status = list(
+#'         State = "AWAITING_FULFILLMENT"|"PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"TERMINATED",
+#'         StateChangeReason = list(
+#'           Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"BOOTSTRAP_FAILURE"|"CLUSTER_TERMINATED",
+#'           Message = "string"
+#'         ),
+#'         Timeline = list(
+#'           CreationDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ReadyDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       InstanceGroupId = "string",
+#'       InstanceFleetId = "string",
+#'       Market = "ON_DEMAND"|"SPOT",
+#'       InstanceType = "string",
+#'       EbsVolumes = list(
+#'         list(
+#'           Device = "string",
+#'           VolumeId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1416,6 +2223,28 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
 #' indicates the start of the list for this
 #' [`list_notebook_executions`][emr_list_notebook_executions] call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotebookExecutions = list(
+#'     list(
+#'       NotebookExecutionId = "string",
+#'       EditorId = "string",
+#'       NotebookExecutionName = "string",
+#'       Status = "START_PENDING"|"STARTING"|"RUNNING"|"FINISHING"|"FINISHED"|"FAILING"|"FAILED"|"STOP_PENDING"|"STOPPING"|"STOPPED",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_notebook_executions(
@@ -1466,6 +2295,22 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
 #'
 #' @param Marker The pagination token that indicates the set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityConfigurations = list(
+#'     list(
+#'       Name = "string",
+#'       CreationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_security_configurations(
@@ -1510,6 +2355,54 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #' You can specify a maximum of ten Step IDs. The character constraint
 #' applies to the overall length of the array.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Steps = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Config = list(
+#'         Jar = "string",
+#'         Properties = list(
+#'           "string"
+#'         ),
+#'         MainClass = "string",
+#'         Args = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+#'       Status = list(
+#'         State = "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED",
+#'         StateChangeReason = list(
+#'           Code = "NONE",
+#'           Message = "string"
+#'         ),
+#'         FailureDetails = list(
+#'           Reason = "string",
+#'           Message = "string",
+#'           LogFile = "string"
+#'         ),
+#'         Timeline = list(
+#'           CreationDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           StartDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1564,6 +2457,26 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
 #' and groups.
 #' @param Marker The pagination token that indicates the set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SessionMappings = list(
+#'     list(
+#'       StudioId = "string",
+#'       IdentityId = "string",
+#'       IdentityName = "string",
+#'       IdentityType = "USER"|"GROUP",
+#'       SessionPolicyArn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_studio_session_mappings(
@@ -1609,6 +2522,26 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
 #'
 #' @param Marker The pagination token that indicates the set of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Studios = list(
+#'     list(
+#'       StudioId = "string",
+#'       Name = "string",
+#'       VpcId = "string",
+#'       Description = "string",
+#'       Url = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_studios(
@@ -1649,6 +2582,14 @@ emr_list_studios <- function(Marker = NULL) {
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param StepConcurrencyLevel The number of steps that can be executed concurrently. You can specify a
 #' maximum of 256 steps.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StepConcurrencyLevel = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1696,6 +2637,9 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param InstanceFleet &#91;required&#93; The unique identifier of the instance fleet.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_instance_fleet(
@@ -1742,6 +2686,9 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'
 #' @param ClusterId The ID of the cluster to which the instance group belongs.
 #' @param InstanceGroups Instance groups to change.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1818,6 +2765,61 @@ emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) 
 #' @param InstanceGroupId &#91;required&#93; Specifies the ID of the instance group to which the automatic scaling
 #' policy is applied.
 #' @param AutoScalingPolicy &#91;required&#93; Specifies the definition of the automatic scaling policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterId = "string",
+#'   InstanceGroupId = "string",
+#'   AutoScalingPolicy = list(
+#'     Status = list(
+#'       State = "PENDING"|"ATTACHING"|"ATTACHED"|"DETACHING"|"DETACHED"|"FAILED",
+#'       StateChangeReason = list(
+#'         Code = "USER_REQUEST"|"PROVISION_FAILURE"|"CLEANUP_FAILURE",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     Constraints = list(
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123
+#'     ),
+#'     Rules = list(
+#'       list(
+#'         Name = "string",
+#'         Description = "string",
+#'         Action = list(
+#'           Market = "ON_DEMAND"|"SPOT",
+#'           SimpleScalingPolicyConfiguration = list(
+#'             AdjustmentType = "CHANGE_IN_CAPACITY"|"PERCENT_CHANGE_IN_CAPACITY"|"EXACT_CAPACITY",
+#'             ScalingAdjustment = 123,
+#'             CoolDown = 123
+#'           )
+#'         ),
+#'         Trigger = list(
+#'           CloudWatchAlarmDefinition = list(
+#'             ComparisonOperator = "GREATER_THAN_OR_EQUAL"|"GREATER_THAN"|"LESS_THAN"|"LESS_THAN_OR_EQUAL",
+#'             EvaluationPeriods = 123,
+#'             MetricName = "string",
+#'             Namespace = "string",
+#'             Period = 123,
+#'             Statistic = "SAMPLE_COUNT"|"AVERAGE"|"SUM"|"MINIMUM"|"MAXIMUM",
+#'             Threshold = 123.0,
+#'             Unit = "NONE"|"SECONDS"|"MICRO_SECONDS"|"MILLI_SECONDS"|"BYTES"|"KILO_BYTES"|"MEGA_BYTES"|"GIGA_BYTES"|"TERA_BYTES"|"BITS"|"KILO_BITS"|"MEGA_BITS"|"GIGA_BITS"|"TERA_BITS"|"PERCENT"|"COUNT"|"BYTES_PER_SECOND"|"KILO_BYTES_PER_SECOND"|"MEGA_BYTES_PER_SECOND"|"GIGA_BYTES_PER_SECOND"|"TERA_BYTES_PER_SECOND"|"BITS_PER_SECOND"|"KILO_BITS_PER_SECOND"|"MEGA_BITS_PER_SECOND"|"GIGA_BITS_PER_SECOND"|"TERA_BITS_PER_SECOND"|"COUNT_PER_SECOND",
+#'             Dimensions = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ClusterArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1917,6 +2919,9 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #' did not create an EMR cluster in a Region before this date, block public
 #' access is enabled by default in that Region.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_block_public_access_configuration(
@@ -1967,6 +2972,9 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
 #' @param ClusterId &#91;required&#93; Specifies the ID of an EMR cluster where the managed scaling policy is
 #' attached.
 #' @param ManagedScalingPolicy &#91;required&#93; Specifies the constraints for the managed scaling policy.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2019,6 +3027,9 @@ emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
 #' @param InstanceGroupId &#91;required&#93; Specifies the ID of the instance group to which the scaling policy is
 #' applied.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_auto_scaling_policy(
@@ -2057,6 +3068,9 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of the cluster from which the managed scaling policy
 #' will be removed.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2103,6 +3117,9 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
 #' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier from which tags will be removed. This
 #' value must be a cluster identifier.
 #' @param TagKeys &#91;required&#93; A list of tag keys to remove from a resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2313,6 +3330,15 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' default value is `1`. The maximum value is `256`.
 #' @param ManagedScalingPolicy The specified managed scaling policy for an Amazon EMR cluster.
 #' @param PlacementGroupConfigs The specified placement group configuration for an Amazon EMR cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobFlowId = "string",
+#'   ClusterArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2631,6 +3657,9 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
 #' Amazon EC2 instances in the cluster from shutting down due to API calls,
 #' user intervention, or job-flow error.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_termination_protection(
@@ -2685,6 +3714,9 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #' perform cluster actions if they have the proper IAM policy permissions.
 #' This is the default. A value of `false` indicates that only the IAM user
 #' who created the cluster can perform actions.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2749,6 +3781,14 @@ emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
 #' a maximum of 128 characters and an optional value string with a maximum
 #' of 256 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotebookExecutionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_notebook_execution(
@@ -2802,6 +3842,9 @@ emr_start_notebook_execution <- function(EditorId, RelativePath, NotebookExecuti
 #'
 #' @param NotebookExecutionId &#91;required&#93; The unique identifier of the notebook execution.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_notebook_execution(
@@ -2848,6 +3891,9 @@ emr_stop_notebook_execution <- function(NotebookExecutionId) {
 #' emr_terminate_job_flows(JobFlowIds)
 #'
 #' @param JobFlowIds &#91;required&#93; A list of job flows to be shut down.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2909,6 +3955,9 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' @param IdentityType &#91;required&#93; Specifies whether the identity to update is a user or a group.
 #' @param SessionPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the session policy to associate with
 #' the specified user or group.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

@@ -12,6 +12,9 @@ cloudwatchlogs_delete_log_stream(logGroupName, logStreamName)
 
 \item{logStreamName}{[required] The name of the log stream.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified log stream and permanently deletes all the
 archived log events associated with the log stream.

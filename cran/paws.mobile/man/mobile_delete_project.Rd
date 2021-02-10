@@ -9,6 +9,33 @@ mobile_delete_project(projectId)
 \arguments{
 \item{projectId}{[required] Unique project identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deletedResources = list(
+    list(
+      type = "string",
+      name = "string",
+      arn = "string",
+      feature = "string",
+      attributes = list(
+        "string"
+      )
+    )
+  ),
+  orphanedResources = list(
+    list(
+      type = "string",
+      name = "string",
+      arn = "string",
+      feature = "string",
+      attributes = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Delets a project in AWS Mobile Hub.
 }

@@ -9,6 +9,19 @@ appsync_get_api_cache(apiId)
 \arguments{
 \item{apiId}{[required] The API ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  apiCache = list(
+    ttl = 123,
+    apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
+    transitEncryptionEnabled = TRUE|FALSE,
+    atRestEncryptionEnabled = TRUE|FALSE,
+    type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X",
+    status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
+  )
+)
+}
+}
 \description{
 Retrieves an \code{ApiCache} object.
 }

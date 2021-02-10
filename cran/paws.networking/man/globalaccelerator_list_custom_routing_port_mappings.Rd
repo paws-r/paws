@@ -22,6 +22,27 @@ this call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortMappings = list(
+    list(
+      AcceleratorPort = 123,
+      EndpointGroupArn = "string",
+      EndpointId = "string",
+      DestinationSocketAddress = list(
+        IpAddress = "string",
+        Port = 123
+      ),
+      Protocols = list(
+        "TCP"|"UDP"
+      ),
+      DestinationTrafficState = "ALLOW"|"DENY"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides a complete mapping from the public accelerator IP address and
 port to destination EC2 instance IP addresses and ports in the virtual

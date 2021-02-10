@@ -10,6 +10,9 @@ gamelift_delete_script(ScriptId)
 \item{ScriptId}{[required] A unique identifier for a Realtime script to delete. You can use either
 the script ID or ARN value.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Realtime script. This operation permanently deletes the script
 record. If script files were uploaded, they are also deleted (files

@@ -12,6 +12,14 @@ efs_put_backup_policy(FileSystemId, BackupPolicy)
 \item{BackupPolicy}{[required] The backup policy included in the
 \code{\link[=efs_put_backup_policy]{put_backup_policy}} request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupPolicy = list(
+    Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+  )
+)
+}
+}
 \description{
 Updates the file system's backup policy. Use this action to start or
 stop automatic backups of the file system.

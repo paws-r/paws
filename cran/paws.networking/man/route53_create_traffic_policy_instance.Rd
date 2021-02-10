@@ -26,6 +26,23 @@ record sets in the specified hosted zone.}
 \item{TrafficPolicyVersion}{[required] The version of the traffic policy that you want to use to create
 resource record sets in the specified hosted zone.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicyInstance = list(
+    Id = "string",
+    HostedZoneId = "string",
+    Name = "string",
+    TTL = 123,
+    State = "string",
+    Message = "string",
+    TrafficPolicyId = "string",
+    TrafficPolicyVersion = 123,
+    TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+  ),
+  Location = "string"
+)
+}
+}
 \description{
 Creates resource record sets in a specified hosted zone based on the
 settings in a specified traffic policy version. In addition,

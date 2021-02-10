@@ -10,6 +10,19 @@ gamelift_describe_fleet_port_settings(FleetId)
 \item{FleetId}{[required] A unique identifier for a fleet to retrieve port settings for. You can
 use either the fleet ID or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InboundPermissions = list(
+    list(
+      FromPort = 123,
+      ToPort = 123,
+      IpRange = "string",
+      Protocol = "TCP"|"UDP"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves a fleet's inbound connection permissions. Connection
 permissions specify the range of IP addresses and port settings that

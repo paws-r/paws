@@ -19,6 +19,9 @@ Neptune DB cluster, for example
 to be associated with. For the list of supported feature names, see
 DBEngineVersion.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates an Identity and Access Management (IAM) role from an Neptune
 DB cluster.

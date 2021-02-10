@@ -36,6 +36,43 @@ range. If your resource received fewer requests than the value of
 \code{MaxItems}, \code{\link[=waf_get_sampled_requests]{get_sampled_requests}} returns
 information about all of them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SampledRequests = list(
+    list(
+      Request = list(
+        ClientIP = "string",
+        Country = "string",
+        URI = "string",
+        Method = "string",
+        HTTPVersion = "string",
+        Headers = list(
+          list(
+            Name = "string",
+            Value = "string"
+          )
+        )
+      ),
+      Weight = 123,
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Action = "string",
+      RuleWithinRuleGroup = "string"
+    )
+  ),
+  PopulationSize = 123,
+  TimeWindow = list(
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

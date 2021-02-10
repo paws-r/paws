@@ -12,6 +12,9 @@ cognitoidentityprovider_delete_identity_provider(UserPoolId,
 
 \item{ProviderName}{[required] The identity provider name.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an identity provider for a user pool.
 }

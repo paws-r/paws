@@ -10,6 +10,62 @@ ecs_delete_cluster(cluster)
 \item{cluster}{[required] The short name or full Amazon Resource Name (ARN) of the cluster to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cluster = list(
+    clusterArn = "string",
+    clusterName = "string",
+    status = "string",
+    registeredContainerInstancesCount = 123,
+    runningTasksCount = 123,
+    pendingTasksCount = 123,
+    activeServicesCount = 123,
+    statistics = list(
+      list(
+        name = "string",
+        value = "string"
+      )
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    settings = list(
+      list(
+        name = "containerInsights",
+        value = "string"
+      )
+    ),
+    capacityProviders = list(
+      "string"
+    ),
+    defaultCapacityProviderStrategy = list(
+      list(
+        capacityProvider = "string",
+        weight = 123,
+        base = 123
+      )
+    ),
+    attachments = list(
+      list(
+        id = "string",
+        type = "string",
+        status = "string",
+        details = list(
+          list(
+            name = "string",
+            value = "string"
+          )
+        )
+      )
+    ),
+    attachmentsStatus = "string"
+  )
+)
+}
+}
 \description{
 Deletes the specified cluster. The cluster will transition to the
 \code{INACTIVE} state. Clusters with an \code{INACTIVE} status may remain

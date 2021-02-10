@@ -23,6 +23,12 @@ you are updating the certificate for.}
 pages for your application. Use this object to specify an SSL
 certificate that is managed by ACM.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CloudFrontDomain = "string"
+)
+}
+}
 \description{
 Updates the Secure Sockets Layer (SSL) certificate for the custom domain
 for your user pool.

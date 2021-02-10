@@ -34,7 +34,7 @@ data receivers to read both the current and one previous schema
 version. This means that for instance, a new schema version cannot
 drop data fields or change the type of these fields, so they can't
 be read by readers using the previous version.
-\item \emph{BACKWARD\\_ALL}: This compatibility choice allows data receivers to
+\item \emph{BACKWARD_ALL}: This compatibility choice allows data receivers to
 read both the current and all previous schema versions. You can use
 this choice when you need to delete fields or add optional fields,
 and check compatibility against all previous schema versions.
@@ -43,7 +43,7 @@ both the current and one next schema version, but not necessarily
 later versions. You can use this choice when you need to add fields
 or delete optional fields, but only check compatibility against the
 last schema version.
-\item \emph{FORWARD\\_ALL}: This compatibility choice allows data receivers to
+\item \emph{FORWARD_ALL}: This compatibility choice allows data receivers to
 read written by producers of any new registered schema. You can use
 this choice when you need to add fields or delete optional fields,
 and check compatibility against all previous schema versions.
@@ -52,7 +52,7 @@ written by producers using the previous or next version of the
 schema, but not necessarily earlier or later versions. You can use
 this choice when you need to add or remove optional fields, but only
 check compatibility against the last schema version.
-\item \emph{FULL\\_ALL}: This compatibility choice allows data receivers to read
+\item \emph{FULL_ALL}: This compatibility choice allows data receivers to read
 data written by producers using all previous schema versions. You
 can use this choice when you need to add or remove optional fields,
 and check compatibility against all previous schema versions.
@@ -66,6 +66,27 @@ command line, or API. If specified, follows the AWS tags-on-create
 pattern.}
 
 \item{SchemaDefinition}{The schema definition using the \code{DataFormat} setting for \code{SchemaName}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RegistryName = "string",
+  RegistryArn = "string",
+  SchemaName = "string",
+  SchemaArn = "string",
+  Description = "string",
+  DataFormat = "AVRO",
+  Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
+  SchemaCheckpoint = 123,
+  LatestSchemaVersion = 123,
+  NextSchemaVersion = 123,
+  SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
+  Tags = list(
+    "string"
+  ),
+  SchemaVersionId = "string",
+  SchemaVersionStatus = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING"
+)
+}
 }
 \description{
 Creates a new schema set and registers the schema definition. Returns an

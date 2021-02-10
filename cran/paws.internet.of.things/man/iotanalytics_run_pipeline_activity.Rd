@@ -17,6 +17,15 @@ seconds or less) can be used.}
 
 \item{payloads}{[required] The sample message payloads on which the pipeline activity is run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  payloads = list(
+    raw
+  ),
+  logResult = "string"
+)
+}
+}
 \description{
 Simulates the results of running a pipeline activity on a message
 payload.

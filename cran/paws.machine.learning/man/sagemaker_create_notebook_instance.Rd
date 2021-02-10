@@ -83,6 +83,12 @@ notebook instance. Because of this, lifecycle configurations associated
 with a notebook instance always run with root access even if you disable
 root access for users.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotebookInstanceArn = "string"
+)
+}
+}
 \description{
 Creates an Amazon SageMaker notebook instance. A notebook instance is a
 machine learning (ML) compute instance running on a Jupyter notebook.

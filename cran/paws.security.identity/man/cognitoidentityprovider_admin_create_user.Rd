@@ -43,7 +43,7 @@ calling
 contains the code and username will be sent. Required if the
 \code{email_verified} attribute is set to \code{True}, or if \code{"EMAIL"} is
 specified in the \code{DesiredDeliveryMediums} parameter.
-\item \strong{phone\\_number}: The phone number of the user to whom the message
+\item \strong{phone_number}: The phone number of the user to whom the message
 that contains the code and username will be sent. Required if the
 \code{phone_number_verified} attribute is set to \code{True}, or if \code{"SMS"} is
 specified in the \code{DesiredDeliveryMediums} parameter.
@@ -128,6 +128,34 @@ purpose.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
 don't use it to provide sensitive information.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    Username = "string",
+    Attributes = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    ),
+    UserCreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    UserLastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Enabled = TRUE|FALSE,
+    UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+    MFAOptions = list(
+      list(
+        DeliveryMedium = "SMS"|"EMAIL",
+        AttributeName = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Creates a new user in the specified user pool.

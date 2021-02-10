@@ -31,6 +31,24 @@ traffic policy has more than \code{MaxItems} versions, the value of
 \code{TrafficPolicyVersionMarker} element is the ID of the first version that
 Route 53 will return if you submit another request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicies = list(
+    list(
+      Id = "string",
+      Version = 123,
+      Name = "string",
+      Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+      Document = "string",
+      Comment = "string"
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  TrafficPolicyVersionMarker = "string",
+  MaxItems = "string"
+)
+}
+}
 \description{
 Gets information about all of the versions for a specified traffic
 policy.

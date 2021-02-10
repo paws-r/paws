@@ -11,6 +11,9 @@ rds_delete_option_group(OptionGroupName)
 
 You can't delete default option groups.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing option group.
 }

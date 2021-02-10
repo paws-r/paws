@@ -27,6 +27,12 @@ is exported starting from the first data collected by the agent.}
 Discovery Agent selected in the filters. If no value is specified,
 exported data includes the most recent data collected by the agent.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  exportId = "string"
+)
+}
+}
 \description{
 Begins the export of discovered data to an S3 bucket.
 

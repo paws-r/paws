@@ -11,6 +11,9 @@ waf_tag_resource(ResourceARN, Tags)
 
 \item{Tags}{[required]}
 }
+\value{
+An empty list.
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

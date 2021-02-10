@@ -9,6 +9,9 @@ opsworks_delete_stack(StackId)
 \arguments{
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specified stack. You must first delete all instances, layers,
 and apps or deregister registered instances. For more information, see

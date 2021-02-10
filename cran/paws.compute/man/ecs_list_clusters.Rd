@@ -27,6 +27,15 @@ returned \code{nextToken} value. This value can be between 1 and 100. If this
 parameter is not used, then \code{\link[=ecs_list_clusters]{list_clusters}} returns
 up to 100 results and a \code{nextToken} value if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  clusterArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of existing clusters.
 }

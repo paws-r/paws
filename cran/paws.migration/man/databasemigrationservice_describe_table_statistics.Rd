@@ -31,6 +31,42 @@ Valid filter names: schema-name | table-name | table-state
 A combination of filters creates an AND condition where each record
 matches all specified filters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationTaskArn = "string",
+  TableStatistics = list(
+    list(
+      SchemaName = "string",
+      TableName = "string",
+      Inserts = 123,
+      Deletes = 123,
+      Updates = 123,
+      Ddls = 123,
+      FullLoadRows = 123,
+      FullLoadCondtnlChkFailedRows = 123,
+      FullLoadErrorRows = 123,
+      FullLoadStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FullLoadEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FullLoadReloaded = TRUE|FALSE,
+      LastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TableState = "string",
+      ValidationPendingRecords = 123,
+      ValidationFailedRecords = 123,
+      ValidationSuspendedRecords = 123,
+      ValidationState = "string",
+      ValidationStateDetails = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns table statistics on the database migration task, including table
 name, rows inserted, rows updated, and rows deleted.

@@ -9,6 +9,16 @@ alexaforbusiness_get_address_book(AddressBookArn)
 \arguments{
 \item{AddressBookArn}{[required] The ARN of the address book for which to request details.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AddressBook = list(
+    AddressBookArn = "string",
+    Name = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Gets address the book details by the address book ARN.
 }

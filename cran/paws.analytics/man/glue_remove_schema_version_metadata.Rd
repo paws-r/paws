@@ -18,6 +18,19 @@ Name (ARN).}
 
 \item{MetadataKeyValue}{[required] The value of the metadata key.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArn = "string",
+  SchemaName = "string",
+  RegistryName = "string",
+  LatestVersion = TRUE|FALSE,
+  VersionNumber = 123,
+  SchemaVersionId = "string",
+  MetadataKey = "string",
+  MetadataValue = "string"
+)
+}
+}
 \description{
 Removes a key value pair from the schema version metadata for the
 specified schema version ID.

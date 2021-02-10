@@ -11,7 +11,7 @@ iam_list_instance_profiles_for_role(RoleName, Marker, MaxItems)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
@@ -27,6 +27,54 @@ If you do not include this parameter, the number of items defaults to
 results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceProfiles = list(
+    list(
+      Path = "string",
+      InstanceProfileName = "string",
+      InstanceProfileId = "string",
+      Arn = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Roles = list(
+        list(
+          Path = "string",
+          RoleName = "string",
+          RoleId = "string",
+          Arn = "string",
+          CreateDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          AssumeRolePolicyDocument = "string",
+          Description = "string",
+          MaxSessionDuration = 123,
+          PermissionsBoundary = list(
+            PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+            PermissionsBoundaryArn = "string"
+          ),
+          Tags = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          ),
+          RoleLastUsed = list(
+            LastUsedDate = as.POSIXct(
+              "2015-01-01"
+            ),
+            Region = "string"
+          )
+        )
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
 }
 \description{
 Lists the instance profiles that have the specified associated IAM role.

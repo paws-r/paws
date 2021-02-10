@@ -13,6 +13,15 @@ iot_list_role_aliases(pageSize, marker, ascendingOrder)
 
 \item{ascendingOrder}{Return the list of role aliases in ascending alphabetical order.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  roleAliases = list(
+    "string"
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Lists the role aliases registered in your account.
 }

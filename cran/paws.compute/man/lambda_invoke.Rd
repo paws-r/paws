@@ -46,6 +46,16 @@ pass to the function in the context object.}
 \item{Qualifier}{Specify a version or alias to invoke a published version of the
 function.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StatusCode = 123,
+  FunctionError = "string",
+  LogResult = "string",
+  Payload = raw,
+  ExecutedVersion = "string"
+)
+}
+}
 \description{
 Invokes a Lambda function. You can invoke a function synchronously (and
 wait for the response), or asynchronously. To invoke a function
@@ -107,7 +117,7 @@ action.
 # with an empty event payload.
 svc$invoke(
   FunctionName = "my-function",
-  Payload = "\{\}",
+  Payload = "{}",
   Qualifier = "1"
 )
 
@@ -116,7 +126,7 @@ svc$invoke(
 svc$invoke(
   FunctionName = "my-function",
   InvocationType = "Event",
-  Payload = "\{\}",
+  Payload = "{}",
   Qualifier = "1"
 )
 }

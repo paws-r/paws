@@ -11,6 +11,39 @@ pinpointemail_get_configuration_set_event_destinations(
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that contains the event destination.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventDestinations = list(
+    list(
+      Name = "string",
+      Enabled = TRUE|FALSE,
+      MatchingEventTypes = list(
+        "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
+      ),
+      KinesisFirehoseDestination = list(
+        IamRoleArn = "string",
+        DeliveryStreamArn = "string"
+      ),
+      CloudWatchDestination = list(
+        DimensionConfigurations = list(
+          list(
+            DimensionName = "string",
+            DimensionValueSource = "MESSAGE_TAG"|"EMAIL_HEADER"|"LINK_TAG",
+            DefaultDimensionValue = "string"
+          )
+        )
+      ),
+      SnsDestination = list(
+        TopicArn = "string"
+      ),
+      PinpointDestination = list(
+        ApplicationArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieve a list of event destinations that are associated with a
 configuration set.

@@ -14,6 +14,15 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EndpointBatchRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageBody = list(
+    Message = "string",
+    RequestID = "string"
+  )
+)
+}
+}
 \description{
 Creates a new batch of endpoints for an application or updates the
 settings and attributes of a batch of existing endpoints for an

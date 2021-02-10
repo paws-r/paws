@@ -16,6 +16,9 @@ or AWS account.}
 \item{revision}{[required] Information about the application revision to register, including type
 and location.}
 }
+\value{
+An empty list.
+}
 \description{
 Registers with AWS CodeDeploy a revision for the specified application.
 }

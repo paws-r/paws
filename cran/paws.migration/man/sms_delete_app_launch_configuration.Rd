@@ -9,6 +9,9 @@ sms_delete_app_launch_configuration(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the launch configuration for the specified application.
 }

@@ -9,6 +9,9 @@ ssm_delete_parameter(Name)
 \arguments{
 \item{Name}{[required] The name of the parameter to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete a parameter from the system.
 }

@@ -48,6 +48,19 @@ Although this parameter can accept a date and time that is more than two
 days in the future, the availability of forecast data has limits. AWS
 Auto Scaling only issues forecasts for periods of two days in advance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Datapoints = list(
+    list(
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Value = 123.0
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the forecast data for a scalable resource.
 

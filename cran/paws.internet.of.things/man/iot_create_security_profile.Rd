@@ -35,6 +35,13 @@ metrics; cannot be used with dimensions.}
 
 \item{tags}{Metadata that can be used to manage the security profile.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  securityProfileName = "string",
+  securityProfileArn = "string"
+)
+}
+}
 \description{
 Creates a Device Defender security profile.
 }

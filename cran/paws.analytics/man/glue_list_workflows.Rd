@@ -11,6 +11,15 @@ glue_list_workflows(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum size of a list to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Workflows = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists names of workflows created in the account.
 }

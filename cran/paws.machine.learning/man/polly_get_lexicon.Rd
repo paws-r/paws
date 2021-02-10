@@ -10,6 +10,25 @@ polly_get_lexicon(Name)
 \arguments{
 \item{Name}{[required] Name of the lexicon.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Lexicon = list(
+    Content = "string",
+    Name = "string"
+  ),
+  LexiconAttributes = list(
+    Alphabet = "string",
+    LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
+    LastModified = as.POSIXct(
+      "2015-01-01"
+    ),
+    LexiconArn = "string",
+    LexemesCount = 123,
+    Size = 123
+  )
+)
+}
+}
 \description{
 Returns the content of the specified pronunciation lexicon stored in an
 AWS Region. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.

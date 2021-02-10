@@ -13,6 +13,37 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{JobId}{[required] The unique identifier for the job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImportJobResponse = list(
+    ApplicationId = "string",
+    CompletedPieces = 123,
+    CompletionDate = "string",
+    CreationDate = "string",
+    Definition = list(
+      DefineSegment = TRUE|FALSE,
+      ExternalId = "string",
+      Format = "CSV"|"JSON",
+      RegisterEndpoints = TRUE|FALSE,
+      RoleArn = "string",
+      S3Url = "string",
+      SegmentId = "string",
+      SegmentName = "string"
+    ),
+    FailedPieces = 123,
+    Failures = list(
+      "string"
+    ),
+    Id = "string",
+    JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
+    TotalFailures = 123,
+    TotalPieces = 123,
+    TotalProcessed = 123,
+    Type = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about the status and settings of a specific import
 job for an application.

@@ -39,6 +39,71 @@ Constraints: minimum 20; maximum 50.}
 \item{ShowNodeGroupConfig}{A Boolean value which if true, the node group (shard) configuration is
 included in the snapshot description.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Snapshots = list(
+    list(
+      SnapshotName = "string",
+      ReplicationGroupId = "string",
+      ReplicationGroupDescription = "string",
+      CacheClusterId = "string",
+      SnapshotStatus = "string",
+      SnapshotSource = "string",
+      CacheNodeType = "string",
+      Engine = "string",
+      EngineVersion = "string",
+      NumCacheNodes = 123,
+      PreferredAvailabilityZone = "string",
+      PreferredOutpostArn = "string",
+      CacheClusterCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      PreferredMaintenanceWindow = "string",
+      TopicArn = "string",
+      Port = 123,
+      CacheParameterGroupName = "string",
+      CacheSubnetGroupName = "string",
+      VpcId = "string",
+      AutoMinorVersionUpgrade = TRUE|FALSE,
+      SnapshotRetentionLimit = 123,
+      SnapshotWindow = "string",
+      NumNodeGroups = 123,
+      AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+      NodeSnapshots = list(
+        list(
+          CacheClusterId = "string",
+          NodeGroupId = "string",
+          CacheNodeId = "string",
+          NodeGroupConfiguration = list(
+            NodeGroupId = "string",
+            Slots = "string",
+            ReplicaCount = 123,
+            PrimaryAvailabilityZone = "string",
+            ReplicaAvailabilityZones = list(
+              "string"
+            ),
+            PrimaryOutpostArn = "string",
+            ReplicaOutpostArns = list(
+              "string"
+            )
+          ),
+          CacheSize = "string",
+          CacheNodeCreateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          SnapshotCreateTime = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      ),
+      KmsKeyId = "string",
+      ARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about cluster or replication group snapshots. By
 default, \code{\link[=elasticache_describe_snapshots]{describe_snapshots}} lists

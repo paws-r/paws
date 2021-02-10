@@ -10,6 +10,13 @@ cloudwatchevents_describe_partner_event_source(Name)
 \arguments{
 \item{Name}{[required] The name of the event source to display.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Name = "string"
+)
+}
+}
 \description{
 An SaaS partner can use this operation to list details about a partner
 event source that they have created. AWS customers do not use this

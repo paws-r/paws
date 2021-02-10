@@ -17,6 +17,25 @@ pagination token in the next request.}
 \item{maxResults}{The maximum number of intent versions to return in the response. The
 default is 10.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  intents = list(
+    list(
+      name = "string",
+      description = "string",
+      lastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      version = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about all of the versions of an intent.
 

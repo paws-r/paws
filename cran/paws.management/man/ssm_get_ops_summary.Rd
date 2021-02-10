@@ -24,6 +24,27 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Entities = list(
+    list(
+      Id = "string",
+      Data = list(
+        list(
+          CaptureTime = "string",
+          Content = list(
+            list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 View a summary of OpsItems based on specified filters and aggregators.
 }

@@ -6,6 +6,18 @@
 \usage{
 codebuild_list_source_credentials()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  sourceCredentialsInfos = list(
+    list(
+      arn = "string",
+      serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
+      authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of \code{SourceCredentialsInfo} objects.
 }

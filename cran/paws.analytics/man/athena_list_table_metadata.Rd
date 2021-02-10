@@ -23,6 +23,41 @@ page call.}
 
 \item{MaxResults}{Specifies the maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableMetadataList = list(
+    list(
+      Name = "string",
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastAccessTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TableType = "string",
+      Columns = list(
+        list(
+          Name = "string",
+          Type = "string",
+          Comment = "string"
+        )
+      ),
+      PartitionKeys = list(
+        list(
+          Name = "string",
+          Type = "string",
+          Comment = "string"
+        )
+      ),
+      Parameters = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the metadata for the tables in the specified data catalog
 database.

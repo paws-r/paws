@@ -15,6 +15,15 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Maximum number of items to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  FunctionArns = list(
+    "string"
+  )
+)
+}
+}
 \description{
 List the functions that use the specified code signing configuration.
 You can use this method prior to deleting a code signing configuration,

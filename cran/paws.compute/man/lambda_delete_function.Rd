@@ -25,6 +25,9 @@ function name, it is limited to 64 characters in length.}
 \item{Qualifier}{Specify a version to delete. You can't delete a version that's
 referenced by an alias.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Lambda function. To delete a specific function version, use
 the \code{Qualifier} parameter. Otherwise, all versions and aliases are

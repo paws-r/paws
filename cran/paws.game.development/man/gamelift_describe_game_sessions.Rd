@@ -27,6 +27,43 @@ last two are transitory).}
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSessions = list(
+    list(
+      GameSessionId = "string",
+      Name = "string",
+      FleetId = "string",
+      FleetArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TerminationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CurrentPlayerSessionCount = 123,
+      MaximumPlayerSessionCount = 123,
+      Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+      StatusReason = "INTERRUPTED",
+      GameProperties = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      IpAddress = "string",
+      DnsName = "string",
+      Port = 123,
+      PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+      CreatorId = "string",
+      GameSessionData = "string",
+      MatchmakerData = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a set of one or more game sessions. Request a specific game
 session or request all game sessions on a fleet. Alternatively, use

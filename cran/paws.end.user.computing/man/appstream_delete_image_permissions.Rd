@@ -12,6 +12,9 @@ appstream_delete_image_permissions(Name, SharedAccountId)
 \item{SharedAccountId}{[required] The 12-digit identifier of the AWS account for which to delete image
 permissions.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes permissions for the specified private image. After you delete
 permissions for an image, AWS accounts to which you previously granted

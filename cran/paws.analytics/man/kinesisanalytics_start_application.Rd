@@ -15,6 +15,9 @@ consuming. Amazon Kinesis Analytics starts reading the streaming source
 associated with the input. You can also specify where in the streaming
 source you want Amazon Kinesis Analytics to start reading.}
 }
+\value{
+An empty list.
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

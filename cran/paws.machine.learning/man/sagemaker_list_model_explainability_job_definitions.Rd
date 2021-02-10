@@ -32,6 +32,22 @@ specified time.}
 \item{CreationTimeAfter}{A filter that returns only model explainability jobs created after a
 specified time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobDefinitionSummaries = list(
+    list(
+      MonitoringJobDefinitionName = "string",
+      MonitoringJobDefinitionArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndpointName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists model explainability job definitions that satisfy various filters.
 }

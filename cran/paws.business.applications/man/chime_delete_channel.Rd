@@ -10,6 +10,9 @@ chime_delete_channel(ChannelArn)
 \arguments{
 \item{ChannelArn}{[required] The ARN of the channel being deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Immediately makes a channel and its memberships inaccessible and marks
 them for deletion. This is an irreversible process.

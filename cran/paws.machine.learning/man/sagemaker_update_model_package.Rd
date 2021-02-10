@@ -14,6 +14,12 @@ sagemaker_update_model_package(ModelPackageArn, ModelApprovalStatus,
 
 \item{ApprovalDescription}{A description for the approval status of the model.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelPackageArn = "string"
+)
+}
+}
 \description{
 Updates a versioned model.
 }

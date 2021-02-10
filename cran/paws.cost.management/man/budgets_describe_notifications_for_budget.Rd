@@ -19,6 +19,21 @@ response contains. The maximum is 100.}
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Notifications = list(
+    list(
+      NotificationType = "ACTUAL"|"FORECASTED",
+      ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+      Threshold = 123.0,
+      ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+      NotificationState = "OK"|"ALARM"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the notifications that are associated with a budget.
 }

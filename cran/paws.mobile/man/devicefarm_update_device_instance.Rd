@@ -14,6 +14,30 @@ instance.}
 
 \item{labels}{An array of strings that you want to associate with the device instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deviceInstance = list(
+    arn = "string",
+    deviceArn = "string",
+    labels = list(
+      "string"
+    ),
+    status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+    udid = "string",
+    instanceProfile = list(
+      arn = "string",
+      packageCleanup = TRUE|FALSE,
+      excludeAppPackagesFromCleanup = list(
+        "string"
+      ),
+      rebootAfterUse = TRUE|FALSE,
+      name = "string",
+      description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates information about a private device instance.
 }

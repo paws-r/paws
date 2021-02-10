@@ -34,6 +34,32 @@ specified in the the original call. For example, if the original call
 specified an AttributeKey of 'Username' with a value of 'root', the call
 with NextToken should include those same parameters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Events = list(
+    list(
+      EventId = "string",
+      EventName = "string",
+      ReadOnly = "string",
+      AccessKeyId = "string",
+      EventTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EventSource = "string",
+      Username = "string",
+      Resources = list(
+        list(
+          ResourceType = "string",
+          ResourceName = "string"
+        )
+      ),
+      CloudTrailEvent = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Looks up \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events}{management events}
 or \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events}{CloudTrail Insights events}

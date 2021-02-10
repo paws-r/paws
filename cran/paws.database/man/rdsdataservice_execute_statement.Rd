@@ -44,6 +44,86 @@ the SQL statement in.
 If the SQL statement is not part of a transaction, don't set this
 parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  columnMetadata = list(
+    list(
+      arrayBaseColumnType = 123,
+      isAutoIncrement = TRUE|FALSE,
+      isCaseSensitive = TRUE|FALSE,
+      isCurrency = TRUE|FALSE,
+      isSigned = TRUE|FALSE,
+      label = "string",
+      name = "string",
+      nullable = 123,
+      precision = 123,
+      scale = 123,
+      schemaName = "string",
+      tableName = "string",
+      type = 123,
+      typeName = "string"
+    )
+  ),
+  generatedFields = list(
+    list(
+      arrayValue = list(
+        arrayValues = list(
+          list()
+        ),
+        booleanValues = list(
+          TRUE|FALSE
+        ),
+        doubleValues = list(
+          123.0
+        ),
+        longValues = list(
+          123
+        ),
+        stringValues = list(
+          "string"
+        )
+      ),
+      blobValue = raw,
+      booleanValue = TRUE|FALSE,
+      doubleValue = 123.0,
+      isNull = TRUE|FALSE,
+      longValue = 123,
+      stringValue = "string"
+    )
+  ),
+  numberOfRecordsUpdated = 123,
+  records = list(
+    list(
+      list(
+        arrayValue = list(
+          arrayValues = list(
+            list()
+          ),
+          booleanValues = list(
+            TRUE|FALSE
+          ),
+          doubleValues = list(
+            123.0
+          ),
+          longValues = list(
+            123
+          ),
+          stringValues = list(
+            "string"
+          )
+        ),
+        blobValue = raw,
+        booleanValue = TRUE|FALSE,
+        doubleValue = 123.0,
+        isNull = TRUE|FALSE,
+        longValue = 123,
+        stringValue = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Runs a SQL statement against a database.
 

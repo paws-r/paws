@@ -14,6 +14,12 @@ sagemaker_stop_pipeline_execution(PipelineExecutionArn,
 idempotency of the operation. An idempotent operation completes no more
 than one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineExecutionArn = "string"
+)
+}
+}
 \description{
 Stops a pipeline execution.
 }

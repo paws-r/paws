@@ -15,6 +15,17 @@ iot_list_targets_for_security_profile(securityProfileName, nextToken,
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  securityProfileTargets = list(
+    list(
+      arn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the targets (thing groups) associated with a given Device Defender
 security profile.

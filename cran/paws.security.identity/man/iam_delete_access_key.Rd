@@ -11,13 +11,16 @@ iam_delete_access_key(UserName, AccessKeyId)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{AccessKeyId}{[required] The access key ID for the access key ID and secret access key you want
 to delete.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that can consist of any upper or lowercased letter or digit.}
+}
+\value{
+An empty list.
 }
 \description{
 Deletes the access key pair associated with the specified IAM user.

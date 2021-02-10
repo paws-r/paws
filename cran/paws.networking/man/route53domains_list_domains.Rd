@@ -22,6 +22,22 @@ request.}
 
 Default: 20}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Domains = list(
+    list(
+      DomainName = "string",
+      AutoRenew = TRUE|FALSE,
+      TransferLock = TRUE|FALSE,
+      Expiry = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextPageMarker = "string"
+)
+}
+}
 \description{
 This operation returns all the domain names registered with Amazon Route
 53 for the current AWS account.

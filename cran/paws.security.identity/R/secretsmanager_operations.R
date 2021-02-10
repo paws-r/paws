@@ -79,6 +79,16 @@ NULL
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_rotate_secret(
@@ -210,7 +220,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' @param Name &#91;required&#93; Specifies the friendly name of the new secret.
 #' 
 #' The secret name must be ASCII letters, digits, or the following
-#' characters : /\\_+=.@@-
+#' characters : /_+=.@@-
 #' 
 #' Do not end your secret name with a hyphen followed by six characters. If
 #' you do so, you risk confusion and unexpected results when searching for
@@ -298,7 +308,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
-#' `\{"username":"bob","password":"abc123xyz456"\}`
+#' `{"username":"bob","password":"abc123xyz456"}`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -323,7 +333,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
-#' `\\[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}\\]`
+#' `[{"Key":"CostCenter","Value":"12345"},{"Key":"environment","Value":"production"}]`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -348,7 +358,17 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'     resources, remember other services might have restrictions on
 #'     allowed characters. Generally allowed characters: letters, spaces,
 #'     and numbers representable in UTF-8, plus the following special
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -377,7 +397,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
 #'   Description = "My test database secret created with the CLI",
 #'   Name = "MyTestDatabaseSecret",
-#'   SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
+#'   SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
 #' )
 #' }
 #'
@@ -449,6 +469,15 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -580,6 +609,18 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' delete a secret with the `ForceDeleteWithouRecovery` parameter, then you
 #' have no opportunity to recover the secret. It is permanently lost.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   DeletionDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_secret(
@@ -674,6 +715,49 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   KmsKeyId = "string",
+#'   RotationEnabled = TRUE|FALSE,
+#'   RotationLambdaARN = "string",
+#'   RotationRules = list(
+#'     AutomaticallyAfterDays = 123
+#'   ),
+#'   LastRotatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastChangedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAccessedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeletedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   VersionIdsToStages = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   OwningService = "string",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_secret(
@@ -745,7 +829,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' the generated password if you don't explicitly exclude them with
 #' `ExcludeCharacters` or `ExcludePunctuation`:
 #' 
-#' `` ! \" # $ % & \' ( ) * + , - . / : ; < = > ? @@ \\[ \\ \\] ^ _ \` \{ | \} ~ ``
+#' `` ! \" # $ % & \' ( ) * + , - . / : ; < = > ? @@ [ \ ] ^ _ \` { | } ~ ``
 #' @param ExcludeUppercase Specifies that the generated password should not include uppercase
 #' letters. The default if you do not include this switch parameter is that
 #' uppercase letters can be included.
@@ -759,6 +843,14 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' include at least one of every allowed character type. The default value
 #' is `True` and the operation requires at least one of every character
 #' type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RandomPassword = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -858,6 +950,16 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   ResourcePolicy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -965,6 +1067,24 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' `VersionId`. If you don't specify either a `VersionStage` or
 #' `VersionId`, then the default is to perform the operation on the version
 #' with the `VersionStage` value of `AWSCURRENT`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string",
+#'   SecretBinary = raw,
+#'   SecretString = "string",
+#'   VersionStages = list(
+#'     "string"
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1079,6 +1199,30 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' considered deprecated and are subject to deletion by Secrets Manager as
 #' needed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Versions = list(
+#'     list(
+#'       VersionId = "string",
+#'       VersionStages = list(
+#'         "string"
+#'       ),
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_secret_version_ids(
@@ -1167,6 +1311,54 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' `NextToken` response to indicate where the output should continue from.
 #' @param Filters Lists the secret request filters.
 #' @param SortOrder Lists secrets in the requested order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecretList = list(
+#'     list(
+#'       ARN = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       KmsKeyId = "string",
+#'       RotationEnabled = TRUE|FALSE,
+#'       RotationLambdaARN = "string",
+#'       RotationRules = list(
+#'         AutomaticallyAfterDays = 123
+#'       ),
+#'       LastRotatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastChangedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastAccessedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeletedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       SecretVersionsToStages = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       OwningService = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1282,6 +1474,15 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' @param BlockPublicPolicy Makes an optional API call to Zelkova to validate the Resource Policy to
 #' prevent broad access to your secret.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_resource_policy(
@@ -1296,7 +1497,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' # The following example shows how to add a resource-based policy to a
 #' # secret.
 #' svc$put_resource_policy(
-#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",\n\"P...",
 #'   SecretId = "MyTestDatabaseSecret"
 #' )
 #' }
@@ -1355,7 +1556,6 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #'     operation fails because you cannot modify an existing version; you
 #'     can only create new ones.
 #' 
-#' <!-- -->
 #' 
 #' -   If you call an operation to encrypt or decrypt the `SecretString` or
 #'     `SecretBinary` for a secret in the same account as the calling user
@@ -1490,7 +1690,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' For example:
 #' 
-#' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`
+#' `[{"username":"bob"},{"password":"abc123xyz456"}]`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -1506,6 +1706,19 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' If you do not specify a value for `VersionStages` then Secrets Manager
 #' automatically moves the staging label `AWSCURRENT` to this new version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string",
+#'   VersionStages = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1527,7 +1740,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' svc$put_secret_value(
 #'   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
 #'   SecretId = "MyTestDatabaseSecret",
-#'   SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
+#'   SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
 #' )
 #' }
 #'
@@ -1594,6 +1807,15 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1750,6 +1972,16 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' secret.
 #' @param RotationRules A structure that defines the rotation configuration for this secret.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$rotate_secret(
@@ -1770,7 +2002,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' # upon completion of this command. The rotation function runs
 #' # asynchronously in the background.
 #' svc$rotate_secret(
-#'   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotation...",
+#'   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseR...",
 #'   RotationRules = list(
 #'     AutomaticallyAfterDays = 30L
 #'   ),
@@ -1835,7 +2067,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #'     resources, remember other services might have restrictions on
 #'     allowed characters. Generally allowed characters: letters, spaces,
 #'     and numbers representable in UTF-8, plus the following special
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' If you use tags as part of your security strategy, then adding or
 #' removing a tag can change permissions. If successfully completing this
@@ -1889,8 +2121,10 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' line tool environments, see [Using JSON for
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For the AWS CLI, you can also use the
-#' syntax:
-#' `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,…\\]`
+#' syntax: `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]`
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2006,6 +2240,9 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -2075,7 +2312,6 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #'     secret version, Secrets Manager automatically attaches the staging
 #'     label `AWSCURRENT` to the new version.
 #' 
-#' <!-- -->
 #' 
 #' -   If you call an operation to encrypt or decrypt the `SecretString` or
 #'     `SecretBinary` for a secret in the same account as the calling user
@@ -2228,7 +2464,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
-#' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`
+#' `[{"username":"bob"},{"password":"abc123xyz456"}]`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -2237,7 +2473,17 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' a backslash. For example, the following string is surrounded by
 #' double-quotes. All of the embedded double quotes are escaped:
 #' 
-#' `"\\[\{\"username\":\"bob\"\},\{\"password\":\"abc123xyz456\"\}\\]"`
+#' `"[{\"username\":\"bob\"},{\"password\":\"abc123xyz456\"}]"`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string",
+#'   VersionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2273,7 +2519,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' # put-secret-value operation.
 #' svc$update_secret(
 #'   SecretId = "MyTestDatabaseSecret",
-#'   SecretString = "\{JSON STRING WITH CREDENTIALS\}"
+#'   SecretString = "{JSON STRING WITH CREDENTIALS}"
 #' )
 #' }
 #'
@@ -2377,6 +2623,15 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' If the staging label is already attached to a different version of the
 #' secret, then you must also specify the `RemoveFromVersionId` parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ARN = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_secret_version_stage(
@@ -2478,6 +2733,20 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' *AccessDeniedException* error, depending on your permissions.
 #' @param ResourcePolicy &#91;required&#93; Identifies the Resource Policy attached to the secret.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyValidationPassed = TRUE|FALSE,
+#'   ValidationErrors = list(
+#'     list(
+#'       CheckName = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$validate_resource_policy(
@@ -2491,7 +2760,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' # The following example shows how to validate a resource-based policy to a
 #' # secret.
 #' svc$validate_resource_policy(
-#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",\n\"P...",
 #'   SecretId = "MyTestDatabaseSecret"
 #' )
 #' }

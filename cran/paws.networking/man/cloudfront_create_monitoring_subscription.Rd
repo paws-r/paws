@@ -15,6 +15,16 @@ cloudfront_create_monitoring_subscription(DistributionId,
 whether additional CloudWatch metrics are enabled for a given CloudFront
 distribution.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitoringSubscription = list(
+    RealtimeMetricsSubscriptionConfig = list(
+      RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
+    )
+  )
+)
+}
+}
 \description{
 Enables additional CloudWatch metrics for the specified CloudFront
 distribution. The additional metrics incur an additional cost.

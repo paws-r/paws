@@ -11,6 +11,9 @@ cloudtrail_delete_trail(Name)
 format of a trail ARN is:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a trail. This operation must be called from the region in which
 the trail was created. \code{\link[=cloudtrail_delete_trail]{delete_trail}} cannot

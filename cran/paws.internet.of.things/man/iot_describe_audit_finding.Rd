@@ -10,6 +10,66 @@ iot_describe_audit_finding(findingId)
 \item{findingId}{[required] A unique identifier for a single audit finding. You can use this
 identifier to apply mitigation actions to the finding.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  finding = list(
+    findingId = "string",
+    taskId = "string",
+    checkName = "string",
+    taskStartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    findingTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW",
+    nonCompliantResource = list(
+      resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+      resourceIdentifier = list(
+        deviceCertificateId = "string",
+        caCertificateId = "string",
+        cognitoIdentityPoolId = "string",
+        clientId = "string",
+        policyVersionIdentifier = list(
+          policyName = "string",
+          policyVersionId = "string"
+        ),
+        account = "string",
+        iamRoleArn = "string",
+        roleAliasArn = "string"
+      ),
+      additionalInfo = list(
+        "string"
+      )
+    ),
+    relatedResources = list(
+      list(
+        resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+        resourceIdentifier = list(
+          deviceCertificateId = "string",
+          caCertificateId = "string",
+          cognitoIdentityPoolId = "string",
+          clientId = "string",
+          policyVersionIdentifier = list(
+            policyName = "string",
+            policyVersionId = "string"
+          ),
+          account = "string",
+          iamRoleArn = "string",
+          roleAliasArn = "string"
+        ),
+        additionalInfo = list(
+          "string"
+        )
+      )
+    ),
+    reasonForNonCompliance = "string",
+    reasonForNonComplianceCode = "string",
+    isSuppressed = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Gets information about a single audit finding. Properties include the
 reason for noncompliance, the severity of the issue, and the start time

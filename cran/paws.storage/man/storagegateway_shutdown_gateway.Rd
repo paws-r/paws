@@ -9,6 +9,12 @@ storagegateway_shutdown_gateway(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Shuts down a gateway. To specify which gateway to shut down, use the
 Amazon Resource Name (ARN) of the gateway in the body of your request.

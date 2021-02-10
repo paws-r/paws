@@ -16,6 +16,9 @@ perform cluster actions if they have the proper IAM policy permissions.
 This is the default. A value of \code{false} indicates that only the IAM user
 who created the cluster can perform actions.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the Cluster$VisibleToAllUsers value, which determines whether the
 cluster is visible to all IAM users of the AWS account associated with

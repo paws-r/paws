@@ -14,6 +14,39 @@ details for.}
 \item{DefaultList}{Specifies whether the list to retrieve is a default list owned by AWS
 Firewall Manager.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppsList = list(
+    ListId = "string",
+    ListName = "string",
+    ListUpdateToken = "string",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    AppsList = list(
+      list(
+        AppName = "string",
+        Protocol = "string",
+        Port = 123
+      )
+    ),
+    PreviousAppsList = list(
+      list(
+        list(
+          AppName = "string",
+          Protocol = "string",
+          Port = 123
+        )
+      )
+    )
+  ),
+  AppsListArn = "string"
+)
+}
+}
 \description{
 Returns information about the specified AWS Firewall Manager
 applications list.

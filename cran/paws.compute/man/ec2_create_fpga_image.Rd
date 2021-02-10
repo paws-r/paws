@@ -28,6 +28,13 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 
 \item{TagSpecifications}{The tags to apply to the FPGA image during creation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FpgaImageId = "string",
+  FpgaImageGlobalId = "string"
+)
+}
+}
 \description{
 Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
 (DCP).

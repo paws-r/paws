@@ -12,6 +12,30 @@ codecommit_get_commit(repositoryName, commitId)
 
 \item{commitId}{[required] The commit ID. Commit IDs are the full SHA ID of the commit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commit = list(
+    commitId = "string",
+    treeId = "string",
+    parents = list(
+      "string"
+    ),
+    message = "string",
+    author = list(
+      name = "string",
+      email = "string",
+      date = "string"
+    ),
+    committer = list(
+      name = "string",
+      email = "string",
+      date = "string"
+    ),
+    additionalData = "string"
+  )
+)
+}
+}
 \description{
 Returns information about a commit, including commit message and
 committer information.

@@ -23,6 +23,40 @@ than the default of 150 rules.
 For information about requesting a rule limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
 in the \emph{AWS General Reference Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigRulesEvaluationStatus = list(
+    list(
+      ConfigRuleName = "string",
+      ConfigRuleArn = "string",
+      ConfigRuleId = "string",
+      LastSuccessfulInvocationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastFailedInvocationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastSuccessfulEvaluationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastFailedEvaluationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FirstActivatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastDeactivatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastErrorCode = "string",
+      LastErrorMessage = "string",
+      FirstEvaluationStarted = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns status information for each of your AWS managed Config rules.
 The status includes information such as the last time AWS Config invoked

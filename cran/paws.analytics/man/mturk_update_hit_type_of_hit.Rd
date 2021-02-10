@@ -12,6 +12,9 @@ mturk_update_hit_type_of_hit(HITId, HITTypeId)
 
 \item{HITTypeId}{[required] The ID of the new HIT type.}
 }
+\value{
+An empty list.
+}
 \description{
 The \code{\link[=mturk_update_hit_type_of_hit]{update_hit_type_of_hit}} operation
 allows you to change the HITType properties of a HIT. This operation

@@ -9,6 +9,61 @@ devicefarm_get_device(arn)
 \arguments{
 \item{arn}{[required] The device type's ARN.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  device = list(
+    arn = "string",
+    name = "string",
+    manufacturer = "string",
+    model = "string",
+    modelId = "string",
+    formFactor = "PHONE"|"TABLET",
+    platform = "ANDROID"|"IOS",
+    os = "string",
+    cpu = list(
+      frequency = "string",
+      architecture = "string",
+      clock = 123.0
+    ),
+    resolution = list(
+      width = 123,
+      height = 123
+    ),
+    heapSize = 123,
+    memory = 123,
+    image = "string",
+    carrier = "string",
+    radio = "string",
+    remoteAccessEnabled = TRUE|FALSE,
+    remoteDebugEnabled = TRUE|FALSE,
+    fleetType = "string",
+    fleetName = "string",
+    instances = list(
+      list(
+        arn = "string",
+        deviceArn = "string",
+        labels = list(
+          "string"
+        ),
+        status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+        udid = "string",
+        instanceProfile = list(
+          arn = "string",
+          packageCleanup = TRUE|FALSE,
+          excludeAppPackagesFromCleanup = list(
+            "string"
+          ),
+          rebootAfterUse = TRUE|FALSE,
+          name = "string",
+          description = "string"
+        )
+      )
+    ),
+    availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+  )
+)
+}
+}
 \description{
 Gets information about a unique device type.
 }

@@ -18,6 +18,58 @@ configuration.}
 
 \item{bgpPeerId}{The ID of the BGP peer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualInterface = list(
+    ownerAccount = "string",
+    virtualInterfaceId = "string",
+    location = "string",
+    connectionId = "string",
+    virtualInterfaceType = "string",
+    virtualInterfaceName = "string",
+    vlan = 123,
+    asn = 123,
+    amazonSideAsn = 123,
+    authKey = "string",
+    amazonAddress = "string",
+    customerAddress = "string",
+    addressFamily = "ipv4"|"ipv6",
+    virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+    customerRouterConfig = "string",
+    mtu = 123,
+    jumboFrameCapable = TRUE|FALSE,
+    virtualGatewayId = "string",
+    directConnectGatewayId = "string",
+    routeFilterPrefixes = list(
+      list(
+        cidr = "string"
+      )
+    ),
+    bgpPeers = list(
+      list(
+        bgpPeerId = "string",
+        asn = 123,
+        authKey = "string",
+        addressFamily = "ipv4"|"ipv6",
+        amazonAddress = "string",
+        customerAddress = "string",
+        bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
+        bgpStatus = "up"|"down"|"unknown",
+        awsDeviceV2 = "string"
+      )
+    ),
+    region = "string",
+    awsDeviceV2 = "string",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes the specified BGP peer on the specified virtual interface with
 the specified customer address and ASN.

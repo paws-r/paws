@@ -9,6 +9,9 @@ ses_delete_template(TemplateName)
 \arguments{
 \item{TemplateName}{[required] The name of the template to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an email template.
 

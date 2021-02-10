@@ -9,6 +9,27 @@ route53resolver_delete_resolver_endpoint(ResolverEndpointId)
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverEndpoint = list(
+    Id = "string",
+    CreatorRequestId = "string",
+    Arn = "string",
+    Name = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Direction = "INBOUND"|"OUTBOUND",
+    IpAddressCount = 123,
+    HostVPCId = "string",
+    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+    StatusMessage = "string",
+    CreationTime = "string",
+    ModificationTime = "string"
+  )
+)
+}
+}
 \description{
 Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint
 depends on whether it's an inbound or an outbound Resolver endpoint:

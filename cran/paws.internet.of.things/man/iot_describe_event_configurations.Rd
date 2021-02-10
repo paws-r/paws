@@ -6,6 +6,22 @@
 \usage{
 iot_describe_event_configurations()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  eventConfigurations = list(
+    list(
+      Enabled = TRUE|FALSE
+    )
+  ),
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Describes event configurations.
 }

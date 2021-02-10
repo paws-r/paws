@@ -30,6 +30,9 @@ ResourceNotFoundException.)
 For example,
 \verb{aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
 }
+\value{
+An empty list.
+}
 \description{
 Accepts an offer to share the specified portfolio.
 }

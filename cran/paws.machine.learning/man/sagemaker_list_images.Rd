@@ -35,6 +35,28 @@ next set of images.}
 
 \item{SortOrder}{The sort order. The default value is \code{DESCENDING}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Images = list(
+    list(
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string",
+      DisplayName = "string",
+      FailureReason = "string",
+      ImageArn = "string",
+      ImageName = "string",
+      ImageStatus = "CREATING"|"CREATED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"DELETING"|"DELETE_FAILED",
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the images in your account and their properties. The list can be
 filtered by creation time or modified time, and whether the image name

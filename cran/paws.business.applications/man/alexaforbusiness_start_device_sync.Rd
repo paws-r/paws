@@ -14,6 +14,9 @@ Required.}
 
 \item{Features}{[required] Request structure to start the device sync. Required.}
 }
+\value{
+An empty list.
+}
 \description{
 Resets a device and its account to the known default settings. This
 clears all information and settings set by previous users in the

@@ -21,6 +21,18 @@ objects than the number you specify for \code{Limit}, the response includes a
 \code{NextMarker} value that you can use to get another batch of
 \code{SizeConstraintSet} objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  SizeConstraintSets = list(
+    list(
+      SizeConstraintSetId = "string",
+      Name = "string"
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

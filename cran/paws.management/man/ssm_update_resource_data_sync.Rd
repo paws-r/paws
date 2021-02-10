@@ -14,6 +14,9 @@ SyncFromSource.}
 
 \item{SyncSource}{[required] Specify information about the data sources to synchronize.}
 }
+\value{
+An empty list.
+}
 \description{
 Update a resource data sync. After you create a resource data sync for a
 Region, you can't change the account options for that sync. For example,

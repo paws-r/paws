@@ -6,6 +6,17 @@
 \usage{
 directconnect_describe_virtual_gateways()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualGateways = list(
+    list(
+      virtualGatewayId = "string",
+      virtualGatewayState = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the virtual private gateways owned by the AWS account.
 

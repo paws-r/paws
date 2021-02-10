@@ -19,6 +19,9 @@ none is supplied, the AWS account ID is used by default.}
 
 \item{ColumnName}{[required] Name of the column.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete the partition column statistics of a column.
 

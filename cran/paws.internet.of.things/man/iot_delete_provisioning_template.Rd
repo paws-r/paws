@@ -9,6 +9,9 @@ iot_delete_provisioning_template(templateName)
 \arguments{
 \item{templateName}{[required] The name of the fleet provision template to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a fleet provisioning template.
 }

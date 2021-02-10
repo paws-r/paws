@@ -6,6 +6,18 @@
 \usage{
 rds_describe_account_attributes()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountQuotas = list(
+    list(
+      AccountQuotaName = "string",
+      Used = 123,
+      Max = 123
+    )
+  )
+)
+}
+}
 \description{
 Lists all of the attributes for a customer account. The attributes
 include Amazon RDS quotas for the account, such as the number of DB

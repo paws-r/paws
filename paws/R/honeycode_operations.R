@@ -48,6 +48,23 @@ NULL
 #' Note that request tokens are valid only for a few minutes. You cannot
 #' use request tokens to dedupe requests spanning hours or days.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   workbookCursor = 123,
+#'   createdRows = list(
+#'     "string"
+#'   ),
+#'   failedBatchItems = list(
+#'     list(
+#'       id = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_create_table_rows(
@@ -122,6 +139,20 @@ honeycode_batch_create_table_rows <- function(workbookId, tableId, rowsToCreate,
 #' 
 #' Note that request tokens are valid only for a few minutes. You cannot
 #' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   workbookCursor = 123,
+#'   failedBatchItems = list(
+#'     list(
+#'       id = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -198,6 +229,20 @@ honeycode_batch_delete_table_rows <- function(workbookId, tableId, rowIds, clien
 #' 
 #' Note that request tokens are valid only for a few minutes. You cannot
 #' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   workbookCursor = 123,
+#'   failedBatchItems = list(
+#'     list(
+#'       id = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -288,6 +333,28 @@ honeycode_batch_update_table_rows <- function(workbookId, tableId, rowsToUpdate,
 #' Note that request tokens are valid only for a few minutes. You cannot
 #' use request tokens to dedupe requests spanning hours or days.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rows = list(
+#'     list(
+#'       rowIds = list(
+#'         "string"
+#'       ),
+#'       upsertAction = "UPDATED"|"APPENDED"
+#'     )
+#'   ),
+#'   workbookCursor = 123,
+#'   failedBatchItems = list(
+#'     list(
+#'       id = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_upsert_table_rows(
@@ -355,6 +422,44 @@ honeycode_batch_upsert_table_rows <- function(workbookId, tableId, rowsToUpsert,
 #' If a job with the specified id could not be found, this API throws
 #' ResourceNotFoundException.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   message = "string",
+#'   jobMetadata = list(
+#'     submitter = list(
+#'       email = "string",
+#'       userArn = "string"
+#'     ),
+#'     submitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     importOptions = list(
+#'       destinationOptions = list(
+#'         columnMap = list(
+#'           list(
+#'             columnIndex = 123
+#'           )
+#'         )
+#'       ),
+#'       delimitedTextOptions = list(
+#'         delimiter = "string",
+#'         hasHeaderRow = TRUE|FALSE,
+#'         ignoreEmptyRows = TRUE|FALSE,
+#'         dataCharacterEncoding = "UTF-8"|"US-ASCII"|"ISO-8859-1"|"UTF-16BE"|"UTF-16LE"|"UTF-16"
+#'       )
+#'     ),
+#'     dataSource = list(
+#'       dataSourceConfig = list(
+#'         dataSourceUrl = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_table_data_import_job(
@@ -414,6 +519,37 @@ honeycode_describe_table_data_import_job <- function(workbookId, tableId, jobId)
 #' 
 #' Pagination tokens expire after 1 hour. If you use a token that was
 #' returned more than an hour back, the API will throw ValidationException.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   results = list(
+#'     list(
+#'       headers = list(
+#'         list(
+#'           name = "string",
+#'           format = "AUTO"|"NUMBER"|"CURRENCY"|"DATE"|"TIME"|"DATE_TIME"|"PERCENTAGE"|"TEXT"|"ACCOUNTING"|"CONTACT"|"ROWLINK"
+#'         )
+#'       ),
+#'       rows = list(
+#'         list(
+#'           rowId = "string",
+#'           dataItems = list(
+#'             list(
+#'               overrideFormat = "AUTO"|"NUMBER"|"CURRENCY"|"DATE"|"TIME"|"DATE_TIME"|"PERCENTAGE"|"TEXT"|"ACCOUNTING"|"CONTACT"|"ROWLINK",
+#'               rawValue = "string",
+#'               formattedValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   workbookCursor = 123,
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -487,6 +623,14 @@ honeycode_get_screen_data <- function(workbookId, appId, screenId, variables = N
 #' Note that request tokens are valid only for a few minutes. You cannot
 #' use request tokens to dedupe requests spanning hours or days.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   workbookCursor = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$invoke_screen_automation(
@@ -549,6 +693,22 @@ honeycode_invoke_screen_automation <- function(workbookId, appId, screenId, scre
 #' Pagination tokens expire after 1 hour. If you use a token that was
 #' returned more than an hour back, the API will throw ValidationException.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tableColumns = list(
+#'     list(
+#'       tableColumnId = "string",
+#'       tableColumnName = "string",
+#'       format = "AUTO"|"NUMBER"|"CURRENCY"|"DATE"|"TIME"|"DATE_TIME"|"PERCENTAGE"|"TEXT"|"ACCOUNTING"|"CONTACT"|"ROWLINK"
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   workbookCursor = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_table_columns(
@@ -608,6 +768,34 @@ honeycode_list_table_columns <- function(workbookId, tableId, nextToken = NULL) 
 #' Pagination tokens expire after 1 hour. If you use a token that was
 #' returned more than an hour back, the API will throw ValidationException.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   columnIds = list(
+#'     "string"
+#'   ),
+#'   rows = list(
+#'     list(
+#'       rowId = "string",
+#'       cells = list(
+#'         list(
+#'           formula = "string",
+#'           format = "AUTO"|"NUMBER"|"CURRENCY"|"DATE"|"TIME"|"DATE_TIME"|"PERCENTAGE"|"TEXT"|"ACCOUNTING"|"CONTACT"|"ROWLINK",
+#'           rawValue = "string",
+#'           formattedValue = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   rowIdsNotFound = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string",
+#'   workbookCursor = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_table_rows(
@@ -661,6 +849,21 @@ honeycode_list_table_rows <- function(workbookId, tableId, rowIds = NULL, maxRes
 #' 
 #' Pagination tokens expire after 1 hour. If you use a token that was
 #' returned more than an hour back, the API will throw ValidationException.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tables = list(
+#'     list(
+#'       tableId = "string",
+#'       tableName = "string"
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   workbookCursor = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -719,6 +922,31 @@ honeycode_list_tables <- function(workbookId, maxResults = NULL, nextToken = NUL
 #' Pagination tokens expire after 1 hour. If you use a token that was
 #' returned more than an hour back, the API will throw ValidationException.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   columnIds = list(
+#'     "string"
+#'   ),
+#'   rows = list(
+#'     list(
+#'       rowId = "string",
+#'       cells = list(
+#'         list(
+#'           formula = "string",
+#'           format = "AUTO"|"NUMBER"|"CURRENCY"|"DATE"|"TIME"|"DATE_TIME"|"PERCENTAGE"|"TEXT"|"ACCOUNTING"|"CONTACT"|"ROWLINK",
+#'           rawValue = "string",
+#'           formattedValue = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   workbookCursor = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$query_table_rows(
@@ -774,7 +1002,7 @@ honeycode_query_table_rows <- function(workbookId, tableId, filterFormula, maxRe
 #' be no larger than 100 MB. Source must have no more than 100,000 cells
 #' and no more than 1,000 rows.
 #' @param dataFormat &#91;required&#93; The format of the data that is being imported. Currently the only option
-#' supported is "DELIMITED\\_TEXT".
+#' supported is "DELIMITED_TEXT".
 #' @param destinationTableId &#91;required&#93; The ID of the table where the rows are being imported.
 #' 
 #' If a table with the specified id could not be found, this API throws
@@ -789,6 +1017,15 @@ honeycode_query_table_rows <- function(workbookId, tableId, filterFormula, maxRe
 #' 
 #' Note that request tokens are valid only for a few minutes. You cannot
 #' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   jobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

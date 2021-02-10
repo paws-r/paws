@@ -21,6 +21,9 @@ requests.}
 saying that the qualification was assigned to the Worker. Note: this is
 true by default.}
 }
+\value{
+An empty list.
+}
 \description{
 The
 \code{\link[=mturk_associate_qualification_with_worker]{associate_qualification_with_worker}}

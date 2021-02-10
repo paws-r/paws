@@ -24,6 +24,18 @@ number you specify, the \strong{NextToken} element is sent in the response.
 Use this \strong{NextToken} value in a subsequent request to retrieve
 additional items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the tags, if any, that are associated with your private CA or one
 that has been shared with you. Tags are labels that you can use to

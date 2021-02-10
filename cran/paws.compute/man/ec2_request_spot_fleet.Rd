@@ -14,6 +14,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SpotFleetRequestConfig}{[required] The configuration for the Spot Fleet request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SpotFleetRequestId = "string"
+)
+}
+}
 \description{
 Creates a Spot Fleet request.
 

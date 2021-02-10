@@ -26,6 +26,15 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountIds = list(
+    "string"
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists the account IDs that have access to the specified portfolio.
 

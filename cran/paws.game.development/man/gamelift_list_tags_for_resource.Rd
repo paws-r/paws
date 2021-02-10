@@ -8,11 +8,22 @@ gamelift_list_tags_for_resource(ResourceARN)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name
-(\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN})
+(\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html}{ARN})
 that is assigned to and uniquely identifies the GameLift resource that
 you want to retrieve tags for. GameLift resource ARNs are included in
 the data object for the resource, which can be retrieved by calling a
 List or Describe operation for the resource type.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Retrieves all tags that are assigned to a GameLift resource. Resource

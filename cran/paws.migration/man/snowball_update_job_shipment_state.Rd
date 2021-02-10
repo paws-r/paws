@@ -17,6 +17,9 @@ Set to \code{RECEIVED} when the device arrives at your location.
 
 Set to \code{RETURNED} when you have returned the device to AWS.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the state when a the shipment states changes to a different
 state.

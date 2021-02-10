@@ -19,6 +19,9 @@ in this field.}}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a discovered resource ID from Application Discovery Service
 with a migration task.

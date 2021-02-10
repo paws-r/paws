@@ -52,7 +52,7 @@ Operations: Equals
 
 *If you filter the response by using the OperationalData operator,
 specify a key-value pair by using the following JSON format:
-\{"key":"key\\_name","value":"a\\_value"\}}
+\{"key":"key_name","value":"a_value"\}}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -60,6 +60,50 @@ next set of results.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  OpsItemSummaries = list(
+    list(
+      CreatedBy = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedBy = "string",
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Priority = 123,
+      Source = "string",
+      Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
+      OpsItemId = "string",
+      Title = "string",
+      OperationalData = list(
+        list(
+          Value = "string",
+          Type = "SearchableString"|"String"
+        )
+      ),
+      Category = "string",
+      Severity = "string",
+      OpsItemType = "string",
+      ActualStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ActualEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      PlannedStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      PlannedEndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Query a set of OpsItems. You must have permission in AWS Identity and

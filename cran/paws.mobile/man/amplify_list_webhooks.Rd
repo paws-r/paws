@@ -15,6 +15,27 @@ its value in here to list more webhooks.}
 
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  webhooks = list(
+    list(
+      webhookArn = "string",
+      webhookId = "string",
+      webhookUrl = "string",
+      branchName = "string",
+      description = "string",
+      createTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      updateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of webhooks for an Amplify app.
 }

@@ -11,6 +11,9 @@ iot_detach_policy(policyName, target)
 
 \item{target}{[required] The target from which the policy will be detached.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches a policy from the specified target.
 }

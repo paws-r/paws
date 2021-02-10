@@ -40,6 +40,30 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBClusterEndpoints = list(
+    list(
+      DBClusterEndpointIdentifier = "string",
+      DBClusterIdentifier = "string",
+      DBClusterEndpointResourceIdentifier = "string",
+      Endpoint = "string",
+      Status = "string",
+      EndpointType = "string",
+      CustomEndpointType = "string",
+      StaticMembers = list(
+        "string"
+      ),
+      ExcludedMembers = list(
+        "string"
+      ),
+      DBClusterEndpointArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about endpoints for an Amazon Aurora DB cluster.
 

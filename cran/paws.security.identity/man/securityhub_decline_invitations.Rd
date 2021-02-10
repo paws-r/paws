@@ -10,6 +10,17 @@ securityhub_decline_invitations(AccountIds)
 \item{AccountIds}{[required] The list of account IDs for the accounts from which to decline the
 invitations to Security Hub.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      ProcessingResult = "string"
+    )
+  )
+)
+}
+}
 \description{
 Declines invitations to become a member account.
 

@@ -9,6 +9,9 @@ redshift_delete_snapshot_copy_grant(SnapshotCopyGrantName)
 \arguments{
 \item{SnapshotCopyGrantName}{[required] The name of the snapshot copy grant to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified snapshot copy grant.
 }

@@ -9,6 +9,9 @@ cloudwatchevents_delete_archive(ArchiveName)
 \arguments{
 \item{ArchiveName}{[required] The name of the archive to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified archive.
 }

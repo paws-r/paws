@@ -6,6 +6,16 @@
 \usage{
 iam_get_credential_report()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Content = raw,
+  ReportFormat = "text/csv",
+  GeneratedTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves a credential report for the AWS account. For more information
 about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html}{Getting Credential Reports}

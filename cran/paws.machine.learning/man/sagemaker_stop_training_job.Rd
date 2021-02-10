@@ -9,6 +9,9 @@ sagemaker_stop_training_job(TrainingJobName)
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job to stop.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a training job. To stop a job, Amazon SageMaker sends the
 algorithm the \code{SIGTERM} signal, which delays job termination for 120

@@ -9,6 +9,9 @@ iot_stop_thing_registration_task(taskId)
 \arguments{
 \item{taskId}{[required] The bulk thing provisioning task ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Cancels a bulk thing provisioning task.
 }

@@ -21,8 +21,8 @@ identify a commit (for example, a branch name or a full commit ID).}
 \item{targetBranch}{The branch where the merge is applied.}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-file has differences in both branches. If LINE\\_LEVEL is specified, a
+FILE_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE_LEVEL is specified, a
 conflict is considered not mergeable if the same file in both branches
 has differences on the same line.}
 
@@ -45,6 +45,13 @@ file is created for empty folders. The default is false.}
 
 \item{conflictResolution}{If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 use when resolving conflicts during a merge.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  treeId = "string"
+)
+}
 }
 \description{
 Merges two specified branches using the three-way merge strategy.

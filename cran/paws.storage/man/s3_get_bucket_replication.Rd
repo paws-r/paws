@@ -13,6 +13,75 @@ s3_get_bucket_replication(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationConfiguration = list(
+    Role = "string",
+    Rules = list(
+      list(
+        ID = "string",
+        Priority = 123,
+        Prefix = "string",
+        Filter = list(
+          Prefix = "string",
+          Tag = list(
+            Key = "string",
+            Value = "string"
+          ),
+          And = list(
+            Prefix = "string",
+            Tags = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          )
+        ),
+        Status = "Enabled"|"Disabled",
+        SourceSelectionCriteria = list(
+          SseKmsEncryptedObjects = list(
+            Status = "Enabled"|"Disabled"
+          ),
+          ReplicaModifications = list(
+            Status = "Enabled"|"Disabled"
+          )
+        ),
+        ExistingObjectReplication = list(
+          Status = "Enabled"|"Disabled"
+        ),
+        Destination = list(
+          Bucket = "string",
+          Account = "string",
+          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
+          AccessControlTranslation = list(
+            Owner = "Destination"
+          ),
+          EncryptionConfiguration = list(
+            ReplicaKmsKeyID = "string"
+          ),
+          ReplicationTime = list(
+            Status = "Enabled"|"Disabled",
+            Time = list(
+              Minutes = 123
+            )
+          ),
+          Metrics = list(
+            Status = "Enabled"|"Disabled",
+            EventThreshold = list(
+              Minutes = 123
+            )
+          )
+        ),
+        DeleteMarkerReplication = list(
+          Status = "Enabled"|"Disabled"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the replication configuration of a bucket.
 
@@ -21,12 +90,12 @@ configuration to all Amazon S3 systems. Therefore, a get request soon
 after put or delete can return a wrong result.
 
 For information about replication configuration, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html}{Replication}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 This operation requires permissions for the
 \code{s3:GetReplicationConfiguration} action. For more information about
-permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies and User Policies}.
+permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 
 If you include the \code{Filter} element in a replication configuration, you
 must also include the \code{DeleteMarkerReplication} and \code{Priority} elements.

@@ -38,6 +38,45 @@ specified time.}
 
 \item{StatusEquals}{A filter that returns only tuning jobs with the specified status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HyperParameterTuningJobSummaries = list(
+    list(
+      HyperParameterTuningJobName = "string",
+      HyperParameterTuningJobArn = "string",
+      HyperParameterTuningJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
+      Strategy = "Bayesian"|"Random",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      HyperParameterTuningEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingJobStatusCounters = list(
+        Completed = 123,
+        InProgress = 123,
+        RetryableError = 123,
+        NonRetryableError = 123,
+        Stopped = 123
+      ),
+      ObjectiveStatusCounters = list(
+        Succeeded = 123,
+        Pending = 123,
+        Failed = 123
+      ),
+      ResourceLimits = list(
+        MaxNumberOfTrainingJobs = 123,
+        MaxParallelTrainingJobs = 123
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of HyperParameterTuningJobSummary objects that describe the
 hyperparameter tuning jobs launched in your account.

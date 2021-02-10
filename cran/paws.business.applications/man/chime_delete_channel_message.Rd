@@ -11,6 +11,9 @@ chime_delete_channel_message(ChannelArn, MessageId)
 
 \item{MessageId}{[required] The ID of the message being deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a channel message. Only admins can perform this action. Deletion
 makes messages inaccessible immediately. A background process deletes

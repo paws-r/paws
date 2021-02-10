@@ -11,6 +11,9 @@ iot1clickprojects_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The keys of those tags which you want to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes one or more tags (metadata key/value pairs) from a resource.
 }

@@ -14,6 +14,44 @@ apigateway_get_usage_plans(position, keyId, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      name = "string",
+      description = "string",
+      apiStages = list(
+        list(
+          apiId = "string",
+          stage = "string",
+          throttle = list(
+            list(
+              burstLimit = 123,
+              rateLimit = 123.0
+            )
+          )
+        )
+      ),
+      throttle = list(
+        burstLimit = 123,
+        rateLimit = 123.0
+      ),
+      quota = list(
+        limit = 123,
+        offset = 123,
+        period = "DAY"|"WEEK"|"MONTH"
+      ),
+      productCode = "string",
+      tags = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets all the usage plans of the caller's account.
 }

@@ -19,6 +19,9 @@ sagemaker_create_device_fleet(DeviceFleetName, RoleArn, Description,
 
 \item{Tags}{Creates tags for the specified fleet.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a device fleet.
 }

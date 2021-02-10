@@ -17,6 +17,9 @@ and \code{Value} parameters are separated by a comma (,). Separate multiple
 tags with a space. For example,
 \verb{--tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0"}.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds tags to a cluster.
 

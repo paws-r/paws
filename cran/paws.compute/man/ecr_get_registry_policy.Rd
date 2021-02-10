@@ -6,6 +6,13 @@
 \usage{
 ecr_get_registry_policy()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  policyText = "string"
+)
+}
+}
 \description{
 Retrieves the permissions policy for a registry.
 }

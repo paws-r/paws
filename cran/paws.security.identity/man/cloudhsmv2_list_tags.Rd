@@ -18,6 +18,18 @@ this value to get more tags.}
 more tags than the number you specify, the response contains a
 \code{NextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of tags for the specified AWS CloudHSM cluster.
 

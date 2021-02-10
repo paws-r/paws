@@ -6,6 +6,14 @@
 \usage{
 backup_describe_region_settings()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceTypeOptInPreference = list(
+    TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Returns the current service opt-in settings for the Region. If
 service-opt-in is enabled for a service, AWS Backup tries to protect

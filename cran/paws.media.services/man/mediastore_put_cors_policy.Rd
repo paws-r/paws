@@ -12,6 +12,9 @@ mediastore_put_cors_policy(ContainerName, CorsPolicy)
 
 \item{CorsPolicy}{[required] The CORS policy to apply to the container.}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the cross-origin resource sharing (CORS) configuration on a
 container so that the container can service cross-origin requests. For

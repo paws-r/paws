@@ -14,6 +14,20 @@ chime_list_app_instance_users(AppInstanceArn, MaxResults, NextToken)
 \item{NextToken}{The token passed by previous API calls until all requested users are
 returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceArn = "string",
+  AppInstanceUsers = list(
+    list(
+      AppInstanceUserArn = "string",
+      Name = "string",
+      Metadata = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all \code{AppInstanceUsers} created under a single app instance.
 }

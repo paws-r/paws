@@ -35,6 +35,29 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocalGatewayRouteTableVirtualInterfaceGroupAssociations = list(
+    list(
+      LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = "string",
+      LocalGatewayVirtualInterfaceGroupId = "string",
+      LocalGatewayId = "string",
+      LocalGatewayRouteTableId = "string",
+      LocalGatewayRouteTableArn = "string",
+      OwnerId = "string",
+      State = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the associations between virtual interface groups and local
 gateway route tables.

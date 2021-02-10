@@ -27,6 +27,30 @@ The \code{namespaceId} feature is in public preview.}
 
 \item{nextToken}{The token to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  executionSummaries = list(
+    list(
+      jobId = "string",
+      jobExecutionSummary = list(
+        status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+        queuedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        startedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        lastUpdatedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        executionNumber = 123
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the job executions for the specified thing.
 }

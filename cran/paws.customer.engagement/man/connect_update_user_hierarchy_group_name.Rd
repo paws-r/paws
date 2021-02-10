@@ -14,6 +14,9 @@ connect_update_user_hierarchy_group_name(Name, HierarchyGroupId,
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the name of the user hierarchy group.
 }

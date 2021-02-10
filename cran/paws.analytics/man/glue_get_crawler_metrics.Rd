@@ -13,6 +13,24 @@ glue_get_crawler_metrics(CrawlerNameList, MaxResults, NextToken)
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CrawlerMetricsList = list(
+    list(
+      CrawlerName = "string",
+      TimeLeftSeconds = 123.0,
+      StillEstimating = TRUE|FALSE,
+      LastRuntimeSeconds = 123.0,
+      MedianRuntimeSeconds = 123.0,
+      TablesCreated = 123,
+      TablesUpdated = 123,
+      TablesDeleted = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves metrics about specified crawlers.
 }

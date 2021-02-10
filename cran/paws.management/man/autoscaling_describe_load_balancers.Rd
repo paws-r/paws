@@ -16,6 +16,18 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{100} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBalancers = list(
+    list(
+      LoadBalancerName = "string",
+      State = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the load balancers for the specified Auto Scaling group.
 

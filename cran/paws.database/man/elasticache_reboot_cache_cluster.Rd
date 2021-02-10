@@ -13,6 +13,91 @@ elasticache_reboot_cache_cluster(CacheClusterId, CacheNodeIdsToReboot)
 (0001, 0002, etc.). To reboot an entire cluster, specify all of the
 cache node IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CacheCluster = list(
+    CacheClusterId = "string",
+    ConfigurationEndpoint = list(
+      Address = "string",
+      Port = 123
+    ),
+    ClientDownloadLandingPage = "string",
+    CacheNodeType = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    CacheClusterStatus = "string",
+    NumCacheNodes = 123,
+    PreferredAvailabilityZone = "string",
+    PreferredOutpostArn = "string",
+    CacheClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    PreferredMaintenanceWindow = "string",
+    PendingModifiedValues = list(
+      NumCacheNodes = 123,
+      CacheNodeIdsToRemove = list(
+        "string"
+      ),
+      EngineVersion = "string",
+      CacheNodeType = "string",
+      AuthTokenStatus = "SETTING"|"ROTATING"
+    ),
+    NotificationConfiguration = list(
+      TopicArn = "string",
+      TopicStatus = "string"
+    ),
+    CacheSecurityGroups = list(
+      list(
+        CacheSecurityGroupName = "string",
+        Status = "string"
+      )
+    ),
+    CacheParameterGroup = list(
+      CacheParameterGroupName = "string",
+      ParameterApplyStatus = "string",
+      CacheNodeIdsToReboot = list(
+        "string"
+      )
+    ),
+    CacheSubnetGroupName = "string",
+    CacheNodes = list(
+      list(
+        CacheNodeId = "string",
+        CacheNodeStatus = "string",
+        CacheNodeCreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        Endpoint = list(
+          Address = "string",
+          Port = 123
+        ),
+        ParameterGroupStatus = "string",
+        SourceCacheNodeId = "string",
+        CustomerAvailabilityZone = "string",
+        CustomerOutpostArn = "string"
+      )
+    ),
+    AutoMinorVersionUpgrade = TRUE|FALSE,
+    SecurityGroups = list(
+      list(
+        SecurityGroupId = "string",
+        Status = "string"
+      )
+    ),
+    ReplicationGroupId = "string",
+    SnapshotRetentionLimit = 123,
+    SnapshotWindow = "string",
+    AuthTokenEnabled = TRUE|FALSE,
+    AuthTokenLastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    TransitEncryptionEnabled = TRUE|FALSE,
+    AtRestEncryptionEnabled = TRUE|FALSE,
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Reboots some, or all, of the cache nodes within a provisioned cluster.
 This operation applies any modified cache parameter groups to the

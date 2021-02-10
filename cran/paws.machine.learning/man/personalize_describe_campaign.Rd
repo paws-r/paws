@@ -9,14 +9,55 @@ personalize_describe_campaign(campaignArn)
 \arguments{
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  campaign = list(
+    name = "string",
+    campaignArn = "string",
+    solutionVersionArn = "string",
+    minProvisionedTPS = 123,
+    campaignConfig = list(
+      itemExplorationConfig = list(
+        "string"
+      )
+    ),
+    status = "string",
+    failureReason = "string",
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    latestCampaignUpdate = list(
+      solutionVersionArn = "string",
+      minProvisionedTPS = 123,
+      campaignConfig = list(
+        itemExplorationConfig = list(
+          "string"
+        )
+      ),
+      status = "string",
+      failureReason = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the given campaign, including its status.
 
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
 FAILED
-\item DELETE PENDING > DELETE IN\\_PROGRESS
+\item DELETE PENDING > DELETE IN_PROGRESS
 }
 
 When the \code{status} is \verb{CREATE FAILED}, the response includes the

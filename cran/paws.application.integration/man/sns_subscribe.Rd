@@ -80,6 +80,12 @@ confirmation token.
 
 The default value is \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SubscriptionArn = "string"
+)
+}
+}
 \description{
 Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
 HTTP/S or email, or if the endpoint and the topic are not in the same

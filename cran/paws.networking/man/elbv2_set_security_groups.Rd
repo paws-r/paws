@@ -12,6 +12,14 @@ elbv2_set_security_groups(LoadBalancerArn, SecurityGroups)
 
 \item{SecurityGroups}{[required] The IDs of the security groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityGroupIds = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Associates the specified security groups with the specified Application
 Load Balancer. The specified security groups override the previously
@@ -35,7 +43,7 @@ Gateway Load Balancer.
 # This example associates the specified security group with the specified
 # load balancer.
 svc$set_security_groups(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
   SecurityGroups = list(
     "sg-5943793c"
   )

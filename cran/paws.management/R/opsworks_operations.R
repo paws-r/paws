@@ -29,6 +29,9 @@ NULL
 #' @param LayerIds &#91;required&#93; The layer ID, which must correspond to a custom layer. You cannot assign
 #' a registered instance to a built-in layer.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$assign_instance(
@@ -84,6 +87,9 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' @param VolumeId &#91;required&#93; The volume ID.
 #' @param InstanceId The instance ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$assign_volume(
@@ -133,6 +139,9 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #' @param InstanceId The instance ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -188,6 +197,9 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance's name.
 #' @param LayerId &#91;required&#93; The ID of the layer to which the Elastic Load Balancing instance is to
 #' be attached.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -368,7 +380,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' the corresponding default stack configuration JSON values. The string
 #' should be in the following format:
 #' 
-#' `"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"`
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
@@ -447,6 +459,14 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' 
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StackId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -565,6 +585,14 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #' If you have specified one or more environment variables, you cannot
 #' modify the stack's Chef version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_app(
@@ -660,13 +688,21 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #' parameter to override some corresponding default stack configuration
 #' JSON values. The string should be in the following format:
 #' 
-#' `"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"`
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
 #' Attributes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
 #' and [Overriding Attributes With Custom
 #' JSON](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeploymentId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -824,7 +860,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' 
 #' -   `INHERIT` - Use the stack's default agent version setting.
 #' 
-#' -   *version\\_number* - Use the specified agent version. This value
+#' -   *version_number* - Use the specified agent version. This value
 #'     overrides the stack's default setting. To update the agent version,
 #'     edit the instance configuration and specify a new version. AWS
 #'     OpsWorks Stacks then automatically installs that version on the
@@ -848,6 +884,14 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' Instances](https://docs.aws.amazon.com/vpc/latest/userguide/) and
 #' [Amazon EC2 Dedicated
 #' Instances](https://aws.amazon.com/ec2/pricing/dedicated-instances/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -944,7 +988,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' name, which is used internally by AWS OpsWorks Stacks and by Chef
 #' recipes. The short name is also used as the name for the directory where
 #' your app files are installed. It can have a maximum of 200 characters,
-#' which are limited to the alphanumeric characters, '-', '\\_', and '.'.
+#' which are limited to the alphanumeric characters, '-', '_', and '.'.
 #' 
 #' The built-in layers' short names are defined by AWS OpsWorks Stacks. For
 #' more information, see the [Layer
@@ -992,6 +1036,14 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' @param LifecycleEventConfiguration A `LifeCycleEventConfiguration` object that you can use to configure the
 #' Shutdown event to specify an execution timeout and enable or disable
 #' Elastic Load Balancer connection draining.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LayerId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1248,7 +1300,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' or to pass data to recipes. The string should be in the following
 #' format:
 #' 
-#' `"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"`
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
@@ -1327,6 +1379,14 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StackId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_stack(
@@ -1403,7 +1463,7 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #'
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN; this can also be a federated user's ARN.
 #' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
-#' \[0-9\], '-', and '\\_'. If the specified name includes other punctuation
+#' \[0-9\], '-', and '_'. If the specified name includes other punctuation
 #' marks, AWS OpsWorks Stacks removes them. For example, `my.name` will be
 #' changed to `myname`. If you do not specify an SSH user name, AWS
 #' OpsWorks Stacks generates one from the IAM user name.
@@ -1412,6 +1472,14 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #' Settings page. For more information, see [Setting an IAM User's Public
 #' SSH
 #' Key](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IamUserArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1458,6 +1526,9 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' opsworks_delete_app(AppId)
 #'
 #' @param AppId &#91;required&#93; The app ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1509,6 +1580,9 @@ opsworks_delete_app <- function(AppId) {
 #' @param DeleteElasticIp Whether to delete the instance Elastic IP address.
 #' @param DeleteVolumes Whether to delete the instance's Amazon EBS volumes.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_instance(
@@ -1557,6 +1631,9 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_layer(
@@ -1603,6 +1680,9 @@ opsworks_delete_layer <- function(LayerId) {
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_stack(
@@ -1644,6 +1724,9 @@ opsworks_delete_stack <- function(StackId) {
 #' opsworks_delete_user_profile(IamUserArn)
 #'
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN. This can also be a federated user's ARN.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1690,6 +1773,9 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 #'
 #' @param EcsClusterArn &#91;required&#93; The cluster's Amazon Resource Number (ARN).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_ecs_cluster(
@@ -1734,6 +1820,9 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
 #' opsworks_deregister_elastic_ip(ElasticIp)
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1781,6 +1870,9 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_instance(
@@ -1823,6 +1915,9 @@ opsworks_deregister_instance <- function(InstanceId) {
 #' opsworks_deregister_rds_db_instance(RdsDbInstanceArn)
 #'
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1871,6 +1966,9 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
 #' Stacks assigned to the instance when you registered the volume with the
 #' stack, not the Amazon EC2 volume ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_volume(
@@ -1912,6 +2010,22 @@ opsworks_deregister_volume <- function(VolumeId) {
 #'
 #' @param StackId The stack ID.
 #' @param ConfigurationManager The configuration manager.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AgentVersions = list(
+#'     list(
+#'       Version = "string",
+#'       ConfigurationManager = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1967,6 +2081,58 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #' parameter, [`describe_apps`][opsworks_describe_apps] returns a
 #' description of the specified apps. Otherwise, it returns a description
 #' of every app.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Apps = list(
+#'     list(
+#'       AppId = "string",
+#'       StackId = "string",
+#'       Shortname = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DataSources = list(
+#'         list(
+#'           Type = "string",
+#'           Arn = "string",
+#'           DatabaseName = "string"
+#'         )
+#'       ),
+#'       Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
+#'       AppSource = list(
+#'         Type = "git"|"svn"|"archive"|"s3",
+#'         Url = "string",
+#'         Username = "string",
+#'         Password = "string",
+#'         SshKey = "string",
+#'         Revision = "string"
+#'       ),
+#'       Domains = list(
+#'         "string"
+#'       ),
+#'       EnableSsl = TRUE|FALSE,
+#'       SslConfiguration = list(
+#'         Certificate = "string",
+#'         PrivateKey = "string",
+#'         Chain = "string"
+#'       ),
+#'       Attributes = list(
+#'         "string"
+#'       ),
+#'       CreatedAt = "string",
+#'       Environment = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           Secure = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2025,6 +2191,27 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #' of the specified commands. Otherwise, it returns a description of every
 #' command.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Commands = list(
+#'     list(
+#'       CommandId = "string",
+#'       InstanceId = "string",
+#'       DeploymentId = "string",
+#'       CreatedAt = "string",
+#'       AcknowledgedAt = "string",
+#'       CompletedAt = "string",
+#'       Status = "string",
+#'       ExitCode = 123,
+#'       LogUrl = "string",
+#'       Type = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_commands(
@@ -2079,6 +2266,38 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 #' @param DeploymentIds An array of deployment IDs to be described. If you include this
 #' parameter, the command returns a description of the specified
 #' deployments. Otherwise, it returns a description of every deployment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Deployments = list(
+#'     list(
+#'       DeploymentId = "string",
+#'       StackId = "string",
+#'       AppId = "string",
+#'       CreatedAt = "string",
+#'       CompletedAt = "string",
+#'       Duration = 123,
+#'       IamUserArn = "string",
+#'       Comment = "string",
+#'       Command = list(
+#'         Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
+#'         Args = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       Status = "string",
+#'       CustomJson = "string",
+#'       InstanceIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2148,6 +2367,22 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EcsClusters = list(
+#'     list(
+#'       EcsClusterArn = "string",
+#'       EcsClusterName = "string",
+#'       StackId = "string",
+#'       RegisteredAt = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_ecs_clusters(
@@ -2210,6 +2445,22 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' returns a description of the specified Elastic IP addresses. Otherwise,
 #' it returns a description of every Elastic IP address.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ElasticIps = list(
+#'     list(
+#'       Ip = "string",
+#'       Name = "string",
+#'       Domain = "string",
+#'       Region = "string",
+#'       InstanceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_elastic_ips(
@@ -2261,6 +2512,32 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 #' instances.
 #' @param LayerIds A list of layer IDs. The action describes the Elastic Load Balancing
 #' instances for the specified layers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ElasticLoadBalancers = list(
+#'     list(
+#'       ElasticLoadBalancerName = "string",
+#'       Region = "string",
+#'       DnsName = "string",
+#'       StackId = "string",
+#'       LayerId = "string",
+#'       VpcId = "string",
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       Ec2InstanceIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2319,6 +2596,79 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #' description of the specified instances. Otherwise, it returns a
 #' description of every instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = list(
+#'     list(
+#'       AgentVersion = "string",
+#'       AmiId = "string",
+#'       Architecture = "x86_64"|"i386",
+#'       Arn = "string",
+#'       AutoScalingType = "load"|"timer",
+#'       AvailabilityZone = "string",
+#'       BlockDeviceMappings = list(
+#'         list(
+#'           DeviceName = "string",
+#'           NoDevice = "string",
+#'           VirtualName = "string",
+#'           Ebs = list(
+#'             SnapshotId = "string",
+#'             Iops = 123,
+#'             VolumeSize = 123,
+#'             VolumeType = "gp2"|"io1"|"standard",
+#'             DeleteOnTermination = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       CreatedAt = "string",
+#'       EbsOptimized = TRUE|FALSE,
+#'       Ec2InstanceId = "string",
+#'       EcsClusterArn = "string",
+#'       EcsContainerInstanceArn = "string",
+#'       ElasticIp = "string",
+#'       Hostname = "string",
+#'       InfrastructureClass = "string",
+#'       InstallUpdatesOnBoot = TRUE|FALSE,
+#'       InstanceId = "string",
+#'       InstanceProfileArn = "string",
+#'       InstanceType = "string",
+#'       LastServiceErrorId = "string",
+#'       LayerIds = list(
+#'         "string"
+#'       ),
+#'       Os = "string",
+#'       Platform = "string",
+#'       PrivateDns = "string",
+#'       PrivateIp = "string",
+#'       PublicDns = "string",
+#'       PublicIp = "string",
+#'       RegisteredBy = "string",
+#'       ReportedAgentVersion = "string",
+#'       ReportedOs = list(
+#'         Family = "string",
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       RootDeviceType = "ebs"|"instance-store",
+#'       RootDeviceVolumeId = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SshHostDsaKeyFingerprint = "string",
+#'       SshHostRsaKeyFingerprint = "string",
+#'       SshKeyName = "string",
+#'       StackId = "string",
+#'       Status = "string",
+#'       SubnetId = "string",
+#'       Tenancy = "string",
+#'       VirtualizationType = "paravirtual"|"hvm"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instances(
@@ -2371,6 +2721,112 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 #' omit this parameter, [`describe_layers`][opsworks_describe_layers]
 #' returns a description of every layer in the specified stack.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Layers = list(
+#'     list(
+#'       Arn = "string",
+#'       StackId = "string",
+#'       LayerId = "string",
+#'       Type = "aws-flow-ruby"|"ecs-cluster"|"java-app"|"lb"|"web"|"php-app"|"rails-app"|"nodejs-app"|"memcached"|"db-master"|"monitoring-master"|"custom",
+#'       Name = "string",
+#'       Shortname = "string",
+#'       Attributes = list(
+#'         "string"
+#'       ),
+#'       CloudWatchLogsConfiguration = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogStreams = list(
+#'           list(
+#'             LogGroupName = "string",
+#'             DatetimeFormat = "string",
+#'             TimeZone = "LOCAL"|"UTC",
+#'             File = "string",
+#'             FileFingerprintLines = "string",
+#'             MultiLineStartPattern = "string",
+#'             InitialPosition = "start_of_file"|"end_of_file",
+#'             Encoding = "ascii"|"big5"|"big5hkscs"|"cp037"|"cp424"|"cp437"|"cp500"|"cp720"|"cp737"|"cp775"|"cp850"|"cp852"|"cp855"|"cp856"|"cp857"|"cp858"|"cp860"|"cp861"|"cp862"|"cp863"|"cp864"|"cp865"|"cp866"|"cp869"|"cp874"|"cp875"|"cp932"|"cp949"|"cp950"|"cp1006"|"cp1026"|"cp1140"|"cp1250"|"cp1251"|"cp1252"|"cp1253"|"cp1254"|"cp1255"|"cp1256"|"cp1257"|"cp1258"|"euc_jp"|"euc_jis_2004"|"euc_jisx0213"|"euc_kr"|"gb2312"|"gbk"|"gb18030"|"hz"|"iso2022_jp"|"iso2022_jp_1"|"iso2022_jp_2"|"iso2022_jp_2004"|"iso2022_jp_3"|"iso2022_jp_ext"|"iso2022_kr"|"latin_1"|"iso8859_2"|"iso8859_3"|"iso8859_4"|"iso8859_5"|"iso8859_6"|"iso8859_7"|"iso8859_8"|"iso8859_9"|"iso8859_10"|"iso8859_13"|"iso8859_14"|"iso8859_15"|"iso8859_16"|"johab"|"koi8_r"|"koi8_u"|"mac_cyrillic"|"mac_greek"|"mac_iceland"|"mac_latin2"|"mac_roman"|"mac_turkish"|"ptcp154"|"shift_jis"|"shift_jis_2004"|"shift_jisx0213"|"utf_32"|"utf_32_be"|"utf_32_le"|"utf_16"|"utf_16_be"|"utf_16_le"|"utf_7"|"utf_8"|"utf_8_sig",
+#'             BufferDuration = 123,
+#'             BatchCount = 123,
+#'             BatchSize = 123
+#'           )
+#'         )
+#'       ),
+#'       CustomInstanceProfileArn = "string",
+#'       CustomJson = "string",
+#'       CustomSecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       DefaultSecurityGroupNames = list(
+#'         "string"
+#'       ),
+#'       Packages = list(
+#'         "string"
+#'       ),
+#'       VolumeConfigurations = list(
+#'         list(
+#'           MountPoint = "string",
+#'           RaidLevel = 123,
+#'           NumberOfDisks = 123,
+#'           Size = 123,
+#'           VolumeType = "string",
+#'           Iops = 123,
+#'           Encrypted = TRUE|FALSE
+#'         )
+#'       ),
+#'       EnableAutoHealing = TRUE|FALSE,
+#'       AutoAssignElasticIps = TRUE|FALSE,
+#'       AutoAssignPublicIps = TRUE|FALSE,
+#'       DefaultRecipes = list(
+#'         Setup = list(
+#'           "string"
+#'         ),
+#'         Configure = list(
+#'           "string"
+#'         ),
+#'         Deploy = list(
+#'           "string"
+#'         ),
+#'         Undeploy = list(
+#'           "string"
+#'         ),
+#'         Shutdown = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CustomRecipes = list(
+#'         Setup = list(
+#'           "string"
+#'         ),
+#'         Configure = list(
+#'           "string"
+#'         ),
+#'         Deploy = list(
+#'           "string"
+#'         ),
+#'         Undeploy = list(
+#'           "string"
+#'         ),
+#'         Shutdown = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CreatedAt = "string",
+#'       InstallUpdatesOnBoot = TRUE|FALSE,
+#'       UseEbsOptimizedInstances = TRUE|FALSE,
+#'       LifecycleEventConfiguration = list(
+#'         Shutdown = list(
+#'           ExecutionTimeout = 123,
+#'           DelayUntilElbConnectionsDrained = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_layers(
@@ -2419,6 +2875,41 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
 #'
 #' @param LayerIds &#91;required&#93; An array of layer IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoadBasedAutoScalingConfigurations = list(
+#'     list(
+#'       LayerId = "string",
+#'       Enable = TRUE|FALSE,
+#'       UpScaling = list(
+#'         InstanceCount = 123,
+#'         ThresholdsWaitTime = 123,
+#'         IgnoreMetricsTime = 123,
+#'         CpuThreshold = 123.0,
+#'         MemoryThreshold = 123.0,
+#'         LoadThreshold = 123.0,
+#'         Alarms = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DownScaling = list(
+#'         InstanceCount = 123,
+#'         ThresholdsWaitTime = 123,
+#'         IgnoreMetricsTime = 123,
+#'         CpuThreshold = 123.0,
+#'         MemoryThreshold = 123.0,
+#'         LoadThreshold = 123.0,
+#'         Alarms = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_load_based_auto_scaling(
@@ -2464,6 +2955,19 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserProfile = list(
+#'     IamUserArn = "string",
+#'     Name = "string",
+#'     SshUsername = "string",
+#'     SshPublicKey = "string"
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -2497,6 +3001,29 @@ opsworks_describe_my_user_profile <- function() {
 #' opsworks_describe_operating_systems()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperatingSystems = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Type = "string",
+#'       ConfigurationManagers = list(
+#'         list(
+#'           Name = "string",
+#'           Version = "string"
+#'         )
+#'       ),
+#'       ReportedName = "string",
+#'       ReportedVersion = "string",
+#'       Supported = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -2538,6 +3065,22 @@ opsworks_describe_operating_systems <- function() {
 #' information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param StackId The stack ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Permissions = list(
+#'     list(
+#'       StackId = "string",
+#'       IamUserArn = "string",
+#'       AllowSsh = TRUE|FALSE,
+#'       AllowSudo = TRUE|FALSE,
+#'       Level = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2592,6 +3135,30 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #' descriptions of the specified arrays. Otherwise, it returns a
 #' description of every array.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RaidArrays = list(
+#'     list(
+#'       RaidArrayId = "string",
+#'       InstanceId = "string",
+#'       Name = "string",
+#'       RaidLevel = 123,
+#'       NumberOfDisks = 123,
+#'       Size = 123,
+#'       Device = "string",
+#'       MountPoint = "string",
+#'       AvailabilityZone = "string",
+#'       CreatedAt = "string",
+#'       StackId = "string",
+#'       VolumeType = "string",
+#'       Iops = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_raid_arrays(
@@ -2642,6 +3209,26 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
 #' @param StackId &#91;required&#93; The ID of the stack with which the instances are registered. The
 #' operation returns descriptions of all registered Amazon RDS instances.
 #' @param RdsDbInstanceArns An array containing the ARNs of the instances to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RdsDbInstances = list(
+#'     list(
+#'       RdsDbInstanceArn = "string",
+#'       DbInstanceIdentifier = "string",
+#'       DbUser = "string",
+#'       DbPassword = "string",
+#'       Region = "string",
+#'       Address = "string",
+#'       Engine = "string",
+#'       StackId = "string",
+#'       MissingOnRds = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2700,6 +3287,23 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #' descriptions of the specified errors. Otherwise, it returns a
 #' description of every error.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceErrors = list(
+#'     list(
+#'       ServiceErrorId = "string",
+#'       StackId = "string",
+#'       InstanceId = "string",
+#'       Type = "string",
+#'       Message = "string",
+#'       CreatedAt = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_service_errors(
@@ -2747,6 +3351,17 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AgentInstallerUrl = "string",
+#'   Parameters = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_stack_provisioning_parameters(
@@ -2792,6 +3407,42 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StackSummary = list(
+#'     StackId = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     LayersCount = 123,
+#'     AppsCount = 123,
+#'     InstancesCount = list(
+#'       Assigning = 123,
+#'       Booting = 123,
+#'       ConnectionLost = 123,
+#'       Deregistering = 123,
+#'       Online = 123,
+#'       Pending = 123,
+#'       Rebooting = 123,
+#'       Registered = 123,
+#'       Registering = 123,
+#'       Requested = 123,
+#'       RunningSetup = 123,
+#'       SetupFailed = 123,
+#'       ShuttingDown = 123,
+#'       StartFailed = 123,
+#'       StopFailed = 123,
+#'       Stopped = 123,
+#'       Stopping = 123,
+#'       Terminated = 123,
+#'       Terminating = 123,
+#'       Unassigning = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_stack_summary(
@@ -2836,6 +3487,54 @@ opsworks_describe_stack_summary <- function(StackId) {
 #' @param StackIds An array of stack IDs that specify the stacks to be described. If you
 #' omit this parameter, [`describe_stacks`][opsworks_describe_stacks]
 #' returns a description of every stack.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Stacks = list(
+#'     list(
+#'       StackId = "string",
+#'       Name = "string",
+#'       Arn = "string",
+#'       Region = "string",
+#'       VpcId = "string",
+#'       Attributes = list(
+#'         "string"
+#'       ),
+#'       ServiceRoleArn = "string",
+#'       DefaultInstanceProfileArn = "string",
+#'       DefaultOs = "string",
+#'       HostnameTheme = "string",
+#'       DefaultAvailabilityZone = "string",
+#'       DefaultSubnetId = "string",
+#'       CustomJson = "string",
+#'       ConfigurationManager = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       ChefConfiguration = list(
+#'         ManageBerkshelf = TRUE|FALSE,
+#'         BerkshelfVersion = "string"
+#'       ),
+#'       UseCustomCookbooks = TRUE|FALSE,
+#'       UseOpsworksSecurityGroups = TRUE|FALSE,
+#'       CustomCookbooksSource = list(
+#'         Type = "git"|"svn"|"archive"|"s3",
+#'         Url = "string",
+#'         Username = "string",
+#'         Password = "string",
+#'         SshKey = "string",
+#'         Revision = "string"
+#'       ),
+#'       DefaultSshKeyName = "string",
+#'       CreatedAt = "string",
+#'       DefaultRootDeviceType = "ebs"|"instance-store",
+#'       AgentVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2885,6 +3584,41 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
 #'
 #' @param InstanceIds &#91;required&#93; An array of instance IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TimeBasedAutoScalingConfigurations = list(
+#'     list(
+#'       InstanceId = "string",
+#'       AutoScalingSchedule = list(
+#'         Monday = list(
+#'           "string"
+#'         ),
+#'         Tuesday = list(
+#'           "string"
+#'         ),
+#'         Wednesday = list(
+#'           "string"
+#'         ),
+#'         Thursday = list(
+#'           "string"
+#'         ),
+#'         Friday = list(
+#'           "string"
+#'         ),
+#'         Saturday = list(
+#'           "string"
+#'         ),
+#'         Sunday = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_time_based_auto_scaling(
@@ -2929,6 +3663,22 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
 #'
 #' @param IamUserArns An array of IAM or federated user ARNs that identify the users to be
 #' described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserProfiles = list(
+#'     list(
+#'       IamUserArn = "string",
+#'       Name = "string",
+#'       SshUsername = "string",
+#'       SshPublicKey = "string",
+#'       AllowSelfManagement = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2988,6 +3738,31 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #' the specified volumes. Otherwise, it returns a description of every
 #' volume.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Volumes = list(
+#'     list(
+#'       VolumeId = "string",
+#'       Ec2VolumeId = "string",
+#'       Name = "string",
+#'       RaidArrayId = "string",
+#'       InstanceId = "string",
+#'       Status = "string",
+#'       Size = 123,
+#'       Device = "string",
+#'       MountPoint = "string",
+#'       Region = "string",
+#'       AvailabilityZone = "string",
+#'       VolumeType = "string",
+#'       Iops = 123,
+#'       Encrypted = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_volumes(
@@ -3038,6 +3813,9 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 #' @param LayerId &#91;required&#93; The ID of the layer that the Elastic Load Balancing instance is attached
 #' to.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_elastic_load_balancer(
@@ -3084,6 +3862,9 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_elastic_ip(
@@ -3129,6 +3910,15 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LayerId = "string",
+#'   Hostname = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_hostname_suggestion(
@@ -3172,6 +3962,19 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
 #' use the credentials to log in. If the user is logged in at the time, he
 #' or she automatically will be logged out.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemporaryCredential = list(
+#'     Username = "string",
+#'     Password = "string",
+#'     ValidForInMinutes = 123,
+#'     InstanceId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$grant_access(
@@ -3213,6 +4016,17 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
 #' parameter to a `ListTagsRequest` call.
 #' @param NextToken Do not use. A validation exception occurs if you add a `NextToken`
 #' parameter to a `ListTagsRequest` call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3261,6 +4075,9 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reboot_instance(
@@ -3307,6 +4124,14 @@ opsworks_reboot_instance <- function(InstanceId) {
 #'
 #' @param EcsClusterArn &#91;required&#93; The cluster's ARN.
 #' @param StackId &#91;required&#93; The stack ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EcsClusterArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3357,6 +4182,14 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #' @param StackId &#91;required&#93; The stack ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ElasticIp = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3429,6 +4262,14 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' @param RsaPublicKeyFingerprint The instances public RSA key fingerprint.
 #' @param InstanceIdentity An InstanceIdentity object that contains the instance's identity.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_instance(
@@ -3485,6 +4326,9 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 #' @param DbUser &#91;required&#93; The database's master user name.
 #' @param DbPassword &#91;required&#93; The database password.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_rds_db_instance(
@@ -3536,6 +4380,14 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 #'
 #' @param Ec2VolumeId The Amazon EBS volume ID.
 #' @param StackId &#91;required&#93; The stack ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3597,6 +4449,9 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #' configuration. If the load falls below these thresholds for a specified
 #' amount of time, AWS OpsWorks Stacks stops a specified number of
 #' instances.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3684,6 +4539,9 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' see [Managing User
 #' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_permission(
@@ -3735,6 +4593,9 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param AutoScalingSchedule An `AutoScalingSchedule` with the instance schedule.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3804,6 +4665,9 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_instance(
@@ -3846,6 +4710,9 @@ opsworks_start_instance <- function(InstanceId) {
 #' opsworks_start_stack(StackId)
 #'
 #' @param StackId &#91;required&#93; The stack ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3901,6 +4768,9 @@ opsworks_start_stack <- function(StackId) {
 #' troubleshooting and replacing the AWS OpsWorks Stacks instance with a
 #' new one.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_instance(
@@ -3944,6 +4814,9 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
 #' opsworks_stop_stack(StackId)
 #'
 #' @param StackId &#91;required&#93; The stack ID.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4003,6 +4876,9 @@ opsworks_stop_stack <- function(StackId) {
 #' 
 #' -   A maximum of 40 tags is allowed for any resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -4053,6 +4929,9 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unassign_instance(
@@ -4098,6 +4977,9 @@ opsworks_unassign_instance <- function(InstanceId) {
 #'
 #' @param VolumeId &#91;required&#93; The volume ID.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unassign_volume(
@@ -4135,6 +5017,9 @@ opsworks_unassign_volume <- function(VolumeId) {
 #'
 #' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param TagKeys &#91;required&#93; A list of the keys of tags to be removed from a stack or layer.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4209,6 +5094,9 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' If you have specified one or more environment variables, you cannot
 #' modify the stack's Chef version.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4292,6 +5180,9 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 #'
 #' @param ElasticIp &#91;required&#93; The IP address for which you want to update the name.
 #' @param Name The new name.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4412,7 +5303,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' 
 #' -   `INHERIT` - Use the stack's default agent version setting.
 #' 
-#' -   *version\\_number* - Use the specified agent version. This value
+#' -   *version_number* - Use the specified agent version. This value
 #'     overrides the stack's default setting. To update the agent version,
 #'     you must edit the instance configuration and specify a new version.
 #'     AWS OpsWorks Stacks then automatically installs that version on the
@@ -4424,6 +5315,9 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' [`describe_agent_versions`][opsworks_describe_agent_versions].
 #' 
 #' AgentVersion cannot be set to Chef 12.2.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4490,7 +5384,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' name, which is used internally by AWS OpsWorks Stacks and by Chef. The
 #' short name is also used as the name for the directory where your app
 #' files are installed. It can have a maximum of 200 characters and must be
-#' in the following format: /`\\A`\[a-z0-9\\-\\\_\\.\]+`\\Z`/.
+#' in the following format: /\\A\[a-z0-9\\-\\_\\.\]+\\Z/.
 #' 
 #' The built-in layers' short names are defined by AWS OpsWorks Stacks. For
 #' more information, see the [Layer
@@ -4532,6 +5426,9 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' your instances have the latest security updates.
 #' @param UseEbsOptimizedInstances Whether to use Amazon EBS-optimized instances.
 #' @param LifecycleEventConfiguration 
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4646,6 +5543,9 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 #'
 #' @param SshPublicKey The user's SSH public key.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_my_user_profile(
@@ -4690,6 +5590,9 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
 #' @param DbUser The master user name.
 #' @param DbPassword The database password.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4823,7 +5726,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' override the corresponding default stack configuration JSON values or to
 #' pass data to recipes. The string should be in the following format:
 #' 
-#' `"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"`
+#' `"{\"key1\": \"value1\", \"key2\": \"value2\",...}"`
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
@@ -4901,6 +5804,9 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_stack(
@@ -4976,7 +5882,7 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #'
 #' @param IamUserArn &#91;required&#93; The user IAM ARN. This can also be a federated user's ARN.
 #' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
-#' \[0-9\], '-', and '\\_'. If the specified name includes other punctuation
+#' \[0-9\], '-', and '_'. If the specified name includes other punctuation
 #' marks, AWS OpsWorks Stacks removes them. For example, `my.name` will be
 #' changed to `myname`. If you do not specify an SSH user name, AWS
 #' OpsWorks Stacks generates one from the IAM user name.
@@ -4984,6 +5890,9 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #' @param AllowSelfManagement Whether users can specify their own SSH public key through the My
 #' Settings page. For more information, see [Managing User
 #' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -5034,6 +5943,9 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' @param VolumeId &#91;required&#93; The volume ID.
 #' @param Name The new name.
 #' @param MountPoint The new mount point.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

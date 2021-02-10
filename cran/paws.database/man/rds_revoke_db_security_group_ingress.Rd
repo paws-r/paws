@@ -31,6 +31,32 @@ acceptable value. For VPC DB security groups, \code{EC2SecurityGroupId} must
 be provided. Otherwise, EC2SecurityGroupOwnerId and either
 \code{EC2SecurityGroupName} or \code{EC2SecurityGroupId} must be provided.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSecurityGroup = list(
+    OwnerId = "string",
+    DBSecurityGroupName = "string",
+    DBSecurityGroupDescription = "string",
+    VpcId = "string",
+    EC2SecurityGroups = list(
+      list(
+        Status = "string",
+        EC2SecurityGroupName = "string",
+        EC2SecurityGroupId = "string",
+        EC2SecurityGroupOwnerId = "string"
+      )
+    ),
+    IPRanges = list(
+      list(
+        Status = "string",
+        CIDRIP = "string"
+      )
+    ),
+    DBSecurityGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Revokes ingress from a DBSecurityGroup for previously authorized IP
 ranges or EC2 or VPC Security Groups. Required parameters for this API

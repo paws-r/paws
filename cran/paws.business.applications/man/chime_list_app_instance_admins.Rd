@@ -14,6 +14,21 @@ chime_list_app_instance_admins(AppInstanceArn, MaxResults, NextToken)
 \item{NextToken}{The token returned from previous API requests until the number of
 administrators is reached.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceArn = "string",
+  AppInstanceAdmins = list(
+    list(
+      Admin = list(
+        Arn = "string",
+        Name = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the administrators in the app instance.
 }

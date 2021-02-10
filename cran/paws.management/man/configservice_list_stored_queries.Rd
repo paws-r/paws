@@ -12,6 +12,20 @@ request the next page of results in a paginated response.}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StoredQueryMetadata = list(
+    list(
+      QueryId = "string",
+      QueryArn = "string",
+      QueryName = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the stored queries for an AWS account in an AWS Region. The default
 is 100.

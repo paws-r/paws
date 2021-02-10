@@ -15,6 +15,15 @@ apigateway_update_request_validator(restApiId, requestValidatorId,
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  validateRequestBody = TRUE|FALSE,
+  validateRequestParameters = TRUE|FALSE
+)
+}
+}
 \description{
 Updates a RequestValidator of a given RestApi.
 }

@@ -10,6 +10,13 @@ storagegateway_notify_when_uploaded(FileShareARN)
 \arguments{
 \item{FileShareARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileShareARN = "string",
+  NotificationId = "string"
+)
+}
+}
 \description{
 Sends you notification through CloudWatch Events when all files written
 to your file share have been uploaded to Amazon S3.

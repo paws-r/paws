@@ -29,6 +29,14 @@ the request does not match the SHA256 tree hash of the final assembled
 archive as computed by Amazon S3 Glacier (Glacier), Glacier returns an
 error and the request fails.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  location = "string",
+  checksum = "string",
+  archiveId = "string"
+)
+}
+}
 \description{
 You call this operation to inform Amazon S3 Glacier (Glacier) that all
 the archive parts have been uploaded and that Glacier can now assemble
@@ -93,7 +101,7 @@ svc$complete_multipart_upload(
   accountId = "-",
   archiveSize = "3145728",
   checksum = "9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67",
-  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
   vaultName = "my-vault"
 )
 }

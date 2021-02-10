@@ -24,8 +24,8 @@ Valid values for a
 \code{\link[=costexplorer_get_usage_forecast]{get_usage_forecast}} call are the
 following:
 \itemize{
-\item USAGE\\_QUANTITY
-\item NORMALIZED\\_USAGE\\_AMOUNT
+\item USAGE_QUANTITY
+\item NORMALIZED_USAGE_AMOUNT
 }}
 
 \item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of
@@ -42,6 +42,26 @@ can request a prediction interval around the mean by specifying a
 confidence level. The higher the confidence level, the more confident
 Cost Explorer is about the actual value falling in the prediction
 interval. Higher confidence levels result in wider prediction intervals.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Total = list(
+    Amount = "string",
+    Unit = "string"
+  ),
+  ForecastResultsByTime = list(
+    list(
+      TimePeriod = list(
+        Start = "string",
+        End = "string"
+      ),
+      MeanValue = "string",
+      PredictionIntervalLowerBound = "string",
+      PredictionIntervalUpperBound = "string"
+    )
+  )
+)
+}
 }
 \description{
 Retrieves a forecast for how much Amazon Web Services predicts that you

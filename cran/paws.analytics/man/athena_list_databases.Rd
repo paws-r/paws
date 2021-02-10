@@ -16,6 +16,21 @@ previous page call.}
 
 \item{MaxResults}{Specifies the maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DatabaseList = list(
+    list(
+      Name = "string",
+      Description = "string",
+      Parameters = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the databases in the specified data catalog.
 }

@@ -9,6 +9,9 @@ licensemanager_delete_license_configuration(LicenseConfigurationArn)
 \arguments{
 \item{LicenseConfigurationArn}{[required] ID of the license configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified license configuration.
 

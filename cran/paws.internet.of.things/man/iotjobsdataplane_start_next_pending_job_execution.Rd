@@ -24,8 +24,28 @@ set to \code{TIMED_OUT}. Note that setting this timeout has no effect on that
 job execution timeout which may have been specified when the job was
 created (\code{CreateJob} using field \code{timeoutConfig}).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  execution = list(
+    jobId = "string",
+    thingName = "string",
+    status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+    statusDetails = list(
+      "string"
+    ),
+    queuedAt = 123,
+    startedAt = 123,
+    lastUpdatedAt = 123,
+    approximateSecondsBeforeTimedOut = 123,
+    versionNumber = 123,
+    executionNumber = 123,
+    jobDocument = "string"
+  )
+)
+}
+}
 \description{
-Gets and starts the next pending (status IN\\_PROGRESS or QUEUED) job
+Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
 execution for a thing.
 }
 \section{Request syntax}{

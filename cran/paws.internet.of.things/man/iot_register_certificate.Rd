@@ -16,6 +16,13 @@ iot_register_certificate(certificatePem, caCertificatePem, setAsActive,
 
 \item{status}{The status of the register certificate request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificateArn = "string",
+  certificateId = "string"
+)
+}
+}
 \description{
 Registers a device certificate with AWS IoT. If you have more than one
 CA certificate that has the same subject field, you must specify the CA

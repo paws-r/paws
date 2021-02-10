@@ -39,6 +39,12 @@ user-defined key-value pairs that consist of a required key string with
 a maximum of 128 characters and an optional value string with a maximum
 of 256 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotebookExecutionId = "string"
+)
+}
+}
 \description{
 Starts a notebook execution.
 }

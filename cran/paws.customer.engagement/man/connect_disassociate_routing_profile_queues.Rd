@@ -14,6 +14,9 @@ connect_disassociate_routing_profile_queues(InstanceId,
 
 \item{QueueReferences}{[required] The queues to disassociate from this routing profile.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates a set of queues from a routing profile.
 }

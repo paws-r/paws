@@ -13,6 +13,12 @@ securityhub_create_action_target(Name, Description, Id)
 
 \item{Id}{[required] The ID for the custom action target.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionTargetArn = "string"
+)
+}
+}
 \description{
 Creates a custom action target in Security Hub.
 

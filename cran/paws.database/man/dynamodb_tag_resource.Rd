@@ -12,6 +12,9 @@ This value is an Amazon Resource Name (ARN).}
 
 \item{Tags}{[required] The tags to be assigned to the Amazon DynamoDB resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Associate a set of tags with an Amazon DynamoDB resource. You can then
 activate these user-defined tags so that they appear on the Billing and

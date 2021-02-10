@@ -13,6 +13,9 @@ lexmodelbuildingservice_delete_bot_version(name, version)
 version of the bot. To delete the \verb{$LATEST} version, use the
 \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a specific version of a bot. To delete all versions of a bot,
 use the \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation.

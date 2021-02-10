@@ -10,6 +10,9 @@ transfer_stop_server(ServerId)
 \arguments{
 \item{ServerId}{[required] A system-assigned unique identifier for a server that you stopped.}
 }
+\value{
+An empty list.
+}
 \description{
 Changes the state of a file transfer protocol-enabled server from
 \code{ONLINE} to \code{OFFLINE}. An \code{OFFLINE} server cannot accept and process

@@ -11,6 +11,12 @@ opsworks_register_volume(Ec2VolumeId, StackId)
 
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeId = "string"
+)
+}
+}
 \description{
 Registers an Amazon EBS volume with a specified stack. A volume can be
 registered with only one stack at a time. If the volume is already

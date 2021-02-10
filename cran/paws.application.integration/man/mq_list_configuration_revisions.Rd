@@ -9,9 +9,28 @@ mq_list_configuration_revisions(ConfigurationId, MaxResults, NextToken)
 \arguments{
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 
-\item{MaxResults}{The maximum number of configurations that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.}
+\item{MaxResults}{The maximum number of configurations that Amazon MQ can return per page
+(20 by default). This value must be an integer from 5 to 100.}
 
-\item{NextToken}{The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.}
+\item{NextToken}{The token that specifies the next page of results Amazon MQ should
+return. To request the first page, leave nextToken empty.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigurationId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  Revisions = list(
+    list(
+      Created = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string",
+      Revision = 123
+    )
+  )
+)
+}
 }
 \description{
 Returns a list of all revisions for the specified configuration.

@@ -31,6 +31,44 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackResourceDrifts = list(
+    list(
+      StackId = "string",
+      LogicalResourceId = "string",
+      PhysicalResourceId = "string",
+      PhysicalResourceIdContext = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      ResourceType = "string",
+      ExpectedProperties = "string",
+      ActualProperties = "string",
+      PropertyDifferences = list(
+        list(
+          PropertyPath = "string",
+          ExpectedValue = "string",
+          ActualValue = "string",
+          DifferenceType = "ADD"|"REMOVE"|"NOT_EQUAL"
+        )
+      ),
+      StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModuleInfo = list(
+        TypeHierarchy = "string",
+        LogicalIdHierarchy = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns drift information for the resources that have been checked for
 drift in the specified stack. This includes actual and expected

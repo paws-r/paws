@@ -14,6 +14,27 @@ chime_create_sip_media_application(AwsRegion, Name, Endpoints)
 \item{Endpoints}{[required] List of endpoints (Lambda Amazon Resource Names) specified for the SIP
 media application. Currently, only one endpoint is supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipMediaApplication = list(
+    SipMediaApplicationId = "string",
+    AwsRegion = "string",
+    Name = "string",
+    Endpoints = list(
+      list(
+        LambdaArn = "string"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a SIP media application.
 }

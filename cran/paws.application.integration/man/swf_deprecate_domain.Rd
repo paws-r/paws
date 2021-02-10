@@ -9,6 +9,9 @@ swf_deprecate_domain(name)
 \arguments{
 \item{name}{[required] The name of the domain to deprecate.}
 }
+\value{
+An empty list.
+}
 \description{
 Deprecates the specified domain. After a domain has been deprecated it
 cannot be used to create new workflow executions or register new types.

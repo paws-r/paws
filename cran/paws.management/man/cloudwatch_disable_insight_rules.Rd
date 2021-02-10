@@ -11,6 +11,19 @@ cloudwatch_disable_insight_rules(RuleNames)
 of your rules, use
 \code{\link[=cloudwatch_describe_insight_rules]{describe_insight_rules}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Failures = list(
+    list(
+      FailureResource = "string",
+      ExceptionType = "string",
+      FailureCode = "string",
+      FailureDescription = "string"
+    )
+  )
+)
+}
+}
 \description{
 Disables the specified Contributor Insights rules. When rules are
 disabled, they do not analyze log groups and do not incur costs.

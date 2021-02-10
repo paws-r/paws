@@ -16,6 +16,9 @@ administrator credentials to access the API.}
 
 \item{VersionId}{[required] The ID of the version.}
 }
+\value{
+An empty list.
+}
 \description{
 Aborts the upload of the specified document version that was previously
 initiated by

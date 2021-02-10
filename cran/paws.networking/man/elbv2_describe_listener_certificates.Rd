@@ -15,6 +15,18 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificates = list(
+    list(
+      CertificateArn = "string",
+      IsDefault = TRUE|FALSE
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the default certificate and the certificate list for the
 specified HTTPS or TLS listener.

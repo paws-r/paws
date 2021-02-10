@@ -32,9 +32,9 @@ WebSocket APIs.}
 
 \item{DisableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
 execute-api endpoint. By default, clients can invoke your API with the
-default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
-To require that clients use a custom domain name to invoke your API,
-disable the default endpoint.}
+default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
+endpoint. To require that clients use a custom domain name to invoke
+your API, disable the default endpoint.}
 
 \item{Name}{[required] The name of the API.}
 
@@ -48,9 +48,9 @@ the API, and you can update the route keys of additional routes.
 Supported only for HTTP APIs.}
 
 \item{RouteSelectionExpression}{The route selection expression for the API. For HTTP APIs, the
-routeSelectionExpression must be $\{request.method\} $\{request.path\}. If
-not provided, this will be the default for HTTP APIs. This property is
-required for WebSocket APIs.}
+routeSelectionExpression must be $\{request.method\}
+$\{request.path\}. If not provided, this will be the default for HTTP
+APIs. This property is required for WebSocket APIs.}
 
 \item{Tags}{The collection of tags. Each tag element is associated with a given
 resource.}
@@ -59,10 +59,54 @@ resource.}
 an integration, a default catch-all route, and a default stage which is
 configured to automatically deploy changes. For HTTP integrations,
 specify a fully qualified URL. For Lambda integrations, specify a
-function ARN. The type of the integration will be HTTP\\_PROXY or
-AWS\\_PROXY, respectively. Supported only for HTTP APIs.}
+function ARN. The type of the integration will be HTTP_PROXY or
+AWS_PROXY, respectively. Supported only for HTTP APIs.}
 
 \item{Version}{A version identifier for the API.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiEndpoint = "string",
+  ApiGatewayManaged = TRUE|FALSE,
+  ApiId = "string",
+  ApiKeySelectionExpression = "string",
+  CorsConfiguration = list(
+    AllowCredentials = TRUE|FALSE,
+    AllowHeaders = list(
+      "string"
+    ),
+    AllowMethods = list(
+      "string"
+    ),
+    AllowOrigins = list(
+      "string"
+    ),
+    ExposeHeaders = list(
+      "string"
+    ),
+    MaxAge = 123
+  ),
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Description = "string",
+  DisableSchemaValidation = TRUE|FALSE,
+  DisableExecuteApiEndpoint = TRUE|FALSE,
+  ImportInfo = list(
+    "string"
+  ),
+  Name = "string",
+  ProtocolType = "WEBSOCKET"|"HTTP",
+  RouteSelectionExpression = "string",
+  Tags = list(
+    "string"
+  ),
+  Version = "string",
+  Warnings = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Creates an Api resource.

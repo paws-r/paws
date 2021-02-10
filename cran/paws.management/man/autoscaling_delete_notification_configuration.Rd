@@ -13,6 +13,9 @@ autoscaling_delete_notification_configuration(AutoScalingGroupName,
 \item{TopicARN}{[required] The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
 (Amazon SNS) topic.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified notification.
 }

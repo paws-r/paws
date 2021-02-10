@@ -20,6 +20,104 @@ generate a graph.}
 
 \item{NextToken}{Pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Services = list(
+    list(
+      ReferenceId = 123,
+      Name = "string",
+      Names = list(
+        "string"
+      ),
+      Root = TRUE|FALSE,
+      AccountId = "string",
+      Type = "string",
+      State = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Edges = list(
+        list(
+          ReferenceId = 123,
+          StartTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          EndTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          SummaryStatistics = list(
+            OkCount = 123,
+            ErrorStatistics = list(
+              ThrottleCount = 123,
+              OtherCount = 123,
+              TotalCount = 123
+            ),
+            FaultStatistics = list(
+              OtherCount = 123,
+              TotalCount = 123
+            ),
+            TotalCount = 123,
+            TotalResponseTime = 123.0
+          ),
+          ResponseTimeHistogram = list(
+            list(
+              Value = 123.0,
+              Count = 123
+            )
+          ),
+          Aliases = list(
+            list(
+              Name = "string",
+              Names = list(
+                "string"
+              ),
+              Type = "string"
+            )
+          )
+        )
+      ),
+      SummaryStatistics = list(
+        OkCount = 123,
+        ErrorStatistics = list(
+          ThrottleCount = 123,
+          OtherCount = 123,
+          TotalCount = 123
+        ),
+        FaultStatistics = list(
+          OtherCount = 123,
+          TotalCount = 123
+        ),
+        TotalCount = 123,
+        TotalResponseTime = 123.0
+      ),
+      DurationHistogram = list(
+        list(
+          Value = 123.0,
+          Count = 123
+        )
+      ),
+      ResponseTimeHistogram = list(
+        list(
+          Value = 123.0,
+          Count = 123
+        )
+      )
+    )
+  ),
+  ContainsOldGroupVersions = TRUE|FALSE,
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a document that describes services that process incoming
 requests, and downstream services that they call as a result. Root

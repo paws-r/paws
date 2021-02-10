@@ -8,20 +8,38 @@ kafka_create_configuration(Description, KafkaVersions, Name,
   ServerProperties)
 }
 \arguments{
-\item{Description}{<p>The description of the configuration.</p>}
+\item{Description}{The description of the configuration.}
 
-\item{KafkaVersions}{<p>The versions of Apache Kafka with which you can use this MSK configuration.</p>}
+\item{KafkaVersions}{The versions of Apache Kafka with which you can use this MSK
+configuration.}
 
-\item{Name}{[required]
-<p>The name of the configuration.</p>}
+\item{Name}{[required] The name of the configuration.}
 
-\item{ServerProperties}{[required]
-<p>Contents of the <filename>server.properties</filename> file. When using the API, you must ensure that the contents of the file are base64 encoded.
-When using the AWS Management Console, the SDK, or the AWS CLI, the contents of <filename>server.properties</filename> can be in plaintext.</p>}
+\item{ServerProperties}{[required] Contents of the server.properties file. When using the API, you must
+ensure that the contents of the file are base64 encoded. When using the
+AWS Management Console, the SDK, or the AWS CLI, the contents of
+server.properties can be in plaintext.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LatestRevision = list(
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Description = "string",
+    Revision = 123
+  ),
+  Name = "string",
+  State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
+)
+}
 }
 \description{
-\preformatted{        <p>Creates a new MSK configuration.</p>
-}
+Creates a new MSK configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$create_configuration(

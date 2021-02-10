@@ -14,6 +14,9 @@ whenever the security profile is updated. If you specify a value that is
 different from the actual version, a \code{VersionConflictException} is
 thrown.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a Device Defender security profile.
 }

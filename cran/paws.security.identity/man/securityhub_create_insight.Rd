@@ -18,6 +18,12 @@ attribute identifies the type of item that the insight applies to. For
 example, if an insight is grouped by resource identifier, then the
 insight produces a list of resource identifiers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InsightArn = "string"
+)
+}
+}
 \description{
 Creates a custom insight in Security Hub. An insight is a consolidation
 of findings that relate to a security issue that requires attention or

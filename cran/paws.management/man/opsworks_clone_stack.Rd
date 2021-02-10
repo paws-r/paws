@@ -131,7 +131,7 @@ this parameter is required, see the \code{VpcId} parameter description.}
 the corresponding default stack configuration JSON values. The string
 should be in the following format:
 
-\verb{"\\\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\\\}"}
+\verb{"\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\}"}
 
 For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}}
 
@@ -209,6 +209,12 @@ AgentVersion cannot be set to Chef 12.2.
 
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  StackId = "string"
+)
+}
 }
 \description{
 Creates a clone of a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html}{Clone a Stack}.

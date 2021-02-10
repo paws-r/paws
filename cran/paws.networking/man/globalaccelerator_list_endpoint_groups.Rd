@@ -16,6 +16,39 @@ call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointGroups = list(
+    list(
+      EndpointGroupArn = "string",
+      EndpointGroupRegion = "string",
+      EndpointDescriptions = list(
+        list(
+          EndpointId = "string",
+          Weight = 123,
+          HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
+          HealthReason = "string",
+          ClientIPPreservationEnabled = TRUE|FALSE
+        )
+      ),
+      TrafficDialPercentage = 123.0,
+      HealthCheckPort = 123,
+      HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+      HealthCheckPath = "string",
+      HealthCheckIntervalSeconds = 123,
+      ThresholdCount = 123,
+      PortOverrides = list(
+        list(
+          ListenerPort = 123,
+          EndpointPort = 123
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the endpoint groups that are associated with a listener.
 }

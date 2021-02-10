@@ -31,6 +31,12 @@ our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
 technical contact.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 This operation updates the specified domain contact's privacy setting.
 When privacy protection is enabled, contact information such as email

@@ -38,6 +38,19 @@ require MFA authentication.
 The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Credentials = list(
+    AccessKeyId = "string",
+    SecretAccessKey = "string",
+    SessionToken = "string",
+    Expiration = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns a set of temporary credentials for an AWS account or IAM user.
 The credentials consist of an access key ID, a secret access key, and a

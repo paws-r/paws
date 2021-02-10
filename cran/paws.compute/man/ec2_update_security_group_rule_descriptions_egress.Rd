@@ -23,6 +23,12 @@ the security group ID or the security group name in the request.}
 
 \item{IpPermissions}{[required] The IP permissions for the security group rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 [VPC only] Updates the description of an egress (outbound) security
 group rule. You can replace an existing description, or add a

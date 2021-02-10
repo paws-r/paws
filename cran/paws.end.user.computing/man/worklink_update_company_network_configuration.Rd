@@ -17,6 +17,9 @@ containers.}
 
 \item{SecurityGroupIds}{[required] The security groups associated with access to the provided subnets.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the company network configuration for the fleet.
 }

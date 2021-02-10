@@ -18,6 +18,29 @@ response.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Products = list(
+    list(
+      ProductArn = "string",
+      ProductName = "string",
+      CompanyName = "string",
+      Description = "string",
+      Categories = list(
+        "string"
+      ),
+      IntegrationTypes = list(
+        "SEND_FINDINGS_TO_SECURITY_HUB"|"RECEIVE_FINDINGS_FROM_SECURITY_HUB"
+      ),
+      MarketplaceUrl = "string",
+      ActivationUrl = "string",
+      ProductSubscriptionResourcePolicy = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns information about the available products that you can subscribe
 to and integrate with Security Hub in order to consolidate findings.

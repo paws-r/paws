@@ -29,6 +29,41 @@ If the parameters field is not provided, no additional parameters are
 passed and default values will be used for any special parameters such
 as \code{TARGET}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecordDetail = list(
+    RecordId = "string",
+    ProvisionedProductName = "string",
+    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProvisionedProductType = "string",
+    RecordType = "string",
+    ProvisionedProductId = "string",
+    ProductId = "string",
+    ProvisioningArtifactId = "string",
+    PathId = "string",
+    RecordErrors = list(
+      list(
+        Code = "string",
+        Description = "string"
+      )
+    ),
+    RecordTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    LaunchRoleArn = "string"
+  )
+)
+}
+}
 \description{
 Executes a self-service action against a provisioned product.
 }

@@ -18,6 +18,34 @@ eks_describe_update(name, updateId, nodegroupName, addonName)
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
 .}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  update = list(
+    id = "string",
+    status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+    type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+    params = list(
+      list(
+        type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+        value = "string"
+      )
+    ),
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    errors = list(
+      list(
+        errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+        errorMessage = "string",
+        resourceIds = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns descriptive information about an update against your Amazon EKS
 cluster or associated managed node group.

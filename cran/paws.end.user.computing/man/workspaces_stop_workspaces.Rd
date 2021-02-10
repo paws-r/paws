@@ -9,6 +9,18 @@ workspaces_stop_workspaces(StopWorkspaceRequests)
 \arguments{
 \item{StopWorkspaceRequests}{[required] The WorkSpaces to stop. You can specify up to 25 WorkSpaces.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedRequests = list(
+    list(
+      WorkspaceId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Stops the specified WorkSpaces.
 

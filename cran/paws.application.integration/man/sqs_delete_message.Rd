@@ -13,6 +13,9 @@ Queue URLs and names are case-sensitive.}
 
 \item{ReceiptHandle}{[required] The receipt handle associated with the message to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified message from the specified queue. To select the
 message to delete, use the \code{ReceiptHandle} of the message (\emph{not} the

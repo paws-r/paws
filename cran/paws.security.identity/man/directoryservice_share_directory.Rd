@@ -25,6 +25,12 @@ directory should be shared within your AWS organization
 (\code{ORGANIZATIONS}) or with any AWS account by sending a directory sharing
 request (\code{HANDSHAKE}).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SharedDirectoryId = "string"
+)
+}
+}
 \description{
 Shares a specified directory (\code{DirectoryId}) in your AWS account
 (directory owner) with another AWS account (directory consumer). With

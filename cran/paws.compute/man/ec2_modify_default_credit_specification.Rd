@@ -20,6 +20,15 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Valid Values: \code{standard} | \code{unlimited}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceFamilyCreditSpecification = list(
+    InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
+    CpuCredits = "string"
+  )
+)
+}
+}
 \description{
 Modifies the default credit option for CPU usage of burstable
 performance instances. The default credit option is set at the account

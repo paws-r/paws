@@ -17,6 +17,18 @@ resource group.
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupQuery = list(
+    GroupName = "string",
+    ResourceQuery = list(
+      Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+      Query = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the resource query of a group. For more information about
 resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.

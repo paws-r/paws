@@ -16,6 +16,19 @@ disassociating from the specified hosted zone.}
 
 \item{Comment}{\emph{Optional:} A comment about the disassociation request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 Amazon Route 53 private hosted zone. Note the following:

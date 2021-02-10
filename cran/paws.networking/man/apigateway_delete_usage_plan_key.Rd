@@ -14,6 +14,9 @@ plan customer.}
 
 \item{keyId}{[required] [Required] The Id of the UsagePlanKey resource to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a usage plan key and remove the underlying API key from the
 associated usage plan.

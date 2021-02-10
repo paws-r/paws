@@ -53,6 +53,45 @@ in the response is \code{true}, and the values of the \code{NextRecordName} and
 \code{NextRecordType} elements in the response identify the first resource
 record set in the next group of \code{maxitems} resource record sets.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceRecordSets = list(
+    list(
+      Name = "string",
+      Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+      SetIdentifier = "string",
+      Weight = 123,
+      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
+      GeoLocation = list(
+        ContinentCode = "string",
+        CountryCode = "string",
+        SubdivisionCode = "string"
+      ),
+      Failover = "PRIMARY"|"SECONDARY",
+      MultiValueAnswer = TRUE|FALSE,
+      TTL = 123,
+      ResourceRecords = list(
+        list(
+          Value = "string"
+        )
+      ),
+      AliasTarget = list(
+        HostedZoneId = "string",
+        DNSName = "string",
+        EvaluateTargetHealth = TRUE|FALSE
+      ),
+      HealthCheckId = "string",
+      TrafficPolicyInstanceId = "string"
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  NextRecordName = "string",
+  NextRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+  NextRecordIdentifier = "string",
+  MaxItems = "string"
+)
+}
+}
 \description{
 Lists the resource record sets in a specified hosted zone.
 

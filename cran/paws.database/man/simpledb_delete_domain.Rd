@@ -9,6 +9,9 @@ simpledb_delete_domain(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 The \code{\link[=simpledb_delete_domain]{delete_domain}} operation deletes a
 domain. Any items (and their attributes) in the domain are deleted as

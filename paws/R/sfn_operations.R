@@ -38,16 +38,16 @@ NULL
 #' 
 #' -   white space
 #' 
-#' -   brackets `< > \{ \} \\[ \\]`
+#' -   brackets `< > { } [ ]`
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ & , ; : / ``
+#' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
-#' 0-9, A-Z, a-z, - and \\_.
+#' 0-9, A-Z, a-z, - and _.
 #' @param tags The list of tags to add to a resource.
 #' 
 #' An array of key-value pairs. For more information, see [Using Cost
@@ -59,6 +59,17 @@ NULL
 #' 
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   activityArn = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -128,16 +139,16 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' 
 #' -   white space
 #' 
-#' -   brackets `< > \{ \} \\[ \\]`
+#' -   brackets `< > { } [ ]`
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ & , ; : / ``
+#' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
-#' 0-9, A-Z, a-z, - and \\_.
+#' 0-9, A-Z, a-z, - and _.
 #' @param definition &#91;required&#93; The Amazon States Language definition of the state machine. See [Amazon
 #' States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
@@ -164,6 +175,17 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
 #' @param tracingConfiguration Selects whether AWS X-Ray tracing is enabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachineArn = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -225,6 +247,9 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
 #'
 #' @param activityArn &#91;required&#93; The Amazon Resource Name (ARN) of the activity to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_activity(
@@ -267,6 +292,9 @@ sfn_delete_activity <- function(activityArn) {
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_state_machine(
@@ -306,6 +334,18 @@ sfn_delete_state_machine <- function(stateMachineArn) {
 #' sfn_describe_activity(activityArn)
 #'
 #' @param activityArn &#91;required&#93; The Amazon Resource Name (ARN) of the activity to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   activityArn = "string",
+#'   name = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -349,6 +389,32 @@ sfn_describe_activity <- function(activityArn) {
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionArn = "string",
+#'   stateMachineArn = "string",
+#'   name = "string",
+#'   status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#'   startDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stopDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   input = "string",
+#'   inputDetails = list(
+#'     included = TRUE|FALSE
+#'   ),
+#'   output = "string",
+#'   outputDetails = list(
+#'     included = TRUE|FALSE
+#'   ),
+#'   traceHeader = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_execution(
@@ -388,6 +454,36 @@ sfn_describe_execution <- function(executionArn) {
 #' sfn_describe_state_machine(stateMachineArn)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachineArn = "string",
+#'   name = "string",
+#'   status = "ACTIVE"|"DELETING",
+#'   definition = "string",
+#'   roleArn = "string",
+#'   type = "STANDARD"|"EXPRESS",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   loggingConfiguration = list(
+#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
+#'     includeExecutionData = TRUE|FALSE,
+#'     destinations = list(
+#'       list(
+#'         cloudWatchLogsLogGroup = list(
+#'           logGroupArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tracingConfiguration = list(
+#'     enabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -431,6 +527,34 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution you want state machine
 #' information for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachineArn = "string",
+#'   name = "string",
+#'   definition = "string",
+#'   roleArn = "string",
+#'   updateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   loggingConfiguration = list(
+#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
+#'     includeExecutionData = TRUE|FALSE,
+#'     destinations = list(
+#'       list(
+#'         cloudWatchLogsLogGroup = list(
+#'           logGroupArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tracingConfiguration = list(
+#'     enabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -490,6 +614,15 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' @param workerName You can provide an arbitrary name in order to identify the worker that
 #' the task is assigned to. This name is used when it is logged in the
 #' execution history.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskToken = "string",
+#'   input = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -557,6 +690,194 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #' @param includeExecutionData You can select whether execution data (input or output of a history
 #' event) is returned. The default is `true`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited",
+#'       id = 123,
+#'       previousEventId = 123,
+#'       activityFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       activityScheduleFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       activityScheduledEventDetails = list(
+#'         resource = "string",
+#'         input = "string",
+#'         inputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         ),
+#'         timeoutInSeconds = 123,
+#'         heartbeatInSeconds = 123
+#'       ),
+#'       activityStartedEventDetails = list(
+#'         workerName = "string"
+#'       ),
+#'       activitySucceededEventDetails = list(
+#'         output = "string",
+#'         outputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       activityTimedOutEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       taskFailedEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string",
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       taskScheduledEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string",
+#'         region = "string",
+#'         parameters = "string",
+#'         timeoutInSeconds = 123,
+#'         heartbeatInSeconds = 123
+#'       ),
+#'       taskStartFailedEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string",
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       taskStartedEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string"
+#'       ),
+#'       taskSubmitFailedEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string",
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       taskSubmittedEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string",
+#'         output = "string",
+#'         outputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       taskSucceededEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string",
+#'         output = "string",
+#'         outputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       taskTimedOutEventDetails = list(
+#'         resourceType = "string",
+#'         resource = "string",
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       executionFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       executionStartedEventDetails = list(
+#'         input = "string",
+#'         inputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         ),
+#'         roleArn = "string"
+#'       ),
+#'       executionSucceededEventDetails = list(
+#'         output = "string",
+#'         outputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       executionAbortedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       executionTimedOutEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       mapStateStartedEventDetails = list(
+#'         length = 123
+#'       ),
+#'       mapIterationStartedEventDetails = list(
+#'         name = "string",
+#'         index = 123
+#'       ),
+#'       mapIterationSucceededEventDetails = list(
+#'         name = "string",
+#'         index = 123
+#'       ),
+#'       mapIterationFailedEventDetails = list(
+#'         name = "string",
+#'         index = 123
+#'       ),
+#'       mapIterationAbortedEventDetails = list(
+#'         name = "string",
+#'         index = 123
+#'       ),
+#'       lambdaFunctionFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       lambdaFunctionScheduleFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       lambdaFunctionScheduledEventDetails = list(
+#'         resource = "string",
+#'         input = "string",
+#'         inputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         ),
+#'         timeoutInSeconds = 123
+#'       ),
+#'       lambdaFunctionStartFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       lambdaFunctionSucceededEventDetails = list(
+#'         output = "string",
+#'         outputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       lambdaFunctionTimedOutEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
+#'       ),
+#'       stateEnteredEventDetails = list(
+#'         name = "string",
+#'         input = "string",
+#'         inputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         )
+#'       ),
+#'       stateExitedEventDetails = list(
+#'         name = "string",
+#'         output = "string",
+#'         outputDetails = list(
+#'           truncated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_execution_history(
@@ -618,6 +939,23 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an *HTTP 400 InvalidToken*
 #' error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   activities = list(
+#'     list(
+#'       activityArn = "string",
+#'       name = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -687,6 +1025,28 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' an expired pagination token will return an *HTTP 400 InvalidToken*
 #' error.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executions = list(
+#'     list(
+#'       executionArn = "string",
+#'       stateMachineArn = "string",
+#'       name = "string",
+#'       status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#'       startDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_executions(
@@ -748,6 +1108,24 @@ sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults
 #' an expired pagination token will return an *HTTP 400 InvalidToken*
 #' error.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachines = list(
+#'     list(
+#'       stateMachineArn = "string",
+#'       name = "string",
+#'       type = "STANDARD"|"EXPRESS",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_state_machines(
@@ -789,6 +1167,19 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or
 #' activity.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -835,6 +1226,9 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #' GetActivityTaskOutput$taskToken.
 #' @param error The error code of the failure.
 #' @param cause A more detailed explanation of the cause of the failure.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -900,6 +1294,9 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' when a workflow enters a task state. See
 #' GetActivityTaskOutput$taskToken.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_task_heartbeat(
@@ -946,6 +1343,9 @@ sfn_send_task_heartbeat <- function(taskToken) {
 #' GetActivityTaskOutput$taskToken.
 #' @param output &#91;required&#93; The JSON output of the task. Length constraints apply to the payload
 #' size, and are expressed as bytes in UTF-8 encoding.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1001,28 +1401,39 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' -   white space
 #' 
-#' -   brackets `< > \{ \} \\[ \\]`
+#' -   brackets `< > { } [ ]`
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ & , ; : / ``
+#' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
-#' 0-9, A-Z, a-z, - and \\_.
+#' 0-9, A-Z, a-z, - and _.
 #' @param input The string that contains the JSON input data for the execution, for
 #' example:
 #' 
-#' `"input": "\{\"first_name\" : \"test\"\}"`
+#' `"input": "{\"first_name\" : \"test\"}"`
 #' 
 #' If you don't include any JSON input data, you still must include the two
-#' braces, for example: `"input": "\{\}"`
+#' braces, for example: `"input": "{}"`
 #' 
 #' Length constraints apply to the payload size, and are expressed as bytes
 #' in UTF-8 encoding.
 #' @param traceHeader Passes the AWS X-Ray trace header. The trace header can also be passed
 #' in the request payload.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionArn = "string",
+#'   startDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1067,15 +1478,47 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' @param input The string that contains the JSON input data for the execution, for
 #' example:
 #' 
-#' `"input": "\{\"first_name\" : \"test\"\}"`
+#' `"input": "{\"first_name\" : \"test\"}"`
 #' 
 #' If you don't include any JSON input data, you still must include the two
-#' braces, for example: `"input": "\{\}"`
+#' braces, for example: `"input": "{}"`
 #' 
 #' Length constraints apply to the payload size, and are expressed as bytes
 #' in UTF-8 encoding.
 #' @param traceHeader Passes the AWS X-Ray trace header. The trace header can also be passed
 #' in the request payload.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionArn = "string",
+#'   stateMachineArn = "string",
+#'   name = "string",
+#'   startDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stopDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = "SUCCEEDED"|"FAILED"|"TIMED_OUT",
+#'   error = "string",
+#'   cause = "string",
+#'   input = "string",
+#'   inputDetails = list(
+#'     included = TRUE|FALSE
+#'   ),
+#'   output = "string",
+#'   outputDetails = list(
+#'     included = TRUE|FALSE
+#'   ),
+#'   traceHeader = "string",
+#'   billingDetails = list(
+#'     billedMemoryUsedInMB = 123,
+#'     billedDurationInMilliseconds = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1120,6 +1563,16 @@ sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL,
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to stop.
 #' @param error The error code of the failure.
 #' @param cause A more detailed explanation of the cause of the failure.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stopDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1175,6 +1628,9 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1219,6 +1675,9 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or
 #' activity.
 #' @param tagKeys &#91;required&#93; The list of tags to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1278,6 +1737,16 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' @param loggingConfiguration The `LoggingConfiguration` data type is used to set CloudWatch Logs
 #' options.
 #' @param tracingConfiguration Selects whether AWS X-Ray tracing is enabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   updateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -15,6 +15,19 @@ this, the default event bus is used.}
 
 \item{Targets}{[required] The targets to update or add to the rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedEntryCount = 123,
+  FailedEntries = list(
+    list(
+      TargetId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds the specified targets to the specified rule, or updates the targets
 if they are already associated with the rule.

@@ -16,8 +16,22 @@ greengrass_create_subscription_definition(AmznClientToken,
 
 \item{tags}{Tag(s) to add to the new resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  LastUpdatedTimestamp = "string",
+  LatestVersion = "string",
+  LatestVersionArn = "string",
+  Name = "string"
+)
+}
+}
 \description{
-Creates a subscription definition. You may provide the initial version of the subscription definition now or use ''CreateSubscriptionDefinitionVersion'' at a later time.
+Creates a subscription definition. You may provide the initial version
+of the subscription definition now or use
+''CreateSubscriptionDefinitionVersion'' at a later time.
 }
 \section{Request syntax}{
 \preformatted{svc$create_subscription_definition(

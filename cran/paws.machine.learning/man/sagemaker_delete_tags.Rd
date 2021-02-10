@@ -12,6 +12,9 @@ delete.}
 
 \item{TagKeys}{[required] An array or one or more tag keys to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified tags from an Amazon SageMaker resource.
 

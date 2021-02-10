@@ -9,6 +9,12 @@ sagemaker_delete_workteam(WorkteamName)
 \arguments{
 \item{WorkteamName}{[required] The name of the work team to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Success = TRUE|FALSE
+)
+}
+}
 \description{
 Deletes an existing work team. This operation can't be undone.
 }

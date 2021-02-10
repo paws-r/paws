@@ -11,6 +11,9 @@ lambda_tag_resource(Resource, Tags)
 
 \item{Tags}{[required] A list of tags to apply to the function.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}

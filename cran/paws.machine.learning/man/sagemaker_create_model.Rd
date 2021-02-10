@@ -37,6 +37,12 @@ and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protec
 \item{EnableNetworkIsolation}{Isolates the model container. No inbound or outbound network calls can
 be made to or from the model container.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelArn = "string"
+)
+}
+}
 \description{
 Creates a model in Amazon SageMaker. In the request, you name the model
 and describe a primary container. For the primary container, you specify
@@ -55,7 +61,7 @@ then deploys all of the containers that you defined for the model in the
 hosting environment.
 
 For an example that calls this method when deploying a model to Amazon
-SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
+SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
 
 To run a batch transform using your model, you start a job with the
 \code{\link[=sagemaker_create_transform_job]{create_transform_job}} API. Amazon

@@ -13,6 +13,15 @@ iot_list_targets_for_policy(policyName, marker, pageSize)
 
 \item{pageSize}{The maximum number of results to return at one time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  targets = list(
+    "string"
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 List targets for the specified policy.
 }

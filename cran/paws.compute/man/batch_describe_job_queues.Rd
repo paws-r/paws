@@ -33,6 +33,31 @@ This token should be treated as an opaque identifier that's only used to
 retrieve the next items in a list and not for other programmatic
 purposes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobQueues = list(
+    list(
+      jobQueueName = "string",
+      jobQueueArn = "string",
+      state = "ENABLED"|"DISABLED",
+      status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
+      statusReason = "string",
+      priority = 123,
+      computeEnvironmentOrder = list(
+        list(
+          order = 123,
+          computeEnvironment = "string"
+        )
+      ),
+      tags = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your job queues.
 }

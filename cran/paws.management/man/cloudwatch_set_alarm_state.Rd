@@ -22,6 +22,9 @@ For SNS or EC2 alarm actions, this is just informational. But for EC2
 Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling
 policy uses the information in this field to take the correct action.}
 }
+\value{
+An empty list.
+}
 \description{
 Temporarily sets the state of an alarm for testing purposes. When the
 updated state differs from the previous value, the action configured for

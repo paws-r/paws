@@ -11,6 +11,12 @@ ram_promote_resource_share_created_from_policy(resourceShareArn)
 \arguments{
 \item{resourceShareArn}{[required] The ARN of the resource share to promote.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  returnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Resource shares that were created by attaching a policy to a resource
 are visible only to the resource share owner, and the resource share

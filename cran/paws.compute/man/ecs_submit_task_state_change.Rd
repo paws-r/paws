@@ -28,6 +28,12 @@ hosts the task.}
 
 \item{executionStoppedAt}{The Unix timestamp for when the task execution stopped.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  acknowledgment = "string"
+)
+}
+}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent.

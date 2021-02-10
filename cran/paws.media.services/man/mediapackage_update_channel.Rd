@@ -11,6 +11,33 @@ mediapackage_update_channel(Description, Id)
 
 \item{Id}{[required] The ID of the Channel to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Description = "string",
+  EgressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  HlsIngest = list(
+    IngestEndpoints = list(
+      list(
+        Id = "string",
+        Password = "string",
+        Url = "string",
+        Username = "string"
+      )
+    )
+  ),
+  Id = "string",
+  IngressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Updates an existing Channel.
 }

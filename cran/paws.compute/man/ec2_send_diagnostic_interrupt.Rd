@@ -16,6 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+An empty list.
+}
 \description{
 Sends a diagnostic interrupt to the specified Amazon EC2 instance to
 trigger a \emph{kernel panic} (on Linux instances), or a \emph{blue screen}/\emph{stop

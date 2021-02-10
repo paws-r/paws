@@ -23,6 +23,30 @@ algorithm PS384. For more information, see \href{https://tools.ietf.org/html/rfc
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseArn = "string",
+  LicenseConsumptionToken = "string",
+  EntitlementsAllowed = list(
+    list(
+      Name = "string",
+      Value = "string",
+      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
+    )
+  ),
+  NodeId = "string",
+  SignedToken = "string",
+  IssuedAt = "string",
+  Expiration = "string",
+  CheckoutMetadata = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Checks out the specified license for offline use.
 }

@@ -17,6 +17,20 @@ subnet endpoint, the call fails.
 Separately, you set port ranges for endpoints. For more information, see
 \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html}{About endpoints for custom routing accelerators}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Listener = list(
+    ListenerArn = "string",
+    PortRanges = list(
+      list(
+        FromPort = 123,
+        ToPort = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Update a listener for a custom routing accelerator.
 }

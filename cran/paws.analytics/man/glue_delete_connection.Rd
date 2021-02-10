@@ -12,6 +12,9 @@ provided, the AWS account ID is used by default.}
 
 \item{ConnectionName}{[required] The name of the connection to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a connection from the Data Catalog.
 }

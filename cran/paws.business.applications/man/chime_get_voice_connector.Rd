@@ -10,6 +10,24 @@ chime_get_voice_connector(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceConnector = list(
+    VoiceConnectorId = "string",
+    AwsRegion = "us-east-1"|"us-west-2",
+    Name = "string",
+    OutboundHostName = "string",
+    RequireEncryption = TRUE|FALSE,
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves details for the specified Amazon Chime Voice Connector, such
 as timestamps, name, outbound host, and encryption requirements.

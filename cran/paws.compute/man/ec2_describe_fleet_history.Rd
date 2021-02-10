@@ -28,6 +28,32 @@ value.}
 \item{StartTime}{[required] The start date and time for the events, in UTC format (for example,
 \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HistoryRecords = list(
+    list(
+      EventInformation = list(
+        EventDescription = "string",
+        EventSubType = "string",
+        InstanceId = "string"
+      ),
+      EventType = "instance-change"|"fleet-change"|"service-error",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  LastEvaluatedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  NextToken = "string",
+  FleetId = "string",
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Describes the events for the specified EC2 Fleet during the specified
 time.

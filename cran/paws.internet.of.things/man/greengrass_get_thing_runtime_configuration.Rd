@@ -9,6 +9,17 @@ greengrass_get_thing_runtime_configuration(ThingName)
 \arguments{
 \item{ThingName}{[required] The thing name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuntimeConfiguration = list(
+    TelemetryConfiguration = list(
+      ConfigurationSyncStatus = "InSync"|"OutOfSync",
+      Telemetry = "On"|"Off"
+    )
+  )
+)
+}
+}
 \description{
 Get the runtime configuration of a thing.
 }

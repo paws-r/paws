@@ -9,6 +9,9 @@ personalize_delete_dataset(datasetArn)
 \arguments{
 \item{datasetArn}{[required] The Amazon Resource Name (ARN) of the dataset to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a dataset. You can't delete a dataset if an associated
 \code{DatasetImportJob} or \code{SolutionVersion} is in the CREATE PENDING or IN

@@ -30,6 +30,30 @@ filters must pass.}
 
 \item{buildType}{Specifies the type of build this webhook will trigger.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  webhook = list(
+    url = "string",
+    payloadUrl = "string",
+    secret = "string",
+    branchFilter = "string",
+    filterGroups = list(
+      list(
+        list(
+          type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
+          pattern = "string",
+          excludeMatchedPattern = TRUE|FALSE
+        )
+      )
+    ),
+    buildType = "BUILD"|"BUILD_BATCH",
+    lastModifiedSecret = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to

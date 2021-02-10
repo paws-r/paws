@@ -26,6 +26,12 @@ reprocess.
 If you use the \code{channelMessages} object, you must not specify a value
 for \code{startTime} and \code{endTime}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  reprocessingId = "string"
+)
+}
+}
 \description{
 Starts the reprocessing of raw message data through the pipeline.
 }

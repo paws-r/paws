@@ -9,6 +9,12 @@ ssm_register_default_patch_baseline(BaselineId)
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline that should be the default patch baseline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineId = "string"
+)
+}
+}
 \description{
 Defines the default patch baseline for the relevant operating system.
 

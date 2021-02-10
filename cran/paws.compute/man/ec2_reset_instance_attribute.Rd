@@ -20,6 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceId}{[required] The ID of the instance.}
 }
+\value{
+An empty list.
+}
 \description{
 Resets an attribute of an instance to its default value. To reset the
 \code{kernel} or \code{ramdisk}, the instance must be in a stopped state. To reset

@@ -10,6 +10,42 @@ comprehend_describe_key_phrases_detection_job(JobId)
 \item{JobId}{[required] The identifier that Amazon Comprehend generated for the job. The
 operation returns this identifier in its response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyPhrasesDetectionJobProperties = list(
+    JobId = "string",
+    JobName = "string",
+    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+    Message = "string",
+    SubmitTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    InputDataConfig = list(
+      S3Uri = "string",
+      InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
+    ),
+    OutputDataConfig = list(
+      S3Uri = "string",
+      KmsKeyId = "string"
+    ),
+    LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+    DataAccessRoleArn = "string",
+    VolumeKmsKeyId = "string",
+    VpcConfig = list(
+      SecurityGroupIds = list(
+        "string"
+      ),
+      Subnets = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the properties associated with a key phrases detection job. Use
 this operation to get the status of a detection job.

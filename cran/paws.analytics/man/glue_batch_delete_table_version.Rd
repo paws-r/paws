@@ -20,6 +20,21 @@ lowercase.}
 \item{VersionIds}{[required] A list of the IDs of versions to be deleted. A \code{VersionId} is a string
 representation of an integer. Each version is incremented by 1.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Errors = list(
+    list(
+      TableName = "string",
+      VersionId = "string",
+      ErrorDetail = list(
+        ErrorCode = "string",
+        ErrorMessage = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes a specified batch of versions of a table.
 }

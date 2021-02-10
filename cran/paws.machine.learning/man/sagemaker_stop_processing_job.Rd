@@ -9,6 +9,9 @@ sagemaker_stop_processing_job(ProcessingJobName)
 \arguments{
 \item{ProcessingJobName}{[required] The name of the processing job to stop.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a processing job.
 }

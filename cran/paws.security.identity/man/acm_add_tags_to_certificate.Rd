@@ -16,6 +16,9 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 
 \item{Tags}{[required] The key-value pair that defines the tag. The tag value is optional.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds one or more tags to an ACM certificate. Tags are labels that you
 can use to identify and organize your AWS resources. Each tag consists

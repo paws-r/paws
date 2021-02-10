@@ -12,6 +12,24 @@ you want to describe.}
 
 \item{Namespace}{[required] The namespace that you want to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Namespace = list(
+    Name = "string",
+    Arn = "string",
+    CapacityRegion = "string",
+    CreationStatus = "CREATED"|"CREATING"|"DELETING"|"RETRYABLE_FAILURE"|"NON_RETRYABLE_FAILURE",
+    IdentityStore = "QUICKSIGHT",
+    NamespaceError = list(
+      Type = "PERMISSION_DENIED"|"INTERNAL_SERVICE_ERROR",
+      Message = "string"
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes the current namespace.
 }

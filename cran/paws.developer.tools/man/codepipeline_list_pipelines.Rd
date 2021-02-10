@@ -10,6 +10,24 @@ codepipeline_list_pipelines(nextToken)
 \item{nextToken}{An identifier that was returned from the previous list pipelines call.
 It can be used to return the next set of pipelines in the list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelines = list(
+    list(
+      name = "string",
+      version = 123,
+      created = as.POSIXct(
+        "2015-01-01"
+      ),
+      updated = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a summary of all of the pipelines associated with your account.
 }

@@ -11,6 +11,12 @@ ssm_put_inventory(InstanceId, Items)
 
 \item{Items}{[required] The inventory items that you want to add or update on instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Message = "string"
+)
+}
+}
 \description{
 Bulk update custom inventory items on one more instance. The request
 adds an inventory item, if it doesn't already exist, or updates an

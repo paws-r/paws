@@ -17,6 +17,15 @@ assumed.}
 \item{lifecyclePolicyText}{The policy to be evaluated against. If you do not specify a policy, the
 current policy for the repository is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  lifecyclePolicyText = "string",
+  status = "IN_PROGRESS"|"COMPLETE"|"EXPIRED"|"FAILED"
+)
+}
+}
 \description{
 Starts a preview of a lifecycle policy for the specified repository.
 This allows you to see the results before associating the lifecycle

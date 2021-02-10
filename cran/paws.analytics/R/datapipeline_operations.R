@@ -25,6 +25,9 @@ NULL
 #' @param startTimestamp The date and time to resume the pipeline. By default, the pipeline
 #' resumes from the last completed execution.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$activate_pipeline(
@@ -71,6 +74,9 @@ datapipeline_activate_pipeline <- function(pipelineId, parameterValues = NULL, s
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param tags &#91;required&#93; The tags to add, as key/value pairs.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -140,6 +146,14 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #' Pipelines](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
 #' in the *AWS Data Pipeline Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_pipeline(
@@ -194,6 +208,9 @@ datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tag
 #' which sets the state of any running objects to `CANCELED`. If this value
 #' is false, the pipeline is deactivated after all running objects finish.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deactivate_pipeline(
@@ -239,6 +256,9 @@ datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
 #' datapipeline_delete_pipeline(pipelineId)
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -289,6 +309,28 @@ datapipeline_delete_pipeline <- function(pipelineId) {
 #' this value should be empty. As long as there are more results, continue
 #' to call [`describe_objects`][datapipeline_describe_objects] with the
 #' marker value from the previous call to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineObjects = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       fields = list(
+#'         list(
+#'           key = "string",
+#'           stringValue = "string",
+#'           refValue = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   marker = "string",
+#'   hasMoreResults = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -344,6 +386,33 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
 #' identifiers in a single call. To obtain pipeline IDs, call
 #' [`list_pipelines`][datapipeline_list_pipelines].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineDescriptionList = list(
+#'     list(
+#'       pipelineId = "string",
+#'       name = "string",
+#'       fields = list(
+#'         list(
+#'           key = "string",
+#'           stringValue = "string",
+#'           refValue = "string"
+#'         )
+#'       ),
+#'       description = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_pipelines(
@@ -388,6 +457,14 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param objectId &#91;required&#93; The ID of the object.
 #' @param expression &#91;required&#93; The expression to evaluate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evaluatedExpression = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -434,6 +511,43 @@ datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
 #' to `latest` (default) to use the last definition saved to the pipeline
 #' or `active` to use the last definition that was activated.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineObjects = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       fields = list(
+#'         list(
+#'           key = "string",
+#'           stringValue = "string",
+#'           refValue = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   parameterObjects = list(
+#'     list(
+#'       id = "string",
+#'       attributes = list(
+#'         list(
+#'           key = "string",
+#'           stringValue = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   parameterValues = list(
+#'     list(
+#'       id = "string",
+#'       stringValue = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_pipeline_definition(
@@ -476,6 +590,21 @@ datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
 #' this value should be empty. As long as there are more results, continue
 #' to call [`list_pipelines`][datapipeline_list_pipelines] with the marker
 #' value from the previous call to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineIdList = list(
+#'     list(
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   marker = "string",
+#'   hasMoreResults = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -548,6 +677,31 @@ datapipeline_list_pipelines <- function(marker = NULL) {
 #' the proper AWS Data Pipeline service charges are applied to your
 #' pipeline.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskObject = list(
+#'     taskId = "string",
+#'     pipelineId = "string",
+#'     attemptId = "string",
+#'     objects = list(
+#'       list(
+#'         id = "string",
+#'         name = "string",
+#'         fields = list(
+#'           list(
+#'             key = "string",
+#'             stringValue = "string",
+#'             refValue = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$poll_for_task(
@@ -614,6 +768,30 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
 #' existing pipeline definition.
 #' @param parameterObjects The parameter objects used with the pipeline.
 #' @param parameterValues The parameter values used with the pipeline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   validationErrors = list(
+#'     list(
+#'       id = "string",
+#'       errors = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   validationWarnings = list(
+#'     list(
+#'       id = "string",
+#'       warnings = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   errored = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -697,6 +875,18 @@ datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, pa
 #' [`query_objects`][datapipeline_query_objects] will return in a single
 #' call. The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   marker = "string",
+#'   hasMoreResults = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$query_objects(
@@ -750,6 +940,9 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param tagKeys &#91;required&#93; The keys of the tags to remove.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -809,6 +1002,14 @@ datapipeline_remove_tags <- function(pipelineId, tagKeys) {
 #' in the response for [`poll_for_task`][datapipeline_poll_for_task].
 #' @param fields Key-value pairs that define the properties of the
 #' ReportTaskProgressInput object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   canceled = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -872,6 +1073,14 @@ datapipeline_report_task_progress <- function(taskId, fields = NULL) {
 #' be an exact, case-sensitive, match.
 #' @param hostname The public DNS name of the task runner.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   terminate = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$report_task_runner_heartbeat(
@@ -921,6 +1130,9 @@ datapipeline_report_task_runner_heartbeat <- function(taskrunnerId, workerGroup 
 #' @param status &#91;required&#93; The status to be set on all the objects specified in `objectIds`. For
 #' components, use `PAUSE` or `RESUME`. For instances, use `TRY_CANCEL`,
 #' `RERUN`, or `MARK_FINISHED`.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -976,7 +1188,7 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
 #' @param errorId If an error occurred during the task, this value specifies the error
 #' code. This value is set on the physical attempt object. It is used to
 #' display error information to the user. It should not start with string
-#' "Service\\_" which is reserved by the system.
+#' "Service_" which is reserved by the system.
 #' @param errorMessage If an error occurred during the task, this value specifies a text
 #' description of the error. This value is set on the physical attempt
 #' object. It is used to display error information to the user. The web
@@ -985,6 +1197,9 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
 #' trace associated with the error. This value is set on the physical
 #' attempt object. It is used to display error information to the user. The
 #' web service does not parse this value.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1033,6 +1248,30 @@ datapipeline_set_task_status <- function(taskId, taskStatus, errorId = NULL, err
 #' pipeline.
 #' @param parameterObjects The parameter objects used with the pipeline.
 #' @param parameterValues The parameter values used with the pipeline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   validationErrors = list(
+#'     list(
+#'       id = "string",
+#'       errors = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   validationWarnings = list(
+#'     list(
+#'       id = "string",
+#'       warnings = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   errored = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -16,6 +16,9 @@ Valid principals are CertificateArn
 (arn:aws:iot:\emph{region}:\emph{accountId}:thinggroup/\emph{groupName}) and CognitoId
 (\emph{region}:\emph{id}).}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified policy from the specified certificate.
 

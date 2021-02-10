@@ -29,6 +29,45 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayConnectPeers = list(
+    list(
+      TransitGatewayAttachmentId = "string",
+      TransitGatewayConnectPeerId = "string",
+      State = "pending"|"available"|"deleting"|"deleted",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ConnectPeerConfiguration = list(
+        TransitGatewayAddress = "string",
+        PeerAddress = "string",
+        InsideCidrBlocks = list(
+          "string"
+        ),
+        Protocol = "gre",
+        BgpConfigurations = list(
+          list(
+            TransitGatewayAsn = 123,
+            PeerAsn = 123,
+            TransitGatewayAddress = "string",
+            PeerAddress = "string",
+            BgpStatus = "up"|"down"
+          )
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more Connect peers.
 }

@@ -23,6 +23,40 @@ value.}
 
 \item{NextToken}{A token that indicates the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImportSnapshotTasks = list(
+    list(
+      Description = "string",
+      ImportTaskId = "string",
+      SnapshotTaskDetail = list(
+        Description = "string",
+        DiskImageSize = 123.0,
+        Encrypted = TRUE|FALSE,
+        Format = "string",
+        KmsKeyId = "string",
+        Progress = "string",
+        SnapshotId = "string",
+        Status = "string",
+        StatusMessage = "string",
+        Url = "string",
+        UserBucket = list(
+          S3Bucket = "string",
+          S3Key = "string"
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes your import snapshot tasks.
 }

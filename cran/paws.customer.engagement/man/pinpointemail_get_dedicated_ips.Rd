@@ -20,6 +20,20 @@ position of the dedicated IP pool in the list of IP pools.}
 number you specified in this parameter, then the response includes a
 \code{NextToken} element, which you can use to obtain additional results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DedicatedIps = list(
+    list(
+      Ip = "string",
+      WarmupStatus = "IN_PROGRESS"|"DONE",
+      WarmupPercentage = 123,
+      PoolName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the dedicated IP addresses that are associated with your Amazon
 Pinpoint account.

@@ -17,6 +17,9 @@ update.}
 \item{DestinationProperties}{A \code{DestinationProperties} object that includes the \code{DestinationArn} and
 \code{KmsKeyArn} of the publishing destination.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates information about the publishing destination specified by the
 \code{destinationId}.

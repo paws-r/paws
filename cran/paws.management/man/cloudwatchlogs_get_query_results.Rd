@@ -9,6 +9,25 @@ cloudwatchlogs_get_query_results(queryId)
 \arguments{
 \item{queryId}{[required] The ID number of the query.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  results = list(
+    list(
+      list(
+        field = "string",
+        value = "string"
+      )
+    )
+  ),
+  statistics = list(
+    recordsMatched = 123.0,
+    recordsScanned = 123.0,
+    bytesScanned = 123.0
+  ),
+  status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"
+)
+}
+}
 \description{
 Returns the results from the specified query.
 

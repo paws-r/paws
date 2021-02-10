@@ -18,6 +18,9 @@ To remove more than one tag from the application, append the \code{TagKeys}
 parameter and argument for each additional tag to remove, separated by
 an ampersand.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove one or more tags (keys and values) from a specified application.
 }

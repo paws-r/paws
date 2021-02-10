@@ -17,6 +17,15 @@ parameter is true, the new policy version becomes the operative version
 (that is, the version that is in effect for the certificates to which
 the policy is attached).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policyArn = "string",
+  policyDocument = "string",
+  policyVersionId = "string",
+  isDefaultVersion = TRUE|FALSE
+)
+}
+}
 \description{
 Creates a new version of the specified AWS IoT policy. To update a
 policy, create a new policy version. A managed policy can have up to

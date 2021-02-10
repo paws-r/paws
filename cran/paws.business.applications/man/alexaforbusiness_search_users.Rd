@@ -27,6 +27,23 @@ EnrollmentStatus.}
 Supported sort keys are UserId, FirstName, LastName, Email, and
 EnrollmentStatus.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Users = list(
+    list(
+      UserArn = "string",
+      FirstName = "string",
+      LastName = "string",
+      Email = "string",
+      EnrollmentStatus = "INITIALIZED"|"PENDING"|"REGISTERED"|"DISASSOCIATING"|"DEREGISTERING",
+      EnrollmentId = "string"
+    )
+  ),
+  NextToken = "string",
+  TotalCount = 123
+)
+}
+}
 \description{
 Searches users and lists the ones that meet a set of filter and sort
 criteria.

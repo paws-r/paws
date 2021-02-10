@@ -9,6 +9,34 @@ iot_describe_stream(streamId)
 \arguments{
 \item{streamId}{[required] The stream ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  streamInfo = list(
+    streamId = "string",
+    streamArn = "string",
+    streamVersion = 123,
+    description = "string",
+    files = list(
+      list(
+        fileId = 123,
+        s3Location = list(
+          bucket = "string",
+          key = "string",
+          version = "string"
+        )
+      )
+    ),
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    roleArn = "string"
+  )
+)
+}
+}
 \description{
 Gets information about a stream.
 }

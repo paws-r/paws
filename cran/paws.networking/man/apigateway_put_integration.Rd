@@ -31,21 +31,21 @@ for either standard integration, where \code{connectionType} is not
 \code{VPC_LINK}. For a private HTTP integration, the URI is not used for
 routing.
 \item For \code{AWS} or \code{AWS_PROXY} integrations, the URI is of the form
-\verb{arn:aws:apigateway:\\\{region\\\}:\\\{subdomain.service|service\\\}:path|action/\\\{service_api\\\}}.
-Here, \verb{\\\{Region\\\}} is the API Gateway region (e.g., \code{us-east-1});
-\verb{\\\{service\\\}} is the name of the integrated AWS service (e.g., \code{s3});
-and \verb{\\\{subdomain\\\}} is a designated subdomain supported by certain AWS
+\code{arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}}.
+Here, \code{{Region}} is the API Gateway region (e.g., \code{us-east-1});
+\code{{service}} is the name of the integrated AWS service (e.g., \code{s3});
+and \code{{subdomain}} is a designated subdomain supported by certain AWS
 service for fast host-name lookup. \code{action} can be used for an AWS
 service action-based API, using an
-\verb{Action=\\\{name\\\}&\\\{p1\\\}=\\\{v1\\\}&p2=\\\{v2\\\}...} query string. The ensuing
-\verb{\\\{service_api\\\}} refers to a supported action \verb{\\\{name\\\}} plus any
+\verb{Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}...} query string. The ensuing
+\code{{service_api}} refers to a supported action \code{{name}} plus any
 required input parameters. Alternatively, \code{path} can be used for an
 AWS service path-based API. The ensuing \code{service_api} refers to the
 path to an AWS service resource, including the region of the
 integrated AWS service, if applicable. For example, for integration
 with the S3 API of \code{GetObject}, the \code{uri} can be either
-\verb{arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket=\\\{bucket\\\}&Key=\\\{key\\\}}
-or \verb{arn:aws:apigateway:us-west-2:s3:path/\\\{bucket\\\}/\\\{key\\\}}
+\code{arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}}
+or \code{arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}}
 }}
 
 \item{connectionType}{The type of the network connection to the integration endpoint. The
@@ -65,7 +65,7 @@ method request to the back end. The key is an integration request
 parameter name and the associated value is a method request parameter
 value or static value that must be enclosed within single quotes and
 pre-encoded as required by the back end. The method request parameter
-value must match the pattern of \verb{method.request.\\\{location\\\}.\\\{name\\\}},
+value must match the pattern of \verb{method.request.\{location\}.\{name\}},
 where \code{location} is \code{querystring}, \code{path}, or \code{header} and \code{name} must
 be a valid and unique method request parameter name.}
 
@@ -118,6 +118,46 @@ support payload pass-through.}
 29,000 milliseconds or 29 seconds.}
 
 \item{tlsConfig}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+  httpMethod = "string",
+  uri = "string",
+  connectionType = "INTERNET"|"VPC_LINK",
+  connectionId = "string",
+  credentials = "string",
+  requestParameters = list(
+    "string"
+  ),
+  requestTemplates = list(
+    "string"
+  ),
+  passthroughBehavior = "string",
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  timeoutInMillis = 123,
+  cacheNamespace = "string",
+  cacheKeyParameters = list(
+    "string"
+  ),
+  integrationResponses = list(
+    list(
+      statusCode = "string",
+      selectionPattern = "string",
+      responseParameters = list(
+        "string"
+      ),
+      responseTemplates = list(
+        "string"
+      ),
+      contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+    )
+  ),
+  tlsConfig = list(
+    insecureSkipVerification = TRUE|FALSE
+  )
+)
+}
 }
 \description{
 Sets up a method's integration.

@@ -14,6 +14,9 @@ format of a trail ARN is:
 
 \item{TagsList}{Specifies a list of tags to be removed.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes the specified tags from a trail.
 }

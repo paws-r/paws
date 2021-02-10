@@ -15,6 +15,9 @@ connect_update_quick_connect_config(InstanceId, QuickConnectId,
 
 \item{QuickConnectConfig}{[required] Information about the configuration settings for the quick connect.}
 }
+\value{
+An empty list.
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

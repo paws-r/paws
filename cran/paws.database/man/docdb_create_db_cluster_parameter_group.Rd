@@ -23,6 +23,17 @@ This value is stored as a lowercase string.}
 
 \item{Tags}{The tags to be assigned to the cluster parameter group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterParameterGroup = list(
+    DBClusterParameterGroupName = "string",
+    DBParameterGroupFamily = "string",
+    Description = "string",
+    DBClusterParameterGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new cluster parameter group.
 

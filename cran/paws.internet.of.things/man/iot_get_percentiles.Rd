@@ -19,6 +19,17 @@ iot_get_percentiles(indexName, queryString, aggregationField,
 
 \item{percents}{The percentile groups returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  percentiles = list(
+    list(
+      percent = 123.0,
+      value = 123.0
+    )
+  )
+)
+}
+}
 \description{
 Groups the aggregated values that match the query into percentile
 groupings. The default percentile groupings are: 1,5,25,50,75,95,99,

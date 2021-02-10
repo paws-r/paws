@@ -9,6 +9,9 @@ alexaforbusiness_delete_device(DeviceArn)
 \arguments{
 \item{DeviceArn}{[required] The ARN of the device for which to request details.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a device from Alexa For Business.
 }

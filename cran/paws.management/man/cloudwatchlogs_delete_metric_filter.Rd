@@ -11,6 +11,9 @@ cloudwatchlogs_delete_metric_filter(logGroupName, filterName)
 
 \item{filterName}{[required] The name of the metric filter.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified metric filter.
 }

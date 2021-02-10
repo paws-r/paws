@@ -49,7 +49,7 @@ creation and updating operations, and for the specified monitoring
 period afterwards.}
 
 \item{TimeoutInMinutes}{The amount of time that can pass before the stack status becomes
-CREATE\\_FAILED; if \code{DisableRollback} is not set or is set to \code{false},
+CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false},
 the stack will be rolled back.}
 
 \item{NotificationARNs}{The Simple Notification Service (SNS) topic ARNs to publish stack
@@ -153,7 +153,7 @@ CloudFormation uses a temporary session that is generated from your user
 credentials.}
 
 \item{OnFailure}{Determines what action will be taken if stack creation fails. This must
-be one of: DO\\_NOTHING, ROLLBACK, or DELETE. You can specify either
+be one of: DO_NOTHING, ROLLBACK, or DELETE. You can specify either
 \code{OnFailure} or \code{DisableRollback}, but not both.
 
 Default: \code{ROLLBACK}}
@@ -203,6 +203,12 @@ disabled on stacks by default.
 For \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks},
 termination protection is set on the root stack and cannot be changed
 directly on the nested stack.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  StackId = "string"
+)
+}
 }
 \description{
 Creates a stack as specified in the template. After the call completes

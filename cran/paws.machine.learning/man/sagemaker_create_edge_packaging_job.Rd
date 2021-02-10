@@ -29,6 +29,9 @@ runs on.}
 
 \item{Tags}{Creates tags for the packaging job.}
 }
+\value{
+An empty list.
+}
 \description{
 Starts a SageMaker Edge Manager model packaging job. Edge Manager will
 use the model artifacts from the Amazon Simple Storage Service bucket

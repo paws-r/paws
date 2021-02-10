@@ -25,6 +25,12 @@ One of the following (case insensitive) values:
 \item Users
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasetArn = "string"
+)
+}
+}
 \description{
 Creates an empty dataset and adds it to the specified dataset group. Use
 \code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}} to
@@ -43,9 +49,9 @@ Only the \code{Interactions} dataset is required in order to train a model
 
 A dataset can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
 FAILED
-\item DELETE PENDING > DELETE IN\\_PROGRESS
+\item DELETE PENDING > DELETE IN_PROGRESS
 }
 
 To get the status of the dataset, call

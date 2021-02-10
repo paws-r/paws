@@ -9,6 +9,12 @@ storagegateway_delete_snapshot_schedule(VolumeARN)
 \arguments{
 \item{VolumeARN}{[required] The volume which snapshot schedule to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string"
+)
+}
+}
 \description{
 Deletes a snapshot of a volume.
 
@@ -37,7 +43,7 @@ in the \emph{Amazon Elastic Compute Cloud API Reference}.
 \dontrun{
 # This action enables you to delete a snapshot schedule for a volume.
 svc$delete_snapshot_schedule(
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 )
 }
 

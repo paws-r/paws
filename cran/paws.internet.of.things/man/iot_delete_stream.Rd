@@ -9,6 +9,9 @@ iot_delete_stream(streamId)
 \arguments{
 \item{streamId}{[required] The stream ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a stream.
 }

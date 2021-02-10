@@ -19,6 +19,43 @@ additional results.}
 
 \item{queryVersion}{The query version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  things = list(
+    list(
+      thingName = "string",
+      thingId = "string",
+      thingTypeName = "string",
+      thingGroupNames = list(
+        "string"
+      ),
+      attributes = list(
+        "string"
+      ),
+      shadow = "string",
+      connectivity = list(
+        connected = TRUE|FALSE,
+        timestamp = 123
+      )
+    )
+  ),
+  thingGroups = list(
+    list(
+      thingGroupName = "string",
+      thingGroupId = "string",
+      thingGroupDescription = "string",
+      attributes = list(
+        "string"
+      ),
+      parentGroupNames = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 The query search index.
 }

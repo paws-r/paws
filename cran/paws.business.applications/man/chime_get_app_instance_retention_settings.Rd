@@ -9,6 +9,19 @@ chime_get_app_instance_retention_settings(AppInstanceArn)
 \arguments{
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceRetentionSettings = list(
+    ChannelRetentionSettings = list(
+      RetentionDays = 123
+    )
+  ),
+  InitiateDeletionTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets the retention settings for an app instance.
 }

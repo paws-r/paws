@@ -23,6 +23,21 @@ want to retrieve.}
 
 \item{MaxResults}{The maximum number of results that you want returned in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Services = list(
+    list(
+      ServiceCode = "string",
+      AttributeNames = list(
+        "string"
+      )
+    )
+  ),
+  FormatVersion = "string",
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the metadata for one service or a list of the metadata for all
 services. Use this without a service code to get the service codes for

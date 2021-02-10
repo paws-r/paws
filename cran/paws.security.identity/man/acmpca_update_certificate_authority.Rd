@@ -18,6 +18,9 @@ to be revoked. This must be of the form:
 
 \item{Status}{Status of your private CA.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the status or configuration of a private certificate authority
 (CA). Your private CA must be in the \code{ACTIVE} or \code{DISABLED} state before

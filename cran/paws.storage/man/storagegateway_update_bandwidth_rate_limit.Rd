@@ -15,6 +15,12 @@ storagegateway_update_bandwidth_rate_limit(GatewayARN,
 
 \item{AverageDownloadRateLimitInBitsPerSec}{The average download bandwidth rate limit in bits per second.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Updates the bandwidth rate limits of a gateway. You can update both the
 upload and download bandwidth rate limit or specify only one of the two.

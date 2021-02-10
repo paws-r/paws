@@ -11,6 +11,12 @@ iotdataplane_delete_thing_shadow(thingName, shadowName)
 
 \item{shadowName}{The name of the shadow.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  payload = raw
+)
+}
+}
 \description{
 Deletes the shadow for the specified thing.
 

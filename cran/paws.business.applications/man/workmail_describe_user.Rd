@@ -11,6 +11,23 @@ workmail_describe_user(OrganizationId, UserId)
 
 \item{UserId}{[required] The identifier for the user to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserId = "string",
+  Name = "string",
+  Email = "string",
+  DisplayName = "string",
+  State = "ENABLED"|"DISABLED"|"DELETED",
+  UserRole = "USER"|"RESOURCE"|"SYSTEM_USER",
+  EnabledDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DisabledDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Provides information regarding the user.
 }

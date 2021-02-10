@@ -9,6 +9,9 @@ opsworks_start_stack(StackId)
 \arguments{
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Starts a stack's instances.
 

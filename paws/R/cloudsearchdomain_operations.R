@@ -53,10 +53,10 @@ NULL
 #' as return fields.
 #' 
 #' You specify the expressions in JSON using the form
-#' `\{"EXPRESSIONNAME":"EXPRESSION"\}`. You can define and use multiple
+#' `{"EXPRESSIONNAME":"EXPRESSION"}`. You can define and use multiple
 #' expressions in a search request. For example:
 #' 
-#' ` \{"expression1":"_score*rating", "expression2":"(1/rank)*year"\} `
+#' ` {"expression1":"_score*rating", "expression2":"(1/rank)*year"} `
 #' 
 #' For information about the variables, operators, and functions you can
 #' use in expressions, see [Writing
@@ -66,7 +66,7 @@ NULL
 #' options that control how the facet information is returned. Each
 #' specified field must be facet-enabled in the domain configuration. The
 #' fields and options are specified in JSON using the form
-#' `\{\"FIELD\":\{\"OPTION\":VALUE,\"OPTION:\"STRING\"\},\"FIELD\":\{\"OPTION\":VALUE,\"OPTION\":\"STRING\"\}\}`.
+#' `{\"FIELD\":{\"OPTION\":VALUE,\"OPTION:\"STRING\"},\"FIELD\":{\"OPTION\":VALUE,\"OPTION\":\"STRING\"}}`.
 #' 
 #' You can specify the following faceting options:
 #' 
@@ -99,7 +99,7 @@ NULL
 #' example, the following request uses the `buckets` option to calculate
 #' and return facet counts by decade.
 #' 
-#' ` \{"year":\{"buckets":\\["\\[1970,1979\\]","\\[1980,1989\\]","\\[1990,1999\\]","\\[2000,2009\\]","\\[2010,\}"\\]\}\} `
+#' ` \{"year":\{"buckets":["[1970,1979]","[1980,1989]","[1990,1999]","[2000,2009]","[2010,\}"]\}\} `
 #' 
 #' To sort facets by facet count, use the `count` option. For example, the
 #' following request sets the `sort` option to `count` to sort the facet
@@ -107,13 +107,13 @@ NULL
 #' documents listed first. Setting the `size` option to 3 returns only the
 #' top three facet values.
 #' 
-#' ` \{"year":\{"sort":"count","size":3\}\} `
+#' ` {"year":{"sort":"count","size":3}} `
 #' 
 #' To sort the facets by value, use the `bucket` option. For example, the
 #' following request sets the `sort` option to `bucket` to sort the facet
 #' values numerically by year, with earliest year listed first.
 #' 
-#' ` \{"year":\{"sort":"bucket"\}\} `
+#' ` {"year":{"sort":"bucket"}} `
 #' 
 #' For more information, see [Getting and Using Facet
 #' Information](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/faceting.html)
@@ -133,7 +133,7 @@ NULL
 #' fields. Each specified field must be highlight enabled in the domain
 #' configuration. The fields and options are specified in JSON using the
 #' form
-#' `\{\"FIELD\":\{\"OPTION\":VALUE,\"OPTION:\"STRING\"\},\"FIELD\":\{\"OPTION\":VALUE,\"OPTION\":\"STRING\"\}\}`.
+#' `{\"FIELD\":{\"OPTION\":VALUE,\"OPTION:\"STRING\"},\"FIELD\":{\"OPTION\":VALUE,\"OPTION\":\"STRING\"}}`.
 #' 
 #' You can specify the following highlight options:
 #' 
@@ -157,7 +157,7 @@ NULL
 #' For example, the following request retrieves highlights for the `actors`
 #' and `title` fields.
 #' 
-#' `\{ "actors": \{\}, "title": \{"format": "text","max_phrases": 2,"pre_tag": "","post_tag": ""\} \}`
+#' `{ "actors": {}, "title": {"format": "text","max_phrases": 2,"pre_tag": "","post_tag": ""} }`
 #' @param partial Enables partial results to be returned if one or more index partitions
 #' are unavailable. When your search index is partitioned across multiple
 #' search instances, by default Amazon CloudSearch only returns results if
@@ -183,7 +183,7 @@ NULL
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param queryOptions Configures options for the query parser specified in the `queryParser`
 #' parameter. You specify the options in JSON using the following form
-#' `\{\"OPTION1\":\"VALUE1\",\"OPTION2\":VALUE2\"...\"OPTIONN\":\"VALUEN\"\}.`
+#' `{\"OPTION1\":\"VALUE1\",\"OPTION2\":VALUE2\"...\"OPTIONN\":\"VALUEN\"}.`
 #' 
 #' The options you can configure vary according to which parser you use:
 #' 
@@ -207,10 +207,10 @@ NULL
 #'     relevance scores. To specify a field weight, append a caret (`^`)
 #'     symbol and the weight to the field name. For example, to boost the
 #'     importance of the `title` field over the `description` field you
-#'     could specify: `"fields":\\["title^5","description"\\]`. Valid
-#'     values: The name of any configured field and an optional numeric
-#'     value greater than zero. Default: All `text` and `text-array`
-#'     fields. Valid for: `simple`, `structured`, `lucene`, and `dismax`.
+#'     could specify: `"fields":["title^5","description"]`. Valid values:
+#'     The name of any configured field and an optional numeric value
+#'     greater than zero. Default: All `text` and `text-array` fields.
+#'     Valid for: `simple`, `structured`, `lucene`, and `dismax`.
 #' -   `operators`: An array of the operators or special characters you
 #'     want to disable for the simple query parser. If you disable the
 #'     `and`, `or`, or `not` operators, the corresponding operators (`+`,
@@ -222,14 +222,14 @@ NULL
 #'     parentheses. Disabling `near` disables the ability to use the ~
 #'     operator to perform a sloppy phrase search. Disabling the `fuzzy`
 #'     operator disables the ability to use the ~ operator to perform a
-#'     fuzzy search. `escape` disables the ability to use a backslash (`\\`)
+#'     fuzzy search. `escape` disables the ability to use a backslash (`\`)
 #'     to escape special characters within the search string. Disabling
 #'     whitespace is an advanced option that prevents the parser from
 #'     tokenizing on whitespace, which can be useful for Vietnamese. (It
 #'     prevents Vietnamese words from being split incorrectly.) For
 #'     example, you could disable all operators other than the phrase
 #'     operator to support just simple term and phrase queries:
-#'     `"operators":\\["and","not","or", "prefix"\\]`. Valid values: `and`,
+#'     `"operators":["and","not","or", "prefix"]`. Valid values: `and`,
 #'     `escape`, `fuzzy`, `near`, `not`, `or`, `phrase`, `precedence`,
 #'     `prefix`, `whitespace`. Default: All operators and special
 #'     characters are enabled. Valid for: `simple`.
@@ -242,11 +242,11 @@ NULL
 #'     append a caret (`^`) symbol and the weight to the field name. For
 #'     example, to boost phrase matches in the `title` field over the
 #'     `abstract` field, you could specify:
-#'     `"phraseFields":\\["title^3", "plot"\\]` Valid values: The name of
-#'     any `text` or `text-array` field and an optional numeric value
-#'     greater than zero. Default: No fields. If you don't specify any
-#'     fields with `phraseFields`, proximity scoring is disabled even if
-#'     `phraseSlop` is specified. Valid for: `dismax`.
+#'     `"phraseFields":["title^3", "plot"]` Valid values: The name of any
+#'     `text` or `text-array` field and an optional numeric value greater
+#'     than zero. Default: No fields. If you don't specify any fields with
+#'     `phraseFields`, proximity scoring is disabled even if `phraseSlop`
+#'     is specified. Valid for: `dismax`.
 #' -   `phraseSlop`: An integer value that specifies how much matches can
 #'     deviate from the search phrase and still be boosted according to the
 #'     weights specified in the `phraseFields` option; for example,
@@ -342,9 +342,63 @@ NULL
 #' Each specified field must be facet-enabled in the domain configuration.
 #' The fields are specified in JSON using the form:
 #' 
-#' `\{"FIELD-A":\{\},"FIELD-B":\{\}\}`
+#' `{"FIELD-A":{},"FIELD-B":{}}`
 #' 
 #' There are currently no options supported for statistics.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = list(
+#'     timems = 123,
+#'     rid = "string"
+#'   ),
+#'   hits = list(
+#'     found = 123,
+#'     start = 123,
+#'     cursor = "string",
+#'     hit = list(
+#'       list(
+#'         id = "string",
+#'         fields = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         exprs = list(
+#'           "string"
+#'         ),
+#'         highlights = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   facets = list(
+#'     list(
+#'       buckets = list(
+#'         list(
+#'           value = "string",
+#'           count = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   stats = list(
+#'     list(
+#'       min = "string",
+#'       max = "string",
+#'       count = 123,
+#'       missing = 123,
+#'       sum = 123.0,
+#'       sumOfSquares = 123.0,
+#'       mean = "string",
+#'       stddev = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -416,6 +470,28 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
 #' @param suggester &#91;required&#93; Specifies the name of the suggester to use to find suggested matches.
 #' @param size Specifies the maximum number of suggestions to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = list(
+#'     timems = 123,
+#'     rid = "string"
+#'   ),
+#'   suggest = list(
+#'     query = "string",
+#'     found = 123,
+#'     suggestions = list(
+#'       list(
+#'         suggestion = "string",
+#'         score = 123,
+#'         id = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$suggest(
@@ -485,6 +561,21 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #' 
 #' -   application/json
 #' -   application/xml
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "string",
+#'   adds = 123,
+#'   deletes = 123,
+#'   warnings = list(
+#'     list(
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

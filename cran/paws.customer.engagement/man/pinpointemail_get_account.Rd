@@ -7,6 +7,20 @@ your Amazon Pinpoint account in the current AWS Region}
 \usage{
 pinpointemail_get_account()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SendQuota = list(
+    Max24HourSend = 123.0,
+    MaxSendRate = 123.0,
+    SentLast24Hours = 123.0
+  ),
+  SendingEnabled = TRUE|FALSE,
+  DedicatedIpAutoWarmupEnabled = TRUE|FALSE,
+  EnforcementStatus = "string",
+  ProductionAccessEnabled = TRUE|FALSE
+)
+}
+}
 \description{
 Obtain information about the email-sending status and capabilities of
 your Amazon Pinpoint account in the current AWS Region.

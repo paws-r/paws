@@ -24,6 +24,12 @@ the URL encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap}.
 The value must be URL encoded.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string"
+)
+}
+}
 \description{
 Returns the access point policy associated with the specified access
 point.

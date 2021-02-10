@@ -16,6 +16,15 @@ results.}
 
 \item{maxResults}{The maximum number of results to return per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  things = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the things you have added to the given billing group.
 }

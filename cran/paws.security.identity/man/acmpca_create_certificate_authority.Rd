@@ -33,6 +33,12 @@ calls, ACM Private CA creates a unique CA for each unique token.}
 associate up to 50 tags with a private CA. For information using tags
 with IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateAuthorityArn = "string"
+)
+}
+}
 \description{
 Creates a root or subordinate private certificate authority (CA). You
 must specify the CA configuration, the certificate revocation list (CRL)

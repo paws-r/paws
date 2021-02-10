@@ -19,6 +19,16 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GatewayId}{The ID of the internet gateway or virtual private gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationId = "string",
+  AssociationState = list(
+    State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
+    StatusMessage = "string"
+  )
+)
+}
+}
 \description{
 Associates a subnet in your VPC or an internet gateway or virtual
 private gateway attached to your VPC with a route table in your VPC.

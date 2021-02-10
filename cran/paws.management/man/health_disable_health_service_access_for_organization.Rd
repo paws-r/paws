@@ -6,6 +6,9 @@
 \usage{
 health_disable_health_service_access_for_organization()
 }
+\value{
+An empty list.
+}
 \description{
 Disables AWS Health from working with AWS Organizations. To call this
 operation, you must sign in as an AWS Identity and Access Management

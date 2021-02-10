@@ -13,6 +13,14 @@ assumed.}
 
 \item{repositoryName}{[required] The name of the repository with the policy to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  policyText = "string"
+)
+}
+}
 \description{
 Retrieves the repository policy for the specified repository.
 }

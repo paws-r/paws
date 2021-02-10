@@ -27,6 +27,32 @@ want in the response. The default value is 100. The maximum value is
 \item{locale}{The locale into which you want to translate the exclusion's title,
 description, and recommendation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  previewStatus = "WORK_IN_PROGRESS"|"COMPLETED",
+  exclusionPreviews = list(
+    list(
+      title = "string",
+      description = "string",
+      recommendation = "string",
+      scopes = list(
+        list(
+          key = "INSTANCE_ID"|"RULES_PACKAGE_ARN",
+          value = "string"
+        )
+      ),
+      attributes = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves the exclusions preview (a list of ExclusionPreview objects)
 specified by the preview token. You can obtain the preview token by

@@ -24,6 +24,41 @@ incomplete versions.}
 \item{Fields}{Specify "SOURCE" to include initialized versions and a URL for the
 source document.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentVersions = list(
+    list(
+      Id = "string",
+      Name = "string",
+      ContentType = "string",
+      Size = 123,
+      Signature = "string",
+      Status = "INITIALIZED"|"ACTIVE",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ContentCreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ContentModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatorId = "string",
+      Thumbnail = list(
+        "string"
+      ),
+      Source = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Retrieves the document versions for the specified document.
 

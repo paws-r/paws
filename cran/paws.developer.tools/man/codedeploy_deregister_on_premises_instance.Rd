@@ -9,6 +9,9 @@ codedeploy_deregister_on_premises_instance(instanceName)
 \arguments{
 \item{instanceName}{[required] The name of the on-premises instance to deregister.}
 }
+\value{
+An empty list.
+}
 \description{
 Deregisters an on-premises instance.
 }

@@ -12,6 +12,12 @@ retrieve the recovery point.}
 
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeARN = "string"
+)
+}
+}
 \description{
 Retrieves the recovery point for the specified virtual tape. This
 operation is only supported in the tape gateway type.

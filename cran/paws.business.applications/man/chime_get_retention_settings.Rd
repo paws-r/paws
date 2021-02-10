@@ -10,6 +10,22 @@ chime_get_retention_settings(AccountId)
 \arguments{
 \item{AccountId}{[required] The Amazon Chime account ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RetentionSettings = list(
+    RoomRetentionSettings = list(
+      RetentionDays = 123
+    ),
+    ConversationRetentionSettings = list(
+      RetentionDays = 123
+    )
+  ),
+  InitiateDeletionTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets the retention settings for the specified Amazon Chime Enterprise
 account. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/}{Managing Chat Retention Policies}

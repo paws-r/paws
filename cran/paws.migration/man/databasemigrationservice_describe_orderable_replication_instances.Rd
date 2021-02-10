@@ -22,6 +22,27 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrderableReplicationInstances = list(
+    list(
+      EngineVersion = "string",
+      ReplicationInstanceClass = "string",
+      StorageType = "string",
+      MinAllocatedStorage = 123,
+      MaxAllocatedStorage = 123,
+      DefaultAllocatedStorage = 123,
+      IncludedAllocatedStorage = 123,
+      AvailabilityZones = list(
+        "string"
+      ),
+      ReleaseStatus = "beta"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns information about the replication instance types that can be
 created in the specified region.

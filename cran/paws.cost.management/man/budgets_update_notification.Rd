@@ -17,6 +17,9 @@ you want to update.}
 
 \item{NewNotification}{[required] The updated notification to be associated with a budget.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a notification.
 }

@@ -27,6 +27,9 @@ succeeded on the server. If the bonus already exists in the system from
 a previous call using the same UniqueRequestToken, subsequent calls will
 return an error with a message containing the request ID.}
 }
+\value{
+An empty list.
+}
 \description{
 The \code{\link[=mturk_send_bonus]{send_bonus}} operation issues a payment of money
 from your account to a Worker. This payment happens separately from the

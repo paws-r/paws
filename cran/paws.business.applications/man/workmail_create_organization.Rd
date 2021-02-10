@@ -23,6 +23,12 @@ KMS.}
 WorkMail and Microsoft Exchange. Can only be set to \code{true} if an AD
 Connector directory ID is included in the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationId = "string"
+)
+}
+}
 \description{
 Creates a new Amazon WorkMail organization. Optionally, you can choose
 to associate an existing AWS Directory Service directory with your

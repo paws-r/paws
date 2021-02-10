@@ -11,6 +11,9 @@ codedeploy_skip_wait_time_for_instance_termination(deploymentId)
 \item{deploymentId}{The unique ID of a blue/green deployment for which you want to skip the
 instance termination wait time.}
 }
+\value{
+An empty list.
+}
 \description{
 In a blue/green deployment, overrides any specified wait time and starts
 terminating instances immediately after the traffic routing is complete.

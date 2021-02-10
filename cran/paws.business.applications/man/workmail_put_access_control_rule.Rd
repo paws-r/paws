@@ -32,6 +32,9 @@ and \code{WebMail}.}
 
 \item{OrganizationId}{[required] The identifier of the organization.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds a new access control rule for the specified organization. The rule
 allows or denies access to the organization for the specified IPv4

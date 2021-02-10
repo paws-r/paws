@@ -12,6 +12,24 @@ operation returns descriptions of all registered Amazon RDS instances.}
 
 \item{RdsDbInstanceArns}{An array containing the ARNs of the instances to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RdsDbInstances = list(
+    list(
+      RdsDbInstanceArn = "string",
+      DbInstanceIdentifier = "string",
+      DbUser = "string",
+      DbPassword = "string",
+      Region = "string",
+      Address = "string",
+      Engine = "string",
+      StackId = "string",
+      MissingOnRds = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes Amazon RDS instances.
 

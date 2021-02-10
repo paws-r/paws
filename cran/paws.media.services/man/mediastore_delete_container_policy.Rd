@@ -10,6 +10,9 @@ mediastore_delete_container_policy(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container that holds the policy.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the access policy that is associated with the specified
 container.

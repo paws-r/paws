@@ -25,6 +25,24 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  relationalDatabaseEvents = list(
+    list(
+      resource = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      message = "string",
+      eventCategories = list(
+        "string"
+      )
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns a list of events for a specific database in Amazon Lightsail.
 }

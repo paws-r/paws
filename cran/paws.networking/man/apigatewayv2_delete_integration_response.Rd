@@ -14,6 +14,9 @@ apigatewayv2_delete_integration_response(ApiId, IntegrationId,
 
 \item{IntegrationResponseId}{[required] The integration response ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an IntegrationResponses.
 }

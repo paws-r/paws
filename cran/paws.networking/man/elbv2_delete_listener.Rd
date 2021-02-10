@@ -9,6 +9,9 @@ elbv2_delete_listener(ListenerArn)
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified listener.
 
@@ -26,7 +29,7 @@ balancer to which it is attached.
 \dontrun{
 # This example deletes the specified listener.
 svc$delete_listener(
-  ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-load-ba..."
+  ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-..."
 )
 }
 

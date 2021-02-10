@@ -17,6 +17,19 @@ be configured on the Amazon side of the connection. The ASN must be in
 the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
 The default is 64512.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  directConnectGateway = list(
+    directConnectGatewayId = "string",
+    directConnectGatewayName = "string",
+    amazonSideAsn = 123,
+    ownerAccount = "string",
+    directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
+    stateChangeError = "string"
+  )
+)
+}
+}
 \description{
 Creates a Direct Connect gateway, which is an intermediate object that
 enables you to connect a set of virtual interfaces and virtual private

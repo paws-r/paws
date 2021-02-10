@@ -9,6 +9,9 @@ elbv2_delete_rule(RuleArn)
 \arguments{
 \item{RuleArn}{[required] The Amazon Resource Name (ARN) of the rule.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified rule.
 
@@ -25,7 +28,7 @@ You can't delete the default rule.
 \dontrun{
 # This example deletes the specified rule.
 svc$delete_rule(
-  RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-b..."
+  RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my..."
 )
 }
 

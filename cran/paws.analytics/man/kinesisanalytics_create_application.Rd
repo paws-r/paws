@@ -76,6 +76,16 @@ key-value pair that identifies an application. Note that the maximum
 number of application tags includes system tags. The maximum number of
 user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationSummary = list(
+    ApplicationName = "string",
+    ApplicationARN = "string",
+    ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"
+  )
+)
+}
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

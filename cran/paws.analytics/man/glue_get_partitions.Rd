@@ -18,7 +18,9 @@ none is provided, the AWS account ID is used by default.}
 \item{Expression}{An expression that filters the partitions to be returned.
 
 The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause.
-The SQL statement parser JSQLParser parses the expression.
+The SQL statement parser
+\href{http://jsqlparser.sourceforge.net/home.php}{JSQLParser} parses the
+expression.
 
 \emph{Operators}: The following are the operators that you can use in the
 \code{Expression} API call:
@@ -105,6 +107,91 @@ partitions.}
 \item{Segment}{The segment of the table's partitions to scan in this request.}
 
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Partitions = list(
+    list(
+      Values = list(
+        "string"
+      ),
+      DatabaseName = "string",
+      TableName = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastAccessTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StorageDescriptor = list(
+        Columns = list(
+          list(
+            Name = "string",
+            Type = "string",
+            Comment = "string",
+            Parameters = list(
+              "string"
+            )
+          )
+        ),
+        Location = "string",
+        InputFormat = "string",
+        OutputFormat = "string",
+        Compressed = TRUE|FALSE,
+        NumberOfBuckets = 123,
+        SerdeInfo = list(
+          Name = "string",
+          SerializationLibrary = "string",
+          Parameters = list(
+            "string"
+          )
+        ),
+        BucketColumns = list(
+          "string"
+        ),
+        SortColumns = list(
+          list(
+            Column = "string",
+            SortOrder = 123
+          )
+        ),
+        Parameters = list(
+          "string"
+        ),
+        SkewedInfo = list(
+          SkewedColumnNames = list(
+            "string"
+          ),
+          SkewedColumnValues = list(
+            "string"
+          ),
+          SkewedColumnValueLocationMaps = list(
+            "string"
+          )
+        ),
+        StoredAsSubDirectories = TRUE|FALSE,
+        SchemaReference = list(
+          SchemaId = list(
+            SchemaArn = "string",
+            SchemaName = "string",
+            RegistryName = "string"
+          ),
+          SchemaVersionId = "string",
+          SchemaVersionNumber = 123
+        )
+      ),
+      Parameters = list(
+        "string"
+      ),
+      LastAnalyzedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CatalogId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Retrieves information about the partitions in a table.

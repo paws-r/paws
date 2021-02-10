@@ -37,6 +37,30 @@ regardless of the tag value.
 the remaining results, make another call with the returned \code{NextToken}
 value. This value can be between 1 and 200.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LaunchTemplates = list(
+    list(
+      LaunchTemplateId = "string",
+      LaunchTemplateName = "string",
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatedBy = "string",
+      DefaultVersionNumber = 123,
+      LatestVersionNumber = 123,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more launch templates.
 }

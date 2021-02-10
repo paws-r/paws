@@ -17,6 +17,38 @@ pointed to by the next token.}
 \item{IncludeDeleted}{A Boolean value with a default value of \code{FALSE} that returns deleted
 backup plans when set to \code{TRUE}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  BackupPlansList = list(
+    list(
+      BackupPlanArn = "string",
+      BackupPlanId = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeletionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      VersionId = "string",
+      BackupPlanName = "string",
+      CreatorRequestId = "string",
+      LastExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      AdvancedBackupSettings = list(
+        list(
+          ResourceType = "string",
+          BackupOptions = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of existing backup plans for an authenticated account.
 The list is populated only if the advanced option is set for the backup

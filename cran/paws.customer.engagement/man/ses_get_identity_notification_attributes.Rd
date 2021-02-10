@@ -13,6 +13,22 @@ its name or by using its Amazon Resource Name (ARN). Examples:
 \code{user@example.com}, \code{example.com},
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotificationAttributes = list(
+    list(
+      BounceTopic = "string",
+      ComplaintTopic = "string",
+      DeliveryTopic = "string",
+      ForwardingEnabled = TRUE|FALSE,
+      HeadersInBounceNotificationsEnabled = TRUE|FALSE,
+      HeadersInComplaintNotificationsEnabled = TRUE|FALSE,
+      HeadersInDeliveryNotificationsEnabled = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Given a list of verified identities (email addresses and/or domains),
 returns a structure describing identity notification attributes.

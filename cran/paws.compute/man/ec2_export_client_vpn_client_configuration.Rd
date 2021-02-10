@@ -15,6 +15,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientConfiguration = "string"
+)
+}
+}
 \description{
 Downloads the contents of the Client VPN endpoint configuration file for
 the specified Client VPN endpoint. The Client VPN endpoint configuration

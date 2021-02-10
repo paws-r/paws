@@ -20,6 +20,27 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to assign to the egress-only internet gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientToken = "string",
+  EgressOnlyInternetGateway = list(
+    Attachments = list(
+      list(
+        State = "attaching"|"attached"|"detaching"|"detached",
+        VpcId = "string"
+      )
+    ),
+    EgressOnlyInternetGatewayId = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 [IPv6 only] Creates an egress-only internet gateway for your VPC. An
 egress-only internet gateway is used to enable outbound communication

@@ -16,6 +16,9 @@ elasticbeanstalk_delete_application_version(ApplicationName,
 Otherwise, the application version is deleted only from Elastic
 Beanstalk and the source bundle remains in Amazon S3.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified version from the specified application.
 

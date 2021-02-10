@@ -21,6 +21,14 @@ callers to specify a base path name after the domain name.}
 Specify '(none)' if you want callers to explicitly specify the stage
 name after any base path name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  basePath = "string",
+  restApiId = "string",
+  stage = "string"
+)
+}
+}
 \description{
 Creates a new BasePathMapping resource.
 }

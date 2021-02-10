@@ -45,6 +45,38 @@ these tag values in the request, Amazon Redshift returns a response with
 the subscriptions that have either or both of these tag values
 associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  EventSubscriptionsList = list(
+    list(
+      CustomerAwsId = "string",
+      CustSubscriptionId = "string",
+      SnsTopicArn = "string",
+      Status = "string",
+      SubscriptionCreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      SourceType = "string",
+      SourceIdsList = list(
+        "string"
+      ),
+      EventCategoriesList = list(
+        "string"
+      ),
+      Severity = "string",
+      Enabled = TRUE|FALSE,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists descriptions of all the Amazon Redshift event notification
 subscriptions for a customer account. If you specify a subscription

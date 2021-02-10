@@ -11,6 +11,9 @@ ses_create_receipt_filter(Filter)
 consists of a name, an IP address range, and whether to allow or block
 mail from it.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a new IP address filter.
 

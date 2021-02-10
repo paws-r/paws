@@ -12,6 +12,9 @@ tags. For example, \code{arn:aws:redshift:us-east-2:123456789:cluster:t1}.}
 
 \item{TagKeys}{[required] The tag key that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes tags from a resource. You must provide the ARN of the resource
 from which you want to delete the tag or tags.

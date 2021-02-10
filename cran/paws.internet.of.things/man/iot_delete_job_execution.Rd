@@ -20,11 +20,11 @@ Note that once a job execution is deleted, the \code{executionNumber} may be
 reused by IoT, so be sure you get and use the correct value here.}
 
 \item{force}{(Optional) When true, you can delete a job execution which is
-"IN\\_PROGRESS". Otherwise, you can only delete a job execution which is
+"IN_PROGRESS". Otherwise, you can only delete a job execution which is
 in a terminal state ("SUCCEEDED", "FAILED", "REJECTED", "REMOVED" or
 "CANCELED") or an exception will occur. The default is false.
 
-Deleting a job execution which is "IN\\_PROGRESS", will cause the device
+Deleting a job execution which is "IN_PROGRESS", will cause the device
 to be unable to access job information or update the job execution
 status. Use caution and ensure that the device is able to recover to a
 valid state.}
@@ -38,6 +38,9 @@ format.
 \verb{$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/}
 
 The \code{namespaceId} feature is in public preview.}
+}
+\value{
+An empty list.
 }
 \description{
 Deletes a job execution.

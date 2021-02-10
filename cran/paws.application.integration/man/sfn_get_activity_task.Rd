@@ -16,6 +16,13 @@ sfn_get_activity_task(activityArn, workerName)
 the task is assigned to. This name is used when it is logged in the
 execution history.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskToken = "string",
+  input = "string"
+)
+}
+}
 \description{
 Used by workers to retrieve a task (with the specified activity ARN)
 which has been scheduled for execution by a running state machine. This

@@ -21,6 +21,28 @@ NULL
 #' particular device. If not specified, the latest job execution is
 #' returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   execution = list(
+#'     jobId = "string",
+#'     thingName = "string",
+#'     status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+#'     statusDetails = list(
+#'       "string"
+#'     ),
+#'     queuedAt = 123,
+#'     startedAt = 123,
+#'     lastUpdatedAt = 123,
+#'     approximateSecondsBeforeTimedOut = 123,
+#'     versionNumber = 123,
+#'     executionNumber = 123,
+#'     jobDocument = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job_execution(
@@ -61,6 +83,33 @@ iotjobsdataplane_describe_job_execution <- function(jobId, thingName, includeJob
 #'
 #' @param thingName &#91;required&#93; The name of the thing that is executing the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   inProgressJobs = list(
+#'     list(
+#'       jobId = "string",
+#'       queuedAt = 123,
+#'       startedAt = 123,
+#'       lastUpdatedAt = 123,
+#'       versionNumber = 123,
+#'       executionNumber = 123
+#'     )
+#'   ),
+#'   queuedJobs = list(
+#'     list(
+#'       jobId = "string",
+#'       queuedAt = 123,
+#'       startedAt = 123,
+#'       lastUpdatedAt = 123,
+#'       versionNumber = 123,
+#'       executionNumber = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_pending_job_executions(
@@ -92,7 +141,7 @@ iotjobsdataplane_get_pending_job_executions <- function(thingName) {
 #' execution for a thing
 #'
 #' @description
-#' Gets and starts the next pending (status IN\\_PROGRESS or QUEUED) job
+#' Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
 #' execution for a thing.
 #'
 #' @usage
@@ -111,6 +160,28 @@ iotjobsdataplane_get_pending_job_executions <- function(thingName) {
 #' set to `TIMED_OUT`. Note that setting this timeout has no effect on that
 #' job execution timeout which may have been specified when the job was
 #' created (`CreateJob` using field `timeoutConfig`).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   execution = list(
+#'     jobId = "string",
+#'     thingName = "string",
+#'     status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+#'     statusDetails = list(
+#'       "string"
+#'     ),
+#'     queuedAt = 123,
+#'     startedAt = 123,
+#'     lastUpdatedAt = 123,
+#'     approximateSecondsBeforeTimedOut = 123,
+#'     versionNumber = 123,
+#'     executionNumber = 123,
+#'     jobDocument = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -155,7 +226,7 @@ iotjobsdataplane_start_next_pending_job_execution <- function(thingName, statusD
 #'
 #' @param jobId &#91;required&#93; The unique identifier assigned to this job when it was created.
 #' @param thingName &#91;required&#93; The name of the thing associated with the device.
-#' @param status &#91;required&#93; The new status for the job execution (IN\\_PROGRESS, FAILED, SUCCESS, or
+#' @param status &#91;required&#93; The new status for the job execution (IN_PROGRESS, FAILED, SUCCESS, or
 #' REJECTED). This must be specified on every update.
 #' @param statusDetails Optional. A collection of name/value pairs that describe the status of
 #' the job execution. If not specified, the statusDetails are unchanged.
@@ -181,6 +252,21 @@ iotjobsdataplane_start_next_pending_job_execution <- function(thingName, statusD
 #' default is false.
 #' @param executionNumber Optional. A number that identifies a particular job execution on a
 #' particular device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionState = list(
+#'     status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+#'     statusDetails = list(
+#'       "string"
+#'     ),
+#'     versionNumber = 123
+#'   ),
+#'   jobDocument = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

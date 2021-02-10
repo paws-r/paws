@@ -12,6 +12,19 @@ elb_describe_instance_health(LoadBalancerName, Instances)
 
 \item{Instances}{The IDs of the instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceStates = list(
+    list(
+      InstanceId = "string",
+      State = "string",
+      ReasonCode = "string",
+      Description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the state of the specified instances with respect to the
 specified load balancer. If no instances are specified, the call

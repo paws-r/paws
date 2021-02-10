@@ -14,13 +14,25 @@ in the \emph{AWS General Reference}.}
 \item{Tags}{[required] The tags that you want to add to the specified resources. A tag consists
 of a key and a value that you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedResourcesMap = list(
+    list(
+      StatusCode = 123,
+      ErrorCode = "InternalServiceException"|"InvalidParameterException",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Applies one or more tags to the specified resources. Note the following:
 \itemize{
 \item Not all resources can have tags. For a list of services that support
-tagging, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/}{this list}.
-\item Each resource can have up to 50 tags. For other limits, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions}{Tag Naming and Usage Conventions}
-in the \emph{AWS General Reference.}
+tagging, see this list.
+\item Each resource can have up to 50 tags. For other limits, see Tag
+Naming and Usage Conventions in the \emph{AWS General Reference.}
 \item You can only tag resources that are located in the specified Region
 for the AWS account.
 \item To add tags to a resource, you need the necessary permissions for

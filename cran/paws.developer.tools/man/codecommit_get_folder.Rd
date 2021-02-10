@@ -20,6 +20,44 @@ including the folder name. For example, /examples is a fully-qualified
 path to a folder named examples that was created off of the root
 directory (/) of a repository.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  folderPath = "string",
+  treeId = "string",
+  subFolders = list(
+    list(
+      treeId = "string",
+      absolutePath = "string",
+      relativePath = "string"
+    )
+  ),
+  files = list(
+    list(
+      blobId = "string",
+      absolutePath = "string",
+      relativePath = "string",
+      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+    )
+  ),
+  symbolicLinks = list(
+    list(
+      blobId = "string",
+      absolutePath = "string",
+      relativePath = "string",
+      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+    )
+  ),
+  subModules = list(
+    list(
+      commitId = "string",
+      absolutePath = "string",
+      relativePath = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the contents of a specified folder in a repository.
 }

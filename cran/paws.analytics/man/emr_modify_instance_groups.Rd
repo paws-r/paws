@@ -12,6 +12,9 @@ emr_modify_instance_groups(ClusterId, InstanceGroups)
 
 \item{InstanceGroups}{Instance groups to change.}
 }
+\value{
+An empty list.
+}
 \description{
 ModifyInstanceGroups modifies the number of nodes and configuration
 settings of an instance group. The input parameters include the new

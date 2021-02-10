@@ -19,6 +19,9 @@ all \code{deviceId} values.}
 
 \item{deviceTemplateName}{[required] The device template name to associate with the device ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a physical device with a placement.
 }

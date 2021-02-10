@@ -18,6 +18,38 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  BackupPlanVersionsList = list(
+    list(
+      BackupPlanArn = "string",
+      BackupPlanId = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeletionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      VersionId = "string",
+      BackupPlanName = "string",
+      CreatorRequestId = "string",
+      LastExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      AdvancedBackupSettings = list(
+        list(
+          ResourceType = "string",
+          BackupOptions = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns version metadata of your backup plans, including Amazon Resource
 Names (ARNs), backup plan IDs, creation and deletion dates, plan names,

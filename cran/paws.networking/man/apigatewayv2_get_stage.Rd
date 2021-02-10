@@ -12,6 +12,50 @@ apigatewayv2_get_stage(ApiId, StageName)
 \item{StageName}{[required] The stage name. Stage names can only contain alphanumeric characters,
 hyphens, and underscores. Maximum length is 128 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessLogSettings = list(
+    DestinationArn = "string",
+    Format = "string"
+  ),
+  ApiGatewayManaged = TRUE|FALSE,
+  AutoDeploy = TRUE|FALSE,
+  ClientCertificateId = "string",
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DefaultRouteSettings = list(
+    DataTraceEnabled = TRUE|FALSE,
+    DetailedMetricsEnabled = TRUE|FALSE,
+    LoggingLevel = "ERROR"|"INFO"|"OFF",
+    ThrottlingBurstLimit = 123,
+    ThrottlingRateLimit = 123.0
+  ),
+  DeploymentId = "string",
+  Description = "string",
+  LastDeploymentStatusMessage = "string",
+  LastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  RouteSettings = list(
+    list(
+      DataTraceEnabled = TRUE|FALSE,
+      DetailedMetricsEnabled = TRUE|FALSE,
+      LoggingLevel = "ERROR"|"INFO"|"OFF",
+      ThrottlingBurstLimit = 123,
+      ThrottlingRateLimit = 123.0
+    )
+  ),
+  StageName = "string",
+  StageVariables = list(
+    "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets a Stage.
 }

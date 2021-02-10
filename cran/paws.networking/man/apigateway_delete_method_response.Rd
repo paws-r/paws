@@ -16,6 +16,9 @@ apigateway_delete_method_response(restApiId, resourceId, httpMethod,
 
 \item{statusCode}{[required] [Required] The status code identifier for the MethodResponse resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an existing MethodResponse resource.
 }

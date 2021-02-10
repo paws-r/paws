@@ -14,6 +14,27 @@ does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Resources = list(
+    list(
+      Id = "string",
+      Email = "string",
+      Name = "string",
+      Type = "ROOM"|"EQUIPMENT",
+      State = "ENABLED"|"DISABLED"|"DELETED",
+      EnabledDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DisabledDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summaries of the organization's resources.
 }

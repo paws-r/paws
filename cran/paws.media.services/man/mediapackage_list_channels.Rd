@@ -11,6 +11,38 @@ mediapackage_list_channels(MaxResults, NextToken)
 
 \item{NextToken}{A token used to resume pagination from the end of a previous request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Channels = list(
+    list(
+      Arn = "string",
+      Description = "string",
+      EgressAccessLogs = list(
+        LogGroupName = "string"
+      ),
+      HlsIngest = list(
+        IngestEndpoints = list(
+          list(
+            Id = "string",
+            Password = "string",
+            Url = "string",
+            Username = "string"
+          )
+        )
+      ),
+      Id = "string",
+      IngressAccessLogs = list(
+        LogGroupName = "string"
+      ),
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a collection of Channels.
 }

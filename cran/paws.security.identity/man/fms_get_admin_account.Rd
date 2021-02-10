@@ -7,6 +7,13 @@ Firewall Manager as the AWS Firewall Manager administrator}
 \usage{
 fms_get_admin_account()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AdminAccount = "string",
+  RoleStatus = "READY"|"CREATING"|"PENDING_DELETION"|"DELETING"|"DELETED"
+)
+}
+}
 \description{
 Returns the AWS Organizations master account that is associated with AWS
 Firewall Manager as the AWS Firewall Manager administrator.

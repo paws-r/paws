@@ -9,6 +9,14 @@ signer_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) for the signing profile.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of the tags associated with a signing profile resource.
 }

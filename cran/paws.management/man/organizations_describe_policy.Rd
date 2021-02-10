@@ -15,7 +15,23 @@ operations.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
-letters, digits, or the underscore character (\\_).}
+letters, digits, or the underscore character (_).}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    PolicySummary = list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Description = "string",
+      Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+      AwsManaged = TRUE|FALSE
+    ),
+    Content = "string"
+  )
+)
+}
 }
 \description{
 Retrieves information about a policy.

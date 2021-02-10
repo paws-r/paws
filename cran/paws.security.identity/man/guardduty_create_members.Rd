@@ -14,6 +14,17 @@ associate member accounts with.}
 \item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you
 want to associate with the GuardDuty administrator account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates member accounts of the current AWS account by specifying a list
 of AWS account IDs. This step is a prerequisite for managing the

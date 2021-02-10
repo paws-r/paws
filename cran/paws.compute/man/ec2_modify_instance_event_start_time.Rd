@@ -19,6 +19,25 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NotBefore}{[required] The new date and time when the event will take place.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Event = list(
+    InstanceEventId = "string",
+    Code = "instance-reboot"|"system-reboot"|"system-maintenance"|"instance-retirement"|"instance-stop",
+    Description = "string",
+    NotAfter = as.POSIXct(
+      "2015-01-01"
+    ),
+    NotBefore = as.POSIXct(
+      "2015-01-01"
+    ),
+    NotBeforeDeadline = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the start time for a scheduled Amazon EC2 instance event.
 }

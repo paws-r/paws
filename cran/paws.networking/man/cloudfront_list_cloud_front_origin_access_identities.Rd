@@ -16,6 +16,25 @@ response (which is also the ID of the last identity on that page).}
 \item{MaxItems}{The maximum number of origin access identities you want in the response
 body.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CloudFrontOriginAccessIdentityList = list(
+    Marker = "string",
+    NextMarker = "string",
+    MaxItems = 123,
+    IsTruncated = TRUE|FALSE,
+    Quantity = 123,
+    Items = list(
+      list(
+        Id = "string",
+        S3CanonicalUserId = "string",
+        Comment = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists origin access identities.
 }

@@ -9,6 +9,9 @@ mediatailor_delete_playback_configuration(Name)
 \arguments{
 \item{Name}{[required] The identifier for the playback configuration.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the playback configuration for the specified name.
 }

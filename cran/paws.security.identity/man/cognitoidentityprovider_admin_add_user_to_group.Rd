@@ -14,6 +14,9 @@ cognitoidentityprovider_admin_add_user_to_group(UserPoolId, Username,
 
 \item{GroupName}{[required] The group name.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds the specified user to the specified group.
 

@@ -6,6 +6,17 @@
 \usage{
 opsworks_describe_my_user_profile()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserProfile = list(
+    IamUserArn = "string",
+    Name = "string",
+    SshUsername = "string",
+    SshPublicKey = "string"
+  )
+)
+}
+}
 \description{
 Describes a user's SSH information.
 

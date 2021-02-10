@@ -13,6 +13,9 @@ configuration.}
 
 \item{ResourceType}{The type of a resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the remediation configuration.
 }

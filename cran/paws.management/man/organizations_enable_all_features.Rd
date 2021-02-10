@@ -6,6 +6,36 @@
 \usage{
 organizations_enable_all_features()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Handshake = list(
+    Id = "string",
+    Arn = "string",
+    Parties = list(
+      list(
+        Id = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+      )
+    ),
+    State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+    RequestedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ExpirationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+    Resources = list(
+      list(
+        Value = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+        Resources = list()
+      )
+    )
+  )
+)
+}
+}
 \description{
 Enables all features in an organization. This enables the use of
 organization policies that can restrict the services and actions that

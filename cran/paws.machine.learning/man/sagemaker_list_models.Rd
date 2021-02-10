@@ -27,6 +27,21 @@ the training job whose name contains the specified string.}
 \item{CreationTimeAfter}{A filter that returns only models with a creation time greater than or
 equal to the specified time (timestamp).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Models = list(
+    list(
+      ModelName = "string",
+      ModelArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists models created with the \code{\link[=sagemaker_create_model]{create_model}}
 API.

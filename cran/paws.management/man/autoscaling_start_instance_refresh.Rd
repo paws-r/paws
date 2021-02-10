@@ -33,6 +33,12 @@ For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RefreshPreferences.html}{RefreshPreferences}
 in the \emph{Amazon EC2 Auto Scaling API Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceRefreshId = "string"
+)
+}
+}
 \description{
 Starts a new instance refresh operation, which triggers a rolling
 replacement of all previously launched instances in the Auto Scaling

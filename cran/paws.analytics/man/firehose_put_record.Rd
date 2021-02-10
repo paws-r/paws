@@ -12,6 +12,13 @@ firehose_put_record(DeliveryStreamName, Record)
 
 \item{Record}{[required] The record.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecordId = "string",
+  Encrypted = TRUE|FALSE
+)
+}
+}
 \description{
 Writes a single data record into an Amazon Kinesis Data Firehose
 delivery stream. To write multiple data records into a delivery stream,
@@ -33,7 +40,7 @@ data, website clickstream data, and so on.
 
 Kinesis Data Firehose buffers records before delivering them to the
 destination. To disambiguate the data blobs at the destination, a common
-solution is to use delimiters in the data, such as a newline (\verb{\\\\n}) or
+solution is to use delimiters in the data, such as a newline (\verb{\\n}) or
 some other character unique within the data. This allows the consumer
 application to parse individual data items when reading the data from
 the destination.

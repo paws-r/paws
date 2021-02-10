@@ -14,6 +14,23 @@ information, the redacted fields details, and the Amazon Resource Name
 When specifying \code{Type} in \code{RedactedFields}, you must use one of the
 following values: \code{URI}, \code{QUERY_STRING}, \code{HEADER}, or \code{METHOD}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoggingConfiguration = list(
+    ResourceArn = "string",
+    LogDestinationConfigs = list(
+      "string"
+    ),
+    RedactedFields = list(
+      list(
+        Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+        Data = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

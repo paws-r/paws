@@ -20,6 +20,18 @@ provide a \code{HumanTaskUiArn} if you use the \code{UiTemplate} parameter.
 See a list of available Human Ui Amazon Resource Names (ARNs) in
 UiConfig.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RenderedContent = "string",
+  Errors = list(
+    list(
+      Code = "string",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Renders the UI template so that you can preview the worker's experience.
 }

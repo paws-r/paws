@@ -32,6 +32,9 @@ disabled. This value must be \code{false} for a NAT instance to perform NAT.
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html}{NAT Instances}
 in the \emph{Amazon Virtual Private Cloud User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the specified network interface attribute. You can specify only
 one attribute at a time. You can use this action to attach and detach

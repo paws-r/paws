@@ -37,6 +37,12 @@ artifacts.}
 
 \item{OutputArtifactsToRemove}{The output artifacts to remove from the component.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialComponentArn = "string"
+)
+}
+}
 \description{
 Updates one or more properties of a trial component.
 }

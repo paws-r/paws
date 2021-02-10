@@ -33,6 +33,29 @@ removed and recreated.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScalingPolicies = list(
+    list(
+      FleetId = "string",
+      Name = "string",
+      Status = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
+      ScalingAdjustment = 123,
+      ScalingAdjustmentType = "ChangeInCapacity"|"ExactCapacity"|"PercentChangeInCapacity",
+      ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+      Threshold = 123.0,
+      EvaluationPeriods = 123,
+      MetricName = "ActivatingGameSessions"|"ActiveGameSessions"|"ActiveInstances"|"AvailableGameSessions"|"AvailablePlayerSessions"|"CurrentPlayerSessions"|"IdleInstances"|"PercentAvailableGameSessions"|"PercentIdleInstances"|"QueueDepth"|"WaitTime",
+      PolicyType = "RuleBased"|"TargetBased",
+      TargetConfiguration = list(
+        TargetValue = 123.0
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all scaling policies applied to a fleet.
 

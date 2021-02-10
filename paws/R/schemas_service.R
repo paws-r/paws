@@ -69,7 +69,7 @@ NULL
 #'  \link[=schemas_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 #'  \link[=schemas_update_discoverer]{update_discoverer} \tab Updates the discoverer\cr
 #'  \link[=schemas_update_registry]{update_registry} \tab Updates a registry\cr
-#'  \link[=schemas_update_schema]{update_schema} \tab Updates the schema definition Inactive schemas will be deleted after two years
+#'  \link[=schemas_update_schema]{update_schema} \tab Updates the schema definition
 #' }
 #'
 #' @rdname schemas

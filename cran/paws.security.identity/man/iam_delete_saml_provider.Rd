@@ -9,6 +9,9 @@ iam_delete_saml_provider(SAMLProviderArn)
 \arguments{
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a SAML provider resource in IAM.
 

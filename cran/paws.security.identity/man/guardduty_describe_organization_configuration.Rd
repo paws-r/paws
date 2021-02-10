@@ -11,6 +11,18 @@ guardduty_describe_organization_configuration(DetectorId)
 \item{DetectorId}{[required] The ID of the detector to retrieve information about the delegated
 administrator from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoEnable = TRUE|FALSE,
+  MemberAccountLimitReached = TRUE|FALSE,
+  DataSources = list(
+    S3Logs = list(
+      AutoEnable = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns information about the account selected as the delegated
 administrator for GuardDuty.

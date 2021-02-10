@@ -19,6 +19,18 @@ principals are CertificateArn
 
 \item{pageSize}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policies = list(
+    list(
+      policyName = "string",
+      policyArn = "string"
+    )
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Lists the policies attached to the specified thing group.
 }

@@ -10,6 +10,33 @@ redshift_cancel_resize(ClusterIdentifier)
 \item{ClusterIdentifier}{[required] The unique identifier for the cluster that you want to cancel a resize
 operation for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TargetNodeType = "string",
+  TargetNumberOfNodes = 123,
+  TargetClusterType = "string",
+  Status = "string",
+  ImportTablesCompleted = list(
+    "string"
+  ),
+  ImportTablesInProgress = list(
+    "string"
+  ),
+  ImportTablesNotStarted = list(
+    "string"
+  ),
+  AvgResizeRateInMegaBytesPerSecond = 123.0,
+  TotalResizeDataInMegaBytes = 123,
+  ProgressInMegaBytes = 123,
+  ElapsedTimeInSeconds = 123,
+  EstimatedTimeToCompletionInSeconds = 123,
+  ResizeType = "string",
+  Message = "string",
+  TargetEncryptionType = "string",
+  DataTransferProgressPercent = 123.0
+)
+}
+}
 \description{
 Cancels a resize operation for a cluster.
 }

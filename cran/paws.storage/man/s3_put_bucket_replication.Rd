@@ -25,10 +25,13 @@ SDKs, this field is calculated automatically.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a replication configuration or replaces an existing one. For
 more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html}{Replication}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}
 in the \emph{Amazon S3 Developer Guide}.
 
 To perform this operation, the user or role performing the operation
@@ -56,15 +59,15 @@ configuration, you must also add the following elements:
 
 If you are using an earlier version of the replication configuration,
 Amazon S3 handles replication of delete markers differently. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations}{Backward Compatibility}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html#replication-backward-compat-considerations}{Backward Compatibility}.
 
-For information about enabling versioning on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html}{Using Versioning}.
+For information about enabling versioning on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html}{Using Versioning}.
 
 By default, a resource owner, in this case the AWS account that created
 the bucket, can perform this operation. The resource owner can also
 grant others permissions to perform the operation. For more information
-about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
 \strong{Handling Replication of Encrypted Objects}
 
@@ -73,7 +76,7 @@ using server-side encryption with CMKs stored in AWS KMS. To replicate
 AWS KMS-encrypted objects, add the following: \code{SourceSelectionCriteria},
 \code{SseKmsEncryptedObjects}, \code{Status}, \code{EncryptionConfiguration}, and
 \code{ReplicaKmsKeyID}. For information about replication configuration, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html}{Replicating Objects Created with SSE Using CMKs stored in AWS KMS}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-config-for-kms-objects.html}{Replicating Objects Created with SSE Using CMKs stored in AWS KMS}.
 
 For information on \code{\link[=s3_put_bucket_replication]{put_bucket_replication}}
 errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}

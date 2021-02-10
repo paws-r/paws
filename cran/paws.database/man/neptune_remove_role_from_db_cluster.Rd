@@ -19,6 +19,9 @@ DB cluster, for example
 disassociated from. For the list of supported feature names, see
 DBEngineVersion.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates an Identity and Access Management (IAM) role from a DB
 cluster.

@@ -11,6 +11,9 @@ cognitoidentityprovider_delete_user_pool_domain(Domain, UserPoolId)
 
 \item{UserPoolId}{[required] The user pool ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a domain for a user pool.
 }

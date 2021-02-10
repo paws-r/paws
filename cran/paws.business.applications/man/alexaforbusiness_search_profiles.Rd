@@ -24,6 +24,26 @@ filter keys are ProfileName and Address. Required.}
 \item{SortCriteria}{The sort order to use in listing the specified set of room profiles.
 Supported sort keys are ProfileName and Address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Profiles = list(
+    list(
+      ProfileArn = "string",
+      ProfileName = "string",
+      IsDefault = TRUE|FALSE,
+      Address = "string",
+      Timezone = "string",
+      DistanceUnit = "METRIC"|"IMPERIAL",
+      TemperatureUnit = "FAHRENHEIT"|"CELSIUS",
+      WakeWord = "ALEXA"|"AMAZON"|"ECHO"|"COMPUTER",
+      Locale = "string"
+    )
+  ),
+  NextToken = "string",
+  TotalCount = 123
+)
+}
+}
 \description{
 Searches room profiles and lists the ones that meet a set of filter
 criteria.

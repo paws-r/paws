@@ -21,6 +21,9 @@ event-record-api.}
 
 \item{eventList}{[required] A list of event data from the session.}
 }
+\value{
+An empty list.
+}
 \description{
 Records user interaction event data. For more information see
 event-record-api.

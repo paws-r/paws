@@ -13,6 +13,21 @@ waf_list_tags_for_resource(NextMarker, Limit, ResourceARN)
 
 \item{ResourceARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  TagInfoForResource = list(
+    ResourceARN = "string",
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

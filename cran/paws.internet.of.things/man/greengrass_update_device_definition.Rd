@@ -11,6 +11,9 @@ greengrass_update_device_definition(DeviceDefinitionId, Name)
 
 \item{Name}{The name of the definition.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a device definition.
 }

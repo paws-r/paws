@@ -26,6 +26,44 @@ object.}
 to use to preprocess the records before discovering the schema of the
 records.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InputSchema = list(
+    RecordFormat = list(
+      RecordFormatType = "JSON"|"CSV",
+      MappingParameters = list(
+        JSONMappingParameters = list(
+          RecordRowPath = "string"
+        ),
+        CSVMappingParameters = list(
+          RecordRowDelimiter = "string",
+          RecordColumnDelimiter = "string"
+        )
+      )
+    ),
+    RecordEncoding = "string",
+    RecordColumns = list(
+      list(
+        Name = "string",
+        Mapping = "string",
+        SqlType = "string"
+      )
+    )
+  ),
+  ParsedInputRecords = list(
+    list(
+      "string"
+    )
+  ),
+  ProcessedInputRecords = list(
+    "string"
+  ),
+  RawInputRecords = list(
+    "string"
+  )
+)
+}
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

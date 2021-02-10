@@ -26,6 +26,35 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBSecurityGroups = list(
+    list(
+      OwnerId = "string",
+      DBSecurityGroupName = "string",
+      DBSecurityGroupDescription = "string",
+      VpcId = "string",
+      EC2SecurityGroups = list(
+        list(
+          Status = "string",
+          EC2SecurityGroupName = "string",
+          EC2SecurityGroupId = "string",
+          EC2SecurityGroupOwnerId = "string"
+        )
+      ),
+      IPRanges = list(
+        list(
+          Status = "string",
+          CIDRIP = "string"
+        )
+      ),
+      DBSecurityGroupArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of \code{DBSecurityGroup} descriptions. If a
 \code{DBSecurityGroupName} is specified, the list will contain only the

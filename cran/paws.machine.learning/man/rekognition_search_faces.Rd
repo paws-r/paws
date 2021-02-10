@@ -20,6 +20,30 @@ number of faces with the highest confidence in the match.}
 return. For example, don't return any matches where confidence in
 matches is less than 70\%. The default value is 80\%.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SearchedFaceId = "string",
+  FaceMatches = list(
+    list(
+      Similarity = 123.0,
+      Face = list(
+        FaceId = "string",
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        ImageId = "string",
+        ExternalImageId = "string",
+        Confidence = 123.0
+      )
+    )
+  ),
+  FaceModelVersion = "string"
+)
+}
+}
 \description{
 For a given input face ID, searches for matching faces in the collection
 the face belongs to. You get a face ID when you add a face to the

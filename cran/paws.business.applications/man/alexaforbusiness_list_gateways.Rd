@@ -13,6 +13,21 @@ alexaforbusiness_list_gateways(GatewayGroupArn, NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of gateway summaries to return. The default is 50.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Gateways = list(
+    list(
+      Arn = "string",
+      Name = "string",
+      Description = "string",
+      GatewayGroupArn = "string",
+      SoftwareVersion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of gateway summaries. Use GetGateway to retrieve
 details of a specific gateway. An optional gateway group ARN can be

@@ -9,6 +9,9 @@ chime_delete_app_instance_user(AppInstanceUserArn)
 \arguments{
 \item{AppInstanceUserArn}{[required] The ARN of the user request being deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an \code{AppInstanceUser}.
 }

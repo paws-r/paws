@@ -16,6 +16,23 @@ describing the virtual tape recovery points.}
 \item{Limit}{Specifies that the number of virtual tape recovery points that are
 described be limited to the specified number.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  TapeRecoveryPointInfos = list(
+    list(
+      TapeARN = "string",
+      TapeRecoveryPointTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TapeSizeInBytes = 123,
+      TapeStatus = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of virtual tape recovery points that are available for
 the specified tape gateway.

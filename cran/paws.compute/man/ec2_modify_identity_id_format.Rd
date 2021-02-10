@@ -28,6 +28,9 @@ types that are currently within their opt-in period for longer IDs.}
 
 \item{UseLongIds}{[required] Indicates whether the resource should use longer IDs (17-character IDs)}
 }
+\value{
+An empty list.
+}
 \description{
 Modifies the ID format of a resource for a specified IAM user, IAM role,
 or the root user for an account; or all IAM users, IAM roles, and the

@@ -13,6 +13,15 @@ configservice_put_retention_configuration(RetentionPeriodInDays)
 
 Currently, only applicable to the configuration item history.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RetentionConfiguration = list(
+    Name = "string",
+    RetentionPeriodInDays = 123
+  )
+)
+}
+}
 \description{
 Creates and updates the retention configuration with details about
 retention period (number of days) that AWS Config stores your historical

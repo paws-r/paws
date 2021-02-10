@@ -13,6 +13,22 @@ after you create the \code{IPSet}.}
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IPSet = list(
+    IPSetId = "string",
+    Name = "string",
+    IPSetDescriptors = list(
+      list(
+        Type = "IPV4"|"IPV6",
+        Value = "string"
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

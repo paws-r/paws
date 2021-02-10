@@ -6,6 +6,13 @@
 \usage{
 redshift_describe_storage()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TotalBackupSizeInMegaBytes = 123.0,
+  TotalProvisionedStorageInMegaBytes = 123.0
+)
+}
+}
 \description{
 Returns account level backups storage size and provisional storage.
 }

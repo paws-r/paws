@@ -10,6 +10,30 @@ ssm_get_maintenance_window(WindowId)
 \item{WindowId}{[required] The ID of the maintenance window for which you want to retrieve
 information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowId = "string",
+  Name = "string",
+  Description = "string",
+  StartDate = "string",
+  EndDate = "string",
+  Schedule = "string",
+  ScheduleTimezone = "string",
+  ScheduleOffset = 123,
+  NextExecutionTime = "string",
+  Duration = 123,
+  Cutoff = 123,
+  AllowUnassociatedTargets = TRUE|FALSE,
+  Enabled = TRUE|FALSE,
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves a maintenance window.
 }

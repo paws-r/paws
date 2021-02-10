@@ -9,6 +9,9 @@ sagemaker_stop_labeling_job(LabelingJobName)
 \arguments{
 \item{LabelingJobName}{[required] The name of the labeling job to stop.}
 }
+\value{
+An empty list.
+}
 \description{
 Stops a running labeling job. A job that is stopped cannot be restarted.
 Any results obtained before the job is stopped are placed in the Amazon

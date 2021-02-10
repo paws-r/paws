@@ -12,6 +12,9 @@ worklink_disassociate_website_authorization_provider(FleetArn,
 
 \item{AuthorizationProviderId}{[required] A unique identifier for the authorization provider.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates a website authorization provider from a specified fleet.
 After the disassociation, users can't load any associated websites that

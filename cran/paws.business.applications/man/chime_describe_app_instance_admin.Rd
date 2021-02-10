@@ -11,6 +11,21 @@ chime_describe_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceAdmin = list(
+    Admin = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    AppInstanceArn = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns the full details of an \code{AppInstanceAdmin}.
 }

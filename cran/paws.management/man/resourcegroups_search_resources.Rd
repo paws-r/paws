@@ -29,6 +29,24 @@ indicates that more output is available. Set this parameter to the value
 provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceIdentifiers = list(
+    list(
+      ResourceArn = "string",
+      ResourceType = "string"
+    )
+  ),
+  NextToken = "string",
+  QueryErrors = list(
+    list(
+      ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of AWS resource identifiers that matches the specified
 query. The query uses the same format as a resource query in a

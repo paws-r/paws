@@ -14,6 +14,19 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceMonitorings = list(
+    list(
+      InstanceId = "string",
+      Monitoring = list(
+        State = "disabled"|"disabling"|"enabled"|"pending"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Enables detailed monitoring for a running instance. Otherwise, basic
 monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring your instances and volumes}

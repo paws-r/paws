@@ -22,6 +22,24 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortfolioDetails = list(
+    list(
+      Id = "string",
+      ARN = "string",
+      DisplayName = "string",
+      Description = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ProviderName = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists all portfolios that the specified product is associated with.
 }

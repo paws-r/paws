@@ -28,6 +28,132 @@ next set of results.}
 value you can specify is 100. If you specify a value greater than 100, a
 ValidationException error occurs. The default value is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProjectVersionDescriptions = list(
+    list(
+      ProjectVersionArn = "string",
+      CreationTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      MinInferenceUnits = 123,
+      Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING",
+      StatusMessage = "string",
+      BillableTrainingTimeInSeconds = 123,
+      TrainingEndTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      OutputConfig = list(
+        S3Bucket = "string",
+        S3KeyPrefix = "string"
+      ),
+      TrainingDataResult = list(
+        Input = list(
+          Assets = list(
+            list(
+              GroundTruthManifest = list(
+                S3Object = list(
+                  Bucket = "string",
+                  Name = "string",
+                  Version = "string"
+                )
+              )
+            )
+          )
+        ),
+        Output = list(
+          Assets = list(
+            list(
+              GroundTruthManifest = list(
+                S3Object = list(
+                  Bucket = "string",
+                  Name = "string",
+                  Version = "string"
+                )
+              )
+            )
+          )
+        ),
+        Validation = list(
+          Assets = list(
+            list(
+              GroundTruthManifest = list(
+                S3Object = list(
+                  Bucket = "string",
+                  Name = "string",
+                  Version = "string"
+                )
+              )
+            )
+          )
+        )
+      ),
+      TestingDataResult = list(
+        Input = list(
+          Assets = list(
+            list(
+              GroundTruthManifest = list(
+                S3Object = list(
+                  Bucket = "string",
+                  Name = "string",
+                  Version = "string"
+                )
+              )
+            )
+          ),
+          AutoCreate = TRUE|FALSE
+        ),
+        Output = list(
+          Assets = list(
+            list(
+              GroundTruthManifest = list(
+                S3Object = list(
+                  Bucket = "string",
+                  Name = "string",
+                  Version = "string"
+                )
+              )
+            )
+          ),
+          AutoCreate = TRUE|FALSE
+        ),
+        Validation = list(
+          Assets = list(
+            list(
+              GroundTruthManifest = list(
+                S3Object = list(
+                  Bucket = "string",
+                  Name = "string",
+                  Version = "string"
+                )
+              )
+            )
+          )
+        )
+      ),
+      EvaluationResult = list(
+        F1Score = 123.0,
+        Summary = list(
+          S3Object = list(
+            Bucket = "string",
+            Name = "string",
+            Version = "string"
+          )
+        )
+      ),
+      ManifestSummary = list(
+        S3Object = list(
+          Bucket = "string",
+          Name = "string",
+          Version = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists and describes the models in an Amazon Rekognition Custom Labels
 project. You can specify up to 10 model versions in

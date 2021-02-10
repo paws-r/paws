@@ -9,6 +9,9 @@ iot_disable_topic_rule(ruleName)
 \arguments{
 \item{ruleName}{[required] The name of the rule to disable.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables the rule.
 }

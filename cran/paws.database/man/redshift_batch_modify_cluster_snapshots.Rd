@@ -23,6 +23,22 @@ delete the snapshots, use the force option.}
 \item{Force}{A boolean value indicating whether to override an exception if the
 retention period has passed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Resources = list(
+    "string"
+  ),
+  Errors = list(
+    list(
+      SnapshotIdentifier = "string",
+      SnapshotClusterIdentifier = "string",
+      FailureCode = "string",
+      FailureReason = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the settings for a set of cluster snapshots.
 }

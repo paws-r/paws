@@ -15,16 +15,16 @@ NULL
 #' API operation.
 #' 
 #' As a prerequsite to using GetCLip API, you must obtain an endpoint using
-#' `GetDataEndpoint`, specifying GET\\_CLIP for`` the `APIName` parameter.
+#' `GetDataEndpoint`, specifying GET_CLIP for`` the `APIName` parameter.
 #' 
 #' An Amazon Kinesis video stream has the following requirements for
 #' providing data through MP4:
 #' 
 #' -   The media must contain h.264 or h.265 encoded video and, optionally,
 #'     AAC or G.711 encoded audio. Specifically, the codec ID of track 1
-#'     should be `V_MPEG/ISO/AVC` (for h.264) or V\\_MPEGH/ISO/HEVC (for
+#'     should be `V_MPEG/ISO/AVC` (for h.264) or V_MPEGH/ISO/HEVC (for
 #'     H.265). Optionally, the codec ID of track 2 should be `A_AAC` (for
-#'     AAC) or A\\_MS/ACM (for G.711).
+#'     AAC) or A_MS/ACM (for G.711).
 #' 
 #' -   Data retention must be greater than 0.
 #' 
@@ -62,6 +62,15 @@ NULL
 #' 
 #' You must specify either the StreamName or the StreamARN.
 #' @param ClipFragmentSelector &#91;required&#93; The time range of the requested clip and the source of the timestamps.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentType = "string",
+#'   Payload = raw
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -119,9 +128,9 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' 
 #' -   The media must contain h.264 or h.265 encoded video and, optionally,
 #'     AAC or G.711 encoded audio. Specifically, the codec ID of track 1
-#'     should be `V_MPEG/ISO/AVC` (for h.264) or V\\_MPEGH/ISO/HEVC (for
+#'     should be `V_MPEG/ISO/AVC` (for h.264) or V_MPEGH/ISO/HEVC (for
 #'     H.265). Optionally, the codec ID of track 2 should be `A_AAC` (for
-#'     AAC) or A\\_MS/ACM (for G.711).
+#'     AAC) or A_MS/ACM (for G.711).
 #' 
 #' -   Data retention must be greater than 0.
 #' 
@@ -387,6 +396,14 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' The maximum value of 1,000 fragments corresponds to more than 16 minutes
 #' of video on streams with 1-second fragments, and more than 2 1/2 hours
 #' of video on streams with 10-second fragments.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DASHStreamingSessionURL = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -777,6 +794,14 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' of video on streams with 1-second fragments, and more than 2 1/2 hours
 #' of video on streams with 10-second fragments.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HLSStreamingSessionURL = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_hls_streaming_session_url(
@@ -878,6 +903,15 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #' retrieve these values with
 #' [`list_fragments`][kinesisvideoarchivedmedia_list_fragments].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentType = "string",
+#'   Payload = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_media_for_fragment_list(
@@ -960,6 +994,27 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 #' ListFragmentsOutput$NextToken from a previously truncated response.
 #' @param FragmentSelector Describes the timestamp range and timestamp origin for the range of
 #' fragments to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Fragments = list(
+#'     list(
+#'       FragmentNumber = "string",
+#'       FragmentSizeInBytes = 123,
+#'       ProducerTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ServerTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FragmentLengthInMilliseconds = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

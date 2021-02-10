@@ -26,6 +26,32 @@ returned. If false, the operation returns all Qualification types.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NumResults = 123,
+  NextToken = "string",
+  QualificationTypes = list(
+    list(
+      QualificationTypeId = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "string",
+      Description = "string",
+      Keywords = "string",
+      QualificationTypeStatus = "Active"|"Inactive",
+      Test = "string",
+      TestDurationInSeconds = 123,
+      AnswerKey = "string",
+      RetryDelayInSeconds = 123,
+      IsRequestable = TRUE|FALSE,
+      AutoGranted = TRUE|FALSE,
+      AutoGrantedValue = 123
+    )
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_list_qualification_types]{list_qualification_types}}
 operation returns a list of Qualification types, filtered by an optional

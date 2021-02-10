@@ -13,6 +13,9 @@ worklink_update_domain_metadata(FleetArn, DomainName, DisplayName)
 
 \item{DisplayName}{The name to display.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates domain metadata, such as DisplayName.
 }

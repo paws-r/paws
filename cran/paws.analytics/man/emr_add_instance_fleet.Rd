@@ -11,6 +11,14 @@ emr_add_instance_fleet(ClusterId, InstanceFleet)
 
 \item{InstanceFleet}{[required] Specifies the configuration of the instance fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterId = "string",
+  InstanceFleetId = "string",
+  ClusterArn = "string"
+)
+}
+}
 \description{
 Adds an instance fleet to a running cluster.
 

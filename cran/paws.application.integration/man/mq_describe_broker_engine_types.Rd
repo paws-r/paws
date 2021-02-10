@@ -9,9 +9,28 @@ mq_describe_broker_engine_types(EngineType, MaxResults, NextToken)
 \arguments{
 \item{EngineType}{Filter response by engine type.}
 
-\item{MaxResults}{The maximum number of engine types that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.}
+\item{MaxResults}{The maximum number of engine types that Amazon MQ can return per page
+(20 by default). This value must be an integer from 5 to 100.}
 
-\item{NextToken}{The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.}
+\item{NextToken}{The token that specifies the next page of results Amazon MQ should
+return. To request the first page, leave nextToken empty.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BrokerEngineTypes = list(
+    list(
+      EngineType = "ACTIVEMQ"|"RABBITMQ",
+      EngineVersions = list(
+        list(
+          Name = "string"
+        )
+      )
+    )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
+)
+}
 }
 \description{
 Describe available engine types and versions.

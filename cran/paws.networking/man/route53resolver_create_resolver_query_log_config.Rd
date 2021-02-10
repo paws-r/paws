@@ -39,6 +39,23 @@ date/time stamp.}
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 query logging configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverQueryLogConfig = list(
+    Id = "string",
+    OwnerId = "string",
+    Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+    AssociationCount = 123,
+    Arn = "string",
+    Name = "string",
+    DestinationArn = "string",
+    CreatorRequestId = "string",
+    CreationTime = "string"
+  )
+)
+}
+}
 \description{
 Creates a Resolver query logging configuration, which defines where you
 want Resolver to save DNS query logs that originate in your VPCs.

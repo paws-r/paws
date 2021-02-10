@@ -17,6 +17,12 @@ aborts the data upload process, and the file share enters the
 
 Valid Values: \code{true} | \code{false}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileShareARN = "string"
+)
+}
+}
 \description{
 Deletes a file share from a file gateway. This operation is only
 supported for file gateways.

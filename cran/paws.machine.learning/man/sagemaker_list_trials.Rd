@@ -29,6 +29,29 @@ value is 10.}
 return the full set of trials, the call returns a token for getting the
 next set of trials.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialSummaries = list(
+    list(
+      TrialArn = "string",
+      TrialName = "string",
+      DisplayName = "string",
+      TrialSource = list(
+        SourceArn = "string",
+        SourceType = "string"
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the trials in your account. Specify an experiment name to limit
 the list to the trials that are part of that experiment. Specify a trial

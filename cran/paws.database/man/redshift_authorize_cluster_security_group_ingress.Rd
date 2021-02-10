@@ -21,6 +21,46 @@ acceptable value.
 
 Example: \code{111122223333}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterSecurityGroup = list(
+    ClusterSecurityGroupName = "string",
+    Description = "string",
+    EC2SecurityGroups = list(
+      list(
+        Status = "string",
+        EC2SecurityGroupName = "string",
+        EC2SecurityGroupOwnerId = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    ),
+    IPRanges = list(
+      list(
+        Status = "string",
+        CIDRIP = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds an inbound (ingress) rule to an Amazon Redshift security group.
 Depending on whether the application accessing your cluster is running

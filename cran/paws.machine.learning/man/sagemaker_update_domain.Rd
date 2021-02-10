@@ -11,6 +11,12 @@ sagemaker_update_domain(DomainId, DefaultUserSettings)
 
 \item{DefaultUserSettings}{A collection of settings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainArn = "string"
+)
+}
+}
 \description{
 Updates the default settings for new user profiles in the domain.
 }

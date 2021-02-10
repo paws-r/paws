@@ -22,6 +22,91 @@ in \code{REGISTERING}, \code{DEREGISTERING}, or \code{REGISTRATION_FAILED} state
 can describe the container instance but will be unable to update the
 container instance state.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  containerInstances = list(
+    list(
+      containerInstanceArn = "string",
+      ec2InstanceId = "string",
+      capacityProviderName = "string",
+      version = 123,
+      versionInfo = list(
+        agentVersion = "string",
+        agentHash = "string",
+        dockerVersion = "string"
+      ),
+      remainingResources = list(
+        list(
+          name = "string",
+          type = "string",
+          doubleValue = 123.0,
+          longValue = 123,
+          integerValue = 123,
+          stringSetValue = list(
+            "string"
+          )
+        )
+      ),
+      registeredResources = list(
+        list(
+          name = "string",
+          type = "string",
+          doubleValue = 123.0,
+          longValue = 123,
+          integerValue = 123,
+          stringSetValue = list(
+            "string"
+          )
+        )
+      ),
+      status = "string",
+      statusReason = "string",
+      agentConnected = TRUE|FALSE,
+      runningTasksCount = 123,
+      pendingTasksCount = 123,
+      agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+      attributes = list(
+        list(
+          name = "string",
+          value = "string",
+          targetType = "container-instance",
+          targetId = "string"
+        )
+      ),
+      registeredAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      attachments = list(
+        list(
+          id = "string",
+          type = "string",
+          status = "string",
+          details = list(
+            list(
+              name = "string",
+              value = "string"
+            )
+          )
+        )
+      ),
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  ),
+  failures = list(
+    list(
+      arn = "string",
+      reason = "string",
+      detail = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the status of an Amazon ECS container instance.
 

@@ -20,6 +20,9 @@ publish bounce and complaint notifications only through Amazon SNS. This
 value can only be set to \code{false} when Amazon SNS topics are set for both
 \code{Bounce} and \code{Complaint} notification types.}
 }
+\value{
+An empty list.
+}
 \description{
 Given an identity (an email address or a domain), enables or disables
 whether Amazon SES forwards bounce and complaint notifications as email.

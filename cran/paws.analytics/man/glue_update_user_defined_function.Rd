@@ -19,6 +19,9 @@ located.}
 \item{FunctionInput}{[required] A \code{FunctionInput} object that redefines the function in the Data
 Catalog.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates an existing function definition in the Data Catalog.
 }

@@ -26,6 +26,18 @@ indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
 should continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists tags that are attached to the specified resource.
 

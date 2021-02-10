@@ -11,6 +11,9 @@ ses_delete_identity(Identity)
 \item{Identity}{[required] The identity to be removed from the list of identities for the AWS
 Account.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified identity (an email address or a domain) from the
 list of verified identities.

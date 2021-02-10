@@ -11,6 +11,19 @@ machinelearning_describe_tags(ResourceId, ResourceType)
 
 \item{ResourceType}{[required] The type of the ML object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceId = "string",
+  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes one or more of the tags for your Amazon ML object.
 }

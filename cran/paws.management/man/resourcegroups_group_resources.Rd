@@ -11,6 +11,26 @@ resourcegroups_group_resources(Group, ResourceArns)
 
 \item{ResourceArns}{[required] The list of ARNs for resources to be added to the group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Succeeded = list(
+    "string"
+  ),
+  Failed = list(
+    list(
+      ResourceArn = "string",
+      ErrorMessage = "string",
+      ErrorCode = "string"
+    )
+  ),
+  Pending = list(
+    list(
+      ResourceArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds the specified resources to the specified group.
 

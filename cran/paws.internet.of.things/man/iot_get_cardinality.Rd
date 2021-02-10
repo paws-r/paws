@@ -16,6 +16,12 @@ iot_get_cardinality(indexName, queryString, aggregationField,
 
 \item{queryVersion}{The query version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cardinality = 123
+)
+}
+}
 \description{
 Returns the approximate count of unique values that match the query.
 }

@@ -11,6 +11,28 @@ connect_describe_routing_profile(InstanceId, RoutingProfileId)
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoutingProfile = list(
+    InstanceId = "string",
+    Name = "string",
+    RoutingProfileArn = "string",
+    RoutingProfileId = "string",
+    Description = "string",
+    MediaConcurrencies = list(
+      list(
+        Channel = "VOICE"|"CHAT"|"TASK",
+        Concurrency = 123
+      )
+    ),
+    DefaultOutboundQueueId = "string",
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified routing profile.
 }

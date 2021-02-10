@@ -14,6 +14,12 @@ in the response for \code{\link[=datapipeline_poll_for_task]{poll_for_task}}.}
 \item{fields}{Key-value pairs that define the properties of the
 ReportTaskProgressInput object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  canceled = TRUE|FALSE
+)
+}
+}
 \description{
 Task runners call
 \code{\link[=datapipeline_report_task_progress]{report_task_progress}} when

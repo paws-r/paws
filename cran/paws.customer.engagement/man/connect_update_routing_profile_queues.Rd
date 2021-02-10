@@ -17,6 +17,9 @@ connect_update_routing_profile_queues(InstanceId, RoutingProfileId,
 associated to the routing profile. You can do this using
 AssociateRoutingProfileQueues.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the properties associated with a set of queues for a routing
 profile.

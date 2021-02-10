@@ -19,6 +19,22 @@ created.}
 \item{PartitionInputList}{[required] A list of \code{PartitionInput} structures that define the partitions to be
 created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Errors = list(
+    list(
+      PartitionValues = list(
+        "string"
+      ),
+      ErrorDetail = list(
+        ErrorCode = "string",
+        ErrorMessage = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates one or more partitions in a batch operation.
 }

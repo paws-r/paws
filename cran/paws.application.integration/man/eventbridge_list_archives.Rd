@@ -20,6 +20,26 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Archives = list(
+    list(
+      ArchiveName = "string",
+      EventSourceArn = "string",
+      State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+      StateReason = "string",
+      RetentionDays = 123,
+      SizeBytes = 123,
+      EventCount = 123,
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists your archives. You can either list all the archives or you can
 provide a prefix to match to the archive names. Filter parameters are

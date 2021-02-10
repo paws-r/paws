@@ -11,6 +11,9 @@ cognitoidentityprovider_delete_group(GroupName, UserPoolId)
 
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a group. Currently only groups with no members can be deleted.
 

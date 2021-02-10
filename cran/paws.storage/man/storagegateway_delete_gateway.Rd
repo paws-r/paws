@@ -9,6 +9,12 @@ storagegateway_delete_gateway(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Deletes a gateway. To specify which gateway to delete, use the Amazon
 Resource Name (ARN) of the gateway in your request. The operation

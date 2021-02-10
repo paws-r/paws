@@ -21,6 +21,16 @@ apigatewayv2_update_model(ApiId, ContentType, Description, ModelId,
 \item{Schema}{The schema for the model. For application/json models, this should be
 JSON schema draft 4 model.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentType = "string",
+  Description = "string",
+  ModelId = "string",
+  Name = "string",
+  Schema = "string"
+)
+}
+}
 \description{
 Updates a Model.
 }

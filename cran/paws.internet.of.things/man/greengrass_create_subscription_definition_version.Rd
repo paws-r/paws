@@ -15,8 +15,18 @@ greengrass_create_subscription_definition_version(AmznClientToken,
 
 \item{Subscriptions}{A list of subscriptions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
+}
 \description{
-Creates a version of a subscription definition which has already been defined.
+Creates a version of a subscription definition which has already been
+defined.
 }
 \section{Request syntax}{
 \preformatted{svc$create_subscription_definition_version(

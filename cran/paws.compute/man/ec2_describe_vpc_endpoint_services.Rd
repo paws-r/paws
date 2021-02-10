@@ -38,6 +38,49 @@ items.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a prior call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceNames = list(
+    "string"
+  ),
+  ServiceDetails = list(
+    list(
+      ServiceName = "string",
+      ServiceId = "string",
+      ServiceType = list(
+        list(
+          ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
+        )
+      ),
+      AvailabilityZones = list(
+        "string"
+      ),
+      Owner = "string",
+      BaseEndpointDnsNames = list(
+        "string"
+      ),
+      PrivateDnsName = "string",
+      PrivateDnsNames = list(
+        list(
+          PrivateDnsName = "string"
+        )
+      ),
+      VpcEndpointPolicySupported = TRUE|FALSE,
+      AcceptanceRequired = TRUE|FALSE,
+      ManagesVpcEndpoints = TRUE|FALSE,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      PrivateDnsNameVerificationState = "pendingVerification"|"verified"|"failed"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes available services to which you can create a VPC endpoint.
 

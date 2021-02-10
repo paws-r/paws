@@ -24,6 +24,29 @@ NULL
 #' subnet ID. If you specify a subnet ID, Resolver chooses an IP address
 #' for you from the available IPs in the specified subnet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverEndpoint = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Direction = "INBOUND"|"OUTBOUND",
+#'     IpAddressCount = 123,
+#'     HostVPCId = "string",
+#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+#'     StatusMessage = "string",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_resolver_endpoint_ip_address(
@@ -83,6 +106,22 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #' 
 #' The VPCs and the query logging configuration must be in the same Region.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverQueryLogConfigAssociation = list(
+#'     Id = "string",
+#'     ResolverQueryLogConfigId = "string",
+#'     ResourceId = "string",
+#'     Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
+#'     Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
+#'     ErrorMessage = "string",
+#'     CreationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_resolver_query_log_config(
@@ -130,6 +169,21 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
 #' @param Name A name for the association that you're creating between a Resolver rule
 #' and a VPC.
 #' @param VPCId &#91;required&#93; The ID of the VPC that you want to associate the Resolver rule with.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRuleAssociation = list(
+#'     Id = "string",
+#'     ResolverRuleId = "string",
+#'     Name = "string",
+#'     VPCId = "string",
+#'     Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
+#'     StatusMessage = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -200,6 +254,29 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 #' endpoints). The subnet ID uniquely identifies a VPC.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverEndpoint = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Direction = "INBOUND"|"OUTBOUND",
+#'     IpAddressCount = 123,
+#'     HostVPCId = "string",
+#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+#'     StatusMessage = "string",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -297,6 +374,25 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' query logging configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverQueryLogConfig = list(
+#'     Id = "string",
+#'     OwnerId = "string",
+#'     Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'     AssociationCount = 123,
+#'     Arn = "string",
+#'     Name = "string",
+#'     DestinationArn = "string",
+#'     CreatorRequestId = "string",
+#'     CreationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_resolver_query_log_config(
@@ -382,6 +478,34 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRule = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     DomainName = "string",
+#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+#'     StatusMessage = "string",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     Name = "string",
+#'     TargetIps = list(
+#'       list(
+#'         Ip = "string",
+#'         Port = 123
+#'       )
+#'     ),
+#'     ResolverEndpointId = "string",
+#'     OwnerId = "string",
+#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_resolver_rule(
@@ -442,6 +566,29 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverEndpoint = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Direction = "INBOUND"|"OUTBOUND",
+#'     IpAddressCount = 123,
+#'     HostVPCId = "string",
+#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+#'     StatusMessage = "string",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resolver_endpoint(
@@ -496,6 +643,25 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverQueryLogConfig = list(
+#'     Id = "string",
+#'     OwnerId = "string",
+#'     Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'     AssociationCount = 123,
+#'     Arn = "string",
+#'     Name = "string",
+#'     DestinationArn = "string",
+#'     CreatorRequestId = "string",
+#'     CreationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resolver_query_log_config(
@@ -535,6 +701,34 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #' route53resolver_delete_resolver_rule(ResolverRuleId)
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRule = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     DomainName = "string",
+#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+#'     StatusMessage = "string",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     Name = "string",
+#'     TargetIps = list(
+#'       list(
+#'         Ip = "string",
+#'         Port = 123
+#'       )
+#'     ),
+#'     ResolverEndpointId = "string",
+#'     OwnerId = "string",
+#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -581,6 +775,29 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to disassociate an IP
 #' address from.
 #' @param IpAddress &#91;required&#93; The IPv4 address that you want to remove from a Resolver endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverEndpoint = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Direction = "INBOUND"|"OUTBOUND",
+#'     IpAddressCount = 123,
+#'     HostVPCId = "string",
+#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+#'     StatusMessage = "string",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -639,6 +856,22 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
 #' @param ResourceId &#91;required&#93; The ID of the Amazon VPC that you want to disassociate from a specified
 #' query logging configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverQueryLogConfigAssociation = list(
+#'     Id = "string",
+#'     ResolverQueryLogConfigId = "string",
+#'     ResourceId = "string",
+#'     Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
+#'     Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
+#'     ErrorMessage = "string",
+#'     CreationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_resolver_query_log_config(
@@ -685,6 +918,21 @@ route53resolver_disassociate_resolver_query_log_config <- function(ResolverQuery
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to disassociate from the
 #' specified VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRuleAssociation = list(
+#'     Id = "string",
+#'     ResolverRuleId = "string",
+#'     Name = "string",
+#'     VPCId = "string",
+#'     Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
+#'     StatusMessage = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_resolver_rule(
@@ -723,6 +971,19 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 #'
 #' @param ResourceId &#91;required&#93; The ID of the virtual private cloud (VPC) for the DNSSEC validation
 #' status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverDNSSECConfig = list(
+#'     Id = "string",
+#'     OwnerId = "string",
+#'     ResourceId = "string",
+#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -765,6 +1026,29 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverEndpoint = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Direction = "INBOUND"|"OUTBOUND",
+#'     IpAddressCount = 123,
+#'     HostVPCId = "string",
+#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+#'     StatusMessage = "string",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_resolver_endpoint(
@@ -806,6 +1090,25 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the Resolver query logging configuration that you want to get
 #' information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverQueryLogConfig = list(
+#'     Id = "string",
+#'     OwnerId = "string",
+#'     Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'     AssociationCount = 123,
+#'     Arn = "string",
+#'     Name = "string",
+#'     DestinationArn = "string",
+#'     CreatorRequestId = "string",
+#'     CreationTime = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -850,6 +1153,22 @@ route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfig
 #' @param ResolverQueryLogConfigAssociationId &#91;required&#93; The ID of the Resolver query logging configuration association that you
 #' want to get information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverQueryLogConfigAssociation = list(
+#'     Id = "string",
+#'     ResolverQueryLogConfigId = "string",
+#'     ResourceId = "string",
+#'     Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
+#'     Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
+#'     ErrorMessage = "string",
+#'     CreationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_resolver_query_log_config_association(
@@ -889,6 +1208,14 @@ route53resolver_get_resolver_query_log_config_association <- function(ResolverQu
 #'
 #' @param Arn &#91;required&#93; The ARN of the query logging configuration that you want to get the
 #' query logging policy for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverQueryLogConfigPolicy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -931,6 +1258,34 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to get information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRule = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     DomainName = "string",
+#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+#'     StatusMessage = "string",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     Name = "string",
+#'     TargetIps = list(
+#'       list(
+#'         Ip = "string",
+#'         Port = 123
+#'       )
+#'     ),
+#'     ResolverEndpointId = "string",
+#'     OwnerId = "string",
+#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_resolver_rule(
@@ -972,6 +1327,21 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
 #' @param ResolverRuleAssociationId &#91;required&#93; The ID of the Resolver rule association that you want to get information
 #' about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRuleAssociation = list(
+#'     Id = "string",
+#'     ResolverRuleId = "string",
+#'     Name = "string",
+#'     VPCId = "string",
+#'     Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
+#'     StatusMessage = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_resolver_rule_association(
@@ -1012,6 +1382,14 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
 #'
 #' @param Arn &#91;required&#93; The ID of the Resolver rule that you want to get the Resolver rule
 #' policy for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRulePolicy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1067,6 +1445,22 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #' from the previous response and specify that value for `NextToken` in the
 #' request.
 #' @param Filters An optional specification to return a subset of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ResolverDnssecConfigs = list(
+#'     list(
+#'       Id = "string",
+#'       OwnerId = "string",
+#'       ResourceId = "string",
+#'       ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1129,6 +1523,26 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #' request to get the next group of IP addresses. In the next request,
 #' specify the value of `NextToken` from the previous response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   IpAddresses = list(
+#'     list(
+#'       IpId = "string",
+#'       SubnetId = "string",
+#'       Ip = "string",
+#'       Status = "CREATING"|"FAILED_CREATION"|"ATTACHING"|"ATTACHED"|"REMAP_DETACHING"|"REMAP_ATTACHING"|"DETACHING"|"FAILED_RESOURCE_GONE"|"DELETING"|"DELETE_FAILED_FAS_EXPIRED",
+#'       StatusMessage = "string",
+#'       CreationTime = "string",
+#'       ModificationTime = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resolver_endpoint_ip_addresses(
@@ -1189,6 +1603,33 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #' [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
 #' request and specify the `NextToken` parameter, you must use the same
 #' values for `Filters`, if any, as in the previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ResolverEndpoints = list(
+#'     list(
+#'       Id = "string",
+#'       CreatorRequestId = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Direction = "INBOUND"|"OUTBOUND",
+#'       IpAddressCount = 123,
+#'       HostVPCId = "string",
+#'       Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+#'       StatusMessage = "string",
+#'       CreationTime = "string",
+#'       ModificationTime = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1315,6 +1756,27 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' [`list_resolver_query_log_config_associations`][route53resolver_list_resolver_query_log_config_associations]
 #' request and specify the `NextToken` parameter, you must use the same
 #' value for `SortOrder`, if any, as in the previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   TotalCount = 123,
+#'   TotalFilteredCount = 123,
+#'   ResolverQueryLogConfigAssociations = list(
+#'     list(
+#'       Id = "string",
+#'       ResolverQueryLogConfigId = "string",
+#'       ResourceId = "string",
+#'       Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
+#'       Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
+#'       ErrorMessage = "string",
+#'       CreationTime = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1448,6 +1910,30 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' request and specify the `NextToken` parameter, you must use the same
 #' value for `SortOrder`, if any, as in the previous request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   TotalCount = 123,
+#'   TotalFilteredCount = 123,
+#'   ResolverQueryLogConfigs = list(
+#'     list(
+#'       Id = "string",
+#'       OwnerId = "string",
+#'       Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
+#'       ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'       AssociationCount = 123,
+#'       Arn = "string",
+#'       Name = "string",
+#'       DestinationArn = "string",
+#'       CreatorRequestId = "string",
+#'       CreationTime = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resolver_query_log_configs(
@@ -1516,6 +2002,25 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
 #' request and specify the `NextToken` parameter, you must use the same
 #' values for `Filters`, if any, as in the previous request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ResolverRuleAssociations = list(
+#'     list(
+#'       Id = "string",
+#'       ResolverRuleId = "string",
+#'       Name = "string",
+#'       VPCId = "string",
+#'       Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
+#'       StatusMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resolver_rule_associations(
@@ -1582,6 +2087,38 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #' specify the `NextToken` parameter, you must use the same values for
 #' `Filters`, if any, as in the previous request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ResolverRules = list(
+#'     list(
+#'       Id = "string",
+#'       CreatorRequestId = "string",
+#'       Arn = "string",
+#'       DomainName = "string",
+#'       Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+#'       StatusMessage = "string",
+#'       RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'       Name = "string",
+#'       TargetIps = list(
+#'         list(
+#'           Ip = "string",
+#'           Port = 123
+#'         )
+#'       ),
+#'       ResolverEndpointId = "string",
+#'       OwnerId = "string",
+#'       ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'       CreationTime = "string",
+#'       ModificationTime = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resolver_rules(
@@ -1641,6 +2178,20 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #' [`list_tags_for_resource`][route53resolver_list_tags_for_resource]
 #' request to get the next group of tags for the resource. In the next
 #' request, specify the value of `NextToken` from the previous response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1706,6 +2257,14 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
 #' query logging configurations that you want to share with the account
 #' that you specified in `Arn`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReturnValue = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_resolver_query_log_config_policy(
@@ -1767,6 +2326,14 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
 #' that you want to share with another account. Specify the same ARN that
 #' you specified in `Arn`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReturnValue = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_resolver_rule_policy(
@@ -1819,6 +2386,9 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' 
 #' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1878,6 +2448,9 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param TagKeys &#91;required&#93; The tags that you want to remove to the specified resource.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1923,6 +2496,19 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 #' The value can be `ENABLE` or `DISABLE`. Be aware that it can take time
 #' for a validation status change to be completed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverDNSSECConfig = list(
+#'     Id = "string",
+#'     OwnerId = "string",
+#'     ResourceId = "string",
+#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_resolver_dnssec_config(
@@ -1961,6 +2547,29 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to update.
 #' @param Name The name of the Resolver endpoint that you want to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverEndpoint = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Direction = "INBOUND"|"OUTBOUND",
+#'     IpAddressCount = 123,
+#'     HostVPCId = "string",
+#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+#'     StatusMessage = "string",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2002,6 +2611,34 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to update.
 #' @param Config &#91;required&#93; The new settings for the Resolver rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResolverRule = list(
+#'     Id = "string",
+#'     CreatorRequestId = "string",
+#'     Arn = "string",
+#'     DomainName = "string",
+#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+#'     StatusMessage = "string",
+#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+#'     Name = "string",
+#'     TargetIps = list(
+#'       list(
+#'         Ip = "string",
+#'         Port = 123
+#'       )
+#'     ),
+#'     ResolverEndpointId = "string",
+#'     OwnerId = "string",
+#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+#'     CreationTime = "string",
+#'     ModificationTime = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

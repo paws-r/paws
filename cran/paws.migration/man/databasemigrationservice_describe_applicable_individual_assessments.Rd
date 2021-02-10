@@ -34,6 +34,15 @@ retrieved.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IndividualAssessmentNames = list(
+    "string"
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Provides a list of individual assessments that you can specify for a new
 premigration assessment run, given one or more parameters.

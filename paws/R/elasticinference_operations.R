@@ -22,6 +22,20 @@ NULL
 #' availability zone level returning the availability zone id.
 #' @param acceleratorTypes The list of accelerator types to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   acceleratorTypeOfferings = list(
+#'     list(
+#'       acceleratorType = "string",
+#'       locationType = "region"|"availability-zone"|"availability-zone-id",
+#'       location = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_accelerator_offerings(
@@ -61,6 +75,27 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
 #'
 #' @usage
 #' elasticinference_describe_accelerator_types()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   acceleratorTypes = list(
+#'     list(
+#'       acceleratorTypeName = "string",
+#'       memoryInfo = list(
+#'         sizeInMiB = 123
+#'       ),
+#'       throughputInfo = list(
+#'         list(
+#'           key = "string",
+#'           value = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -112,6 +147,25 @@ elasticinference_describe_accelerator_types <- function() {
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   acceleratorSet = list(
+#'     list(
+#'       acceleratorHealth = list(
+#'         status = "string"
+#'       ),
+#'       acceleratorType = "string",
+#'       acceleratorId = "string",
+#'       availabilityZone = "string",
+#'       attachedResource = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_accelerators(
@@ -161,6 +215,16 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the Elastic Inference Accelerator to list the tags for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -198,6 +262,9 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the Elastic Inference Accelerator to tag.
 #' @param tags &#91;required&#93; The tags to add to the Elastic Inference Accelerator.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -239,6 +306,9 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the Elastic Inference Accelerator to untag.
 #' @param tagKeys &#91;required&#93; The list of tags to remove from the Elastic Inference Accelerator.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

@@ -12,6 +12,22 @@ neptune_describe_db_cluster_snapshot_attributes(
 \item{DBClusterSnapshotIdentifier}{[required] The identifier for the DB cluster snapshot to describe the attributes
 for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterSnapshotAttributesResult = list(
+    DBClusterSnapshotIdentifier = "string",
+    DBClusterSnapshotAttributes = list(
+      list(
+        AttributeName = "string",
+        AttributeValues = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of DB cluster snapshot attribute names and values for a
 manual DB cluster snapshot.

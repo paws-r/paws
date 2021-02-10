@@ -9,6 +9,9 @@ transcribeservice_delete_language_model(ModelName)
 \arguments{
 \item{ModelName}{[required] The name of the model you're choosing to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a custom language model using its name.
 }

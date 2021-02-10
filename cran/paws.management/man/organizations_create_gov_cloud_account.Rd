@@ -2,8 +2,7 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_create_gov_cloud_account}
 \alias{organizations_create_gov_cloud_account}
-\title{This action is available if all of the following are true: - You're
-authorized to create accounts in the AWS GovCloud (US) Region}
+\title{This action is available if all of the following are true:}
 \usage{
 organizations_create_gov_cloud_account(Email, AccountName, RoleName,
   IamUserAccessToBilling, Tags)
@@ -70,6 +69,25 @@ in the AWS Organizations User Guide.
 If any one of the tags is invalid or if you exceed the allowed number of
 tags for an account, then the entire request fails and the account is
 not created.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CreateAccountStatus = list(
+    Id = "string",
+    AccountName = "string",
+    State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+    RequestedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CompletedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    AccountId = "string",
+    GovCloudAccountId = "string",
+    FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+  )
+)
+}
 }
 \description{
 This action is available if all of the following are true:

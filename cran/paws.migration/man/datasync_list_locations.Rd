@@ -18,6 +18,18 @@ all tasks on a specific source location, you can use
 \code{\link[=datasync_list_locations]{list_locations}} with filter name
 \verb{LocationType S3} and \verb{Operator Equals}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Locations = list(
+    list(
+      LocationArn = "string",
+      LocationUri = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of source and destination locations.
 

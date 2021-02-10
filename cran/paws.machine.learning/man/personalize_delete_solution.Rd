@@ -9,6 +9,9 @@ personalize_delete_solution(solutionArn)
 \arguments{
 \item{solutionArn}{[required] The ARN of the solution to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes all versions of a solution and the \code{Solution} object itself.
 Before deleting a solution, you must delete all campaigns based on the

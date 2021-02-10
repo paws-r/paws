@@ -12,14 +12,23 @@ greengrass_create_deployment(AmznClientToken, DeploymentId,
 
 \item{DeploymentId}{The ID of the deployment if you wish to redeploy a previous deployment.}
 
-\item{DeploymentType}{[required] The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.}
+\item{DeploymentType}{[required] The type of deployment. When used for ''CreateDeployment'', only
+''NewDeployment'' and ''Redeployment'' are valid.}
 
 \item{GroupId}{[required] The ID of the Greengrass group.}
 
 \item{GroupVersionId}{The ID of the group version to be deployed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeploymentArn = "string",
+  DeploymentId = "string"
+)
+}
+}
 \description{
-Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the ''X-Amzn-Client-Token'' token and the request parameters.
+Creates a deployment. ''CreateDeployment'' requests are idempotent with
+respect to the ''X-Amzn-Client-Token'' token and the request parameters.
 }
 \section{Request syntax}{
 \preformatted{svc$create_deployment(

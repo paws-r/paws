@@ -22,6 +22,21 @@ s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Location = "string",
+  Bucket = "string",
+  Key = "string",
+  Expiration = "string",
+  ETag = "string",
+  ServerSideEncryption = "AES256"|"aws:kms",
+  VersionId = "string",
+  SSEKMSKeyId = "string",
+  BucketKeyEnabled = TRUE|FALSE,
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Completes a multipart upload by assembling previously uploaded parts.
 
@@ -47,12 +62,12 @@ request succeeded.
 
 Note that if \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
 fails, applications should be prepared to retry the failed requests. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html}{Amazon S3 Error Best Practices}.
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ErrorBestPractices.html}{Amazon S3 Error Best Practices}.
 
-For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
+For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}.
 
 For information about permissions required to use the multipart upload
-API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
 
 \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}} has the
 following special errors:
@@ -124,16 +139,16 @@ svc$complete_multipart_upload(
   MultipartUpload = list(
     Parts = list(
       list(
-        ETag = "\"d8c2eafd90c266e19ab9dcacc479f8af\"",
+        ETag = ""d8c2eafd90c266e19ab9dcacc479f8af"",
         PartNumber = "1"
       ),
       list(
-        ETag = "\"d8c2eafd90c266e19ab9dcacc479f8af\"",
+        ETag = ""d8c2eafd90c266e19ab9dcacc479f8af"",
         PartNumber = "2"
       )
     )
   ),
-  UploadId = "7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CE..."
+  UploadId = "7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
 )
 }
 

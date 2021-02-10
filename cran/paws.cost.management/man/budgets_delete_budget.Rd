@@ -12,6 +12,9 @@ delete.}
 
 \item{BudgetName}{[required] The name of the budget that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a budget. You can delete your budget at any time.
 

@@ -11,6 +11,12 @@ opsworks_register_elastic_ip(ElasticIp, StackId)
 
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ElasticIp = "string"
+)
+}
+}
 \description{
 Registers an Elastic IP address with a specified stack. An address can
 be registered with only one stack at a time. If the address is already

@@ -90,9 +90,42 @@ GameLift hosting or as a standalone matchmaking solution.
 information, including players and team assignments, in a
 \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html#match-events-matchmakingsucceeded}{MatchmakingSucceeded}
 event.
-\item \strong{WITH\\_QUEUE} - FlexMatch forms matches and uses the specified
+\item \strong{WITH_QUEUE} - FlexMatch forms matches and uses the specified
 GameLift queue to start a game session for the match.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Configuration = list(
+    Name = "string",
+    ConfigurationArn = "string",
+    Description = "string",
+    GameSessionQueueArns = list(
+      "string"
+    ),
+    RequestTimeoutSeconds = 123,
+    AcceptanceTimeoutSeconds = 123,
+    AcceptanceRequired = TRUE|FALSE,
+    RuleSetName = "string",
+    RuleSetArn = "string",
+    NotificationTarget = "string",
+    AdditionalPlayerCount = 123,
+    CustomEventData = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    GameProperties = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    GameSessionData = "string",
+    BackfillMode = "AUTOMATIC"|"MANUAL",
+    FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
+  )
+)
+}
 }
 \description{
 Updates settings for a FlexMatch matchmaking configuration. These

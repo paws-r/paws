@@ -14,6 +14,9 @@ NULL
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param StackName &#91;required&#93; The name of the stack.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_fleet(
@@ -53,6 +56,25 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 #' appstream_batch_associate_user_stack(UserStackAssociations)
 #'
 #' @param UserStackAssociations &#91;required&#93; The list of UserStackAssociation objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       UserStackAssociation = list(
+#'         StackName = "string",
+#'         UserName = "string",
+#'         AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'         SendEmailNotification = TRUE|FALSE
+#'       ),
+#'       ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -97,6 +119,25 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 #' appstream_batch_disassociate_user_stack(UserStackAssociations)
 #'
 #' @param UserStackAssociations &#91;required&#93; The list of UserStackAssociation objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       UserStackAssociation = list(
+#'         StackName = "string",
+#'         UserName = "string",
+#'         AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'         SendEmailNotification = TRUE|FALSE
+#'       ),
+#'       ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -151,6 +192,14 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
 #' @param DestinationImageDescription The description that the image will have when it is copied to the
 #' destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DestinationImageName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_image(
@@ -198,6 +247,26 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryConfig = list(
+#'     DirectoryName = "string",
+#'     OrganizationalUnitDistinguishedNames = list(
+#'       "string"
+#'     ),
+#'     ServiceAccountCredentials = list(
+#'       AccountName = "string",
+#'       AccountPassword = "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -317,13 +386,13 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' -   stream.graphics-pro.16xlarge
 #' @param FleetType The fleet type.
 #' 
-#' ### ALWAYS\\_ON
+#' ### ALWAYS_ON
 #' 
 #' Provides users with instant-on access to their apps. You are charged for
 #' all running instances in your fleet, even if no users are streaming
 #' apps.
 #' 
-#' ### ON\\_DEMAND
+#' ### ON_DEMAND
 #' 
 #' Provide users with access to applications after they connect, which
 #' takes one to two minutes. You are charged for instance streaming when
@@ -359,7 +428,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @@
+#' _ . : / = + \\ - @@
 #' 
 #' For more information, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
@@ -393,7 +462,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
 #' The operation creates a new session with temporary credentials.
 #' AppStream 2.0 retrieves the temporary credentials and creates the
-#' **appstream\\_machine\\_role** credential profile on the instance.
+#' **appstream_machine_role** credential profile on the instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
 #' Applications and Scripts Running on AppStream 2.0 Streaming
@@ -405,6 +474,57 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' standard desktop that is provided by the operating system displays.
 #' 
 #' The default value is `APP`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Fleet = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     DisplayName = "string",
+#'     Description = "string",
+#'     ImageName = "string",
+#'     ImageArn = "string",
+#'     InstanceType = "string",
+#'     FleetType = "ALWAYS_ON"|"ON_DEMAND",
+#'     ComputeCapacityStatus = list(
+#'       Desired = 123,
+#'       Running = 123,
+#'       InUse = 123,
+#'       Available = 123
+#'     ),
+#'     MaxUserDurationInSeconds = 123,
+#'     DisconnectTimeoutInSeconds = 123,
+#'     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FleetErrors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string"
+#'       )
+#'     ),
+#'     EnableDefaultInternetAccess = TRUE|FALSE,
+#'     DomainJoinInfo = list(
+#'       DirectoryName = "string",
+#'       OrganizationalUnitDistinguishedName = "string"
+#'     ),
+#'     IdleDisconnectTimeoutInSeconds = 123,
+#'     IamRoleArn = "string",
+#'     StreamView = "APP"|"DESKTOP"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -556,7 +676,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
 #' role to use. The operation creates a new session with temporary
 #' credentials. AppStream 2.0 retrieves the temporary credentials and
-#' creates the **appstream\\_machine\\_role** credential profile on the
+#' creates the **appstream_machine_role** credential profile on the
 #' instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
@@ -575,7 +695,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @@
+#' _ . : / = + \\ - @@
 #' 
 #' If you do not specify a value, the value is set to an empty string.
 #' 
@@ -585,6 +705,64 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
 #' Administrators can connect to the image builder only through the
 #' specified endpoints.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageBuilder = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     ImageArn = "string",
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     InstanceType = "string",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+#'     IamRoleArn = "string",
+#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
+#'     StateChangeReason = list(
+#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
+#'       Message = "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EnableDefaultInternetAccess = TRUE|FALSE,
+#'     DomainJoinInfo = list(
+#'       DirectoryName = "string",
+#'       OrganizationalUnitDistinguishedName = "string"
+#'     ),
+#'     NetworkAccessConfiguration = list(
+#'       EniPrivateIpAddress = "string",
+#'       EniId = "string"
+#'     ),
+#'     ImageBuilderErrors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string",
+#'         ErrorTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     AppstreamAgentVersion = "string",
+#'     AccessEndpoints = list(
+#'       list(
+#'         EndpointType = "STREAMING",
+#'         VpceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -654,6 +832,17 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
 #' @param Validity The time that the streaming URL will be valid, in seconds. Specify a
 #' value between 1 and 604800 seconds. The default is 3600 seconds.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingURL = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_image_builder_streaming_url(
@@ -716,7 +905,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @@
+#' _ . : / = + \\ - @@
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
@@ -727,6 +916,59 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
 #' iframe. You must approve the domains that you want to host embedded
 #' AppStream 2.0 streaming sessions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Stack = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StorageConnectors = list(
+#'       list(
+#'         ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
+#'         ResourceIdentifier = "string",
+#'         Domains = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     RedirectURL = "string",
+#'     FeedbackURL = "string",
+#'     StackErrors = list(
+#'       list(
+#'         ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string"
+#'       )
+#'     ),
+#'     UserSettings = list(
+#'       list(
+#'         Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
+#'         Permission = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     ApplicationSettings = list(
+#'       Enabled = TRUE|FALSE,
+#'       SettingsGroup = "string",
+#'       S3BucketName = "string"
+#'     ),
+#'     AccessEndpoints = list(
+#'       list(
+#'         EndpointType = "STREAMING",
+#'         VpceId = "string"
+#'       )
+#'     ),
+#'     EmbedHostDomains = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -812,6 +1054,17 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #' Context](https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
 #' in the *Amazon AppStream 2.0 Administration Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingURL = "string",
+#'   Expires = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_streaming_url(
@@ -851,6 +1104,15 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'
 #' @usage
 #' appstream_create_usage_report_subscription()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   S3BucketName = "string",
+#'   Schedule = "DAILY"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -904,6 +1166,9 @@ appstream_create_usage_report_subscription <- function() {
 #' @param LastName The last name, or surname, of the user.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_user(
@@ -947,6 +1212,9 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
 #'
 #' @param DirectoryName &#91;required&#93; The name of the directory configuration.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_directory_config(
@@ -983,6 +1251,9 @@ appstream_delete_directory_config <- function(DirectoryName) {
 #' appstream_delete_fleet(Name)
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1023,6 +1294,53 @@ appstream_delete_fleet <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the image.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Image = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     BaseImageArn = "string",
+#'     DisplayName = "string",
+#'     State = "PENDING"|"AVAILABLE"|"FAILED"|"COPYING"|"DELETING",
+#'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
+#'     ImageBuilderSupported = TRUE|FALSE,
+#'     ImageBuilderName = "string",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+#'     Description = "string",
+#'     StateChangeReason = list(
+#'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
+#'       Message = "string"
+#'     ),
+#'     Applications = list(
+#'       list(
+#'         Name = "string",
+#'         DisplayName = "string",
+#'         IconURL = "string",
+#'         LaunchPath = "string",
+#'         LaunchParameters = "string",
+#'         Enabled = TRUE|FALSE,
+#'         Metadata = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PublicBaseImageReleasedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AppstreamAgentVersion = "string",
+#'     ImagePermissions = list(
+#'       allowFleet = TRUE|FALSE,
+#'       allowImageBuilder = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_image(
@@ -1059,6 +1377,64 @@ appstream_delete_image <- function(Name) {
 #' appstream_delete_image_builder(Name)
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageBuilder = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     ImageArn = "string",
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     InstanceType = "string",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+#'     IamRoleArn = "string",
+#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
+#'     StateChangeReason = list(
+#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
+#'       Message = "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EnableDefaultInternetAccess = TRUE|FALSE,
+#'     DomainJoinInfo = list(
+#'       DirectoryName = "string",
+#'       OrganizationalUnitDistinguishedName = "string"
+#'     ),
+#'     NetworkAccessConfiguration = list(
+#'       EniPrivateIpAddress = "string",
+#'       EniId = "string"
+#'     ),
+#'     ImageBuilderErrors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string",
+#'         ErrorTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     AppstreamAgentVersion = "string",
+#'     AccessEndpoints = list(
+#'       list(
+#'         EndpointType = "STREAMING",
+#'         VpceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1101,6 +1477,9 @@ appstream_delete_image_builder <- function(Name) {
 #' @param SharedAccountId &#91;required&#93; The 12-digit identifier of the AWS account for which to delete image
 #' permissions.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_image_permissions(
@@ -1142,6 +1521,9 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
 #'
 #' @param Name &#91;required&#93; The name of the stack.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_stack(
@@ -1176,6 +1558,9 @@ appstream_delete_stack <- function(Name) {
 #'
 #' @usage
 #' appstream_delete_usage_report_subscription()
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1214,6 +1599,9 @@ appstream_delete_usage_report_subscription <- function() {
 #' 
 #' Users' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1265,6 +1653,29 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryConfigs = list(
+#'     list(
+#'       DirectoryName = "string",
+#'       OrganizationalUnitDistinguishedNames = list(
+#'         "string"
+#'       ),
+#'       ServiceAccountCredentials = list(
+#'         AccountName = "string",
+#'         AccountPassword = "string"
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_directory_configs(
@@ -1311,6 +1722,60 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Fleets = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       ImageName = "string",
+#'       ImageArn = "string",
+#'       InstanceType = "string",
+#'       FleetType = "ALWAYS_ON"|"ON_DEMAND",
+#'       ComputeCapacityStatus = list(
+#'         Desired = 123,
+#'         Running = 123,
+#'         InUse = 123,
+#'         Available = 123
+#'       ),
+#'       MaxUserDurationInSeconds = 123,
+#'       DisconnectTimeoutInSeconds = 123,
+#'       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'       VpcConfig = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FleetErrors = list(
+#'         list(
+#'           ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'           ErrorMessage = "string"
+#'         )
+#'       ),
+#'       EnableDefaultInternetAccess = TRUE|FALSE,
+#'       DomainJoinInfo = list(
+#'         DirectoryName = "string",
+#'         OrganizationalUnitDistinguishedName = "string"
+#'       ),
+#'       IdleDisconnectTimeoutInSeconds = 123,
+#'       IamRoleArn = "string",
+#'       StreamView = "APP"|"DESKTOP"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fleets(
@@ -1356,6 +1821,67 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageBuilders = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       ImageArn = "string",
+#'       Description = "string",
+#'       DisplayName = "string",
+#'       VpcConfig = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       InstanceType = "string",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+#'       IamRoleArn = "string",
+#'       State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
+#'       StateChangeReason = list(
+#'         Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
+#'         Message = "string"
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EnableDefaultInternetAccess = TRUE|FALSE,
+#'       DomainJoinInfo = list(
+#'         DirectoryName = "string",
+#'         OrganizationalUnitDistinguishedName = "string"
+#'       ),
+#'       NetworkAccessConfiguration = list(
+#'         EniPrivateIpAddress = "string",
+#'         EniId = "string"
+#'       ),
+#'       ImageBuilderErrors = list(
+#'         list(
+#'           ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'           ErrorMessage = "string",
+#'           ErrorTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       AppstreamAgentVersion = "string",
+#'       AccessEndpoints = list(
+#'         list(
+#'           EndpointType = "STREAMING",
+#'           VpceId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1407,6 +1933,24 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   SharedImagePermissionsList = list(
+#'     list(
+#'       sharedAccountId = "string",
+#'       imagePermissions = list(
+#'         allowFleet = TRUE|FALSE,
+#'         allowImageBuilder = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_image_permissions(
@@ -1456,6 +2000,56 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #' @param MaxResults The maximum size of each page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Images = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       BaseImageArn = "string",
+#'       DisplayName = "string",
+#'       State = "PENDING"|"AVAILABLE"|"FAILED"|"COPYING"|"DELETING",
+#'       Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
+#'       ImageBuilderSupported = TRUE|FALSE,
+#'       ImageBuilderName = "string",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+#'       Description = "string",
+#'       StateChangeReason = list(
+#'         Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
+#'         Message = "string"
+#'       ),
+#'       Applications = list(
+#'         list(
+#'           Name = "string",
+#'           DisplayName = "string",
+#'           IconURL = "string",
+#'           LaunchPath = "string",
+#'           LaunchParameters = "string",
+#'           Enabled = TRUE|FALSE,
+#'           Metadata = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PublicBaseImageReleasedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AppstreamAgentVersion = "string",
+#'       ImagePermissions = list(
+#'         allowFleet = TRUE|FALSE,
+#'         allowImageBuilder = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1518,6 +2112,35 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' a streaming URL or `SAML` for a SAML federated user. The default is to
 #' authenticate users using a streaming URL.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sessions = list(
+#'     list(
+#'       Id = "string",
+#'       UserId = "string",
+#'       StackName = "string",
+#'       FleetName = "string",
+#'       State = "ACTIVE"|"PENDING"|"EXPIRED",
+#'       ConnectionState = "CONNECTED"|"NOT_CONNECTED",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MaxExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'       NetworkAccessConfiguration = list(
+#'         EniPrivateIpAddress = "string",
+#'         EniId = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_sessions(
@@ -1565,6 +2188,62 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Stacks = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DisplayName = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StorageConnectors = list(
+#'         list(
+#'           ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
+#'           ResourceIdentifier = "string",
+#'           Domains = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       RedirectURL = "string",
+#'       FeedbackURL = "string",
+#'       StackErrors = list(
+#'         list(
+#'           ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
+#'           ErrorMessage = "string"
+#'         )
+#'       ),
+#'       UserSettings = list(
+#'         list(
+#'           Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
+#'           Permission = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       ApplicationSettings = list(
+#'         Enabled = TRUE|FALSE,
+#'         SettingsGroup = "string",
+#'         S3BucketName = "string"
+#'       ),
+#'       AccessEndpoints = list(
+#'         list(
+#'           EndpointType = "STREAMING",
+#'           VpceId = "string"
+#'         )
+#'       ),
+#'       EmbedHostDomains = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_stacks(
@@ -1606,6 +2285,29 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UsageReportSubscriptions = list(
+#'     list(
+#'       S3BucketName = "string",
+#'       Schedule = "DAILY",
+#'       LastGeneratedReportDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SubscriptionErrors = list(
+#'         list(
+#'           ErrorCode = "RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
+#'           ErrorMessage = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1660,6 +2362,22 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserStackAssociations = list(
+#'     list(
+#'       StackName = "string",
+#'       UserName = "string",
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'       SendEmailNotification = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_user_stack_associations(
@@ -1707,6 +2425,28 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       Arn = "string",
+#'       UserName = "string",
+#'       Enabled = TRUE|FALSE,
+#'       Status = "string",
+#'       FirstName = "string",
+#'       LastName = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_users(
@@ -1751,6 +2491,9 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #' Users' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_user(
@@ -1789,6 +2532,9 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param StackName &#91;required&#93; The name of the stack.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1836,6 +2582,9 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #' not exist" error message displays.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_user(
@@ -1873,6 +2622,9 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
 #' appstream_expire_session(SessionId)
 #'
 #' @param SessionId &#91;required&#93; The identifier of the streaming session.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1915,6 +2667,17 @@ appstream_expire_session <- function(SessionId) {
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Names = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_associated_fleets(
@@ -1956,6 +2719,17 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Names = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2000,6 +2774,16 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -2036,6 +2820,9 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
 #' appstream_start_fleet(Name)
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2076,6 +2863,64 @@ appstream_start_fleet <- function(Name) {
 #' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To
 #' use the latest version of the AppStream 2.0 agent, specify \[LATEST\].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageBuilder = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     ImageArn = "string",
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     InstanceType = "string",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+#'     IamRoleArn = "string",
+#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
+#'     StateChangeReason = list(
+#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
+#'       Message = "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EnableDefaultInternetAccess = TRUE|FALSE,
+#'     DomainJoinInfo = list(
+#'       DirectoryName = "string",
+#'       OrganizationalUnitDistinguishedName = "string"
+#'     ),
+#'     NetworkAccessConfiguration = list(
+#'       EniPrivateIpAddress = "string",
+#'       EniId = "string"
+#'     ),
+#'     ImageBuilderErrors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string",
+#'         ErrorTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     AppstreamAgentVersion = "string",
+#'     AccessEndpoints = list(
+#'       list(
+#'         EndpointType = "STREAMING",
+#'         VpceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_image_builder(
@@ -2114,6 +2959,9 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_fleet(
@@ -2150,6 +2998,64 @@ appstream_stop_fleet <- function(Name) {
 #' appstream_stop_image_builder(Name)
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageBuilder = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     ImageArn = "string",
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     InstanceType = "string",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+#'     IamRoleArn = "string",
+#'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
+#'     StateChangeReason = list(
+#'       Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
+#'       Message = "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EnableDefaultInternetAccess = TRUE|FALSE,
+#'     DomainJoinInfo = list(
+#'       DirectoryName = "string",
+#'       OrganizationalUnitDistinguishedName = "string"
+#'     ),
+#'     NetworkAccessConfiguration = list(
+#'       EniPrivateIpAddress = "string",
+#'       EniId = "string"
+#'     ),
+#'     ImageBuilderErrors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string",
+#'         ErrorTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     AppstreamAgentVersion = "string",
+#'     AccessEndpoints = list(
+#'       list(
+#'         EndpointType = "STREAMING",
+#'         VpceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2210,7 +3116,10 @@ appstream_stop_image_builder <- function(Name) {
 #' Generally allowed characters are: letters, numbers, and spaces
 #' representable in UTF-8, and the following special characters:
 #' 
-#' \\_ . : / = + \\ - @@
+#' _ . : / = + \\ - @@
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2261,6 +3170,9 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys for the tags to disassociate.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -2307,6 +3219,26 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryConfig = list(
+#'     DirectoryName = "string",
+#'     OrganizationalUnitDistinguishedNames = list(
+#'       "string"
+#'     ),
+#'     ServiceAccountCredentials = list(
+#'       AccountName = "string",
+#'       AccountPassword = "string"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2483,7 +3415,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
 #' The operation creates a new session with temporary credentials.
 #' AppStream 2.0 retrieves the temporary credentials and creates the
-#' **appstream\\_machine\\_role** credential profile on the instance.
+#' **appstream_machine_role** credential profile on the instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
 #' Applications and Scripts Running on AppStream 2.0 Streaming
@@ -2495,6 +3427,57 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' standard desktop that is provided by the operating system displays.
 #' 
 #' The default value is `APP`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Fleet = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     DisplayName = "string",
+#'     Description = "string",
+#'     ImageName = "string",
+#'     ImageArn = "string",
+#'     InstanceType = "string",
+#'     FleetType = "ALWAYS_ON"|"ON_DEMAND",
+#'     ComputeCapacityStatus = list(
+#'       Desired = 123,
+#'       Running = 123,
+#'       InUse = 123,
+#'       Available = 123
+#'     ),
+#'     MaxUserDurationInSeconds = 123,
+#'     DisconnectTimeoutInSeconds = 123,
+#'     State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'     VpcConfig = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FleetErrors = list(
+#'       list(
+#'         ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string"
+#'       )
+#'     ),
+#'     EnableDefaultInternetAccess = TRUE|FALSE,
+#'     DomainJoinInfo = list(
+#'       DirectoryName = "string",
+#'       OrganizationalUnitDistinguishedName = "string"
+#'     ),
+#'     IdleDisconnectTimeoutInSeconds = 123,
+#'     IamRoleArn = "string",
+#'     StreamView = "APP"|"DESKTOP"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2567,6 +3550,9 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
 #' update image permissions.
 #' @param ImagePermissions &#91;required&#93; The permissions for the image.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_image_permissions(
@@ -2631,6 +3617,59 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' @param EmbedHostDomains The domains where AppStream 2.0 streaming sessions can be embedded in an
 #' iframe. You must approve the domains that you want to host embedded
 #' AppStream 2.0 streaming sessions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Stack = list(
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     DisplayName = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StorageConnectors = list(
+#'       list(
+#'         ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
+#'         ResourceIdentifier = "string",
+#'         Domains = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     RedirectURL = "string",
+#'     FeedbackURL = "string",
+#'     StackErrors = list(
+#'       list(
+#'         ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
+#'         ErrorMessage = "string"
+#'       )
+#'     ),
+#'     UserSettings = list(
+#'       list(
+#'         Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
+#'         Permission = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     ApplicationSettings = list(
+#'       Enabled = TRUE|FALSE,
+#'       SettingsGroup = "string",
+#'       S3BucketName = "string"
+#'     ),
+#'     AccessEndpoints = list(
+#'       list(
+#'         EndpointType = "STREAMING",
+#'         VpceId = "string"
+#'       )
+#'     ),
+#'     EmbedHostDomains = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -25,6 +25,22 @@ results, use null.}
 
 \item{AccessLevelFilter}{The access level to use to obtain results. The default is \code{User}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisionedProductPlans = list(
+    list(
+      PlanName = "string",
+      PlanId = "string",
+      ProvisionProductId = "string",
+      ProvisionProductName = "string",
+      PlanType = "CLOUDFORMATION",
+      ProvisioningArtifactId = "string"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists the plans for the specified provisioned product or all plans to
 which the user has access.

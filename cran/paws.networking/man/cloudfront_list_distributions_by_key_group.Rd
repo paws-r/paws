@@ -19,6 +19,21 @@ page’s response.}
 \item{KeyGroupId}{[required] The ID of the key group whose associated distribution IDs you are
 listing.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DistributionIdList = list(
+    Marker = "string",
+    NextMarker = "string",
+    MaxItems = 123,
+    IsTruncated = TRUE|FALSE,
+    Quantity = 123,
+    Items = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of distribution IDs for distributions that have a cache
 behavior that references the specified key group.

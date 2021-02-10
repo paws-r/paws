@@ -9,6 +9,13 @@ amplify_get_artifact_url(artifactId)
 \arguments{
 \item{artifactId}{[required] The unique ID for an artifact.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  artifactId = "string",
+  artifactUrl = "string"
+)
+}
+}
 \description{
 Returns the artifact info that corresponds to an artifact id.
 }

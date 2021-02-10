@@ -23,6 +23,27 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  CacheSecurityGroups = list(
+    list(
+      OwnerId = "string",
+      CacheSecurityGroupName = "string",
+      Description = "string",
+      EC2SecurityGroups = list(
+        list(
+          Status = "string",
+          EC2SecurityGroupName = "string",
+          EC2SecurityGroupOwnerId = "string"
+        )
+      ),
+      ARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of cache security group descriptions. If a cache security
 group name is specified, the list contains only the description of that

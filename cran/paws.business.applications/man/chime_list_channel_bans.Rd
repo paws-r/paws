@@ -14,6 +14,21 @@ chime_list_channel_bans(ChannelArn, MaxResults, NextToken)
 \item{NextToken}{The token passed by previous API calls until all requested bans are
 returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  NextToken = "string",
+  ChannelBans = list(
+    list(
+      Member = list(
+        Arn = "string",
+        Name = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists all the users banned from a particular channel.
 }

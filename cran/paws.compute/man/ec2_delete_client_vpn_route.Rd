@@ -19,6 +19,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = list(
+    Code = "creating"|"active"|"failed"|"deleting",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Deletes a route from a Client VPN endpoint. You can only delete routes
 that you manually added using the \strong{CreateClientVpnRoute} action. You

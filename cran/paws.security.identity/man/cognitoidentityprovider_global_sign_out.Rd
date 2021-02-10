@@ -9,6 +9,9 @@ cognitoidentityprovider_global_sign_out(AccessToken)
 \arguments{
 \item{AccessToken}{[required] The access token.}
 }
+\value{
+An empty list.
+}
 \description{
 Signs out users from all devices. It also invalidates all refresh tokens
 issued to a user. The user's current access and Id tokens remain valid

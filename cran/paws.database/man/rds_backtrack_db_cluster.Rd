@@ -46,6 +46,23 @@ timestamp earlier than the earliest backtrack time. When this parameter
 is disabled and \emph{BacktrackTo} is set to a timestamp earlier than the
 earliest backtrack time, an error occurs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterIdentifier = "string",
+  BacktrackIdentifier = "string",
+  BacktrackTo = as.POSIXct(
+    "2015-01-01"
+  ),
+  BacktrackedFrom = as.POSIXct(
+    "2015-01-01"
+  ),
+  BacktrackRequestCreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Status = "string"
+)
+}
+}
 \description{
 Backtracks a DB cluster to a specific time, without creating a new DB
 cluster.

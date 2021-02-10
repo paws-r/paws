@@ -26,6 +26,9 @@ NULL
 #' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
 #' the user's namespace.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_entity_to_thing(
@@ -72,6 +75,21 @@ iotthingsgraph_associate_entity_to_thing <- function(thingName, entityId, namesp
 #' @param compatibleNamespaceVersion The namespace version in which the workflow is to be created.
 #' 
 #' If no value is specified, the latest version is used by default.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summary = list(
+#'     id = "string",
+#'     arn = "string",
+#'     revisionNumber = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -153,6 +171,28 @@ iotthingsgraph_create_flow_template <- function(definition, compatibleNamespaceV
 #' executes. This value is required if the value of the `target` parameter
 #' is `CLOUD`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summary = list(
+#'     id = "string",
+#'     arn = "string",
+#'     status = "NOT_DEPLOYED"|"BOOTSTRAP"|"DEPLOY_IN_PROGRESS"|"DEPLOYED_IN_TARGET"|"UNDEPLOY_IN_PROGRESS"|"FAILED"|"PENDING_DELETE"|"DELETED_IN_TARGET",
+#'     target = "GREENGRASS"|"CLOUD",
+#'     greengrassGroupName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     greengrassGroupId = "string",
+#'     greengrassGroupVersionId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_system_instance(
@@ -213,6 +253,21 @@ iotthingsgraph_create_system_instance <- function(tags = NULL, definition, targe
 #' 
 #' If no value is specified, the latest version is used by default.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summary = list(
+#'     id = "string",
+#'     arn = "string",
+#'     revisionNumber = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_system_template(
@@ -261,6 +316,9 @@ iotthingsgraph_create_system_template <- function(definition, compatibleNamespac
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_flow_template(
@@ -297,6 +355,15 @@ iotthingsgraph_delete_flow_template <- function(id) {
 #'
 #' @usage
 #' iotthingsgraph_delete_namespace()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   namespaceArn = "string",
+#'   namespaceName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -336,6 +403,9 @@ iotthingsgraph_delete_namespace <- function() {
 #' iotthingsgraph_delete_system_instance(id)
 #'
 #' @param id The ID of the system instance to be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -381,6 +451,9 @@ iotthingsgraph_delete_system_instance <- function(id = NULL) {
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_system_template(
@@ -408,8 +481,7 @@ iotthingsgraph_delete_system_template <- function(id) {
 }
 .iotthingsgraph$operations$delete_system_template <- iotthingsgraph_delete_system_template
 
-#' Greengrass and Cloud Deployments Deploys the system instance to the
-#' target specified in CreateSystemInstance
+#' Greengrass and Cloud Deployments
 #'
 #' @description
 #' **Greengrass and Cloud Deployments**
@@ -442,6 +514,29 @@ iotthingsgraph_delete_system_template <- function(id) {
 #' The ID should be in the following format.
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summary = list(
+#'     id = "string",
+#'     arn = "string",
+#'     status = "NOT_DEPLOYED"|"BOOTSTRAP"|"DEPLOY_IN_PROGRESS"|"DEPLOYED_IN_TARGET"|"UNDEPLOY_IN_PROGRESS"|"FAILED"|"PENDING_DELETE"|"DELETED_IN_TARGET",
+#'     target = "GREENGRASS"|"CLOUD",
+#'     greengrassGroupName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     greengrassGroupId = "string",
+#'     greengrassGroupVersionId = "string"
+#'   ),
+#'   greengrassDeploymentId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -486,6 +581,9 @@ iotthingsgraph_deploy_system_instance <- function(id = NULL) {
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deprecate_flow_template(
@@ -527,6 +625,9 @@ iotthingsgraph_deprecate_flow_template <- function(id) {
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME`
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deprecate_system_template(
@@ -567,6 +668,18 @@ iotthingsgraph_deprecate_system_template <- function(id) {
 #' @param namespaceName The name of the user's namespace. Set this to `aws` to get the public
 #' namespace.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   namespaceArn = "string",
+#'   namespaceName = "string",
+#'   trackingNamespaceName = "string",
+#'   trackingNamespaceVersion = 123,
+#'   namespaceVersion = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_namespace(
@@ -606,6 +719,9 @@ iotthingsgraph_describe_namespace <- function(namespaceName = NULL) {
 #'
 #' @param thingName &#91;required&#93; The name of the thing to disassociate.
 #' @param entityType &#91;required&#93; The entity type from which to disassociate the thing.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -674,6 +790,27 @@ iotthingsgraph_dissociate_entity_from_thing <- function(thingName, entityType) {
 #' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
 #' the user's namespace.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   descriptions = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       type = "DEVICE"|"SERVICE"|"DEVICE_MODEL"|"CAPABILITY"|"STATE"|"ACTION"|"EVENT"|"PROPERTY"|"MAPPING"|"ENUM",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       definition = list(
+#'         language = "GRAPHQL",
+#'         text = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_entities(
@@ -720,6 +857,28 @@ iotthingsgraph_get_entities <- function(ids, namespaceVersion = NULL) {
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME`
 #' @param revisionNumber The number of the workflow revision to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   description = list(
+#'     summary = list(
+#'       id = "string",
+#'       arn = "string",
+#'       revisionNumber = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     definition = list(
+#'       language = "GRAPHQL",
+#'       text = "string"
+#'     ),
+#'     validatedNamespaceVersion = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -769,6 +928,24 @@ iotthingsgraph_get_flow_template <- function(id, revisionNumber = NULL) {
 #' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       revisionNumber = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_flow_template_revisions(
@@ -805,6 +982,18 @@ iotthingsgraph_get_flow_template_revisions <- function(id, nextToken = NULL, max
 #'
 #' @usage
 #' iotthingsgraph_get_namespace_deletion_status()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   namespaceArn = "string",
+#'   namespaceName = "string",
+#'   status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   errorCode = "VALIDATION_FAILED",
+#'   errorMessage = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -845,6 +1034,47 @@ iotthingsgraph_get_namespace_deletion_status <- function() {
 #' The ID should be in the following format.
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:deployment:DEPLOYMENTNAME`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   description = list(
+#'     summary = list(
+#'       id = "string",
+#'       arn = "string",
+#'       status = "NOT_DEPLOYED"|"BOOTSTRAP"|"DEPLOY_IN_PROGRESS"|"DEPLOYED_IN_TARGET"|"UNDEPLOY_IN_PROGRESS"|"FAILED"|"PENDING_DELETE"|"DELETED_IN_TARGET",
+#'       target = "GREENGRASS"|"CLOUD",
+#'       greengrassGroupName = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       greengrassGroupId = "string",
+#'       greengrassGroupVersionId = "string"
+#'     ),
+#'     definition = list(
+#'       language = "GRAPHQL",
+#'       text = "string"
+#'     ),
+#'     s3BucketName = "string",
+#'     metricsConfiguration = list(
+#'       cloudMetricEnabled = TRUE|FALSE,
+#'       metricRuleRoleArn = "string"
+#'     ),
+#'     validatedNamespaceVersion = 123,
+#'     validatedDependencyRevisions = list(
+#'       list(
+#'         id = "string",
+#'         revisionNumber = 123
+#'       )
+#'     ),
+#'     flowActionsRoleArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -887,6 +1117,28 @@ iotthingsgraph_get_system_instance <- function(id) {
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME`
 #' @param revisionNumber The number that specifies the revision of the system to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   description = list(
+#'     summary = list(
+#'       id = "string",
+#'       arn = "string",
+#'       revisionNumber = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     definition = list(
+#'       language = "GRAPHQL",
+#'       text = "string"
+#'     ),
+#'     validatedNamespaceVersion = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -936,6 +1188,24 @@ iotthingsgraph_get_system_template <- function(id, revisionNumber = NULL) {
 #' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       revisionNumber = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_system_template_revisions(
@@ -976,6 +1246,24 @@ iotthingsgraph_get_system_template_revisions <- function(id, nextToken = NULL, m
 #' @param uploadId &#91;required&#93; The ID of the upload. This value is returned by the
 #' [`upload_entity_definitions`][iotthingsgraph_upload_entity_definitions]
 #' action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uploadId = "string",
+#'   uploadStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   namespaceArn = "string",
+#'   namespaceName = "string",
+#'   namespaceVersion = 123,
+#'   failureReason = list(
+#'     "string"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1020,6 +1308,24 @@ iotthingsgraph_get_upload_status <- function(uploadId) {
 #' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   messages = list(
+#'     list(
+#'       messageId = "string",
+#'       eventType = "EXECUTION_STARTED"|"EXECUTION_FAILED"|"EXECUTION_ABORTED"|"EXECUTION_SUCCEEDED"|"STEP_STARTED"|"STEP_FAILED"|"STEP_SUCCEEDED"|"ACTIVITY_SCHEDULED"|"ACTIVITY_STARTED"|"ACTIVITY_FAILED"|"ACTIVITY_SUCCEEDED"|"START_FLOW_EXECUTION_TASK"|"SCHEDULE_NEXT_READY_STEPS_TASK"|"THING_ACTION_TASK"|"THING_ACTION_TASK_FAILED"|"THING_ACTION_TASK_SUCCEEDED"|"ACKNOWLEDGE_TASK_MESSAGE",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       payload = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_flow_execution_messages(
@@ -1062,6 +1368,20 @@ iotthingsgraph_list_flow_execution_messages <- function(flowExecutionId, nextTok
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags are to be
 #' returned.
 #' @param nextToken The token that specifies the next page of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1116,6 +1436,28 @@ iotthingsgraph_list_tags_for_resource <- function(maxResults = NULL, resourceArn
 #' @param maxResults The maximum number of results to return in the response.
 #' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
 #' the user's namespace.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   descriptions = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       type = "DEVICE"|"SERVICE"|"DEVICE_MODEL"|"CAPABILITY"|"STATE"|"ACTION"|"EVENT"|"PROPERTY"|"MAPPING"|"ENUM",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       definition = list(
+#'         language = "GRAPHQL",
+#'         text = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1174,6 +1516,28 @@ iotthingsgraph_search_entities <- function(entityTypes, filters = NULL, nextToke
 #' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       flowExecutionId = "string",
+#'       status = "RUNNING"|"ABORTED"|"SUCCEEDED"|"FAILED",
+#'       systemInstanceId = "string",
+#'       flowTemplateId = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_flow_executions(
@@ -1223,6 +1587,24 @@ iotthingsgraph_search_flow_executions <- function(systemInstanceId, flowExecutio
 #' @param nextToken The string that specifies the next page of results. Use this when you're
 #' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       revisionNumber = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1277,6 +1659,31 @@ iotthingsgraph_search_flow_templates <- function(filters = NULL, nextToken = NUL
 #' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       status = "NOT_DEPLOYED"|"BOOTSTRAP"|"DEPLOY_IN_PROGRESS"|"DEPLOYED_IN_TARGET"|"UNDEPLOY_IN_PROGRESS"|"FAILED"|"PENDING_DELETE"|"DELETED_IN_TARGET",
+#'       target = "GREENGRASS"|"CLOUD",
+#'       greengrassGroupName = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       greengrassGroupId = "string",
+#'       greengrassGroupVersionId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_system_instances(
@@ -1328,6 +1735,24 @@ iotthingsgraph_search_system_instances <- function(filters = NULL, nextToken = N
 #' @param nextToken The string that specifies the next page of results. Use this when you're
 #' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       revisionNumber = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1394,6 +1819,20 @@ iotthingsgraph_search_system_templates <- function(filters = NULL, nextToken = N
 #' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
 #' the user's namespace.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   things = list(
+#'     list(
+#'       thingArn = "string",
+#'       thingName = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_things(
@@ -1434,6 +1873,9 @@ iotthingsgraph_search_things <- function(entityId, nextToken = NULL, maxResults 
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags are returned.
 #' @param tags &#91;required&#93; A list of tags to add to the resource.&gt;
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1477,6 +1919,28 @@ iotthingsgraph_tag_resource <- function(resourceArn, tags) {
 #' iotthingsgraph_undeploy_system_instance(id)
 #'
 #' @param id The ID of the system instance to remove from its target.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summary = list(
+#'     id = "string",
+#'     arn = "string",
+#'     status = "NOT_DEPLOYED"|"BOOTSTRAP"|"DEPLOY_IN_PROGRESS"|"DEPLOYED_IN_TARGET"|"UNDEPLOY_IN_PROGRESS"|"FAILED"|"PENDING_DELETE"|"DELETED_IN_TARGET",
+#'     target = "GREENGRASS"|"CLOUD",
+#'     greengrassGroupName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     greengrassGroupId = "string",
+#'     greengrassGroupVersionId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1523,6 +1987,9 @@ iotthingsgraph_undeploy_system_instance <- function(id = NULL) {
 #' line tool environments, see [Using JSON for
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1579,6 +2046,21 @@ iotthingsgraph_untag_resource <- function(resourceArn, tagKeys) {
 #' [`get_flow_template_revisions`][iotthingsgraph_get_flow_template_revisions]
 #' if you want to find earlier revisions of the flow to update.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summary = list(
+#'     id = "string",
+#'     arn = "string",
+#'     revisionNumber = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_flow_template(
@@ -1632,6 +2114,21 @@ iotthingsgraph_update_flow_template <- function(id, definition, compatibleNamesp
 #' the user's namespace.
 #' 
 #' If no value is specified, the latest version is used by default.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summary = list(
+#'     id = "string",
+#'     arn = "string",
+#'     revisionNumber = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1705,6 +2202,14 @@ iotthingsgraph_update_system_template <- function(id, definition, compatibleName
 #' @param deprecateExistingEntities A Boolean that specifies whether to deprecate all entities in the latest
 #' version before uploading the new `DefinitionDocument`. If set to `true`,
 #' the upload will create a new namespace version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uploadId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

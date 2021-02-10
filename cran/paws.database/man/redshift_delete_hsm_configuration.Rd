@@ -9,6 +9,9 @@ redshift_delete_hsm_configuration(HsmConfigurationIdentifier)
 \arguments{
 \item{HsmConfigurationIdentifier}{[required] The identifier of the Amazon Redshift HSM configuration to be deleted.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified Amazon Redshift HSM configuration.
 }

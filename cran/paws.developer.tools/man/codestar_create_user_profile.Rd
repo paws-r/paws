@@ -23,6 +23,21 @@ project owner allows the user remote access to project resources, this
 public key will be used along with the user's private key for SSH
 access.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  userArn = "string",
+  displayName = "string",
+  emailAddress = "string",
+  sshPublicKey = "string",
+  createdTimestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a profile for a user that includes user preferences, such as the
 display name and email address assocciated with the user, in AWS

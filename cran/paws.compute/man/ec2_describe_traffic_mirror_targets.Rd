@@ -33,6 +33,28 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficMirrorTargets = list(
+    list(
+      TrafficMirrorTargetId = "string",
+      NetworkInterfaceId = "string",
+      NetworkLoadBalancerArn = "string",
+      Type = "network-interface"|"network-load-balancer",
+      Description = "string",
+      OwnerId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Information about one or more Traffic Mirror targets.
 }

@@ -9,6 +9,21 @@ mobile_describe_bundle(bundleId)
 \arguments{
 \item{bundleId}{[required] Unique bundle identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  details = list(
+    bundleId = "string",
+    title = "string",
+    version = "string",
+    description = "string",
+    iconUrl = "string",
+    availablePlatforms = list(
+      "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
+    )
+  )
+)
+}
+}
 \description{
 Get the bundle details for the requested bundle id.
 }

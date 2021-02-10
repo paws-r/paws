@@ -9,6 +9,13 @@ mediaconnect_delete_flow(FlowArn)
 \arguments{
 \item{FlowArn}{[required] The ARN of the flow that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
+)
+}
+}
 \description{
 Deletes a flow. Before you can delete a flow, you must stop the flow.
 }

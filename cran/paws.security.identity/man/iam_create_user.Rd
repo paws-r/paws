@@ -16,8 +16,8 @@ slash (/).
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{UserName}{[required] The name of the user to create.
@@ -37,6 +37,33 @@ in the \emph{IAM User Guide}.
 If any one of the tags is invalid or if you exceed the allowed number of
 tags per user, then the entire request fails and the user is not
 created.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    Path = "string",
+    UserName = "string",
+    UserId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    PasswordLastUsed = as.POSIXct(
+      "2015-01-01"
+    ),
+    PermissionsBoundary = list(
+      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+      PermissionsBoundaryArn = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Creates a new IAM user for your AWS account.

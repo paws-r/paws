@@ -25,6 +25,17 @@ a list of node types you can scale up to.
 You must provide a value for either the \code{CacheClusterId} or the
 \code{ReplicationGroupId}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScaleUpModifications = list(
+    "string"
+  ),
+  ScaleDownModifications = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists all available node types that you can scale your Redis cluster's
 or replication group's current node type.

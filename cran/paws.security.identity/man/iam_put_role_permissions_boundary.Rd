@@ -14,6 +14,9 @@ set the permissions boundary.}
 \item{PermissionsBoundary}{[required] The ARN of the policy that is used to set the permissions boundary for
 the role.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or updates the policy that is specified as the IAM role's
 permissions boundary. You can use an AWS managed policy or a customer

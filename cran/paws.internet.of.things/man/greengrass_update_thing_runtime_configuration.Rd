@@ -12,6 +12,9 @@ greengrass_update_thing_runtime_configuration(TelemetryConfiguration,
 
 \item{ThingName}{[required] The thing name.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates the runtime configuration of a thing.
 }

@@ -26,6 +26,27 @@ template ID or launch template name in the request.}
 
 \item{DefaultVersion}{The version number of the launch template to set as the default version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LaunchTemplate = list(
+    LaunchTemplateId = "string",
+    LaunchTemplateName = "string",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatedBy = "string",
+    DefaultVersionNumber = 123,
+    LatestVersionNumber = 123,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies a launch template. You can specify which version of the launch
 template to set as the default version. When launching an instance, the

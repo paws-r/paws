@@ -19,6 +19,33 @@ for the Amazon Chime account that the user belongs to.}
 
 \item{AlexaForBusinessMetadata}{The Alexa for Business metadata.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    UserId = "string",
+    AccountId = "string",
+    PrimaryEmail = "string",
+    PrimaryProvisionedNumber = "string",
+    DisplayName = "string",
+    LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+    UserType = "PrivateUser"|"SharedDevice",
+    UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+    UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+    RegisteredOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    InvitedOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    AlexaForBusinessMetadata = list(
+      IsAlexaForBusinessEnabled = TRUE|FALSE,
+      AlexaForBusinessRoomArn = "string"
+    ),
+    PersonalPIN = "string"
+  )
+)
+}
+}
 \description{
 Updates user details for a specified user ID. Currently, only
 \code{LicenseType} updates are supported for this action.

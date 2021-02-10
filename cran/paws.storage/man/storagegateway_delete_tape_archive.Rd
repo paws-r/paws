@@ -15,6 +15,12 @@ with tape retention lock. Only archived tapes with tape retention lock
 set to \code{governance} can be deleted. Archived tapes with tape retention
 lock set to \code{compliance} can't be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeARN = "string"
+)
+}
+}
 \description{
 Deletes the specified virtual tape from the virtual tape shelf (VTS).
 This operation is only supported in the tape gateway type.

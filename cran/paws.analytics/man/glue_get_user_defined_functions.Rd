@@ -22,6 +22,31 @@ definitions returned.}
 
 \item{MaxResults}{The maximum number of functions to return in one response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserDefinedFunctions = list(
+    list(
+      FunctionName = "string",
+      DatabaseName = "string",
+      ClassName = "string",
+      OwnerName = "string",
+      OwnerType = "USER"|"ROLE"|"GROUP",
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceUris = list(
+        list(
+          ResourceType = "JAR"|"FILE"|"ARCHIVE",
+          Uri = "string"
+        )
+      ),
+      CatalogId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves multiple function definitions from the Data Catalog.
 }

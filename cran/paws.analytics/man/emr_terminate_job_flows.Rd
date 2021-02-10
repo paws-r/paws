@@ -9,6 +9,9 @@ emr_terminate_job_flows(JobFlowIds)
 \arguments{
 \item{JobFlowIds}{[required] A list of job flows to be shut down.}
 }
+\value{
+An empty list.
+}
 \description{
 TerminateJobFlows shuts a list of clusters (job flows) down. When a job
 flow is shut down, any step not yet completed is canceled and the EC2

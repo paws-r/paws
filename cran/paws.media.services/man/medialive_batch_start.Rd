@@ -11,6 +11,26 @@ medialive_batch_start(ChannelIds, MultiplexIds)
 
 \item{MultiplexIds}{List of multiplex IDs}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Failed = list(
+    list(
+      Arn = "string",
+      Code = "string",
+      Id = "string",
+      Message = "string"
+    )
+  ),
+  Successful = list(
+    list(
+      Arn = "string",
+      Id = "string",
+      State = "string"
+    )
+  )
+)
+}
+}
 \description{
 Starts existing resources
 }

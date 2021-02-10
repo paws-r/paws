@@ -27,6 +27,26 @@ beyond the number you specify, the \strong{NextToken} element is sent in the
 response. Use this \strong{NextToken} value in a subsequent request to
 retrieve additional items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Permissions = list(
+    list(
+      CertificateAuthorityArn = "string",
+      CreatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      Principal = "string",
+      SourceAccount = "string",
+      Actions = list(
+        "IssueCertificate"|"GetCertificate"|"ListPermissions"
+      ),
+      Policy = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all permissions on a private CA, if any, granted to the AWS
 Certificate Manager (ACM) service principal (acm.amazonaws.com).

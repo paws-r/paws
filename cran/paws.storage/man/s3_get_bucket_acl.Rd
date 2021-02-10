@@ -14,6 +14,27 @@ s3_get_bucket_acl(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Owner = list(
+    DisplayName = "string",
+    ID = "string"
+  ),
+  Grants = list(
+    list(
+      Grantee = list(
+        DisplayName = "string",
+        EmailAddress = "string",
+        ID = "string",
+        Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
+        URI = "string"
+      ),
+      Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
+    )
+  )
+)
+}
+}
 \description{
 This implementation of the \code{GET} operation uses the \code{acl} subresource to
 return the access control list (ACL) of a bucket. To use \code{GET} to return

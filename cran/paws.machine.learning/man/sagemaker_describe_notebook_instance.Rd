@@ -9,6 +9,41 @@ sagemaker_describe_notebook_instance(NotebookInstanceName)
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the notebook instance that you want information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotebookInstanceArn = "string",
+  NotebookInstanceName = "string",
+  NotebookInstanceStatus = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
+  FailureReason = "string",
+  Url = "string",
+  InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
+  SubnetId = "string",
+  SecurityGroups = list(
+    "string"
+  ),
+  RoleArn = "string",
+  KmsKeyId = "string",
+  NetworkInterfaceId = "string",
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  NotebookInstanceLifecycleConfigName = "string",
+  DirectInternetAccess = "Enabled"|"Disabled",
+  VolumeSizeInGB = 123,
+  AcceleratorTypes = list(
+    "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge"
+  ),
+  DefaultCodeRepository = "string",
+  AdditionalCodeRepositories = list(
+    "string"
+  ),
+  RootAccess = "Enabled"|"Disabled"
+)
+}
+}
 \description{
 Returns information about a notebook instance.
 }

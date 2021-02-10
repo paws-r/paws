@@ -26,6 +26,12 @@ creates a new product on Amazon's Developer Console.}
 
 \item{RoomArn}{The ARN of the room with which to associate your AVS device.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceArn = "string"
+)
+}
+}
 \description{
 Registers an Alexa-enabled device built by an Original Equipment
 Manufacturer (OEM) using Alexa Voice Service (AVS).

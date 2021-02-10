@@ -12,6 +12,9 @@ iot_attach_thing_principal(thingName, principal)
 \item{principal}{[required] The principal, which can be a certificate ARN (as returned from the
 CreateCertificate operation) or an Amazon Cognito ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches the specified principal to the specified thing. A principal can
 be X.509 certificates, IAM users, groups, and roles, Amazon Cognito

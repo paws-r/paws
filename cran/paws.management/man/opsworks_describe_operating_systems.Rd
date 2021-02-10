@@ -7,6 +7,27 @@ Stacks}
 \usage{
 opsworks_describe_operating_systems()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperatingSystems = list(
+    list(
+      Name = "string",
+      Id = "string",
+      Type = "string",
+      ConfigurationManagers = list(
+        list(
+          Name = "string",
+          Version = "string"
+        )
+      ),
+      ReportedName = "string",
+      ReportedVersion = "string",
+      Supported = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes the operating systems that are supported by AWS OpsWorks
 Stacks.

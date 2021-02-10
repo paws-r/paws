@@ -11,6 +11,58 @@ medialive_delete_multiplex_program(MultiplexId, ProgramName)
 
 \item{ProgramName}{[required] The multiplex program name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelId = "string",
+  MultiplexProgramSettings = list(
+    PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
+    ProgramNumber = 123,
+    ServiceDescriptor = list(
+      ProviderName = "string",
+      ServiceName = "string"
+    ),
+    VideoSettings = list(
+      ConstantBitrate = 123,
+      StatmuxSettings = list(
+        MaximumBitrate = 123,
+        MinimumBitrate = 123,
+        Priority = 123
+      )
+    )
+  ),
+  PacketIdentifiersMap = list(
+    AudioPids = list(
+      123
+    ),
+    DvbSubPids = list(
+      123
+    ),
+    DvbTeletextPid = 123,
+    EtvPlatformPid = 123,
+    EtvSignalPid = 123,
+    KlvDataPids = list(
+      123
+    ),
+    PcrPid = 123,
+    PmtPid = 123,
+    PrivateMetadataPid = 123,
+    Scte27Pids = list(
+      123
+    ),
+    Scte35Pid = 123,
+    TimedMetadataPid = 123,
+    VideoPid = 123
+  ),
+  PipelineDetails = list(
+    list(
+      ActiveChannelPipeline = "string",
+      PipelineId = "string"
+    )
+  ),
+  ProgramName = "string"
+)
+}
+}
 \description{
 Delete a program from a multiplex.
 }

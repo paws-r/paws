@@ -14,7 +14,8 @@ chime_create_meeting_dial_out(MeetingId, FromPhoneNumber, ToPhoneNumber,
 
 Type: String
 
-Pattern: [a-fA-F0-9]\{8\}(?:-[a-fA-F0-9]\{4\})\{3\}-[a-fA-F0-9]\{12\}
+Pattern:
+[a-fA-F0-9]\{8\}(?:-[a-fA-F0-9]\{4\})\{3\}-[a-fA-F0-9]\{12\}
 
 Required: No}
 
@@ -25,6 +26,12 @@ call.}
 
 \item{JoinToken}{[required] Token used by the Amazon Chime SDK attendee. Call the CreateAttendee API
 to get a join token.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  TransactionId = "string"
+)
+}
 }
 \description{
 Uses the join token and call metadata in a meeting request (From number,

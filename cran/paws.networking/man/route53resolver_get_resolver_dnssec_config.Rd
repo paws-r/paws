@@ -10,6 +10,17 @@ route53resolver_get_resolver_dnssec_config(ResourceId)
 \item{ResourceId}{[required] The ID of the virtual private cloud (VPC) for the DNSSEC validation
 status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverDNSSECConfig = list(
+    Id = "string",
+    OwnerId = "string",
+    ResourceId = "string",
+    ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+  )
+)
+}
+}
 \description{
 Gets DNSSEC validation information for a specified resource.
 }

@@ -14,6 +14,20 @@ a specified VPC from.}
 \item{ResourceId}{[required] The ID of the Amazon VPC that you want to disassociate from a specified
 query logging configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverQueryLogConfigAssociation = list(
+    Id = "string",
+    ResolverQueryLogConfigId = "string",
+    ResourceId = "string",
+    Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
+    Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
+    ErrorMessage = "string",
+    CreationTime = "string"
+  )
+)
+}
+}
 \description{
 Disassociates a VPC from a query logging configuration.
 

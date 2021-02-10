@@ -11,6 +11,9 @@ appsync_delete_function(apiId, functionId)
 
 \item{functionId}{[required] The \code{Function} ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a \code{Function}.
 }

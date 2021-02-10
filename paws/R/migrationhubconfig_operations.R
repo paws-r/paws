@@ -18,6 +18,24 @@ NULL
 #' @param DryRun Optional Boolean flag to indicate whether any effect should take place.
 #' It tests whether the caller has permission to make the call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HomeRegionControl = list(
+#'     ControlId = "string",
+#'     HomeRegion = "string",
+#'     Target = list(
+#'       Type = "ACCOUNT",
+#'       Id = "string"
+#'     ),
+#'     RequestedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_home_region_control(
@@ -70,6 +88,27 @@ migrationhubconfig_create_home_region_control <- function(HomeRegion, Target, Dr
 #' available. To retrieve the next page of results, make the call again
 #' using the returned token in `NextToken`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HomeRegionControls = list(
+#'     list(
+#'       ControlId = "string",
+#'       HomeRegion = "string",
+#'       Target = list(
+#'         Type = "ACCOUNT",
+#'         Id = "string"
+#'       ),
+#'       RequestedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_home_region_controls(
@@ -116,6 +155,14 @@ migrationhubconfig_describe_home_region_controls <- function(ControlId = NULL, H
 #'
 #' @usage
 #' migrationhubconfig_get_home_region()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HomeRegion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

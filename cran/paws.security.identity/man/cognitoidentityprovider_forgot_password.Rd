@@ -55,6 +55,16 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeDeliveryDetails = list(
+    Destination = "string",
+    DeliveryMedium = "SMS"|"EMAIL",
+    AttributeName = "string"
+  )
+)
+}
+}
 \description{
 Calling this API causes a message to be sent to the end user with a
 confirmation code that is required to change the user's password. For

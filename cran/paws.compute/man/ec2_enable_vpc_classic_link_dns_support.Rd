@@ -9,6 +9,12 @@ ec2_enable_vpc_classic_link_dns_support(VpcId)
 \arguments{
 \item{VpcId}{The ID of the VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Enables a VPC to support DNS hostname resolution for ClassicLink. If
 enabled, the DNS hostname of a linked EC2-Classic instance resolves to

@@ -13,6 +13,9 @@ policy deleted. You can find the CA's ARN by calling the
 action. The ARN value must have the form
 \verb{arn:aws:acm-pca:region:account:certificate-authority/01234567-89ab-cdef-0123-0123456789ab}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the resource-based policy attached to a private CA. Deletion
 will remove any access that the policy has granted. If there is no

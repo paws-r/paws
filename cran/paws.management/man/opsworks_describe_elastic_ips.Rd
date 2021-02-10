@@ -22,6 +22,20 @@ parameter, \code{\link[=opsworks_describe_elastic_ips]{describe_elastic_ips}}
 returns a description of the specified Elastic IP addresses. Otherwise,
 it returns a description of every Elastic IP address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ElasticIps = list(
+    list(
+      Ip = "string",
+      Name = "string",
+      Domain = "string",
+      Region = "string",
+      InstanceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP addresses}.
 

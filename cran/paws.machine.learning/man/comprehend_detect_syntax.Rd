@@ -15,6 +15,23 @@ following languages supported by Amazon Comprehend: German ("de"),
 English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt").}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SyntaxTokens = list(
+    list(
+      TokenId = 123,
+      Text = "string",
+      BeginOffset = 123,
+      EndOffset = 123,
+      PartOfSpeech = list(
+        Tag = "ADJ"|"ADP"|"ADV"|"AUX"|"CONJ"|"CCONJ"|"DET"|"INTJ"|"NOUN"|"NUM"|"O"|"PART"|"PRON"|"PROPN"|"PUNCT"|"SCONJ"|"SYM"|"VERB",
+        Score = 123.0
+      )
+    )
+  )
+)
+}
+}
 \description{
 Inspects text for syntax and the part of speech of words in the
 document. For more information, how-syntax.

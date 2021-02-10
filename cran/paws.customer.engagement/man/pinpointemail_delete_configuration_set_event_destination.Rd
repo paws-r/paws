@@ -13,6 +13,9 @@ that you want to delete.}
 
 \item{EventDestinationName}{[required] The name of the event destination that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Delete an event destination.
 

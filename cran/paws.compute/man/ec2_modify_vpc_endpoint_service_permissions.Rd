@@ -22,6 +22,12 @@ principals, specify an asterisk (*).}
 \item{RemoveAllowedPrincipals}{The Amazon Resource Names (ARN) of one or more principals. Permissions
 are revoked for principals in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReturnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies the permissions for your \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html}{VPC endpoint service}.
 You can add or remove permissions for service consumers (IAM users, IAM

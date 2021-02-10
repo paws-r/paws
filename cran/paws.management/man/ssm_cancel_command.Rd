@@ -13,6 +13,9 @@ ssm_cancel_command(CommandId, InstanceIds)
 command. If not provided, the command is canceled on every instance on
 which it was requested.}
 }
+\value{
+An empty list.
+}
 \description{
 Attempts to cancel the command specified by the Command ID. There is no
 guarantee that the command will be terminated and the underlying process

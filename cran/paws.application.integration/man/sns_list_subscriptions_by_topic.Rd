@@ -13,6 +13,21 @@ sns_list_subscriptions_by_topic(TopicArn, NextToken)
 \code{\link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic}}
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Subscriptions = list(
+    list(
+      SubscriptionArn = "string",
+      Owner = "string",
+      Protocol = "string",
+      Endpoint = "string",
+      TopicArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the subscriptions to a specific topic. Each call
 returns a limited list of subscriptions, up to 100. If there are more

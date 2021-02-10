@@ -24,6 +24,58 @@ next page of the list, set this field’s value to the value of
 \item{MaxItems}{The maximum number of origin request policies that you want in the
 response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OriginRequestPolicyList = list(
+    NextMarker = "string",
+    MaxItems = 123,
+    Quantity = 123,
+    Items = list(
+      list(
+        Type = "managed"|"custom",
+        OriginRequestPolicy = list(
+          Id = "string",
+          LastModifiedTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          OriginRequestPolicyConfig = list(
+            Comment = "string",
+            Name = "string",
+            HeadersConfig = list(
+              HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+              Headers = list(
+                Quantity = 123,
+                Items = list(
+                  "string"
+                )
+              )
+            ),
+            CookiesConfig = list(
+              CookieBehavior = "none"|"whitelist"|"all",
+              Cookies = list(
+                Quantity = 123,
+                Items = list(
+                  "string"
+                )
+              )
+            ),
+            QueryStringsConfig = list(
+              QueryStringBehavior = "none"|"whitelist"|"all",
+              QueryStrings = list(
+                Quantity = 123,
+                Items = list(
+                  "string"
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of origin request policies.
 

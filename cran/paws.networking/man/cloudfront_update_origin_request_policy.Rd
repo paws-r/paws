@@ -20,6 +20,49 @@ version is returned in the origin request policy’s \code{ETag} field in the
 response to
 \code{\link[=cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OriginRequestPolicy = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    OriginRequestPolicyConfig = list(
+      Comment = "string",
+      Name = "string",
+      HeadersConfig = list(
+        HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+        Headers = list(
+          Quantity = 123,
+          Items = list(
+            "string"
+          )
+        )
+      ),
+      CookiesConfig = list(
+        CookieBehavior = "none"|"whitelist"|"all",
+        Cookies = list(
+          Quantity = 123,
+          Items = list(
+            "string"
+          )
+        )
+      ),
+      QueryStringsConfig = list(
+        QueryStringBehavior = "none"|"whitelist"|"all",
+        QueryStrings = list(
+          Quantity = 123,
+          Items = list(
+            "string"
+          )
+        )
+      )
+    )
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Updates an origin request policy configuration.
 

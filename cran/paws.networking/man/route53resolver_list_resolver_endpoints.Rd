@@ -32,6 +32,31 @@ If you submit a second or subsequent
 request and specify the \code{NextToken} parameter, you must use the same
 values for \code{Filters}, if any, as in the previous request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  MaxResults = 123,
+  ResolverEndpoints = list(
+    list(
+      Id = "string",
+      CreatorRequestId = "string",
+      Arn = "string",
+      Name = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      Direction = "INBOUND"|"OUTBOUND",
+      IpAddressCount = 123,
+      HostVPCId = "string",
+      Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
+      StatusMessage = "string",
+      CreationTime = "string",
+      ModificationTime = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists all the Resolver endpoints that were created using the current AWS
 account.

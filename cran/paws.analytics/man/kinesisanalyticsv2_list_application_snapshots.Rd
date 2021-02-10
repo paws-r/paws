@@ -17,6 +17,22 @@ request that indicates that there is more output available. Set it to
 the value of the previous call's \code{NextToken} response to indicate where
 the output should continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnapshotSummaries = list(
+    list(
+      SnapshotName = "string",
+      SnapshotStatus = "CREATING"|"READY"|"DELETING"|"FAILED",
+      ApplicationVersionId = 123,
+      SnapshotCreationTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists information about the current application snapshots.
 }

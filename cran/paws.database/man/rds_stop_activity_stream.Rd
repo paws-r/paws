@@ -16,6 +16,14 @@ activity stream. For example,
 \item{ApplyImmediately}{Specifies whether or not the database activity stream is to stop as soon
 as possible, regardless of the maintenance window for the database.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KmsKeyId = "string",
+  KinesisStreamName = "string",
+  Status = "stopped"|"starting"|"started"|"stopping"
+)
+}
+}
 \description{
 Stops a database activity stream that was started using the AWS console,
 the \code{start-activity-stream} AWS CLI command, or the

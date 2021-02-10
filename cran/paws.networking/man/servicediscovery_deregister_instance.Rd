@@ -13,6 +13,12 @@ servicediscovery_deregister_instance(ServiceId, InstanceId)
 \item{InstanceId}{[required] The value that you specified for \code{Id} in the
 \code{\link[=servicediscovery_register_instance]{register_instance}} request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Deletes the Amazon Route 53 DNS records and health check, if any, that
 AWS Cloud Map created for the specified instance.

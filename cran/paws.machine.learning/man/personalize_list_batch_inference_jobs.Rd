@@ -17,6 +17,27 @@ batch inference jobs were created.}
 \item{maxResults}{The maximum number of batch inference job results to return in each
 page. The default value is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  batchInferenceJobs = list(
+    list(
+      batchInferenceJobArn = "string",
+      jobName = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      failureReason = "string",
+      solutionVersionArn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the batch inference jobs that have been performed off of
 a solution version.

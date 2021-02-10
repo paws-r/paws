@@ -18,6 +18,9 @@ using
 \code{\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy}}, or
 \code{\link[=cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an origin request policy.
 

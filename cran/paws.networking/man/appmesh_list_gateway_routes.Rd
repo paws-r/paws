@@ -35,6 +35,29 @@ the \code{nextToken} value.}
 
 \item{virtualGatewayName}{[required] The name of the virtual gateway to list gateway routes in.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  gatewayRoutes = list(
+    list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      gatewayRouteName = "string",
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshName = "string",
+      meshOwner = "string",
+      resourceOwner = "string",
+      version = 123,
+      virtualGatewayName = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of existing gateway routes that are associated to a
 virtual gateway.

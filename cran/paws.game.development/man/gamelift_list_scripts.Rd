@@ -15,6 +15,30 @@ gamelift_list_scripts(Limit, NextToken)
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Scripts = list(
+    list(
+      ScriptId = "string",
+      ScriptArn = "string",
+      Name = "string",
+      Version = "string",
+      SizeOnDisk = 123,
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StorageLocation = list(
+        Bucket = "string",
+        Key = "string",
+        RoleArn = "string",
+        ObjectVersion = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves script records for all Realtime scripts that are associated
 with the AWS account in use.

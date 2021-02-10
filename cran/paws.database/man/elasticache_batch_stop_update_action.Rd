@@ -14,6 +14,28 @@ elasticache_batch_stop_update_action(ReplicationGroupIds,
 
 \item{ServiceUpdateName}{[required] The unique ID of the service update}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProcessedUpdateActions = list(
+    list(
+      ReplicationGroupId = "string",
+      CacheClusterId = "string",
+      ServiceUpdateName = "string",
+      UpdateActionStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"|"scheduling"|"scheduled"|"not-applicable"
+    )
+  ),
+  UnprocessedUpdateActions = list(
+    list(
+      ReplicationGroupId = "string",
+      CacheClusterId = "string",
+      ServiceUpdateName = "string",
+      ErrorType = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Stop the service update. For more information on service updates and
 stopping them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html}{Stopping Service Updates}.

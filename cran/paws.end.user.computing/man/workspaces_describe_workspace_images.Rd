@@ -18,6 +18,30 @@ provide this token to receive the next set of results.}
 
 \item{MaxResults}{The maximum number of items to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Images = list(
+    list(
+      ImageId = "string",
+      Name = "string",
+      Description = "string",
+      OperatingSystem = list(
+        Type = "WINDOWS"|"LINUX"
+      ),
+      State = "AVAILABLE"|"PENDING"|"ERROR",
+      RequiredTenancy = "DEFAULT"|"DEDICATED",
+      ErrorCode = "string",
+      ErrorMessage = "string",
+      Created = as.POSIXct(
+        "2015-01-01"
+      ),
+      OwnerAccountId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list that describes one or more specified images, if the
 image identifiers are provided. Otherwise, all images in the account are

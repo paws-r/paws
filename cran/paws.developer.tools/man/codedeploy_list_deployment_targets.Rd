@@ -23,6 +23,15 @@ can be used to return the next set of deployment targets in the list.}
 \code{Blue} or \code{Green}.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  targetIds = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns an array of target IDs that are associated a deployment.
 }

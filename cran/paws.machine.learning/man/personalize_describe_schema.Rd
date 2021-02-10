@@ -9,6 +9,22 @@ personalize_describe_schema(schemaArn)
 \arguments{
 \item{schemaArn}{[required] The Amazon Resource Name (ARN) of the schema to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  schema = list(
+    name = "string",
+    schemaArn = "string",
+    schema = "string",
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes a schema. For more information on schemas, see
 \code{\link[=personalize_create_schema]{create_schema}}.

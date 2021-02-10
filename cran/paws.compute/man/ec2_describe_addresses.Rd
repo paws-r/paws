@@ -45,6 +45,34 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Addresses = list(
+    list(
+      InstanceId = "string",
+      PublicIp = "string",
+      AllocationId = "string",
+      AssociationId = "string",
+      Domain = "vpc"|"standard",
+      NetworkInterfaceId = "string",
+      NetworkInterfaceOwnerId = "string",
+      PrivateIpAddress = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      PublicIpv4Pool = "string",
+      NetworkBorderGroup = "string",
+      CustomerOwnedIp = "string",
+      CustomerOwnedIpv4Pool = "string",
+      CarrierIp = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified Elastic IP addresses or all of your Elastic IP
 addresses.

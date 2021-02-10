@@ -11,6 +11,18 @@ simpledb_domain_metadata(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain for which to display the metadata of.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ItemCount = 123,
+  ItemNamesSizeBytes = 123,
+  AttributeNameCount = 123,
+  AttributeNamesSizeBytes = 123,
+  AttributeValueCount = 123,
+  AttributeValuesSizeBytes = 123,
+  Timestamp = 123
+)
+}
+}
 \description{
 Returns information about the domain, including when the domain was
 created, the number of items and attributes in the domain, and the size

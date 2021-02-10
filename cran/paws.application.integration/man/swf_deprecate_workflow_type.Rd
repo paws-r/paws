@@ -11,6 +11,9 @@ swf_deprecate_workflow_type(domain, workflowType)
 
 \item{workflowType}{[required] The workflow type to deprecate.}
 }
+\value{
+An empty list.
+}
 \description{
 Deprecates the specified \emph{workflow type}. After a workflow type has been
 deprecated, you cannot create new executions of that type. Executions

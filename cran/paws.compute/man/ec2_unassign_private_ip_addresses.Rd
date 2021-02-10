@@ -15,6 +15,9 @@ ec2_unassign_private_ip_addresses(NetworkInterfaceId,
 interface. You can specify this option multiple times to unassign more
 than one IP address.}
 }
+\value{
+An empty list.
+}
 \description{
 Unassigns one or more secondary private IP addresses from a network
 interface.

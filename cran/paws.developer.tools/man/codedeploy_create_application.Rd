@@ -17,6 +17,12 @@ applicable IAM user or AWS account.}
 organize and categorize them. Each tag consists of a key and an optional
 value, both of which you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  applicationId = "string"
+)
+}
+}
 \description{
 Creates an application.
 }

@@ -15,6 +15,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{EgressOnlyInternetGatewayId}{[required] The ID of the egress-only internet gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReturnCode = TRUE|FALSE
+)
+}
+}
 \description{
 Deletes an egress-only internet gateway.
 }

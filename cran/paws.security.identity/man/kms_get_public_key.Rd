@@ -33,6 +33,21 @@ get the alias name and alias ARN, use
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyId = "string",
+  PublicKey = raw,
+  CustomerMasterKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SYMMETRIC_DEFAULT",
+  KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
+  EncryptionAlgorithms = list(
+    "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+  ),
+  SigningAlgorithms = list(
+    "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
+  )
+)
+}
+}
 \description{
 Returns the public key of an asymmetric CMK. Unlike the private key of a
 asymmetric CMK, which never leaves AWS KMS unencrypted, callers with

@@ -14,6 +14,34 @@ iot_describe_job_execution(jobId, thingName, executionNumber)
 \item{executionNumber}{A string (consisting of the digits "0" through "9" which is used to
 specify a particular job execution on a particular device.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  execution = list(
+    jobId = "string",
+    status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+    forceCanceled = TRUE|FALSE,
+    statusDetails = list(
+      detailsMap = list(
+        "string"
+      )
+    ),
+    thingArn = "string",
+    queuedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    startedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    executionNumber = 123,
+    versionNumber = 123,
+    approximateSecondsBeforeTimedOut = 123
+  )
+)
+}
+}
 \description{
 Describes a job execution.
 }

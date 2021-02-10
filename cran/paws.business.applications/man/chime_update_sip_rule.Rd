@@ -15,6 +15,31 @@ chime_update_sip_rule(SipRuleId, Name, Disabled, TargetApplications)
 
 \item{TargetApplications}{The new value of the list of target applications.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipRule = list(
+    SipRuleId = "string",
+    Name = "string",
+    Disabled = TRUE|FALSE,
+    TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+    TriggerValue = "string",
+    TargetApplications = list(
+      list(
+        SipMediaApplicationId = "string",
+        Priority = 123,
+        AwsRegion = "string"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates the details for the specified SIP rule.
 }

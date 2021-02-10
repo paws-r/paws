@@ -9,6 +9,9 @@ ses_verify_email_address(EmailAddress)
 \arguments{
 \item{EmailAddress}{[required] The email address to be verified.}
 }
+\value{
+An empty list.
+}
 \description{
 Deprecated. Use the \code{\link[=ses_verify_email_identity]{verify_email_identity}}
 operation to verify a new email address.

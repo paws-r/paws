@@ -26,6 +26,35 @@ Constraint: Maximum 128 ASCII characters.}
 
 \item{TagSpecifications}{The tags to apply to the launch template during creation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LaunchTemplate = list(
+    LaunchTemplateId = "string",
+    LaunchTemplateName = "string",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatedBy = "string",
+    DefaultVersionNumber = 123,
+    LatestVersionNumber = 123,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  ),
+  Warning = list(
+    Errors = list(
+      list(
+        Code = "string",
+        Message = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a launch template. A launch template contains the parameters to
 launch an instance. When you launch an instance using

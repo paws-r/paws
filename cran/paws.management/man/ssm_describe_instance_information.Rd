@@ -30,6 +30,48 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceInformationList = list(
+    list(
+      InstanceId = "string",
+      PingStatus = "Online"|"ConnectionLost"|"Inactive",
+      LastPingDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AgentVersion = "string",
+      IsLatestVersion = TRUE|FALSE,
+      PlatformType = "Windows"|"Linux",
+      PlatformName = "string",
+      PlatformVersion = "string",
+      ActivationId = "string",
+      IamRole = "string",
+      RegistrationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceType = "ManagedInstance"|"Document"|"EC2Instance",
+      Name = "string",
+      IPAddress = "string",
+      ComputerName = "string",
+      AssociationStatus = "string",
+      LastAssociationExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastSuccessfulAssociationExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      AssociationOverview = list(
+        DetailedStatus = "string",
+        InstanceAssociationStatusAggregatedCount = list(
+          123
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your instances, including information about the
 operating system platform, the version of SSM Agent installed on the

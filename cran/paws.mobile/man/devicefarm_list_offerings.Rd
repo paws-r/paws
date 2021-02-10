@@ -12,6 +12,29 @@ devicefarm_list_offerings(nextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  offerings = list(
+    list(
+      id = "string",
+      description = "string",
+      type = "RECURRING",
+      platform = "ANDROID"|"IOS",
+      recurringCharges = list(
+        list(
+          cost = list(
+            amount = 123.0,
+            currencyCode = "USD"
+          ),
+          frequency = "MONTHLY"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of products or offerings that the user can manage through
 the API. Each offering record indicates the recurring price per unit and

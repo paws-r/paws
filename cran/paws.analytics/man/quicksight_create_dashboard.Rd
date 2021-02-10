@@ -65,6 +65,17 @@ dashboard. If you add a value for this field, it overrides the value
 that is used in the source entity. The theme ARN must exist in the same
 AWS account where you create the dashboard.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  VersionArn = "string",
+  DashboardId = "string",
+  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Creates a dashboard from a template. To first create a template, see the
 \code{\link[=quicksight_create_template]{create_template}} API operation.

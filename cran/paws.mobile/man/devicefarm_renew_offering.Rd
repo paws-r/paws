@@ -12,6 +12,44 @@ devicefarm_renew_offering(offeringId, quantity)
 
 \item{quantity}{The quantity requested in an offering renewal.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  offeringTransaction = list(
+    offeringStatus = list(
+      type = "PURCHASE"|"RENEW"|"SYSTEM",
+      offering = list(
+        id = "string",
+        description = "string",
+        type = "RECURRING",
+        platform = "ANDROID"|"IOS",
+        recurringCharges = list(
+          list(
+            cost = list(
+              amount = 123.0,
+              currencyCode = "USD"
+            ),
+            frequency = "MONTHLY"
+          )
+        )
+      ),
+      quantity = 123,
+      effectiveOn = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    transactionId = "string",
+    offeringPromotionId = "string",
+    createdOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    cost = list(
+      amount = 123.0,
+      currencyCode = "USD"
+    )
+  )
+)
+}
+}
 \description{
 Explicitly sets the quantity of devices to renew for an offering,
 starting from the \code{effectiveDate} of the next period. The API returns a

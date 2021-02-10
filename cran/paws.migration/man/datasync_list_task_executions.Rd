@@ -14,6 +14,18 @@ datasync_list_task_executions(TaskArn, MaxResults, NextToken)
 \item{NextToken}{An opaque string that indicates the position at which to begin the next
 list of the executed tasks.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskExecutions = list(
+    list(
+      TaskExecutionArn = "string",
+      Status = "QUEUED"|"LAUNCHING"|"PREPARING"|"TRANSFERRING"|"VERIFYING"|"SUCCESS"|"ERROR"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of executed tasks.
 }

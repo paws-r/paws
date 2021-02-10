@@ -20,6 +20,34 @@ servicequotas_list_requested_service_quota_change_history_by_quota(
 the remaining results, if any, make another call with the token returned
 from this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  RequestedQuotas = list(
+    list(
+      Id = "string",
+      CaseId = "string",
+      ServiceCode = "string",
+      ServiceName = "string",
+      QuotaCode = "string",
+      QuotaName = "string",
+      DesiredValue = 123.0,
+      Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+      Created = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      Requester = "string",
+      QuotaArn = "string",
+      GlobalQuota = TRUE|FALSE,
+      Unit = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the quota increase requests for the specified quota.
 }

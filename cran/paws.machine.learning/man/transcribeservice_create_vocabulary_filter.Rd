@@ -34,6 +34,16 @@ If you provide the location of a list of words in the
 \code{VocabularyFilterFileUri} parameter, you can't use the \code{Words}
 parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VocabularyFilterName = "string",
+  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a new vocabulary filter that you can use to filter words, such
 as profane words, from the output of a transcription job.

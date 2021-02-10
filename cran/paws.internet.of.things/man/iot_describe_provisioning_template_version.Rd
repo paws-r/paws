@@ -11,6 +11,17 @@ iot_describe_provisioning_template_version(templateName, versionId)
 
 \item{versionId}{[required] The fleet provisioning template version ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  versionId = 123,
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  templateBody = "string",
+  isDefaultVersion = TRUE|FALSE
+)
+}
+}
 \description{
 Returns information about a fleet provisioning template version.
 }

@@ -16,6 +16,9 @@ NULL
 #' @param memberAccountId &#91;required&#93; The ID of the AWS account that you want to associate with Amazon Macie
 #' Classic as a member account.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_member_account(
@@ -61,6 +64,23 @@ macie_associate_member_account <- function(memberAccountId) {
 #' want to associate with Macie Classic.
 #' @param s3Resources &#91;required&#93; The S3 resources that you want to associate with Amazon Macie Classic
 #' for monitoring and data classification.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   failedS3Resources = list(
+#'     list(
+#'       failedItem = list(
+#'         bucketName = "string",
+#'         prefix = "string"
+#'       ),
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -110,6 +130,9 @@ macie_associate_s3_resources <- function(memberAccountId = NULL, s3Resources) {
 #' @param memberAccountId &#91;required&#93; The ID of the member account that you want to remove from Amazon Macie
 #' Classic.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_member_account(
@@ -154,6 +177,23 @@ macie_disassociate_member_account <- function(memberAccountId) {
 #' want to remove from being monitored by Amazon Macie Classic.
 #' @param associatedS3Resources &#91;required&#93; The S3 resources (buckets or prefixes) that you want to remove from
 #' being monitored and classified by Amazon Macie Classic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   failedS3Resources = list(
+#'     list(
+#'       failedItem = list(
+#'         bucketName = "string",
+#'         prefix = "string"
+#'       ),
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -205,6 +245,19 @@ macie_disassociate_s3_resources <- function(memberAccountId = NULL, associatedS3
 #' @param maxResults Use this parameter to indicate the maximum number of items that you want
 #' in the response. The default value is 250.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   memberAccounts = list(
+#'     list(
+#'       accountId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_member_accounts(
@@ -254,6 +307,24 @@ macie_list_member_accounts <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults Use this parameter to indicate the maximum number of items that you want
 #' in the response. The default value is 250.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   s3Resources = list(
+#'     list(
+#'       bucketName = "string",
+#'       prefix = "string",
+#'       classificationType = list(
+#'         oneTime = "FULL"|"NONE",
+#'         continuous = "FULL"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_s3_resources(
@@ -299,6 +370,23 @@ macie_list_s3_resources <- function(memberAccountId = NULL, nextToken = NULL, ma
 #' @param memberAccountId The AWS ID of the Amazon Macie Classic member account whose S3
 #' resources' classification types you want to update.
 #' @param s3ResourcesUpdate &#91;required&#93; The S3 resources whose classification types you want to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   failedS3Resources = list(
+#'     list(
+#'       failedItem = list(
+#'         bucketName = "string",
+#'         prefix = "string"
+#'       ),
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

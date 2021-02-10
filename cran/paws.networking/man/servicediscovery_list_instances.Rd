@@ -23,6 +23,20 @@ the response to a \code{\link[=servicediscovery_list_instances]{list_instances}}
 request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
 returns up to 100 instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = list(
+    list(
+      Id = "string",
+      Attributes = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists summary information about the instances that you registered by
 using a specified service.

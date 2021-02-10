@@ -14,6 +14,9 @@ autoscaling_detach_load_balancers(AutoScalingGroupName,
 \item{LoadBalancerNames}{[required] The names of the load balancers. You can specify up to 10 load
 balancers.}
 }
+\value{
+An empty list.
+}
 \description{
 Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group.

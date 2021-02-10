@@ -11,6 +11,38 @@ wafregional_get_web_acl(WebACLId)
 returned by \code{\link[=wafregional_create_web_acl]{create_web_acl}} and by
 \code{\link[=wafregional_list_web_ac_ls]{list_web_ac_ls}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WebACL = list(
+    WebACLId = "string",
+    Name = "string",
+    MetricName = "string",
+    DefaultAction = list(
+      Type = "BLOCK"|"ALLOW"|"COUNT"
+    ),
+    Rules = list(
+      list(
+        Priority = 123,
+        RuleId = "string",
+        Action = list(
+          Type = "BLOCK"|"ALLOW"|"COUNT"
+        ),
+        OverrideAction = list(
+          Type = "NONE"|"COUNT"
+        ),
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
+      )
+    ),
+    WebACLArn = "string"
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

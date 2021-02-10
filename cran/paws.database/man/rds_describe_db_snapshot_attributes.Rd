@@ -10,6 +10,22 @@ rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
 \arguments{
 \item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to describe the attributes for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSnapshotAttributesResult = list(
+    DBSnapshotIdentifier = "string",
+    DBSnapshotAttributes = list(
+      list(
+        AttributeName = "string",
+        AttributeValues = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of DB snapshot attribute names and values for a manual DB
 snapshot.

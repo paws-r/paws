@@ -12,6 +12,31 @@ cognitoidentityprovider_describe_identity_provider(UserPoolId,
 
 \item{ProviderName}{[required] The identity provider name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityProvider = list(
+    UserPoolId = "string",
+    ProviderName = "string",
+    ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+    ProviderDetails = list(
+      "string"
+    ),
+    AttributeMapping = list(
+      "string"
+    ),
+    IdpIdentifiers = list(
+      "string"
+    ),
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a specific identity provider.
 }

@@ -17,15 +17,12 @@ NULL
 #' 
 #' -   Listing and describing organizations
 #' 
-#' <!-- -->
 #' 
 #' -   Managing users
 #' 
-#' <!-- -->
 #' 
 #' -   Managing groups
 #' 
-#' <!-- -->
 #' 
 #' -   Managing resources
 #' 

@@ -9,6 +9,21 @@ workmail_get_default_retention_policy(OrganizationId)
 \arguments{
 \item{OrganizationId}{[required] The organization ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Id = "string",
+  Name = "string",
+  Description = "string",
+  FolderConfigurations = list(
+    list(
+      Name = "INBOX"|"DELETED_ITEMS"|"SENT_ITEMS"|"DRAFTS"|"JUNK_EMAIL",
+      Action = "NONE"|"DELETE"|"PERMANENTLY_DELETE",
+      Period = 123
+    )
+  )
+)
+}
+}
 \description{
 Gets the default retention policy details for the specified
 organization.

@@ -24,6 +24,23 @@ search is not case sensitive.
 \code{\link[=transcribeservice_list_medical_vocabularies]{list_medical_vocabularies}}
 returns both "\code{vocabularyname}" and "\code{VocabularyName}".}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "PENDING"|"READY"|"FAILED",
+  NextToken = "string",
+  Vocabularies = list(
+    list(
+      VocabularyName = "string",
+      LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      VocabularyState = "PENDING"|"READY"|"FAILED"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of vocabularies that match the specified criteria. If you
 don't enter a value in any of the request parameters, returns the entire

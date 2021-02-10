@@ -22,6 +22,69 @@ servicecatalog_describe_provisioned_product_plan(AcceptLanguage, PlanId,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisionedProductPlanDetails = list(
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    PathId = "string",
+    ProductId = "string",
+    PlanName = "string",
+    PlanId = "string",
+    ProvisionProductId = "string",
+    ProvisionProductName = "string",
+    PlanType = "CLOUDFORMATION",
+    ProvisioningArtifactId = "string",
+    Status = "CREATE_IN_PROGRESS"|"CREATE_SUCCESS"|"CREATE_FAILED"|"EXECUTE_IN_PROGRESS"|"EXECUTE_SUCCESS"|"EXECUTE_FAILED",
+    UpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    NotificationArns = list(
+      "string"
+    ),
+    ProvisioningParameters = list(
+      list(
+        Key = "string",
+        Value = "string",
+        UsePreviousValue = TRUE|FALSE
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    StatusMessage = "string"
+  ),
+  ResourceChanges = list(
+    list(
+      Action = "ADD"|"MODIFY"|"REMOVE",
+      LogicalResourceId = "string",
+      PhysicalResourceId = "string",
+      ResourceType = "string",
+      Replacement = "TRUE"|"FALSE"|"CONDITIONAL",
+      Scope = list(
+        "PROPERTIES"|"METADATA"|"CREATIONPOLICY"|"UPDATEPOLICY"|"DELETIONPOLICY"|"TAGS"
+      ),
+      Details = list(
+        list(
+          Target = list(
+            Attribute = "PROPERTIES"|"METADATA"|"CREATIONPOLICY"|"UPDATEPOLICY"|"DELETIONPOLICY"|"TAGS",
+            Name = "string",
+            RequiresRecreation = "NEVER"|"CONDITIONALLY"|"ALWAYS"
+          ),
+          Evaluation = "STATIC"|"DYNAMIC",
+          CausingEntity = "string"
+        )
+      )
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Gets information about the resource changes for the specified plan.
 }

@@ -18,6 +18,19 @@ listing the user pool clients.}
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserPoolClients = list(
+    list(
+      ClientId = "string",
+      UserPoolId = "string",
+      ClientName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the clients that have been created for the specified user pool.
 }

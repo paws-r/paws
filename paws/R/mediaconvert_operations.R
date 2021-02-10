@@ -7,12 +7,17 @@ NULL
 #' with AWS Elemental MediaConvert
 #'
 #' @description
-#' Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
+#' Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN)
+#' with AWS Elemental MediaConvert.
 #'
 #' @usage
 #' mediaconvert_associate_certificate(Arn)
 #'
-#' @param Arn &#91;required&#93; The ARN of the ACM certificate that you want to associate with your MediaConvert resource.
+#' @param Arn &#91;required&#93; The ARN of the ACM certificate that you want to associate with your
+#' MediaConvert resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -44,12 +49,16 @@ mediaconvert_associate_certificate <- function(Arn) {
 #' Permanently cancel a job
 #'
 #' @description
-#' Permanently cancel a job. Once you have canceled a job, you can't start it again.
+#' Permanently cancel a job. Once you have canceled a job, you can't start
+#' it again.
 #'
 #' @usage
 #' mediaconvert_cancel_job(Id)
 #'
 #' @param Id &#91;required&#93; The Job ID of the job to be cancelled.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -81,7 +90,9 @@ mediaconvert_cancel_job <- function(Id) {
 #' Create a new transcoding job
 #'
 #' @description
-#' Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+#' Create a new transcoding job. For information about jobs and job
+#' settings, see the User Guide at
+#' http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 #'
 #' @usage
 #' mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
@@ -89,19 +100,1261 @@ mediaconvert_cancel_job <- function(Id) {
 #'   Settings, SimulateReservedQueue, StatusUpdateInterval, Tags,
 #'   UserMetadata)
 #'
-#' @param AccelerationSettings Optional. Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
-#' @param BillingTagsSource Optional. Choose a tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. Any transcoding outputs that don't have an associated tag will appear in your billing report unsorted. If you don't choose a valid value for this field, your job outputs will appear on the billing report unsorted.
+#' @param AccelerationSettings Optional. Accelerated transcoding can significantly speed up jobs with
+#' long, visually complex content. Outputs that use this feature incur
+#' pro-tier pricing. For information about feature limitations, see the AWS
+#' Elemental MediaConvert User Guide.
+#' @param BillingTagsSource Optional. Choose a tag type that AWS Billing and Cost Management will
+#' use to sort your AWS Elemental MediaConvert costs on any billing report
+#' that you set up. Any transcoding outputs that don't have an associated
+#' tag will appear in your billing report unsorted. If you don't choose a
+#' valid value for this field, your job outputs will appear on the billing
+#' report unsorted.
 #' @param ClientRequestToken Optional. Idempotency token for CreateJob operation.
-#' @param HopDestinations Optional. Use queue hopping to avoid overly long waits in the backlog of the queue that you submit your job to. Specify an alternate queue and the maximum time that your job will wait in the initial queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert User Guide.
-#' @param JobTemplate Optional. When you create a job, you can either specify a job template or specify the transcoding settings individually.
-#' @param Priority Optional. Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
-#' @param Queue Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
-#' @param Role &#91;required&#93; Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
+#' @param HopDestinations Optional. Use queue hopping to avoid overly long waits in the backlog of
+#' the queue that you submit your job to. Specify an alternate queue and
+#' the maximum time that your job will wait in the initial queue before
+#' hopping. For more information about this feature, see the AWS Elemental
+#' MediaConvert User Guide.
+#' @param JobTemplate Optional. When you create a job, you can either specify a job template
+#' or specify the transcoding settings individually.
+#' @param Priority Optional. Specify the relative priority for this job. In any given
+#' queue, the service begins processing the job with the highest value
+#' first. When more than one job has the same priority, the service begins
+#' processing the job that you submitted first. If you don't specify a
+#' priority, the service uses the default value 0.
+#' @param Queue Optional. When you create a job, you can specify a queue to send it to.
+#' If you don't specify, the job will go to the default queue. For more
+#' about queues, see the User Guide topic at
+#' https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
+#' @param Role &#91;required&#93; Required. The IAM role you use for creating this job. For details about
+#' permissions, see the User Guide topic at the User Guide at
+#' https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
 #' @param Settings &#91;required&#93; JobSettings contains all the transcode settings for a job.
-#' @param SimulateReservedQueue Optional. Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.
-#' @param StatusUpdateInterval Optional. Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
-#' @param Tags Optional. The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.  Use standard AWS tags on your job for automatic integration with AWS services and for custom integrations and workflows.
-#' @param UserMetadata Optional. User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.  Use only for existing integrations or workflows that rely on job metadata tags. Otherwise, we recommend that you use standard AWS tags.
+#' @param SimulateReservedQueue Optional. Enable this setting when you run a test job to estimate how
+#' many reserved transcoding slots (RTS) you need. When this is enabled,
+#' MediaConvert runs your job from an on-demand queue with similar
+#' performance to what you will see with one RTS in a reserved queue. This
+#' setting is disabled by default.
+#' @param StatusUpdateInterval Optional. Specify how often MediaConvert sends STATUS_UPDATE events to
+#' Amazon CloudWatch Events. Set the interval, in seconds, between status
+#' updates. MediaConvert sends an update at this interval from the time the
+#' service begins processing your job to the time it completes the
+#' transcode or encounters an error.
+#' @param Tags Optional. The tags that you want to add to the resource. You can tag
+#' resources with a key-value pair or with only a key. Use standard AWS
+#' tags on your job for automatic integration with AWS services and for
+#' custom integrations and workflows.
+#' @param UserMetadata Optional. User-defined metadata that you want to associate with an
+#' MediaConvert job. You specify metadata in key/value pairs. Use only for
+#' existing integrations or workflows that rely on job metadata tags.
+#' Otherwise, we recommend that you use standard AWS tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Job = list(
+#'     AccelerationSettings = list(
+#'       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
+#'     ),
+#'     AccelerationStatus = "NOT_APPLICABLE"|"IN_PROGRESS"|"ACCELERATED"|"NOT_ACCELERATED",
+#'     Arn = "string",
+#'     BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE"|"JOB",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CurrentPhase = "PROBING"|"TRANSCODING"|"UPLOADING",
+#'     ErrorCode = 123,
+#'     ErrorMessage = "string",
+#'     HopDestinations = list(
+#'       list(
+#'         Priority = 123,
+#'         Queue = "string",
+#'         WaitMinutes = 123
+#'       )
+#'     ),
+#'     Id = "string",
+#'     JobPercentComplete = 123,
+#'     JobTemplate = "string",
+#'     Messages = list(
+#'       Info = list(
+#'         "string"
+#'       ),
+#'       Warning = list(
+#'         "string"
+#'       )
+#'     ),
+#'     OutputGroupDetails = list(
+#'       list(
+#'         OutputDetails = list(
+#'           list(
+#'             DurationInMs = 123,
+#'             VideoDetails = list(
+#'               HeightInPx = 123,
+#'               WidthInPx = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Priority = 123,
+#'     Queue = "string",
+#'     QueueTransitions = list(
+#'       list(
+#'         DestinationQueue = "string",
+#'         SourceQueue = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     RetryCount = 123,
+#'     Role = "string",
+#'     Settings = list(
+#'       AdAvailOffset = 123,
+#'       AvailBlanking = list(
+#'         AvailBlankingImage = "string"
+#'       ),
+#'       Esam = list(
+#'         ManifestConfirmConditionNotification = list(
+#'           MccXml = "string"
+#'         ),
+#'         ResponseSignalPreroll = 123,
+#'         SignalProcessingNotification = list(
+#'           SccXml = "string"
+#'         )
+#'       ),
+#'       Inputs = list(
+#'         list(
+#'           AudioSelectorGroups = list(
+#'             list(
+#'               AudioSelectorNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AudioSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               DefaultSelection = "DEFAULT"|"NOT_DEFAULT",
+#'               ExternalAudioFileInput = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               Offset = 123,
+#'               Pids = list(
+#'                 123
+#'               ),
+#'               ProgramSelection = 123,
+#'               RemixSettings = list(
+#'                 ChannelMapping = list(
+#'                   OutputChannels = list(
+#'                     list(
+#'                       InputChannels = list(
+#'                         123
+#'                       ),
+#'                       InputChannelsFineTune = list(
+#'                         123.0
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 ChannelsIn = 123,
+#'                 ChannelsOut = 123
+#'               ),
+#'               SelectorType = "PID"|"TRACK"|"LANGUAGE_CODE",
+#'               Tracks = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           CaptionSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               SourceSettings = list(
+#'                 AncillarySourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   SourceAncillaryChannelNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 DvbSubSourceSettings = list(
+#'                   Pid = 123
+#'                 ),
+#'                 EmbeddedSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Source608ChannelNumber = 123,
+#'                   Source608TrackNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 FileSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Framerate = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123
+#'                   ),
+#'                   SourceFile = "string",
+#'                   TimeDelta = 123
+#'                 ),
+#'                 SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
+#'                 TeletextSourceSettings = list(
+#'                   PageNumber = "string"
+#'                 ),
+#'                 TrackSourceSettings = list(
+#'                   TrackNumber = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Crop = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           DeblockFilter = "ENABLED"|"DISABLED",
+#'           DecryptionSettings = list(
+#'             DecryptionMode = "AES_CTR"|"AES_CBC"|"AES_GCM",
+#'             EncryptedDecryptionKey = "string",
+#'             InitializationVector = "string",
+#'             KmsKeyRegion = "string"
+#'           ),
+#'           DenoiseFilter = "ENABLED"|"DISABLED",
+#'           FileInput = "string",
+#'           FilterEnable = "AUTO"|"DISABLE"|"FORCE",
+#'           FilterStrength = 123,
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           InputClippings = list(
+#'             list(
+#'               EndTimecode = "string",
+#'               StartTimecode = "string"
+#'             )
+#'           ),
+#'           InputScanType = "AUTO"|"PSF",
+#'           Position = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           ProgramNumber = 123,
+#'           PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'           SupplementalImps = list(
+#'             "string"
+#'           ),
+#'           TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'           TimecodeStart = "string",
+#'           VideoSelector = list(
+#'             AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
+#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
+#'             ColorSpaceUsage = "FORCE"|"FALLBACK",
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Pid = 123,
+#'             ProgramNumber = 123,
+#'             Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
+#'           )
+#'         )
+#'       ),
+#'       MotionImageInserter = list(
+#'         Framerate = list(
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123
+#'         ),
+#'         Input = "string",
+#'         InsertionMode = "MOV"|"PNG",
+#'         Offset = list(
+#'           ImageX = 123,
+#'           ImageY = 123
+#'         ),
+#'         Playback = "ONCE"|"REPEAT",
+#'         StartTime = "string"
+#'       ),
+#'       NielsenConfiguration = list(
+#'         BreakoutCode = 123,
+#'         DistributorId = "string"
+#'       ),
+#'       NielsenNonLinearWatermark = list(
+#'         ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'         AdiFilename = "string",
+#'         AssetId = "string",
+#'         AssetName = "string",
+#'         CbetSourceId = "string",
+#'         EpisodeId = "string",
+#'         MetadataDestination = "string",
+#'         SourceId = 123,
+#'         SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'         TicServerUrl = "string",
+#'         UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'       ),
+#'       OutputGroups = list(
+#'         list(
+#'           AutomatedEncodingSettings = list(
+#'             AbrSettings = list(
+#'               MaxAbrBitrate = 123,
+#'               MaxRenditions = 123,
+#'               MinAbrBitrate = 123
+#'             )
+#'           ),
+#'           CustomName = "string",
+#'           Name = "string",
+#'           OutputGroupSettings = list(
+#'             CmafGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   DashSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   HlsSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   ResourceId = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               WriteDashManifest = "DISABLED"|"ENABLED",
+#'               WriteHlsManifest = "DISABLED"|"ENABLED",
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             DashIsoGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               HbbtvCompliance = "HBBTV_1_5"|"NONE",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             FileGroupSettings = list(
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             HlsGroupSettings = list(
+#'               AdMarkers = list(
+#'                 "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'               ),
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
+#'               BaseUrl = "string",
+#'               CaptionLanguageMappings = list(
+#'                 list(
+#'                   CaptionChannel = 123,
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               CaptionLanguageSetting = "INSERT"|"OMIT"|"NONE",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "AES128"|"SAMPLE_AES",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 OfflineEncrypted = "ENABLED"|"DISABLED",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinFinalSegmentLength = 123.0,
+#'               MinSegmentLength = 123,
+#'               OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'               ProgramDateTime = "INCLUDE"|"EXCLUDE",
+#'               ProgramDateTimePeriod = 123,
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               SegmentsPerSubdirectory = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+#'               TimedMetadataId3Period = 123,
+#'               TimestampDeltaMilliseconds = 123
+#'             ),
+#'             MsSmoothGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestEncoding = "UTF8"|"UTF16"
+#'             ),
+#'             Type = "HLS_GROUP_SETTINGS"|"DASH_ISO_GROUP_SETTINGS"|"FILE_GROUP_SETTINGS"|"MS_SMOOTH_GROUP_SETTINGS"|"CMAF_GROUP_SETTINGS"
+#'           ),
+#'           Outputs = list(
+#'             list(
+#'               AudioDescriptions = list(
+#'                 list(
+#'                   AudioChannelTaggingSettings = list(
+#'                     ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                   ),
+#'                   AudioNormalizationSettings = list(
+#'                     Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'                     CorrectionGateLevel = 123,
+#'                     LoudnessLogging = "LOG"|"DONT_LOG",
+#'                     PeakCalculation = "TRUE_PEAK"|"NONE",
+#'                     TargetLkfs = 123.0
+#'                   ),
+#'                   AudioSourceName = "string",
+#'                   AudioType = 123,
+#'                   AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   CodecSettings = list(
+#'                     AacSettings = list(
+#'                       AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                       Bitrate = 123,
+#'                       CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                       CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       RawFormat = "LATM_LOAS"|"NONE",
+#'                       SampleRate = 123,
+#'                       Specification = "MPEG2"|"MPEG4",
+#'                       VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'                     ),
+#'                     Ac3Settings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       SampleRate = 123
+#'                     ),
+#'                     AiffSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'                     Eac3AtmosSettings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN",
+#'                       CodingMode = "CODING_MODE_9_1_6",
+#'                       DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                       SampleRate = 123,
+#'                       SpeechThreshold = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Eac3Settings = list(
+#'                       AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                       DcFilter = "ENABLED"|"DISABLED",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LfeControl = "LFE"|"NO_LFE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                       PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                       SampleRate = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                       SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Mp2Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Mp3Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     OpusSettings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     VorbisSettings = list(
+#'                       Channels = 123,
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     WavSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       Format = "RIFF"|"RF64",
+#'                       SampleRate = 123
+#'                     )
+#'                   ),
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   RemixSettings = list(
+#'                     ChannelMapping = list(
+#'                       OutputChannels = list(
+#'                         list(
+#'                           InputChannels = list(
+#'                             123
+#'                           ),
+#'                           InputChannelsFineTune = list(
+#'                             123.0
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     ChannelsIn = 123,
+#'                     ChannelsOut = 123
+#'                   ),
+#'                   StreamName = "string"
+#'                 )
+#'               ),
+#'               CaptionDescriptions = list(
+#'                 list(
+#'                   CaptionSelectorName = "string",
+#'                   CustomLanguageCode = "string",
+#'                   DestinationSettings = list(
+#'                     BurninDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                     DvbSubDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     EmbeddedDestinationSettings = list(
+#'                       Destination608ChannelNumber = 123,
+#'                       Destination708ServiceNumber = 123
+#'                     ),
+#'                     ImscDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     ),
+#'                     SccDestinationSettings = list(
+#'                       Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     ),
+#'                     TeletextDestinationSettings = list(
+#'                       PageNumber = "string",
+#'                       PageTypes = list(
+#'                         "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                       )
+#'                     ),
+#'                     TtmlDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     )
+#'                   ),
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               ContainerSettings = list(
+#'                 CmfcSettings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'                 F4vSettings = list(
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'                 ),
+#'                 M2tsSettings = list(
+#'                   AudioBufferModel = "DVB"|"ATSC",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   Bitrate = 123,
+#'                   BufferModel = "MULTIPLEX"|"NONE",
+#'                   DvbNitSettings = list(
+#'                     NetworkId = 123,
+#'                     NetworkName = "string",
+#'                     NitInterval = 123
+#'                   ),
+#'                   DvbSdtSettings = list(
+#'                     OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'                     SdtInterval = 123,
+#'                     ServiceName = "string",
+#'                     ServiceProviderName = "string"
+#'                   ),
+#'                   DvbSubPids = list(
+#'                     123
+#'                   ),
+#'                   DvbTdtSettings = list(
+#'                     TdtInterval = 123
+#'                   ),
+#'                   DvbTeletextPid = 123,
+#'                   EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'                   EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'                   EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                   ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'                   FragmentTime = 123.0,
+#'                   MaxPcrInterval = 123,
+#'                   MinEbpInterval = 123,
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   NullPacketBitrate = 123.0,
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   RateMode = "VBR"|"CBR",
+#'                   Scte35Esam = list(
+#'                     Scte35EsamPid = 123
+#'                   ),
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'                   SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'                   SegmentationTime = 123.0,
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 M3u8Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadata = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 MovSettings = list(
+#'                   ClapAtom = "INCLUDE"|"EXCLUDE",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'                   PaddingControl = "OMNEON"|"NONE",
+#'                   Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'                 ),
+#'                 Mp4Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   CttsVersion = 123,
+#'                   FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'                   Mp4MajorBrand = "string"
+#'                 ),
+#'                 MpdSettings = list(
+#'                   AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 MxfSettings = list(
+#'                   AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                   Profile = "D_10"|"XDCAM"|"OP1A"
+#'                 )
+#'               ),
+#'               Extension = "string",
+#'               NameModifier = "string",
+#'               OutputSettings = list(
+#'                 HlsSettings = list(
+#'                   AudioGroupId = "string",
+#'                   AudioOnlyContainer = "AUTOMATIC"|"M2TS",
+#'                   AudioRenditionSets = "string",
+#'                   AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   SegmentModifier = "string"
+#'                 )
+#'               ),
+#'               Preset = "string",
+#'               VideoDescription = list(
+#'                 AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'                 AntiAlias = "DISABLED"|"ENABLED",
+#'                 CodecSettings = list(
+#'                   Av1Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     MaxBitrate = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     QvbrSettings = list(
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "QVBR",
+#'                     Slices = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   AvcIntraSettings = list(
+#'                     AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                     AvcIntraUhdSettings = list(
+#'                       QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                     ),
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'                   FrameCaptureSettings = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     MaxCaptures = 123,
+#'                     Quality = 123
+#'                   ),
+#'                   H264Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'                     CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     EntropyEncoding = "CABAC"|"CAVLC",
+#'                     FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     RepeatPps = "DISABLED"|"ENABLED",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"RP2027",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   H265Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'                     CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     TemporalIds = "DISABLED"|"ENABLED",
+#'                     Tiles = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'                     WriteMp4PackagingType = "HVC1"|"HEV1"
+#'                   ),
+#'                   Mpeg2Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'                     CodecProfile = "MAIN"|"PROFILE_422",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'                     RateControlMode = "VBR"|"CBR",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"D_10",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   ProresSettings = list(
+#'                     CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Vc3Settings = list(
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD",
+#'                     Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'                   ),
+#'                   Vp8Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   ),
+#'                   Vp9Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   )
+#'                 ),
+#'                 ColorMetadata = "IGNORE"|"INSERT",
+#'                 Crop = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 DropFrameTimecode = "DISABLED"|"ENABLED",
+#'                 FixedAfd = 123,
+#'                 Height = 123,
+#'                 Position = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'                 ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'                 Sharpness = 123,
+#'                 TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'                 VideoPreprocessors = list(
+#'                   ColorCorrector = list(
+#'                     Brightness = 123,
+#'                     ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'                     Contrast = 123,
+#'                     Hdr10Metadata = list(
+#'                       BluePrimaryX = 123,
+#'                       BluePrimaryY = 123,
+#'                       GreenPrimaryX = 123,
+#'                       GreenPrimaryY = 123,
+#'                       MaxContentLightLevel = 123,
+#'                       MaxFrameAverageLightLevel = 123,
+#'                       MaxLuminance = 123,
+#'                       MinLuminance = 123,
+#'                       RedPrimaryX = 123,
+#'                       RedPrimaryY = 123,
+#'                       WhitePointX = 123,
+#'                       WhitePointY = 123
+#'                     ),
+#'                     Hue = 123,
+#'                     Saturation = 123
+#'                   ),
+#'                   Deinterlacer = list(
+#'                     Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'                     Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'                     Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'                   ),
+#'                   DolbyVision = list(
+#'                     L6Metadata = list(
+#'                       MaxCll = 123,
+#'                       MaxFall = 123
+#'                     ),
+#'                     L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                     Profile = "PROFILE_5"
+#'                   ),
+#'                   ImageInserter = list(
+#'                     InsertableImages = list(
+#'                       list(
+#'                         Duration = 123,
+#'                         FadeIn = 123,
+#'                         FadeOut = 123,
+#'                         Height = 123,
+#'                         ImageInserterInput = "string",
+#'                         ImageX = 123,
+#'                         ImageY = 123,
+#'                         Layer = 123,
+#'                         Opacity = 123,
+#'                         StartTime = "string",
+#'                         Width = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   NoiseReducer = list(
+#'                     Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'                     FilterSettings = list(
+#'                       Strength = 123
+#'                     ),
+#'                     SpatialFilterSettings = list(
+#'                       PostFilterSharpenStrength = 123,
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     ),
+#'                     TemporalFilterSettings = list(
+#'                       AggressiveMode = 123,
+#'                       PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     )
+#'                   ),
+#'                   PartnerWatermarking = list(
+#'                     NexguardFileMarkerSettings = list(
+#'                       License = "string",
+#'                       Payload = 123,
+#'                       Preset = "string",
+#'                       Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'                     )
+#'                   ),
+#'                   TimecodeBurnin = list(
+#'                     FontSize = 123,
+#'                     Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'                     Prefix = "string"
+#'                   )
+#'                 ),
+#'                 Width = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       TimecodeConfig = list(
+#'         Anchor = "string",
+#'         Source = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         Start = "string",
+#'         TimestampOffset = "string"
+#'       ),
+#'       TimedMetadataInsertion = list(
+#'         Id3Insertions = list(
+#'           list(
+#'             Id3 = "string",
+#'             Timecode = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     SimulateReservedQueue = "DISABLED"|"ENABLED",
+#'     Status = "SUBMITTED"|"PROGRESSING"|"COMPLETE"|"CANCELED"|"ERROR",
+#'     StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'     Timing = list(
+#'       FinishTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     UserMetadata = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1280,23 +2533,1190 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #' Create a new job template
 #'
 #' @description
-#' Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+#' Create a new job template. For information about job templates see the
+#' User Guide at
+#' http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 #'
 #' @usage
 #' mediaconvert_create_job_template(AccelerationSettings, Category,
 #'   Description, HopDestinations, Name, Priority, Queue, Settings,
 #'   StatusUpdateInterval, Tags)
 #'
-#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
+#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long,
+#' visually complex content. Outputs that use this feature incur pro-tier
+#' pricing. For information about feature limitations, see the AWS
+#' Elemental MediaConvert User Guide.
 #' @param Category Optional. A category for the job template you are creating
 #' @param Description Optional. A description of the job template you are creating.
-#' @param HopDestinations Optional. Use queue hopping to avoid overly long waits in the backlog of the queue that you submit your job to. Specify an alternate queue and the maximum time that your job will wait in the initial queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert User Guide.
+#' @param HopDestinations Optional. Use queue hopping to avoid overly long waits in the backlog of
+#' the queue that you submit your job to. Specify an alternate queue and
+#' the maximum time that your job will wait in the initial queue before
+#' hopping. For more information about this feature, see the AWS Elemental
+#' MediaConvert User Guide.
 #' @param Name &#91;required&#93; The name of the job template you are creating.
-#' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
-#' @param Queue Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.
-#' @param Settings &#91;required&#93; JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.
-#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
-#' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+#' @param Priority Specify the relative priority for this job. In any given queue, the
+#' service begins processing the job with the highest value first. When
+#' more than one job has the same priority, the service begins processing
+#' the job that you submitted first. If you don't specify a priority, the
+#' service uses the default value 0.
+#' @param Queue Optional. The queue that jobs created from this template are assigned
+#' to. If you don't specify this, jobs will go to the default queue.
+#' @param Settings &#91;required&#93; JobTemplateSettings contains all the transcode settings saved in the
+#' template that will be applied to jobs created from it.
+#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon
+#' CloudWatch Events. Set the interval, in seconds, between status updates.
+#' MediaConvert sends an update at this interval from the time the service
+#' begins processing your job to the time it completes the transcode or
+#' encounters an error.
+#' @param Tags The tags that you want to add to the resource. You can tag resources
+#' with a key-value pair or with only a key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobTemplate = list(
+#'     AccelerationSettings = list(
+#'       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
+#'     ),
+#'     Arn = "string",
+#'     Category = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     HopDestinations = list(
+#'       list(
+#'         Priority = 123,
+#'         Queue = "string",
+#'         WaitMinutes = 123
+#'       )
+#'     ),
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Priority = 123,
+#'     Queue = "string",
+#'     Settings = list(
+#'       AdAvailOffset = 123,
+#'       AvailBlanking = list(
+#'         AvailBlankingImage = "string"
+#'       ),
+#'       Esam = list(
+#'         ManifestConfirmConditionNotification = list(
+#'           MccXml = "string"
+#'         ),
+#'         ResponseSignalPreroll = 123,
+#'         SignalProcessingNotification = list(
+#'           SccXml = "string"
+#'         )
+#'       ),
+#'       Inputs = list(
+#'         list(
+#'           AudioSelectorGroups = list(
+#'             list(
+#'               AudioSelectorNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AudioSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               DefaultSelection = "DEFAULT"|"NOT_DEFAULT",
+#'               ExternalAudioFileInput = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               Offset = 123,
+#'               Pids = list(
+#'                 123
+#'               ),
+#'               ProgramSelection = 123,
+#'               RemixSettings = list(
+#'                 ChannelMapping = list(
+#'                   OutputChannels = list(
+#'                     list(
+#'                       InputChannels = list(
+#'                         123
+#'                       ),
+#'                       InputChannelsFineTune = list(
+#'                         123.0
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 ChannelsIn = 123,
+#'                 ChannelsOut = 123
+#'               ),
+#'               SelectorType = "PID"|"TRACK"|"LANGUAGE_CODE",
+#'               Tracks = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           CaptionSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               SourceSettings = list(
+#'                 AncillarySourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   SourceAncillaryChannelNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 DvbSubSourceSettings = list(
+#'                   Pid = 123
+#'                 ),
+#'                 EmbeddedSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Source608ChannelNumber = 123,
+#'                   Source608TrackNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 FileSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Framerate = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123
+#'                   ),
+#'                   SourceFile = "string",
+#'                   TimeDelta = 123
+#'                 ),
+#'                 SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
+#'                 TeletextSourceSettings = list(
+#'                   PageNumber = "string"
+#'                 ),
+#'                 TrackSourceSettings = list(
+#'                   TrackNumber = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Crop = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           DeblockFilter = "ENABLED"|"DISABLED",
+#'           DenoiseFilter = "ENABLED"|"DISABLED",
+#'           FilterEnable = "AUTO"|"DISABLE"|"FORCE",
+#'           FilterStrength = 123,
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           InputClippings = list(
+#'             list(
+#'               EndTimecode = "string",
+#'               StartTimecode = "string"
+#'             )
+#'           ),
+#'           InputScanType = "AUTO"|"PSF",
+#'           Position = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           ProgramNumber = 123,
+#'           PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'           TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'           TimecodeStart = "string",
+#'           VideoSelector = list(
+#'             AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
+#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
+#'             ColorSpaceUsage = "FORCE"|"FALLBACK",
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Pid = 123,
+#'             ProgramNumber = 123,
+#'             Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
+#'           )
+#'         )
+#'       ),
+#'       MotionImageInserter = list(
+#'         Framerate = list(
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123
+#'         ),
+#'         Input = "string",
+#'         InsertionMode = "MOV"|"PNG",
+#'         Offset = list(
+#'           ImageX = 123,
+#'           ImageY = 123
+#'         ),
+#'         Playback = "ONCE"|"REPEAT",
+#'         StartTime = "string"
+#'       ),
+#'       NielsenConfiguration = list(
+#'         BreakoutCode = 123,
+#'         DistributorId = "string"
+#'       ),
+#'       NielsenNonLinearWatermark = list(
+#'         ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'         AdiFilename = "string",
+#'         AssetId = "string",
+#'         AssetName = "string",
+#'         CbetSourceId = "string",
+#'         EpisodeId = "string",
+#'         MetadataDestination = "string",
+#'         SourceId = 123,
+#'         SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'         TicServerUrl = "string",
+#'         UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'       ),
+#'       OutputGroups = list(
+#'         list(
+#'           AutomatedEncodingSettings = list(
+#'             AbrSettings = list(
+#'               MaxAbrBitrate = 123,
+#'               MaxRenditions = 123,
+#'               MinAbrBitrate = 123
+#'             )
+#'           ),
+#'           CustomName = "string",
+#'           Name = "string",
+#'           OutputGroupSettings = list(
+#'             CmafGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   DashSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   HlsSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   ResourceId = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               WriteDashManifest = "DISABLED"|"ENABLED",
+#'               WriteHlsManifest = "DISABLED"|"ENABLED",
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             DashIsoGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               HbbtvCompliance = "HBBTV_1_5"|"NONE",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             FileGroupSettings = list(
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             HlsGroupSettings = list(
+#'               AdMarkers = list(
+#'                 "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'               ),
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
+#'               BaseUrl = "string",
+#'               CaptionLanguageMappings = list(
+#'                 list(
+#'                   CaptionChannel = 123,
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               CaptionLanguageSetting = "INSERT"|"OMIT"|"NONE",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "AES128"|"SAMPLE_AES",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 OfflineEncrypted = "ENABLED"|"DISABLED",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinFinalSegmentLength = 123.0,
+#'               MinSegmentLength = 123,
+#'               OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'               ProgramDateTime = "INCLUDE"|"EXCLUDE",
+#'               ProgramDateTimePeriod = 123,
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               SegmentsPerSubdirectory = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+#'               TimedMetadataId3Period = 123,
+#'               TimestampDeltaMilliseconds = 123
+#'             ),
+#'             MsSmoothGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestEncoding = "UTF8"|"UTF16"
+#'             ),
+#'             Type = "HLS_GROUP_SETTINGS"|"DASH_ISO_GROUP_SETTINGS"|"FILE_GROUP_SETTINGS"|"MS_SMOOTH_GROUP_SETTINGS"|"CMAF_GROUP_SETTINGS"
+#'           ),
+#'           Outputs = list(
+#'             list(
+#'               AudioDescriptions = list(
+#'                 list(
+#'                   AudioChannelTaggingSettings = list(
+#'                     ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                   ),
+#'                   AudioNormalizationSettings = list(
+#'                     Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'                     CorrectionGateLevel = 123,
+#'                     LoudnessLogging = "LOG"|"DONT_LOG",
+#'                     PeakCalculation = "TRUE_PEAK"|"NONE",
+#'                     TargetLkfs = 123.0
+#'                   ),
+#'                   AudioSourceName = "string",
+#'                   AudioType = 123,
+#'                   AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   CodecSettings = list(
+#'                     AacSettings = list(
+#'                       AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                       Bitrate = 123,
+#'                       CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                       CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       RawFormat = "LATM_LOAS"|"NONE",
+#'                       SampleRate = 123,
+#'                       Specification = "MPEG2"|"MPEG4",
+#'                       VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'                     ),
+#'                     Ac3Settings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       SampleRate = 123
+#'                     ),
+#'                     AiffSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'                     Eac3AtmosSettings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN",
+#'                       CodingMode = "CODING_MODE_9_1_6",
+#'                       DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                       SampleRate = 123,
+#'                       SpeechThreshold = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Eac3Settings = list(
+#'                       AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                       DcFilter = "ENABLED"|"DISABLED",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LfeControl = "LFE"|"NO_LFE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                       PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                       SampleRate = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                       SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Mp2Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Mp3Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     OpusSettings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     VorbisSettings = list(
+#'                       Channels = 123,
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     WavSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       Format = "RIFF"|"RF64",
+#'                       SampleRate = 123
+#'                     )
+#'                   ),
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   RemixSettings = list(
+#'                     ChannelMapping = list(
+#'                       OutputChannels = list(
+#'                         list(
+#'                           InputChannels = list(
+#'                             123
+#'                           ),
+#'                           InputChannelsFineTune = list(
+#'                             123.0
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     ChannelsIn = 123,
+#'                     ChannelsOut = 123
+#'                   ),
+#'                   StreamName = "string"
+#'                 )
+#'               ),
+#'               CaptionDescriptions = list(
+#'                 list(
+#'                   CaptionSelectorName = "string",
+#'                   CustomLanguageCode = "string",
+#'                   DestinationSettings = list(
+#'                     BurninDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                     DvbSubDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     EmbeddedDestinationSettings = list(
+#'                       Destination608ChannelNumber = 123,
+#'                       Destination708ServiceNumber = 123
+#'                     ),
+#'                     ImscDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     ),
+#'                     SccDestinationSettings = list(
+#'                       Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     ),
+#'                     TeletextDestinationSettings = list(
+#'                       PageNumber = "string",
+#'                       PageTypes = list(
+#'                         "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                       )
+#'                     ),
+#'                     TtmlDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     )
+#'                   ),
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               ContainerSettings = list(
+#'                 CmfcSettings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'                 F4vSettings = list(
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'                 ),
+#'                 M2tsSettings = list(
+#'                   AudioBufferModel = "DVB"|"ATSC",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   Bitrate = 123,
+#'                   BufferModel = "MULTIPLEX"|"NONE",
+#'                   DvbNitSettings = list(
+#'                     NetworkId = 123,
+#'                     NetworkName = "string",
+#'                     NitInterval = 123
+#'                   ),
+#'                   DvbSdtSettings = list(
+#'                     OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'                     SdtInterval = 123,
+#'                     ServiceName = "string",
+#'                     ServiceProviderName = "string"
+#'                   ),
+#'                   DvbSubPids = list(
+#'                     123
+#'                   ),
+#'                   DvbTdtSettings = list(
+#'                     TdtInterval = 123
+#'                   ),
+#'                   DvbTeletextPid = 123,
+#'                   EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'                   EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'                   EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                   ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'                   FragmentTime = 123.0,
+#'                   MaxPcrInterval = 123,
+#'                   MinEbpInterval = 123,
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   NullPacketBitrate = 123.0,
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   RateMode = "VBR"|"CBR",
+#'                   Scte35Esam = list(
+#'                     Scte35EsamPid = 123
+#'                   ),
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'                   SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'                   SegmentationTime = 123.0,
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 M3u8Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadata = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 MovSettings = list(
+#'                   ClapAtom = "INCLUDE"|"EXCLUDE",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'                   PaddingControl = "OMNEON"|"NONE",
+#'                   Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'                 ),
+#'                 Mp4Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   CttsVersion = 123,
+#'                   FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'                   Mp4MajorBrand = "string"
+#'                 ),
+#'                 MpdSettings = list(
+#'                   AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 MxfSettings = list(
+#'                   AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                   Profile = "D_10"|"XDCAM"|"OP1A"
+#'                 )
+#'               ),
+#'               Extension = "string",
+#'               NameModifier = "string",
+#'               OutputSettings = list(
+#'                 HlsSettings = list(
+#'                   AudioGroupId = "string",
+#'                   AudioOnlyContainer = "AUTOMATIC"|"M2TS",
+#'                   AudioRenditionSets = "string",
+#'                   AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   SegmentModifier = "string"
+#'                 )
+#'               ),
+#'               Preset = "string",
+#'               VideoDescription = list(
+#'                 AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'                 AntiAlias = "DISABLED"|"ENABLED",
+#'                 CodecSettings = list(
+#'                   Av1Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     MaxBitrate = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     QvbrSettings = list(
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "QVBR",
+#'                     Slices = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   AvcIntraSettings = list(
+#'                     AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                     AvcIntraUhdSettings = list(
+#'                       QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                     ),
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'                   FrameCaptureSettings = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     MaxCaptures = 123,
+#'                     Quality = 123
+#'                   ),
+#'                   H264Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'                     CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     EntropyEncoding = "CABAC"|"CAVLC",
+#'                     FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     RepeatPps = "DISABLED"|"ENABLED",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"RP2027",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   H265Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'                     CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     TemporalIds = "DISABLED"|"ENABLED",
+#'                     Tiles = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'                     WriteMp4PackagingType = "HVC1"|"HEV1"
+#'                   ),
+#'                   Mpeg2Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'                     CodecProfile = "MAIN"|"PROFILE_422",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'                     RateControlMode = "VBR"|"CBR",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"D_10",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   ProresSettings = list(
+#'                     CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Vc3Settings = list(
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD",
+#'                     Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'                   ),
+#'                   Vp8Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   ),
+#'                   Vp9Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   )
+#'                 ),
+#'                 ColorMetadata = "IGNORE"|"INSERT",
+#'                 Crop = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 DropFrameTimecode = "DISABLED"|"ENABLED",
+#'                 FixedAfd = 123,
+#'                 Height = 123,
+#'                 Position = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'                 ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'                 Sharpness = 123,
+#'                 TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'                 VideoPreprocessors = list(
+#'                   ColorCorrector = list(
+#'                     Brightness = 123,
+#'                     ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'                     Contrast = 123,
+#'                     Hdr10Metadata = list(
+#'                       BluePrimaryX = 123,
+#'                       BluePrimaryY = 123,
+#'                       GreenPrimaryX = 123,
+#'                       GreenPrimaryY = 123,
+#'                       MaxContentLightLevel = 123,
+#'                       MaxFrameAverageLightLevel = 123,
+#'                       MaxLuminance = 123,
+#'                       MinLuminance = 123,
+#'                       RedPrimaryX = 123,
+#'                       RedPrimaryY = 123,
+#'                       WhitePointX = 123,
+#'                       WhitePointY = 123
+#'                     ),
+#'                     Hue = 123,
+#'                     Saturation = 123
+#'                   ),
+#'                   Deinterlacer = list(
+#'                     Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'                     Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'                     Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'                   ),
+#'                   DolbyVision = list(
+#'                     L6Metadata = list(
+#'                       MaxCll = 123,
+#'                       MaxFall = 123
+#'                     ),
+#'                     L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                     Profile = "PROFILE_5"
+#'                   ),
+#'                   ImageInserter = list(
+#'                     InsertableImages = list(
+#'                       list(
+#'                         Duration = 123,
+#'                         FadeIn = 123,
+#'                         FadeOut = 123,
+#'                         Height = 123,
+#'                         ImageInserterInput = "string",
+#'                         ImageX = 123,
+#'                         ImageY = 123,
+#'                         Layer = 123,
+#'                         Opacity = 123,
+#'                         StartTime = "string",
+#'                         Width = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   NoiseReducer = list(
+#'                     Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'                     FilterSettings = list(
+#'                       Strength = 123
+#'                     ),
+#'                     SpatialFilterSettings = list(
+#'                       PostFilterSharpenStrength = 123,
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     ),
+#'                     TemporalFilterSettings = list(
+#'                       AggressiveMode = 123,
+#'                       PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     )
+#'                   ),
+#'                   PartnerWatermarking = list(
+#'                     NexguardFileMarkerSettings = list(
+#'                       License = "string",
+#'                       Payload = 123,
+#'                       Preset = "string",
+#'                       Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'                     )
+#'                   ),
+#'                   TimecodeBurnin = list(
+#'                     FontSize = 123,
+#'                     Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'                     Prefix = "string"
+#'                   )
+#'                 ),
+#'                 Width = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       TimecodeConfig = list(
+#'         Anchor = "string",
+#'         Source = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         Start = "string",
+#'         TimestampOffset = "string"
+#'       ),
+#'       TimedMetadataInsertion = list(
+#'         Id3Insertions = list(
+#'           list(
+#'             Id3 = "string",
+#'             Timecode = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2460,7 +4880,8 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #' Create a new preset
 #'
 #' @description
-#' Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+#' Create a new preset. For information about job templates see the User
+#' Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 #'
 #' @usage
 #' mediaconvert_create_preset(Category, Description, Name, Settings, Tags)
@@ -2469,7 +4890,677 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #' @param Description Optional. A description of the preset you are creating.
 #' @param Name &#91;required&#93; The name of the preset you are creating.
 #' @param Settings &#91;required&#93; Settings for preset
-#' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+#' @param Tags The tags that you want to add to the resource. You can tag resources
+#' with a key-value pair or with only a key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Preset = list(
+#'     Arn = "string",
+#'     Category = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Settings = list(
+#'       AudioDescriptions = list(
+#'         list(
+#'           AudioChannelTaggingSettings = list(
+#'             ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'           ),
+#'           AudioNormalizationSettings = list(
+#'             Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'             AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'             CorrectionGateLevel = 123,
+#'             LoudnessLogging = "LOG"|"DONT_LOG",
+#'             PeakCalculation = "TRUE_PEAK"|"NONE",
+#'             TargetLkfs = 123.0
+#'           ),
+#'           AudioSourceName = "string",
+#'           AudioType = 123,
+#'           AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'           CodecSettings = list(
+#'             AacSettings = list(
+#'               AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'               Bitrate = 123,
+#'               CodecProfile = "LC"|"HEV1"|"HEV2",
+#'               CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'               RateControlMode = "CBR"|"VBR",
+#'               RawFormat = "LATM_LOAS"|"NONE",
+#'               SampleRate = 123,
+#'               Specification = "MPEG2"|"MPEG4",
+#'               VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'             ),
+#'             Ac3Settings = list(
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'               CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'               Dialnorm = 123,
+#'               DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'               LfeFilter = "ENABLED"|"DISABLED",
+#'               MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'               SampleRate = 123
+#'             ),
+#'             AiffSettings = list(
+#'               BitDepth = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'             Eac3AtmosSettings = list(
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN",
+#'               CodingMode = "CODING_MODE_9_1_6",
+#'               DialogueIntelligence = "ENABLED"|"DISABLED",
+#'               DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               LoRoCenterMixLevel = 123.0,
+#'               LoRoSurroundMixLevel = 123.0,
+#'               LtRtCenterMixLevel = 123.0,
+#'               LtRtSurroundMixLevel = 123.0,
+#'               MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'               SampleRate = 123,
+#'               SpeechThreshold = 123,
+#'               StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'               SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'             ),
+#'             Eac3Settings = list(
+#'               AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'               CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'               DcFilter = "ENABLED"|"DISABLED",
+#'               Dialnorm = 123,
+#'               DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               LfeControl = "LFE"|"NO_LFE",
+#'               LfeFilter = "ENABLED"|"DISABLED",
+#'               LoRoCenterMixLevel = 123.0,
+#'               LoRoSurroundMixLevel = 123.0,
+#'               LtRtCenterMixLevel = 123.0,
+#'               LtRtSurroundMixLevel = 123.0,
+#'               MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'               PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'               PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'               SampleRate = 123,
+#'               StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'               SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'               SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'             ),
+#'             Mp2Settings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             Mp3Settings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               RateControlMode = "CBR"|"VBR",
+#'               SampleRate = 123,
+#'               VbrQuality = 123
+#'             ),
+#'             OpusSettings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             VorbisSettings = list(
+#'               Channels = 123,
+#'               SampleRate = 123,
+#'               VbrQuality = 123
+#'             ),
+#'             WavSettings = list(
+#'               BitDepth = 123,
+#'               Channels = 123,
+#'               Format = "RIFF"|"RF64",
+#'               SampleRate = 123
+#'             )
+#'           ),
+#'           CustomLanguageCode = "string",
+#'           LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'           LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'           RemixSettings = list(
+#'             ChannelMapping = list(
+#'               OutputChannels = list(
+#'                 list(
+#'                   InputChannels = list(
+#'                     123
+#'                   ),
+#'                   InputChannelsFineTune = list(
+#'                     123.0
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             ChannelsIn = 123,
+#'             ChannelsOut = 123
+#'           ),
+#'           StreamName = "string"
+#'         )
+#'       ),
+#'       CaptionDescriptions = list(
+#'         list(
+#'           CustomLanguageCode = "string",
+#'           DestinationSettings = list(
+#'             BurninDestinationSettings = list(
+#'               Alignment = "CENTERED"|"LEFT",
+#'               BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'               BackgroundOpacity = 123,
+#'               FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               FontOpacity = 123,
+#'               FontResolution = 123,
+#'               FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'               FontSize = 123,
+#'               OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               OutlineSize = 123,
+#'               ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'               ShadowOpacity = 123,
+#'               ShadowXOffset = 123,
+#'               ShadowYOffset = 123,
+#'               TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'               XPosition = 123,
+#'               YPosition = 123
+#'             ),
+#'             DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'             DvbSubDestinationSettings = list(
+#'               Alignment = "CENTERED"|"LEFT",
+#'               BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'               BackgroundOpacity = 123,
+#'               FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               FontOpacity = 123,
+#'               FontResolution = 123,
+#'               FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'               FontSize = 123,
+#'               OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               OutlineSize = 123,
+#'               ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'               ShadowOpacity = 123,
+#'               ShadowXOffset = 123,
+#'               ShadowYOffset = 123,
+#'               SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'               TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'               XPosition = 123,
+#'               YPosition = 123
+#'             ),
+#'             EmbeddedDestinationSettings = list(
+#'               Destination608ChannelNumber = 123,
+#'               Destination708ServiceNumber = 123
+#'             ),
+#'             ImscDestinationSettings = list(
+#'               StylePassthrough = "ENABLED"|"DISABLED"
+#'             ),
+#'             SccDestinationSettings = list(
+#'               Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'             ),
+#'             TeletextDestinationSettings = list(
+#'               PageNumber = "string",
+#'               PageTypes = list(
+#'                 "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'               )
+#'             ),
+#'             TtmlDestinationSettings = list(
+#'               StylePassthrough = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
+#'           LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'           LanguageDescription = "string"
+#'         )
+#'       ),
+#'       ContainerSettings = list(
+#'         CmfcSettings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'           Scte35Esam = "INSERT"|"NONE",
+#'           Scte35Source = "PASSTHROUGH"|"NONE"
+#'         ),
+#'         Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'         F4vSettings = list(
+#'           MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'         ),
+#'         M2tsSettings = list(
+#'           AudioBufferModel = "DVB"|"ATSC",
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           AudioFramesPerPes = 123,
+#'           AudioPids = list(
+#'             123
+#'           ),
+#'           Bitrate = 123,
+#'           BufferModel = "MULTIPLEX"|"NONE",
+#'           DvbNitSettings = list(
+#'             NetworkId = 123,
+#'             NetworkName = "string",
+#'             NitInterval = 123
+#'           ),
+#'           DvbSdtSettings = list(
+#'             OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'             SdtInterval = 123,
+#'             ServiceName = "string",
+#'             ServiceProviderName = "string"
+#'           ),
+#'           DvbSubPids = list(
+#'             123
+#'           ),
+#'           DvbTdtSettings = list(
+#'             TdtInterval = 123
+#'           ),
+#'           DvbTeletextPid = 123,
+#'           EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'           EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'           EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'           ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'           FragmentTime = 123.0,
+#'           MaxPcrInterval = 123,
+#'           MinEbpInterval = 123,
+#'           NielsenId3 = "INSERT"|"NONE",
+#'           NullPacketBitrate = 123.0,
+#'           PatInterval = 123,
+#'           PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'           PcrPid = 123,
+#'           PmtInterval = 123,
+#'           PmtPid = 123,
+#'           PrivateMetadataPid = 123,
+#'           ProgramNumber = 123,
+#'           RateMode = "VBR"|"CBR",
+#'           Scte35Esam = list(
+#'             Scte35EsamPid = 123
+#'           ),
+#'           Scte35Pid = 123,
+#'           Scte35Source = "PASSTHROUGH"|"NONE",
+#'           SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'           SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'           SegmentationTime = 123.0,
+#'           TimedMetadataPid = 123,
+#'           TransportStreamId = 123,
+#'           VideoPid = 123
+#'         ),
+#'         M3u8Settings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           AudioFramesPerPes = 123,
+#'           AudioPids = list(
+#'             123
+#'           ),
+#'           NielsenId3 = "INSERT"|"NONE",
+#'           PatInterval = 123,
+#'           PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'           PcrPid = 123,
+#'           PmtInterval = 123,
+#'           PmtPid = 123,
+#'           PrivateMetadataPid = 123,
+#'           ProgramNumber = 123,
+#'           Scte35Pid = 123,
+#'           Scte35Source = "PASSTHROUGH"|"NONE",
+#'           TimedMetadata = "PASSTHROUGH"|"NONE",
+#'           TimedMetadataPid = 123,
+#'           TransportStreamId = 123,
+#'           VideoPid = 123
+#'         ),
+#'         MovSettings = list(
+#'           ClapAtom = "INCLUDE"|"EXCLUDE",
+#'           CslgAtom = "INCLUDE"|"EXCLUDE",
+#'           Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'           PaddingControl = "OMNEON"|"NONE",
+#'           Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'         ),
+#'         Mp4Settings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           CslgAtom = "INCLUDE"|"EXCLUDE",
+#'           CttsVersion = 123,
+#'           FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'           MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'           Mp4MajorBrand = "string"
+#'         ),
+#'         MpdSettings = list(
+#'           AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'           Scte35Esam = "INSERT"|"NONE",
+#'           Scte35Source = "PASSTHROUGH"|"NONE"
+#'         ),
+#'         MxfSettings = list(
+#'           AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'           Profile = "D_10"|"XDCAM"|"OP1A"
+#'         )
+#'       ),
+#'       VideoDescription = list(
+#'         AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'         AntiAlias = "DISABLED"|"ENABLED",
+#'         CodecSettings = list(
+#'           Av1Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             MaxBitrate = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             QvbrSettings = list(
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "QVBR",
+#'             Slices = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'           ),
+#'           AvcIntraSettings = list(
+#'             AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'             AvcIntraUhdSettings = list(
+#'               QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'             ),
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD"
+#'           ),
+#'           Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'           FrameCaptureSettings = list(
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             MaxCaptures = 123,
+#'             Quality = 123
+#'           ),
+#'           H264Settings = list(
+#'             AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'             CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             EntropyEncoding = "CABAC"|"CAVLC",
+#'             FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'             FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopBReference = "DISABLED"|"ENABLED",
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             NumberReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'             QvbrSettings = list(
+#'               MaxAverageBitrate = 123,
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "VBR"|"CBR"|"QVBR",
+#'             RepeatPps = "DISABLED"|"ENABLED",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'             Slices = 123,
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Softness = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Syntax = "DEFAULT"|"RP2027",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'           ),
+#'           H265Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'             CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopBReference = "DISABLED"|"ENABLED",
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             NumberReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'             QvbrSettings = list(
+#'               MaxAverageBitrate = 123,
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "VBR"|"CBR"|"QVBR",
+#'             SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'             Slices = 123,
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             TemporalIds = "DISABLED"|"ENABLED",
+#'             Tiles = "DISABLED"|"ENABLED",
+#'             UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'             WriteMp4PackagingType = "HVC1"|"HEV1"
+#'           ),
+#'           Mpeg2Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'             CodecProfile = "MAIN"|"PROFILE_422",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'             RateControlMode = "VBR"|"CBR",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Softness = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Syntax = "DEFAULT"|"D_10",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'           ),
+#'           ProresSettings = list(
+#'             CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD"
+#'           ),
+#'           Vc3Settings = list(
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD",
+#'             Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'           ),
+#'           Vp8Settings = list(
+#'             Bitrate = 123,
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             HrdBufferSize = 123,
+#'             MaxBitrate = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'             RateControlMode = "VBR"
+#'           ),
+#'           Vp9Settings = list(
+#'             Bitrate = 123,
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             HrdBufferSize = 123,
+#'             MaxBitrate = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'             RateControlMode = "VBR"
+#'           )
+#'         ),
+#'         ColorMetadata = "IGNORE"|"INSERT",
+#'         Crop = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
+#'         DropFrameTimecode = "DISABLED"|"ENABLED",
+#'         FixedAfd = 123,
+#'         Height = 123,
+#'         Position = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
+#'         RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'         ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'         Sharpness = 123,
+#'         TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'         VideoPreprocessors = list(
+#'           ColorCorrector = list(
+#'             Brightness = 123,
+#'             ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'             Contrast = 123,
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Hue = 123,
+#'             Saturation = 123
+#'           ),
+#'           Deinterlacer = list(
+#'             Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'             Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'             Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'           ),
+#'           DolbyVision = list(
+#'             L6Metadata = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             ),
+#'             L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'             Profile = "PROFILE_5"
+#'           ),
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           NoiseReducer = list(
+#'             Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'             FilterSettings = list(
+#'               Strength = 123
+#'             ),
+#'             SpatialFilterSettings = list(
+#'               PostFilterSharpenStrength = 123,
+#'               Speed = 123,
+#'               Strength = 123
+#'             ),
+#'             TemporalFilterSettings = list(
+#'               AggressiveMode = 123,
+#'               PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'               Speed = 123,
+#'               Strength = 123
+#'             )
+#'           ),
+#'           PartnerWatermarking = list(
+#'             NexguardFileMarkerSettings = list(
+#'               License = "string",
+#'               Payload = 123,
+#'               Preset = "string",
+#'               Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'             )
+#'           ),
+#'           TimecodeBurnin = list(
+#'             FontSize = 123,
+#'             Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'             Prefix = "string"
+#'           )
+#'         ),
+#'         Width = 123
+#'       )
+#'     ),
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3155,7 +6246,9 @@ mediaconvert_create_preset <- function(Category = NULL, Description = NULL, Name
 #' Create a new transcoding queue
 #'
 #' @description
-#' Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
+#' Create a new transcoding queue. For information about queues, see
+#' Working With Queues in the User Guide at
+#' https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 #'
 #' @usage
 #' mediaconvert_create_queue(Description, Name, PricingPlan,
@@ -3163,10 +6256,53 @@ mediaconvert_create_preset <- function(Category = NULL, Description = NULL, Name
 #'
 #' @param Description Optional. A description of the queue that you are creating.
 #' @param Name &#91;required&#93; The name of the queue that you are creating.
-#' @param PricingPlan Specifies whether the pricing plan for the queue is on-demand or reserved. For on-demand, you pay per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a 12-month commitment. When you use the API to create a queue, the default is on-demand.
-#' @param ReservationPlanSettings Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.
-#' @param Status Initial state of the queue. If you create a paused queue, then jobs in that queue won't begin.
-#' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+#' @param PricingPlan Specifies whether the pricing plan for the queue is on-demand or
+#' reserved. For on-demand, you pay per minute, billed in increments of .01
+#' minute. For reserved, you pay for the transcoding capacity of the entire
+#' queue, regardless of how much or how little you use it. Reserved pricing
+#' requires a 12-month commitment. When you use the API to create a queue,
+#' the default is on-demand.
+#' @param ReservationPlanSettings Details about the pricing plan for your reserved queue. Required for
+#' reserved queues and not applicable to on-demand queues.
+#' @param Status Initial state of the queue. If you create a paused queue, then jobs in
+#' that queue won't begin.
+#' @param Tags The tags that you want to add to the resource. You can tag resources
+#' with a key-value pair or with only a key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Queue = list(
+#'     Arn = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     PricingPlan = "ON_DEMAND"|"RESERVED",
+#'     ProgressingJobsCount = 123,
+#'     ReservationPlan = list(
+#'       Commitment = "ONE_YEAR",
+#'       ExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PurchasedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RenewalType = "AUTO_RENEW"|"EXPIRE",
+#'       ReservedSlots = 123,
+#'       Status = "ACTIVE"|"EXPIRED"
+#'     ),
+#'     Status = "ACTIVE"|"PAUSED",
+#'     SubmittedJobsCount = 123,
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3216,6 +6352,9 @@ mediaconvert_create_queue <- function(Description = NULL, Name, PricingPlan = NU
 #'
 #' @param Name &#91;required&#93; The name of the job template to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_job_template(
@@ -3252,6 +6391,9 @@ mediaconvert_delete_job_template <- function(Name) {
 #' mediaconvert_delete_preset(Name)
 #'
 #' @param Name &#91;required&#93; The name of the preset to be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3290,6 +6432,9 @@ mediaconvert_delete_preset <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the queue that you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_queue(
@@ -3321,14 +6466,33 @@ mediaconvert_delete_queue <- function(Name) {
 #' your account API endpoint
 #'
 #' @description
-#' Send an request with an empty body to the regional API endpoint to get your account API endpoint.
+#' Send an request with an empty body to the regional API endpoint to get
+#' your account API endpoint.
 #'
 #' @usage
 #' mediaconvert_describe_endpoints(MaxResults, Mode, NextToken)
 #'
-#' @param MaxResults Optional. Max number of endpoints, up to twenty, that will be returned at one time.
-#' @param Mode Optional field, defaults to DEFAULT. Specify DEFAULT for this operation to return your endpoints if any exist, or to create an endpoint for you and return it if one doesn't already exist. Specify GET_ONLY to return your endpoints if any exist, or an empty list if none exist.
-#' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of endpoints.
+#' @param MaxResults Optional. Max number of endpoints, up to twenty, that will be returned
+#' at one time.
+#' @param Mode Optional field, defaults to DEFAULT. Specify DEFAULT for this operation
+#' to return your endpoints if any exist, or to create an endpoint for you
+#' and return it if one doesn't already exist. Specify GET_ONLY to return
+#' your endpoints if any exist, or an empty list if none exist.
+#' @param NextToken Use this string, provided with the response to a previous request, to
+#' request the next batch of endpoints.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoints = list(
+#'     list(
+#'       Url = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3364,12 +6528,18 @@ mediaconvert_describe_endpoints <- function(MaxResults = NULL, Mode = NULL, Next
 #' resource
 #'
 #' @description
-#' Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource.
+#' Removes an association between the Amazon Resource Name (ARN) of an AWS
+#' Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert
+#' resource.
 #'
 #' @usage
 #' mediaconvert_disassociate_certificate(Arn)
 #'
-#' @param Arn &#91;required&#93; The ARN of the ACM certificate that you want to disassociate from your MediaConvert resource.
+#' @param Arn &#91;required&#93; The ARN of the ACM certificate that you want to disassociate from your
+#' MediaConvert resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3408,6 +6578,1212 @@ mediaconvert_disassociate_certificate <- function(Arn) {
 #'
 #' @param Id &#91;required&#93; the job ID of the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Job = list(
+#'     AccelerationSettings = list(
+#'       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
+#'     ),
+#'     AccelerationStatus = "NOT_APPLICABLE"|"IN_PROGRESS"|"ACCELERATED"|"NOT_ACCELERATED",
+#'     Arn = "string",
+#'     BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE"|"JOB",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CurrentPhase = "PROBING"|"TRANSCODING"|"UPLOADING",
+#'     ErrorCode = 123,
+#'     ErrorMessage = "string",
+#'     HopDestinations = list(
+#'       list(
+#'         Priority = 123,
+#'         Queue = "string",
+#'         WaitMinutes = 123
+#'       )
+#'     ),
+#'     Id = "string",
+#'     JobPercentComplete = 123,
+#'     JobTemplate = "string",
+#'     Messages = list(
+#'       Info = list(
+#'         "string"
+#'       ),
+#'       Warning = list(
+#'         "string"
+#'       )
+#'     ),
+#'     OutputGroupDetails = list(
+#'       list(
+#'         OutputDetails = list(
+#'           list(
+#'             DurationInMs = 123,
+#'             VideoDetails = list(
+#'               HeightInPx = 123,
+#'               WidthInPx = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Priority = 123,
+#'     Queue = "string",
+#'     QueueTransitions = list(
+#'       list(
+#'         DestinationQueue = "string",
+#'         SourceQueue = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     RetryCount = 123,
+#'     Role = "string",
+#'     Settings = list(
+#'       AdAvailOffset = 123,
+#'       AvailBlanking = list(
+#'         AvailBlankingImage = "string"
+#'       ),
+#'       Esam = list(
+#'         ManifestConfirmConditionNotification = list(
+#'           MccXml = "string"
+#'         ),
+#'         ResponseSignalPreroll = 123,
+#'         SignalProcessingNotification = list(
+#'           SccXml = "string"
+#'         )
+#'       ),
+#'       Inputs = list(
+#'         list(
+#'           AudioSelectorGroups = list(
+#'             list(
+#'               AudioSelectorNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AudioSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               DefaultSelection = "DEFAULT"|"NOT_DEFAULT",
+#'               ExternalAudioFileInput = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               Offset = 123,
+#'               Pids = list(
+#'                 123
+#'               ),
+#'               ProgramSelection = 123,
+#'               RemixSettings = list(
+#'                 ChannelMapping = list(
+#'                   OutputChannels = list(
+#'                     list(
+#'                       InputChannels = list(
+#'                         123
+#'                       ),
+#'                       InputChannelsFineTune = list(
+#'                         123.0
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 ChannelsIn = 123,
+#'                 ChannelsOut = 123
+#'               ),
+#'               SelectorType = "PID"|"TRACK"|"LANGUAGE_CODE",
+#'               Tracks = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           CaptionSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               SourceSettings = list(
+#'                 AncillarySourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   SourceAncillaryChannelNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 DvbSubSourceSettings = list(
+#'                   Pid = 123
+#'                 ),
+#'                 EmbeddedSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Source608ChannelNumber = 123,
+#'                   Source608TrackNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 FileSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Framerate = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123
+#'                   ),
+#'                   SourceFile = "string",
+#'                   TimeDelta = 123
+#'                 ),
+#'                 SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
+#'                 TeletextSourceSettings = list(
+#'                   PageNumber = "string"
+#'                 ),
+#'                 TrackSourceSettings = list(
+#'                   TrackNumber = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Crop = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           DeblockFilter = "ENABLED"|"DISABLED",
+#'           DecryptionSettings = list(
+#'             DecryptionMode = "AES_CTR"|"AES_CBC"|"AES_GCM",
+#'             EncryptedDecryptionKey = "string",
+#'             InitializationVector = "string",
+#'             KmsKeyRegion = "string"
+#'           ),
+#'           DenoiseFilter = "ENABLED"|"DISABLED",
+#'           FileInput = "string",
+#'           FilterEnable = "AUTO"|"DISABLE"|"FORCE",
+#'           FilterStrength = 123,
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           InputClippings = list(
+#'             list(
+#'               EndTimecode = "string",
+#'               StartTimecode = "string"
+#'             )
+#'           ),
+#'           InputScanType = "AUTO"|"PSF",
+#'           Position = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           ProgramNumber = 123,
+#'           PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'           SupplementalImps = list(
+#'             "string"
+#'           ),
+#'           TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'           TimecodeStart = "string",
+#'           VideoSelector = list(
+#'             AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
+#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
+#'             ColorSpaceUsage = "FORCE"|"FALLBACK",
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Pid = 123,
+#'             ProgramNumber = 123,
+#'             Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
+#'           )
+#'         )
+#'       ),
+#'       MotionImageInserter = list(
+#'         Framerate = list(
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123
+#'         ),
+#'         Input = "string",
+#'         InsertionMode = "MOV"|"PNG",
+#'         Offset = list(
+#'           ImageX = 123,
+#'           ImageY = 123
+#'         ),
+#'         Playback = "ONCE"|"REPEAT",
+#'         StartTime = "string"
+#'       ),
+#'       NielsenConfiguration = list(
+#'         BreakoutCode = 123,
+#'         DistributorId = "string"
+#'       ),
+#'       NielsenNonLinearWatermark = list(
+#'         ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'         AdiFilename = "string",
+#'         AssetId = "string",
+#'         AssetName = "string",
+#'         CbetSourceId = "string",
+#'         EpisodeId = "string",
+#'         MetadataDestination = "string",
+#'         SourceId = 123,
+#'         SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'         TicServerUrl = "string",
+#'         UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'       ),
+#'       OutputGroups = list(
+#'         list(
+#'           AutomatedEncodingSettings = list(
+#'             AbrSettings = list(
+#'               MaxAbrBitrate = 123,
+#'               MaxRenditions = 123,
+#'               MinAbrBitrate = 123
+#'             )
+#'           ),
+#'           CustomName = "string",
+#'           Name = "string",
+#'           OutputGroupSettings = list(
+#'             CmafGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   DashSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   HlsSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   ResourceId = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               WriteDashManifest = "DISABLED"|"ENABLED",
+#'               WriteHlsManifest = "DISABLED"|"ENABLED",
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             DashIsoGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               HbbtvCompliance = "HBBTV_1_5"|"NONE",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             FileGroupSettings = list(
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             HlsGroupSettings = list(
+#'               AdMarkers = list(
+#'                 "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'               ),
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
+#'               BaseUrl = "string",
+#'               CaptionLanguageMappings = list(
+#'                 list(
+#'                   CaptionChannel = 123,
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               CaptionLanguageSetting = "INSERT"|"OMIT"|"NONE",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "AES128"|"SAMPLE_AES",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 OfflineEncrypted = "ENABLED"|"DISABLED",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinFinalSegmentLength = 123.0,
+#'               MinSegmentLength = 123,
+#'               OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'               ProgramDateTime = "INCLUDE"|"EXCLUDE",
+#'               ProgramDateTimePeriod = 123,
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               SegmentsPerSubdirectory = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+#'               TimedMetadataId3Period = 123,
+#'               TimestampDeltaMilliseconds = 123
+#'             ),
+#'             MsSmoothGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestEncoding = "UTF8"|"UTF16"
+#'             ),
+#'             Type = "HLS_GROUP_SETTINGS"|"DASH_ISO_GROUP_SETTINGS"|"FILE_GROUP_SETTINGS"|"MS_SMOOTH_GROUP_SETTINGS"|"CMAF_GROUP_SETTINGS"
+#'           ),
+#'           Outputs = list(
+#'             list(
+#'               AudioDescriptions = list(
+#'                 list(
+#'                   AudioChannelTaggingSettings = list(
+#'                     ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                   ),
+#'                   AudioNormalizationSettings = list(
+#'                     Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'                     CorrectionGateLevel = 123,
+#'                     LoudnessLogging = "LOG"|"DONT_LOG",
+#'                     PeakCalculation = "TRUE_PEAK"|"NONE",
+#'                     TargetLkfs = 123.0
+#'                   ),
+#'                   AudioSourceName = "string",
+#'                   AudioType = 123,
+#'                   AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   CodecSettings = list(
+#'                     AacSettings = list(
+#'                       AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                       Bitrate = 123,
+#'                       CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                       CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       RawFormat = "LATM_LOAS"|"NONE",
+#'                       SampleRate = 123,
+#'                       Specification = "MPEG2"|"MPEG4",
+#'                       VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'                     ),
+#'                     Ac3Settings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       SampleRate = 123
+#'                     ),
+#'                     AiffSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'                     Eac3AtmosSettings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN",
+#'                       CodingMode = "CODING_MODE_9_1_6",
+#'                       DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                       SampleRate = 123,
+#'                       SpeechThreshold = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Eac3Settings = list(
+#'                       AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                       DcFilter = "ENABLED"|"DISABLED",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LfeControl = "LFE"|"NO_LFE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                       PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                       SampleRate = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                       SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Mp2Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Mp3Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     OpusSettings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     VorbisSettings = list(
+#'                       Channels = 123,
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     WavSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       Format = "RIFF"|"RF64",
+#'                       SampleRate = 123
+#'                     )
+#'                   ),
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   RemixSettings = list(
+#'                     ChannelMapping = list(
+#'                       OutputChannels = list(
+#'                         list(
+#'                           InputChannels = list(
+#'                             123
+#'                           ),
+#'                           InputChannelsFineTune = list(
+#'                             123.0
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     ChannelsIn = 123,
+#'                     ChannelsOut = 123
+#'                   ),
+#'                   StreamName = "string"
+#'                 )
+#'               ),
+#'               CaptionDescriptions = list(
+#'                 list(
+#'                   CaptionSelectorName = "string",
+#'                   CustomLanguageCode = "string",
+#'                   DestinationSettings = list(
+#'                     BurninDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                     DvbSubDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     EmbeddedDestinationSettings = list(
+#'                       Destination608ChannelNumber = 123,
+#'                       Destination708ServiceNumber = 123
+#'                     ),
+#'                     ImscDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     ),
+#'                     SccDestinationSettings = list(
+#'                       Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     ),
+#'                     TeletextDestinationSettings = list(
+#'                       PageNumber = "string",
+#'                       PageTypes = list(
+#'                         "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                       )
+#'                     ),
+#'                     TtmlDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     )
+#'                   ),
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               ContainerSettings = list(
+#'                 CmfcSettings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'                 F4vSettings = list(
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'                 ),
+#'                 M2tsSettings = list(
+#'                   AudioBufferModel = "DVB"|"ATSC",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   Bitrate = 123,
+#'                   BufferModel = "MULTIPLEX"|"NONE",
+#'                   DvbNitSettings = list(
+#'                     NetworkId = 123,
+#'                     NetworkName = "string",
+#'                     NitInterval = 123
+#'                   ),
+#'                   DvbSdtSettings = list(
+#'                     OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'                     SdtInterval = 123,
+#'                     ServiceName = "string",
+#'                     ServiceProviderName = "string"
+#'                   ),
+#'                   DvbSubPids = list(
+#'                     123
+#'                   ),
+#'                   DvbTdtSettings = list(
+#'                     TdtInterval = 123
+#'                   ),
+#'                   DvbTeletextPid = 123,
+#'                   EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'                   EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'                   EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                   ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'                   FragmentTime = 123.0,
+#'                   MaxPcrInterval = 123,
+#'                   MinEbpInterval = 123,
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   NullPacketBitrate = 123.0,
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   RateMode = "VBR"|"CBR",
+#'                   Scte35Esam = list(
+#'                     Scte35EsamPid = 123
+#'                   ),
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'                   SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'                   SegmentationTime = 123.0,
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 M3u8Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadata = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 MovSettings = list(
+#'                   ClapAtom = "INCLUDE"|"EXCLUDE",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'                   PaddingControl = "OMNEON"|"NONE",
+#'                   Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'                 ),
+#'                 Mp4Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   CttsVersion = 123,
+#'                   FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'                   Mp4MajorBrand = "string"
+#'                 ),
+#'                 MpdSettings = list(
+#'                   AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 MxfSettings = list(
+#'                   AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                   Profile = "D_10"|"XDCAM"|"OP1A"
+#'                 )
+#'               ),
+#'               Extension = "string",
+#'               NameModifier = "string",
+#'               OutputSettings = list(
+#'                 HlsSettings = list(
+#'                   AudioGroupId = "string",
+#'                   AudioOnlyContainer = "AUTOMATIC"|"M2TS",
+#'                   AudioRenditionSets = "string",
+#'                   AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   SegmentModifier = "string"
+#'                 )
+#'               ),
+#'               Preset = "string",
+#'               VideoDescription = list(
+#'                 AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'                 AntiAlias = "DISABLED"|"ENABLED",
+#'                 CodecSettings = list(
+#'                   Av1Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     MaxBitrate = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     QvbrSettings = list(
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "QVBR",
+#'                     Slices = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   AvcIntraSettings = list(
+#'                     AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                     AvcIntraUhdSettings = list(
+#'                       QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                     ),
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'                   FrameCaptureSettings = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     MaxCaptures = 123,
+#'                     Quality = 123
+#'                   ),
+#'                   H264Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'                     CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     EntropyEncoding = "CABAC"|"CAVLC",
+#'                     FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     RepeatPps = "DISABLED"|"ENABLED",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"RP2027",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   H265Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'                     CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     TemporalIds = "DISABLED"|"ENABLED",
+#'                     Tiles = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'                     WriteMp4PackagingType = "HVC1"|"HEV1"
+#'                   ),
+#'                   Mpeg2Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'                     CodecProfile = "MAIN"|"PROFILE_422",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'                     RateControlMode = "VBR"|"CBR",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"D_10",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   ProresSettings = list(
+#'                     CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Vc3Settings = list(
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD",
+#'                     Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'                   ),
+#'                   Vp8Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   ),
+#'                   Vp9Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   )
+#'                 ),
+#'                 ColorMetadata = "IGNORE"|"INSERT",
+#'                 Crop = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 DropFrameTimecode = "DISABLED"|"ENABLED",
+#'                 FixedAfd = 123,
+#'                 Height = 123,
+#'                 Position = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'                 ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'                 Sharpness = 123,
+#'                 TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'                 VideoPreprocessors = list(
+#'                   ColorCorrector = list(
+#'                     Brightness = 123,
+#'                     ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'                     Contrast = 123,
+#'                     Hdr10Metadata = list(
+#'                       BluePrimaryX = 123,
+#'                       BluePrimaryY = 123,
+#'                       GreenPrimaryX = 123,
+#'                       GreenPrimaryY = 123,
+#'                       MaxContentLightLevel = 123,
+#'                       MaxFrameAverageLightLevel = 123,
+#'                       MaxLuminance = 123,
+#'                       MinLuminance = 123,
+#'                       RedPrimaryX = 123,
+#'                       RedPrimaryY = 123,
+#'                       WhitePointX = 123,
+#'                       WhitePointY = 123
+#'                     ),
+#'                     Hue = 123,
+#'                     Saturation = 123
+#'                   ),
+#'                   Deinterlacer = list(
+#'                     Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'                     Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'                     Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'                   ),
+#'                   DolbyVision = list(
+#'                     L6Metadata = list(
+#'                       MaxCll = 123,
+#'                       MaxFall = 123
+#'                     ),
+#'                     L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                     Profile = "PROFILE_5"
+#'                   ),
+#'                   ImageInserter = list(
+#'                     InsertableImages = list(
+#'                       list(
+#'                         Duration = 123,
+#'                         FadeIn = 123,
+#'                         FadeOut = 123,
+#'                         Height = 123,
+#'                         ImageInserterInput = "string",
+#'                         ImageX = 123,
+#'                         ImageY = 123,
+#'                         Layer = 123,
+#'                         Opacity = 123,
+#'                         StartTime = "string",
+#'                         Width = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   NoiseReducer = list(
+#'                     Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'                     FilterSettings = list(
+#'                       Strength = 123
+#'                     ),
+#'                     SpatialFilterSettings = list(
+#'                       PostFilterSharpenStrength = 123,
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     ),
+#'                     TemporalFilterSettings = list(
+#'                       AggressiveMode = 123,
+#'                       PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     )
+#'                   ),
+#'                   PartnerWatermarking = list(
+#'                     NexguardFileMarkerSettings = list(
+#'                       License = "string",
+#'                       Payload = 123,
+#'                       Preset = "string",
+#'                       Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'                     )
+#'                   ),
+#'                   TimecodeBurnin = list(
+#'                     FontSize = 123,
+#'                     Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'                     Prefix = "string"
+#'                   )
+#'                 ),
+#'                 Width = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       TimecodeConfig = list(
+#'         Anchor = "string",
+#'         Source = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         Start = "string",
+#'         TimestampOffset = "string"
+#'       ),
+#'       TimedMetadataInsertion = list(
+#'         Id3Insertions = list(
+#'           list(
+#'             Id3 = "string",
+#'             Timecode = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     SimulateReservedQueue = "DISABLED"|"ENABLED",
+#'     Status = "SUBMITTED"|"PROGRESSING"|"COMPLETE"|"CANCELED"|"ERROR",
+#'     StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'     Timing = list(
+#'       FinishTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     UserMetadata = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_job(
@@ -3444,6 +7820,1153 @@ mediaconvert_get_job <- function(Id) {
 #' mediaconvert_get_job_template(Name)
 #'
 #' @param Name &#91;required&#93; The name of the job template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobTemplate = list(
+#'     AccelerationSettings = list(
+#'       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
+#'     ),
+#'     Arn = "string",
+#'     Category = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     HopDestinations = list(
+#'       list(
+#'         Priority = 123,
+#'         Queue = "string",
+#'         WaitMinutes = 123
+#'       )
+#'     ),
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Priority = 123,
+#'     Queue = "string",
+#'     Settings = list(
+#'       AdAvailOffset = 123,
+#'       AvailBlanking = list(
+#'         AvailBlankingImage = "string"
+#'       ),
+#'       Esam = list(
+#'         ManifestConfirmConditionNotification = list(
+#'           MccXml = "string"
+#'         ),
+#'         ResponseSignalPreroll = 123,
+#'         SignalProcessingNotification = list(
+#'           SccXml = "string"
+#'         )
+#'       ),
+#'       Inputs = list(
+#'         list(
+#'           AudioSelectorGroups = list(
+#'             list(
+#'               AudioSelectorNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AudioSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               DefaultSelection = "DEFAULT"|"NOT_DEFAULT",
+#'               ExternalAudioFileInput = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               Offset = 123,
+#'               Pids = list(
+#'                 123
+#'               ),
+#'               ProgramSelection = 123,
+#'               RemixSettings = list(
+#'                 ChannelMapping = list(
+#'                   OutputChannels = list(
+#'                     list(
+#'                       InputChannels = list(
+#'                         123
+#'                       ),
+#'                       InputChannelsFineTune = list(
+#'                         123.0
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 ChannelsIn = 123,
+#'                 ChannelsOut = 123
+#'               ),
+#'               SelectorType = "PID"|"TRACK"|"LANGUAGE_CODE",
+#'               Tracks = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           CaptionSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               SourceSettings = list(
+#'                 AncillarySourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   SourceAncillaryChannelNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 DvbSubSourceSettings = list(
+#'                   Pid = 123
+#'                 ),
+#'                 EmbeddedSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Source608ChannelNumber = 123,
+#'                   Source608TrackNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 FileSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Framerate = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123
+#'                   ),
+#'                   SourceFile = "string",
+#'                   TimeDelta = 123
+#'                 ),
+#'                 SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
+#'                 TeletextSourceSettings = list(
+#'                   PageNumber = "string"
+#'                 ),
+#'                 TrackSourceSettings = list(
+#'                   TrackNumber = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Crop = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           DeblockFilter = "ENABLED"|"DISABLED",
+#'           DenoiseFilter = "ENABLED"|"DISABLED",
+#'           FilterEnable = "AUTO"|"DISABLE"|"FORCE",
+#'           FilterStrength = 123,
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           InputClippings = list(
+#'             list(
+#'               EndTimecode = "string",
+#'               StartTimecode = "string"
+#'             )
+#'           ),
+#'           InputScanType = "AUTO"|"PSF",
+#'           Position = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           ProgramNumber = 123,
+#'           PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'           TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'           TimecodeStart = "string",
+#'           VideoSelector = list(
+#'             AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
+#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
+#'             ColorSpaceUsage = "FORCE"|"FALLBACK",
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Pid = 123,
+#'             ProgramNumber = 123,
+#'             Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
+#'           )
+#'         )
+#'       ),
+#'       MotionImageInserter = list(
+#'         Framerate = list(
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123
+#'         ),
+#'         Input = "string",
+#'         InsertionMode = "MOV"|"PNG",
+#'         Offset = list(
+#'           ImageX = 123,
+#'           ImageY = 123
+#'         ),
+#'         Playback = "ONCE"|"REPEAT",
+#'         StartTime = "string"
+#'       ),
+#'       NielsenConfiguration = list(
+#'         BreakoutCode = 123,
+#'         DistributorId = "string"
+#'       ),
+#'       NielsenNonLinearWatermark = list(
+#'         ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'         AdiFilename = "string",
+#'         AssetId = "string",
+#'         AssetName = "string",
+#'         CbetSourceId = "string",
+#'         EpisodeId = "string",
+#'         MetadataDestination = "string",
+#'         SourceId = 123,
+#'         SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'         TicServerUrl = "string",
+#'         UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'       ),
+#'       OutputGroups = list(
+#'         list(
+#'           AutomatedEncodingSettings = list(
+#'             AbrSettings = list(
+#'               MaxAbrBitrate = 123,
+#'               MaxRenditions = 123,
+#'               MinAbrBitrate = 123
+#'             )
+#'           ),
+#'           CustomName = "string",
+#'           Name = "string",
+#'           OutputGroupSettings = list(
+#'             CmafGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   DashSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   HlsSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   ResourceId = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               WriteDashManifest = "DISABLED"|"ENABLED",
+#'               WriteHlsManifest = "DISABLED"|"ENABLED",
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             DashIsoGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               HbbtvCompliance = "HBBTV_1_5"|"NONE",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             FileGroupSettings = list(
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             HlsGroupSettings = list(
+#'               AdMarkers = list(
+#'                 "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'               ),
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
+#'               BaseUrl = "string",
+#'               CaptionLanguageMappings = list(
+#'                 list(
+#'                   CaptionChannel = 123,
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               CaptionLanguageSetting = "INSERT"|"OMIT"|"NONE",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "AES128"|"SAMPLE_AES",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 OfflineEncrypted = "ENABLED"|"DISABLED",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinFinalSegmentLength = 123.0,
+#'               MinSegmentLength = 123,
+#'               OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'               ProgramDateTime = "INCLUDE"|"EXCLUDE",
+#'               ProgramDateTimePeriod = 123,
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               SegmentsPerSubdirectory = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+#'               TimedMetadataId3Period = 123,
+#'               TimestampDeltaMilliseconds = 123
+#'             ),
+#'             MsSmoothGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestEncoding = "UTF8"|"UTF16"
+#'             ),
+#'             Type = "HLS_GROUP_SETTINGS"|"DASH_ISO_GROUP_SETTINGS"|"FILE_GROUP_SETTINGS"|"MS_SMOOTH_GROUP_SETTINGS"|"CMAF_GROUP_SETTINGS"
+#'           ),
+#'           Outputs = list(
+#'             list(
+#'               AudioDescriptions = list(
+#'                 list(
+#'                   AudioChannelTaggingSettings = list(
+#'                     ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                   ),
+#'                   AudioNormalizationSettings = list(
+#'                     Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'                     CorrectionGateLevel = 123,
+#'                     LoudnessLogging = "LOG"|"DONT_LOG",
+#'                     PeakCalculation = "TRUE_PEAK"|"NONE",
+#'                     TargetLkfs = 123.0
+#'                   ),
+#'                   AudioSourceName = "string",
+#'                   AudioType = 123,
+#'                   AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   CodecSettings = list(
+#'                     AacSettings = list(
+#'                       AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                       Bitrate = 123,
+#'                       CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                       CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       RawFormat = "LATM_LOAS"|"NONE",
+#'                       SampleRate = 123,
+#'                       Specification = "MPEG2"|"MPEG4",
+#'                       VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'                     ),
+#'                     Ac3Settings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       SampleRate = 123
+#'                     ),
+#'                     AiffSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'                     Eac3AtmosSettings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN",
+#'                       CodingMode = "CODING_MODE_9_1_6",
+#'                       DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                       SampleRate = 123,
+#'                       SpeechThreshold = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Eac3Settings = list(
+#'                       AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                       DcFilter = "ENABLED"|"DISABLED",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LfeControl = "LFE"|"NO_LFE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                       PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                       SampleRate = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                       SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Mp2Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Mp3Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     OpusSettings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     VorbisSettings = list(
+#'                       Channels = 123,
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     WavSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       Format = "RIFF"|"RF64",
+#'                       SampleRate = 123
+#'                     )
+#'                   ),
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   RemixSettings = list(
+#'                     ChannelMapping = list(
+#'                       OutputChannels = list(
+#'                         list(
+#'                           InputChannels = list(
+#'                             123
+#'                           ),
+#'                           InputChannelsFineTune = list(
+#'                             123.0
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     ChannelsIn = 123,
+#'                     ChannelsOut = 123
+#'                   ),
+#'                   StreamName = "string"
+#'                 )
+#'               ),
+#'               CaptionDescriptions = list(
+#'                 list(
+#'                   CaptionSelectorName = "string",
+#'                   CustomLanguageCode = "string",
+#'                   DestinationSettings = list(
+#'                     BurninDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                     DvbSubDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     EmbeddedDestinationSettings = list(
+#'                       Destination608ChannelNumber = 123,
+#'                       Destination708ServiceNumber = 123
+#'                     ),
+#'                     ImscDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     ),
+#'                     SccDestinationSettings = list(
+#'                       Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     ),
+#'                     TeletextDestinationSettings = list(
+#'                       PageNumber = "string",
+#'                       PageTypes = list(
+#'                         "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                       )
+#'                     ),
+#'                     TtmlDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     )
+#'                   ),
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               ContainerSettings = list(
+#'                 CmfcSettings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'                 F4vSettings = list(
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'                 ),
+#'                 M2tsSettings = list(
+#'                   AudioBufferModel = "DVB"|"ATSC",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   Bitrate = 123,
+#'                   BufferModel = "MULTIPLEX"|"NONE",
+#'                   DvbNitSettings = list(
+#'                     NetworkId = 123,
+#'                     NetworkName = "string",
+#'                     NitInterval = 123
+#'                   ),
+#'                   DvbSdtSettings = list(
+#'                     OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'                     SdtInterval = 123,
+#'                     ServiceName = "string",
+#'                     ServiceProviderName = "string"
+#'                   ),
+#'                   DvbSubPids = list(
+#'                     123
+#'                   ),
+#'                   DvbTdtSettings = list(
+#'                     TdtInterval = 123
+#'                   ),
+#'                   DvbTeletextPid = 123,
+#'                   EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'                   EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'                   EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                   ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'                   FragmentTime = 123.0,
+#'                   MaxPcrInterval = 123,
+#'                   MinEbpInterval = 123,
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   NullPacketBitrate = 123.0,
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   RateMode = "VBR"|"CBR",
+#'                   Scte35Esam = list(
+#'                     Scte35EsamPid = 123
+#'                   ),
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'                   SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'                   SegmentationTime = 123.0,
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 M3u8Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadata = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 MovSettings = list(
+#'                   ClapAtom = "INCLUDE"|"EXCLUDE",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'                   PaddingControl = "OMNEON"|"NONE",
+#'                   Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'                 ),
+#'                 Mp4Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   CttsVersion = 123,
+#'                   FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'                   Mp4MajorBrand = "string"
+#'                 ),
+#'                 MpdSettings = list(
+#'                   AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 MxfSettings = list(
+#'                   AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                   Profile = "D_10"|"XDCAM"|"OP1A"
+#'                 )
+#'               ),
+#'               Extension = "string",
+#'               NameModifier = "string",
+#'               OutputSettings = list(
+#'                 HlsSettings = list(
+#'                   AudioGroupId = "string",
+#'                   AudioOnlyContainer = "AUTOMATIC"|"M2TS",
+#'                   AudioRenditionSets = "string",
+#'                   AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   SegmentModifier = "string"
+#'                 )
+#'               ),
+#'               Preset = "string",
+#'               VideoDescription = list(
+#'                 AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'                 AntiAlias = "DISABLED"|"ENABLED",
+#'                 CodecSettings = list(
+#'                   Av1Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     MaxBitrate = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     QvbrSettings = list(
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "QVBR",
+#'                     Slices = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   AvcIntraSettings = list(
+#'                     AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                     AvcIntraUhdSettings = list(
+#'                       QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                     ),
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'                   FrameCaptureSettings = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     MaxCaptures = 123,
+#'                     Quality = 123
+#'                   ),
+#'                   H264Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'                     CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     EntropyEncoding = "CABAC"|"CAVLC",
+#'                     FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     RepeatPps = "DISABLED"|"ENABLED",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"RP2027",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   H265Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'                     CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     TemporalIds = "DISABLED"|"ENABLED",
+#'                     Tiles = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'                     WriteMp4PackagingType = "HVC1"|"HEV1"
+#'                   ),
+#'                   Mpeg2Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'                     CodecProfile = "MAIN"|"PROFILE_422",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'                     RateControlMode = "VBR"|"CBR",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"D_10",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   ProresSettings = list(
+#'                     CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Vc3Settings = list(
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD",
+#'                     Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'                   ),
+#'                   Vp8Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   ),
+#'                   Vp9Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   )
+#'                 ),
+#'                 ColorMetadata = "IGNORE"|"INSERT",
+#'                 Crop = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 DropFrameTimecode = "DISABLED"|"ENABLED",
+#'                 FixedAfd = 123,
+#'                 Height = 123,
+#'                 Position = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'                 ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'                 Sharpness = 123,
+#'                 TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'                 VideoPreprocessors = list(
+#'                   ColorCorrector = list(
+#'                     Brightness = 123,
+#'                     ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'                     Contrast = 123,
+#'                     Hdr10Metadata = list(
+#'                       BluePrimaryX = 123,
+#'                       BluePrimaryY = 123,
+#'                       GreenPrimaryX = 123,
+#'                       GreenPrimaryY = 123,
+#'                       MaxContentLightLevel = 123,
+#'                       MaxFrameAverageLightLevel = 123,
+#'                       MaxLuminance = 123,
+#'                       MinLuminance = 123,
+#'                       RedPrimaryX = 123,
+#'                       RedPrimaryY = 123,
+#'                       WhitePointX = 123,
+#'                       WhitePointY = 123
+#'                     ),
+#'                     Hue = 123,
+#'                     Saturation = 123
+#'                   ),
+#'                   Deinterlacer = list(
+#'                     Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'                     Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'                     Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'                   ),
+#'                   DolbyVision = list(
+#'                     L6Metadata = list(
+#'                       MaxCll = 123,
+#'                       MaxFall = 123
+#'                     ),
+#'                     L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                     Profile = "PROFILE_5"
+#'                   ),
+#'                   ImageInserter = list(
+#'                     InsertableImages = list(
+#'                       list(
+#'                         Duration = 123,
+#'                         FadeIn = 123,
+#'                         FadeOut = 123,
+#'                         Height = 123,
+#'                         ImageInserterInput = "string",
+#'                         ImageX = 123,
+#'                         ImageY = 123,
+#'                         Layer = 123,
+#'                         Opacity = 123,
+#'                         StartTime = "string",
+#'                         Width = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   NoiseReducer = list(
+#'                     Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'                     FilterSettings = list(
+#'                       Strength = 123
+#'                     ),
+#'                     SpatialFilterSettings = list(
+#'                       PostFilterSharpenStrength = 123,
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     ),
+#'                     TemporalFilterSettings = list(
+#'                       AggressiveMode = 123,
+#'                       PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     )
+#'                   ),
+#'                   PartnerWatermarking = list(
+#'                     NexguardFileMarkerSettings = list(
+#'                       License = "string",
+#'                       Payload = 123,
+#'                       Preset = "string",
+#'                       Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'                     )
+#'                   ),
+#'                   TimecodeBurnin = list(
+#'                     FontSize = 123,
+#'                     Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'                     Prefix = "string"
+#'                   )
+#'                 ),
+#'                 Width = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       TimecodeConfig = list(
+#'         Anchor = "string",
+#'         Source = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         Start = "string",
+#'         TimestampOffset = "string"
+#'       ),
+#'       TimedMetadataInsertion = list(
+#'         Id3Insertions = list(
+#'           list(
+#'             Id3 = "string",
+#'             Timecode = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3482,6 +9005,675 @@ mediaconvert_get_job_template <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the preset.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Preset = list(
+#'     Arn = "string",
+#'     Category = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Settings = list(
+#'       AudioDescriptions = list(
+#'         list(
+#'           AudioChannelTaggingSettings = list(
+#'             ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'           ),
+#'           AudioNormalizationSettings = list(
+#'             Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'             AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'             CorrectionGateLevel = 123,
+#'             LoudnessLogging = "LOG"|"DONT_LOG",
+#'             PeakCalculation = "TRUE_PEAK"|"NONE",
+#'             TargetLkfs = 123.0
+#'           ),
+#'           AudioSourceName = "string",
+#'           AudioType = 123,
+#'           AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'           CodecSettings = list(
+#'             AacSettings = list(
+#'               AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'               Bitrate = 123,
+#'               CodecProfile = "LC"|"HEV1"|"HEV2",
+#'               CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'               RateControlMode = "CBR"|"VBR",
+#'               RawFormat = "LATM_LOAS"|"NONE",
+#'               SampleRate = 123,
+#'               Specification = "MPEG2"|"MPEG4",
+#'               VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'             ),
+#'             Ac3Settings = list(
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'               CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'               Dialnorm = 123,
+#'               DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'               LfeFilter = "ENABLED"|"DISABLED",
+#'               MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'               SampleRate = 123
+#'             ),
+#'             AiffSettings = list(
+#'               BitDepth = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'             Eac3AtmosSettings = list(
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN",
+#'               CodingMode = "CODING_MODE_9_1_6",
+#'               DialogueIntelligence = "ENABLED"|"DISABLED",
+#'               DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               LoRoCenterMixLevel = 123.0,
+#'               LoRoSurroundMixLevel = 123.0,
+#'               LtRtCenterMixLevel = 123.0,
+#'               LtRtSurroundMixLevel = 123.0,
+#'               MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'               SampleRate = 123,
+#'               SpeechThreshold = 123,
+#'               StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'               SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'             ),
+#'             Eac3Settings = list(
+#'               AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'               CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'               DcFilter = "ENABLED"|"DISABLED",
+#'               Dialnorm = 123,
+#'               DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               LfeControl = "LFE"|"NO_LFE",
+#'               LfeFilter = "ENABLED"|"DISABLED",
+#'               LoRoCenterMixLevel = 123.0,
+#'               LoRoSurroundMixLevel = 123.0,
+#'               LtRtCenterMixLevel = 123.0,
+#'               LtRtSurroundMixLevel = 123.0,
+#'               MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'               PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'               PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'               SampleRate = 123,
+#'               StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'               SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'               SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'             ),
+#'             Mp2Settings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             Mp3Settings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               RateControlMode = "CBR"|"VBR",
+#'               SampleRate = 123,
+#'               VbrQuality = 123
+#'             ),
+#'             OpusSettings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             VorbisSettings = list(
+#'               Channels = 123,
+#'               SampleRate = 123,
+#'               VbrQuality = 123
+#'             ),
+#'             WavSettings = list(
+#'               BitDepth = 123,
+#'               Channels = 123,
+#'               Format = "RIFF"|"RF64",
+#'               SampleRate = 123
+#'             )
+#'           ),
+#'           CustomLanguageCode = "string",
+#'           LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'           LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'           RemixSettings = list(
+#'             ChannelMapping = list(
+#'               OutputChannels = list(
+#'                 list(
+#'                   InputChannels = list(
+#'                     123
+#'                   ),
+#'                   InputChannelsFineTune = list(
+#'                     123.0
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             ChannelsIn = 123,
+#'             ChannelsOut = 123
+#'           ),
+#'           StreamName = "string"
+#'         )
+#'       ),
+#'       CaptionDescriptions = list(
+#'         list(
+#'           CustomLanguageCode = "string",
+#'           DestinationSettings = list(
+#'             BurninDestinationSettings = list(
+#'               Alignment = "CENTERED"|"LEFT",
+#'               BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'               BackgroundOpacity = 123,
+#'               FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               FontOpacity = 123,
+#'               FontResolution = 123,
+#'               FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'               FontSize = 123,
+#'               OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               OutlineSize = 123,
+#'               ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'               ShadowOpacity = 123,
+#'               ShadowXOffset = 123,
+#'               ShadowYOffset = 123,
+#'               TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'               XPosition = 123,
+#'               YPosition = 123
+#'             ),
+#'             DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'             DvbSubDestinationSettings = list(
+#'               Alignment = "CENTERED"|"LEFT",
+#'               BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'               BackgroundOpacity = 123,
+#'               FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               FontOpacity = 123,
+#'               FontResolution = 123,
+#'               FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'               FontSize = 123,
+#'               OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               OutlineSize = 123,
+#'               ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'               ShadowOpacity = 123,
+#'               ShadowXOffset = 123,
+#'               ShadowYOffset = 123,
+#'               SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'               TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'               XPosition = 123,
+#'               YPosition = 123
+#'             ),
+#'             EmbeddedDestinationSettings = list(
+#'               Destination608ChannelNumber = 123,
+#'               Destination708ServiceNumber = 123
+#'             ),
+#'             ImscDestinationSettings = list(
+#'               StylePassthrough = "ENABLED"|"DISABLED"
+#'             ),
+#'             SccDestinationSettings = list(
+#'               Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'             ),
+#'             TeletextDestinationSettings = list(
+#'               PageNumber = "string",
+#'               PageTypes = list(
+#'                 "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'               )
+#'             ),
+#'             TtmlDestinationSettings = list(
+#'               StylePassthrough = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
+#'           LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'           LanguageDescription = "string"
+#'         )
+#'       ),
+#'       ContainerSettings = list(
+#'         CmfcSettings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'           Scte35Esam = "INSERT"|"NONE",
+#'           Scte35Source = "PASSTHROUGH"|"NONE"
+#'         ),
+#'         Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'         F4vSettings = list(
+#'           MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'         ),
+#'         M2tsSettings = list(
+#'           AudioBufferModel = "DVB"|"ATSC",
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           AudioFramesPerPes = 123,
+#'           AudioPids = list(
+#'             123
+#'           ),
+#'           Bitrate = 123,
+#'           BufferModel = "MULTIPLEX"|"NONE",
+#'           DvbNitSettings = list(
+#'             NetworkId = 123,
+#'             NetworkName = "string",
+#'             NitInterval = 123
+#'           ),
+#'           DvbSdtSettings = list(
+#'             OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'             SdtInterval = 123,
+#'             ServiceName = "string",
+#'             ServiceProviderName = "string"
+#'           ),
+#'           DvbSubPids = list(
+#'             123
+#'           ),
+#'           DvbTdtSettings = list(
+#'             TdtInterval = 123
+#'           ),
+#'           DvbTeletextPid = 123,
+#'           EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'           EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'           EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'           ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'           FragmentTime = 123.0,
+#'           MaxPcrInterval = 123,
+#'           MinEbpInterval = 123,
+#'           NielsenId3 = "INSERT"|"NONE",
+#'           NullPacketBitrate = 123.0,
+#'           PatInterval = 123,
+#'           PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'           PcrPid = 123,
+#'           PmtInterval = 123,
+#'           PmtPid = 123,
+#'           PrivateMetadataPid = 123,
+#'           ProgramNumber = 123,
+#'           RateMode = "VBR"|"CBR",
+#'           Scte35Esam = list(
+#'             Scte35EsamPid = 123
+#'           ),
+#'           Scte35Pid = 123,
+#'           Scte35Source = "PASSTHROUGH"|"NONE",
+#'           SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'           SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'           SegmentationTime = 123.0,
+#'           TimedMetadataPid = 123,
+#'           TransportStreamId = 123,
+#'           VideoPid = 123
+#'         ),
+#'         M3u8Settings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           AudioFramesPerPes = 123,
+#'           AudioPids = list(
+#'             123
+#'           ),
+#'           NielsenId3 = "INSERT"|"NONE",
+#'           PatInterval = 123,
+#'           PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'           PcrPid = 123,
+#'           PmtInterval = 123,
+#'           PmtPid = 123,
+#'           PrivateMetadataPid = 123,
+#'           ProgramNumber = 123,
+#'           Scte35Pid = 123,
+#'           Scte35Source = "PASSTHROUGH"|"NONE",
+#'           TimedMetadata = "PASSTHROUGH"|"NONE",
+#'           TimedMetadataPid = 123,
+#'           TransportStreamId = 123,
+#'           VideoPid = 123
+#'         ),
+#'         MovSettings = list(
+#'           ClapAtom = "INCLUDE"|"EXCLUDE",
+#'           CslgAtom = "INCLUDE"|"EXCLUDE",
+#'           Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'           PaddingControl = "OMNEON"|"NONE",
+#'           Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'         ),
+#'         Mp4Settings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           CslgAtom = "INCLUDE"|"EXCLUDE",
+#'           CttsVersion = 123,
+#'           FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'           MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'           Mp4MajorBrand = "string"
+#'         ),
+#'         MpdSettings = list(
+#'           AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'           Scte35Esam = "INSERT"|"NONE",
+#'           Scte35Source = "PASSTHROUGH"|"NONE"
+#'         ),
+#'         MxfSettings = list(
+#'           AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'           Profile = "D_10"|"XDCAM"|"OP1A"
+#'         )
+#'       ),
+#'       VideoDescription = list(
+#'         AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'         AntiAlias = "DISABLED"|"ENABLED",
+#'         CodecSettings = list(
+#'           Av1Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             MaxBitrate = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             QvbrSettings = list(
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "QVBR",
+#'             Slices = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'           ),
+#'           AvcIntraSettings = list(
+#'             AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'             AvcIntraUhdSettings = list(
+#'               QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'             ),
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD"
+#'           ),
+#'           Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'           FrameCaptureSettings = list(
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             MaxCaptures = 123,
+#'             Quality = 123
+#'           ),
+#'           H264Settings = list(
+#'             AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'             CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             EntropyEncoding = "CABAC"|"CAVLC",
+#'             FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'             FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopBReference = "DISABLED"|"ENABLED",
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             NumberReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'             QvbrSettings = list(
+#'               MaxAverageBitrate = 123,
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "VBR"|"CBR"|"QVBR",
+#'             RepeatPps = "DISABLED"|"ENABLED",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'             Slices = 123,
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Softness = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Syntax = "DEFAULT"|"RP2027",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'           ),
+#'           H265Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'             CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopBReference = "DISABLED"|"ENABLED",
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             NumberReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'             QvbrSettings = list(
+#'               MaxAverageBitrate = 123,
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "VBR"|"CBR"|"QVBR",
+#'             SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'             Slices = 123,
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             TemporalIds = "DISABLED"|"ENABLED",
+#'             Tiles = "DISABLED"|"ENABLED",
+#'             UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'             WriteMp4PackagingType = "HVC1"|"HEV1"
+#'           ),
+#'           Mpeg2Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'             CodecProfile = "MAIN"|"PROFILE_422",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'             RateControlMode = "VBR"|"CBR",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Softness = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Syntax = "DEFAULT"|"D_10",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'           ),
+#'           ProresSettings = list(
+#'             CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD"
+#'           ),
+#'           Vc3Settings = list(
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD",
+#'             Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'           ),
+#'           Vp8Settings = list(
+#'             Bitrate = 123,
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             HrdBufferSize = 123,
+#'             MaxBitrate = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'             RateControlMode = "VBR"
+#'           ),
+#'           Vp9Settings = list(
+#'             Bitrate = 123,
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             HrdBufferSize = 123,
+#'             MaxBitrate = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'             RateControlMode = "VBR"
+#'           )
+#'         ),
+#'         ColorMetadata = "IGNORE"|"INSERT",
+#'         Crop = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
+#'         DropFrameTimecode = "DISABLED"|"ENABLED",
+#'         FixedAfd = 123,
+#'         Height = 123,
+#'         Position = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
+#'         RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'         ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'         Sharpness = 123,
+#'         TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'         VideoPreprocessors = list(
+#'           ColorCorrector = list(
+#'             Brightness = 123,
+#'             ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'             Contrast = 123,
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Hue = 123,
+#'             Saturation = 123
+#'           ),
+#'           Deinterlacer = list(
+#'             Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'             Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'             Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'           ),
+#'           DolbyVision = list(
+#'             L6Metadata = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             ),
+#'             L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'             Profile = "PROFILE_5"
+#'           ),
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           NoiseReducer = list(
+#'             Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'             FilterSettings = list(
+#'               Strength = 123
+#'             ),
+#'             SpatialFilterSettings = list(
+#'               PostFilterSharpenStrength = 123,
+#'               Speed = 123,
+#'               Strength = 123
+#'             ),
+#'             TemporalFilterSettings = list(
+#'               AggressiveMode = 123,
+#'               PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'               Speed = 123,
+#'               Strength = 123
+#'             )
+#'           ),
+#'           PartnerWatermarking = list(
+#'             NexguardFileMarkerSettings = list(
+#'               License = "string",
+#'               Payload = 123,
+#'               Preset = "string",
+#'               Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'             )
+#'           ),
+#'           TimecodeBurnin = list(
+#'             FontSize = 123,
+#'             Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'             Prefix = "string"
+#'           )
+#'         ),
+#'         Width = 123
+#'       )
+#'     ),
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_preset(
@@ -3519,6 +9711,41 @@ mediaconvert_get_preset <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the queue that you want information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Queue = list(
+#'     Arn = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     PricingPlan = "ON_DEMAND"|"RESERVED",
+#'     ProgressingJobsCount = 123,
+#'     ReservationPlan = list(
+#'       Commitment = "ONE_YEAR",
+#'       ExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PurchasedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RenewalType = "AUTO_RENEW"|"EXPIRE",
+#'       ReservedSlots = 123,
+#'       Status = "ACTIVE"|"EXPIRED"
+#'     ),
+#'     Status = "ACTIVE"|"PAUSED",
+#'     SubmittedJobsCount = 123,
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_queue(
@@ -3549,17 +9776,1177 @@ mediaconvert_get_queue <- function(Name) {
 #' Retrieve a JSON array of up to twenty of your job templates
 #'
 #' @description
-#' Retrieve a JSON array of up to twenty of your job templates. This will return the templates themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string returned with the array
+#' Retrieve a JSON array of up to twenty of your job templates. This will
+#' return the templates themselves, not just a list of them. To retrieve
+#' the next twenty templates, use the nextToken string returned with the
+#' array
 #'
 #' @usage
 #' mediaconvert_list_job_templates(Category, ListBy, MaxResults, NextToken,
 #'   Order)
 #'
-#' @param Category Optionally, specify a job template category to limit responses to only job templates from that category.
-#' @param ListBy Optional. When you request a list of job templates, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
-#' @param MaxResults Optional. Number of job templates, up to twenty, that will be returned at one time.
-#' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of job templates.
-#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param Category Optionally, specify a job template category to limit responses to only
+#' job templates from that category.
+#' @param ListBy Optional. When you request a list of job templates, you can choose to
+#' list them alphabetically by NAME or chronologically by CREATION_DATE.
+#' If you don't specify, the service will list them by name.
+#' @param MaxResults Optional. Number of job templates, up to twenty, that will be returned
+#' at one time.
+#' @param NextToken Use this string, provided with the response to a previous request, to
+#' request the next batch of job templates.
+#' @param Order Optional. When you request lists of resources, you can specify whether
+#' they are sorted in ASCENDING or DESCENDING order. Default varies by
+#' resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobTemplates = list(
+#'     list(
+#'       AccelerationSettings = list(
+#'         Mode = "DISABLED"|"ENABLED"|"PREFERRED"
+#'       ),
+#'       Arn = "string",
+#'       Category = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       HopDestinations = list(
+#'         list(
+#'           Priority = 123,
+#'           Queue = "string",
+#'           WaitMinutes = 123
+#'         )
+#'       ),
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       Priority = 123,
+#'       Queue = "string",
+#'       Settings = list(
+#'         AdAvailOffset = 123,
+#'         AvailBlanking = list(
+#'           AvailBlankingImage = "string"
+#'         ),
+#'         Esam = list(
+#'           ManifestConfirmConditionNotification = list(
+#'             MccXml = "string"
+#'           ),
+#'           ResponseSignalPreroll = 123,
+#'           SignalProcessingNotification = list(
+#'             SccXml = "string"
+#'           )
+#'         ),
+#'         Inputs = list(
+#'           list(
+#'             AudioSelectorGroups = list(
+#'               list(
+#'                 AudioSelectorNames = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AudioSelectors = list(
+#'               list(
+#'                 CustomLanguageCode = "string",
+#'                 DefaultSelection = "DEFAULT"|"NOT_DEFAULT",
+#'                 ExternalAudioFileInput = "string",
+#'                 LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                 Offset = 123,
+#'                 Pids = list(
+#'                   123
+#'                 ),
+#'                 ProgramSelection = 123,
+#'                 RemixSettings = list(
+#'                   ChannelMapping = list(
+#'                     OutputChannels = list(
+#'                       list(
+#'                         InputChannels = list(
+#'                           123
+#'                         ),
+#'                         InputChannelsFineTune = list(
+#'                           123.0
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   ChannelsIn = 123,
+#'                   ChannelsOut = 123
+#'                 ),
+#'                 SelectorType = "PID"|"TRACK"|"LANGUAGE_CODE",
+#'                 Tracks = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             CaptionSelectors = list(
+#'               list(
+#'                 CustomLanguageCode = "string",
+#'                 LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                 SourceSettings = list(
+#'                   AncillarySourceSettings = list(
+#'                     Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                     SourceAncillaryChannelNumber = 123,
+#'                     TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                   ),
+#'                   DvbSubSourceSettings = list(
+#'                     Pid = 123
+#'                   ),
+#'                   EmbeddedSourceSettings = list(
+#'                     Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                     Source608ChannelNumber = 123,
+#'                     Source608TrackNumber = 123,
+#'                     TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                   ),
+#'                   FileSourceSettings = list(
+#'                     Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                     Framerate = list(
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123
+#'                     ),
+#'                     SourceFile = "string",
+#'                     TimeDelta = 123
+#'                   ),
+#'                   SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
+#'                   TeletextSourceSettings = list(
+#'                     PageNumber = "string"
+#'                   ),
+#'                   TrackSourceSettings = list(
+#'                     TrackNumber = 123
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             Crop = list(
+#'               Height = 123,
+#'               Width = 123,
+#'               X = 123,
+#'               Y = 123
+#'             ),
+#'             DeblockFilter = "ENABLED"|"DISABLED",
+#'             DenoiseFilter = "ENABLED"|"DISABLED",
+#'             FilterEnable = "AUTO"|"DISABLE"|"FORCE",
+#'             FilterStrength = 123,
+#'             ImageInserter = list(
+#'               InsertableImages = list(
+#'                 list(
+#'                   Duration = 123,
+#'                   FadeIn = 123,
+#'                   FadeOut = 123,
+#'                   Height = 123,
+#'                   ImageInserterInput = "string",
+#'                   ImageX = 123,
+#'                   ImageY = 123,
+#'                   Layer = 123,
+#'                   Opacity = 123,
+#'                   StartTime = "string",
+#'                   Width = 123
+#'                 )
+#'               )
+#'             ),
+#'             InputClippings = list(
+#'               list(
+#'                 EndTimecode = "string",
+#'                 StartTimecode = "string"
+#'               )
+#'             ),
+#'             InputScanType = "AUTO"|"PSF",
+#'             Position = list(
+#'               Height = 123,
+#'               Width = 123,
+#'               X = 123,
+#'               Y = 123
+#'             ),
+#'             ProgramNumber = 123,
+#'             PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'             TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'             TimecodeStart = "string",
+#'             VideoSelector = list(
+#'               AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
+#'               ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
+#'               ColorSpaceUsage = "FORCE"|"FALLBACK",
+#'               Hdr10Metadata = list(
+#'                 BluePrimaryX = 123,
+#'                 BluePrimaryY = 123,
+#'                 GreenPrimaryX = 123,
+#'                 GreenPrimaryY = 123,
+#'                 MaxContentLightLevel = 123,
+#'                 MaxFrameAverageLightLevel = 123,
+#'                 MaxLuminance = 123,
+#'                 MinLuminance = 123,
+#'                 RedPrimaryX = 123,
+#'                 RedPrimaryY = 123,
+#'                 WhitePointX = 123,
+#'                 WhitePointY = 123
+#'               ),
+#'               Pid = 123,
+#'               ProgramNumber = 123,
+#'               Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
+#'             )
+#'           )
+#'         ),
+#'         MotionImageInserter = list(
+#'           Framerate = list(
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123
+#'           ),
+#'           Input = "string",
+#'           InsertionMode = "MOV"|"PNG",
+#'           Offset = list(
+#'             ImageX = 123,
+#'             ImageY = 123
+#'           ),
+#'           Playback = "ONCE"|"REPEAT",
+#'           StartTime = "string"
+#'         ),
+#'         NielsenConfiguration = list(
+#'           BreakoutCode = 123,
+#'           DistributorId = "string"
+#'         ),
+#'         NielsenNonLinearWatermark = list(
+#'           ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'           AdiFilename = "string",
+#'           AssetId = "string",
+#'           AssetName = "string",
+#'           CbetSourceId = "string",
+#'           EpisodeId = "string",
+#'           MetadataDestination = "string",
+#'           SourceId = 123,
+#'           SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'           TicServerUrl = "string",
+#'           UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'         ),
+#'         OutputGroups = list(
+#'           list(
+#'             AutomatedEncodingSettings = list(
+#'               AbrSettings = list(
+#'                 MaxAbrBitrate = 123,
+#'                 MaxRenditions = 123,
+#'                 MinAbrBitrate = 123
+#'               )
+#'             ),
+#'             CustomName = "string",
+#'             Name = "string",
+#'             OutputGroupSettings = list(
+#'               CmafGroupSettings = list(
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 BaseUrl = "string",
+#'                 ClientCache = "DISABLED"|"ENABLED",
+#'                 CodecSpecification = "RFC_6381"|"RFC_4281",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Encryption = list(
+#'                   ConstantInitializationVector = "string",
+#'                   EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
+#'                   InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     DashSignaledSystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     HlsSignaledSystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     ResourceId = "string",
+#'                     Url = "string"
+#'                   ),
+#'                   StaticKeyProvider = list(
+#'                     KeyFormat = "string",
+#'                     KeyFormatVersions = "string",
+#'                     StaticKeyValue = "string",
+#'                     Url = "string"
+#'                   ),
+#'                   Type = "SPEKE"|"STATIC_KEY"
+#'                 ),
+#'                 FragmentLength = 123,
+#'                 ManifestCompression = "GZIP"|"NONE",
+#'                 ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'                 MinBufferTime = 123,
+#'                 MinFinalSegmentLength = 123.0,
+#'                 MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'                 SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'                 SegmentLength = 123,
+#'                 StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'                 WriteDashManifest = "DISABLED"|"ENABLED",
+#'                 WriteHlsManifest = "DISABLED"|"ENABLED",
+#'                 WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'               ),
+#'               DashIsoGroupSettings = list(
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 BaseUrl = "string",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Encryption = list(
+#'                   PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     ResourceId = "string",
+#'                     SystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     Url = "string"
+#'                   )
+#'                 ),
+#'                 FragmentLength = 123,
+#'                 HbbtvCompliance = "HBBTV_1_5"|"NONE",
+#'                 MinBufferTime = 123,
+#'                 MinFinalSegmentLength = 123.0,
+#'                 MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'                 SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'                 SegmentLength = 123,
+#'                 WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'               ),
+#'               FileGroupSettings = list(
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               HlsGroupSettings = list(
+#'                 AdMarkers = list(
+#'                   "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'                 ),
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
+#'                 BaseUrl = "string",
+#'                 CaptionLanguageMappings = list(
+#'                   list(
+#'                     CaptionChannel = 123,
+#'                     CustomLanguageCode = "string",
+#'                     LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                     LanguageDescription = "string"
+#'                   )
+#'                 ),
+#'                 CaptionLanguageSetting = "INSERT"|"OMIT"|"NONE",
+#'                 ClientCache = "DISABLED"|"ENABLED",
+#'                 CodecSpecification = "RFC_6381"|"RFC_4281",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'                 Encryption = list(
+#'                   ConstantInitializationVector = "string",
+#'                   EncryptionMethod = "AES128"|"SAMPLE_AES",
+#'                   InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                   OfflineEncrypted = "ENABLED"|"DISABLED",
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     ResourceId = "string",
+#'                     SystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     Url = "string"
+#'                   ),
+#'                   StaticKeyProvider = list(
+#'                     KeyFormat = "string",
+#'                     KeyFormatVersions = "string",
+#'                     StaticKeyValue = "string",
+#'                     Url = "string"
+#'                   ),
+#'                   Type = "SPEKE"|"STATIC_KEY"
+#'                 ),
+#'                 ManifestCompression = "GZIP"|"NONE",
+#'                 ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'                 MinFinalSegmentLength = 123.0,
+#'                 MinSegmentLength = 123,
+#'                 OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'                 ProgramDateTime = "INCLUDE"|"EXCLUDE",
+#'                 ProgramDateTimePeriod = 123,
+#'                 SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'                 SegmentLength = 123,
+#'                 SegmentsPerSubdirectory = 123,
+#'                 StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'                 TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+#'                 TimedMetadataId3Period = 123,
+#'                 TimestampDeltaMilliseconds = 123
+#'               ),
+#'               MsSmoothGroupSettings = list(
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Encryption = list(
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     ResourceId = "string",
+#'                     SystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     Url = "string"
+#'                   )
+#'                 ),
+#'                 FragmentLength = 123,
+#'                 ManifestEncoding = "UTF8"|"UTF16"
+#'               ),
+#'               Type = "HLS_GROUP_SETTINGS"|"DASH_ISO_GROUP_SETTINGS"|"FILE_GROUP_SETTINGS"|"MS_SMOOTH_GROUP_SETTINGS"|"CMAF_GROUP_SETTINGS"
+#'             ),
+#'             Outputs = list(
+#'               list(
+#'                 AudioDescriptions = list(
+#'                   list(
+#'                     AudioChannelTaggingSettings = list(
+#'                       ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                     ),
+#'                     AudioNormalizationSettings = list(
+#'                       Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                       AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'                       CorrectionGateLevel = 123,
+#'                       LoudnessLogging = "LOG"|"DONT_LOG",
+#'                       PeakCalculation = "TRUE_PEAK"|"NONE",
+#'                       TargetLkfs = 123.0
+#'                     ),
+#'                     AudioSourceName = "string",
+#'                     AudioType = 123,
+#'                     AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                     CodecSettings = list(
+#'                       AacSettings = list(
+#'                         AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                         Bitrate = 123,
+#'                         CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                         CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                         RateControlMode = "CBR"|"VBR",
+#'                         RawFormat = "LATM_LOAS"|"NONE",
+#'                         SampleRate = 123,
+#'                         Specification = "MPEG2"|"MPEG4",
+#'                         VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'                       ),
+#'                       Ac3Settings = list(
+#'                         Bitrate = 123,
+#'                         BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                         CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                         Dialnorm = 123,
+#'                         DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                         LfeFilter = "ENABLED"|"DISABLED",
+#'                         MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                         SampleRate = 123
+#'                       ),
+#'                       AiffSettings = list(
+#'                         BitDepth = 123,
+#'                         Channels = 123,
+#'                         SampleRate = 123
+#'                       ),
+#'                       Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'                       Eac3AtmosSettings = list(
+#'                         Bitrate = 123,
+#'                         BitstreamMode = "COMPLETE_MAIN",
+#'                         CodingMode = "CODING_MODE_9_1_6",
+#'                         DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                         DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         LoRoCenterMixLevel = 123.0,
+#'                         LoRoSurroundMixLevel = 123.0,
+#'                         LtRtCenterMixLevel = 123.0,
+#'                         LtRtSurroundMixLevel = 123.0,
+#'                         MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                         SampleRate = 123,
+#'                         SpeechThreshold = 123,
+#'                         StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                         SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                       ),
+#'                       Eac3Settings = list(
+#'                         AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                         Bitrate = 123,
+#'                         BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                         CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                         DcFilter = "ENABLED"|"DISABLED",
+#'                         Dialnorm = 123,
+#'                         DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         LfeControl = "LFE"|"NO_LFE",
+#'                         LfeFilter = "ENABLED"|"DISABLED",
+#'                         LoRoCenterMixLevel = 123.0,
+#'                         LoRoSurroundMixLevel = 123.0,
+#'                         LtRtCenterMixLevel = 123.0,
+#'                         LtRtSurroundMixLevel = 123.0,
+#'                         MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                         PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                         PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                         SampleRate = 123,
+#'                         StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                         SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                         SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                       ),
+#'                       Mp2Settings = list(
+#'                         Bitrate = 123,
+#'                         Channels = 123,
+#'                         SampleRate = 123
+#'                       ),
+#'                       Mp3Settings = list(
+#'                         Bitrate = 123,
+#'                         Channels = 123,
+#'                         RateControlMode = "CBR"|"VBR",
+#'                         SampleRate = 123,
+#'                         VbrQuality = 123
+#'                       ),
+#'                       OpusSettings = list(
+#'                         Bitrate = 123,
+#'                         Channels = 123,
+#'                         SampleRate = 123
+#'                       ),
+#'                       VorbisSettings = list(
+#'                         Channels = 123,
+#'                         SampleRate = 123,
+#'                         VbrQuality = 123
+#'                       ),
+#'                       WavSettings = list(
+#'                         BitDepth = 123,
+#'                         Channels = 123,
+#'                         Format = "RIFF"|"RF64",
+#'                         SampleRate = 123
+#'                       )
+#'                     ),
+#'                     CustomLanguageCode = "string",
+#'                     LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                     LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                     RemixSettings = list(
+#'                       ChannelMapping = list(
+#'                         OutputChannels = list(
+#'                           list(
+#'                             InputChannels = list(
+#'                               123
+#'                             ),
+#'                             InputChannelsFineTune = list(
+#'                               123.0
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       ChannelsIn = 123,
+#'                       ChannelsOut = 123
+#'                     ),
+#'                     StreamName = "string"
+#'                   )
+#'                 ),
+#'                 CaptionDescriptions = list(
+#'                   list(
+#'                     CaptionSelectorName = "string",
+#'                     CustomLanguageCode = "string",
+#'                     DestinationSettings = list(
+#'                       BurninDestinationSettings = list(
+#'                         Alignment = "CENTERED"|"LEFT",
+#'                         BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                         BackgroundOpacity = 123,
+#'                         FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         FontOpacity = 123,
+#'                         FontResolution = 123,
+#'                         FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                         FontSize = 123,
+#'                         OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         OutlineSize = 123,
+#'                         ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                         ShadowOpacity = 123,
+#'                         ShadowXOffset = 123,
+#'                         ShadowYOffset = 123,
+#'                         TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                         XPosition = 123,
+#'                         YPosition = 123
+#'                       ),
+#'                       DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                       DvbSubDestinationSettings = list(
+#'                         Alignment = "CENTERED"|"LEFT",
+#'                         BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                         BackgroundOpacity = 123,
+#'                         FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         FontOpacity = 123,
+#'                         FontResolution = 123,
+#'                         FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                         FontSize = 123,
+#'                         OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         OutlineSize = 123,
+#'                         ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                         ShadowOpacity = 123,
+#'                         ShadowXOffset = 123,
+#'                         ShadowYOffset = 123,
+#'                         SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                         TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                         XPosition = 123,
+#'                         YPosition = 123
+#'                       ),
+#'                       EmbeddedDestinationSettings = list(
+#'                         Destination608ChannelNumber = 123,
+#'                         Destination708ServiceNumber = 123
+#'                       ),
+#'                       ImscDestinationSettings = list(
+#'                         StylePassthrough = "ENABLED"|"DISABLED"
+#'                       ),
+#'                       SccDestinationSettings = list(
+#'                         Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                       ),
+#'                       TeletextDestinationSettings = list(
+#'                         PageNumber = "string",
+#'                         PageTypes = list(
+#'                           "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                         )
+#'                       ),
+#'                       TtmlDestinationSettings = list(
+#'                         StylePassthrough = "ENABLED"|"DISABLED"
+#'                       )
+#'                     ),
+#'                     LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                     LanguageDescription = "string"
+#'                   )
+#'                 ),
+#'                 ContainerSettings = list(
+#'                   CmfcSettings = list(
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                     Scte35Esam = "INSERT"|"NONE",
+#'                     Scte35Source = "PASSTHROUGH"|"NONE"
+#'                   ),
+#'                   Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'                   F4vSettings = list(
+#'                     MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'                   ),
+#'                   M2tsSettings = list(
+#'                     AudioBufferModel = "DVB"|"ATSC",
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     AudioFramesPerPes = 123,
+#'                     AudioPids = list(
+#'                       123
+#'                     ),
+#'                     Bitrate = 123,
+#'                     BufferModel = "MULTIPLEX"|"NONE",
+#'                     DvbNitSettings = list(
+#'                       NetworkId = 123,
+#'                       NetworkName = "string",
+#'                       NitInterval = 123
+#'                     ),
+#'                     DvbSdtSettings = list(
+#'                       OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'                       SdtInterval = 123,
+#'                       ServiceName = "string",
+#'                       ServiceProviderName = "string"
+#'                     ),
+#'                     DvbSubPids = list(
+#'                       123
+#'                     ),
+#'                     DvbTdtSettings = list(
+#'                       TdtInterval = 123
+#'                     ),
+#'                     DvbTeletextPid = 123,
+#'                     EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'                     EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'                     EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                     ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'                     FragmentTime = 123.0,
+#'                     MaxPcrInterval = 123,
+#'                     MinEbpInterval = 123,
+#'                     NielsenId3 = "INSERT"|"NONE",
+#'                     NullPacketBitrate = 123.0,
+#'                     PatInterval = 123,
+#'                     PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                     PcrPid = 123,
+#'                     PmtInterval = 123,
+#'                     PmtPid = 123,
+#'                     PrivateMetadataPid = 123,
+#'                     ProgramNumber = 123,
+#'                     RateMode = "VBR"|"CBR",
+#'                     Scte35Esam = list(
+#'                       Scte35EsamPid = 123
+#'                     ),
+#'                     Scte35Pid = 123,
+#'                     Scte35Source = "PASSTHROUGH"|"NONE",
+#'                     SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'                     SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'                     SegmentationTime = 123.0,
+#'                     TimedMetadataPid = 123,
+#'                     TransportStreamId = 123,
+#'                     VideoPid = 123
+#'                   ),
+#'                   M3u8Settings = list(
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     AudioFramesPerPes = 123,
+#'                     AudioPids = list(
+#'                       123
+#'                     ),
+#'                     NielsenId3 = "INSERT"|"NONE",
+#'                     PatInterval = 123,
+#'                     PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                     PcrPid = 123,
+#'                     PmtInterval = 123,
+#'                     PmtPid = 123,
+#'                     PrivateMetadataPid = 123,
+#'                     ProgramNumber = 123,
+#'                     Scte35Pid = 123,
+#'                     Scte35Source = "PASSTHROUGH"|"NONE",
+#'                     TimedMetadata = "PASSTHROUGH"|"NONE",
+#'                     TimedMetadataPid = 123,
+#'                     TransportStreamId = 123,
+#'                     VideoPid = 123
+#'                   ),
+#'                   MovSettings = list(
+#'                     ClapAtom = "INCLUDE"|"EXCLUDE",
+#'                     CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                     Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'                     PaddingControl = "OMNEON"|"NONE",
+#'                     Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'                   ),
+#'                   Mp4Settings = list(
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                     CttsVersion = 123,
+#'                     FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'                     MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'                     Mp4MajorBrand = "string"
+#'                   ),
+#'                   MpdSettings = list(
+#'                     AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                     Scte35Esam = "INSERT"|"NONE",
+#'                     Scte35Source = "PASSTHROUGH"|"NONE"
+#'                   ),
+#'                   MxfSettings = list(
+#'                     AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                     Profile = "D_10"|"XDCAM"|"OP1A"
+#'                   )
+#'                 ),
+#'                 Extension = "string",
+#'                 NameModifier = "string",
+#'                 OutputSettings = list(
+#'                   HlsSettings = list(
+#'                     AudioGroupId = "string",
+#'                     AudioOnlyContainer = "AUTOMATIC"|"M2TS",
+#'                     AudioRenditionSets = "string",
+#'                     AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                     IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                     SegmentModifier = "string"
+#'                   )
+#'                 ),
+#'                 Preset = "string",
+#'                 VideoDescription = list(
+#'                   AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'                   AntiAlias = "DISABLED"|"ENABLED",
+#'                   CodecSettings = list(
+#'                     Av1Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopSize = 123.0,
+#'                       MaxBitrate = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       QvbrSettings = list(
+#'                         QvbrQualityLevel = 123,
+#'                         QvbrQualityLevelFineTune = 123.0
+#'                       ),
+#'                       RateControlMode = "QVBR",
+#'                       Slices = 123,
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                     ),
+#'                     AvcIntraSettings = list(
+#'                       AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                       AvcIntraUhdSettings = list(
+#'                         QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                       ),
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"HARD"
+#'                     ),
+#'                     Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'                     FrameCaptureSettings = list(
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       MaxCaptures = 123,
+#'                       Quality = 123
+#'                     ),
+#'                     H264Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                       Bitrate = 123,
+#'                       CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'                       CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'                       DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                       EntropyEncoding = "CABAC"|"CAVLC",
+#'                       FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'                       FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopBReference = "DISABLED"|"ENABLED",
+#'                       GopClosedCadence = 123,
+#'                       GopSize = 123.0,
+#'                       GopSizeUnits = "FRAMES"|"SECONDS",
+#'                       HrdBufferInitialFillPercentage = 123,
+#'                       HrdBufferSize = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       MaxBitrate = 123,
+#'                       MinIInterval = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       NumberReferenceFrames = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                       QvbrSettings = list(
+#'                         MaxAverageBitrate = 123,
+#'                         QvbrQualityLevel = 123,
+#'                         QvbrQualityLevelFineTune = 123.0
+#'                       ),
+#'                       RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                       RepeatPps = "DISABLED"|"ENABLED",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                       Slices = 123,
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Softness = 123,
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       Syntax = "DEFAULT"|"RP2027",
+#'                       Telecine = "NONE"|"SOFT"|"HARD",
+#'                       TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'                     ),
+#'                     H265Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                       AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'                       Bitrate = 123,
+#'                       CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'                       CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'                       DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                       FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopBReference = "DISABLED"|"ENABLED",
+#'                       GopClosedCadence = 123,
+#'                       GopSize = 123.0,
+#'                       GopSizeUnits = "FRAMES"|"SECONDS",
+#'                       HrdBufferInitialFillPercentage = 123,
+#'                       HrdBufferSize = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       MaxBitrate = 123,
+#'                       MinIInterval = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       NumberReferenceFrames = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                       QvbrSettings = list(
+#'                         MaxAverageBitrate = 123,
+#'                         QvbrQualityLevel = 123,
+#'                         QvbrQualityLevelFineTune = 123.0
+#'                       ),
+#'                       RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                       SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                       Slices = 123,
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"SOFT"|"HARD",
+#'                       TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       TemporalIds = "DISABLED"|"ENABLED",
+#'                       Tiles = "DISABLED"|"ENABLED",
+#'                       UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'                       WriteMp4PackagingType = "HVC1"|"HEV1"
+#'                     ),
+#'                     Mpeg2Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'                       Bitrate = 123,
+#'                       CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'                       CodecProfile = "MAIN"|"PROFILE_422",
+#'                       DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopClosedCadence = 123,
+#'                       GopSize = 123.0,
+#'                       GopSizeUnits = "FRAMES"|"SECONDS",
+#'                       HrdBufferInitialFillPercentage = 123,
+#'                       HrdBufferSize = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'                       MaxBitrate = 123,
+#'                       MinIInterval = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'                       RateControlMode = "VBR"|"CBR",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Softness = 123,
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       Syntax = "DEFAULT"|"D_10",
+#'                       Telecine = "NONE"|"SOFT"|"HARD",
+#'                       TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                     ),
+#'                     ProresSettings = list(
+#'                       CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"HARD"
+#'                     ),
+#'                     Vc3Settings = list(
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"HARD",
+#'                       Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'                     ),
+#'                     Vp8Settings = list(
+#'                       Bitrate = 123,
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopSize = 123.0,
+#'                       HrdBufferSize = 123,
+#'                       MaxBitrate = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                       RateControlMode = "VBR"
+#'                     ),
+#'                     Vp9Settings = list(
+#'                       Bitrate = 123,
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopSize = 123.0,
+#'                       HrdBufferSize = 123,
+#'                       MaxBitrate = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                       RateControlMode = "VBR"
+#'                     )
+#'                   ),
+#'                   ColorMetadata = "IGNORE"|"INSERT",
+#'                   Crop = list(
+#'                     Height = 123,
+#'                     Width = 123,
+#'                     X = 123,
+#'                     Y = 123
+#'                   ),
+#'                   DropFrameTimecode = "DISABLED"|"ENABLED",
+#'                   FixedAfd = 123,
+#'                   Height = 123,
+#'                   Position = list(
+#'                     Height = 123,
+#'                     Width = 123,
+#'                     X = 123,
+#'                     Y = 123
+#'                   ),
+#'                   RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'                   ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'                   Sharpness = 123,
+#'                   TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'                   VideoPreprocessors = list(
+#'                     ColorCorrector = list(
+#'                       Brightness = 123,
+#'                       ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'                       Contrast = 123,
+#'                       Hdr10Metadata = list(
+#'                         BluePrimaryX = 123,
+#'                         BluePrimaryY = 123,
+#'                         GreenPrimaryX = 123,
+#'                         GreenPrimaryY = 123,
+#'                         MaxContentLightLevel = 123,
+#'                         MaxFrameAverageLightLevel = 123,
+#'                         MaxLuminance = 123,
+#'                         MinLuminance = 123,
+#'                         RedPrimaryX = 123,
+#'                         RedPrimaryY = 123,
+#'                         WhitePointX = 123,
+#'                         WhitePointY = 123
+#'                       ),
+#'                       Hue = 123,
+#'                       Saturation = 123
+#'                     ),
+#'                     Deinterlacer = list(
+#'                       Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'                       Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'                       Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'                     ),
+#'                     DolbyVision = list(
+#'                       L6Metadata = list(
+#'                         MaxCll = 123,
+#'                         MaxFall = 123
+#'                       ),
+#'                       L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                       Profile = "PROFILE_5"
+#'                     ),
+#'                     ImageInserter = list(
+#'                       InsertableImages = list(
+#'                         list(
+#'                           Duration = 123,
+#'                           FadeIn = 123,
+#'                           FadeOut = 123,
+#'                           Height = 123,
+#'                           ImageInserterInput = "string",
+#'                           ImageX = 123,
+#'                           ImageY = 123,
+#'                           Layer = 123,
+#'                           Opacity = 123,
+#'                           StartTime = "string",
+#'                           Width = 123
+#'                         )
+#'                       )
+#'                     ),
+#'                     NoiseReducer = list(
+#'                       Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'                       FilterSettings = list(
+#'                         Strength = 123
+#'                       ),
+#'                       SpatialFilterSettings = list(
+#'                         PostFilterSharpenStrength = 123,
+#'                         Speed = 123,
+#'                         Strength = 123
+#'                       ),
+#'                       TemporalFilterSettings = list(
+#'                         AggressiveMode = 123,
+#'                         PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                         Speed = 123,
+#'                         Strength = 123
+#'                       )
+#'                     ),
+#'                     PartnerWatermarking = list(
+#'                       NexguardFileMarkerSettings = list(
+#'                         License = "string",
+#'                         Payload = 123,
+#'                         Preset = "string",
+#'                         Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'                       )
+#'                     ),
+#'                     TimecodeBurnin = list(
+#'                       FontSize = 123,
+#'                       Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'                       Prefix = "string"
+#'                     )
+#'                   ),
+#'                   Width = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TimecodeConfig = list(
+#'           Anchor = "string",
+#'           Source = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'           Start = "string",
+#'           TimestampOffset = "string"
+#'         ),
+#'         TimedMetadataInsertion = list(
+#'           Id3Insertions = list(
+#'             list(
+#'               Id3 = "string",
+#'               Timecode = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'       Type = "SYSTEM"|"CUSTOM"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3595,16 +10982,1234 @@ mediaconvert_list_job_templates <- function(Category = NULL, ListBy = NULL, MaxR
 #' Retrieve a JSON array of up to twenty of your most recently created jobs
 #'
 #' @description
-#' Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
+#' Retrieve a JSON array of up to twenty of your most recently created
+#' jobs. This array includes in-process, completed, and errored jobs. This
+#' will return the jobs themselves, not just a list of the jobs. To
+#' retrieve the twenty next most recent jobs, use the nextToken string
+#' returned with the array.
 #'
 #' @usage
 #' mediaconvert_list_jobs(MaxResults, NextToken, Order, Queue, Status)
 #'
-#' @param MaxResults Optional. Number of jobs, up to twenty, that will be returned at one time.
-#' @param NextToken Optional. Use this string, provided with the response to a previous request, to request the next batch of jobs.
-#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param MaxResults Optional. Number of jobs, up to twenty, that will be returned at one
+#' time.
+#' @param NextToken Optional. Use this string, provided with the response to a previous
+#' request, to request the next batch of jobs.
+#' @param Order Optional. When you request lists of resources, you can specify whether
+#' they are sorted in ASCENDING or DESCENDING order. Default varies by
+#' resource.
 #' @param Queue Optional. Provide a queue name to get back only jobs from that queue.
-#' @param Status Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
+#' @param Status Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE,
+#' CANCELED, or ERROR.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       AccelerationSettings = list(
+#'         Mode = "DISABLED"|"ENABLED"|"PREFERRED"
+#'       ),
+#'       AccelerationStatus = "NOT_APPLICABLE"|"IN_PROGRESS"|"ACCELERATED"|"NOT_ACCELERATED",
+#'       Arn = "string",
+#'       BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE"|"JOB",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CurrentPhase = "PROBING"|"TRANSCODING"|"UPLOADING",
+#'       ErrorCode = 123,
+#'       ErrorMessage = "string",
+#'       HopDestinations = list(
+#'         list(
+#'           Priority = 123,
+#'           Queue = "string",
+#'           WaitMinutes = 123
+#'         )
+#'       ),
+#'       Id = "string",
+#'       JobPercentComplete = 123,
+#'       JobTemplate = "string",
+#'       Messages = list(
+#'         Info = list(
+#'           "string"
+#'         ),
+#'         Warning = list(
+#'           "string"
+#'         )
+#'       ),
+#'       OutputGroupDetails = list(
+#'         list(
+#'           OutputDetails = list(
+#'             list(
+#'               DurationInMs = 123,
+#'               VideoDetails = list(
+#'                 HeightInPx = 123,
+#'                 WidthInPx = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Priority = 123,
+#'       Queue = "string",
+#'       QueueTransitions = list(
+#'         list(
+#'           DestinationQueue = "string",
+#'           SourceQueue = "string",
+#'           Timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       RetryCount = 123,
+#'       Role = "string",
+#'       Settings = list(
+#'         AdAvailOffset = 123,
+#'         AvailBlanking = list(
+#'           AvailBlankingImage = "string"
+#'         ),
+#'         Esam = list(
+#'           ManifestConfirmConditionNotification = list(
+#'             MccXml = "string"
+#'           ),
+#'           ResponseSignalPreroll = 123,
+#'           SignalProcessingNotification = list(
+#'             SccXml = "string"
+#'           )
+#'         ),
+#'         Inputs = list(
+#'           list(
+#'             AudioSelectorGroups = list(
+#'               list(
+#'                 AudioSelectorNames = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AudioSelectors = list(
+#'               list(
+#'                 CustomLanguageCode = "string",
+#'                 DefaultSelection = "DEFAULT"|"NOT_DEFAULT",
+#'                 ExternalAudioFileInput = "string",
+#'                 LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                 Offset = 123,
+#'                 Pids = list(
+#'                   123
+#'                 ),
+#'                 ProgramSelection = 123,
+#'                 RemixSettings = list(
+#'                   ChannelMapping = list(
+#'                     OutputChannels = list(
+#'                       list(
+#'                         InputChannels = list(
+#'                           123
+#'                         ),
+#'                         InputChannelsFineTune = list(
+#'                           123.0
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   ChannelsIn = 123,
+#'                   ChannelsOut = 123
+#'                 ),
+#'                 SelectorType = "PID"|"TRACK"|"LANGUAGE_CODE",
+#'                 Tracks = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             CaptionSelectors = list(
+#'               list(
+#'                 CustomLanguageCode = "string",
+#'                 LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                 SourceSettings = list(
+#'                   AncillarySourceSettings = list(
+#'                     Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                     SourceAncillaryChannelNumber = 123,
+#'                     TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                   ),
+#'                   DvbSubSourceSettings = list(
+#'                     Pid = 123
+#'                   ),
+#'                   EmbeddedSourceSettings = list(
+#'                     Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                     Source608ChannelNumber = 123,
+#'                     Source608TrackNumber = 123,
+#'                     TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                   ),
+#'                   FileSourceSettings = list(
+#'                     Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                     Framerate = list(
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123
+#'                     ),
+#'                     SourceFile = "string",
+#'                     TimeDelta = 123
+#'                   ),
+#'                   SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
+#'                   TeletextSourceSettings = list(
+#'                     PageNumber = "string"
+#'                   ),
+#'                   TrackSourceSettings = list(
+#'                     TrackNumber = 123
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             Crop = list(
+#'               Height = 123,
+#'               Width = 123,
+#'               X = 123,
+#'               Y = 123
+#'             ),
+#'             DeblockFilter = "ENABLED"|"DISABLED",
+#'             DecryptionSettings = list(
+#'               DecryptionMode = "AES_CTR"|"AES_CBC"|"AES_GCM",
+#'               EncryptedDecryptionKey = "string",
+#'               InitializationVector = "string",
+#'               KmsKeyRegion = "string"
+#'             ),
+#'             DenoiseFilter = "ENABLED"|"DISABLED",
+#'             FileInput = "string",
+#'             FilterEnable = "AUTO"|"DISABLE"|"FORCE",
+#'             FilterStrength = 123,
+#'             ImageInserter = list(
+#'               InsertableImages = list(
+#'                 list(
+#'                   Duration = 123,
+#'                   FadeIn = 123,
+#'                   FadeOut = 123,
+#'                   Height = 123,
+#'                   ImageInserterInput = "string",
+#'                   ImageX = 123,
+#'                   ImageY = 123,
+#'                   Layer = 123,
+#'                   Opacity = 123,
+#'                   StartTime = "string",
+#'                   Width = 123
+#'                 )
+#'               )
+#'             ),
+#'             InputClippings = list(
+#'               list(
+#'                 EndTimecode = "string",
+#'                 StartTimecode = "string"
+#'               )
+#'             ),
+#'             InputScanType = "AUTO"|"PSF",
+#'             Position = list(
+#'               Height = 123,
+#'               Width = 123,
+#'               X = 123,
+#'               Y = 123
+#'             ),
+#'             ProgramNumber = 123,
+#'             PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'             SupplementalImps = list(
+#'               "string"
+#'             ),
+#'             TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'             TimecodeStart = "string",
+#'             VideoSelector = list(
+#'               AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
+#'               ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
+#'               ColorSpaceUsage = "FORCE"|"FALLBACK",
+#'               Hdr10Metadata = list(
+#'                 BluePrimaryX = 123,
+#'                 BluePrimaryY = 123,
+#'                 GreenPrimaryX = 123,
+#'                 GreenPrimaryY = 123,
+#'                 MaxContentLightLevel = 123,
+#'                 MaxFrameAverageLightLevel = 123,
+#'                 MaxLuminance = 123,
+#'                 MinLuminance = 123,
+#'                 RedPrimaryX = 123,
+#'                 RedPrimaryY = 123,
+#'                 WhitePointX = 123,
+#'                 WhitePointY = 123
+#'               ),
+#'               Pid = 123,
+#'               ProgramNumber = 123,
+#'               Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
+#'             )
+#'           )
+#'         ),
+#'         MotionImageInserter = list(
+#'           Framerate = list(
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123
+#'           ),
+#'           Input = "string",
+#'           InsertionMode = "MOV"|"PNG",
+#'           Offset = list(
+#'             ImageX = 123,
+#'             ImageY = 123
+#'           ),
+#'           Playback = "ONCE"|"REPEAT",
+#'           StartTime = "string"
+#'         ),
+#'         NielsenConfiguration = list(
+#'           BreakoutCode = 123,
+#'           DistributorId = "string"
+#'         ),
+#'         NielsenNonLinearWatermark = list(
+#'           ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'           AdiFilename = "string",
+#'           AssetId = "string",
+#'           AssetName = "string",
+#'           CbetSourceId = "string",
+#'           EpisodeId = "string",
+#'           MetadataDestination = "string",
+#'           SourceId = 123,
+#'           SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'           TicServerUrl = "string",
+#'           UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'         ),
+#'         OutputGroups = list(
+#'           list(
+#'             AutomatedEncodingSettings = list(
+#'               AbrSettings = list(
+#'                 MaxAbrBitrate = 123,
+#'                 MaxRenditions = 123,
+#'                 MinAbrBitrate = 123
+#'               )
+#'             ),
+#'             CustomName = "string",
+#'             Name = "string",
+#'             OutputGroupSettings = list(
+#'               CmafGroupSettings = list(
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 BaseUrl = "string",
+#'                 ClientCache = "DISABLED"|"ENABLED",
+#'                 CodecSpecification = "RFC_6381"|"RFC_4281",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Encryption = list(
+#'                   ConstantInitializationVector = "string",
+#'                   EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
+#'                   InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     DashSignaledSystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     HlsSignaledSystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     ResourceId = "string",
+#'                     Url = "string"
+#'                   ),
+#'                   StaticKeyProvider = list(
+#'                     KeyFormat = "string",
+#'                     KeyFormatVersions = "string",
+#'                     StaticKeyValue = "string",
+#'                     Url = "string"
+#'                   ),
+#'                   Type = "SPEKE"|"STATIC_KEY"
+#'                 ),
+#'                 FragmentLength = 123,
+#'                 ManifestCompression = "GZIP"|"NONE",
+#'                 ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'                 MinBufferTime = 123,
+#'                 MinFinalSegmentLength = 123.0,
+#'                 MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'                 SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'                 SegmentLength = 123,
+#'                 StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'                 WriteDashManifest = "DISABLED"|"ENABLED",
+#'                 WriteHlsManifest = "DISABLED"|"ENABLED",
+#'                 WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'               ),
+#'               DashIsoGroupSettings = list(
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 BaseUrl = "string",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Encryption = list(
+#'                   PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     ResourceId = "string",
+#'                     SystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     Url = "string"
+#'                   )
+#'                 ),
+#'                 FragmentLength = 123,
+#'                 HbbtvCompliance = "HBBTV_1_5"|"NONE",
+#'                 MinBufferTime = 123,
+#'                 MinFinalSegmentLength = 123.0,
+#'                 MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'                 SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'                 SegmentLength = 123,
+#'                 WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'               ),
+#'               FileGroupSettings = list(
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               HlsGroupSettings = list(
+#'                 AdMarkers = list(
+#'                   "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'                 ),
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
+#'                 BaseUrl = "string",
+#'                 CaptionLanguageMappings = list(
+#'                   list(
+#'                     CaptionChannel = 123,
+#'                     CustomLanguageCode = "string",
+#'                     LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                     LanguageDescription = "string"
+#'                   )
+#'                 ),
+#'                 CaptionLanguageSetting = "INSERT"|"OMIT"|"NONE",
+#'                 ClientCache = "DISABLED"|"ENABLED",
+#'                 CodecSpecification = "RFC_6381"|"RFC_4281",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'                 Encryption = list(
+#'                   ConstantInitializationVector = "string",
+#'                   EncryptionMethod = "AES128"|"SAMPLE_AES",
+#'                   InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                   OfflineEncrypted = "ENABLED"|"DISABLED",
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     ResourceId = "string",
+#'                     SystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     Url = "string"
+#'                   ),
+#'                   StaticKeyProvider = list(
+#'                     KeyFormat = "string",
+#'                     KeyFormatVersions = "string",
+#'                     StaticKeyValue = "string",
+#'                     Url = "string"
+#'                   ),
+#'                   Type = "SPEKE"|"STATIC_KEY"
+#'                 ),
+#'                 ManifestCompression = "GZIP"|"NONE",
+#'                 ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'                 MinFinalSegmentLength = 123.0,
+#'                 MinSegmentLength = 123,
+#'                 OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'                 ProgramDateTime = "INCLUDE"|"EXCLUDE",
+#'                 ProgramDateTimePeriod = 123,
+#'                 SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'                 SegmentLength = 123,
+#'                 SegmentsPerSubdirectory = 123,
+#'                 StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'                 TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+#'                 TimedMetadataId3Period = 123,
+#'                 TimestampDeltaMilliseconds = 123
+#'               ),
+#'               MsSmoothGroupSettings = list(
+#'                 AdditionalManifests = list(
+#'                   list(
+#'                     ManifestNameModifier = "string",
+#'                     SelectedOutputs = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
+#'                 Destination = "string",
+#'                 DestinationSettings = list(
+#'                   S3Settings = list(
+#'                     AccessControl = list(
+#'                       CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                     ),
+#'                     Encryption = list(
+#'                       EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                       KmsKeyArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Encryption = list(
+#'                   SpekeKeyProvider = list(
+#'                     CertificateArn = "string",
+#'                     ResourceId = "string",
+#'                     SystemIds = list(
+#'                       "string"
+#'                     ),
+#'                     Url = "string"
+#'                   )
+#'                 ),
+#'                 FragmentLength = 123,
+#'                 ManifestEncoding = "UTF8"|"UTF16"
+#'               ),
+#'               Type = "HLS_GROUP_SETTINGS"|"DASH_ISO_GROUP_SETTINGS"|"FILE_GROUP_SETTINGS"|"MS_SMOOTH_GROUP_SETTINGS"|"CMAF_GROUP_SETTINGS"
+#'             ),
+#'             Outputs = list(
+#'               list(
+#'                 AudioDescriptions = list(
+#'                   list(
+#'                     AudioChannelTaggingSettings = list(
+#'                       ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                     ),
+#'                     AudioNormalizationSettings = list(
+#'                       Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                       AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'                       CorrectionGateLevel = 123,
+#'                       LoudnessLogging = "LOG"|"DONT_LOG",
+#'                       PeakCalculation = "TRUE_PEAK"|"NONE",
+#'                       TargetLkfs = 123.0
+#'                     ),
+#'                     AudioSourceName = "string",
+#'                     AudioType = 123,
+#'                     AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                     CodecSettings = list(
+#'                       AacSettings = list(
+#'                         AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                         Bitrate = 123,
+#'                         CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                         CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                         RateControlMode = "CBR"|"VBR",
+#'                         RawFormat = "LATM_LOAS"|"NONE",
+#'                         SampleRate = 123,
+#'                         Specification = "MPEG2"|"MPEG4",
+#'                         VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'                       ),
+#'                       Ac3Settings = list(
+#'                         Bitrate = 123,
+#'                         BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                         CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                         Dialnorm = 123,
+#'                         DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                         LfeFilter = "ENABLED"|"DISABLED",
+#'                         MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                         SampleRate = 123
+#'                       ),
+#'                       AiffSettings = list(
+#'                         BitDepth = 123,
+#'                         Channels = 123,
+#'                         SampleRate = 123
+#'                       ),
+#'                       Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'                       Eac3AtmosSettings = list(
+#'                         Bitrate = 123,
+#'                         BitstreamMode = "COMPLETE_MAIN",
+#'                         CodingMode = "CODING_MODE_9_1_6",
+#'                         DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                         DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         LoRoCenterMixLevel = 123.0,
+#'                         LoRoSurroundMixLevel = 123.0,
+#'                         LtRtCenterMixLevel = 123.0,
+#'                         LtRtSurroundMixLevel = 123.0,
+#'                         MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                         SampleRate = 123,
+#'                         SpeechThreshold = 123,
+#'                         StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                         SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                       ),
+#'                       Eac3Settings = list(
+#'                         AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                         Bitrate = 123,
+#'                         BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                         CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                         DcFilter = "ENABLED"|"DISABLED",
+#'                         Dialnorm = 123,
+#'                         DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                         LfeControl = "LFE"|"NO_LFE",
+#'                         LfeFilter = "ENABLED"|"DISABLED",
+#'                         LoRoCenterMixLevel = 123.0,
+#'                         LoRoSurroundMixLevel = 123.0,
+#'                         LtRtCenterMixLevel = 123.0,
+#'                         LtRtSurroundMixLevel = 123.0,
+#'                         MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                         PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                         PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                         SampleRate = 123,
+#'                         StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                         SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                         SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                       ),
+#'                       Mp2Settings = list(
+#'                         Bitrate = 123,
+#'                         Channels = 123,
+#'                         SampleRate = 123
+#'                       ),
+#'                       Mp3Settings = list(
+#'                         Bitrate = 123,
+#'                         Channels = 123,
+#'                         RateControlMode = "CBR"|"VBR",
+#'                         SampleRate = 123,
+#'                         VbrQuality = 123
+#'                       ),
+#'                       OpusSettings = list(
+#'                         Bitrate = 123,
+#'                         Channels = 123,
+#'                         SampleRate = 123
+#'                       ),
+#'                       VorbisSettings = list(
+#'                         Channels = 123,
+#'                         SampleRate = 123,
+#'                         VbrQuality = 123
+#'                       ),
+#'                       WavSettings = list(
+#'                         BitDepth = 123,
+#'                         Channels = 123,
+#'                         Format = "RIFF"|"RF64",
+#'                         SampleRate = 123
+#'                       )
+#'                     ),
+#'                     CustomLanguageCode = "string",
+#'                     LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                     LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                     RemixSettings = list(
+#'                       ChannelMapping = list(
+#'                         OutputChannels = list(
+#'                           list(
+#'                             InputChannels = list(
+#'                               123
+#'                             ),
+#'                             InputChannelsFineTune = list(
+#'                               123.0
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       ChannelsIn = 123,
+#'                       ChannelsOut = 123
+#'                     ),
+#'                     StreamName = "string"
+#'                   )
+#'                 ),
+#'                 CaptionDescriptions = list(
+#'                   list(
+#'                     CaptionSelectorName = "string",
+#'                     CustomLanguageCode = "string",
+#'                     DestinationSettings = list(
+#'                       BurninDestinationSettings = list(
+#'                         Alignment = "CENTERED"|"LEFT",
+#'                         BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                         BackgroundOpacity = 123,
+#'                         FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         FontOpacity = 123,
+#'                         FontResolution = 123,
+#'                         FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                         FontSize = 123,
+#'                         OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         OutlineSize = 123,
+#'                         ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                         ShadowOpacity = 123,
+#'                         ShadowXOffset = 123,
+#'                         ShadowYOffset = 123,
+#'                         TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                         XPosition = 123,
+#'                         YPosition = 123
+#'                       ),
+#'                       DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                       DvbSubDestinationSettings = list(
+#'                         Alignment = "CENTERED"|"LEFT",
+#'                         BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                         BackgroundOpacity = 123,
+#'                         FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         FontOpacity = 123,
+#'                         FontResolution = 123,
+#'                         FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                         FontSize = 123,
+#'                         OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                         OutlineSize = 123,
+#'                         ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                         ShadowOpacity = 123,
+#'                         ShadowXOffset = 123,
+#'                         ShadowYOffset = 123,
+#'                         SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                         TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                         XPosition = 123,
+#'                         YPosition = 123
+#'                       ),
+#'                       EmbeddedDestinationSettings = list(
+#'                         Destination608ChannelNumber = 123,
+#'                         Destination708ServiceNumber = 123
+#'                       ),
+#'                       ImscDestinationSettings = list(
+#'                         StylePassthrough = "ENABLED"|"DISABLED"
+#'                       ),
+#'                       SccDestinationSettings = list(
+#'                         Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                       ),
+#'                       TeletextDestinationSettings = list(
+#'                         PageNumber = "string",
+#'                         PageTypes = list(
+#'                           "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                         )
+#'                       ),
+#'                       TtmlDestinationSettings = list(
+#'                         StylePassthrough = "ENABLED"|"DISABLED"
+#'                       )
+#'                     ),
+#'                     LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                     LanguageDescription = "string"
+#'                   )
+#'                 ),
+#'                 ContainerSettings = list(
+#'                   CmfcSettings = list(
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                     Scte35Esam = "INSERT"|"NONE",
+#'                     Scte35Source = "PASSTHROUGH"|"NONE"
+#'                   ),
+#'                   Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'                   F4vSettings = list(
+#'                     MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'                   ),
+#'                   M2tsSettings = list(
+#'                     AudioBufferModel = "DVB"|"ATSC",
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     AudioFramesPerPes = 123,
+#'                     AudioPids = list(
+#'                       123
+#'                     ),
+#'                     Bitrate = 123,
+#'                     BufferModel = "MULTIPLEX"|"NONE",
+#'                     DvbNitSettings = list(
+#'                       NetworkId = 123,
+#'                       NetworkName = "string",
+#'                       NitInterval = 123
+#'                     ),
+#'                     DvbSdtSettings = list(
+#'                       OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'                       SdtInterval = 123,
+#'                       ServiceName = "string",
+#'                       ServiceProviderName = "string"
+#'                     ),
+#'                     DvbSubPids = list(
+#'                       123
+#'                     ),
+#'                     DvbTdtSettings = list(
+#'                       TdtInterval = 123
+#'                     ),
+#'                     DvbTeletextPid = 123,
+#'                     EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'                     EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'                     EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                     ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'                     FragmentTime = 123.0,
+#'                     MaxPcrInterval = 123,
+#'                     MinEbpInterval = 123,
+#'                     NielsenId3 = "INSERT"|"NONE",
+#'                     NullPacketBitrate = 123.0,
+#'                     PatInterval = 123,
+#'                     PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                     PcrPid = 123,
+#'                     PmtInterval = 123,
+#'                     PmtPid = 123,
+#'                     PrivateMetadataPid = 123,
+#'                     ProgramNumber = 123,
+#'                     RateMode = "VBR"|"CBR",
+#'                     Scte35Esam = list(
+#'                       Scte35EsamPid = 123
+#'                     ),
+#'                     Scte35Pid = 123,
+#'                     Scte35Source = "PASSTHROUGH"|"NONE",
+#'                     SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'                     SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'                     SegmentationTime = 123.0,
+#'                     TimedMetadataPid = 123,
+#'                     TransportStreamId = 123,
+#'                     VideoPid = 123
+#'                   ),
+#'                   M3u8Settings = list(
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     AudioFramesPerPes = 123,
+#'                     AudioPids = list(
+#'                       123
+#'                     ),
+#'                     NielsenId3 = "INSERT"|"NONE",
+#'                     PatInterval = 123,
+#'                     PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                     PcrPid = 123,
+#'                     PmtInterval = 123,
+#'                     PmtPid = 123,
+#'                     PrivateMetadataPid = 123,
+#'                     ProgramNumber = 123,
+#'                     Scte35Pid = 123,
+#'                     Scte35Source = "PASSTHROUGH"|"NONE",
+#'                     TimedMetadata = "PASSTHROUGH"|"NONE",
+#'                     TimedMetadataPid = 123,
+#'                     TransportStreamId = 123,
+#'                     VideoPid = 123
+#'                   ),
+#'                   MovSettings = list(
+#'                     ClapAtom = "INCLUDE"|"EXCLUDE",
+#'                     CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                     Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'                     PaddingControl = "OMNEON"|"NONE",
+#'                     Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'                   ),
+#'                   Mp4Settings = list(
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                     CttsVersion = 123,
+#'                     FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'                     MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'                     Mp4MajorBrand = "string"
+#'                   ),
+#'                   MpdSettings = list(
+#'                     AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                     AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                     CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                     Scte35Esam = "INSERT"|"NONE",
+#'                     Scte35Source = "PASSTHROUGH"|"NONE"
+#'                   ),
+#'                   MxfSettings = list(
+#'                     AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                     Profile = "D_10"|"XDCAM"|"OP1A"
+#'                   )
+#'                 ),
+#'                 Extension = "string",
+#'                 NameModifier = "string",
+#'                 OutputSettings = list(
+#'                   HlsSettings = list(
+#'                     AudioGroupId = "string",
+#'                     AudioOnlyContainer = "AUTOMATIC"|"M2TS",
+#'                     AudioRenditionSets = "string",
+#'                     AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                     IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                     SegmentModifier = "string"
+#'                   )
+#'                 ),
+#'                 Preset = "string",
+#'                 VideoDescription = list(
+#'                   AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'                   AntiAlias = "DISABLED"|"ENABLED",
+#'                   CodecSettings = list(
+#'                     Av1Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopSize = 123.0,
+#'                       MaxBitrate = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       QvbrSettings = list(
+#'                         QvbrQualityLevel = 123,
+#'                         QvbrQualityLevelFineTune = 123.0
+#'                       ),
+#'                       RateControlMode = "QVBR",
+#'                       Slices = 123,
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                     ),
+#'                     AvcIntraSettings = list(
+#'                       AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                       AvcIntraUhdSettings = list(
+#'                         QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                       ),
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"HARD"
+#'                     ),
+#'                     Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'                     FrameCaptureSettings = list(
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       MaxCaptures = 123,
+#'                       Quality = 123
+#'                     ),
+#'                     H264Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                       Bitrate = 123,
+#'                       CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'                       CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'                       DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                       EntropyEncoding = "CABAC"|"CAVLC",
+#'                       FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'                       FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopBReference = "DISABLED"|"ENABLED",
+#'                       GopClosedCadence = 123,
+#'                       GopSize = 123.0,
+#'                       GopSizeUnits = "FRAMES"|"SECONDS",
+#'                       HrdBufferInitialFillPercentage = 123,
+#'                       HrdBufferSize = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       MaxBitrate = 123,
+#'                       MinIInterval = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       NumberReferenceFrames = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                       QvbrSettings = list(
+#'                         MaxAverageBitrate = 123,
+#'                         QvbrQualityLevel = 123,
+#'                         QvbrQualityLevelFineTune = 123.0
+#'                       ),
+#'                       RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                       RepeatPps = "DISABLED"|"ENABLED",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                       Slices = 123,
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Softness = 123,
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       Syntax = "DEFAULT"|"RP2027",
+#'                       Telecine = "NONE"|"SOFT"|"HARD",
+#'                       TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'                     ),
+#'                     H265Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                       AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'                       Bitrate = 123,
+#'                       CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'                       CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'                       DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                       FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopBReference = "DISABLED"|"ENABLED",
+#'                       GopClosedCadence = 123,
+#'                       GopSize = 123.0,
+#'                       GopSizeUnits = "FRAMES"|"SECONDS",
+#'                       HrdBufferInitialFillPercentage = 123,
+#'                       HrdBufferSize = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       MaxBitrate = 123,
+#'                       MinIInterval = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       NumberReferenceFrames = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                       QvbrSettings = list(
+#'                         MaxAverageBitrate = 123,
+#'                         QvbrQualityLevel = 123,
+#'                         QvbrQualityLevelFineTune = 123.0
+#'                       ),
+#'                       RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                       SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                       Slices = 123,
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"SOFT"|"HARD",
+#'                       TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       TemporalIds = "DISABLED"|"ENABLED",
+#'                       Tiles = "DISABLED"|"ENABLED",
+#'                       UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'                       WriteMp4PackagingType = "HVC1"|"HEV1"
+#'                     ),
+#'                     Mpeg2Settings = list(
+#'                       AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'                       Bitrate = 123,
+#'                       CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'                       CodecProfile = "MAIN"|"PROFILE_422",
+#'                       DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopClosedCadence = 123,
+#'                       GopSize = 123.0,
+#'                       GopSizeUnits = "FRAMES"|"SECONDS",
+#'                       HrdBufferInitialFillPercentage = 123,
+#'                       HrdBufferSize = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'                       MaxBitrate = 123,
+#'                       MinIInterval = 123,
+#'                       NumberBFramesBetweenReferenceFrames = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'                       RateControlMode = "VBR"|"CBR",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Softness = 123,
+#'                       SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                       Syntax = "DEFAULT"|"D_10",
+#'                       Telecine = "NONE"|"SOFT"|"HARD",
+#'                       TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                     ),
+#'                     ProresSettings = list(
+#'                       CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"HARD"
+#'                     ),
+#'                     Vc3Settings = list(
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                       ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                       SlowPal = "DISABLED"|"ENABLED",
+#'                       Telecine = "NONE"|"HARD",
+#'                       Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'                     ),
+#'                     Vp8Settings = list(
+#'                       Bitrate = 123,
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopSize = 123.0,
+#'                       HrdBufferSize = 123,
+#'                       MaxBitrate = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                       RateControlMode = "VBR"
+#'                     ),
+#'                     Vp9Settings = list(
+#'                       Bitrate = 123,
+#'                       FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                       FramerateDenominator = 123,
+#'                       FramerateNumerator = 123,
+#'                       GopSize = 123.0,
+#'                       HrdBufferSize = 123,
+#'                       MaxBitrate = 123,
+#'                       ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                       ParDenominator = 123,
+#'                       ParNumerator = 123,
+#'                       QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                       RateControlMode = "VBR"
+#'                     )
+#'                   ),
+#'                   ColorMetadata = "IGNORE"|"INSERT",
+#'                   Crop = list(
+#'                     Height = 123,
+#'                     Width = 123,
+#'                     X = 123,
+#'                     Y = 123
+#'                   ),
+#'                   DropFrameTimecode = "DISABLED"|"ENABLED",
+#'                   FixedAfd = 123,
+#'                   Height = 123,
+#'                   Position = list(
+#'                     Height = 123,
+#'                     Width = 123,
+#'                     X = 123,
+#'                     Y = 123
+#'                   ),
+#'                   RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'                   ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'                   Sharpness = 123,
+#'                   TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'                   VideoPreprocessors = list(
+#'                     ColorCorrector = list(
+#'                       Brightness = 123,
+#'                       ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'                       Contrast = 123,
+#'                       Hdr10Metadata = list(
+#'                         BluePrimaryX = 123,
+#'                         BluePrimaryY = 123,
+#'                         GreenPrimaryX = 123,
+#'                         GreenPrimaryY = 123,
+#'                         MaxContentLightLevel = 123,
+#'                         MaxFrameAverageLightLevel = 123,
+#'                         MaxLuminance = 123,
+#'                         MinLuminance = 123,
+#'                         RedPrimaryX = 123,
+#'                         RedPrimaryY = 123,
+#'                         WhitePointX = 123,
+#'                         WhitePointY = 123
+#'                       ),
+#'                       Hue = 123,
+#'                       Saturation = 123
+#'                     ),
+#'                     Deinterlacer = list(
+#'                       Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'                       Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'                       Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'                     ),
+#'                     DolbyVision = list(
+#'                       L6Metadata = list(
+#'                         MaxCll = 123,
+#'                         MaxFall = 123
+#'                       ),
+#'                       L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                       Profile = "PROFILE_5"
+#'                     ),
+#'                     ImageInserter = list(
+#'                       InsertableImages = list(
+#'                         list(
+#'                           Duration = 123,
+#'                           FadeIn = 123,
+#'                           FadeOut = 123,
+#'                           Height = 123,
+#'                           ImageInserterInput = "string",
+#'                           ImageX = 123,
+#'                           ImageY = 123,
+#'                           Layer = 123,
+#'                           Opacity = 123,
+#'                           StartTime = "string",
+#'                           Width = 123
+#'                         )
+#'                       )
+#'                     ),
+#'                     NoiseReducer = list(
+#'                       Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'                       FilterSettings = list(
+#'                         Strength = 123
+#'                       ),
+#'                       SpatialFilterSettings = list(
+#'                         PostFilterSharpenStrength = 123,
+#'                         Speed = 123,
+#'                         Strength = 123
+#'                       ),
+#'                       TemporalFilterSettings = list(
+#'                         AggressiveMode = 123,
+#'                         PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                         Speed = 123,
+#'                         Strength = 123
+#'                       )
+#'                     ),
+#'                     PartnerWatermarking = list(
+#'                       NexguardFileMarkerSettings = list(
+#'                         License = "string",
+#'                         Payload = 123,
+#'                         Preset = "string",
+#'                         Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'                       )
+#'                     ),
+#'                     TimecodeBurnin = list(
+#'                       FontSize = 123,
+#'                       Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'                       Prefix = "string"
+#'                     )
+#'                   ),
+#'                   Width = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TimecodeConfig = list(
+#'           Anchor = "string",
+#'           Source = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'           Start = "string",
+#'           TimestampOffset = "string"
+#'         ),
+#'         TimedMetadataInsertion = list(
+#'           Id3Insertions = list(
+#'             list(
+#'               Id3 = "string",
+#'               Timecode = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       SimulateReservedQueue = "DISABLED"|"ENABLED",
+#'       Status = "SUBMITTED"|"PROGRESSING"|"COMPLETE"|"CANCELED"|"ERROR",
+#'       StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'       Timing = list(
+#'         FinishTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         SubmitTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       UserMetadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3640,17 +12245,698 @@ mediaconvert_list_jobs <- function(MaxResults = NULL, NextToken = NULL, Order = 
 #' Retrieve a JSON array of up to twenty of your presets
 #'
 #' @description
-#' Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.
+#' Retrieve a JSON array of up to twenty of your presets. This will return
+#' the presets themselves, not just a list of them. To retrieve the next
+#' twenty presets, use the nextToken string returned with the array.
 #'
 #' @usage
 #' mediaconvert_list_presets(Category, ListBy, MaxResults, NextToken,
 #'   Order)
 #'
-#' @param Category Optionally, specify a preset category to limit responses to only presets from that category.
-#' @param ListBy Optional. When you request a list of presets, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
-#' @param MaxResults Optional. Number of presets, up to twenty, that will be returned at one time
-#' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of presets.
-#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param Category Optionally, specify a preset category to limit responses to only presets
+#' from that category.
+#' @param ListBy Optional. When you request a list of presets, you can choose to list
+#' them alphabetically by NAME or chronologically by CREATION_DATE. If you
+#' don't specify, the service will list them by name.
+#' @param MaxResults Optional. Number of presets, up to twenty, that will be returned at one
+#' time
+#' @param NextToken Use this string, provided with the response to a previous request, to
+#' request the next batch of presets.
+#' @param Order Optional. When you request lists of resources, you can specify whether
+#' they are sorted in ASCENDING or DESCENDING order. Default varies by
+#' resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Presets = list(
+#'     list(
+#'       Arn = "string",
+#'       Category = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       Settings = list(
+#'         AudioDescriptions = list(
+#'           list(
+#'             AudioChannelTaggingSettings = list(
+#'               ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'             ),
+#'             AudioNormalizationSettings = list(
+#'               Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'               AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'               CorrectionGateLevel = 123,
+#'               LoudnessLogging = "LOG"|"DONT_LOG",
+#'               PeakCalculation = "TRUE_PEAK"|"NONE",
+#'               TargetLkfs = 123.0
+#'             ),
+#'             AudioSourceName = "string",
+#'             AudioType = 123,
+#'             AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'             CodecSettings = list(
+#'               AacSettings = list(
+#'                 AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                 Bitrate = 123,
+#'                 CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                 CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                 RateControlMode = "CBR"|"VBR",
+#'                 RawFormat = "LATM_LOAS"|"NONE",
+#'                 SampleRate = 123,
+#'                 Specification = "MPEG2"|"MPEG4",
+#'                 VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'               ),
+#'               Ac3Settings = list(
+#'                 Bitrate = 123,
+#'                 BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                 CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                 Dialnorm = 123,
+#'                 DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                 LfeFilter = "ENABLED"|"DISABLED",
+#'                 MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                 SampleRate = 123
+#'               ),
+#'               AiffSettings = list(
+#'                 BitDepth = 123,
+#'                 Channels = 123,
+#'                 SampleRate = 123
+#'               ),
+#'               Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'               Eac3AtmosSettings = list(
+#'                 Bitrate = 123,
+#'                 BitstreamMode = "COMPLETE_MAIN",
+#'                 CodingMode = "CODING_MODE_9_1_6",
+#'                 DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                 DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                 DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                 LoRoCenterMixLevel = 123.0,
+#'                 LoRoSurroundMixLevel = 123.0,
+#'                 LtRtCenterMixLevel = 123.0,
+#'                 LtRtSurroundMixLevel = 123.0,
+#'                 MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                 SampleRate = 123,
+#'                 SpeechThreshold = 123,
+#'                 StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                 SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'               ),
+#'               Eac3Settings = list(
+#'                 AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                 Bitrate = 123,
+#'                 BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                 CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                 DcFilter = "ENABLED"|"DISABLED",
+#'                 Dialnorm = 123,
+#'                 DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                 DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                 LfeControl = "LFE"|"NO_LFE",
+#'                 LfeFilter = "ENABLED"|"DISABLED",
+#'                 LoRoCenterMixLevel = 123.0,
+#'                 LoRoSurroundMixLevel = 123.0,
+#'                 LtRtCenterMixLevel = 123.0,
+#'                 LtRtSurroundMixLevel = 123.0,
+#'                 MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                 PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                 PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                 SampleRate = 123,
+#'                 StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                 SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                 SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'               ),
+#'               Mp2Settings = list(
+#'                 Bitrate = 123,
+#'                 Channels = 123,
+#'                 SampleRate = 123
+#'               ),
+#'               Mp3Settings = list(
+#'                 Bitrate = 123,
+#'                 Channels = 123,
+#'                 RateControlMode = "CBR"|"VBR",
+#'                 SampleRate = 123,
+#'                 VbrQuality = 123
+#'               ),
+#'               OpusSettings = list(
+#'                 Bitrate = 123,
+#'                 Channels = 123,
+#'                 SampleRate = 123
+#'               ),
+#'               VorbisSettings = list(
+#'                 Channels = 123,
+#'                 SampleRate = 123,
+#'                 VbrQuality = 123
+#'               ),
+#'               WavSettings = list(
+#'                 BitDepth = 123,
+#'                 Channels = 123,
+#'                 Format = "RIFF"|"RF64",
+#'                 SampleRate = 123
+#'               )
+#'             ),
+#'             CustomLanguageCode = "string",
+#'             LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'             LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'             RemixSettings = list(
+#'               ChannelMapping = list(
+#'                 OutputChannels = list(
+#'                   list(
+#'                     InputChannels = list(
+#'                       123
+#'                     ),
+#'                     InputChannelsFineTune = list(
+#'                       123.0
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               ChannelsIn = 123,
+#'               ChannelsOut = 123
+#'             ),
+#'             StreamName = "string"
+#'           )
+#'         ),
+#'         CaptionDescriptions = list(
+#'           list(
+#'             CustomLanguageCode = "string",
+#'             DestinationSettings = list(
+#'               BurninDestinationSettings = list(
+#'                 Alignment = "CENTERED"|"LEFT",
+#'                 BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                 BackgroundOpacity = 123,
+#'                 FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                 FontOpacity = 123,
+#'                 FontResolution = 123,
+#'                 FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                 FontSize = 123,
+#'                 OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                 OutlineSize = 123,
+#'                 ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                 ShadowOpacity = 123,
+#'                 ShadowXOffset = 123,
+#'                 ShadowYOffset = 123,
+#'                 TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                 XPosition = 123,
+#'                 YPosition = 123
+#'               ),
+#'               DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'               DvbSubDestinationSettings = list(
+#'                 Alignment = "CENTERED"|"LEFT",
+#'                 BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                 BackgroundOpacity = 123,
+#'                 FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                 FontOpacity = 123,
+#'                 FontResolution = 123,
+#'                 FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                 FontSize = 123,
+#'                 OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                 OutlineSize = 123,
+#'                 ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                 ShadowOpacity = 123,
+#'                 ShadowXOffset = 123,
+#'                 ShadowYOffset = 123,
+#'                 SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                 TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                 XPosition = 123,
+#'                 YPosition = 123
+#'               ),
+#'               EmbeddedDestinationSettings = list(
+#'                 Destination608ChannelNumber = 123,
+#'                 Destination708ServiceNumber = 123
+#'               ),
+#'               ImscDestinationSettings = list(
+#'                 StylePassthrough = "ENABLED"|"DISABLED"
+#'               ),
+#'               SccDestinationSettings = list(
+#'                 Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'               ),
+#'               TeletextDestinationSettings = list(
+#'                 PageNumber = "string",
+#'                 PageTypes = list(
+#'                   "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                 )
+#'               ),
+#'               TtmlDestinationSettings = list(
+#'                 StylePassthrough = "ENABLED"|"DISABLED"
+#'               )
+#'             ),
+#'             LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'             LanguageDescription = "string"
+#'           )
+#'         ),
+#'         ContainerSettings = list(
+#'           CmfcSettings = list(
+#'             AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'             IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'             Scte35Esam = "INSERT"|"NONE",
+#'             Scte35Source = "PASSTHROUGH"|"NONE"
+#'           ),
+#'           Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'           F4vSettings = list(
+#'             MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'           ),
+#'           M2tsSettings = list(
+#'             AudioBufferModel = "DVB"|"ATSC",
+#'             AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'             AudioFramesPerPes = 123,
+#'             AudioPids = list(
+#'               123
+#'             ),
+#'             Bitrate = 123,
+#'             BufferModel = "MULTIPLEX"|"NONE",
+#'             DvbNitSettings = list(
+#'               NetworkId = 123,
+#'               NetworkName = "string",
+#'               NitInterval = 123
+#'             ),
+#'             DvbSdtSettings = list(
+#'               OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'               SdtInterval = 123,
+#'               ServiceName = "string",
+#'               ServiceProviderName = "string"
+#'             ),
+#'             DvbSubPids = list(
+#'               123
+#'             ),
+#'             DvbTdtSettings = list(
+#'               TdtInterval = 123
+#'             ),
+#'             DvbTeletextPid = 123,
+#'             EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'             EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'             EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'             ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'             FragmentTime = 123.0,
+#'             MaxPcrInterval = 123,
+#'             MinEbpInterval = 123,
+#'             NielsenId3 = "INSERT"|"NONE",
+#'             NullPacketBitrate = 123.0,
+#'             PatInterval = 123,
+#'             PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'             PcrPid = 123,
+#'             PmtInterval = 123,
+#'             PmtPid = 123,
+#'             PrivateMetadataPid = 123,
+#'             ProgramNumber = 123,
+#'             RateMode = "VBR"|"CBR",
+#'             Scte35Esam = list(
+#'               Scte35EsamPid = 123
+#'             ),
+#'             Scte35Pid = 123,
+#'             Scte35Source = "PASSTHROUGH"|"NONE",
+#'             SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'             SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'             SegmentationTime = 123.0,
+#'             TimedMetadataPid = 123,
+#'             TransportStreamId = 123,
+#'             VideoPid = 123
+#'           ),
+#'           M3u8Settings = list(
+#'             AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'             AudioFramesPerPes = 123,
+#'             AudioPids = list(
+#'               123
+#'             ),
+#'             NielsenId3 = "INSERT"|"NONE",
+#'             PatInterval = 123,
+#'             PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'             PcrPid = 123,
+#'             PmtInterval = 123,
+#'             PmtPid = 123,
+#'             PrivateMetadataPid = 123,
+#'             ProgramNumber = 123,
+#'             Scte35Pid = 123,
+#'             Scte35Source = "PASSTHROUGH"|"NONE",
+#'             TimedMetadata = "PASSTHROUGH"|"NONE",
+#'             TimedMetadataPid = 123,
+#'             TransportStreamId = 123,
+#'             VideoPid = 123
+#'           ),
+#'           MovSettings = list(
+#'             ClapAtom = "INCLUDE"|"EXCLUDE",
+#'             CslgAtom = "INCLUDE"|"EXCLUDE",
+#'             Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'             PaddingControl = "OMNEON"|"NONE",
+#'             Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'           ),
+#'           Mp4Settings = list(
+#'             AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'             CslgAtom = "INCLUDE"|"EXCLUDE",
+#'             CttsVersion = 123,
+#'             FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'             MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'             Mp4MajorBrand = "string"
+#'           ),
+#'           MpdSettings = list(
+#'             AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'             AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'             CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'             Scte35Esam = "INSERT"|"NONE",
+#'             Scte35Source = "PASSTHROUGH"|"NONE"
+#'           ),
+#'           MxfSettings = list(
+#'             AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'             Profile = "D_10"|"XDCAM"|"OP1A"
+#'           )
+#'         ),
+#'         VideoDescription = list(
+#'           AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'           AntiAlias = "DISABLED"|"ENABLED",
+#'           CodecSettings = list(
+#'             Av1Settings = list(
+#'               AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               GopSize = 123.0,
+#'               MaxBitrate = 123,
+#'               NumberBFramesBetweenReferenceFrames = 123,
+#'               QvbrSettings = list(
+#'                 QvbrQualityLevel = 123,
+#'                 QvbrQualityLevelFineTune = 123.0
+#'               ),
+#'               RateControlMode = "QVBR",
+#'               Slices = 123,
+#'               SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'             ),
+#'             AvcIntraSettings = list(
+#'               AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'               AvcIntraUhdSettings = list(
+#'                 QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'               ),
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'               ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'               SlowPal = "DISABLED"|"ENABLED",
+#'               Telecine = "NONE"|"HARD"
+#'             ),
+#'             Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'             FrameCaptureSettings = list(
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               MaxCaptures = 123,
+#'               Quality = 123
+#'             ),
+#'             H264Settings = list(
+#'               AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'               Bitrate = 123,
+#'               CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'               CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'               DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'               EntropyEncoding = "CABAC"|"CAVLC",
+#'               FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'               FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               GopBReference = "DISABLED"|"ENABLED",
+#'               GopClosedCadence = 123,
+#'               GopSize = 123.0,
+#'               GopSizeUnits = "FRAMES"|"SECONDS",
+#'               HrdBufferInitialFillPercentage = 123,
+#'               HrdBufferSize = 123,
+#'               InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'               MaxBitrate = 123,
+#'               MinIInterval = 123,
+#'               NumberBFramesBetweenReferenceFrames = 123,
+#'               NumberReferenceFrames = 123,
+#'               ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               ParDenominator = 123,
+#'               ParNumerator = 123,
+#'               QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'               QvbrSettings = list(
+#'                 MaxAverageBitrate = 123,
+#'                 QvbrQualityLevel = 123,
+#'                 QvbrQualityLevelFineTune = 123.0
+#'               ),
+#'               RateControlMode = "VBR"|"CBR"|"QVBR",
+#'               RepeatPps = "DISABLED"|"ENABLED",
+#'               ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'               SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'               Slices = 123,
+#'               SlowPal = "DISABLED"|"ENABLED",
+#'               Softness = 123,
+#'               SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'               Syntax = "DEFAULT"|"RP2027",
+#'               Telecine = "NONE"|"SOFT"|"HARD",
+#'               TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'               UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'             ),
+#'             H265Settings = list(
+#'               AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'               AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'               Bitrate = 123,
+#'               CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'               CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'               DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'               FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               GopBReference = "DISABLED"|"ENABLED",
+#'               GopClosedCadence = 123,
+#'               GopSize = 123.0,
+#'               GopSizeUnits = "FRAMES"|"SECONDS",
+#'               HrdBufferInitialFillPercentage = 123,
+#'               HrdBufferSize = 123,
+#'               InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'               MaxBitrate = 123,
+#'               MinIInterval = 123,
+#'               NumberBFramesBetweenReferenceFrames = 123,
+#'               NumberReferenceFrames = 123,
+#'               ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               ParDenominator = 123,
+#'               ParNumerator = 123,
+#'               QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'               QvbrSettings = list(
+#'                 MaxAverageBitrate = 123,
+#'                 QvbrQualityLevel = 123,
+#'                 QvbrQualityLevelFineTune = 123.0
+#'               ),
+#'               RateControlMode = "VBR"|"CBR"|"QVBR",
+#'               SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'               ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'               SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'               Slices = 123,
+#'               SlowPal = "DISABLED"|"ENABLED",
+#'               SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'               Telecine = "NONE"|"SOFT"|"HARD",
+#'               TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'               TemporalIds = "DISABLED"|"ENABLED",
+#'               Tiles = "DISABLED"|"ENABLED",
+#'               UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'               WriteMp4PackagingType = "HVC1"|"HEV1"
+#'             ),
+#'             Mpeg2Settings = list(
+#'               AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'               Bitrate = 123,
+#'               CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'               CodecProfile = "MAIN"|"PROFILE_422",
+#'               DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               GopClosedCadence = 123,
+#'               GopSize = 123.0,
+#'               GopSizeUnits = "FRAMES"|"SECONDS",
+#'               HrdBufferInitialFillPercentage = 123,
+#'               HrdBufferSize = 123,
+#'               InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'               IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'               MaxBitrate = 123,
+#'               MinIInterval = 123,
+#'               NumberBFramesBetweenReferenceFrames = 123,
+#'               ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               ParDenominator = 123,
+#'               ParNumerator = 123,
+#'               QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'               RateControlMode = "VBR"|"CBR",
+#'               ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'               SceneChangeDetect = "DISABLED"|"ENABLED",
+#'               SlowPal = "DISABLED"|"ENABLED",
+#'               Softness = 123,
+#'               SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'               Syntax = "DEFAULT"|"D_10",
+#'               Telecine = "NONE"|"SOFT"|"HARD",
+#'               TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'             ),
+#'             ProresSettings = list(
+#'               CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'               ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               ParDenominator = 123,
+#'               ParNumerator = 123,
+#'               ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'               SlowPal = "DISABLED"|"ENABLED",
+#'               Telecine = "NONE"|"HARD"
+#'             ),
+#'             Vc3Settings = list(
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'               ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'               SlowPal = "DISABLED"|"ENABLED",
+#'               Telecine = "NONE"|"HARD",
+#'               Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'             ),
+#'             Vp8Settings = list(
+#'               Bitrate = 123,
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               GopSize = 123.0,
+#'               HrdBufferSize = 123,
+#'               MaxBitrate = 123,
+#'               ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               ParDenominator = 123,
+#'               ParNumerator = 123,
+#'               QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'               RateControlMode = "VBR"
+#'             ),
+#'             Vp9Settings = list(
+#'               Bitrate = 123,
+#'               FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'               FramerateDenominator = 123,
+#'               FramerateNumerator = 123,
+#'               GopSize = 123.0,
+#'               HrdBufferSize = 123,
+#'               MaxBitrate = 123,
+#'               ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'               ParDenominator = 123,
+#'               ParNumerator = 123,
+#'               QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'               RateControlMode = "VBR"
+#'             )
+#'           ),
+#'           ColorMetadata = "IGNORE"|"INSERT",
+#'           Crop = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           DropFrameTimecode = "DISABLED"|"ENABLED",
+#'           FixedAfd = 123,
+#'           Height = 123,
+#'           Position = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'           ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'           Sharpness = 123,
+#'           TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'           VideoPreprocessors = list(
+#'             ColorCorrector = list(
+#'               Brightness = 123,
+#'               ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'               Contrast = 123,
+#'               Hdr10Metadata = list(
+#'                 BluePrimaryX = 123,
+#'                 BluePrimaryY = 123,
+#'                 GreenPrimaryX = 123,
+#'                 GreenPrimaryY = 123,
+#'                 MaxContentLightLevel = 123,
+#'                 MaxFrameAverageLightLevel = 123,
+#'                 MaxLuminance = 123,
+#'                 MinLuminance = 123,
+#'                 RedPrimaryX = 123,
+#'                 RedPrimaryY = 123,
+#'                 WhitePointX = 123,
+#'                 WhitePointY = 123
+#'               ),
+#'               Hue = 123,
+#'               Saturation = 123
+#'             ),
+#'             Deinterlacer = list(
+#'               Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'               Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'               Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'             ),
+#'             DolbyVision = list(
+#'               L6Metadata = list(
+#'                 MaxCll = 123,
+#'                 MaxFall = 123
+#'               ),
+#'               L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'               Profile = "PROFILE_5"
+#'             ),
+#'             ImageInserter = list(
+#'               InsertableImages = list(
+#'                 list(
+#'                   Duration = 123,
+#'                   FadeIn = 123,
+#'                   FadeOut = 123,
+#'                   Height = 123,
+#'                   ImageInserterInput = "string",
+#'                   ImageX = 123,
+#'                   ImageY = 123,
+#'                   Layer = 123,
+#'                   Opacity = 123,
+#'                   StartTime = "string",
+#'                   Width = 123
+#'                 )
+#'               )
+#'             ),
+#'             NoiseReducer = list(
+#'               Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'               FilterSettings = list(
+#'                 Strength = 123
+#'               ),
+#'               SpatialFilterSettings = list(
+#'                 PostFilterSharpenStrength = 123,
+#'                 Speed = 123,
+#'                 Strength = 123
+#'               ),
+#'               TemporalFilterSettings = list(
+#'                 AggressiveMode = 123,
+#'                 PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                 Speed = 123,
+#'                 Strength = 123
+#'               )
+#'             ),
+#'             PartnerWatermarking = list(
+#'               NexguardFileMarkerSettings = list(
+#'                 License = "string",
+#'                 Payload = 123,
+#'                 Preset = "string",
+#'                 Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'               )
+#'             ),
+#'             TimecodeBurnin = list(
+#'               FontSize = 123,
+#'               Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'               Prefix = "string"
+#'             )
+#'           ),
+#'           Width = 123
+#'         )
+#'       ),
+#'       Type = "SYSTEM"|"CUSTOM"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3686,15 +12972,61 @@ mediaconvert_list_presets <- function(Category = NULL, ListBy = NULL, MaxResults
 #' Retrieve a JSON array of up to twenty of your queues
 #'
 #' @description
-#' Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.
+#' Retrieve a JSON array of up to twenty of your queues. This will return
+#' the queues themselves, not just a list of them. To retrieve the next
+#' twenty queues, use the nextToken string returned with the array.
 #'
 #' @usage
 #' mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 #'
-#' @param ListBy Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.
-#' @param MaxResults Optional. Number of queues, up to twenty, that will be returned at one time.
-#' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of queues.
-#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param ListBy Optional. When you request a list of queues, you can choose to list them
+#' alphabetically by NAME or chronologically by CREATION_DATE. If you
+#' don't specify, the service will list them by creation date.
+#' @param MaxResults Optional. Number of queues, up to twenty, that will be returned at one
+#' time.
+#' @param NextToken Use this string, provided with the response to a previous request, to
+#' request the next batch of queues.
+#' @param Order Optional. When you request lists of resources, you can specify whether
+#' they are sorted in ASCENDING or DESCENDING order. Default varies by
+#' resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Queues = list(
+#'     list(
+#'       Arn = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       PricingPlan = "ON_DEMAND"|"RESERVED",
+#'       ProgressingJobsCount = 123,
+#'       ReservationPlan = list(
+#'         Commitment = "ONE_YEAR",
+#'         ExpiresAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         PurchasedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RenewalType = "AUTO_RENEW"|"EXPIRE",
+#'         ReservedSlots = 123,
+#'         Status = "ACTIVE"|"EXPIRED"
+#'       ),
+#'       Status = "ACTIVE"|"PAUSED",
+#'       SubmittedJobsCount = 123,
+#'       Type = "SYSTEM"|"CUSTOM"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3734,7 +13066,21 @@ mediaconvert_list_queues <- function(ListBy = NULL, MaxResults = NULL, NextToken
 #' @usage
 #' mediaconvert_list_tags_for_resource(Arn)
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to list tags for. To get the ARN, send a GET request with the resource name.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to list
+#' tags for. To get the ARN, send a GET request with the resource name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceTags = list(
+#'     Arn = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3766,13 +13112,20 @@ mediaconvert_list_tags_for_resource <- function(Arn) {
 #' Add tags to a MediaConvert queue, preset, or job template
 #'
 #' @description
-#' Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+#' Add tags to a MediaConvert queue, preset, or job template. For
+#' information about tagging, see the User Guide at
+#' https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 #'
 #' @usage
 #' mediaconvert_tag_resource(Arn, Tags)
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag. To get the ARN, send a GET request with the resource name.
-#' @param Tags &#91;required&#93; The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag. To
+#' get the ARN, send a GET request with the resource name.
+#' @param Tags &#91;required&#93; The tags that you want to add to the resource. You can tag resources
+#' with a key-value pair or with only a key.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3807,13 +13160,19 @@ mediaconvert_tag_resource <- function(Arn, Tags) {
 #' Remove tags from a MediaConvert queue, preset, or job template
 #'
 #' @description
-#' Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+#' Remove tags from a MediaConvert queue, preset, or job template. For
+#' information about tagging, see the User Guide at
+#' https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 #'
 #' @usage
 #' mediaconvert_untag_resource(Arn, TagKeys)
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove tags from. To get the ARN, send a GET request with the resource name.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
+#' tags from. To get the ARN, send a GET request with the resource name.
 #' @param TagKeys The keys of the tags that you want to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3855,15 +13214,1174 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'   Description, HopDestinations, Name, Priority, Queue, Settings,
 #'   StatusUpdateInterval)
 #'
-#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
+#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long,
+#' visually complex content. Outputs that use this feature incur pro-tier
+#' pricing. For information about feature limitations, see the AWS
+#' Elemental MediaConvert User Guide.
 #' @param Category The new category for the job template, if you are changing it.
 #' @param Description The new description for the job template, if you are changing it.
 #' @param HopDestinations Optional list of hop destinations.
 #' @param Name &#91;required&#93; The name of the job template you are modifying
-#' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+#' @param Priority Specify the relative priority for this job. In any given queue, the
+#' service begins processing the job with the highest value first. When
+#' more than one job has the same priority, the service begins processing
+#' the job that you submitted first. If you don't specify a priority, the
+#' service uses the default value 0.
 #' @param Queue The new queue for the job template, if you are changing it.
-#' @param Settings JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs created from it.
-#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
+#' @param Settings JobTemplateSettings contains all the transcode settings saved in the
+#' template that will be applied to jobs created from it.
+#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon
+#' CloudWatch Events. Set the interval, in seconds, between status updates.
+#' MediaConvert sends an update at this interval from the time the service
+#' begins processing your job to the time it completes the transcode or
+#' encounters an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobTemplate = list(
+#'     AccelerationSettings = list(
+#'       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
+#'     ),
+#'     Arn = "string",
+#'     Category = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     HopDestinations = list(
+#'       list(
+#'         Priority = 123,
+#'         Queue = "string",
+#'         WaitMinutes = 123
+#'       )
+#'     ),
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Priority = 123,
+#'     Queue = "string",
+#'     Settings = list(
+#'       AdAvailOffset = 123,
+#'       AvailBlanking = list(
+#'         AvailBlankingImage = "string"
+#'       ),
+#'       Esam = list(
+#'         ManifestConfirmConditionNotification = list(
+#'           MccXml = "string"
+#'         ),
+#'         ResponseSignalPreroll = 123,
+#'         SignalProcessingNotification = list(
+#'           SccXml = "string"
+#'         )
+#'       ),
+#'       Inputs = list(
+#'         list(
+#'           AudioSelectorGroups = list(
+#'             list(
+#'               AudioSelectorNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AudioSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               DefaultSelection = "DEFAULT"|"NOT_DEFAULT",
+#'               ExternalAudioFileInput = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               Offset = 123,
+#'               Pids = list(
+#'                 123
+#'               ),
+#'               ProgramSelection = 123,
+#'               RemixSettings = list(
+#'                 ChannelMapping = list(
+#'                   OutputChannels = list(
+#'                     list(
+#'                       InputChannels = list(
+#'                         123
+#'                       ),
+#'                       InputChannelsFineTune = list(
+#'                         123.0
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 ChannelsIn = 123,
+#'                 ChannelsOut = 123
+#'               ),
+#'               SelectorType = "PID"|"TRACK"|"LANGUAGE_CODE",
+#'               Tracks = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           CaptionSelectors = list(
+#'             list(
+#'               CustomLanguageCode = "string",
+#'               LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'               SourceSettings = list(
+#'                 AncillarySourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   SourceAncillaryChannelNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 DvbSubSourceSettings = list(
+#'                   Pid = 123
+#'                 ),
+#'                 EmbeddedSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Source608ChannelNumber = 123,
+#'                   Source608TrackNumber = 123,
+#'                   TerminateCaptions = "END_OF_INPUT"|"DISABLED"
+#'                 ),
+#'                 FileSourceSettings = list(
+#'                   Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                   Framerate = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123
+#'                   ),
+#'                   SourceFile = "string",
+#'                   TimeDelta = 123
+#'                 ),
+#'                 SourceType = "ANCILLARY"|"DVB_SUB"|"EMBEDDED"|"SCTE20"|"SCC"|"TTML"|"STL"|"SRT"|"SMI"|"TELETEXT"|"NULL_SOURCE"|"IMSC",
+#'                 TeletextSourceSettings = list(
+#'                   PageNumber = "string"
+#'                 ),
+#'                 TrackSourceSettings = list(
+#'                   TrackNumber = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Crop = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           DeblockFilter = "ENABLED"|"DISABLED",
+#'           DenoiseFilter = "ENABLED"|"DISABLED",
+#'           FilterEnable = "AUTO"|"DISABLE"|"FORCE",
+#'           FilterStrength = 123,
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           InputClippings = list(
+#'             list(
+#'               EndTimecode = "string",
+#'               StartTimecode = "string"
+#'             )
+#'           ),
+#'           InputScanType = "AUTO"|"PSF",
+#'           Position = list(
+#'             Height = 123,
+#'             Width = 123,
+#'             X = 123,
+#'             Y = 123
+#'           ),
+#'           ProgramNumber = 123,
+#'           PsiControl = "IGNORE_PSI"|"USE_PSI",
+#'           TimecodeSource = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'           TimecodeStart = "string",
+#'           VideoSelector = list(
+#'             AlphaBehavior = "DISCARD"|"REMAP_TO_LUMA",
+#'             ColorSpace = "FOLLOW"|"REC_601"|"REC_709"|"HDR10"|"HLG_2020",
+#'             ColorSpaceUsage = "FORCE"|"FALLBACK",
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Pid = 123,
+#'             ProgramNumber = 123,
+#'             Rotate = "DEGREE_0"|"DEGREES_90"|"DEGREES_180"|"DEGREES_270"|"AUTO"
+#'           )
+#'         )
+#'       ),
+#'       MotionImageInserter = list(
+#'         Framerate = list(
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123
+#'         ),
+#'         Input = "string",
+#'         InsertionMode = "MOV"|"PNG",
+#'         Offset = list(
+#'           ImageX = 123,
+#'           ImageY = 123
+#'         ),
+#'         Playback = "ONCE"|"REPEAT",
+#'         StartTime = "string"
+#'       ),
+#'       NielsenConfiguration = list(
+#'         BreakoutCode = 123,
+#'         DistributorId = "string"
+#'       ),
+#'       NielsenNonLinearWatermark = list(
+#'         ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'         AdiFilename = "string",
+#'         AssetId = "string",
+#'         AssetName = "string",
+#'         CbetSourceId = "string",
+#'         EpisodeId = "string",
+#'         MetadataDestination = "string",
+#'         SourceId = 123,
+#'         SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'         TicServerUrl = "string",
+#'         UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'       ),
+#'       OutputGroups = list(
+#'         list(
+#'           AutomatedEncodingSettings = list(
+#'             AbrSettings = list(
+#'               MaxAbrBitrate = 123,
+#'               MaxRenditions = 123,
+#'               MinAbrBitrate = 123
+#'             )
+#'           ),
+#'           CustomName = "string",
+#'           Name = "string",
+#'           OutputGroupSettings = list(
+#'             CmafGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "SAMPLE_AES"|"AES_CTR",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   DashSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   HlsSignaledSystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   ResourceId = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               WriteDashManifest = "DISABLED"|"ENABLED",
+#'               WriteHlsManifest = "DISABLED"|"ENABLED",
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             DashIsoGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BaseUrl = "string",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               HbbtvCompliance = "HBBTV_1_5"|"NONE",
+#'               MinBufferTime = 123,
+#'               MinFinalSegmentLength = 123.0,
+#'               MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
+#'             ),
+#'             FileGroupSettings = list(
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             HlsGroupSettings = list(
+#'               AdMarkers = list(
+#'                 "ELEMENTAL"|"ELEMENTAL_SCTE35"
+#'               ),
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
+#'               BaseUrl = "string",
+#'               CaptionLanguageMappings = list(
+#'                 list(
+#'                   CaptionChannel = 123,
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               CaptionLanguageSetting = "INSERT"|"OMIT"|"NONE",
+#'               ClientCache = "DISABLED"|"ENABLED",
+#'               CodecSpecification = "RFC_6381"|"RFC_4281",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'               Encryption = list(
+#'                 ConstantInitializationVector = "string",
+#'                 EncryptionMethod = "AES128"|"SAMPLE_AES",
+#'                 InitializationVectorInManifest = "INCLUDE"|"EXCLUDE",
+#'                 OfflineEncrypted = "ENABLED"|"DISABLED",
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 ),
+#'                 StaticKeyProvider = list(
+#'                   KeyFormat = "string",
+#'                   KeyFormatVersions = "string",
+#'                   StaticKeyValue = "string",
+#'                   Url = "string"
+#'                 ),
+#'                 Type = "SPEKE"|"STATIC_KEY"
+#'               ),
+#'               ManifestCompression = "GZIP"|"NONE",
+#'               ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
+#'               MinFinalSegmentLength = 123.0,
+#'               MinSegmentLength = 123,
+#'               OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'               ProgramDateTime = "INCLUDE"|"EXCLUDE",
+#'               ProgramDateTimePeriod = 123,
+#'               SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
+#'               SegmentLength = 123,
+#'               SegmentsPerSubdirectory = 123,
+#'               StreamInfResolution = "INCLUDE"|"EXCLUDE",
+#'               TimedMetadataId3Frame = "NONE"|"PRIV"|"TDRL",
+#'               TimedMetadataId3Period = 123,
+#'               TimestampDeltaMilliseconds = 123
+#'             ),
+#'             MsSmoothGroupSettings = list(
+#'               AdditionalManifests = list(
+#'                 list(
+#'                   ManifestNameModifier = "string",
+#'                   SelectedOutputs = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AudioDeduplication = "COMBINE_DUPLICATE_STREAMS"|"NONE",
+#'               Destination = "string",
+#'               DestinationSettings = list(
+#'                 S3Settings = list(
+#'                   AccessControl = list(
+#'                     CannedAcl = "PUBLIC_READ"|"AUTHENTICATED_READ"|"BUCKET_OWNER_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'                   ),
+#'                   Encryption = list(
+#'                     EncryptionType = "SERVER_SIDE_ENCRYPTION_S3"|"SERVER_SIDE_ENCRYPTION_KMS",
+#'                     KmsKeyArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Encryption = list(
+#'                 SpekeKeyProvider = list(
+#'                   CertificateArn = "string",
+#'                   ResourceId = "string",
+#'                   SystemIds = list(
+#'                     "string"
+#'                   ),
+#'                   Url = "string"
+#'                 )
+#'               ),
+#'               FragmentLength = 123,
+#'               ManifestEncoding = "UTF8"|"UTF16"
+#'             ),
+#'             Type = "HLS_GROUP_SETTINGS"|"DASH_ISO_GROUP_SETTINGS"|"FILE_GROUP_SETTINGS"|"MS_SMOOTH_GROUP_SETTINGS"|"CMAF_GROUP_SETTINGS"
+#'           ),
+#'           Outputs = list(
+#'             list(
+#'               AudioDescriptions = list(
+#'                 list(
+#'                   AudioChannelTaggingSettings = list(
+#'                     ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                   ),
+#'                   AudioNormalizationSettings = list(
+#'                     Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                     AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'                     CorrectionGateLevel = 123,
+#'                     LoudnessLogging = "LOG"|"DONT_LOG",
+#'                     PeakCalculation = "TRUE_PEAK"|"NONE",
+#'                     TargetLkfs = 123.0
+#'                   ),
+#'                   AudioSourceName = "string",
+#'                   AudioType = 123,
+#'                   AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   CodecSettings = list(
+#'                     AacSettings = list(
+#'                       AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'                       Bitrate = 123,
+#'                       CodecProfile = "LC"|"HEV1"|"HEV2",
+#'                       CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       RawFormat = "LATM_LOAS"|"NONE",
+#'                       SampleRate = 123,
+#'                       Specification = "MPEG2"|"MPEG4",
+#'                       VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'                     ),
+#'                     Ac3Settings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       SampleRate = 123
+#'                     ),
+#'                     AiffSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'                     Eac3AtmosSettings = list(
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN",
+#'                       CodingMode = "CODING_MODE_9_1_6",
+#'                       DialogueIntelligence = "ENABLED"|"DISABLED",
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'                       SampleRate = 123,
+#'                       SpeechThreshold = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Eac3Settings = list(
+#'                       AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'                       Bitrate = 123,
+#'                       BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'                       CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'                       DcFilter = "ENABLED"|"DISABLED",
+#'                       Dialnorm = 123,
+#'                       DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'                       LfeControl = "LFE"|"NO_LFE",
+#'                       LfeFilter = "ENABLED"|"DISABLED",
+#'                       LoRoCenterMixLevel = 123.0,
+#'                       LoRoSurroundMixLevel = 123.0,
+#'                       LtRtCenterMixLevel = 123.0,
+#'                       LtRtSurroundMixLevel = 123.0,
+#'                       MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                       PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'                       PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'                       SampleRate = 123,
+#'                       StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'                       SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'                       SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'                     ),
+#'                     Mp2Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     Mp3Settings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       RateControlMode = "CBR"|"VBR",
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     OpusSettings = list(
+#'                       Bitrate = 123,
+#'                       Channels = 123,
+#'                       SampleRate = 123
+#'                     ),
+#'                     VorbisSettings = list(
+#'                       Channels = 123,
+#'                       SampleRate = 123,
+#'                       VbrQuality = 123
+#'                     ),
+#'                     WavSettings = list(
+#'                       BitDepth = 123,
+#'                       Channels = 123,
+#'                       Format = "RIFF"|"RF64",
+#'                       SampleRate = 123
+#'                     )
+#'                   ),
+#'                   CustomLanguageCode = "string",
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'                   RemixSettings = list(
+#'                     ChannelMapping = list(
+#'                       OutputChannels = list(
+#'                         list(
+#'                           InputChannels = list(
+#'                             123
+#'                           ),
+#'                           InputChannelsFineTune = list(
+#'                             123.0
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     ChannelsIn = 123,
+#'                     ChannelsOut = 123
+#'                   ),
+#'                   StreamName = "string"
+#'                 )
+#'               ),
+#'               CaptionDescriptions = list(
+#'                 list(
+#'                   CaptionSelectorName = "string",
+#'                   CustomLanguageCode = "string",
+#'                   DestinationSettings = list(
+#'                     BurninDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'                     DvbSubDestinationSettings = list(
+#'                       Alignment = "CENTERED"|"LEFT",
+#'                       BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'                       BackgroundOpacity = 123,
+#'                       FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       FontOpacity = 123,
+#'                       FontResolution = 123,
+#'                       FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'                       FontSize = 123,
+#'                       OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'                       OutlineSize = 123,
+#'                       ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'                       ShadowOpacity = 123,
+#'                       ShadowXOffset = 123,
+#'                       ShadowYOffset = 123,
+#'                       SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'                       TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'                       XPosition = 123,
+#'                       YPosition = 123
+#'                     ),
+#'                     EmbeddedDestinationSettings = list(
+#'                       Destination608ChannelNumber = 123,
+#'                       Destination708ServiceNumber = 123
+#'                     ),
+#'                     ImscDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     ),
+#'                     SccDestinationSettings = list(
+#'                       Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'                     ),
+#'                     TeletextDestinationSettings = list(
+#'                       PageNumber = "string",
+#'                       PageTypes = list(
+#'                         "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'                       )
+#'                     ),
+#'                     TtmlDestinationSettings = list(
+#'                       StylePassthrough = "ENABLED"|"DISABLED"
+#'                     )
+#'                   ),
+#'                   LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'                   LanguageDescription = "string"
+#'                 )
+#'               ),
+#'               ContainerSettings = list(
+#'                 CmfcSettings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'                 F4vSettings = list(
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'                 ),
+#'                 M2tsSettings = list(
+#'                   AudioBufferModel = "DVB"|"ATSC",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   Bitrate = 123,
+#'                   BufferModel = "MULTIPLEX"|"NONE",
+#'                   DvbNitSettings = list(
+#'                     NetworkId = 123,
+#'                     NetworkName = "string",
+#'                     NitInterval = 123
+#'                   ),
+#'                   DvbSdtSettings = list(
+#'                     OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'                     SdtInterval = 123,
+#'                     ServiceName = "string",
+#'                     ServiceProviderName = "string"
+#'                   ),
+#'                   DvbSubPids = list(
+#'                     123
+#'                   ),
+#'                   DvbTdtSettings = list(
+#'                     TdtInterval = 123
+#'                   ),
+#'                   DvbTeletextPid = 123,
+#'                   EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'                   EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'                   EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'                   ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'                   FragmentTime = 123.0,
+#'                   MaxPcrInterval = 123,
+#'                   MinEbpInterval = 123,
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   NullPacketBitrate = 123.0,
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   RateMode = "VBR"|"CBR",
+#'                   Scte35Esam = list(
+#'                     Scte35EsamPid = 123
+#'                   ),
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'                   SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'                   SegmentationTime = 123.0,
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 M3u8Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   AudioFramesPerPes = 123,
+#'                   AudioPids = list(
+#'                     123
+#'                   ),
+#'                   NielsenId3 = "INSERT"|"NONE",
+#'                   PatInterval = 123,
+#'                   PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'                   PcrPid = 123,
+#'                   PmtInterval = 123,
+#'                   PmtPid = 123,
+#'                   PrivateMetadataPid = 123,
+#'                   ProgramNumber = 123,
+#'                   Scte35Pid = 123,
+#'                   Scte35Source = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadata = "PASSTHROUGH"|"NONE",
+#'                   TimedMetadataPid = 123,
+#'                   TransportStreamId = 123,
+#'                   VideoPid = 123
+#'                 ),
+#'                 MovSettings = list(
+#'                   ClapAtom = "INCLUDE"|"EXCLUDE",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'                   PaddingControl = "OMNEON"|"NONE",
+#'                   Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'                 ),
+#'                 Mp4Settings = list(
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                   CttsVersion = 123,
+#'                   FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'                   MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'                   Mp4MajorBrand = "string"
+#'                 ),
+#'                 MpdSettings = list(
+#'                   AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                   AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                   CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'                   Scte35Esam = "INSERT"|"NONE",
+#'                   Scte35Source = "PASSTHROUGH"|"NONE"
+#'                 ),
+#'                 MxfSettings = list(
+#'                   AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                   Profile = "D_10"|"XDCAM"|"OP1A"
+#'                 )
+#'               ),
+#'               Extension = "string",
+#'               NameModifier = "string",
+#'               OutputSettings = list(
+#'                 HlsSettings = list(
+#'                   AudioGroupId = "string",
+#'                   AudioOnlyContainer = "AUTOMATIC"|"M2TS",
+#'                   AudioRenditionSets = "string",
+#'                   AudioTrackType = "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"|"ALTERNATE_AUDIO_AUTO_SELECT"|"ALTERNATE_AUDIO_NOT_AUTO_SELECT"|"AUDIO_ONLY_VARIANT_STREAM",
+#'                   IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'                   SegmentModifier = "string"
+#'                 )
+#'               ),
+#'               Preset = "string",
+#'               VideoDescription = list(
+#'                 AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'                 AntiAlias = "DISABLED"|"ENABLED",
+#'                 CodecSettings = list(
+#'                   Av1Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     MaxBitrate = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     QvbrSettings = list(
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "QVBR",
+#'                     Slices = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   AvcIntraSettings = list(
+#'                     AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                     AvcIntraUhdSettings = list(
+#'                       QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                     ),
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'                   FrameCaptureSettings = list(
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     MaxCaptures = 123,
+#'                     Quality = 123
+#'                   ),
+#'                   H264Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'                     CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     EntropyEncoding = "CABAC"|"CAVLC",
+#'                     FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     RepeatPps = "DISABLED"|"ENABLED",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"RP2027",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   H265Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                     AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'                     CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopBReference = "DISABLED"|"ENABLED",
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     NumberReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'                     QvbrSettings = list(
+#'                       MaxAverageBitrate = 123,
+#'                       QvbrQualityLevel = 123,
+#'                       QvbrQualityLevelFineTune = 123.0
+#'                     ),
+#'                     RateControlMode = "VBR"|"CBR"|"QVBR",
+#'                     SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'                     Slices = 123,
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     TemporalIds = "DISABLED"|"ENABLED",
+#'                     Tiles = "DISABLED"|"ENABLED",
+#'                     UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'                     WriteMp4PackagingType = "HVC1"|"HEV1"
+#'                   ),
+#'                   Mpeg2Settings = list(
+#'                     AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'                     Bitrate = 123,
+#'                     CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'                     CodecProfile = "MAIN"|"PROFILE_422",
+#'                     DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopClosedCadence = 123,
+#'                     GopSize = 123.0,
+#'                     GopSizeUnits = "FRAMES"|"SECONDS",
+#'                     HrdBufferInitialFillPercentage = 123,
+#'                     HrdBufferSize = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'                     MaxBitrate = 123,
+#'                     MinIInterval = 123,
+#'                     NumberBFramesBetweenReferenceFrames = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'                     RateControlMode = "VBR"|"CBR",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SceneChangeDetect = "DISABLED"|"ENABLED",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Softness = 123,
+#'                     SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'                     Syntax = "DEFAULT"|"D_10",
+#'                     Telecine = "NONE"|"SOFT"|"HARD",
+#'                     TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                   ),
+#'                   ProresSettings = list(
+#'                     CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD"
+#'                   ),
+#'                   Vc3Settings = list(
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                     ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                     SlowPal = "DISABLED"|"ENABLED",
+#'                     Telecine = "NONE"|"HARD",
+#'                     Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'                   ),
+#'                   Vp8Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   ),
+#'                   Vp9Settings = list(
+#'                     Bitrate = 123,
+#'                     FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                     FramerateDenominator = 123,
+#'                     FramerateNumerator = 123,
+#'                     GopSize = 123.0,
+#'                     HrdBufferSize = 123,
+#'                     MaxBitrate = 123,
+#'                     ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                     ParDenominator = 123,
+#'                     ParNumerator = 123,
+#'                     QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                     RateControlMode = "VBR"
+#'                   )
+#'                 ),
+#'                 ColorMetadata = "IGNORE"|"INSERT",
+#'                 Crop = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 DropFrameTimecode = "DISABLED"|"ENABLED",
+#'                 FixedAfd = 123,
+#'                 Height = 123,
+#'                 Position = list(
+#'                   Height = 123,
+#'                   Width = 123,
+#'                   X = 123,
+#'                   Y = 123
+#'                 ),
+#'                 RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'                 ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'                 Sharpness = 123,
+#'                 TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'                 VideoPreprocessors = list(
+#'                   ColorCorrector = list(
+#'                     Brightness = 123,
+#'                     ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'                     Contrast = 123,
+#'                     Hdr10Metadata = list(
+#'                       BluePrimaryX = 123,
+#'                       BluePrimaryY = 123,
+#'                       GreenPrimaryX = 123,
+#'                       GreenPrimaryY = 123,
+#'                       MaxContentLightLevel = 123,
+#'                       MaxFrameAverageLightLevel = 123,
+#'                       MaxLuminance = 123,
+#'                       MinLuminance = 123,
+#'                       RedPrimaryX = 123,
+#'                       RedPrimaryY = 123,
+#'                       WhitePointX = 123,
+#'                       WhitePointY = 123
+#'                     ),
+#'                     Hue = 123,
+#'                     Saturation = 123
+#'                   ),
+#'                   Deinterlacer = list(
+#'                     Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'                     Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'                     Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'                   ),
+#'                   DolbyVision = list(
+#'                     L6Metadata = list(
+#'                       MaxCll = 123,
+#'                       MaxFall = 123
+#'                     ),
+#'                     L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'                     Profile = "PROFILE_5"
+#'                   ),
+#'                   ImageInserter = list(
+#'                     InsertableImages = list(
+#'                       list(
+#'                         Duration = 123,
+#'                         FadeIn = 123,
+#'                         FadeOut = 123,
+#'                         Height = 123,
+#'                         ImageInserterInput = "string",
+#'                         ImageX = 123,
+#'                         ImageY = 123,
+#'                         Layer = 123,
+#'                         Opacity = 123,
+#'                         StartTime = "string",
+#'                         Width = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   NoiseReducer = list(
+#'                     Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'                     FilterSettings = list(
+#'                       Strength = 123
+#'                     ),
+#'                     SpatialFilterSettings = list(
+#'                       PostFilterSharpenStrength = 123,
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     ),
+#'                     TemporalFilterSettings = list(
+#'                       AggressiveMode = 123,
+#'                       PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'                       Speed = 123,
+#'                       Strength = 123
+#'                     )
+#'                   ),
+#'                   PartnerWatermarking = list(
+#'                     NexguardFileMarkerSettings = list(
+#'                       License = "string",
+#'                       Payload = 123,
+#'                       Preset = "string",
+#'                       Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'                     )
+#'                   ),
+#'                   TimecodeBurnin = list(
+#'                     FontSize = 123,
+#'                     Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'                     Prefix = "string"
+#'                   )
+#'                 ),
+#'                 Width = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       TimecodeConfig = list(
+#'         Anchor = "string",
+#'         Source = "EMBEDDED"|"ZEROBASED"|"SPECIFIEDSTART",
+#'         Start = "string",
+#'         TimestampOffset = "string"
+#'       ),
+#'       TimedMetadataInsertion = list(
+#'         Id3Insertions = list(
+#'           list(
+#'             Id3 = "string",
+#'             Timecode = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600",
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5034,6 +15552,675 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #' @param Name &#91;required&#93; The name of the preset you are modifying.
 #' @param Settings Settings for preset
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Preset = list(
+#'     Arn = "string",
+#'     Category = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Settings = list(
+#'       AudioDescriptions = list(
+#'         list(
+#'           AudioChannelTaggingSettings = list(
+#'             ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'           ),
+#'           AudioNormalizationSettings = list(
+#'             Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'             AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
+#'             CorrectionGateLevel = 123,
+#'             LoudnessLogging = "LOG"|"DONT_LOG",
+#'             PeakCalculation = "TRUE_PEAK"|"NONE",
+#'             TargetLkfs = 123.0
+#'           ),
+#'           AudioSourceName = "string",
+#'           AudioType = 123,
+#'           AudioTypeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'           CodecSettings = list(
+#'             AacSettings = list(
+#'               AudioDescriptionBroadcasterMix = "BROADCASTER_MIXED_AD"|"NORMAL",
+#'               Bitrate = 123,
+#'               CodecProfile = "LC"|"HEV1"|"HEV2",
+#'               CodingMode = "AD_RECEIVER_MIX"|"CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_5_1",
+#'               RateControlMode = "CBR"|"VBR",
+#'               RawFormat = "LATM_LOAS"|"NONE",
+#'               SampleRate = 123,
+#'               Specification = "MPEG2"|"MPEG4",
+#'               VbrQuality = "LOW"|"MEDIUM_LOW"|"MEDIUM_HIGH"|"HIGH"
+#'             ),
+#'             Ac3Settings = list(
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"DIALOGUE"|"EMERGENCY"|"HEARING_IMPAIRED"|"MUSIC_AND_EFFECTS"|"VISUALLY_IMPAIRED"|"VOICE_OVER",
+#'               CodingMode = "CODING_MODE_1_0"|"CODING_MODE_1_1"|"CODING_MODE_2_0"|"CODING_MODE_3_2_LFE",
+#'               Dialnorm = 123,
+#'               DynamicRangeCompressionProfile = "FILM_STANDARD"|"NONE",
+#'               LfeFilter = "ENABLED"|"DISABLED",
+#'               MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'               SampleRate = 123
+#'             ),
+#'             AiffSettings = list(
+#'               BitDepth = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
+#'             Eac3AtmosSettings = list(
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN",
+#'               CodingMode = "CODING_MODE_9_1_6",
+#'               DialogueIntelligence = "ENABLED"|"DISABLED",
+#'               DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               LoRoCenterMixLevel = 123.0,
+#'               LoRoSurroundMixLevel = 123.0,
+#'               LtRtCenterMixLevel = 123.0,
+#'               LtRtSurroundMixLevel = 123.0,
+#'               MeteringMode = "LEQ_A"|"ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
+#'               SampleRate = 123,
+#'               SpeechThreshold = 123,
+#'               StereoDownmix = "NOT_INDICATED"|"STEREO"|"SURROUND"|"DPL2",
+#'               SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'             ),
+#'             Eac3Settings = list(
+#'               AttenuationControl = "ATTENUATE_3_DB"|"NONE",
+#'               Bitrate = 123,
+#'               BitstreamMode = "COMPLETE_MAIN"|"COMMENTARY"|"EMERGENCY"|"HEARING_IMPAIRED"|"VISUALLY_IMPAIRED",
+#'               CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_3_2",
+#'               DcFilter = "ENABLED"|"DISABLED",
+#'               Dialnorm = 123,
+#'               DynamicRangeCompressionLine = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               DynamicRangeCompressionRf = "NONE"|"FILM_STANDARD"|"FILM_LIGHT"|"MUSIC_STANDARD"|"MUSIC_LIGHT"|"SPEECH",
+#'               LfeControl = "LFE"|"NO_LFE",
+#'               LfeFilter = "ENABLED"|"DISABLED",
+#'               LoRoCenterMixLevel = 123.0,
+#'               LoRoSurroundMixLevel = 123.0,
+#'               LtRtCenterMixLevel = 123.0,
+#'               LtRtSurroundMixLevel = 123.0,
+#'               MetadataControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'               PassthroughControl = "WHEN_POSSIBLE"|"NO_PASSTHROUGH",
+#'               PhaseControl = "SHIFT_90_DEGREES"|"NO_SHIFT",
+#'               SampleRate = 123,
+#'               StereoDownmix = "NOT_INDICATED"|"LO_RO"|"LT_RT"|"DPL2",
+#'               SurroundExMode = "NOT_INDICATED"|"ENABLED"|"DISABLED",
+#'               SurroundMode = "NOT_INDICATED"|"ENABLED"|"DISABLED"
+#'             ),
+#'             Mp2Settings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             Mp3Settings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               RateControlMode = "CBR"|"VBR",
+#'               SampleRate = 123,
+#'               VbrQuality = 123
+#'             ),
+#'             OpusSettings = list(
+#'               Bitrate = 123,
+#'               Channels = 123,
+#'               SampleRate = 123
+#'             ),
+#'             VorbisSettings = list(
+#'               Channels = 123,
+#'               SampleRate = 123,
+#'               VbrQuality = 123
+#'             ),
+#'             WavSettings = list(
+#'               BitDepth = 123,
+#'               Channels = 123,
+#'               Format = "RIFF"|"RF64",
+#'               SampleRate = 123
+#'             )
+#'           ),
+#'           CustomLanguageCode = "string",
+#'           LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'           LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
+#'           RemixSettings = list(
+#'             ChannelMapping = list(
+#'               OutputChannels = list(
+#'                 list(
+#'                   InputChannels = list(
+#'                     123
+#'                   ),
+#'                   InputChannelsFineTune = list(
+#'                     123.0
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             ChannelsIn = 123,
+#'             ChannelsOut = 123
+#'           ),
+#'           StreamName = "string"
+#'         )
+#'       ),
+#'       CaptionDescriptions = list(
+#'         list(
+#'           CustomLanguageCode = "string",
+#'           DestinationSettings = list(
+#'             BurninDestinationSettings = list(
+#'               Alignment = "CENTERED"|"LEFT",
+#'               BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'               BackgroundOpacity = 123,
+#'               FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               FontOpacity = 123,
+#'               FontResolution = 123,
+#'               FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'               FontSize = 123,
+#'               OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               OutlineSize = 123,
+#'               ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'               ShadowOpacity = 123,
+#'               ShadowXOffset = 123,
+#'               ShadowYOffset = 123,
+#'               TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'               XPosition = 123,
+#'               YPosition = 123
+#'             ),
+#'             DestinationType = "BURN_IN"|"DVB_SUB"|"EMBEDDED"|"EMBEDDED_PLUS_SCTE20"|"IMSC"|"SCTE20_PLUS_EMBEDDED"|"SCC"|"SRT"|"SMI"|"TELETEXT"|"TTML"|"WEBVTT",
+#'             DvbSubDestinationSettings = list(
+#'               Alignment = "CENTERED"|"LEFT",
+#'               BackgroundColor = "NONE"|"BLACK"|"WHITE",
+#'               BackgroundOpacity = 123,
+#'               FontColor = "WHITE"|"BLACK"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               FontOpacity = 123,
+#'               FontResolution = 123,
+#'               FontScript = "AUTOMATIC"|"HANS"|"HANT",
+#'               FontSize = 123,
+#'               OutlineColor = "BLACK"|"WHITE"|"YELLOW"|"RED"|"GREEN"|"BLUE",
+#'               OutlineSize = 123,
+#'               ShadowColor = "NONE"|"BLACK"|"WHITE",
+#'               ShadowOpacity = 123,
+#'               ShadowXOffset = 123,
+#'               ShadowYOffset = 123,
+#'               SubtitlingType = "HEARING_IMPAIRED"|"STANDARD",
+#'               TeletextSpacing = "FIXED_GRID"|"PROPORTIONAL",
+#'               XPosition = 123,
+#'               YPosition = 123
+#'             ),
+#'             EmbeddedDestinationSettings = list(
+#'               Destination608ChannelNumber = 123,
+#'               Destination708ServiceNumber = 123
+#'             ),
+#'             ImscDestinationSettings = list(
+#'               StylePassthrough = "ENABLED"|"DISABLED"
+#'             ),
+#'             SccDestinationSettings = list(
+#'               Framerate = "FRAMERATE_23_97"|"FRAMERATE_24"|"FRAMERATE_25"|"FRAMERATE_29_97_DROPFRAME"|"FRAMERATE_29_97_NON_DROPFRAME"
+#'             ),
+#'             TeletextDestinationSettings = list(
+#'               PageNumber = "string",
+#'               PageTypes = list(
+#'                 "PAGE_TYPE_INITIAL"|"PAGE_TYPE_SUBTITLE"|"PAGE_TYPE_ADDL_INFO"|"PAGE_TYPE_PROGRAM_SCHEDULE"|"PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE"
+#'               )
+#'             ),
+#'             TtmlDestinationSettings = list(
+#'               StylePassthrough = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
+#'           LanguageCode = "ENG"|"SPA"|"FRA"|"DEU"|"GER"|"ZHO"|"ARA"|"HIN"|"JPN"|"RUS"|"POR"|"ITA"|"URD"|"VIE"|"KOR"|"PAN"|"ABK"|"AAR"|"AFR"|"AKA"|"SQI"|"AMH"|"ARG"|"HYE"|"ASM"|"AVA"|"AVE"|"AYM"|"AZE"|"BAM"|"BAK"|"EUS"|"BEL"|"BEN"|"BIH"|"BIS"|"BOS"|"BRE"|"BUL"|"MYA"|"CAT"|"KHM"|"CHA"|"CHE"|"NYA"|"CHU"|"CHV"|"COR"|"COS"|"CRE"|"HRV"|"CES"|"DAN"|"DIV"|"NLD"|"DZO"|"ENM"|"EPO"|"EST"|"EWE"|"FAO"|"FIJ"|"FIN"|"FRM"|"FUL"|"GLA"|"GLG"|"LUG"|"KAT"|"ELL"|"GRN"|"GUJ"|"HAT"|"HAU"|"HEB"|"HER"|"HMO"|"HUN"|"ISL"|"IDO"|"IBO"|"IND"|"INA"|"ILE"|"IKU"|"IPK"|"GLE"|"JAV"|"KAL"|"KAN"|"KAU"|"KAS"|"KAZ"|"KIK"|"KIN"|"KIR"|"KOM"|"KON"|"KUA"|"KUR"|"LAO"|"LAT"|"LAV"|"LIM"|"LIN"|"LIT"|"LUB"|"LTZ"|"MKD"|"MLG"|"MSA"|"MAL"|"MLT"|"GLV"|"MRI"|"MAR"|"MAH"|"MON"|"NAU"|"NAV"|"NDE"|"NBL"|"NDO"|"NEP"|"SME"|"NOR"|"NOB"|"NNO"|"OCI"|"OJI"|"ORI"|"ORM"|"OSS"|"PLI"|"FAS"|"POL"|"PUS"|"QUE"|"QAA"|"RON"|"ROH"|"RUN"|"SMO"|"SAG"|"SAN"|"SRD"|"SRB"|"SNA"|"III"|"SND"|"SIN"|"SLK"|"SLV"|"SOM"|"SOT"|"SUN"|"SWA"|"SSW"|"SWE"|"TGL"|"TAH"|"TGK"|"TAM"|"TAT"|"TEL"|"THA"|"BOD"|"TIR"|"TON"|"TSO"|"TSN"|"TUR"|"TUK"|"TWI"|"UIG"|"UKR"|"UZB"|"VEN"|"VOL"|"WLN"|"CYM"|"FRY"|"WOL"|"XHO"|"YID"|"YOR"|"ZHA"|"ZUL"|"ORJ"|"QPC"|"TNG",
+#'           LanguageDescription = "string"
+#'         )
+#'       ),
+#'       ContainerSettings = list(
+#'         CmfcSettings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
+#'           Scte35Esam = "INSERT"|"NONE",
+#'           Scte35Source = "PASSTHROUGH"|"NONE"
+#'         ),
+#'         Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
+#'         F4vSettings = list(
+#'           MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
+#'         ),
+#'         M2tsSettings = list(
+#'           AudioBufferModel = "DVB"|"ATSC",
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           AudioFramesPerPes = 123,
+#'           AudioPids = list(
+#'             123
+#'           ),
+#'           Bitrate = 123,
+#'           BufferModel = "MULTIPLEX"|"NONE",
+#'           DvbNitSettings = list(
+#'             NetworkId = 123,
+#'             NetworkName = "string",
+#'             NitInterval = 123
+#'           ),
+#'           DvbSdtSettings = list(
+#'             OutputSdt = "SDT_FOLLOW"|"SDT_FOLLOW_IF_PRESENT"|"SDT_MANUAL"|"SDT_NONE",
+#'             SdtInterval = 123,
+#'             ServiceName = "string",
+#'             ServiceProviderName = "string"
+#'           ),
+#'           DvbSubPids = list(
+#'             123
+#'           ),
+#'           DvbTdtSettings = list(
+#'             TdtInterval = 123
+#'           ),
+#'           DvbTeletextPid = 123,
+#'           EbpAudioInterval = "VIDEO_AND_FIXED_INTERVALS"|"VIDEO_INTERVAL",
+#'           EbpPlacement = "VIDEO_AND_AUDIO_PIDS"|"VIDEO_PID",
+#'           EsRateInPes = "INCLUDE"|"EXCLUDE",
+#'           ForceTsVideoEbpOrder = "FORCE"|"DEFAULT",
+#'           FragmentTime = 123.0,
+#'           MaxPcrInterval = 123,
+#'           MinEbpInterval = 123,
+#'           NielsenId3 = "INSERT"|"NONE",
+#'           NullPacketBitrate = 123.0,
+#'           PatInterval = 123,
+#'           PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'           PcrPid = 123,
+#'           PmtInterval = 123,
+#'           PmtPid = 123,
+#'           PrivateMetadataPid = 123,
+#'           ProgramNumber = 123,
+#'           RateMode = "VBR"|"CBR",
+#'           Scte35Esam = list(
+#'             Scte35EsamPid = 123
+#'           ),
+#'           Scte35Pid = 123,
+#'           Scte35Source = "PASSTHROUGH"|"NONE",
+#'           SegmentationMarkers = "NONE"|"RAI_SEGSTART"|"RAI_ADAPT"|"PSI_SEGSTART"|"EBP"|"EBP_LEGACY",
+#'           SegmentationStyle = "MAINTAIN_CADENCE"|"RESET_CADENCE",
+#'           SegmentationTime = 123.0,
+#'           TimedMetadataPid = 123,
+#'           TransportStreamId = 123,
+#'           VideoPid = 123
+#'         ),
+#'         M3u8Settings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           AudioFramesPerPes = 123,
+#'           AudioPids = list(
+#'             123
+#'           ),
+#'           NielsenId3 = "INSERT"|"NONE",
+#'           PatInterval = 123,
+#'           PcrControl = "PCR_EVERY_PES_PACKET"|"CONFIGURED_PCR_PERIOD",
+#'           PcrPid = 123,
+#'           PmtInterval = 123,
+#'           PmtPid = 123,
+#'           PrivateMetadataPid = 123,
+#'           ProgramNumber = 123,
+#'           Scte35Pid = 123,
+#'           Scte35Source = "PASSTHROUGH"|"NONE",
+#'           TimedMetadata = "PASSTHROUGH"|"NONE",
+#'           TimedMetadataPid = 123,
+#'           TransportStreamId = 123,
+#'           VideoPid = 123
+#'         ),
+#'         MovSettings = list(
+#'           ClapAtom = "INCLUDE"|"EXCLUDE",
+#'           CslgAtom = "INCLUDE"|"EXCLUDE",
+#'           Mpeg2FourCCControl = "XDCAM"|"MPEG",
+#'           PaddingControl = "OMNEON"|"NONE",
+#'           Reference = "SELF_CONTAINED"|"EXTERNAL"
+#'         ),
+#'         Mp4Settings = list(
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           CslgAtom = "INCLUDE"|"EXCLUDE",
+#'           CttsVersion = 123,
+#'           FreeSpaceBox = "INCLUDE"|"EXCLUDE",
+#'           MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
+#'           Mp4MajorBrand = "string"
+#'         ),
+#'         MpdSettings = list(
+#'           AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'           AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'           CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
+#'           Scte35Esam = "INSERT"|"NONE",
+#'           Scte35Source = "PASSTHROUGH"|"NONE"
+#'         ),
+#'         MxfSettings = list(
+#'           AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'           Profile = "D_10"|"XDCAM"|"OP1A"
+#'         )
+#'       ),
+#'       VideoDescription = list(
+#'         AfdSignaling = "NONE"|"AUTO"|"FIXED",
+#'         AntiAlias = "DISABLED"|"ENABLED",
+#'         CodecSettings = list(
+#'           Av1Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             MaxBitrate = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             QvbrSettings = list(
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "QVBR",
+#'             Slices = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'           ),
+#'           AvcIntraSettings = list(
+#'             AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'             AvcIntraUhdSettings = list(
+#'               QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'             ),
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD"
+#'           ),
+#'           Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
+#'           FrameCaptureSettings = list(
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             MaxCaptures = 123,
+#'             Quality = 123
+#'           ),
+#'           H264Settings = list(
+#'             AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
+#'             CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             EntropyEncoding = "CABAC"|"CAVLC",
+#'             FieldEncoding = "PAFF"|"FORCE_FIELD",
+#'             FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopBReference = "DISABLED"|"ENABLED",
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             NumberReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'             QvbrSettings = list(
+#'               MaxAverageBitrate = 123,
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "VBR"|"CBR"|"QVBR",
+#'             RepeatPps = "DISABLED"|"ENABLED",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'             Slices = 123,
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Softness = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Syntax = "DEFAULT"|"RP2027",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             UnregisteredSeiTimecode = "DISABLED"|"ENABLED"
+#'           ),
+#'           H265Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'             AlternateTransferFunctionSei = "DISABLED"|"ENABLED",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2"|"LEVEL_6"|"LEVEL_6_1"|"LEVEL_6_2",
+#'             CodecProfile = "MAIN_MAIN"|"MAIN_HIGH"|"MAIN10_MAIN"|"MAIN10_HIGH"|"MAIN_422_8BIT_MAIN"|"MAIN_422_8BIT_HIGH"|"MAIN_422_10BIT_MAIN"|"MAIN_422_10BIT_HIGH",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopBReference = "DISABLED"|"ENABLED",
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             NumberReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
+#'             QvbrSettings = list(
+#'               MaxAverageBitrate = 123,
+#'               QvbrQualityLevel = 123,
+#'               QvbrQualityLevelFineTune = 123.0
+#'             ),
+#'             RateControlMode = "VBR"|"CBR"|"QVBR",
+#'             SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
+#'             Slices = 123,
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             TemporalIds = "DISABLED"|"ENABLED",
+#'             Tiles = "DISABLED"|"ENABLED",
+#'             UnregisteredSeiTimecode = "DISABLED"|"ENABLED",
+#'             WriteMp4PackagingType = "HVC1"|"HEV1"
+#'           ),
+#'           Mpeg2Settings = list(
+#'             AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH",
+#'             Bitrate = 123,
+#'             CodecLevel = "AUTO"|"LOW"|"MAIN"|"HIGH1440"|"HIGH",
+#'             CodecProfile = "MAIN"|"PROFILE_422",
+#'             DynamicSubGop = "ADAPTIVE"|"STATIC",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopClosedCadence = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             HrdBufferInitialFillPercentage = 123,
+#'             HrdBufferSize = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             IntraDcPrecision = "AUTO"|"INTRA_DC_PRECISION_8"|"INTRA_DC_PRECISION_9"|"INTRA_DC_PRECISION_10"|"INTRA_DC_PRECISION_11",
+#'             MaxBitrate = 123,
+#'             MinIInterval = 123,
+#'             NumberBFramesBetweenReferenceFrames = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
+#'             RateControlMode = "VBR"|"CBR",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SceneChangeDetect = "DISABLED"|"ENABLED",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Softness = 123,
+#'             SpatialAdaptiveQuantization = "DISABLED"|"ENABLED",
+#'             Syntax = "DEFAULT"|"D_10",
+#'             Telecine = "NONE"|"SOFT"|"HARD",
+#'             TemporalAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'           ),
+#'           ProresSettings = list(
+#'             CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD"
+#'           ),
+#'           Vc3Settings = list(
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'             ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'             SlowPal = "DISABLED"|"ENABLED",
+#'             Telecine = "NONE"|"HARD",
+#'             Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
+#'           ),
+#'           Vp8Settings = list(
+#'             Bitrate = 123,
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             HrdBufferSize = 123,
+#'             MaxBitrate = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'             RateControlMode = "VBR"
+#'           ),
+#'           Vp9Settings = list(
+#'             Bitrate = 123,
+#'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopSize = 123.0,
+#'             HrdBufferSize = 123,
+#'             MaxBitrate = 123,
+#'             ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'             ParDenominator = 123,
+#'             ParNumerator = 123,
+#'             QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'             RateControlMode = "VBR"
+#'           )
+#'         ),
+#'         ColorMetadata = "IGNORE"|"INSERT",
+#'         Crop = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
+#'         DropFrameTimecode = "DISABLED"|"ENABLED",
+#'         FixedAfd = 123,
+#'         Height = 123,
+#'         Position = list(
+#'           Height = 123,
+#'           Width = 123,
+#'           X = 123,
+#'           Y = 123
+#'         ),
+#'         RespondToAfd = "NONE"|"RESPOND"|"PASSTHROUGH",
+#'         ScalingBehavior = "DEFAULT"|"STRETCH_TO_OUTPUT",
+#'         Sharpness = 123,
+#'         TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI",
+#'         VideoPreprocessors = list(
+#'           ColorCorrector = list(
+#'             Brightness = 123,
+#'             ColorSpaceConversion = "NONE"|"FORCE_601"|"FORCE_709"|"FORCE_HDR10"|"FORCE_HLG_2020",
+#'             Contrast = 123,
+#'             Hdr10Metadata = list(
+#'               BluePrimaryX = 123,
+#'               BluePrimaryY = 123,
+#'               GreenPrimaryX = 123,
+#'               GreenPrimaryY = 123,
+#'               MaxContentLightLevel = 123,
+#'               MaxFrameAverageLightLevel = 123,
+#'               MaxLuminance = 123,
+#'               MinLuminance = 123,
+#'               RedPrimaryX = 123,
+#'               RedPrimaryY = 123,
+#'               WhitePointX = 123,
+#'               WhitePointY = 123
+#'             ),
+#'             Hue = 123,
+#'             Saturation = 123
+#'           ),
+#'           Deinterlacer = list(
+#'             Algorithm = "INTERPOLATE"|"INTERPOLATE_TICKER"|"BLEND"|"BLEND_TICKER",
+#'             Control = "FORCE_ALL_FRAMES"|"NORMAL",
+#'             Mode = "DEINTERLACE"|"INVERSE_TELECINE"|"ADAPTIVE"
+#'           ),
+#'           DolbyVision = list(
+#'             L6Metadata = list(
+#'               MaxCll = 123,
+#'               MaxFall = 123
+#'             ),
+#'             L6Mode = "PASSTHROUGH"|"RECALCULATE"|"SPECIFY",
+#'             Profile = "PROFILE_5"
+#'           ),
+#'           ImageInserter = list(
+#'             InsertableImages = list(
+#'               list(
+#'                 Duration = 123,
+#'                 FadeIn = 123,
+#'                 FadeOut = 123,
+#'                 Height = 123,
+#'                 ImageInserterInput = "string",
+#'                 ImageX = 123,
+#'                 ImageY = 123,
+#'                 Layer = 123,
+#'                 Opacity = 123,
+#'                 StartTime = "string",
+#'                 Width = 123
+#'               )
+#'             )
+#'           ),
+#'           NoiseReducer = list(
+#'             Filter = "BILATERAL"|"MEAN"|"GAUSSIAN"|"LANCZOS"|"SHARPEN"|"CONSERVE"|"SPATIAL"|"TEMPORAL",
+#'             FilterSettings = list(
+#'               Strength = 123
+#'             ),
+#'             SpatialFilterSettings = list(
+#'               PostFilterSharpenStrength = 123,
+#'               Speed = 123,
+#'               Strength = 123
+#'             ),
+#'             TemporalFilterSettings = list(
+#'               AggressiveMode = 123,
+#'               PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
+#'               Speed = 123,
+#'               Strength = 123
+#'             )
+#'           ),
+#'           PartnerWatermarking = list(
+#'             NexguardFileMarkerSettings = list(
+#'               License = "string",
+#'               Payload = 123,
+#'               Preset = "string",
+#'               Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
+#'             )
+#'           ),
+#'           TimecodeBurnin = list(
+#'             FontSize = 123,
+#'             Position = "TOP_CENTER"|"TOP_LEFT"|"TOP_RIGHT"|"MIDDLE_LEFT"|"MIDDLE_CENTER"|"MIDDLE_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_CENTER"|"BOTTOM_RIGHT",
+#'             Prefix = "string"
+#'           )
+#'         ),
+#'         Width = 123
+#'       )
+#'     ),
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_preset(
@@ -5723,8 +16910,51 @@ mediaconvert_update_preset <- function(Category = NULL, Description = NULL, Name
 #'
 #' @param Description The new description for the queue, if you are changing it.
 #' @param Name &#91;required&#93; The name of the queue that you are modifying.
-#' @param ReservationPlanSettings The new details of your pricing plan for your reserved queue. When you set up a new pricing plan to replace an expired one, you enter into another 12-month commitment. When you add capacity to your queue by increasing the number of RTS, you extend the term of your commitment to 12 months from when you add capacity. After you make these commitments, you can't cancel them.
-#' @param Status Pause or activate a queue by changing its status between ACTIVE and PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that are running when you pause the queue continue to run until they finish or result in an error.
+#' @param ReservationPlanSettings The new details of your pricing plan for your reserved queue. When you
+#' set up a new pricing plan to replace an expired one, you enter into
+#' another 12-month commitment. When you add capacity to your queue by
+#' increasing the number of RTS, you extend the term of your commitment to
+#' 12 months from when you add capacity. After you make these commitments,
+#' you can't cancel them.
+#' @param Status Pause or activate a queue by changing its status between ACTIVE and
+#' PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that
+#' are running when you pause the queue continue to run until they finish
+#' or result in an error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Queue = list(
+#'     Arn = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     PricingPlan = "ON_DEMAND"|"RESERVED",
+#'     ProgressingJobsCount = 123,
+#'     ReservationPlan = list(
+#'       Commitment = "ONE_YEAR",
+#'       ExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PurchasedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RenewalType = "AUTO_RENEW"|"EXPIRE",
+#'       ReservedSlots = 123,
+#'       Status = "ACTIVE"|"EXPIRED"
+#'     ),
+#'     Status = "ACTIVE"|"PAUSED",
+#'     SubmittedJobsCount = 123,
+#'     Type = "SYSTEM"|"CUSTOM"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -12,6 +12,9 @@ opsworks_assign_instance(InstanceId, LayerIds)
 \item{LayerIds}{[required] The layer ID, which must correspond to a custom layer. You cannot assign
 a registered instance to a built-in layer.}
 }
+\value{
+An empty list.
+}
 \description{
 Assign a registered instance to a layer.
 \itemize{

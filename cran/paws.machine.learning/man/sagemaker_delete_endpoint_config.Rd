@@ -9,6 +9,9 @@ sagemaker_delete_endpoint_config(EndpointConfigName)
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration that you want to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an endpoint configuration. The
 \code{\link[=sagemaker_delete_endpoint_config]{delete_endpoint_config}} API deletes

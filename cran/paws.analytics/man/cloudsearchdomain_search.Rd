@@ -24,10 +24,10 @@ or specify search or filter criteria. You can also specify expressions
 as return fields.
 
 You specify the expressions in JSON using the form
-\verb{\\\{"EXPRESSIONNAME":"EXPRESSION"\\\}}. You can define and use multiple
+\code{{"EXPRESSIONNAME":"EXPRESSION"}}. You can define and use multiple
 expressions in a search request. For example:
 
-\verb{\\\{"expression1":"_score*rating", "expression2":"(1/rank)*year"\\\}}
+\verb{\{"expression1":"_score*rating", "expression2":"(1/rank)*year"\}}
 
 For information about the variables, operators, and functions you can
 use in expressions, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html#writing-expressions}{Writing Expressions}
@@ -37,7 +37,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 options that control how the facet information is returned. Each
 specified field must be facet-enabled in the domain configuration. The
 fields and options are specified in JSON using the form
-\verb{\\\{\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION:\\"STRING\\"\\\},\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION\\":\\"STRING\\"\\\}\\\}}.
+\verb{\{\\"FIELD\\":\{\\"OPTION\\":VALUE,\\"OPTION:\\"STRING\\"\},\\"FIELD\\":\{\\"OPTION\\":VALUE,\\"OPTION\\":\\"STRING\\"\}\}}.
 
 You can specify the following faceting options:
 \itemize{
@@ -67,7 +67,7 @@ To count particular buckets of values, use the \code{buckets} option. For
 example, the following request uses the \code{buckets} option to calculate
 and return facet counts by decade.
 
-\verb{\\\{"year":\\\{"buckets":\\\["\\\[1970,1979\\\]","\\\[1980,1989\\\]","\\\[1990,1999\\\]","\\\[2000,2009\\\]","\\\[2010,\\\}"\\\]\\\}\\\}}
+\verb{\\\{"year":\\\{"buckets":["[1970,1979]","[1980,1989]","[1990,1999]","[2000,2009]","[2010,\\\}"]\\\}\\\}}
 
 To sort facets by facet count, use the \code{count} option. For example, the
 following request sets the \code{sort} option to \code{count} to sort the facet
@@ -75,13 +75,13 @@ values by facet count, with the facet values that have the most matching
 documents listed first. Setting the \code{size} option to 3 returns only the
 top three facet values.
 
-\verb{\\\{"year":\\\{"sort":"count","size":3\\\}\\\}}
+\verb{\{"year":\{"sort":"count","size":3\}\}}
 
 To sort the facets by value, use the \code{bucket} option. For example, the
 following request sets the \code{sort} option to \code{bucket} to sort the facet
 values numerically by year, with earliest year listed first.
 
-\verb{\\\{"year":\\\{"sort":"bucket"\\\}\\\}}
+\code{{"year":{"sort":"bucket"}}}
 
 For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/faceting.html}{Getting and Using Facet Information}
 in the \emph{Amazon CloudSearch Developer Guide}.}
@@ -101,7 +101,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 fields. Each specified field must be highlight enabled in the domain
 configuration. The fields and options are specified in JSON using the
 form
-\verb{\\\{\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION:\\"STRING\\"\\\},\\"FIELD\\":\\\{\\"OPTION\\":VALUE,\\"OPTION\\":\\"STRING\\"\\\}\\\}}.
+\verb{\{\\"FIELD\\":\{\\"OPTION\\":VALUE,\\"OPTION:\\"STRING\\"\},\\"FIELD\\":\{\\"OPTION\\":VALUE,\\"OPTION\\":\\"STRING\\"\}\}}.
 
 You can specify the following highlight options:
 \itemize{
@@ -126,7 +126,7 @@ tags: \verb{&lt;em>search-term&lt;/em&gt;}.
 For example, the following request retrieves highlights for the \code{actors}
 and \code{title} fields.
 
-\verb{\\\{ "actors": \\\{\\\}, "title": \\\{"format": "text","max_phrases": 2,"pre_tag": "","post_tag": ""\\\} \\\}}}
+\verb{\{ "actors": \{\}, "title": \{"format": "text","max_phrases": 2,"pre_tag": "","post_tag": ""\} \}}}
 
 \item{partial}{Enables partial results to be returned if one or more index partitions
 are unavailable. When your search index is partitioned across multiple
@@ -153,7 +153,7 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{queryOptions}{Configures options for the query parser specified in the \code{queryParser}
 parameter. You specify the options in JSON using the following form
-\verb{\\\{\\"OPTION1\\":\\"VALUE1\\",\\"OPTION2\\":VALUE2\\"...\\"OPTIONN\\":\\"VALUEN\\"\\\}.}
+\verb{\{\\"OPTION1\\":\\"VALUE1\\",\\"OPTION2\\":VALUE2\\"...\\"OPTIONN\\":\\"VALUEN\\"\}.}
 
 The options you can configure vary according to which parser you use:
 \itemize{
@@ -177,10 +177,10 @@ relative importance of each field when Amazon CloudSearch calculates
 relevance scores. To specify a field weight, append a caret (\code{^})
 symbol and the weight to the field name. For example, to boost the
 importance of the \code{title} field over the \code{description} field you
-could specify: \verb{"fields":\\\["title^5","description"\\\]}. Valid
-values: The name of any configured field and an optional numeric
-value greater than zero. Default: All \code{text} and \code{text-array}
-fields. Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
+could specify: \verb{"fields":["title^5","description"]}. Valid values:
+The name of any configured field and an optional numeric value
+greater than zero. Default: All \code{text} and \code{text-array} fields.
+Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
 \item \code{operators}: An array of the operators or special characters you
 want to disable for the simple query parser. If you disable the
 \code{and}, \code{or}, or \code{not} operators, the corresponding operators (\code{+},
@@ -192,14 +192,14 @@ disables the ability to control order of precedence using
 parentheses. Disabling \code{near} disables the ability to use the ~
 operator to perform a sloppy phrase search. Disabling the \code{fuzzy}
 operator disables the ability to use the ~ operator to perform a
-fuzzy search. \code{escape} disables the ability to use a backslash (\verb{\\\\})
+fuzzy search. \code{escape} disables the ability to use a backslash (\verb{\\})
 to escape special characters within the search string. Disabling
 whitespace is an advanced option that prevents the parser from
 tokenizing on whitespace, which can be useful for Vietnamese. (It
 prevents Vietnamese words from being split incorrectly.) For
 example, you could disable all operators other than the phrase
 operator to support just simple term and phrase queries:
-\verb{"operators":\\\["and","not","or", "prefix"\\\]}. Valid values: \code{and},
+\verb{"operators":["and","not","or", "prefix"]}. Valid values: \code{and},
 \code{escape}, \code{fuzzy}, \code{near}, \code{not}, \code{or}, \code{phrase}, \code{precedence},
 \code{prefix}, \code{whitespace}. Default: All operators and special
 characters are enabled. Valid for: \code{simple}.
@@ -212,11 +212,11 @@ the search string and still be boosted. To specify a field weight,
 append a caret (\code{^}) symbol and the weight to the field name. For
 example, to boost phrase matches in the \code{title} field over the
 \code{abstract} field, you could specify:
-\verb{"phraseFields":\\\["title^3", "plot"\\\]} Valid values: The name of
-any \code{text} or \code{text-array} field and an optional numeric value
-greater than zero. Default: No fields. If you don't specify any
-fields with \code{phraseFields}, proximity scoring is disabled even if
-\code{phraseSlop} is specified. Valid for: \code{dismax}.
+\verb{"phraseFields":["title^3", "plot"]} Valid values: The name of any
+\code{text} or \code{text-array} field and an optional numeric value greater
+than zero. Default: No fields. If you don't specify any fields with
+\code{phraseFields}, proximity scoring is disabled even if \code{phraseSlop}
+is specified. Valid for: \code{dismax}.
 \item \code{phraseSlop}: An integer value that specifies how much matches can
 deviate from the search phrase and still be boosted according to the
 weights specified in the \code{phraseFields} option; for example,
@@ -314,9 +314,61 @@ in the \emph{Amazon CloudSearch Developer Guide}.}
 Each specified field must be facet-enabled in the domain configuration.
 The fields are specified in JSON using the form:
 
-\verb{\\\{"FIELD-A":\\\{\\\},"FIELD-B":\\\{\\\}\\\}}
+\verb{\{"FIELD-A":\{\},"FIELD-B":\{\}\}}
 
 There are currently no options supported for statistics.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  status = list(
+    timems = 123,
+    rid = "string"
+  ),
+  hits = list(
+    found = 123,
+    start = 123,
+    cursor = "string",
+    hit = list(
+      list(
+        id = "string",
+        fields = list(
+          list(
+            "string"
+          )
+        ),
+        exprs = list(
+          "string"
+        ),
+        highlights = list(
+          "string"
+        )
+      )
+    )
+  ),
+  facets = list(
+    list(
+      buckets = list(
+        list(
+          value = "string",
+          count = 123
+        )
+      )
+    )
+  ),
+  stats = list(
+    list(
+      min = "string",
+      max = "string",
+      count = 123,
+      missing = 123,
+      sum = 123.0,
+      sumOfSquares = 123.0,
+      mean = "string",
+      stddev = 123.0
+    )
+  )
+)
+}
 }
 \description{
 Retrieves a list of documents that match the specified search criteria.

@@ -18,6 +18,9 @@ instance. The shell script must be a base64-encoded string.}
 including when you create the notebook instance. The shell script must
 be a base64-encoded string.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates a notebook instance lifecycle configuration created with the
 \code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}}

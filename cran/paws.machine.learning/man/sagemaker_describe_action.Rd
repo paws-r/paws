@@ -9,6 +9,46 @@ sagemaker_describe_action(ActionName)
 \arguments{
 \item{ActionName}{[required] The name of the action to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionName = "string",
+  ActionArn = "string",
+  Source = list(
+    SourceUri = "string",
+    SourceType = "string",
+    SourceId = "string"
+  ),
+  ActionType = "string",
+  Description = "string",
+  Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+  Properties = list(
+    "string"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreatedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  MetadataProperties = list(
+    CommitId = "string",
+    Repository = "string",
+    GeneratedBy = "string",
+    ProjectId = "string"
+  )
+)
+}
+}
 \description{
 Describes an action.
 }

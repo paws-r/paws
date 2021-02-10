@@ -43,6 +43,9 @@ problems.
 
 \item{Status}{[required] The status of all instances listed.}
 }
+\value{
+An empty list.
+}
 \description{
 Submits feedback about the status of an instance. The instance must be
 in the \code{running} state. If your experience with the instance differs

@@ -13,9 +13,6 @@ ec2_describe_coip_pools(PoolIds, Filters, MaxResults, NextToken, DryRun)
 \item{Filters}{The filters. The following are the possible values:
 \itemize{
 \item \code{coip-pool.pool-id}
-}<!-- -->
-
-\itemize{
 \item \code{coip-pool.local-gateway-route-table-id}
 }}
 
@@ -29,6 +26,28 @@ value.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CoipPools = list(
+    list(
+      PoolId = "string",
+      PoolCidrs = list(
+        "string"
+      ),
+      LocalGatewayRouteTableId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      PoolArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Describes the specified customer-owned address pools or all of your

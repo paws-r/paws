@@ -9,6 +9,12 @@ glue_delete_workflow(Name)
 \arguments{
 \item{Name}{[required] Name of the workflow to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Deletes a workflow.
 }

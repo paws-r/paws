@@ -13,6 +13,27 @@ apigateway_get_vpc_links(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      name = "string",
+      description = "string",
+      targetArns = list(
+        "string"
+      ),
+      status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
+      statusMessage = "string",
+      tags = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the VpcLinks collection under the caller's account in a selected
 region.

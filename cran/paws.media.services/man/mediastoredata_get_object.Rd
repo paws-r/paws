@@ -12,7 +12,7 @@ container. Format: <folder name>/<folder name>/<file
 name>
 
 For example, to upload the file \code{mlaw.avi} to the folder path
-\verb{premium\\\\canada} in the container \code{movies}, enter the path
+\verb{premium\\canada} in the container \code{movies}, enter the path
 \code{premium/canada/mlaw.avi}.
 
 Do not include the container name in this path.
@@ -39,6 +39,21 @@ omit an extension.}
 \url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35}. AWS
 Elemental MediaStore ignores this header for partially uploaded objects
 that have streaming upload availability.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Body = raw,
+  CacheControl = "string",
+  ContentRange = "string",
+  ContentLength = 123,
+  ContentType = "string",
+  ETag = "string",
+  LastModified = as.POSIXct(
+    "2015-01-01"
+  ),
+  StatusCode = 123
+)
+}
 }
 \description{
 Downloads the object at the specified path. If the object’s upload

@@ -11,6 +11,9 @@ elasticache_delete_cache_security_group(CacheSecurityGroupName)
 
 You cannot delete the default security group.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a cache security group.
 

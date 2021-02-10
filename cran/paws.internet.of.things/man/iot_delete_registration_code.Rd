@@ -6,6 +6,9 @@
 \usage{
 iot_delete_registration_code()
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a CA certificate registration code.
 }

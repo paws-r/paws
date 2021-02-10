@@ -36,6 +36,9 @@ otherwise.}
 Required if the policy type is \code{StepScaling} and not supported
 otherwise.}
 }
+\value{
+An empty list.
+}
 \description{
 Executes the specified policy. This can be useful for testing the design
 of your scaling policy.

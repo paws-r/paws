@@ -14,6 +14,12 @@ submitted a
 \code{\link[=route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account}}
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Rejects the transfer of a domain from another AWS account to the current
 AWS account. You initiate a transfer between AWS accounts using

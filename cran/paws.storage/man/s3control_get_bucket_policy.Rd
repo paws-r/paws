@@ -23,6 +23,12 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string"
+)
+}
+}
 \description{
 This action gets a bucket policy for an Amazon S3 on Outposts bucket. To
 get a policy for an S3 bucket, see
@@ -30,7 +36,7 @@ get a policy for an S3 bucket, see
 Storage Service API}.
 
 Returns the policy of a specified Outposts bucket. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 If you are using an identity other than the root user of the AWS account
@@ -49,7 +55,7 @@ As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
 denies the root user the ability to perform this action.
 
-For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies and User Policies}.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request

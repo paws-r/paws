@@ -47,6 +47,12 @@ requests to ensure that AWS CloudFormation successfully received them.
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Deletes stack instances for the specified accounts, in the specified
 Regions.

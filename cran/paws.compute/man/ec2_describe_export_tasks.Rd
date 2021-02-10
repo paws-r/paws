@@ -12,6 +12,35 @@ ec2_describe_export_tasks(ExportTaskIds, Filters)
 
 \item{Filters}{the filters for the export tasks.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExportTasks = list(
+    list(
+      Description = "string",
+      ExportTaskId = "string",
+      ExportToS3Task = list(
+        ContainerFormat = "ova",
+        DiskImageFormat = "VMDK"|"RAW"|"VHD",
+        S3Bucket = "string",
+        S3Key = "string"
+      ),
+      InstanceExportDetails = list(
+        InstanceId = "string",
+        TargetEnvironment = "citrix"|"vmware"|"microsoft"
+      ),
+      State = "active"|"cancelling"|"cancelled"|"completed",
+      StatusMessage = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified export instance tasks or all of your export
 instance tasks.

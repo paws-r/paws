@@ -14,6 +14,68 @@ databasemigrationservice_reboot_replication_instance(
 failover. (If the instance isn't configured for Multi-AZ, then you can't
 specify \code{true}.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationInstance = list(
+    ReplicationInstanceIdentifier = "string",
+    ReplicationInstanceClass = "string",
+    ReplicationInstanceStatus = "string",
+    AllocatedStorage = 123,
+    InstanceCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    VpcSecurityGroups = list(
+      list(
+        VpcSecurityGroupId = "string",
+        Status = "string"
+      )
+    ),
+    AvailabilityZone = "string",
+    ReplicationSubnetGroup = list(
+      ReplicationSubnetGroupIdentifier = "string",
+      ReplicationSubnetGroupDescription = "string",
+      VpcId = "string",
+      SubnetGroupStatus = "string",
+      Subnets = list(
+        list(
+          SubnetIdentifier = "string",
+          SubnetAvailabilityZone = list(
+            Name = "string"
+          ),
+          SubnetStatus = "string"
+        )
+      )
+    ),
+    PreferredMaintenanceWindow = "string",
+    PendingModifiedValues = list(
+      ReplicationInstanceClass = "string",
+      AllocatedStorage = 123,
+      MultiAZ = TRUE|FALSE,
+      EngineVersion = "string"
+    ),
+    MultiAZ = TRUE|FALSE,
+    EngineVersion = "string",
+    AutoMinorVersionUpgrade = TRUE|FALSE,
+    KmsKeyId = "string",
+    ReplicationInstanceArn = "string",
+    ReplicationInstancePublicIpAddress = "string",
+    ReplicationInstancePrivateIpAddress = "string",
+    ReplicationInstancePublicIpAddresses = list(
+      "string"
+    ),
+    ReplicationInstancePrivateIpAddresses = list(
+      "string"
+    ),
+    PubliclyAccessible = TRUE|FALSE,
+    SecondaryAvailabilityZone = "string",
+    FreeUntil = as.POSIXct(
+      "2015-01-01"
+    ),
+    DnsNameServers = "string"
+  )
+)
+}
+}
 \description{
 Reboots a replication instance. Rebooting results in a momentary outage,
 until the replication instance becomes available again.

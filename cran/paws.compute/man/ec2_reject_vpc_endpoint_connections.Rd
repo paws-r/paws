@@ -17,6 +17,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcEndpointIds}{[required] The IDs of one or more VPC endpoints.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Unsuccessful = list(
+    list(
+      Error = list(
+        Code = "string",
+        Message = "string"
+      ),
+      ResourceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Rejects one or more VPC endpoint connection requests to your VPC
 endpoint service.

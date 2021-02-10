@@ -59,6 +59,56 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  VolumeStatuses = list(
+    list(
+      Actions = list(
+        list(
+          Code = "string",
+          Description = "string",
+          EventId = "string",
+          EventType = "string"
+        )
+      ),
+      AvailabilityZone = "string",
+      OutpostArn = "string",
+      Events = list(
+        list(
+          Description = "string",
+          EventId = "string",
+          EventType = "string",
+          NotAfter = as.POSIXct(
+            "2015-01-01"
+          ),
+          NotBefore = as.POSIXct(
+            "2015-01-01"
+          ),
+          InstanceId = "string"
+        )
+      ),
+      VolumeId = "string",
+      VolumeStatus = list(
+        Details = list(
+          list(
+            Name = "io-enabled"|"io-performance",
+            Status = "string"
+          )
+        ),
+        Status = "ok"|"impaired"|"insufficient-data"
+      ),
+      AttachmentStatuses = list(
+        list(
+          IoPerformance = "string",
+          InstanceId = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the status of the specified volumes. Volume status provides
 the result of the checks performed on your volumes to determine events

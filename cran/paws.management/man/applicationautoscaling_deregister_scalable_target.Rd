@@ -103,6 +103,9 @@ capacity for an Amazon Keyspaces table.
 GiB) for brokers in an Amazon MSK cluster.
 }}
 }
+\value{
+An empty list.
+}
 \description{
 Deregisters an Application Auto Scaling scalable target when you have
 finished using it. To see which resources have been registered, use

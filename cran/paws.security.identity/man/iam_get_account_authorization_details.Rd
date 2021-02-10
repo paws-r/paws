@@ -31,6 +31,182 @@ receive a response indicating that the results are truncated. Set it to
 the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserDetailList = list(
+    list(
+      Path = "string",
+      UserName = "string",
+      UserId = "string",
+      Arn = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UserPolicyList = list(
+        list(
+          PolicyName = "string",
+          PolicyDocument = "string"
+        )
+      ),
+      GroupList = list(
+        "string"
+      ),
+      AttachedManagedPolicies = list(
+        list(
+          PolicyName = "string",
+          PolicyArn = "string"
+        )
+      ),
+      PermissionsBoundary = list(
+        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+        PermissionsBoundaryArn = "string"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  GroupDetailList = list(
+    list(
+      Path = "string",
+      GroupName = "string",
+      GroupId = "string",
+      Arn = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      GroupPolicyList = list(
+        list(
+          PolicyName = "string",
+          PolicyDocument = "string"
+        )
+      ),
+      AttachedManagedPolicies = list(
+        list(
+          PolicyName = "string",
+          PolicyArn = "string"
+        )
+      )
+    )
+  ),
+  RoleDetailList = list(
+    list(
+      Path = "string",
+      RoleName = "string",
+      RoleId = "string",
+      Arn = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      AssumeRolePolicyDocument = "string",
+      InstanceProfileList = list(
+        list(
+          Path = "string",
+          InstanceProfileName = "string",
+          InstanceProfileId = "string",
+          Arn = "string",
+          CreateDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          Roles = list(
+            list(
+              Path = "string",
+              RoleName = "string",
+              RoleId = "string",
+              Arn = "string",
+              CreateDate = as.POSIXct(
+                "2015-01-01"
+              ),
+              AssumeRolePolicyDocument = "string",
+              Description = "string",
+              MaxSessionDuration = 123,
+              PermissionsBoundary = list(
+                PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+                PermissionsBoundaryArn = "string"
+              ),
+              Tags = list(
+                list(
+                  Key = "string",
+                  Value = "string"
+                )
+              ),
+              RoleLastUsed = list(
+                LastUsedDate = as.POSIXct(
+                  "2015-01-01"
+                ),
+                Region = "string"
+              )
+            )
+          )
+        )
+      ),
+      RolePolicyList = list(
+        list(
+          PolicyName = "string",
+          PolicyDocument = "string"
+        )
+      ),
+      AttachedManagedPolicies = list(
+        list(
+          PolicyName = "string",
+          PolicyArn = "string"
+        )
+      ),
+      PermissionsBoundary = list(
+        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+        PermissionsBoundaryArn = "string"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      RoleLastUsed = list(
+        LastUsedDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        Region = "string"
+      )
+    )
+  ),
+  Policies = list(
+    list(
+      PolicyName = "string",
+      PolicyId = "string",
+      Arn = "string",
+      Path = "string",
+      DefaultVersionId = "string",
+      AttachmentCount = 123,
+      PermissionsBoundaryUsageCount = 123,
+      IsAttachable = TRUE|FALSE,
+      Description = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      PolicyVersionList = list(
+        list(
+          Document = "string",
+          VersionId = "string",
+          IsDefaultVersion = TRUE|FALSE,
+          CreateDate = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Retrieves information about all IAM users, groups, roles, and policies
 in your AWS account, including their relationships to one another. Use

@@ -9,6 +9,12 @@ rekognition_delete_collection(CollectionId)
 \arguments{
 \item{CollectionId}{[required] ID of the collection to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StatusCode = 123
+)
+}
+}
 \description{
 Deletes the specified collection. Note that this operation removes all
 faces in the collection. For an example, see

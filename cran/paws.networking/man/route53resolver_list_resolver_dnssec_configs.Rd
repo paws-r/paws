@@ -28,6 +28,20 @@ request.}
 
 \item{Filters}{An optional specification to return a subset of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  ResolverDnssecConfigs = list(
+    list(
+      Id = "string",
+      OwnerId = "string",
+      ResourceId = "string",
+      ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+    )
+  )
+)
+}
+}
 \description{
 Lists the configurations for DNSSEC validation that are associated with
 the current AWS account.

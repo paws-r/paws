@@ -11,6 +11,16 @@ efs_describe_lifecycle_configuration(FileSystemId)
 \item{FileSystemId}{[required] The ID of the file system whose \code{LifecycleConfiguration} object you want
 to retrieve (String).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LifecyclePolicies = list(
+    list(
+      TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
+    )
+  )
+)
+}
+}
 \description{
 Returns the current \code{LifecycleConfiguration} object for the specified
 Amazon EFS file system. EFS lifecycle management uses the

@@ -11,6 +11,9 @@ guardduty_disable_organization_admin_account(AdminAccountId)
 \item{AdminAccountId}{[required] The AWS Account ID for the organizations account to be disabled as a
 GuardDuty delegated administrator.}
 }
+\value{
+An empty list.
+}
 \description{
 Disables an AWS account within the Organization as the GuardDuty
 delegated administrator.

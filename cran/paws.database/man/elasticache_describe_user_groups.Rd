@@ -18,6 +18,34 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by MaxRecords. >}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserGroups = list(
+    list(
+      UserGroupId = "string",
+      Status = "string",
+      Engine = "string",
+      UserIds = list(
+        "string"
+      ),
+      PendingChanges = list(
+        UserIdsToRemove = list(
+          "string"
+        ),
+        UserIdsToAdd = list(
+          "string"
+        )
+      ),
+      ReplicationGroups = list(
+        "string"
+      ),
+      ARN = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of user groups.
 }

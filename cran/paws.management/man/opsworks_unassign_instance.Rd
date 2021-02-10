@@ -10,6 +10,9 @@ opsworks_unassign_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Unassigns a registered instance from all layers that are using the
 instance. The instance remains in the stack as an unassigned instance,

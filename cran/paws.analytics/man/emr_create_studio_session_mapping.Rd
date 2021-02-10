@@ -34,6 +34,9 @@ group.}
 applied to the user or group. Session policies refine Studio user
 permissions without the need to use multiple IAM user roles.}
 }
+\value{
+An empty list.
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

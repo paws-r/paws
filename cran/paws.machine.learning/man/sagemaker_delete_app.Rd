@@ -15,6 +15,9 @@ sagemaker_delete_app(DomainId, UserProfileName, AppType, AppName)
 
 \item{AppName}{[required] The name of the app.}
 }
+\value{
+An empty list.
+}
 \description{
 Used to stop and delete an app.
 }

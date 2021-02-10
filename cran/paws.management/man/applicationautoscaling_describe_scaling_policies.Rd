@@ -118,6 +118,66 @@ parameter is not used, the operation returns up to 50 results and a
 
 \item{NextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScalingPolicies = list(
+    list(
+      PolicyARN = "string",
+      PolicyName = "string",
+      ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
+      ResourceId = "string",
+      ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
+      PolicyType = "StepScaling"|"TargetTrackingScaling",
+      StepScalingPolicyConfiguration = list(
+        AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
+        StepAdjustments = list(
+          list(
+            MetricIntervalLowerBound = 123.0,
+            MetricIntervalUpperBound = 123.0,
+            ScalingAdjustment = 123
+          )
+        ),
+        MinAdjustmentMagnitude = 123,
+        Cooldown = 123,
+        MetricAggregationType = "Average"|"Minimum"|"Maximum"
+      ),
+      TargetTrackingScalingPolicyConfiguration = list(
+        TargetValue = 123.0,
+        PredefinedMetricSpecification = list(
+          PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization",
+          ResourceLabel = "string"
+        ),
+        CustomizedMetricSpecification = list(
+          MetricName = "string",
+          Namespace = "string",
+          Dimensions = list(
+            list(
+              Name = "string",
+              Value = "string"
+            )
+          ),
+          Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+          Unit = "string"
+        ),
+        ScaleOutCooldown = 123,
+        ScaleInCooldown = 123,
+        DisableScaleIn = TRUE|FALSE
+      ),
+      Alarms = list(
+        list(
+          AlarmName = "string",
+          AlarmARN = "string"
+        )
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the Application Auto Scaling scaling policies for the
 specified service namespace.

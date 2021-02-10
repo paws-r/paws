@@ -41,6 +41,9 @@ set it for any other \code{Pattern} setting.}
 protection group. You must set this when you set \code{Pattern} to
 \code{ARBITRARY} and you must not set it for any other \code{Pattern} setting.}
 }
+\value{
+An empty list.
+}
 \description{
 Updates an existing protection group. A protection group is a grouping
 of protected resources so they can be handled as a collective. This

@@ -15,6 +15,24 @@ Default value: \code{us-east-1}.}
 
 \item{RequireEncryption}{[required] When enabled, requires encryption for the Amazon Chime Voice Connector.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceConnector = list(
+    VoiceConnectorId = "string",
+    AwsRegion = "us-east-1"|"us-west-2",
+    Name = "string",
+    OutboundHostName = "string",
+    RequireEncryption = TRUE|FALSE,
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates an Amazon Chime Voice Connector under the administrator's AWS
 account. You can choose to create an Amazon Chime Voice Connector in a

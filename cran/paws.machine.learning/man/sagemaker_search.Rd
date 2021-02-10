@@ -29,6 +29,1196 @@ results.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Results = list(
+    list(
+      TrainingJob = list(
+        TrainingJobName = "string",
+        TrainingJobArn = "string",
+        TuningJobArn = "string",
+        LabelingJobArn = "string",
+        AutoMLJobArn = "string",
+        ModelArtifacts = list(
+          S3ModelArtifacts = "string"
+        ),
+        TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+        SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+        FailureReason = "string",
+        HyperParameters = list(
+          "string"
+        ),
+        AlgorithmSpecification = list(
+          TrainingImage = "string",
+          AlgorithmName = "string",
+          TrainingInputMode = "Pipe"|"File",
+          MetricDefinitions = list(
+            list(
+              Name = "string",
+              Regex = "string"
+            )
+          ),
+          EnableSageMakerMetricsTimeSeries = TRUE|FALSE
+        ),
+        RoleArn = "string",
+        InputDataConfig = list(
+          list(
+            ChannelName = "string",
+            DataSource = list(
+              S3DataSource = list(
+                S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+                S3Uri = "string",
+                S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+                AttributeNames = list(
+                  "string"
+                )
+              ),
+              FileSystemDataSource = list(
+                FileSystemId = "string",
+                FileSystemAccessMode = "rw"|"ro",
+                FileSystemType = "EFS"|"FSxLustre",
+                DirectoryPath = "string"
+              )
+            ),
+            ContentType = "string",
+            CompressionType = "None"|"Gzip",
+            RecordWrapperType = "None"|"RecordIO",
+            InputMode = "Pipe"|"File",
+            ShuffleConfig = list(
+              Seed = 123
+            )
+          )
+        ),
+        OutputDataConfig = list(
+          KmsKeyId = "string",
+          S3OutputPath = "string"
+        ),
+        ResourceConfig = list(
+          InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+          InstanceCount = 123,
+          VolumeSizeInGB = 123,
+          VolumeKmsKeyId = "string"
+        ),
+        VpcConfig = list(
+          SecurityGroupIds = list(
+            "string"
+          ),
+          Subnets = list(
+            "string"
+          )
+        ),
+        StoppingCondition = list(
+          MaxRuntimeInSeconds = 123,
+          MaxWaitTimeInSeconds = 123
+        ),
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        TrainingStartTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        TrainingEndTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        SecondaryStatusTransitions = list(
+          list(
+            Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+            StartTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            EndTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            StatusMessage = "string"
+          )
+        ),
+        FinalMetricDataList = list(
+          list(
+            MetricName = "string",
+            Value = 123.0,
+            Timestamp = as.POSIXct(
+              "2015-01-01"
+            )
+          )
+        ),
+        EnableNetworkIsolation = TRUE|FALSE,
+        EnableInterContainerTrafficEncryption = TRUE|FALSE,
+        EnableManagedSpotTraining = TRUE|FALSE,
+        CheckpointConfig = list(
+          S3Uri = "string",
+          LocalPath = "string"
+        ),
+        TrainingTimeInSeconds = 123,
+        BillableTimeInSeconds = 123,
+        DebugHookConfig = list(
+          LocalPath = "string",
+          S3OutputPath = "string",
+          HookParameters = list(
+            "string"
+          ),
+          CollectionConfigurations = list(
+            list(
+              CollectionName = "string",
+              CollectionParameters = list(
+                "string"
+              )
+            )
+          )
+        ),
+        ExperimentConfig = list(
+          ExperimentName = "string",
+          TrialName = "string",
+          TrialComponentDisplayName = "string"
+        ),
+        DebugRuleConfigurations = list(
+          list(
+            RuleConfigurationName = "string",
+            LocalPath = "string",
+            S3OutputPath = "string",
+            RuleEvaluatorImage = "string",
+            InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+            VolumeSizeInGB = 123,
+            RuleParameters = list(
+              "string"
+            )
+          )
+        ),
+        TensorBoardOutputConfig = list(
+          LocalPath = "string",
+          S3OutputPath = "string"
+        ),
+        DebugRuleEvaluationStatuses = list(
+          list(
+            RuleConfigurationName = "string",
+            RuleEvaluationJobArn = "string",
+            RuleEvaluationStatus = "InProgress"|"NoIssuesFound"|"IssuesFound"|"Error"|"Stopping"|"Stopped",
+            StatusDetails = "string",
+            LastModifiedTime = as.POSIXct(
+              "2015-01-01"
+            )
+          )
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      Experiment = list(
+        ExperimentName = "string",
+        ExperimentArn = "string",
+        DisplayName = "string",
+        Source = list(
+          SourceArn = "string",
+          SourceType = "string"
+        ),
+        Description = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreatedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      Trial = list(
+        TrialName = "string",
+        TrialArn = "string",
+        DisplayName = "string",
+        ExperimentName = "string",
+        Source = list(
+          SourceArn = "string",
+          SourceType = "string"
+        ),
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreatedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        MetadataProperties = list(
+          CommitId = "string",
+          Repository = "string",
+          GeneratedBy = "string",
+          ProjectId = "string"
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        TrialComponentSummaries = list(
+          list(
+            TrialComponentName = "string",
+            TrialComponentArn = "string",
+            TrialComponentSource = list(
+              SourceArn = "string",
+              SourceType = "string"
+            ),
+            CreationTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            CreatedBy = list(
+              UserProfileArn = "string",
+              UserProfileName = "string",
+              DomainId = "string"
+            )
+          )
+        )
+      ),
+      TrialComponent = list(
+        TrialComponentName = "string",
+        DisplayName = "string",
+        TrialComponentArn = "string",
+        Source = list(
+          SourceArn = "string",
+          SourceType = "string"
+        ),
+        Status = list(
+          PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+          Message = "string"
+        ),
+        StartTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        EndTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreatedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        Parameters = list(
+          list(
+            StringValue = "string",
+            NumberValue = 123.0
+          )
+        ),
+        InputArtifacts = list(
+          list(
+            MediaType = "string",
+            Value = "string"
+          )
+        ),
+        OutputArtifacts = list(
+          list(
+            MediaType = "string",
+            Value = "string"
+          )
+        ),
+        Metrics = list(
+          list(
+            MetricName = "string",
+            SourceArn = "string",
+            TimeStamp = as.POSIXct(
+              "2015-01-01"
+            ),
+            Max = 123.0,
+            Min = 123.0,
+            Last = 123.0,
+            Count = 123,
+            Avg = 123.0,
+            StdDev = 123.0
+          )
+        ),
+        MetadataProperties = list(
+          CommitId = "string",
+          Repository = "string",
+          GeneratedBy = "string",
+          ProjectId = "string"
+        ),
+        SourceDetail = list(
+          SourceArn = "string",
+          TrainingJob = list(
+            TrainingJobName = "string",
+            TrainingJobArn = "string",
+            TuningJobArn = "string",
+            LabelingJobArn = "string",
+            AutoMLJobArn = "string",
+            ModelArtifacts = list(
+              S3ModelArtifacts = "string"
+            ),
+            TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+            SecondaryStatus = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+            FailureReason = "string",
+            HyperParameters = list(
+              "string"
+            ),
+            AlgorithmSpecification = list(
+              TrainingImage = "string",
+              AlgorithmName = "string",
+              TrainingInputMode = "Pipe"|"File",
+              MetricDefinitions = list(
+                list(
+                  Name = "string",
+                  Regex = "string"
+                )
+              ),
+              EnableSageMakerMetricsTimeSeries = TRUE|FALSE
+            ),
+            RoleArn = "string",
+            InputDataConfig = list(
+              list(
+                ChannelName = "string",
+                DataSource = list(
+                  S3DataSource = list(
+                    S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+                    S3Uri = "string",
+                    S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+                    AttributeNames = list(
+                      "string"
+                    )
+                  ),
+                  FileSystemDataSource = list(
+                    FileSystemId = "string",
+                    FileSystemAccessMode = "rw"|"ro",
+                    FileSystemType = "EFS"|"FSxLustre",
+                    DirectoryPath = "string"
+                  )
+                ),
+                ContentType = "string",
+                CompressionType = "None"|"Gzip",
+                RecordWrapperType = "None"|"RecordIO",
+                InputMode = "Pipe"|"File",
+                ShuffleConfig = list(
+                  Seed = 123
+                )
+              )
+            ),
+            OutputDataConfig = list(
+              KmsKeyId = "string",
+              S3OutputPath = "string"
+            ),
+            ResourceConfig = list(
+              InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+              InstanceCount = 123,
+              VolumeSizeInGB = 123,
+              VolumeKmsKeyId = "string"
+            ),
+            VpcConfig = list(
+              SecurityGroupIds = list(
+                "string"
+              ),
+              Subnets = list(
+                "string"
+              )
+            ),
+            StoppingCondition = list(
+              MaxRuntimeInSeconds = 123,
+              MaxWaitTimeInSeconds = 123
+            ),
+            CreationTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            TrainingStartTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            TrainingEndTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            LastModifiedTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            SecondaryStatusTransitions = list(
+              list(
+                Status = "Starting"|"LaunchingMLInstances"|"PreparingTrainingStack"|"Downloading"|"DownloadingTrainingImage"|"Training"|"Uploading"|"Stopping"|"Stopped"|"MaxRuntimeExceeded"|"Completed"|"Failed"|"Interrupted"|"MaxWaitTimeExceeded"|"Updating",
+                StartTime = as.POSIXct(
+                  "2015-01-01"
+                ),
+                EndTime = as.POSIXct(
+                  "2015-01-01"
+                ),
+                StatusMessage = "string"
+              )
+            ),
+            FinalMetricDataList = list(
+              list(
+                MetricName = "string",
+                Value = 123.0,
+                Timestamp = as.POSIXct(
+                  "2015-01-01"
+                )
+              )
+            ),
+            EnableNetworkIsolation = TRUE|FALSE,
+            EnableInterContainerTrafficEncryption = TRUE|FALSE,
+            EnableManagedSpotTraining = TRUE|FALSE,
+            CheckpointConfig = list(
+              S3Uri = "string",
+              LocalPath = "string"
+            ),
+            TrainingTimeInSeconds = 123,
+            BillableTimeInSeconds = 123,
+            DebugHookConfig = list(
+              LocalPath = "string",
+              S3OutputPath = "string",
+              HookParameters = list(
+                "string"
+              ),
+              CollectionConfigurations = list(
+                list(
+                  CollectionName = "string",
+                  CollectionParameters = list(
+                    "string"
+                  )
+                )
+              )
+            ),
+            ExperimentConfig = list(
+              ExperimentName = "string",
+              TrialName = "string",
+              TrialComponentDisplayName = "string"
+            ),
+            DebugRuleConfigurations = list(
+              list(
+                RuleConfigurationName = "string",
+                LocalPath = "string",
+                S3OutputPath = "string",
+                RuleEvaluatorImage = "string",
+                InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+                VolumeSizeInGB = 123,
+                RuleParameters = list(
+                  "string"
+                )
+              )
+            ),
+            TensorBoardOutputConfig = list(
+              LocalPath = "string",
+              S3OutputPath = "string"
+            ),
+            DebugRuleEvaluationStatuses = list(
+              list(
+                RuleConfigurationName = "string",
+                RuleEvaluationJobArn = "string",
+                RuleEvaluationStatus = "InProgress"|"NoIssuesFound"|"IssuesFound"|"Error"|"Stopping"|"Stopped",
+                StatusDetails = "string",
+                LastModifiedTime = as.POSIXct(
+                  "2015-01-01"
+                )
+              )
+            ),
+            Tags = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          ),
+          ProcessingJob = list(
+            ProcessingInputs = list(
+              list(
+                InputName = "string",
+                AppManaged = TRUE|FALSE,
+                S3Input = list(
+                  S3Uri = "string",
+                  LocalPath = "string",
+                  S3DataType = "ManifestFile"|"S3Prefix",
+                  S3InputMode = "Pipe"|"File",
+                  S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+                  S3CompressionType = "None"|"Gzip"
+                ),
+                DatasetDefinition = list(
+                  AthenaDatasetDefinition = list(
+                    Catalog = "string",
+                    Database = "string",
+                    QueryString = "string",
+                    WorkGroup = "string",
+                    OutputS3Uri = "string",
+                    KmsKeyId = "string",
+                    OutputFormat = "PARQUET"|"ORC"|"AVRO"|"JSON"|"TEXTFILE",
+                    OutputCompression = "GZIP"|"SNAPPY"|"ZLIB"
+                  ),
+                  RedshiftDatasetDefinition = list(
+                    ClusterId = "string",
+                    Database = "string",
+                    DbUser = "string",
+                    QueryString = "string",
+                    ClusterRoleArn = "string",
+                    OutputS3Uri = "string",
+                    KmsKeyId = "string",
+                    OutputFormat = "PARQUET"|"CSV",
+                    OutputCompression = "None"|"GZIP"|"BZIP2"|"ZSTD"|"SNAPPY"
+                  ),
+                  LocalPath = "string",
+                  DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+                  InputMode = "Pipe"|"File"
+                )
+              )
+            ),
+            ProcessingOutputConfig = list(
+              Outputs = list(
+                list(
+                  OutputName = "string",
+                  S3Output = list(
+                    S3Uri = "string",
+                    LocalPath = "string",
+                    S3UploadMode = "Continuous"|"EndOfJob"
+                  ),
+                  FeatureStoreOutput = list(
+                    FeatureGroupName = "string"
+                  ),
+                  AppManaged = TRUE|FALSE
+                )
+              ),
+              KmsKeyId = "string"
+            ),
+            ProcessingJobName = "string",
+            ProcessingResources = list(
+              ClusterConfig = list(
+                InstanceCount = 123,
+                InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+                VolumeSizeInGB = 123,
+                VolumeKmsKeyId = "string"
+              )
+            ),
+            StoppingCondition = list(
+              MaxRuntimeInSeconds = 123
+            ),
+            AppSpecification = list(
+              ImageUri = "string",
+              ContainerEntrypoint = list(
+                "string"
+              ),
+              ContainerArguments = list(
+                "string"
+              )
+            ),
+            Environment = list(
+              "string"
+            ),
+            NetworkConfig = list(
+              EnableInterContainerTrafficEncryption = TRUE|FALSE,
+              EnableNetworkIsolation = TRUE|FALSE,
+              VpcConfig = list(
+                SecurityGroupIds = list(
+                  "string"
+                ),
+                Subnets = list(
+                  "string"
+                )
+              )
+            ),
+            RoleArn = "string",
+            ExperimentConfig = list(
+              ExperimentName = "string",
+              TrialName = "string",
+              TrialComponentDisplayName = "string"
+            ),
+            ProcessingJobArn = "string",
+            ProcessingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+            ExitMessage = "string",
+            FailureReason = "string",
+            ProcessingEndTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            ProcessingStartTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            LastModifiedTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            CreationTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            MonitoringScheduleArn = "string",
+            AutoMLJobArn = "string",
+            TrainingJobArn = "string",
+            Tags = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          ),
+          TransformJob = list(
+            TransformJobName = "string",
+            TransformJobArn = "string",
+            TransformJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+            FailureReason = "string",
+            ModelName = "string",
+            MaxConcurrentTransforms = 123,
+            ModelClientConfig = list(
+              InvocationsTimeoutInSeconds = 123,
+              InvocationsMaxRetries = 123
+            ),
+            MaxPayloadInMB = 123,
+            BatchStrategy = "MultiRecord"|"SingleRecord",
+            Environment = list(
+              "string"
+            ),
+            TransformInput = list(
+              DataSource = list(
+                S3DataSource = list(
+                  S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+                  S3Uri = "string"
+                )
+              ),
+              ContentType = "string",
+              CompressionType = "None"|"Gzip",
+              SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
+            ),
+            TransformOutput = list(
+              S3OutputPath = "string",
+              Accept = "string",
+              AssembleWith = "None"|"Line",
+              KmsKeyId = "string"
+            ),
+            TransformResources = list(
+              InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
+              InstanceCount = 123,
+              VolumeKmsKeyId = "string"
+            ),
+            CreationTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            TransformStartTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            TransformEndTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            LabelingJobArn = "string",
+            AutoMLJobArn = "string",
+            DataProcessing = list(
+              InputFilter = "string",
+              OutputFilter = "string",
+              JoinSource = "Input"|"None"
+            ),
+            ExperimentConfig = list(
+              ExperimentName = "string",
+              TrialName = "string",
+              TrialComponentDisplayName = "string"
+            ),
+            Tags = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          )
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        Parents = list(
+          list(
+            TrialName = "string",
+            ExperimentName = "string"
+          )
+        )
+      ),
+      Endpoint = list(
+        EndpointName = "string",
+        EndpointArn = "string",
+        EndpointConfigName = "string",
+        ProductionVariants = list(
+          list(
+            VariantName = "string",
+            DeployedImages = list(
+              list(
+                SpecifiedImage = "string",
+                ResolvedImage = "string",
+                ResolutionTime = as.POSIXct(
+                  "2015-01-01"
+                )
+              )
+            ),
+            CurrentWeight = 123.0,
+            DesiredWeight = 123.0,
+            CurrentInstanceCount = 123,
+            DesiredInstanceCount = 123
+          )
+        ),
+        DataCaptureConfig = list(
+          EnableCapture = TRUE|FALSE,
+          CaptureStatus = "Started"|"Stopped",
+          CurrentSamplingPercentage = 123,
+          DestinationS3Uri = "string",
+          KmsKeyId = "string"
+        ),
+        EndpointStatus = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed",
+        FailureReason = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        MonitoringSchedules = list(
+          list(
+            MonitoringScheduleArn = "string",
+            MonitoringScheduleName = "string",
+            MonitoringScheduleStatus = "Pending"|"Failed"|"Scheduled"|"Stopped",
+            MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability",
+            FailureReason = "string",
+            CreationTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            LastModifiedTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            MonitoringScheduleConfig = list(
+              ScheduleConfig = list(
+                ScheduleExpression = "string"
+              ),
+              MonitoringJobDefinition = list(
+                BaselineConfig = list(
+                  BaseliningJobName = "string",
+                  ConstraintsResource = list(
+                    S3Uri = "string"
+                  ),
+                  StatisticsResource = list(
+                    S3Uri = "string"
+                  )
+                ),
+                MonitoringInputs = list(
+                  list(
+                    EndpointInput = list(
+                      EndpointName = "string",
+                      LocalPath = "string",
+                      S3InputMode = "Pipe"|"File",
+                      S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+                      FeaturesAttribute = "string",
+                      InferenceAttribute = "string",
+                      ProbabilityAttribute = "string",
+                      ProbabilityThresholdAttribute = 123.0,
+                      StartTimeOffset = "string",
+                      EndTimeOffset = "string"
+                    )
+                  )
+                ),
+                MonitoringOutputConfig = list(
+                  MonitoringOutputs = list(
+                    list(
+                      S3Output = list(
+                        S3Uri = "string",
+                        LocalPath = "string",
+                        S3UploadMode = "Continuous"|"EndOfJob"
+                      )
+                    )
+                  ),
+                  KmsKeyId = "string"
+                ),
+                MonitoringResources = list(
+                  ClusterConfig = list(
+                    InstanceCount = 123,
+                    InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+                    VolumeSizeInGB = 123,
+                    VolumeKmsKeyId = "string"
+                  )
+                ),
+                MonitoringAppSpecification = list(
+                  ImageUri = "string",
+                  ContainerEntrypoint = list(
+                    "string"
+                  ),
+                  ContainerArguments = list(
+                    "string"
+                  ),
+                  RecordPreprocessorSourceUri = "string",
+                  PostAnalyticsProcessorSourceUri = "string"
+                ),
+                StoppingCondition = list(
+                  MaxRuntimeInSeconds = 123
+                ),
+                Environment = list(
+                  "string"
+                ),
+                NetworkConfig = list(
+                  EnableInterContainerTrafficEncryption = TRUE|FALSE,
+                  EnableNetworkIsolation = TRUE|FALSE,
+                  VpcConfig = list(
+                    SecurityGroupIds = list(
+                      "string"
+                    ),
+                    Subnets = list(
+                      "string"
+                    )
+                  )
+                ),
+                RoleArn = "string"
+              ),
+              MonitoringJobDefinitionName = "string",
+              MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
+            ),
+            EndpointName = "string",
+            LastMonitoringExecutionSummary = list(
+              MonitoringScheduleName = "string",
+              ScheduledTime = as.POSIXct(
+                "2015-01-01"
+              ),
+              CreationTime = as.POSIXct(
+                "2015-01-01"
+              ),
+              LastModifiedTime = as.POSIXct(
+                "2015-01-01"
+              ),
+              MonitoringExecutionStatus = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped",
+              ProcessingJobArn = "string",
+              EndpointName = "string",
+              FailureReason = "string",
+              MonitoringJobDefinitionName = "string",
+              MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
+            ),
+            Tags = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          )
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      ModelPackage = list(
+        ModelPackageName = "string",
+        ModelPackageGroupName = "string",
+        ModelPackageVersion = 123,
+        ModelPackageArn = "string",
+        ModelPackageDescription = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        InferenceSpecification = list(
+          Containers = list(
+            list(
+              ContainerHostname = "string",
+              Image = "string",
+              ImageDigest = "string",
+              ModelDataUrl = "string",
+              ProductId = "string"
+            )
+          ),
+          SupportedTransformInstanceTypes = list(
+            "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"
+          ),
+          SupportedRealtimeInferenceInstanceTypes = list(
+            "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"
+          ),
+          SupportedContentTypes = list(
+            "string"
+          ),
+          SupportedResponseMIMETypes = list(
+            "string"
+          )
+        ),
+        SourceAlgorithmSpecification = list(
+          SourceAlgorithms = list(
+            list(
+              ModelDataUrl = "string",
+              AlgorithmName = "string"
+            )
+          )
+        ),
+        ValidationSpecification = list(
+          ValidationRole = "string",
+          ValidationProfiles = list(
+            list(
+              ProfileName = "string",
+              TransformJobDefinition = list(
+                MaxConcurrentTransforms = 123,
+                MaxPayloadInMB = 123,
+                BatchStrategy = "MultiRecord"|"SingleRecord",
+                Environment = list(
+                  "string"
+                ),
+                TransformInput = list(
+                  DataSource = list(
+                    S3DataSource = list(
+                      S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+                      S3Uri = "string"
+                    )
+                  ),
+                  ContentType = "string",
+                  CompressionType = "None"|"Gzip",
+                  SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
+                ),
+                TransformOutput = list(
+                  S3OutputPath = "string",
+                  Accept = "string",
+                  AssembleWith = "None"|"Line",
+                  KmsKeyId = "string"
+                ),
+                TransformResources = list(
+                  InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
+                  InstanceCount = 123,
+                  VolumeKmsKeyId = "string"
+                )
+              )
+            )
+          )
+        ),
+        ModelPackageStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting",
+        ModelPackageStatusDetails = list(
+          ValidationStatuses = list(
+            list(
+              Name = "string",
+              Status = "NotStarted"|"InProgress"|"Completed"|"Failed",
+              FailureReason = "string"
+            )
+          ),
+          ImageScanStatuses = list(
+            list(
+              Name = "string",
+              Status = "NotStarted"|"InProgress"|"Completed"|"Failed",
+              FailureReason = "string"
+            )
+          )
+        ),
+        CertifyForMarketplace = TRUE|FALSE,
+        ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
+        CreatedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        MetadataProperties = list(
+          CommitId = "string",
+          Repository = "string",
+          GeneratedBy = "string",
+          ProjectId = "string"
+        ),
+        ModelMetrics = list(
+          ModelQuality = list(
+            Statistics = list(
+              ContentType = "string",
+              ContentDigest = "string",
+              S3Uri = "string"
+            ),
+            Constraints = list(
+              ContentType = "string",
+              ContentDigest = "string",
+              S3Uri = "string"
+            )
+          ),
+          ModelDataQuality = list(
+            Statistics = list(
+              ContentType = "string",
+              ContentDigest = "string",
+              S3Uri = "string"
+            ),
+            Constraints = list(
+              ContentType = "string",
+              ContentDigest = "string",
+              S3Uri = "string"
+            )
+          ),
+          Bias = list(
+            Report = list(
+              ContentType = "string",
+              ContentDigest = "string",
+              S3Uri = "string"
+            )
+          ),
+          Explainability = list(
+            Report = list(
+              ContentType = "string",
+              ContentDigest = "string",
+              S3Uri = "string"
+            )
+          )
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        ApprovalDescription = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      ModelPackageGroup = list(
+        ModelPackageGroupName = "string",
+        ModelPackageGroupArn = "string",
+        ModelPackageGroupDescription = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreatedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        ModelPackageGroupStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"|"DeleteFailed",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      Pipeline = list(
+        PipelineArn = "string",
+        PipelineName = "string",
+        PipelineDisplayName = "string",
+        PipelineDescription = "string",
+        RoleArn = "string",
+        PipelineStatus = "Active",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastRunTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreatedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        LastModifiedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      PipelineExecution = list(
+        PipelineArn = "string",
+        PipelineExecutionArn = "string",
+        PipelineExecutionDisplayName = "string",
+        PipelineExecutionStatus = "Executing"|"Stopping"|"Stopped"|"Failed"|"Succeeded",
+        PipelineExecutionDescription = "string",
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastModifiedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreatedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        LastModifiedBy = list(
+          UserProfileArn = "string",
+          UserProfileName = "string",
+          DomainId = "string"
+        ),
+        PipelineParameters = list(
+          list(
+            Name = "string",
+            Value = "string"
+          )
+        )
+      ),
+      FeatureGroup = list(
+        FeatureGroupArn = "string",
+        FeatureGroupName = "string",
+        RecordIdentifierFeatureName = "string",
+        EventTimeFeatureName = "string",
+        FeatureDefinitions = list(
+          list(
+            FeatureName = "string",
+            FeatureType = "Integral"|"Fractional"|"String"
+          )
+        ),
+        CreationTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        OnlineStoreConfig = list(
+          SecurityConfig = list(
+            KmsKeyId = "string"
+          ),
+          EnableOnlineStore = TRUE|FALSE
+        ),
+        OfflineStoreConfig = list(
+          S3StorageConfig = list(
+            S3Uri = "string",
+            KmsKeyId = "string"
+          ),
+          DisableGlueTableCreation = TRUE|FALSE,
+          DataCatalogConfig = list(
+            TableName = "string",
+            Catalog = "string",
+            Database = "string"
+          )
+        ),
+        RoleArn = "string",
+        FeatureGroupStatus = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
+        OfflineStoreStatus = list(
+          Status = "Active"|"Blocked"|"Disabled",
+          BlockedReason = "string"
+        ),
+        FailureReason = "string",
+        Description = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Finds Amazon SageMaker resources that match a search query. Matching
 resources are returned as a list of \code{SearchRecord} objects in the

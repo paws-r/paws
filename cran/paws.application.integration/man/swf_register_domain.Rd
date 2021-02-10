@@ -13,7 +13,7 @@ that the domain is registered in.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{description}{A text description of the domain.}
@@ -35,6 +35,9 @@ in the \emph{Amazon SWF Developer Guide}.}
 
 Tags may only contain unicode letters, digits, whitespace, or these
 symbols: \verb{_ . : / = + - @}.}
+}
+\value{
+An empty list.
 }
 \description{
 Registers a new domain.

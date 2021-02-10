@@ -23,6 +23,17 @@ occurred between the \code{EventStartTime} and \code{EventEndTime} are replayed.
 \item{Destination}{[required] A \code{ReplayDestination} object that includes details about the destination
 for the replay.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplayArn = "string",
+  State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+  StateReason = "string",
+  ReplayStartTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Starts the specified replay. Events are not necessarily replayed in the
 exact same order that they were added to the archive. A replay processes

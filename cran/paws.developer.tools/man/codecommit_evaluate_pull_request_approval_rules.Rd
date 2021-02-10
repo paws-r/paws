@@ -15,6 +15,21 @@ codecommit_evaluate_pull_request_approval_rules(pullRequestId,
 most recent revision ID for a pull request, use
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  evaluation = list(
+    approved = TRUE|FALSE,
+    overridden = TRUE|FALSE,
+    approvalRulesSatisfied = list(
+      "string"
+    ),
+    approvalRulesNotSatisfied = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Evaluates whether a pull request has met all the conditions specified in
 its associated approval rules.

@@ -23,6 +23,19 @@ name.}
 
 \item{OptionSettings}{[required] A list of the options and desired values to evaluate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Messages = list(
+    list(
+      Message = "string",
+      Severity = "error"|"warning",
+      Namespace = "string",
+      OptionName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Takes a set of configuration settings and either a configuration
 template or environment, and determines whether those values are valid.
@@ -58,7 +71,7 @@ svc$validate_configuration_settings(
     list(
       Namespace = "aws:elasticbeanstalk:healthreporting:system",
       OptionName = "ConfigDocument",
-      Value = "\{\"CloudWatchMetrics\": \{\"Environment\": \{\"ApplicationLatencyP99.9\": null,..."
+      Value = "\{"CloudWatchMetrics": \{"Environment": \{"ApplicationLatencyP99.9": null..."
     )
   )
 )

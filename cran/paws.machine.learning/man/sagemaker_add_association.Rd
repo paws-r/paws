@@ -26,6 +26,13 @@ derived from the original inputs.
 training job produced a model artifact.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SourceArn = "string",
+  DestinationArn = "string"
+)
+}
+}
 \description{
 Creates an \emph{association} between the source and the destination. A
 source can be associated with multiple destinations, and a destination

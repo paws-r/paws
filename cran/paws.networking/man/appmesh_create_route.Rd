@@ -33,6 +33,215 @@ length of 256 characters.}
 virtual router is in a shared mesh, then you must be the owner of the
 virtual router resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  route = list(
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    routeName = "string",
+    spec = list(
+      grpcRoute = list(
+        action = list(
+          weightedTargets = list(
+            list(
+              virtualNode = "string",
+              weight = 123
+            )
+          )
+        ),
+        match = list(
+          metadata = list(
+            list(
+              invert = TRUE|FALSE,
+              match = list(
+                exact = "string",
+                prefix = "string",
+                range = list(
+                  end = 123,
+                  start = 123
+                ),
+                regex = "string",
+                suffix = "string"
+              ),
+              name = "string"
+            )
+          ),
+          methodName = "string",
+          serviceName = "string"
+        ),
+        retryPolicy = list(
+          grpcRetryEvents = list(
+            "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
+          ),
+          httpRetryEvents = list(
+            "string"
+          ),
+          maxRetries = 123,
+          perRetryTimeout = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          tcpRetryEvents = list(
+            "connection-error"
+          )
+        ),
+        timeout = list(
+          idle = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          perRequest = list(
+            unit = "s"|"ms",
+            value = 123
+          )
+        )
+      ),
+      http2Route = list(
+        action = list(
+          weightedTargets = list(
+            list(
+              virtualNode = "string",
+              weight = 123
+            )
+          )
+        ),
+        match = list(
+          headers = list(
+            list(
+              invert = TRUE|FALSE,
+              match = list(
+                exact = "string",
+                prefix = "string",
+                range = list(
+                  end = 123,
+                  start = 123
+                ),
+                regex = "string",
+                suffix = "string"
+              ),
+              name = "string"
+            )
+          ),
+          method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+          prefix = "string",
+          scheme = "http"|"https"
+        ),
+        retryPolicy = list(
+          httpRetryEvents = list(
+            "string"
+          ),
+          maxRetries = 123,
+          perRetryTimeout = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          tcpRetryEvents = list(
+            "connection-error"
+          )
+        ),
+        timeout = list(
+          idle = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          perRequest = list(
+            unit = "s"|"ms",
+            value = 123
+          )
+        )
+      ),
+      httpRoute = list(
+        action = list(
+          weightedTargets = list(
+            list(
+              virtualNode = "string",
+              weight = 123
+            )
+          )
+        ),
+        match = list(
+          headers = list(
+            list(
+              invert = TRUE|FALSE,
+              match = list(
+                exact = "string",
+                prefix = "string",
+                range = list(
+                  end = 123,
+                  start = 123
+                ),
+                regex = "string",
+                suffix = "string"
+              ),
+              name = "string"
+            )
+          ),
+          method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+          prefix = "string",
+          scheme = "http"|"https"
+        ),
+        retryPolicy = list(
+          httpRetryEvents = list(
+            "string"
+          ),
+          maxRetries = 123,
+          perRetryTimeout = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          tcpRetryEvents = list(
+            "connection-error"
+          )
+        ),
+        timeout = list(
+          idle = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          perRequest = list(
+            unit = "s"|"ms",
+            value = 123
+          )
+        )
+      ),
+      priority = 123,
+      tcpRoute = list(
+        action = list(
+          weightedTargets = list(
+            list(
+              virtualNode = "string",
+              weight = 123
+            )
+          )
+        ),
+        timeout = list(
+          idle = list(
+            unit = "s"|"ms",
+            value = 123
+          )
+        )
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    ),
+    virtualRouterName = "string"
+  )
+)
+}
+}
 \description{
 Creates a route that is associated with a virtual router.
 

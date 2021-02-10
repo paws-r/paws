@@ -12,6 +12,9 @@ an Amazon Resource Name .}
 
 \item{Tags}{[required] The tags to be assigned to the Amazon DocumentDB resource.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds metadata tags to an Amazon DocumentDB resource. You can use these
 tags with cost allocation reporting to track costs that are associated

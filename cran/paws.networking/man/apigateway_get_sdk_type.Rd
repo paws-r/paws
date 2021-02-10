@@ -9,6 +9,23 @@ apigateway_get_sdk_type(id)
 \arguments{
 \item{id}{[required] [Required] The identifier of the queried SdkType instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  friendlyName = "string",
+  description = "string",
+  configurationProperties = list(
+    list(
+      name = "string",
+      friendlyName = "string",
+      description = "string",
+      required = TRUE|FALSE,
+      defaultValue = "string"
+    )
+  )
+)
+}
+}
 \description{
 Get sdk type
 }

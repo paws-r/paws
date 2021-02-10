@@ -11,6 +11,9 @@ apigatewayv2_delete_authorizer(ApiId, AuthorizerId)
 
 \item{AuthorizerId}{[required] The authorizer identifier.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes an Authorizer.
 }

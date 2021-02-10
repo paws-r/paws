@@ -11,6 +11,36 @@ connect_describe_user(UserId, InstanceId)
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    Id = "string",
+    Arn = "string",
+    Username = "string",
+    IdentityInfo = list(
+      FirstName = "string",
+      LastName = "string",
+      Email = "string"
+    ),
+    PhoneConfig = list(
+      PhoneType = "SOFT_PHONE"|"DESK_PHONE",
+      AutoAccept = TRUE|FALSE,
+      AfterContactWorkTimeLimit = 123,
+      DeskPhoneNumber = "string"
+    ),
+    DirectoryUserId = "string",
+    SecurityProfileIds = list(
+      "string"
+    ),
+    RoutingProfileId = "string",
+    HierarchyGroupId = "string",
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified user account. You can find the instance ID in
 the console (it’s the final part of the ARN). The console does not

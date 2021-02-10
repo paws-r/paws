@@ -12,6 +12,30 @@ operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetSummaryList = list(
+    list(
+      FleetArn = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FleetName = "string",
+      DisplayName = "string",
+      CompanyCode = "string",
+      FleetStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"FAILED_TO_CREATE"|"FAILED_TO_DELETE",
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of fleets for the current account and Region.
 }

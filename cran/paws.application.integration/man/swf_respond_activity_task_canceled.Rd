@@ -17,6 +17,9 @@ with results.}
 
 \item{details}{Information about the cancellation.}
 }
+\value{
+An empty list.
+}
 \description{
 Used by workers to tell the service that the ActivityTask identified by
 the \code{taskToken} was successfully canceled. Additional \code{details} can be

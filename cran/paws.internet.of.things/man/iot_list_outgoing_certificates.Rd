@@ -14,6 +14,26 @@ iot_list_outgoing_certificates(pageSize, marker, ascendingOrder)
 \item{ascendingOrder}{Specifies the order for results. If True, the results are returned in
 ascending order, based on the creation date.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  outgoingCertificates = list(
+    list(
+      certificateArn = "string",
+      certificateId = "string",
+      transferredTo = "string",
+      transferDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      transferMessage = "string",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Lists certificates that are being transferred but not yet accepted.
 }

@@ -20,6 +20,9 @@ rule is a managed rule by using
 \code{\link[=cloudwatchevents_list_rules]{list_rules}} and checking the \code{ManagedBy}
 field of the response.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified rule.
 

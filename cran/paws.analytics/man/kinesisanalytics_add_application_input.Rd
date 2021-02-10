@@ -20,6 +20,9 @@ operation to find the current application version.}
 \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html}{Input}
 to add.}
 }
+\value{
+An empty list.
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

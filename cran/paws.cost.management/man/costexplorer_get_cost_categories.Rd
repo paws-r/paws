@@ -51,6 +51,20 @@ the limit, AWS returns a NextPageToken value in the response. To
 retrieve the next batch of objects, provide the NextPageToken from the
 prior call in your next request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextPageToken = "string",
+  CostCategoryNames = list(
+    "string"
+  ),
+  CostCategoryValues = list(
+    "string"
+  ),
+  ReturnSize = 123,
+  TotalSize = 123
+)
+}
+}
 \description{
 Retrieves an array of Cost Category names and values incurred cost.
 

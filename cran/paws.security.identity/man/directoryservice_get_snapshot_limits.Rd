@@ -9,6 +9,16 @@ directoryservice_get_snapshot_limits(DirectoryId)
 \arguments{
 \item{DirectoryId}{[required] Contains the identifier of the directory to obtain the limits for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnapshotLimits = list(
+    ManualSnapshotsLimit = 123,
+    ManualSnapshotsCurrentCount = 123,
+    ManualSnapshotsLimitReached = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Obtains the manual snapshot limits for a directory.
 }

@@ -17,6 +17,21 @@ list.}
 
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  types = list(
+    list(
+      name = "string",
+      description = "string",
+      arn = "string",
+      definition = "string",
+      format = "SDL"|"JSON"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the types for a given API.
 }

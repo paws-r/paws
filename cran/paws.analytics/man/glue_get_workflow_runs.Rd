@@ -15,6 +15,149 @@ glue_get_workflow_runs(Name, IncludeGraph, NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of workflow runs to be included in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Runs = list(
+    list(
+      Name = "string",
+      WorkflowRunId = "string",
+      PreviousRunId = "string",
+      WorkflowRunProperties = list(
+        "string"
+      ),
+      StartedOn = as.POSIXct(
+        "2015-01-01"
+      ),
+      CompletedOn = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "RUNNING"|"COMPLETED"|"STOPPING"|"STOPPED"|"ERROR",
+      ErrorMessage = "string",
+      Statistics = list(
+        TotalActions = 123,
+        TimeoutActions = 123,
+        FailedActions = 123,
+        StoppedActions = 123,
+        SucceededActions = 123,
+        RunningActions = 123
+      ),
+      Graph = list(
+        Nodes = list(
+          list(
+            Type = "CRAWLER"|"JOB"|"TRIGGER",
+            Name = "string",
+            UniqueId = "string",
+            TriggerDetails = list(
+              Trigger = list(
+                Name = "string",
+                WorkflowName = "string",
+                Id = "string",
+                Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
+                State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
+                Description = "string",
+                Schedule = "string",
+                Actions = list(
+                  list(
+                    JobName = "string",
+                    Arguments = list(
+                      "string"
+                    ),
+                    Timeout = 123,
+                    SecurityConfiguration = "string",
+                    NotificationProperty = list(
+                      NotifyDelayAfter = 123
+                    ),
+                    CrawlerName = "string"
+                  )
+                ),
+                Predicate = list(
+                  Logical = "AND"|"ANY",
+                  Conditions = list(
+                    list(
+                      LogicalOperator = "EQUALS",
+                      JobName = "string",
+                      State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+                      CrawlerName = "string",
+                      CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
+                    )
+                  )
+                )
+              )
+            ),
+            JobDetails = list(
+              JobRuns = list(
+                list(
+                  Id = "string",
+                  Attempt = 123,
+                  PreviousRunId = "string",
+                  TriggerName = "string",
+                  JobName = "string",
+                  StartedOn = as.POSIXct(
+                    "2015-01-01"
+                  ),
+                  LastModifiedOn = as.POSIXct(
+                    "2015-01-01"
+                  ),
+                  CompletedOn = as.POSIXct(
+                    "2015-01-01"
+                  ),
+                  JobRunState = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+                  Arguments = list(
+                    "string"
+                  ),
+                  ErrorMessage = "string",
+                  PredecessorRuns = list(
+                    list(
+                      JobName = "string",
+                      RunId = "string"
+                    )
+                  ),
+                  AllocatedCapacity = 123,
+                  ExecutionTime = 123,
+                  Timeout = 123,
+                  MaxCapacity = 123.0,
+                  WorkerType = "Standard"|"G.1X"|"G.2X",
+                  NumberOfWorkers = 123,
+                  SecurityConfiguration = "string",
+                  LogGroupName = "string",
+                  NotificationProperty = list(
+                    NotifyDelayAfter = 123
+                  ),
+                  GlueVersion = "string"
+                )
+              )
+            ),
+            CrawlerDetails = list(
+              Crawls = list(
+                list(
+                  State = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED",
+                  StartedOn = as.POSIXct(
+                    "2015-01-01"
+                  ),
+                  CompletedOn = as.POSIXct(
+                    "2015-01-01"
+                  ),
+                  ErrorMessage = "string",
+                  LogGroup = "string",
+                  LogStream = "string"
+                )
+              )
+            )
+          )
+        ),
+        Edges = list(
+          list(
+            SourceId = "string",
+            DestinationId = "string"
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves metadata for all runs of a given workflow.
 }

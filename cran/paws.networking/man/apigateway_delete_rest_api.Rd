@@ -9,6 +9,9 @@ apigateway_delete_rest_api(restApiId)
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the specified API.
 }

@@ -11,6 +11,9 @@ sns_remove_permission(TopicArn, Label)
 
 \item{Label}{[required] The unique label of the statement you want to remove.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a statement from a topic's access control policy.
 }

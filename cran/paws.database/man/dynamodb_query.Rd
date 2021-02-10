@@ -234,7 +234,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{\\#} character in an expression to dereference an attribute
+Use the \strong{\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -246,7 +246,7 @@ words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguid
 in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
-\item \verb{\\\{"#P":"Percentile"\\\}}
+\item \code{{"#P":"Percentile"}}
 }
 
 You could then use this substitution in an expression, as in this
@@ -271,7 +271,7 @@ the value of the \emph{ProductStatus} attribute was one of the following:
 
 You would first need to specify \code{ExpressionAttributeValues} as follows:
 
-\verb{\\\{ ":avail":\\\{"S":"Available"\\\}, ":back":\\\{"S":"Backordered"\\\}, ":disc":\\\{"S":"Discontinued"\\\} \\\}}
+\verb{\{ ":avail":\{"S":"Available"\}, ":back":\{"S":"Backordered"\}, ":disc":\{"S":"Discontinued"\} \}}
 
 You could then use these values in an expression, such as this:
 
@@ -279,6 +279,88 @@ You could then use these values in an expression, such as this:
 
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Specifying Conditions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      list(
+        S = "string",
+        N = "string",
+        B = raw,
+        SS = list(
+          "string"
+        ),
+        NS = list(
+          "string"
+        ),
+        BS = list(
+          raw
+        ),
+        M = list(
+          list()
+        ),
+        L = list(
+          list()
+        ),
+        NULL = TRUE|FALSE,
+        BOOL = TRUE|FALSE
+      )
+    )
+  ),
+  Count = 123,
+  ScannedCount = 123,
+  LastEvaluatedKey = list(
+    list(
+      S = "string",
+      N = "string",
+      B = raw,
+      SS = list(
+        "string"
+      ),
+      NS = list(
+        "string"
+      ),
+      BS = list(
+        raw
+      ),
+      M = list(
+        list()
+      ),
+      L = list(
+        list()
+      ),
+      NULL = TRUE|FALSE,
+      BOOL = TRUE|FALSE
+    )
+  ),
+  ConsumedCapacity = list(
+    TableName = "string",
+    CapacityUnits = 123.0,
+    ReadCapacityUnits = 123.0,
+    WriteCapacityUnits = 123.0,
+    Table = list(
+      ReadCapacityUnits = 123.0,
+      WriteCapacityUnits = 123.0,
+      CapacityUnits = 123.0
+    ),
+    LocalSecondaryIndexes = list(
+      list(
+        ReadCapacityUnits = 123.0,
+        WriteCapacityUnits = 123.0,
+        CapacityUnits = 123.0
+      )
+    ),
+    GlobalSecondaryIndexes = list(
+      list(
+        ReadCapacityUnits = 123.0,
+        WriteCapacityUnits = 123.0,
+        CapacityUnits = 123.0
+      )
+    )
+  )
+)
+}
 }
 \description{
 The \code{\link[=dynamodb_query]{query}} operation finds items based on primary key

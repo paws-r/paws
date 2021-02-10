@@ -111,7 +111,7 @@ NULL
 #'  \link[=gamelift_deregister_game_server]{deregister_game_server} \tab This operation is used with the Amazon GameLift FleetIQ solution and game server groups\cr
 #'  \link[=gamelift_describe_alias]{describe_alias} \tab Retrieves properties for an alias\cr
 #'  \link[=gamelift_describe_build]{describe_build} \tab Retrieves properties for a custom game build\cr
-#'  \link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits} \tab Retrieves the following information for the specified EC2 instance type: - Maximum number of instances allowed per AWS account (service limit)\cr
+#'  \link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits} \tab Retrieves the following information for the specified EC2 instance type:\cr
 #'  \link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes} \tab Retrieves core properties, including configuration, status, and metadata, for a fleet\cr
 #'  \link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity} \tab Retrieves the current capacity statistics for one or more fleets\cr
 #'  \link[=gamelift_describe_fleet_events]{describe_fleet_events} \tab Retrieves entries from the specified fleet's event log\cr

@@ -49,6 +49,44 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGateways = list(
+    list(
+      TransitGatewayId = "string",
+      TransitGatewayArn = "string",
+      State = "pending"|"available"|"modifying"|"deleting"|"deleted",
+      OwnerId = "string",
+      Description = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Options = list(
+        AmazonSideAsn = 123,
+        TransitGatewayCidrBlocks = list(
+          "string"
+        ),
+        AutoAcceptSharedAttachments = "enable"|"disable",
+        DefaultRouteTableAssociation = "enable"|"disable",
+        AssociationDefaultRouteTableId = "string",
+        DefaultRouteTablePropagation = "enable"|"disable",
+        PropagationDefaultRouteTableId = "string",
+        VpnEcmpSupport = "enable"|"disable",
+        DnsSupport = "enable"|"disable",
+        MulticastSupport = "enable"|"disable"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more transit gateways. By default, all transit gateways
 are described. Alternatively, you can filter the results.

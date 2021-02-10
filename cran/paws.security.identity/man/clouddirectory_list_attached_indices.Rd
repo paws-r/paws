@@ -18,6 +18,35 @@ clouddirectory_list_attached_indices(DirectoryArn, TargetReference,
 
 \item{ConsistencyLevel}{The consistency level to use for this operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IndexAttachments = list(
+    list(
+      IndexedAttributes = list(
+        list(
+          Key = list(
+            SchemaArn = "string",
+            FacetName = "string",
+            Name = "string"
+          ),
+          Value = list(
+            StringValue = "string",
+            BinaryValue = raw,
+            BooleanValue = TRUE|FALSE,
+            NumberValue = "string",
+            DatetimeValue = as.POSIXct(
+              "2015-01-01"
+            )
+          )
+        )
+      ),
+      ObjectIdentifier = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists indices attached to the specified object.
 }

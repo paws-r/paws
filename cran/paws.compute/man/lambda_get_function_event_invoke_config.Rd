@@ -25,6 +25,25 @@ function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{A version number or alias name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LastModified = as.POSIXct(
+    "2015-01-01"
+  ),
+  FunctionArn = "string",
+  MaximumRetryAttempts = 123,
+  MaximumEventAgeInSeconds = 123,
+  DestinationConfig = list(
+    OnSuccess = list(
+      Destination = "string"
+    ),
+    OnFailure = list(
+      Destination = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the configuration for asynchronous invocation for a function,
 version, or alias.

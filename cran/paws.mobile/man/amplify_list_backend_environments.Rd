@@ -18,6 +18,26 @@ pass its value in here to list more backend environments.}
 
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  backendEnvironments = list(
+    list(
+      backendEnvironmentArn = "string",
+      environmentName = "string",
+      stackName = "string",
+      deploymentArtifacts = "string",
+      createTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      updateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the backend environments for an Amplify app.
 }

@@ -21,6 +21,22 @@ response.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StandardsSubscriptions = list(
+    list(
+      StandardsSubscriptionArn = "string",
+      StandardsArn = "string",
+      StandardsInput = list(
+        "string"
+      ),
+      StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of the standards that are currently enabled.
 }

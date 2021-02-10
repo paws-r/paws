@@ -77,6 +77,9 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 \item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
 Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
+\value{
+An empty list.
+}
 \description{
 Edit or change an OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to update an OpsItem. For more information, see

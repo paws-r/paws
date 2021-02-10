@@ -13,6 +13,9 @@ codecommit_associate_approval_rule_template_with_repository(
 
 \item{repositoryName}{[required] The name of the repository that you want to associate with the template.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates an association between an approval rule template and a specified
 repository. Then, the next time a pull request is created in the

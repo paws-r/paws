@@ -17,6 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SourceDestCheck}{The source/destination checking attribute. Resets the value to \code{true}.}
 }
+\value{
+An empty list.
+}
 \description{
 Resets a network interface attribute. You can specify only one attribute
 at a time.

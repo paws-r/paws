@@ -19,6 +19,50 @@ NULL
 #' previous response in the next request to retrieve the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Segments = list(
+#'     list(
+#'       Transcript = list(
+#'         Id = "string",
+#'         ParticipantId = "string",
+#'         ParticipantRole = "string",
+#'         Content = "string",
+#'         BeginOffsetMillis = 123,
+#'         EndOffsetMillis = 123,
+#'         Sentiment = "POSITIVE"|"NEUTRAL"|"NEGATIVE",
+#'         IssuesDetected = list(
+#'           list(
+#'             CharacterOffsets = list(
+#'               BeginOffsetChar = 123,
+#'               EndOffsetChar = 123
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Categories = list(
+#'         MatchedCategories = list(
+#'           "string"
+#'         ),
+#'         MatchedDetails = list(
+#'           list(
+#'             PointsOfInterest = list(
+#'               list(
+#'                 BeginOffsetMillis = 123,
+#'                 EndOffsetMillis = 123
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_realtime_contact_analysis_segments(

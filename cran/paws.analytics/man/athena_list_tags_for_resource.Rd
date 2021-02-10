@@ -17,6 +17,18 @@ for the resource with the specified ARN.}
 \item{MaxResults}{The maximum number of results to be returned per request that lists the
 tags for the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the tags associated with an Athena workgroup or data catalog
 resource.

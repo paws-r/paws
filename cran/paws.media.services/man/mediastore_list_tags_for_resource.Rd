@@ -9,6 +9,17 @@ mediastore_list_tags_for_resource(Resource)
 \arguments{
 \item{Resource}{[required] The Amazon Resource Name (ARN) for the container.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the tags assigned to the specified container.
 }

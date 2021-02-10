@@ -32,6 +32,26 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Principals = list(
+    list(
+      Arn = "string",
+      Statuses = list(
+        list(
+          Deadline = as.POSIXct(
+            "2015-01-01"
+          ),
+          Resource = "string",
+          UseLongIds = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the ID format settings for the root user and all IAM roles and
 IAM users that have explicitly specified a longer ID (17-character ID)

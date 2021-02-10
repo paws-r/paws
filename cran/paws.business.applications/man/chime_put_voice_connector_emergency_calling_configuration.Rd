@@ -14,6 +14,20 @@ chime_put_voice_connector_emergency_calling_configuration(
 
 \item{EmergencyCallingConfiguration}{[required] The emergency calling configuration details.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EmergencyCallingConfiguration = list(
+    DNIS = list(
+      list(
+        EmergencyPhoneNumber = "string",
+        TestPhoneNumber = "string",
+        CallingCountry = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Puts emergency calling configuration details to the specified Amazon
 Chime Voice Connector, such as emergency phone numbers and calling

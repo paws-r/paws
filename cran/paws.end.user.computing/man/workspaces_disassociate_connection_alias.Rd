@@ -9,6 +9,9 @@ workspaces_disassociate_connection_alias(AliasId)
 \arguments{
 \item{AliasId}{[required] The identifier of the connection alias to disassociate.}
 }
+\value{
+An empty list.
+}
 \description{
 Disassociates a connection alias from a directory. Disassociating a
 connection alias disables cross-Region redirection between two

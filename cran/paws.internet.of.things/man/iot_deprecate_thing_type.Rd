@@ -13,6 +13,9 @@ iot_deprecate_thing_type(thingTypeName, undoDeprecate)
 type will not be deprecated anymore and you can associate it with
 things.}
 }
+\value{
+An empty list.
+}
 \description{
 Deprecates a thing type. You can not associate new things with
 deprecated thing type.

@@ -10,6 +10,27 @@ snowball_describe_address(AddressId)
 \arguments{
 \item{AddressId}{[required] The automatically generated ID for a specific address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Address = list(
+    AddressId = "string",
+    Name = "string",
+    Company = "string",
+    Street1 = "string",
+    Street2 = "string",
+    Street3 = "string",
+    City = "string",
+    StateOrProvince = "string",
+    PrefectureOrDistrict = "string",
+    Landmark = "string",
+    Country = "string",
+    PostalCode = "string",
+    PhoneNumber = "string",
+    IsRestricted = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Takes an \code{AddressId} and returns specific details about that address in
 the form of an \code{Address} object.

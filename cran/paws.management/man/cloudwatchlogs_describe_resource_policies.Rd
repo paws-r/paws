@@ -12,6 +12,19 @@ cloudwatchlogs_describe_resource_policies(nextToken, limit)
 \item{limit}{The maximum number of resource policies to be displayed with one call of
 this API.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourcePolicies = list(
+    list(
+      policyName = "string",
+      policyDocument = "string",
+      lastUpdatedTime = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the resource policies in this account.
 }

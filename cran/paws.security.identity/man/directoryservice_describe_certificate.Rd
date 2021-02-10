@@ -12,6 +12,27 @@ directoryservice_describe_certificate(DirectoryId, CertificateId)
 
 \item{CertificateId}{[required] The identifier of the certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificate = list(
+    CertificateId = "string",
+    State = "Registering"|"Registered"|"RegisterFailed"|"Deregistering"|"Deregistered"|"DeregisterFailed",
+    StateReason = "string",
+    CommonName = "string",
+    RegisteredDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ExpiryDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Type = "ClientCertAuth"|"ClientLDAPS",
+    ClientCertAuthSettings = list(
+      OCSPUrl = "string"
+    )
+  )
+)
+}
+}
 \description{
 Displays information about the certificate registered for secure LDAP or
 client certificate authentication.

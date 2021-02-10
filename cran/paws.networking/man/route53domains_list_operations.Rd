@@ -25,6 +25,22 @@ previous response, and submit another request that includes the value of
 
 Default: 20}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Operations = list(
+    list(
+      OperationId = "string",
+      Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
+      Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+      SubmittedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextPageMarker = "string"
+)
+}
+}
 \description{
 Returns information about all of the operations that return an operation
 ID and that have ever been performed on domains that were registered by

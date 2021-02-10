@@ -10,6 +10,12 @@ directconnect_confirm_connection(connectionId)
 \arguments{
 \item{connectionId}{[required] The ID of the hosted connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
+)
+}
+}
 \description{
 Confirms the creation of the specified hosted connection on an
 interconnect.

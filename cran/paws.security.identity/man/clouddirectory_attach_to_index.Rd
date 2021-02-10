@@ -15,6 +15,12 @@ index exist.}
 
 \item{TargetReference}{[required] A reference to the object that you are attaching to the index.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttachedObjectIdentifier = "string"
+)
+}
+}
 \description{
 Attaches the specified object to the specified index.
 }

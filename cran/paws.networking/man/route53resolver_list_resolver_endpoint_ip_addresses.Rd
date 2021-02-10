@@ -26,6 +26,24 @@ addresses, you can submit another
 request to get the next group of IP addresses. In the next request,
 specify the value of \code{NextToken} from the previous response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  MaxResults = 123,
+  IpAddresses = list(
+    list(
+      IpId = "string",
+      SubnetId = "string",
+      Ip = "string",
+      Status = "CREATING"|"FAILED_CREATION"|"ATTACHING"|"ATTACHED"|"REMAP_DETACHING"|"REMAP_ATTACHING"|"DETACHING"|"FAILED_RESOURCE_GONE"|"DELETING"|"DELETE_FAILED_FAS_EXPIRED",
+      StatusMessage = "string",
+      CreationTime = "string",
+      ModificationTime = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets the IP addresses for a specified Resolver endpoint.
 }

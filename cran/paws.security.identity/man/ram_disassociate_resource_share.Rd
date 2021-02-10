@@ -18,6 +18,29 @@ ram_disassociate_resource_share(resourceShareArn, resourceArns,
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceShareAssociations = list(
+    list(
+      resourceShareArn = "string",
+      resourceShareName = "string",
+      associatedEntity = "string",
+      associationType = "PRINCIPAL"|"RESOURCE",
+      status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+      statusMessage = "string",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      external = TRUE|FALSE
+    )
+  ),
+  clientToken = "string"
+)
+}
+}
 \description{
 Disassociates the specified principals or resources from the specified
 resource share.

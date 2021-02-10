@@ -12,6 +12,23 @@ describing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateId = "string",
+  TemplateArn = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes read and write permissions on a template.
 }

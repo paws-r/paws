@@ -12,6 +12,9 @@ worklink_disassociate_website_certificate_authority(FleetArn,
 
 \item{WebsiteCaId}{[required] A unique identifier for the CA.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a certificate authority (CA).
 }

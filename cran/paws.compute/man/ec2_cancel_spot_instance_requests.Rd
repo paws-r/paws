@@ -14,6 +14,17 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SpotInstanceRequestIds}{[required] One or more Spot Instance request IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CancelledSpotInstanceRequests = list(
+    list(
+      SpotInstanceRequestId = "string",
+      State = "active"|"open"|"closed"|"cancelled"|"completed"
+    )
+  )
+)
+}
+}
 \description{
 Cancels one or more Spot Instance requests.
 

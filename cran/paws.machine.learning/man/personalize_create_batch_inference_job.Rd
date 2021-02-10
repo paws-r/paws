@@ -30,6 +30,12 @@ respectively.}
 
 \item{batchInferenceJobConfig}{The configuration details of a batch inference job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  batchInferenceJobArn = "string"
+)
+}
+}
 \description{
 Creates a batch inference job. The operation can handle up to 50 million
 records and the input file must be in JSON format. For more information,

@@ -9,6 +9,19 @@ iot_describe_scheduled_audit(scheduledAuditName)
 \arguments{
 \item{scheduledAuditName}{[required] The name of the scheduled audit whose information you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
+  dayOfMonth = "string",
+  dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
+  targetCheckNames = list(
+    "string"
+  ),
+  scheduledAuditName = "string",
+  scheduledAuditArn = "string"
+)
+}
+}
 \description{
 Gets information about a scheduled audit.
 }

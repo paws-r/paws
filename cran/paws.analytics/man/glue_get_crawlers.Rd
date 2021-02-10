@@ -11,6 +11,101 @@ glue_get_crawlers(MaxResults, NextToken)
 
 \item{NextToken}{A continuation token, if this is a continuation request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Crawlers = list(
+    list(
+      Name = "string",
+      Role = "string",
+      Targets = list(
+        S3Targets = list(
+          list(
+            Path = "string",
+            Exclusions = list(
+              "string"
+            ),
+            ConnectionName = "string"
+          )
+        ),
+        JdbcTargets = list(
+          list(
+            ConnectionName = "string",
+            Path = "string",
+            Exclusions = list(
+              "string"
+            )
+          )
+        ),
+        MongoDBTargets = list(
+          list(
+            ConnectionName = "string",
+            Path = "string",
+            ScanAll = TRUE|FALSE
+          )
+        ),
+        DynamoDBTargets = list(
+          list(
+            Path = "string",
+            scanAll = TRUE|FALSE,
+            scanRate = 123.0
+          )
+        ),
+        CatalogTargets = list(
+          list(
+            DatabaseName = "string",
+            Tables = list(
+              "string"
+            )
+          )
+        )
+      ),
+      DatabaseName = "string",
+      Description = "string",
+      Classifiers = list(
+        "string"
+      ),
+      RecrawlPolicy = list(
+        RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
+      ),
+      SchemaChangePolicy = list(
+        UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
+        DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
+      ),
+      LineageConfiguration = list(
+        CrawlerLineageSettings = "ENABLE"|"DISABLE"
+      ),
+      State = "READY"|"RUNNING"|"STOPPING",
+      TablePrefix = "string",
+      Schedule = list(
+        ScheduleExpression = "string",
+        State = "SCHEDULED"|"NOT_SCHEDULED"|"TRANSITIONING"
+      ),
+      CrawlElapsedTime = 123,
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastCrawl = list(
+        Status = "SUCCEEDED"|"CANCELLED"|"FAILED",
+        ErrorMessage = "string",
+        LogGroup = "string",
+        LogStream = "string",
+        MessagePrefix = "string",
+        StartTime = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      Version = 123,
+      Configuration = "string",
+      CrawlerSecurityConfiguration = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves metadata for all crawlers defined in the customer account.
 }

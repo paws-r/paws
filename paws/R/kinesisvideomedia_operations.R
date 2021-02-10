@@ -64,6 +64,15 @@ NULL
 #' you don't specify the `streamARN`, you must specify the `streamName`.
 #' @param StartSelector &#91;required&#93; Identifies the starting chunk to get from the specified stream.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentType = "string",
+#'   Payload = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_media(

@@ -27,6 +27,16 @@ for all IAM users, IAM roles, and the root user of the account unless an
 IAM user or role explicitly overrides these settings. If this field is
 omitted, the setting is changed only for the authenticated user.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  setting = list(
+    name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
+    value = "string",
+    principalArn = "string"
+  )
+)
+}
+}
 \description{
 Modifies an account setting. Account settings are set on a per-Region
 basis.

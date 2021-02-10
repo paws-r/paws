@@ -11,6 +11,9 @@ swf_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The list of tags to remove from the Amazon SWF domain.}
 }
+\value{
+An empty list.
+}
 \description{
 Remove a tag from a Amazon SWF domain.
 }

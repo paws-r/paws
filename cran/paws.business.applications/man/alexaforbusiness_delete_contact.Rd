@@ -9,6 +9,9 @@ alexaforbusiness_delete_contact(ContactArn)
 \arguments{
 \item{ContactArn}{[required] The ARN of the contact to delete.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a contact by the contact ARN.
 }

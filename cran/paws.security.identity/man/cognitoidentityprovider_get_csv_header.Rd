@@ -10,6 +10,15 @@ cognitoidentityprovider_get_csv_header(UserPoolId)
 \item{UserPoolId}{[required] The user pool ID for the user pool that the users are to be imported
 into.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserPoolId = "string",
+  CSVHeader = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets the header information for the .csv file to be used as input for
 the user import job.

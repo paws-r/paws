@@ -15,6 +15,18 @@ chime_batch_create_room_membership(AccountId, RoomId,
 
 \item{MembershipItemList}{[required] The list of membership items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Errors = list(
+    list(
+      MemberId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds up to 50 members to a chat room in an Amazon Chime Enterprise
 account. Members can be either users or bots. The member role designates

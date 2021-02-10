@@ -9,6 +9,36 @@ xray_update_sampling_rule(SamplingRuleUpdate)
 \arguments{
 \item{SamplingRuleUpdate}{[required] The rule and fields to change.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SamplingRuleRecord = list(
+    SamplingRule = list(
+      RuleName = "string",
+      RuleARN = "string",
+      ResourceARN = "string",
+      Priority = 123,
+      FixedRate = 123.0,
+      ReservoirSize = 123,
+      ServiceName = "string",
+      ServiceType = "string",
+      Host = "string",
+      HTTPMethod = "string",
+      URLPath = "string",
+      Version = 123,
+      Attributes = list(
+        "string"
+      )
+    ),
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModifiedAt = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Modifies a sampling rule's configuration.
 }

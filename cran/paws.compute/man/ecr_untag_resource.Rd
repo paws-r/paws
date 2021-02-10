@@ -13,6 +13,9 @@ repository.}
 
 \item{tagKeys}{[required] The keys of the tags to be removed.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes specified tags from a resource.
 }

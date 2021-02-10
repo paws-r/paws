@@ -31,6 +31,14 @@ For the CLI command-line parameter use format: &&tags
 For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  templateArn = "string",
+  templateName = "string",
+  defaultVersionId = 123
+)
+}
+}
 \description{
 Creates a fleet provisioning template.
 }

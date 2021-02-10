@@ -12,6 +12,9 @@ configservice_put_config_rule(ConfigRule, Tags)
 
 \item{Tags}{An array of tag object.}
 }
+\value{
+An empty list.
+}
 \description{
 Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.

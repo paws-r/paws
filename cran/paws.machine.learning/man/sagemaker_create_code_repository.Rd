@@ -18,6 +18,12 @@ access the repository.}
 resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeRepositoryArn = "string"
+)
+}
+}
 \description{
 Creates a Git repository as a resource in your Amazon SageMaker account.
 You can associate the repository with notebook instances so that you can

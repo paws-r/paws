@@ -22,6 +22,12 @@ attached.}
 
 \item{LinkName}{The name of link that is used to attach this object to a parent.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ObjectIdentifier = "string"
+)
+}
+}
 \description{
 Creates an object in a Directory. Additionally attaches the object to a
 parent, if a parent reference and \code{LinkName} is specified. An object is

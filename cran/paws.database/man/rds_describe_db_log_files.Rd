@@ -36,6 +36,19 @@ remaining results.}
 is specified the response includes only records beyond the marker, up to
 MaxRecords.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DescribeDBLogFiles = list(
+    list(
+      LogFileName = "string",
+      LastWritten = 123,
+      Size = 123
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of DB log files for the DB instance.
 }

@@ -35,6 +35,12 @@ be used for server-side encryption of the objects in the customer
 bucket. When this parameter is not enabled, the result will be encrypted
 server side,using SSE-S3.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Starts the asynchronous detection of text in a document. Amazon Textract
 can detect lines of text and the words that make up a line of text.

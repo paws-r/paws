@@ -43,6 +43,9 @@ group.
 
 The default value is FALSE.}
 }
+\value{
+An empty list.
+}
 \description{
 Specify the Amazon EC2 instance (destination) IP addresses and ports for
 a VPC subnet endpoint that can receive traffic for a custom routing
@@ -54,7 +57,7 @@ endpoint group.
 
 After you make changes, you can verify that the updates are complete by
 checking the status of your accelerator: the status changes from
-IN\\_PROGRESS to DEPLOYED.
+IN_PROGRESS to DEPLOYED.
 }
 \section{Request syntax}{
 \preformatted{svc$allow_custom_routing_traffic(

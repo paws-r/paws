@@ -22,6 +22,9 @@ flag to delete a document of type \code{ApplicationConfigurationSchema}. You
 can restrict access to the \code{Force} flag in an AWS Identity and Access
 Management (IAM) policy.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the Systems Manager document and all instance associations to
 the document.

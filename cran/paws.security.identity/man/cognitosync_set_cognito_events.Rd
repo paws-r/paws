@@ -11,6 +11,9 @@ cognitosync_set_cognito_events(IdentityPoolId, Events)
 
 \item{Events}{[required] The events to configure}
 }
+\value{
+An empty list.
+}
 \description{
 Sets the AWS Lambda function for a given event type for an identity
 pool. This request only updates the key/value pair specified. Other

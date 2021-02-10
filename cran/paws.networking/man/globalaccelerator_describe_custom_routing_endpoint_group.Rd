@@ -10,6 +10,29 @@ globalaccelerator_describe_custom_routing_endpoint_group(
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointGroup = list(
+    EndpointGroupArn = "string",
+    EndpointGroupRegion = "string",
+    DestinationDescriptions = list(
+      list(
+        FromPort = 123,
+        ToPort = 123,
+        Protocols = list(
+          "TCP"|"UDP"
+        )
+      )
+    ),
+    EndpointDescriptions = list(
+      list(
+        EndpointId = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describe an endpoint group for a custom routing accelerator.
 }

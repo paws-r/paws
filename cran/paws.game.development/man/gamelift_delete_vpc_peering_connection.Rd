@@ -15,6 +15,9 @@ either the fleet ID or ARN value.}
 in the VpcPeeringConnection object, which can be retrieved by calling
 \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}.}
 }
+\value{
+An empty list.
+}
 \description{
 Removes a VPC peering connection. To delete the connection, you must
 have a valid authorization for the VPC peering connection that you want

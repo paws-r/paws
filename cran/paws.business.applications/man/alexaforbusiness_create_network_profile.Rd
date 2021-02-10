@@ -15,11 +15,11 @@ alexaforbusiness_create_network_profile(NetworkProfileName, Description,
 
 \item{Ssid}{[required] The SSID of the Wi-Fi network.}
 
-\item{SecurityType}{[required] The security type of the Wi-Fi network. This can be WPA2\\_ENTERPRISE,
-WPA2\\_PSK, WPA\\_PSK, WEP, or OPEN.}
+\item{SecurityType}{[required] The security type of the Wi-Fi network. This can be WPA2_ENTERPRISE,
+WPA2_PSK, WPA_PSK, WEP, or OPEN.}
 
 \item{EapMethod}{The authentication standard that is used in the EAP framework.
-Currently, EAP\\_TLS is supported.}
+Currently, EAP_TLS is supported.}
 
 \item{CurrentPassword}{The current password of the Wi-Fi network.}
 
@@ -36,6 +36,12 @@ your devices and used to trust your authentication server during EAP
 negotiation.}
 
 \item{ClientRequestToken}{[required]}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkProfileArn = "string"
+)
+}
 }
 \description{
 Creates a network profile with the specified details.

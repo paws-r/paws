@@ -14,6 +14,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NatGatewayId}{[required] The ID of the NAT gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NatGatewayId = "string"
+)
+}
+}
 \description{
 Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
 its Elastic IP address, but does not release the address from your

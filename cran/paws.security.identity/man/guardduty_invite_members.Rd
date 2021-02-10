@@ -24,6 +24,17 @@ members.}
 \item{Message}{The invitation message that you want to send to the accounts that you're
 inviting to GuardDuty as members.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Invites other AWS accounts (created as members of the current AWS
 account by CreateMembers) to enable GuardDuty, and allow the current AWS

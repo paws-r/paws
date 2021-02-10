@@ -10,6 +10,20 @@ chime_get_voice_connector_streaming_configuration(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamingConfiguration = list(
+    DataRetentionInHours = 123,
+    Disabled = TRUE|FALSE,
+    StreamingNotificationTargets = list(
+      list(
+        NotificationTarget = "EventBridge"|"SNS"|"SQS"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the streaming configuration details for the specified Amazon
 Chime Voice Connector. Shows whether media streaming is enabled for

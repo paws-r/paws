@@ -39,6 +39,26 @@ response body for this request. If more than \code{maxitems} geolocations
 remain to be listed, then the value of the \code{IsTruncated} element in the
 response is \code{true}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GeoLocationDetailsList = list(
+    list(
+      ContinentCode = "string",
+      ContinentName = "string",
+      CountryCode = "string",
+      CountryName = "string",
+      SubdivisionCode = "string",
+      SubdivisionName = "string"
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  NextContinentCode = "string",
+  NextCountryCode = "string",
+  NextSubdivisionCode = "string",
+  MaxItems = "string"
+)
+}
+}
 \description{
 Retrieves a list of supported geographic locations.
 

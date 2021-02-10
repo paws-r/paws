@@ -40,6 +40,9 @@ NULL
 #' @param DomainName &#91;required&#93; The name of the domain in which the attributes are being deleted.
 #' @param Items &#91;required&#93; A list of items on which to perform the operation.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_attributes(
@@ -99,18 +102,18 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #' 
 #' Attributes are uniquely identified within an item by their name/value
 #' combination. For example, a single item can have the attributes
-#' `\{ "first_name", "first_value" \}` and
-#' `\{ "first_name", "second_value" \}`. However, it cannot have two
+#' `{ "first_name", "first_value" }` and
+#' `{ "first_name", "second_value" }`. However, it cannot have two
 #' attribute instances where both the `Item.X.Attribute.Y.Name` and
 #' `Item.X.Attribute.Y.Value` are the same.
 #' 
 #' Optionally, the requester can supply the `Replace` parameter for each
 #' individual value. Setting this value to `true` will cause the new
 #' attribute values to replace the existing attribute values. For example,
-#' if an item `I` has the attributes `\{ 'a', '1' \}, \{ 'b', '2'\}` and
-#' `\{ 'b', '3' \}` and the requester does a BatchPutAttributes of
-#' `\{'I', 'b', '4' \}` with the Replace parameter set to true, the final
-#' attributes of the item will be `\{ 'a', '1' \}` and `\{ 'b', '4' \}`,
+#' if an item `I` has the attributes `{ 'a', '1' }, { 'b', '2'}` and
+#' `{ 'b', '3' }` and the requester does a BatchPutAttributes of
+#' `{'I', 'b', '4' }` with the Replace parameter set to true, the final
+#' attributes of the item will be `{ 'a', '1' }` and `{ 'b', '4' }`,
 #' replacing the previous values of the 'b' attribute with the new value.
 #' 
 #' You cannot specify an empty string as an item or as an attribute name.
@@ -142,6 +145,9 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which the attributes are being stored.
 #' @param Items &#91;required&#93; A list of items on which to perform the operation.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -202,7 +208,12 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 #' @usage
 #' simpledb_create_domain(DomainName)
 #'
-#' @param DomainName &#91;required&#93; The name of the domain to create. The name can range between 3 and 255 characters and can contain the following characters: a-z, A-Z, 0-9, '_', '-', and '.'.
+#' @param DomainName &#91;required&#93; The name of the domain to create. The name can range between 3 and 255
+#' characters and can contain the following characters: a-z, A-Z, 0-9,
+#' '_', '-', and '.'.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -257,9 +268,17 @@ simpledb_create_domain <- function(DomainName) {
 #' simpledb_delete_attributes(DomainName, ItemName, Attributes, Expected)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
-#' @param ItemName &#91;required&#93; The name of the item. Similar to rows on a spreadsheet, items represent individual objects that contain one or more value-attribute pairs.
-#' @param Attributes A list of Attributes. Similar to columns on a spreadsheet, attributes represent categories of data that can be assigned to items.
-#' @param Expected The update condition which, if specified, determines whether the specified attributes will be deleted or not. The update condition must be satisfied in order for this request to be processed and the attributes to be deleted.
+#' @param ItemName &#91;required&#93; The name of the item. Similar to rows on a spreadsheet, items represent
+#' individual objects that contain one or more value-attribute pairs.
+#' @param Attributes A list of Attributes. Similar to columns on a spreadsheet, attributes
+#' represent categories of data that can be assigned to items.
+#' @param Expected The update condition which, if specified, determines whether the
+#' specified attributes will be deleted or not. The update condition must
+#' be satisfied in order for this request to be processed and the
+#' attributes to be deleted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -317,6 +336,9 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_domain(
@@ -357,6 +379,20 @@ simpledb_delete_domain <- function(DomainName) {
 #' simpledb_domain_metadata(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which to display the metadata of.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ItemCount = 123,
+#'   ItemNamesSizeBytes = 123,
+#'   AttributeNameCount = 123,
+#'   AttributeNamesSizeBytes = 123,
+#'   AttributeValueCount = 123,
+#'   AttributeValuesSizeBytes = 123,
+#'   Timestamp = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -406,7 +442,26 @@ simpledb_domain_metadata <- function(DomainName) {
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item.
 #' @param AttributeNames The names of the attributes.
-#' @param ConsistentRead Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
+#' @param ConsistentRead Determines whether or not strong consistency should be enforced when
+#' data is read from SimpleDB. If `true`, any data previously written to
+#' SimpleDB will be returned. Otherwise, results will be consistent
+#' eventually, and the client may not see data that was written immediately
+#' before your read.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Name = "string",
+#'       AlternateNameEncoding = "string",
+#'       Value = "string",
+#'       AlternateValueEncoding = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -455,8 +510,21 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
 #' @usage
 #' simpledb_list_domains(MaxNumberOfDomains, NextToken)
 #'
-#' @param MaxNumberOfDomains The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100.
-#' @param NextToken A string informing Amazon SimpleDB where to start the next list of domain names.
+#' @param MaxNumberOfDomains The maximum number of domain names you want returned. The range is 1 to
+#' 100. The default setting is 100.
+#' @param NextToken A string informing Amazon SimpleDB where to start the next list of
+#' domain names.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainNames = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -498,19 +566,19 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' 
 #' Attributes are uniquely identified in an item by their name/value
 #' combination. For example, a single item can have the attributes
-#' `\{ "first_name", "first_value" \}` and
-#' `\{ \"first_name\", second_value\" \}`. However, it cannot have two
+#' `{ "first_name", "first_value" }` and
+#' `{ \"first_name\", second_value\" }`. However, it cannot have two
 #' attribute instances where both the `Attribute.X.Name` and
 #' `Attribute.X.Value` are the same.
 #' 
 #' Optionally, the requestor can supply the `Replace` parameter for each
 #' individual attribute. Setting this value to `true` causes the new
 #' attribute value to replace the existing attribute value(s). For example,
-#' if an item has the attributes `\{ 'a', '1' \}`, `\{ 'b', '2'\}` and
-#' `\{ 'b', '3' \}` and the requestor calls
+#' if an item has the attributes `{ 'a', '1' }`, `{ 'b', '2'}` and
+#' `{ 'b', '3' }` and the requestor calls
 #' [`put_attributes`][simpledb_put_attributes] using the attributes
-#' `\{ 'b', '4' \}` with the `Replace` parameter set to true, the final
-#' attributes of the item are changed to `\{ 'a', '1' \}` and `\{ 'b', '4' \}`,
+#' `{ 'b', '4' }` with the `Replace` parameter set to true, the final
+#' attributes of the item are changed to `{ 'a', '1' }` and `{ 'b', '4' }`,
 #' which replaces the previous values of the 'b' attribute with the new
 #' value.
 #' 
@@ -539,7 +607,13 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item.
 #' @param Attributes &#91;required&#93; The list of attributes.
-#' @param Expected The update condition which, if specified, determines whether the specified attributes will be updated or not. The update condition must be satisfied in order for this request to be processed and the attributes to be updated.
+#' @param Expected The update condition which, if specified, determines whether the
+#' specified attributes will be updated or not. The update condition must
+#' be satisfied in order for this request to be processed and the
+#' attributes to be updated.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -604,8 +678,35 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
 #' simpledb_select(SelectExpression, NextToken, ConsistentRead)
 #'
 #' @param SelectExpression &#91;required&#93; The expression used to query the domain.
-#' @param NextToken A string informing Amazon SimpleDB where to start the next list of <code>ItemNames</code>.
-#' @param ConsistentRead Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
+#' @param NextToken A string informing Amazon SimpleDB where to start the next list of
+#' `ItemNames`.
+#' @param ConsistentRead Determines whether or not strong consistency should be enforced when
+#' data is read from SimpleDB. If `true`, any data previously written to
+#' SimpleDB will be returned. Otherwise, results will be consistent
+#' eventually, and the client may not see data that was written immediately
+#' before your read.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Name = "string",
+#'       AlternateNameEncoding = "string",
+#'       Attributes = list(
+#'         list(
+#'           Name = "string",
+#'           AlternateNameEncoding = "string",
+#'           Value = "string",
+#'           AlternateValueEncoding = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

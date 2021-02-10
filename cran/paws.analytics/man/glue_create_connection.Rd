@@ -12,6 +12,9 @@ provided, the AWS account ID is used by default.}
 
 \item{ConnectionInput}{[required] A \code{ConnectionInput} object defining the connection to create.}
 }
+\value{
+An empty list.
+}
 \description{
 Creates a connection definition in the Data Catalog.
 }

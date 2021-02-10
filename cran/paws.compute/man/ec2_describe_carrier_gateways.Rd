@@ -38,6 +38,26 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CarrierGateways = list(
+    list(
+      CarrierGatewayId = "string",
+      VpcId = "string",
+      State = "pending"|"available"|"deleting"|"deleted",
+      OwnerId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your carrier gateways.
 }

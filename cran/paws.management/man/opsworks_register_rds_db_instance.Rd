@@ -16,6 +16,9 @@ opsworks_register_rds_db_instance(StackId, RdsDbInstanceArn, DbUser,
 
 \item{DbPassword}{[required] The database password.}
 }
+\value{
+An empty list.
+}
 \description{
 Registers an Amazon RDS instance with a stack.
 

@@ -12,6 +12,9 @@ directoryservice_register_event_topic(DirectoryId, TopicName)
 \item{TopicName}{[required] The SNS topic name to which the directory will publish status messages.
 This SNS topic must be in the same region as the specified Directory ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Associates a directory with an SNS topic. This establishes the directory
 as a publisher to the specified SNS topic. You can then receive email or

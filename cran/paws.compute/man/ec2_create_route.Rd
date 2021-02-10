@@ -54,6 +54,12 @@ associated with a Wavelength Zone.}
 
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Creates a route in a route table within a VPC.
 

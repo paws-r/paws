@@ -6,6 +6,13 @@
 \usage{
 ecr_delete_registry_policy()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  policyText = "string"
+)
+}
+}
 \description{
 Deletes the registry permissions policy.
 }

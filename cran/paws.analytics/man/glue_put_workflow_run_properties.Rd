@@ -14,6 +14,9 @@ updated.}
 
 \item{RunProperties}{[required] The properties to put for the specified run.}
 }
+\value{
+An empty list.
+}
 \description{
 Puts the specified workflow run properties for the given workflow run.
 If a property already exists for the specified run, then it overrides

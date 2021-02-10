@@ -17,6 +17,9 @@ also be obtained from \code{\link[=emr_describe_job_flows]{describe_job_flows}} 
 Amazon EC2 instances in the cluster from shutting down due to API calls,
 user intervention, or job-flow error.}
 }
+\value{
+An empty list.
+}
 \description{
 SetTerminationProtection locks a cluster (job flow) so the EC2 instances
 in the cluster cannot be terminated by user intervention, an API call,

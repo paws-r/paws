@@ -9,6 +9,12 @@ machinelearning_delete_evaluation(EvaluationId)
 \arguments{
 \item{EvaluationId}{[required] A user-supplied ID that uniquely identifies the \code{Evaluation} to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EvaluationId = "string"
+)
+}
+}
 \description{
 Assigns the \code{DELETED} status to an \code{Evaluation}, rendering it unusable.
 

@@ -35,6 +35,9 @@ security group.}
 \item{SourceSecurityGroupOwnerId}{Not supported. Use a set of IP permissions to specify a destination
 security group.}
 }
+\value{
+An empty list.
+}
 \description{
 [VPC only] Adds the specified egress rules to a security group for use
 with a VPC.

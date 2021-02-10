@@ -9,6 +9,9 @@ appsync_delete_graphql_api(apiId)
 \arguments{
 \item{apiId}{[required] The API ID.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes a \code{GraphqlApi} object.
 }

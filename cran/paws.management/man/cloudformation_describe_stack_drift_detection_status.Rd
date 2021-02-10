@@ -15,6 +15,20 @@ each time this operation is run. However, the number of drift results
 AWS CloudFormation retains for any given stack, and for how long, may
 vary.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackId = "string",
+  StackDriftDetectionId = "string",
+  StackDriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
+  DetectionStatus = "DETECTION_IN_PROGRESS"|"DETECTION_FAILED"|"DETECTION_COMPLETE",
+  DetectionStatusReason = "string",
+  DriftedStackResourceCount = 123,
+  Timestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns information about a stack drift detection operation. A stack
 drift detection operation detects whether a stack's actual configuration

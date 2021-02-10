@@ -49,6 +49,78 @@ whenever the security profile is updated. If you specify a value that is
 different from the actual version, a \code{VersionConflictException} is
 thrown.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  securityProfileName = "string",
+  securityProfileArn = "string",
+  securityProfileDescription = "string",
+  behaviors = list(
+    list(
+      name = "string",
+      metric = "string",
+      metricDimension = list(
+        dimensionName = "string",
+        operator = "IN"|"NOT_IN"
+      ),
+      criteria = list(
+        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
+        value = list(
+          count = 123,
+          cidrs = list(
+            "string"
+          ),
+          ports = list(
+            123
+          ),
+          number = 123.0,
+          numbers = list(
+            123.0
+          ),
+          strings = list(
+            "string"
+          )
+        ),
+        durationSeconds = 123,
+        consecutiveDatapointsToAlarm = 123,
+        consecutiveDatapointsToClear = 123,
+        statisticalThreshold = list(
+          statistic = "string"
+        ),
+        mlDetectionConfig = list(
+          confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+        )
+      ),
+      suppressAlerts = TRUE|FALSE
+    )
+  ),
+  alertTargets = list(
+    list(
+      alertTargetArn = "string",
+      roleArn = "string"
+    )
+  ),
+  additionalMetricsToRetain = list(
+    "string"
+  ),
+  additionalMetricsToRetainV2 = list(
+    list(
+      metric = "string",
+      metricDimension = list(
+        dimensionName = "string",
+        operator = "IN"|"NOT_IN"
+      )
+    )
+  ),
+  version = 123,
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Updates a Device Defender security profile.
 }
