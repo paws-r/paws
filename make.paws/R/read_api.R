@@ -51,6 +51,7 @@ merge_examples <- function(api, examples) {
 # lists endpoints for each service and region, if different from the default.
 merge_region_config <- function(api, region_config) {
   service <- service_name(api)
+  endpoint_prefix <- api$metadata$endpointPrefix
   get_rule_names <- function(service) {
     grep(sprintf("/%s$", service), names(region_config$rules), value = TRUE)
   }
@@ -65,7 +66,7 @@ merge_region_config <- function(api, region_config) {
       rule <- region_config$patterns[[rule]]
     }
     rules[[region]] <- list(
-      endpoint = gsub("{service}", service, rule$endpoint, fixed = TRUE),
+      endpoint = gsub("{service}", endpoint_prefix, rule$endpoint, fixed = TRUE),
       global = isTRUE(rule$globalEndpoint)
     )
   }
