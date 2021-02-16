@@ -9,7 +9,7 @@ test_that("read_api", {
 
   write_json(list(foo = "examples"), file.path(api_path, "foo-2018-11-01.examples.json"))
   write_json(list(foo = "min"), file.path(api_path, "foo-2018-11-01.min.json"))
-  write_json(list(foo = "normal", name = "foo"), file.path(api_path, "foo-2018-11-01.normal.json"))
+  write_json(list(foo = "normal", name = "foo", metadata = list(endpointPrefix = "baz")), file.path(api_path, "foo-2018-11-01.normal.json"))
   write_json(list(foo = "paginators"), file.path(api_path, "foo-2018-11-01.paginators.json"))
 
   write_json(list(foo = "wrong1"), file.path(api_path, "foo-2017-11-01.examples.json"))
@@ -20,14 +20,14 @@ test_that("read_api", {
   region_path <- file.path(path, "lib")
   dir.create(region_path)
   write_json(
-    list(rules = list("*/*" = list(endpoint = "bar"), "*/foo" = list(endpoint = "baz", globalEndpoint = TRUE))),
+    list(rules = list("*/*" = list(endpoint = "bar"), "*/foo" = list(endpoint = "{service}.endpoint", globalEndpoint = TRUE))),
     file.path(region_path, "region_config_data.json")
   )
 
   api <- read_api("foo", path)
 
   expect_equal(api$name, "foo")
-  expect_equal(api$region_config$`*`, list(endpoint = "baz", global = TRUE))
+  expect_equal(api$region_config$`*`, list(endpoint = "baz.endpoint", global = TRUE))
 
   expect_error(read_api("bar", api_path))
 })
