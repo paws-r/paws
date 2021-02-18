@@ -93,9 +93,7 @@ test_that("make_tests", {
   )
   a <- make_tests(api)
   e <-
-    'context("api")
-
-    svc <- paws::api()
+    'svc <- paws::api()
 
     test_that("describe_foo", {
       expect_error(svc$describe_foo(), NA)
