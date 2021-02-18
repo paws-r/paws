@@ -158,7 +158,7 @@ get_profile_name <- function(profile = "") {
 get_instance_metadata <- function(query_path = "") {
 
   # Do not get metadata when the disabled setting is on.
-  if (trimws(get_env("AWS_EC2_METADATA_DISABLED")) %in% c("true", "1")) {
+  if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
     return(NULL)
   }
 
