@@ -4,8 +4,6 @@ NULL
 
 test_file_template <- template(
   `
-  context("${service}")
-
   svc <- paws::${service}()
 
   ${tests}
