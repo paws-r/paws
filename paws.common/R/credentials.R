@@ -7,8 +7,7 @@ Credentials <- struct(
   profile = "",
   force_refresh = FALSE,
   provider = list(
-    r_env_provider,
-    os_env_provider,
+    env_provider,
     credentials_file_provider,
     config_file_provider,
     container_credentials_provider,

@@ -11,37 +11,20 @@ Creds <- struct(
   provider_name = ""
 )
 
-# Retrieve credentials stored in R environment variables.
-r_env_provider <- function() {
-  access_key_id <- Sys.getenv("AWS_ACCESS_KEY_ID")
-  secret_access_key <- Sys.getenv("AWS_SECRET_ACCESS_KEY")
-  session_token <- Sys.getenv("AWS_SESSION_TOKEN")
-  if (access_key_id != "" && secret_access_key != "") {
-    creds <- Creds(
-      access_key_id = access_key_id,
-      secret_access_key = secret_access_key,
-      session_token = session_token,
-      expiration = Inf
-    )
-  } else {
-    creds <- NULL
-  }
-  return(creds)
-}
-
-# Retrieve credentials stored in OS environment variables.
-os_env_provider <- function() {
-
-  access_key_id <- get_os_env_variable("AWS_ACCESS_KEY_ID")
-  secret_access_key <- get_os_env_variable("AWS_SECRET_ACCESS_KEY")
-  session_token <- get_os_env_variable("AWS_SESSION_TOKEN")
+# Retrieve credentials stored in R or OS environment variables.
+env_provider <- function() {
+  access_key_id <- get_env("AWS_ACCESS_KEY_ID")
+  secret_access_key <- get_env("AWS_SECRET_ACCESS_KEY")
+  session_token <- get_env("AWS_SESSION_TOKEN")
+  expiration <- as_timestamp(get_env("AWS_CREDENTIAL_EXPIRATION"), "iso8601")
+  if (length(expiration) == 0) expiration <- Inf
 
   if (access_key_id != "" && secret_access_key != "") {
     creds <- Creds(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
       session_token = session_token,
-      expiration = Inf
+      expiration = expiration
     )
   } else {
     creds <- NULL
@@ -52,9 +35,8 @@ os_env_provider <- function() {
 # Retrieve credentials stored in credentials file.
 credentials_file_provider <- function(profile = "") {
 
-  credentials_path <- file.path(get_aws_path(), "credentials")
-
-  if (!file.exists(credentials_path)) return(NULL)
+  credentials_path <- get_credentials_file_path()
+  if (is.null(credentials_path)) return(NULL)
 
   aws_profile <- get_profile_name(profile)
 
@@ -88,9 +70,9 @@ credentials_file_provider <- function(profile = "") {
 # Get credentials that are specified by an item in the AWS config file.
 config_file_provider <- function(profile = "") {
 
-  config_path <- file.path(get_aws_path(), "config")
+  config_path <- get_config_file_path()
+  if (is.null(config_path)) return(NULL)
 
-  if (!file.exists(config_path)) return(NULL)
   config <- ini::read.ini(config_path)
 
   profile_name <- get_profile_name(profile)
@@ -161,8 +143,7 @@ config_file_credential_process <- function(command) {
 # See https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-credential_source.html.
 config_file_credential_source <- function(role_arn, role_session_name, mfa_serial, credential_source) {
   if (credential_source == "Environment") {
-    creds <- r_env_provider()
-    if (is.null(creds)) creds <- os_env_provider()
+    creds <- env_provider()
   } else if (credential_source == "Ec2InstanceMetadata") {
     creds <- iam_credentials_provider()
   } else if (credential_source == "EcsContainer") {
@@ -232,8 +213,7 @@ container_credentials_provider <- function() {
   # Initialize to NULL
   credentials_response <- NULL
 
-  container_credentials_uri <-
-    Sys.getenv("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
 
   # Look for job role credentials first
   if (container_credentials_uri != "") {
@@ -265,6 +245,31 @@ container_credentials_provider <- function() {
     creds <- NULL
   }
   return(creds)
+}
+
+# Gets the job role credentials by making an http request
+get_container_credentials <- function() {
+
+  credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  if (nchar(credentials_uri) == 0) {
+    return(NULL)
+  }
+
+  metadata_url <- file.path("http://169.254.170.2", credentials_uri)
+  metadata_request <-
+    new_http_request("GET", metadata_url, timeout = 1)
+
+  metadata_response <- tryCatch({
+    issue(metadata_request)
+  }, error = function (e){
+    NULL
+  })
+
+  if (is.null(metadata_response) || metadata_response$status_code != 200) {
+    return(NULL)
+  }
+
+  return(metadata_response)
 }
 
 # Retrieve credentials for EC2 IAM Role
@@ -301,6 +306,18 @@ iam_credentials_provider <- function() {
     creds <- NULL
   }
   return(creds)
+}
+
+# Get the name of the IAM role from the instance metadata.
+get_iam_role <- function() {
+
+  iam_role_response <-  get_instance_metadata("iam/security-credentials")
+
+  if (is.null(iam_role_response)) return(NULL)
+
+  iam_role_name <- raw_to_utf8(iam_role_response$body)
+
+  return(iam_role_name)
 }
 
 no_credentials <- function() {
