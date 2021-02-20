@@ -4,17 +4,18 @@
   - [Set credentials for all services with environment variables](#set-credentials-for-all-services-with-environment-variables)
   - [Get credentials from the AWS shared credentials file](#get-credentials-from-the-aws-shared-credentials-file)
   - [Set credentials for an individual service](#set-credentials-for-an-individual-service)
-  - [Get credentials from an EC2 or container IAM role](#get-credentials-from-an-ec2-or-container-iam-role)
+  - [Get credentials from an EC2 instance or container role](#get-credentials-from-an-ec2-instance-or-container-role)
   - [Get credentials from a command line process](#get-credentials-from-a-command-line-process)
-  - [Assume an IAM role with credentials from the environment or an IAM role](#assume-an-iam-role-with-credentials-from-the-environment-or-an-iam-role)
-  - [Assume an IAM role with credentials from another profile](#assume-an-iam-role-with-credentials-from-another-profile)
-  - [Use multifactor authentication](#use-multifactor-authentication)
+  - [Assume a role with credentials from the environment or an instance/container role](#assume-a-role-with-credentials-from-the-environment-or-an-instancecontainer-role)
+  - [Assume a role with credentials from another profile](#assume-a-role-with-credentials-from-another-profile)
+  - [Use multifactor authentication when assuming a role](#use-multifactor-authentication-when-assuming-a-role)
 - [Set region](#set-region)
   - [Set region for all services with an environment variable](#set-region-for-all-services-with-an-environment-variable)
   - [Get region from the AWS config file](#get-region-from-the-aws-config-file)
   - [Set region for an individual service](#set-region-for-an-individual-service)
 - [Set profile](#set-profile)
 - [Reference](#reference)
+  - [Credential and option locations and priority](#credential-and-option-locations-and-priority)
   - [Service settings](#service-settings)
   - [Environment variables](#environment-variables)
   - [Shared credentials file](#shared-credentials-file)
@@ -25,15 +26,10 @@
 
 # Set credentials
 
-In order to use AWS APIs, you must provide your credentials. Paws will look for
-your credentials in the following order.
+In order to use AWS APIs, you must provide your credentials.
 
-1.  In settings provided to an individual service.
-2.  In environment variables.
-3.  In the AWS shared credentials and config files.
-4.  In an EC2 or container IAM role.
-
-Below are examples of how to set your credentials for common scenarios.
+Below are examples of how to set your credentials for common scenarios. For
+a reference to all available options, [see the reference section](#reference).
 
 ---
 
@@ -124,19 +120,19 @@ svc <- paws::svc(
                 access_key_id = "your AWS access key",
                 secret_access_key = "your AWS secret key",
                 session_token = "your session token",
-                expiration = as.POSIXct("2001-02-03 04:05:06")                
+                expiration = as.POSIXct("2001-02-03 04:05:06")
             )
         )
     )
 )
 ```
 
-`expiration` must be a POSIXct timestamp or comparable to one.
+`expiration` must be a `POSIXct` date-time or able to be compared with them.
 
 ---
 
 
-## Get credentials from an EC2 or container IAM role
+## Get credentials from an EC2 instance or container role
 
 If you are running R on an EC2 instance with an attached IAM role, or in a
 container on AWS with an attached container IAM role, Paws will automatically
@@ -158,7 +154,7 @@ like the following:
 
     {
       "Version": 1,
-      "AccessKeyId": "an AWS access key",
+      "AccessKeyId": "your AWS access key",
       "SecretAccessKey": "your AWS secret access key",
       "SessionToken": "your session token", 
       "Expiration": "ISO8601 expiration time"
@@ -173,11 +169,11 @@ specify another location using environment variable `AWS_CONFIG_FILE`.
 ---
 
 
-## Assume an IAM role with credentials from the environment or an IAM role
+## Assume a role with credentials from the environment or an instance/container role
 
-You can assume an IAM role, using initial credentials provided by
-environment variables or by an EC2 or container IAM role. To do this, specify
-in the AWS config file the role to assume in `role_arn` and the source of the
+You can assume a role, using initial credentials provided by environment
+variables or by an EC2 instance or container role. To do this, specify in the
+AWS config file the role to assume in `role_arn` and the source of the
 credentials in `credential_source`.
 
     [profile my-profile]
@@ -204,11 +200,11 @@ specify another location using environment variable `AWS_CONFIG_FILE`.
 ---
 
 
-## Assume an IAM role with credentials from another profile
+## Assume a role with credentials from another profile
 
-You can assume an IAM role, using initial credentials provided by
-another profile. To do this, specify in the AWS config file the role to assume
-in `role_arn` and the name of the other profile in `source_profile`.
+You can assume a role, using initial credentials provided by another profile.
+To do this, specify in the AWS config file the role to assume in `role_arn` and
+the name of the other profile in `source_profile`.
 
     [profile my-profile]
     role_arn=arn:aws:iam::123456789012:role/my-role-name
@@ -216,7 +212,7 @@ in `role_arn` and the name of the other profile in `source_profile`.
 
 Paws will look in both the AWS shared credentials file and the AWS config file
 for the source profile. The source profile can use any method to provide 
-credentials, e.g. fixed credentials, a credential process, etc.
+credentials.
 
 If you put these settings in a config profile other than `default`, you will
 need to specify which profile to use; see [set profile](#set-profile).
@@ -227,10 +223,10 @@ specify another location using environment variable `AWS_CONFIG_FILE`.
 ---
 
 
-## Use multifactor authentication
+## Use multifactor authentication when assuming a role
 
-To use multifactor authentication when assuming a role, specify in the AWS
-config file the MFA serial number in `mfa_serial`. When assuming the role,
+To use multifactor authentication (MFA) when assuming a role, specify in the
+AWS config file the MFA serial number in `mfa_serial`. When assuming the role,
 Paws will prompt you to enter your MFA token code.
 
 An example specifying MFA along with `source_profile` is below.
@@ -254,12 +250,8 @@ specify another location using environment variable `AWS_CONFIG_FILE`.
 
 # Set region
 
-To use AWS, you must also set your AWS region. Paws will look for the region in
-the following places, in order:
-
-1.  In settings provided to an individual service.
-2.  In an environment variable.
-3.  In the AWS config file.
+To use AWS, you must also set your AWS region. See below for common scenarios.
+For a reference to all available options, [see the reference section](#reference).
 
 ---
 
@@ -319,8 +311,8 @@ multiple service objects with different regions.
 
 # Set profile
 
-You can store different settings under different profiles in the AWS shared
-credentials and config files.
+You can store different settings together under different profiles in the AWS
+shared credentials and config files.
 
 If you do not specify a profile to use, Paws will use the `default` profile.
 
@@ -355,8 +347,8 @@ In the AWS shared credentials, a separate profile looks like the following:
     aws_access_key_id=my-profile AWS access key
     aws_secret_access_key=my-profile AWS secret key
 
-And in the AWS config file, it looks like the following. Note that profile
-names other than default begin with `profile`.
+And in the AWS config file, it looks like the following. Note that in the
+config file, profile names other than default begin with `profile`.
 
     [default]
     region=us-east-1
@@ -369,16 +361,23 @@ names other than default begin with `profile`.
 
 # Reference
 
-Credentials and options can be set in the following places in this order:
+## Credential and option locations and priority
 
-1.  As settings for a service.
-2.  Environment variables.
-3.  AWS shared credentials and config files.
-4.  IAM role.
+Credentials and options can be set in the following locations. Paws will check
+them in this order:
+
+1.  [In settings provided to an individual service](#service-settings)
+2.  [In environment variables](#environment-variables)
+3.  In the [AWS shared credentials file](#shared-credentials-file) and 
+    [AWS config file](#config-file)
+4.  In an EC2 instance or container IAM role
 
 This means that, for example, a service setting will take precedence over an
 environment variable, and an environment variable will take precedence over a
 setting in a config file.
+
+---
+
 
 ## Service settings
 
@@ -395,27 +394,26 @@ Paws supports the following settings provided as arguments to a service:
   from AWS STS operations.
 
 * `expiration` - The expiration time of the credentials contained in the
-  environment variables `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and
-  `AWS_SESSION_TOKEN`. The expiration time must be a datetime, e.g.
-  `as.POSIXct("2011-03-27 01:30:00")`.
+  parameters `access_key_id`, `secret_access_key`, and `session_token`. The
+  expiration time must be a date-time, e.g. `as.POSIXct("2001-02-03 04:05:06")`.
 
 * `profile` - Specifies the name of the profile with the credentials and
   options to use.
 
 * `region` - Specifies the AWS region to send the request to.
 
-They must be provided to the service in the following structure. You may
-specify only the settings you want to change, e.g. only `region`.
+They must be provided to the service in the following structure. It is 
+allowable to specify only some of the settings, e.g. only `region`.
 
 ``` r
 svc <- paws::svc(
     config = list(
         credentials = list(
             creds = list(
-                access_key_id = "you AWS access key",
-                secret_access_key = "you AWS secret key",
+                access_key_id = "your AWS access key",
+                secret_access_key = "your AWS secret key",
                 session_token = "your session token",
-                expiration = as.POSIXct("2011-03-27 01:30:00")
+                expiration = as.POSIXct("2001-02-03 04:05:06")
             ),
             profile = "your profile"
         ),
@@ -424,7 +422,12 @@ svc <- paws::svc(
 )
 ```
 
+---
+
+
 ## Environment variables
+
+Paws supports the following settings in environment variables.
 
 * `AWS_ACCESS_KEY_ID` - Specifies the AWS access key used as part of the 
   credentials to authenticate the request.
@@ -455,7 +458,16 @@ svc <- paws::svc(
 * `AWS_SHARED_CREDENTIALS_FILES` - Specifies the location of the file used to
   store access keys. The default path is `~/.aws/credentials`.
 
+---
+
+
 ## Shared credentials file
+
+The default location for the AWS shared credentials file is
+`~/.aws/credentials`. You can specify another location using environment
+variable `AWS_SHARED_CREDENTIALS_FILE`.
+
+Paws supports the following settings in the AWS shared credentials file.
 
 * `aws_access_key_id` - Specifies the AWS access key used as part of the 
   credentials to authenticate the request.
@@ -463,7 +475,15 @@ svc <- paws::svc(
 * `aws_secret_access_key` - Specifies the AWS secret key used as part of the
   credentials to authenticate the request.
 
+---
+
+
 ## Config file
+
+The default location for the AWS config file is `~/.aws/config`. You can
+specify another location using environment variable `AWS_CONFIG_FILE`.
+
+Paws supports the following settings in the AWS config file.
 
 * `credential_process` - Specifies an external command to be run to generate 
   or retrieve authentication credentials. The command must return the
