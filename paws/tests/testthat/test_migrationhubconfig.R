@@ -1,5 +1,3 @@
-context("migrationhubconfig")
-
 svc <- paws::migrationhubconfig()
 
 test_that("describe_home_region_controls", {

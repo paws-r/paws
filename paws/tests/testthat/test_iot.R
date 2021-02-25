@@ -1,5 +1,3 @@
-context("iot")
-
 svc <- paws::iot()
 
 test_that("describe_account_audit_configuration", {

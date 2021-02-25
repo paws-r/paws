@@ -1,5 +1,3 @@
-context("healthlake")
-
 svc <- paws::healthlake()
 
 test_that("describe_fhir_datastore", {

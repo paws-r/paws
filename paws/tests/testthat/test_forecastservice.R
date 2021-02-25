@@ -1,5 +1,3 @@
-context("forecastservice")
-
 svc <- paws::forecastservice()
 
 test_that("list_dataset_groups", {

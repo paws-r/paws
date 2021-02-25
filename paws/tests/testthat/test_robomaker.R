@@ -1,5 +1,3 @@
-context("robomaker")
-
 svc <- paws::robomaker()
 
 test_that("list_deployment_jobs", {

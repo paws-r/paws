@@ -162,7 +162,7 @@ networkfirewall <- function(config = list()) {
 
 .networkfirewall$metadata <- list(
   service_name = "networkfirewall",
-  endpoints = list("*" = list(endpoint = "networkfirewall.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "networkfirewall.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "networkfirewall.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "networkfirewall.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "network-firewall.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "network-firewall.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "network-firewall.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "network-firewall.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Network Firewall",
   api_version = "2020-11-12",
   signing_name = "network-firewall",

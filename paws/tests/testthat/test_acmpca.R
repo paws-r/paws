@@ -1,5 +1,3 @@
-context("acmpca")
-
 svc <- paws::acmpca()
 
 test_that("list_certificate_authorities", {

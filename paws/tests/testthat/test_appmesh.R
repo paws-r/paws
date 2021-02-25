@@ -1,5 +1,3 @@
-context("appmesh")
-
 svc <- paws::appmesh()
 
 test_that("list_meshes", {

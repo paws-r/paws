@@ -1,5 +1,3 @@
-context("prometheusservice")
-
 svc <- paws::prometheusservice()
 
 test_that("list_workspaces", {

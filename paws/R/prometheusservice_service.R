@@ -61,7 +61,7 @@ prometheusservice <- function(config = list()) {
 
 .prometheusservice$metadata <- list(
   service_name = "prometheusservice",
-  endpoints = list("*" = list(endpoint = "prometheusservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "prometheusservice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "prometheusservice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "prometheusservice.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "aps.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "aps.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "aps.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "amp",
   api_version = "2020-08-01",
   signing_name = "aps",

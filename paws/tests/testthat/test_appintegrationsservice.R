@@ -1,5 +1,3 @@
-context("appintegrationsservice")
-
 svc <- paws::appintegrationsservice()
 
 test_that("list_event_integrations", {

@@ -1,5 +1,3 @@
-context("polly")
-
 svc <- paws::polly()
 
 test_that("describe_voices", {

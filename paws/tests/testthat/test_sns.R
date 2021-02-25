@@ -1,5 +1,3 @@
-context("sns")
-
 svc <- paws::sns()
 
 test_that("list_phone_numbers_opted_out", {

@@ -1,5 +1,3 @@
-context("schemas")
-
 svc <- paws::schemas()
 
 test_that("list_discoverers", {

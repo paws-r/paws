@@ -1,5 +1,3 @@
-context("mediapackagevod")
-
 svc <- paws::mediapackagevod()
 
 test_that("list_assets", {

@@ -67,7 +67,7 @@ redshiftdataapiservice <- function(config = list()) {
 
 .redshiftdataapiservice$metadata <- list(
   service_name = "redshiftdataapiservice",
-  endpoints = list("*" = list(endpoint = "redshiftdataapiservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshiftdataapiservice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "redshiftdataapiservice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshiftdataapiservice.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "redshift-data.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift-data.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "redshift-data.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift-data.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Redshift Data",
   api_version = "2019-12-20",
   signing_name = "redshift-data",

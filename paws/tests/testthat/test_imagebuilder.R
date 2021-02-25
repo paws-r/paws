@@ -1,5 +1,3 @@
-context("imagebuilder")
-
 svc <- paws::imagebuilder()
 
 test_that("list_components", {

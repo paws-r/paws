@@ -1,5 +1,3 @@
-context("kafka")
-
 svc <- paws::kafka()
 
 test_that("list_clusters", {

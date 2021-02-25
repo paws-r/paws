@@ -1,5 +1,3 @@
-context("codestarconnections")
-
 svc <- paws::codestarconnections()
 
 test_that("list_connections", {

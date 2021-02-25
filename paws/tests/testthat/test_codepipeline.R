@@ -1,5 +1,3 @@
-context("codepipeline")
-
 svc <- paws::codepipeline()
 
 test_that("list_action_types", {

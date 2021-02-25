@@ -1,5 +1,3 @@
-context("guardduty")
-
 svc <- paws::guardduty()
 
 test_that("list_detectors", {

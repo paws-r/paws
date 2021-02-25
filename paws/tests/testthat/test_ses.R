@@ -1,5 +1,3 @@
-context("ses")
-
 svc <- paws::ses()
 
 test_that("describe_active_receipt_rule_set", {

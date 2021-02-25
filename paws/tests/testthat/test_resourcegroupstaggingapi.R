@@ -1,5 +1,3 @@
-context("resourcegroupstaggingapi")
-
 svc <- paws::resourcegroupstaggingapi()
 
 test_that("describe_report_creation", {

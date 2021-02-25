@@ -1,5 +1,3 @@
-context("elasticinference")
-
 svc <- paws::elasticinference()
 
 test_that("describe_accelerator_types", {

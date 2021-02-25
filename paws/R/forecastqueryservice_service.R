@@ -57,7 +57,7 @@ forecastqueryservice <- function(config = list()) {
 
 .forecastqueryservice$metadata <- list(
   service_name = "forecastqueryservice",
-  endpoints = list("*" = list(endpoint = "forecastqueryservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "forecastqueryservice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "forecastqueryservice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "forecastqueryservice.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "forecastquery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "forecastquery.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "forecastquery.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "forecastquery.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "forecastquery",
   api_version = "2018-06-26",
   signing_name = "forecast",

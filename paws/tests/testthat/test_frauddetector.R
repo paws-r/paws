@@ -1,5 +1,3 @@
-context("frauddetector")
-
 svc <- paws::frauddetector()
 
 test_that("describe_model_versions", {

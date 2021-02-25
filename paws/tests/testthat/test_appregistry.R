@@ -1,5 +1,3 @@
-context("appregistry")
-
 svc <- paws::appregistry()
 
 test_that("list_applications", {

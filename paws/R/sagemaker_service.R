@@ -297,7 +297,7 @@ sagemaker <- function(config = list()) {
 
 .sagemaker$metadata <- list(
   service_name = "sagemaker",
-  endpoints = list("*" = list(endpoint = "sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sagemaker.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sagemaker.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.sagemaker.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SageMaker",
   api_version = "2017-07-24",
   signing_name = "sagemaker",

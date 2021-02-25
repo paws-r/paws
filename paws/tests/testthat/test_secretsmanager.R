@@ -1,5 +1,3 @@
-context("secretsmanager")
-
 svc <- paws::secretsmanager()
 
 test_that("list_secrets", {

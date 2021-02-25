@@ -1,5 +1,3 @@
-context("dataexchange")
-
 svc <- paws::dataexchange()
 
 test_that("list_data_sets", {

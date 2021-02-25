@@ -1,5 +1,3 @@
-context("mwaa")
-
 svc <- paws::mwaa()
 
 test_that("list_environments", {

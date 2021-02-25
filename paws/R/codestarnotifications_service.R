@@ -126,7 +126,7 @@ codestarnotifications <- function(config = list()) {
 
 .codestarnotifications$metadata <- list(
   service_name = "codestarnotifications",
-  endpoints = list("*" = list(endpoint = "codestarnotifications.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codestarnotifications.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codestarnotifications.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codestarnotifications.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codestar-notifications.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codestar-notifications.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codestar-notifications.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codestar-notifications.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "codestar notifications",
   api_version = "2019-10-15",
   signing_name = "codestar-notifications",

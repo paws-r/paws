@@ -74,7 +74,7 @@ appintegrationsservice <- function(config = list()) {
 
 .appintegrationsservice$metadata <- list(
   service_name = "appintegrationsservice",
-  endpoints = list("*" = list(endpoint = "appintegrationsservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appintegrationsservice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "appintegrationsservice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "appintegrationsservice.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "app-integrations.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "app-integrations.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "app-integrations.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "app-integrations.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "AppIntegrations",
   api_version = "2020-07-29",
   signing_name = "app-integrations",

@@ -1,5 +1,3 @@
-context("sagemaker")
-
 svc <- paws::sagemaker()
 
 test_that("list_actions", {

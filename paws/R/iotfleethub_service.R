@@ -68,7 +68,7 @@ iotfleethub <- function(config = list()) {
 
 .iotfleethub$metadata <- list(
   service_name = "iotfleethub",
-  endpoints = list("*" = list(endpoint = "iotfleethub.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotfleethub.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "iotfleethub.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iotfleethub.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.fleethub.iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.fleethub.iot.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.fleethub.iot.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.fleethub.iot.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoTFleetHub",
   api_version = "2020-11-03",
   signing_name = "iotfleethub",

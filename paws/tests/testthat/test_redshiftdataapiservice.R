@@ -1,5 +1,3 @@
-context("redshiftdataapiservice")
-
 svc <- paws::redshiftdataapiservice()
 
 test_that("list_statements", {

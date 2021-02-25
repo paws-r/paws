@@ -1,5 +1,3 @@
-context("docdb")
-
 svc <- paws::docdb()
 
 test_that("describe_certificates", {

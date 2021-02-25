@@ -1,5 +1,3 @@
-context("route53resolver")
-
 svc <- paws::route53resolver()
 
 test_that("list_resolver_dnssec_configs", {

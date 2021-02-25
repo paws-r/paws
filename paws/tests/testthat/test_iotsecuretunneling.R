@@ -1,5 +1,3 @@
-context("iotsecuretunneling")
-
 svc <- paws::iotsecuretunneling()
 
 test_that("list_tunnels", {

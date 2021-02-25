@@ -87,7 +87,7 @@ codegurureviewer <- function(config = list()) {
 
 .codegurureviewer$metadata <- list(
   service_name = "codegurureviewer",
-  endpoints = list("*" = list(endpoint = "codegurureviewer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codegurureviewer.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codegurureviewer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codegurureviewer.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codeguru-reviewer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeguru-reviewer.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codeguru-reviewer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeguru-reviewer.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeGuru Reviewer",
   api_version = "2019-09-19",
   signing_name = "codeguru-reviewer",

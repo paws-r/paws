@@ -61,7 +61,7 @@ kinesisvideosignalingchannels <- function(config = list()) {
 
 .kinesisvideosignalingchannels$metadata <- list(
   service_name = "kinesisvideosignalingchannels",
-  endpoints = list("*" = list(endpoint = "kinesisvideosignalingchannels.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideosignalingchannels.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisvideosignalingchannels.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisvideosignalingchannels.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisvideo.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisvideo.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis Video Signaling",
   api_version = "2019-12-04",
   signing_name = NULL,

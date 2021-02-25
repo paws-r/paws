@@ -78,7 +78,7 @@ migrationhubconfig <- function(config = list()) {
 
 .migrationhubconfig$metadata <- list(
   service_name = "migrationhubconfig",
-  endpoints = list("*" = list(endpoint = "migrationhubconfig.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "migrationhubconfig.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "migrationhubconfig.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "migrationhubconfig.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "migrationhub-config.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "migrationhub-config.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "migrationhub-config.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "migrationhub-config.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MigrationHub Config",
   api_version = "2019-06-30",
   signing_name = "mgh",

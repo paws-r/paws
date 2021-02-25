@@ -1,5 +1,3 @@
-context("computeoptimizer")
-
 svc <- paws::computeoptimizer()
 
 test_that("describe_recommendation_export_jobs", {

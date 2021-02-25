@@ -1,5 +1,3 @@
-context("macie2")
-
 svc <- paws::macie2()
 
 test_that("describe_buckets", {

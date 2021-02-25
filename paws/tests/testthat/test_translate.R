@@ -1,5 +1,3 @@
-context("translate")
-
 svc <- paws::translate()
 
 test_that("list_parallel_data", {

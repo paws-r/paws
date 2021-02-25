@@ -100,7 +100,7 @@ augmentedairuntime <- function(config = list()) {
 
 .augmentedairuntime$metadata <- list(
   service_name = "augmentedairuntime",
-  endpoints = list("*" = list(endpoint = "augmentedairuntime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "augmentedairuntime.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "augmentedairuntime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "augmentedairuntime.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "a2i-runtime.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "a2i-runtime.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "a2i-runtime.sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "a2i-runtime.sagemaker.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SageMaker A2I Runtime",
   api_version = "2019-11-07",
   signing_name = "sagemaker",

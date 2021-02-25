@@ -1,5 +1,3 @@
-context("qldb")
-
 svc <- paws::qldb()
 
 test_that("list_journal_s3_exports", {

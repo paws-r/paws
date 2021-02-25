@@ -1,5 +1,3 @@
-context("autoscaling")
-
 svc <- paws::autoscaling()
 
 test_that("describe_account_limits", {

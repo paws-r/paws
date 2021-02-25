@@ -1,5 +1,3 @@
-context("directoryservice")
-
 svc <- paws::directoryservice()
 
 test_that("describe_directories", {

@@ -81,7 +81,7 @@ lookoutforvision <- function(config = list()) {
 
 .lookoutforvision$metadata <- list(
   service_name = "lookoutforvision",
-  endpoints = list("*" = list(endpoint = "lookoutforvision.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lookoutforvision.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lookoutforvision.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lookoutforvision.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "lookoutvision.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lookoutvision.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lookoutvision.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lookoutvision.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "LookoutVision",
   api_version = "2020-11-20",
   signing_name = "lookoutvision",

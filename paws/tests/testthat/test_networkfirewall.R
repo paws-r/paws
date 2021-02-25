@@ -1,5 +1,3 @@
-context("networkfirewall")
-
 svc <- paws::networkfirewall()
 
 test_that("describe_firewall", {

@@ -1,5 +1,3 @@
-context("dynamodbstreams")
-
 svc <- paws::dynamodbstreams()
 
 test_that("list_streams", {

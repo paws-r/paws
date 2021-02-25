@@ -1,5 +1,3 @@
-context("lambda")
-
 svc <- paws::lambda()
 
 test_that("list_code_signing_configs", {

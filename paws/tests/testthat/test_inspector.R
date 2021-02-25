@@ -1,5 +1,3 @@
-context("inspector")
-
 svc <- paws::inspector()
 
 test_that("describe_cross_account_access_role", {

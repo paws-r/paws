@@ -72,7 +72,7 @@ sagemakerfeaturestoreruntime <- function(config = list()) {
 
 .sagemakerfeaturestoreruntime$metadata <- list(
   service_name = "sagemakerfeaturestoreruntime",
-  endpoints = list("*" = list(endpoint = "sagemakerfeaturestoreruntime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sagemakerfeaturestoreruntime.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sagemakerfeaturestoreruntime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sagemakerfeaturestoreruntime.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "featurestore-runtime.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "featurestore-runtime.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "featurestore-runtime.sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "featurestore-runtime.sagemaker.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SageMaker FeatureStore Runtime",
   api_version = "2020-07-01",
   signing_name = "sagemaker",

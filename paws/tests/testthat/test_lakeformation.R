@@ -1,5 +1,3 @@
-context("lakeformation")
-
 svc <- paws::lakeformation()
 
 test_that("list_permissions", {

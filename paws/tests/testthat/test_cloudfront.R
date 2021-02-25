@@ -1,5 +1,3 @@
-context("cloudfront")
-
 svc <- paws::cloudfront()
 
 test_that("list_cache_policies", {

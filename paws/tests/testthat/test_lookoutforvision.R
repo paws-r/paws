@@ -1,5 +1,3 @@
-context("lookoutforvision")
-
 svc <- paws::lookoutforvision()
 
 test_that("list_projects", {

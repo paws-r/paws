@@ -1,5 +1,3 @@
-context("locationservice")
-
 svc <- paws::locationservice()
 
 test_that("list_geofence_collections", {

@@ -1,5 +1,3 @@
-context("devopsguru")
-
 svc <- paws::devopsguru()
 
 test_that("describe_account_health", {

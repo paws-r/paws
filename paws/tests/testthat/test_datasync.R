@@ -1,5 +1,3 @@
-context("datasync")
-
 svc <- paws::datasync()
 
 test_that("list_agents", {

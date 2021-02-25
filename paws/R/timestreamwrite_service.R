@@ -84,7 +84,7 @@ timestreamwrite <- function(config = list()) {
 
 .timestreamwrite$metadata <- list(
   service_name = "timestreamwrite",
-  endpoints = list("*" = list(endpoint = "timestreamwrite.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "timestreamwrite.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "timestreamwrite.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "timestreamwrite.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ingest.timestream.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ingest.timestream.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ingest.timestream.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ingest.timestream.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Timestream Write",
   api_version = "2018-11-01",
   signing_name = "timestream",

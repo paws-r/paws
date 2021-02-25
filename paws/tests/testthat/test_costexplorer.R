@@ -1,5 +1,3 @@
-context("costexplorer")
-
 svc <- paws::costexplorer()
 
 test_that("list_cost_category_definitions", {

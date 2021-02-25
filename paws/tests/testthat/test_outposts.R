@@ -1,5 +1,3 @@
-context("outposts")
-
 svc <- paws::outposts()
 
 test_that("list_outposts", {

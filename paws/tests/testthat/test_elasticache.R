@@ -1,5 +1,3 @@
-context("elasticache")
-
 svc <- paws::elasticache()
 
 test_that("describe_cache_clusters", {

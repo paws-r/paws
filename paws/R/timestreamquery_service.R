@@ -58,7 +58,7 @@ timestreamquery <- function(config = list()) {
 
 .timestreamquery$metadata <- list(
   service_name = "timestreamquery",
-  endpoints = list("*" = list(endpoint = "timestreamquery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "timestreamquery.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "timestreamquery.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "timestreamquery.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "query.timestream.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "query.timestream.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "query.timestream.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "query.timestream.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Timestream Query",
   api_version = "2018-11-01",
   signing_name = "timestream",

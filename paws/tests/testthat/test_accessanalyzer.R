@@ -1,5 +1,3 @@
-context("accessanalyzer")
-
 svc <- paws::accessanalyzer()
 
 test_that("list_analyzers", {

@@ -1,5 +1,3 @@
-context("route53")
-
 svc <- paws::route53()
 
 test_that("list_geo_locations", {

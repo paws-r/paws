@@ -1,5 +1,3 @@
-context("personalize")
-
 svc <- paws::personalize()
 
 test_that("list_batch_inference_jobs", {

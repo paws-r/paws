@@ -1,5 +1,3 @@
-context("greengrass")
-
 svc <- paws::greengrass()
 
 test_that("list_bulk_deployments", {
