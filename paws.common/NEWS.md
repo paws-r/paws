@@ -1,3 +1,13 @@
+# paws.common 0.3.9
+
+* Support multifactor authentication, using the `mfa_serial` shared
+  configuration file item.
+* Support `AWS_CONFIG_FILE`, `AWS_SHARED_CREDENTIALS_FILE`, 
+  `AWS_CREDENTIAL_EXPIRATION`, and `AWS_EC2_METADATA_DISABLED` environment
+  variables. See `https://github.com/paws-r/paws/blob/main/docs/credentials.md`
+  for explanations of all settings.
+* Cache credentials in each service object.
+
 # paws.common 0.3.8
 
 * Use no timeout by default when making HTTP requests. The previous release set
