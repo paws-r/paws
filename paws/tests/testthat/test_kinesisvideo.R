@@ -1,5 +1,3 @@
-context("kinesisvideo")
-
 svc <- paws::kinesisvideo()
 
 test_that("describe_signaling_channel", {

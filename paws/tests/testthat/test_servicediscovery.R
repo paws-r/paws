@@ -1,5 +1,3 @@
-context("servicediscovery")
-
 svc <- paws::servicediscovery()
 
 test_that("list_namespaces", {

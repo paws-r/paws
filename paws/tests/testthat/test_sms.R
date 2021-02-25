@@ -1,5 +1,3 @@
-context("sms")
-
 svc <- paws::sms()
 
 test_that("list_apps", {

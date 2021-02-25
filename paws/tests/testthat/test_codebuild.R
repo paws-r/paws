@@ -1,5 +1,3 @@
-context("codebuild")
-
 svc <- paws::codebuild()
 
 test_that("list_build_batches", {

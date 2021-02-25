@@ -1,5 +1,3 @@
-context("kinesis")
-
 svc <- paws::kinesis()
 
 test_that("describe_limits", {

@@ -1,5 +1,3 @@
-context("synthetics")
-
 svc <- paws::synthetics()
 
 test_that("describe_canaries", {

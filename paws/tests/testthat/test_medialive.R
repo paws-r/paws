@@ -1,5 +1,3 @@
-context("medialive")
-
 svc <- paws::medialive()
 
 test_that("list_channels", {

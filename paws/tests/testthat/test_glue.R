@@ -1,5 +1,3 @@
-context("glue")
-
 svc <- paws::glue()
 
 test_that("list_crawlers", {

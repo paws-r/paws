@@ -1,5 +1,3 @@
-context("simpledb")
-
 svc <- paws::simpledb()
 
 test_that("list_domains", {

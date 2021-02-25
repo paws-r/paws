@@ -1,5 +1,3 @@
-context("elastictranscoder")
-
 svc <- paws::elastictranscoder()
 
 test_that("list_pipelines", {

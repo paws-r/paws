@@ -1,5 +1,3 @@
-context("sfn")
-
 svc <- paws::sfn()
 
 test_that("list_activities", {

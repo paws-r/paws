@@ -1,5 +1,3 @@
-context("timestreamwrite")
-
 svc <- paws::timestreamwrite()
 
 test_that("describe_endpoints", {

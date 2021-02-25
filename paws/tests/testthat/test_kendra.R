@@ -1,5 +1,3 @@
-context("kendra")
-
 svc <- paws::kendra()
 
 test_that("list_indices", {

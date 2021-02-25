@@ -1,5 +1,3 @@
-context("savingsplans")
-
 svc <- paws::savingsplans()
 
 test_that("describe_savings_plans", {

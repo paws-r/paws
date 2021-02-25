@@ -84,7 +84,7 @@ ecrpublic <- function(config = list()) {
 
 .ecrpublic$metadata <- list(
   service_name = "ecrpublic",
-  endpoints = list("*" = list(endpoint = "ecrpublic.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecrpublic.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ecrpublic.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ecrpublic.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.ecr-public.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.ecr-public.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.ecr-public.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.ecr-public.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ECR PUBLIC",
   api_version = "2020-10-30",
   signing_name = "ecr-public",

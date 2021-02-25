@@ -1,5 +1,3 @@
-context("gamelift")
-
 svc <- paws::gamelift()
 
 test_that("describe_ec2_instance_limits", {

@@ -1,5 +1,3 @@
-context("iotevents")
-
 svc <- paws::iotevents()
 
 test_that("describe_logging_options", {

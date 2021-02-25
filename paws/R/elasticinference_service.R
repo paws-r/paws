@@ -62,7 +62,7 @@ elasticinference <- function(config = list()) {
 
 .elasticinference$metadata <- list(
   service_name = "elasticinference",
-  endpoints = list("*" = list(endpoint = "elasticinference.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticinference.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticinference.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticinference.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.elastic-inference.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.elastic-inference.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.elastic-inference.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.elastic-inference.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Inference",
   api_version = "2017-07-25",
   signing_name = "elastic-inference",

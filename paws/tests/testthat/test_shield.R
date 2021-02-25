@@ -1,5 +1,3 @@
-context("shield")
-
 svc <- paws::shield()
 
 test_that("describe_attack_statistics", {

@@ -1,5 +1,3 @@
-context("iotanalytics")
-
 svc <- paws::iotanalytics()
 
 test_that("list_channels", {

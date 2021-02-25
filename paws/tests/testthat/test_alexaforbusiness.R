@@ -1,5 +1,3 @@
-context("alexaforbusiness")
-
 svc <- paws::alexaforbusiness()
 
 test_that("list_business_report_schedules", {

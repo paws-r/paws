@@ -94,7 +94,7 @@ emrcontainers <- function(config = list()) {
 
 .emrcontainers$metadata <- list(
   service_name = "emrcontainers",
-  endpoints = list("*" = list(endpoint = "emrcontainers.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "emrcontainers.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "emrcontainers.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "emrcontainers.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "emr-containers.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "emr-containers.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "emr-containers.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "emr-containers.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EMR containers",
   api_version = "2020-10-01",
   signing_name = "emr-containers",

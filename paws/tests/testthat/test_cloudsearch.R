@@ -1,5 +1,3 @@
-context("cloudsearch")
-
 svc <- paws::cloudsearch()
 
 test_that("describe_domains", {

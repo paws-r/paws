@@ -1,5 +1,3 @@
-context("fsx")
-
 svc <- paws::fsx()
 
 test_that("describe_backups", {

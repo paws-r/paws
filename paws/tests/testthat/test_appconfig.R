@@ -1,5 +1,3 @@
-context("appconfig")
-
 svc <- paws::appconfig()
 
 test_that("list_applications", {

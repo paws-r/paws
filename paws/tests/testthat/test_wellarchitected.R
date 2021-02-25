@@ -1,5 +1,3 @@
-context("wellarchitected")
-
 svc <- paws::wellarchitected()
 
 test_that("list_lenses", {

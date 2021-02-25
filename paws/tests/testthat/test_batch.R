@@ -1,5 +1,3 @@
-context("batch")
-
 svc <- paws::batch()
 
 test_that("describe_compute_environments", {

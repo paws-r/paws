@@ -1,5 +1,3 @@
-context("ecs")
-
 svc <- paws::ecs()
 
 test_that("describe_capacity_providers", {

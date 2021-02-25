@@ -1,5 +1,3 @@
-context("iotsitewise")
-
 svc <- paws::iotsitewise()
 
 test_that("describe_default_encryption_configuration", {

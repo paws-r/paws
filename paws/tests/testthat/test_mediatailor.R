@@ -1,5 +1,3 @@
-context("mediatailor")
-
 svc <- paws::mediatailor()
 
 test_that("list_playback_configurations", {

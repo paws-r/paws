@@ -1,5 +1,3 @@
-context("s3outposts")
-
 svc <- paws::s3outposts()
 
 test_that("list_endpoints", {

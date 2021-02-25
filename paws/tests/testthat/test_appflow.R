@@ -1,5 +1,3 @@
-context("appflow")
-
 svc <- paws::appflow()
 
 test_that("describe_connector_profiles", {

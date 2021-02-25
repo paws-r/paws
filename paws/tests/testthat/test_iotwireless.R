@@ -1,5 +1,3 @@
-context("iotwireless")
-
 svc <- paws::iotwireless()
 
 test_that("list_destinations", {

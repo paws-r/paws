@@ -1,5 +1,3 @@
-context("worklink")
-
 svc <- paws::worklink()
 
 test_that("list_fleets", {

@@ -1,5 +1,3 @@
-context("amplify")
-
 svc <- paws::amplify()
 
 test_that("list_apps", {

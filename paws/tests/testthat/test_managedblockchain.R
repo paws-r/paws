@@ -1,5 +1,3 @@
-context("managedblockchain")
-
 svc <- paws::managedblockchain()
 
 test_that("list_invitations", {

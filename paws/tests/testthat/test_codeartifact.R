@@ -1,5 +1,3 @@
-context("codeartifact")
-
 svc <- paws::codeartifact()
 
 test_that("list_domains", {

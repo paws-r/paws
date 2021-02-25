@@ -1,5 +1,3 @@
-context("customerprofiles")
-
 svc <- paws::customerprofiles()
 
 test_that("list_domains", {

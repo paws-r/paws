@@ -1,5 +1,3 @@
-context("datapipeline")
-
 svc <- paws::datapipeline()
 
 test_that("list_pipelines", {

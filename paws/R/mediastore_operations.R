@@ -22,8 +22,9 @@ NULL
 #' (such as "environment") and the tag value represents a specific value
 #' within that category (such as "test," "development," or "production").
 #' You can add up to 50 tags to each container. For more information about
-#' tagging, including naming and usage conventions, see Tagging Resources
-#' in MediaStore.
+#' tagging, including naming and usage conventions, see [Tagging Resources
+#' in
+#' MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:

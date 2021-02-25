@@ -1,5 +1,3 @@
-context("codeguruprofiler")
-
 svc <- paws::codeguruprofiler()
 
 test_that("list_profiling_groups", {

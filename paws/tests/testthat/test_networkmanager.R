@@ -1,5 +1,3 @@
-context("networkmanager")
-
 svc <- paws::networkmanager()
 
 test_that("describe_global_networks", {

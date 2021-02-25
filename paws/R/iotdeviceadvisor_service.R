@@ -79,7 +79,7 @@ iotdeviceadvisor <- function(config = list()) {
 
 .iotdeviceadvisor$metadata <- list(
   service_name = "iotdeviceadvisor",
-  endpoints = list("*" = list(endpoint = "iotdeviceadvisor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotdeviceadvisor.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "iotdeviceadvisor.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iotdeviceadvisor.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.iotdeviceadvisor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.iotdeviceadvisor.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.iotdeviceadvisor.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.iotdeviceadvisor.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IotDeviceAdvisor",
   api_version = "2020-09-18",
   signing_name = "iotdeviceadvisor",

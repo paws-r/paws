@@ -1,5 +1,3 @@
-context("iotfleethub")
-
 svc <- paws::iotfleethub()
 
 test_that("list_applications", {

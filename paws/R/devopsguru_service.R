@@ -92,7 +92,7 @@ devopsguru <- function(config = list()) {
 
 .devopsguru$metadata <- list(
   service_name = "devopsguru",
-  endpoints = list("*" = list(endpoint = "devopsguru.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "devopsguru.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "devopsguru.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "devopsguru.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "devops-guru.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "devops-guru.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "devops-guru.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "devops-guru.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "DevOps Guru",
   api_version = "2020-12-01",
   signing_name = "devops-guru",

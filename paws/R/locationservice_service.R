@@ -92,7 +92,7 @@ locationservice <- function(config = list()) {
 
 .locationservice$metadata <- list(
   service_name = "locationservice",
-  endpoints = list("*" = list(endpoint = "locationservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "locationservice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "locationservice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "locationservice.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "geo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "geo.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "geo.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "geo.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Location",
   api_version = "2020-11-19",
   signing_name = "geo",

@@ -68,7 +68,7 @@ iotsecuretunneling <- function(config = list()) {
 
 .iotsecuretunneling$metadata <- list(
   service_name = "iotsecuretunneling",
-  endpoints = list("*" = list(endpoint = "iotsecuretunneling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotsecuretunneling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "iotsecuretunneling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iotsecuretunneling.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.tunneling.iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.tunneling.iot.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.tunneling.iot.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.tunneling.iot.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoTSecureTunneling",
   api_version = "2018-10-05",
   signing_name = "IoTSecuredTunneling",

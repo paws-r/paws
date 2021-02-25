@@ -1,5 +1,3 @@
-context("ssoadmin")
-
 svc <- paws::ssoadmin()
 
 test_that("list_instances", {

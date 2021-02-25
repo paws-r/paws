@@ -1,5 +1,3 @@
-context("auditmanager")
-
 svc <- paws::auditmanager()
 
 test_that("list_assessment_reports", {

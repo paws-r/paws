@@ -67,7 +67,7 @@ connectcontactlens <- function(config = list()) {
 
 .connectcontactlens$metadata <- list(
   service_name = "connectcontactlens",
-  endpoints = list("*" = list(endpoint = "connectcontactlens.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connectcontactlens.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "connectcontactlens.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "connectcontactlens.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "contact-lens.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "contact-lens.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "contact-lens.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "contact-lens.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Connect Contact Lens",
   api_version = "2020-08-21",
   signing_name = "connect",

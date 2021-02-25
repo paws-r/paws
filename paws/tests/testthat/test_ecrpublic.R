@@ -1,5 +1,3 @@
-context("ecrpublic")
-
 svc <- paws::ecrpublic()
 
 test_that("describe_registries", {

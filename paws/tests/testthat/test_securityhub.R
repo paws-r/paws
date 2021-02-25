@@ -1,5 +1,3 @@
-context("securityhub")
-
 svc <- paws::securityhub()
 
 test_that("describe_action_targets", {

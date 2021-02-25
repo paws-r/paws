@@ -1,5 +1,3 @@
-context("eventbridge")
-
 svc <- paws::eventbridge()
 
 test_that("describe_event_bus", {

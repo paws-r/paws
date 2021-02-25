@@ -1,5 +1,3 @@
-context("codecommit")
-
 svc <- paws::codecommit()
 
 test_that("list_approval_rule_templates", {

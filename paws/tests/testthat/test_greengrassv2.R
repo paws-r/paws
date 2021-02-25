@@ -1,5 +1,3 @@
-context("greengrassv2")
-
 svc <- paws::greengrassv2()
 
 test_that("list_components", {

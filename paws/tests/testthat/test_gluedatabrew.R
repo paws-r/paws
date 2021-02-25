@@ -1,5 +1,3 @@
-context("gluedatabrew")
-
 svc <- paws::gluedatabrew()
 
 test_that("list_datasets", {

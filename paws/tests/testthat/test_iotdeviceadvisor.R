@@ -1,5 +1,3 @@
-context("iotdeviceadvisor")
-
 svc <- paws::iotdeviceadvisor()
 
 test_that("list_suite_definitions", {

@@ -1,5 +1,3 @@
-context("elasticbeanstalk")
-
 svc <- paws::elasticbeanstalk()
 
 test_that("describe_account_attributes", {

@@ -1,5 +1,3 @@
-context("codegurureviewer")
-
 svc <- paws::codegurureviewer()
 
 test_that("list_repository_associations", {

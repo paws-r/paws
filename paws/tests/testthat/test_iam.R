@@ -1,5 +1,3 @@
-context("iam")
-
 svc <- paws::iam()
 
 test_that("list_access_keys", {

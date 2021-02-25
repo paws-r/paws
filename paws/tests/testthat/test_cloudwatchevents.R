@@ -1,5 +1,3 @@
-context("cloudwatchevents")
-
 svc <- paws::cloudwatchevents()
 
 test_that("describe_event_bus", {

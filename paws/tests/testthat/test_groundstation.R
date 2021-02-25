@@ -1,5 +1,3 @@
-context("groundstation")
-
 svc <- paws::groundstation()
 
 test_that("list_configs", {

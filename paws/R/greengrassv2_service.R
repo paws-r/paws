@@ -93,7 +93,7 @@ greengrassv2 <- function(config = list()) {
 
 .greengrassv2$metadata <- list(
   service_name = "greengrassv2",
-  endpoints = list("*" = list(endpoint = "greengrassv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "greengrassv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "greengrassv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "greengrassv2.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "greengrass.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "greengrass.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "greengrass.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "greengrass.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "GreengrassV2",
   api_version = "2020-11-30",
   signing_name = NULL,

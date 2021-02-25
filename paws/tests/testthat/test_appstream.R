@@ -1,5 +1,3 @@
-context("appstream")
-
 svc <- paws::appstream()
 
 test_that("describe_directory_configs", {

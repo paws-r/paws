@@ -71,7 +71,7 @@ connectparticipant <- function(config = list()) {
 
 .connectparticipant$metadata <- list(
   service_name = "connectparticipant",
-  endpoints = list("*" = list(endpoint = "connectparticipant.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connectparticipant.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "connectparticipant.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "connectparticipant.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "participant.connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "participant.connect.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "participant.connect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "participant.connect.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ConnectParticipant",
   api_version = "2018-09-07",
   signing_name = "execute-api",

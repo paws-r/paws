@@ -1,5 +1,3 @@
-context("mq")
-
 svc <- paws::mq()
 
 test_that("describe_broker_engine_types", {

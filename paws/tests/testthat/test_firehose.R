@@ -1,5 +1,3 @@
-context("firehose")
-
 svc <- paws::firehose()
 
 test_that("list_delivery_streams", {

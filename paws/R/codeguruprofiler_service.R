@@ -82,7 +82,7 @@ codeguruprofiler <- function(config = list()) {
 
 .codeguruprofiler$metadata <- list(
   service_name = "codeguruprofiler",
-  endpoints = list("*" = list(endpoint = "codeguruprofiler.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeguruprofiler.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codeguruprofiler.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeguruprofiler.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codeguru-profiler.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeguru-profiler.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codeguru-profiler.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeguru-profiler.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeGuruProfiler",
   api_version = "2019-07-18",
   signing_name = "codeguru-profiler",

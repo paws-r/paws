@@ -1,5 +1,3 @@
-context("rds")
-
 svc <- paws::rds()
 
 test_that("describe_account_attributes", {

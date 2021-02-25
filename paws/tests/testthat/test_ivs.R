@@ -1,5 +1,3 @@
-context("ivs")
-
 svc <- paws::ivs()
 
 test_that("list_channels", {

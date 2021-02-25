@@ -1,5 +1,3 @@
-context("wafv2")
-
 svc <- paws::wafv2()
 
 test_that("list_logging_configurations", {

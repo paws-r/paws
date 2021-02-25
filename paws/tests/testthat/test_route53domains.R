@@ -1,5 +1,3 @@
-context("route53domains")
-
 svc <- paws::route53domains()
 
 test_that("list_domains", {

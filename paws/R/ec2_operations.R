@@ -10328,7 +10328,7 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Po
 #' to create a private connection between your VPC and the service. The
 #' service may be provided by AWS, an AWS Marketplace Partner, or another
 #' AWS account. For more information, see [VPC
-#' Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
+#' Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' A `gateway` endpoint serves as a target for a route in your route table
@@ -10606,13 +10606,13 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
 #'     Balancer endpoint.
 #' 
 #' For more information, see [VPC Endpoint
-#' Services](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html)
+#' Services](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' If you set the private DNS name, you must prove that you own the private
 #' DNS domain name. For more information, see [VPC Endpoint Service Private
 #' DNS Name
-#' Verification](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html)
+#' Verification](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
@@ -38612,7 +38612,7 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
 #' Modifies attributes of a specified VPC endpoint. The attributes that you
 #' can modify depend on the type of VPC endpoint (interface, gateway, or
 #' Gateway Load Balancer). For more information, see [VPC
-#' Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
+#' Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
@@ -38776,7 +38776,7 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
 #' If you set or modify the private DNS name, you must prove that you own
 #' the private DNS domain name. For more information, see [VPC Endpoint
 #' Service Private DNS Name
-#' Verification](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html)
+#' Verification](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
@@ -38860,7 +38860,7 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
 #'
 #' @description
 #' Modifies the permissions for your [VPC endpoint
-#' service](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html).
+#' service](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html).
 #' You can add or remove permissions for service consumers (IAM users, IAM
 #' roles, and AWS accounts) to connect to your endpoint service.
 #' 
@@ -45437,7 +45437,7 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, FilterInA
 #' Before the service provider runs this command, they must add a record to
 #' the DNS server. For more information, see [Adding a TXT Record to Your
 #' Domain's DNS
-#' Server](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html#add-dns-txt-record)
+#' Server](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html#add-dns-txt-record)
 #' in the *Amazon VPC User Guide*.
 #'
 #' @usage

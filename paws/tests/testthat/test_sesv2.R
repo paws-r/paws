@@ -1,5 +1,3 @@
-context("sesv2")
-
 svc <- paws::sesv2()
 
 test_that("list_configuration_sets", {

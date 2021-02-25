@@ -1,5 +1,3 @@
-context("wafregional")
-
 svc <- paws::wafregional()
 
 test_that("list_byte_match_sets", {

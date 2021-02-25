@@ -96,7 +96,8 @@ mwaa_create_cli_token <- function(Name) {
 #' @param NetworkConfiguration &#91;required&#93; The VPC networking components you want to use for your environment. At
 #' least two private subnet identifiers and one VPC security group
 #' identifier are required to create an environment. For more information,
-#' see Creating the VPC network for a MWAA environment.
+#' see [Creating the VPC network for a MWAA
+#' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/).
 #' @param PluginsS3ObjectVersion The `plugins.zip` file version you want to use.
 #' @param PluginsS3Path The relative path to the `plugins.zip` file on your Amazon S3 storage
 #' bucket. For example, `plugins.zip`. If a relative path is provided in

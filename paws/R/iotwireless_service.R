@@ -107,7 +107,7 @@ iotwireless <- function(config = list()) {
 
 .iotwireless$metadata <- list(
   service_name = "iotwireless",
-  endpoints = list("*" = list(endpoint = "iotwireless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotwireless.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "iotwireless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iotwireless.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.iotwireless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.iotwireless.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.iotwireless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.iotwireless.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoT Wireless",
   api_version = "2020-11-22",
   signing_name = "iotwireless",

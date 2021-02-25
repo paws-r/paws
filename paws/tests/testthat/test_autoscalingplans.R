@@ -1,5 +1,3 @@
-context("autoscalingplans")
-
 svc <- paws::autoscalingplans()
 
 test_that("describe_scaling_plans", {

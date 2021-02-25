@@ -72,7 +72,7 @@ mediapackagevod <- function(config = list()) {
 
 .mediapackagevod$metadata <- list(
   service_name = "mediapackagevod",
-  endpoints = list("*" = list(endpoint = "mediapackagevod.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mediapackagevod.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mediapackagevod.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mediapackagevod.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "mediapackage-vod.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mediapackage-vod.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mediapackage-vod.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mediapackage-vod.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MediaPackage Vod",
   api_version = "2018-11-07",
   signing_name = "mediapackage-vod",

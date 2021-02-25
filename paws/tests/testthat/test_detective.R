@@ -1,5 +1,3 @@
-context("detective")
-
 svc <- paws::detective()
 
 test_that("list_graphs", {

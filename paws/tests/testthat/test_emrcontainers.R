@@ -1,5 +1,3 @@
-context("emrcontainers")
-
 svc <- paws::emrcontainers()
 
 test_that("list_virtual_clusters", {

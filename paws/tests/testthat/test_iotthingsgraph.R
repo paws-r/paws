@@ -1,5 +1,3 @@
-context("iotthingsgraph")
-
 svc <- paws::iotthingsgraph()
 
 test_that("describe_namespace", {
