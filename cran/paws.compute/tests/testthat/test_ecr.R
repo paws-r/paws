@@ -1,5 +1,3 @@
-context("ecr")
-
 svc <- paws::ecr()
 
 test_that("describe_registry", {

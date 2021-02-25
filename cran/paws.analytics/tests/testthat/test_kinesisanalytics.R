@@ -1,5 +1,3 @@
-context("kinesisanalytics")
-
 svc <- paws::kinesisanalytics()
 
 test_that("list_applications", {

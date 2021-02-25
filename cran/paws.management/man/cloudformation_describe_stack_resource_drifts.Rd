@@ -79,7 +79,8 @@ For a given stack, there will be one \code{StackResourceDrift} for each stack
 resource that has been checked for drift. Resources that have not yet
 been checked for drift are not included. Resources that do not currently
 support drift detection are not checked, and so not included. For a list
-of resources that support drift detection, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
+of resources that support drift detection, see Resources that Support
+Drift Detection.
 
 Use
 \code{\link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift}}

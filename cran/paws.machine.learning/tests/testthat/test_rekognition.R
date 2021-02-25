@@ -1,5 +1,3 @@
-context("rekognition")
-
 svc <- paws::rekognition()
 
 test_that("describe_projects", {

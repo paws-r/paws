@@ -1,5 +1,3 @@
-context("importexport")
-
 svc <- paws::importexport()
 
 test_that("list_jobs", {

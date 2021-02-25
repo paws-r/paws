@@ -1,5 +1,3 @@
-context("databasemigrationservice")
-
 svc <- paws::databasemigrationservice()
 
 test_that("describe_account_attributes", {

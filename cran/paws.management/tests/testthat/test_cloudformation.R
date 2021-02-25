@@ -1,5 +1,3 @@
-context("cloudformation")
-
 svc <- paws::cloudformation()
 
 test_that("describe_account_limits", {

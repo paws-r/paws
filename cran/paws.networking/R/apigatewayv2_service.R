@@ -128,7 +128,7 @@ apigatewayv2 <- function(config = list()) {
 
 .apigatewayv2$metadata <- list(
   service_name = "apigatewayv2",
-  endpoints = list("*" = list(endpoint = "apigatewayv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apigatewayv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "apigatewayv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "apigatewayv2.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "apigateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apigateway.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "apigateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "apigateway.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ApiGatewayV2",
   api_version = "2018-11-29",
   signing_name = "apigateway",

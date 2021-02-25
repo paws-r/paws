@@ -1,5 +1,3 @@
-context("pricing")
-
 svc <- paws::pricing()
 
 test_that("describe_services", {

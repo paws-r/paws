@@ -1,5 +1,3 @@
-context("opsworks")
-
 svc <- paws::opsworks()
 
 test_that("describe_my_user_profile", {

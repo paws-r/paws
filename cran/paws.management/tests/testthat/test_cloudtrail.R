@@ -1,5 +1,3 @@
-context("cloudtrail")
-
 svc <- paws::cloudtrail()
 
 test_that("describe_trails", {

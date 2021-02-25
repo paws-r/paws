@@ -1,5 +1,3 @@
-context("ec2")
-
 svc <- paws::ec2()
 
 test_that("describe_account_attributes", {

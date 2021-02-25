@@ -1,5 +1,3 @@
-context("cloud9")
-
 svc <- paws::cloud9()
 
 test_that("describe_environment_memberships", {

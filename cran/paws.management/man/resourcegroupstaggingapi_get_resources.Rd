@@ -87,10 +87,9 @@ The string for each service name and resource type is the same as that
 embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
 General Reference} for the following:
 \itemize{
-\item For a list of service name strings, see AWS Service Namespaces.
-\item For resource type strings, see Example ARNs.
-\item For more information about ARNs, see Amazon Resource Names (ARNs)
-and AWS Service Namespaces.
+\item For a list of service name strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
+\item For resource type strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax}{Example ARNs}.
+\item For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.
 }
 
 You can specify multiple resource types by using an array. The array can

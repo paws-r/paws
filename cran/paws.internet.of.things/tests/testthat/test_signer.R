@@ -1,5 +1,3 @@
-context("signer")
-
 svc <- paws::signer()
 
 test_that("list_signing_jobs", {

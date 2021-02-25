@@ -1,5 +1,3 @@
-context("transcribeservice")
-
 svc <- paws::transcribeservice()
 
 test_that("list_language_models", {

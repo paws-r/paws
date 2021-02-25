@@ -1,5 +1,3 @@
-context("sqs")
-
 svc <- paws::sqs()
 
 test_that("list_queues", {

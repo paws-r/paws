@@ -1,5 +1,3 @@
-context("applicationinsights")
-
 svc <- paws::applicationinsights()
 
 test_that("list_applications", {

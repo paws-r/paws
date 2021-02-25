@@ -1,5 +1,3 @@
-context("transfer")
-
 svc <- paws::transfer()
 
 test_that("list_security_policies", {

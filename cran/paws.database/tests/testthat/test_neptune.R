@@ -1,5 +1,3 @@
-context("neptune")
-
 svc <- paws::neptune()
 
 test_that("describe_db_cluster_endpoints", {

@@ -105,7 +105,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' access to. This is the client-side VPC endpoint, also called a
 #' PrivateLink. If you don't have a PrivateLink VPC endpoint, see [Creating
 #' a VPC Endpoint Service
-#' Configuration](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service)
+#' Configuration](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html#create-endpoint-service)
 #' in the Amazon VPC User Guide.
 #' 
 #' VPC endpoint ID looks like this: `vpce-01234d5aff67890e1`.

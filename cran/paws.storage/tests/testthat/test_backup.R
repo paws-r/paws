@@ -1,5 +1,3 @@
-context("backup")
-
 svc <- paws::backup()
 
 test_that("describe_global_settings", {

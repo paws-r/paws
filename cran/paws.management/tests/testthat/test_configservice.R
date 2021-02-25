@@ -1,5 +1,3 @@
-context("configservice")
-
 svc <- paws::configservice()
 
 test_that("describe_aggregation_authorizations", {

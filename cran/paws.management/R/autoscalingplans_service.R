@@ -90,7 +90,7 @@ autoscalingplans <- function(config = list()) {
 
 .autoscalingplans$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling-plans.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling-plans.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Auto Scaling Plans",
   api_version = "2018-01-06",
   signing_name = "autoscaling-plans",

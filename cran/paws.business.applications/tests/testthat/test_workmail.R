@@ -1,5 +1,3 @@
-context("workmail")
-
 svc <- paws::workmail()
 
 test_that("list_organizations", {

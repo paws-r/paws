@@ -1,5 +1,3 @@
-context("comprehendmedical")
-
 svc <- paws::comprehendmedical()
 
 test_that("list_entities_detection_v2_jobs", {

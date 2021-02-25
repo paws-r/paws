@@ -1,5 +1,3 @@
-context("mediapackage")
-
 svc <- paws::mediapackage()
 
 test_that("list_channels", {

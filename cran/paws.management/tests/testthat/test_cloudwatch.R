@@ -1,5 +1,3 @@
-context("cloudwatch")
-
 svc <- paws::cloudwatch()
 
 test_that("describe_alarm_history", {

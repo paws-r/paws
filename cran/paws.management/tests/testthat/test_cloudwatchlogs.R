@@ -1,5 +1,3 @@
-context("cloudwatchlogs")
-
 svc <- paws::cloudwatchlogs()
 
 test_that("describe_destinations", {

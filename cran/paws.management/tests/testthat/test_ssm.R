@@ -1,5 +1,3 @@
-context("ssm")
-
 svc <- paws::ssm()
 
 test_that("describe_activations", {

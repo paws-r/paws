@@ -1,5 +1,3 @@
-context("codestar")
-
 svc <- paws::codestar()
 
 test_that("list_projects", {

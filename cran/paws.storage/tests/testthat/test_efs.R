@@ -1,5 +1,3 @@
-context("efs")
-
 svc <- paws::efs()
 
 test_that("describe_access_points", {

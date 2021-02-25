@@ -1,5 +1,3 @@
-context("storagegateway")
-
 svc <- paws::storagegateway()
 
 test_that("describe_tape_archives", {

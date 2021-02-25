@@ -1,5 +1,3 @@
-context("redshift")
-
 svc <- paws::redshift()
 
 test_that("describe_account_attributes", {

@@ -1,5 +1,3 @@
-context("cloudhsmv2")
-
 svc <- paws::cloudhsmv2()
 
 test_that("describe_backups", {

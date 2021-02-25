@@ -1,5 +1,3 @@
-context("mediaconnect")
-
 svc <- paws::mediaconnect()
 
 test_that("list_entitlements", {

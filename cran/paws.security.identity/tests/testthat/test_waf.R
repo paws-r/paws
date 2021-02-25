@@ -1,5 +1,3 @@
-context("waf")
-
 svc <- paws::waf()
 
 test_that("list_byte_match_sets", {

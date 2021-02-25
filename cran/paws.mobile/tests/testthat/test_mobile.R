@@ -1,5 +1,3 @@
-context("mobile")
-
 svc <- paws::mobile()
 
 test_that("list_bundles", {
