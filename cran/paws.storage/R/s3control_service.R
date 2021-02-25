@@ -95,7 +95,7 @@ s3control <- function(config = list()) {
 
 .s3control$metadata <- list(
   service_name = "s3control",
-  endpoints = list("*" = list(endpoint = "s3control.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3control.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "s3control.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "s3control.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "s3-control.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3-control.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "s3-control.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "s3-control.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "S3 Control",
   api_version = "2018-08-20",
   signing_name = "s3",

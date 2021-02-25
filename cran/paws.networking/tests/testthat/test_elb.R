@@ -1,5 +1,3 @@
-context("elb")
-
 svc <- paws::elb()
 
 test_that("describe_account_limits", {

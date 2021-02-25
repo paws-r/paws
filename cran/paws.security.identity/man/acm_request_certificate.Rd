@@ -20,9 +20,8 @@ periods. Each subsequent Subject Alternative Name (SAN), however, can be
 up to 253 octets in length.}
 
 \item{ValidationMethod}{The method you want to use if you are requesting a public certificate to
-validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{validate with DNS}
-or \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{validate with email}.
-We recommend that you use DNS validation.}
+validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/}{validate with DNS} or \href{https://docs.aws.amazon.com/acm/latest/userguide/}{validate with email}. We
+recommend that you use DNS validation.}
 
 \item{SubjectAlternativeNames}{Additional FQDNs to be included in the Subject Alternative Name
 extension of the ACM certificate. For example, add the name
@@ -94,9 +93,8 @@ FQDNs in the \code{SubjectAlternativeNames} parameter.
 If you are requesting a private certificate, domain validation is not
 required. If you are requesting a public certificate, each domain name
 that you specify must be validated to verify that you own or control the
-domain. You can use \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html}{DNS validation}
-or \href{https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html}{email validation}.
-We recommend that you use DNS validation. ACM issues public certificates
+domain. You can use \href{https://docs.aws.amazon.com/acm/latest/userguide/}{DNS validation} or \href{https://docs.aws.amazon.com/acm/latest/userguide/}{email validation}. We
+recommend that you use DNS validation. ACM issues public certificates
 after receiving approval from the domain owner.
 }
 \section{Request syntax}{

@@ -1,5 +1,3 @@
-context("emr")
-
 svc <- paws::emr()
 
 test_that("list_clusters", {

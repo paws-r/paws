@@ -1,5 +1,3 @@
-context("eks")
-
 svc <- paws::eks()
 
 test_that("describe_addon_versions", {

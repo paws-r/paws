@@ -1,5 +1,3 @@
-context("cognitosync")
-
 svc <- paws::cognitosync()
 
 test_that("list_identity_pool_usage", {

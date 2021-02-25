@@ -127,7 +127,7 @@ applicationautoscaling <- function(config = list()) {
 
 .applicationautoscaling$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Application Auto Scaling",
   api_version = "2016-02-06",
   signing_name = "application-autoscaling",

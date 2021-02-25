@@ -1,5 +1,3 @@
-context("mediastore")
-
 svc <- paws::mediastore()
 
 test_that("list_containers", {

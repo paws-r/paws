@@ -1,5 +1,3 @@
-context("servicecatalog")
-
 svc <- paws::servicecatalog()
 
 test_that("describe_product", {

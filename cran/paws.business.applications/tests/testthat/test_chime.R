@@ -1,5 +1,3 @@
-context("chime")
-
 svc <- paws::chime()
 
 test_that("list_accounts", {

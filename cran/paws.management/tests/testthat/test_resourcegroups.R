@@ -1,5 +1,3 @@
-context("resourcegroups")
-
 svc <- paws::resourcegroups()
 
 test_that("list_group_resources", {

@@ -1,5 +1,3 @@
-context("connect")
-
 svc <- paws::connect()
 
 test_that("list_instances", {

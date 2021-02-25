@@ -1,5 +1,3 @@
-context("servicequotas")
-
 svc <- paws::servicequotas()
 
 test_that("list_requested_service_quota_change_history", {

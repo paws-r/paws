@@ -90,11 +90,11 @@ Service consumers connect to your service using a Gateway Load
 Balancer endpoint.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html}{VPC Endpoint Services}
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html}{VPC Endpoint Services}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 If you set the private DNS name, you must prove that you own the private
-DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
+DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

@@ -87,7 +87,7 @@ kinesisanalyticsv2 <- function(config = list()) {
 
 .kinesisanalyticsv2$metadata <- list(
   service_name = "kinesisanalyticsv2",
-  endpoints = list("*" = list(endpoint = "kinesisanalyticsv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisanalyticsv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisanalyticsv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisanalyticsv2.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisanalytics.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis Analytics V2",
   api_version = "2018-05-23",
   signing_name = "kinesisanalytics",

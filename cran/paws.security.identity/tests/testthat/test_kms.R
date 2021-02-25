@@ -1,5 +1,3 @@
-context("kms")
-
 svc <- paws::kms()
 
 test_that("describe_custom_key_stores", {

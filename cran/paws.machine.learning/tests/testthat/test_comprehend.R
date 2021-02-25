@@ -1,5 +1,3 @@
-context("comprehend")
-
 svc <- paws::comprehend()
 
 test_that("list_document_classification_jobs", {

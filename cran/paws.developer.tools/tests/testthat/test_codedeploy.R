@@ -1,5 +1,3 @@
-context("codedeploy")
-
 svc <- paws::codedeploy()
 
 test_that("list_applications", {

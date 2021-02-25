@@ -1,5 +1,3 @@
-context("serverlessapplicationrepository")
-
 svc <- paws::serverlessapplicationrepository()
 
 test_that("list_applications", {

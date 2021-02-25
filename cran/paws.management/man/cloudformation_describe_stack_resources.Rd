@@ -89,7 +89,8 @@ deleted.
 You must specify either \code{StackName} or \code{PhysicalResourceId}, but not
 both. In addition, you can specify \code{LogicalResourceId} to filter the
 returned result. For more information about resources, the
-\code{LogicalResourceId} and \code{PhysicalResourceId}, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS CloudFormation User Guide}.
+\code{LogicalResourceId} and \code{PhysicalResourceId}, go to the AWS
+CloudFormation User Guide.
 
 A \code{ValidationError} is returned if you specify both \code{StackName} and
 \code{PhysicalResourceId} in the same request.

@@ -64,7 +64,7 @@ pinpointsmsvoice <- function(config = list()) {
 
 .pinpointsmsvoice$metadata <- list(
   service_name = "pinpointsmsvoice",
-  endpoints = list("*" = list(endpoint = "pinpointsmsvoice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "pinpointsmsvoice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "pinpointsmsvoice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "pinpointsmsvoice.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sms-voice.pinpoint.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sms-voice.pinpoint.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sms-voice.pinpoint.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sms-voice.pinpoint.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Pinpoint SMS Voice",
   api_version = "2018-09-05",
   signing_name = "sms-voice",

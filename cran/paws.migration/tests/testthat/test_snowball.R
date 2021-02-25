@@ -1,5 +1,3 @@
-context("snowball")
-
 svc <- paws::snowball()
 
 test_that("describe_addresses", {

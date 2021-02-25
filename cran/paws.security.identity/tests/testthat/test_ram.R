@@ -1,5 +1,3 @@
-context("ram")
-
 svc <- paws::ram()
 
 test_that("list_permissions", {

@@ -86,12 +86,15 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' embedded in a resource's Amazon Resource Name (ARN). Consult the *AWS
 #' General Reference* for the following:
 #' 
-#' -   For a list of service name strings, see AWS Service Namespaces.
+#' -   For a list of service name strings, see [AWS Service
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
 #' 
-#' -   For resource type strings, see Example ARNs.
+#' -   For resource type strings, see [Example
+#'     ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
 #' 
-#' -   For more information about ARNs, see Amazon Resource Names (ARNs)
-#'     and AWS Service Namespaces.
+#' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
+#'     and AWS Service
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' You can specify multiple resource types by using an array. The array can
 #' include up to 100 items. Note that the length constraint requirement
@@ -275,12 +278,15 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' embedded in a resource's Amazon Resource Name (ARN). Consult the *AWS
 #' General Reference* for the following:
 #' 
-#' -   For a list of service name strings, see AWS Service Namespaces.
+#' -   For a list of service name strings, see [AWS Service
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
 #' 
-#' -   For resource type strings, see Example ARNs.
+#' -   For resource type strings, see [Example
+#'     ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
 #' 
-#' -   For more information about ARNs, see Amazon Resource Names (ARNs)
-#'     and AWS Service Namespaces.
+#' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
+#'     and AWS Service
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' You can specify multiple resource types by using an array. The array can
 #' include up to 100 items. Note that the length constraint requirement
@@ -535,10 +541,13 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' Applies one or more tags to the specified resources. Note the following:
 #' 
 #' -   Not all resources can have tags. For a list of services that support
-#'     tagging, see this list.
+#'     tagging, see [this
+#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/).
 #' 
-#' -   Each resource can have up to 50 tags. For other limits, see Tag
-#'     Naming and Usage Conventions in the *AWS General Reference.*
+#' -   Each resource can have up to 50 tags. For other limits, see [Tag
+#'     Naming and Usage
+#'     Conventions](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions)
+#'     in the *AWS General Reference.*
 #' 
 #' -   You can only tag resources that are located in the specified Region
 #'     for the AWS account.

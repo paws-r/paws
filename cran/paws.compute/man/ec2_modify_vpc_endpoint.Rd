@@ -55,7 +55,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Modifies attributes of a specified VPC endpoint. The attributes that you
 can modify depend on the type of VPC endpoint (interface, gateway, or
-Gateway Load Balancer). For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html}{VPC Endpoints}
+Gateway Load Balancer). For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html}{VPC Endpoints}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

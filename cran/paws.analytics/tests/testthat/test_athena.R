@@ -1,5 +1,3 @@
-context("athena")
-
 svc <- paws::athena()
 
 test_that("list_data_catalogs", {

@@ -1,5 +1,3 @@
-context("dynamodb")
-
 svc <- paws::dynamodb()
 
 test_that("describe_endpoints", {

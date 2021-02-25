@@ -1,5 +1,3 @@
-context("elasticsearchservice")
-
 svc <- paws::elasticsearchservice()
 
 test_that("describe_inbound_cross_cluster_search_connections", {

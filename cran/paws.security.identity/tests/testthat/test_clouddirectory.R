@@ -1,5 +1,3 @@
-context("clouddirectory")
-
 svc <- paws::clouddirectory()
 
 test_that("list_development_schema_arns", {

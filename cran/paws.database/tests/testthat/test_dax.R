@@ -1,5 +1,3 @@
-context("dax")
-
 svc <- paws::dax()
 
 test_that("describe_clusters", {
