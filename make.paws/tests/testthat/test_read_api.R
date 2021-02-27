@@ -1,5 +1,3 @@
-context("API file functions")
-
 write_json <- function(x, file) jsonlite::write_json(x, file, auto_unbox = TRUE)
 
 test_that("read_api", {

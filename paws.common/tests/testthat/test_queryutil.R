@@ -1,2 +1,1 @@
-context("Query")
-
+# No tests

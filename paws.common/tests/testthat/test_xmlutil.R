@@ -1,5 +1,3 @@
-context("XML unmarshalling utilities")
-
 test_that("add XML namespace", {
   object <- list(
     Foo = list(

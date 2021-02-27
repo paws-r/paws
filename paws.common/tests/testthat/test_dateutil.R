@@ -1,5 +1,3 @@
-context("Date utilities")
-
 test_that("as_timestamp RFC822", {
   out <- as_timestamp("Mon, 2 Jan 2006 15:04:05 GMT", "rfc822")
   exp <- structure(1136214245, class = c("POSIXct", "POSIXt"), tzone = "GMT")

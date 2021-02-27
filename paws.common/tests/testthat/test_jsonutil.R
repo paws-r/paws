@@ -1,5 +1,3 @@
-context("JSON")
-
 test_that("JSON tests", {
   J <- function(...) {
     args <- list(...)

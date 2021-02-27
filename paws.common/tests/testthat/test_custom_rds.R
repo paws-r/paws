@@ -1,5 +1,3 @@
-context("Custom RDS")
-
 test_that("rds_build_auth_token", {
   actual <- rds_build_auth_token(
     "prod-instance.us-east-1.rds.amazonaws.com:3306",

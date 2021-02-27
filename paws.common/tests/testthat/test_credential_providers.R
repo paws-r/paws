@@ -1,5 +1,3 @@
-context("Credential providers")
-
 test_that("env_provider", {
   Sys.setenv(
     "AWS_ACCESS_KEY_ID" = "foo",

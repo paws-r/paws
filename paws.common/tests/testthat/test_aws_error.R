@@ -1,5 +1,3 @@
-context("Custom AWS Error Conditions")
-
 test_that("error conditions have correct classes", {
   error_list <- list(
     code = "foo",

@@ -1,5 +1,3 @@
-context("Tags")
-
 test_that("add tags to an object without tags", {
   a <- list()
   tags <- list(foo = "abc", bar = 123, baz = list(qux = "xyz"))

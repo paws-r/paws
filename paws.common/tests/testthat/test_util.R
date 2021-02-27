@@ -1,5 +1,3 @@
-context("Utilities")
-
 test_that("is_empty", {
   expect_equal(is_empty(NULL), TRUE)
   expect_equal(is_empty(""), TRUE)

@@ -1,5 +1,3 @@
-context("Network")
-
 test_that("issue", {
   req <- HttpRequest(
     method = "GET",

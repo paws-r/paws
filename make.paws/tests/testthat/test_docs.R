@@ -1,5 +1,3 @@
-context("Make documentation")
-
 test_that("make_doc_title", {
   operation <- list(name = "FooOperation")
   expected <- "#' Foo operation"

@@ -1,5 +1,3 @@
-context("Make interfaces and shapes")
-
 test_that("make_interfaces", {
   api <- list(
     metadata = list(

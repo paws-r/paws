@@ -1,5 +1,3 @@
-context("Custom S3")
-
 build_request <- function(bucket, operation) {
   metadata <- list(
     endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),

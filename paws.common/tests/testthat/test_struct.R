@@ -1,5 +1,3 @@
-context("Structs")
-
 test_that("struct constructors", {
   Foo <- struct(a = "", b = NULL)
   bar <- Foo()

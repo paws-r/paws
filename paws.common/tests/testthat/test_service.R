@@ -1,5 +1,3 @@
-context("Service")
-
 test_that("new_handlers", {
   contains <- function(list, object) {
     any(sapply(list$list, function(x) identical(x$fn, object)))

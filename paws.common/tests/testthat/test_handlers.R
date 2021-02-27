@@ -1,5 +1,3 @@
-context("Handlers")
-
 test_that("run handlers", {
   r <- Request()
   f <- function(request) {

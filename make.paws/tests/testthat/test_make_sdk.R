@@ -1,5 +1,3 @@
-context("Make SDK")
-
 path <- tempdir()
 
 # Create a fake API spec.
