@@ -1,5 +1,3 @@
-context("Make utilities")
-
 test_that("get_structure", {
   expect_equal(get_structure(list()), "list()")
   expect_equal(get_structure(list(a = 1, b = 2)), "list(a = 1, b = 2)")

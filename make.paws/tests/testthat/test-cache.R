@@ -1,5 +1,3 @@
-context("cache")
-
 op <- options(cache.disable = NULL)
 on.exit(options(op), add = TRUE)
 

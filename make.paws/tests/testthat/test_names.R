@@ -1,5 +1,3 @@
-context("API name functions")
-
 test_that("get_operation_name", {
   operation <- list(name = "TestName")
   ret <- get_operation_name(operation)

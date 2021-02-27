@@ -1,5 +1,3 @@
-context("Make tests")
-
 # Format code so differences in style don't affect comparisons.
 format_test_code <- function(code) {
   formatted <- formatR::tidy_source(text = code, output = FALSE)

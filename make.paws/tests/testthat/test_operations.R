@@ -1,5 +1,3 @@
-context("Make operations")
-
 test_that("make_operation", {
   operation <- list(
     name = "Operation",

@@ -1,5 +1,3 @@
-context("Text utilities")
-
 test_that("html_to_markdown", {
   text <- NULL
   expect_equal(html_to_markdown(text), "")
