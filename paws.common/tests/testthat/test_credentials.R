@@ -1,5 +1,3 @@
-context("Credentials")
-
 test_that("credentials are provided", {
   creds <- list(
     access_key_id = "foo",

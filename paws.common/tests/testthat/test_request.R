@@ -1,5 +1,3 @@
-context("Request")
-
 test_that("new endpoint with default port", {
   endpoint <- "https://estest.us-east-1.es.amazonaws.com:443"
   expected <- "estest.us-east-1.es.amazonaws.com"

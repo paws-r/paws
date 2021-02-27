@@ -1,5 +1,3 @@
-context("Client & service initialization")
-
 test_that("resolver_endpoint", {
   endpoints <- list(
     "*" = list(endpoint = "{service}.{region}.amazonaws.com", global = FALSE),

@@ -1,5 +1,3 @@
-context("Configuration")
-
 test_that("get_config", {
   svc <- set_config(
     svc = list(

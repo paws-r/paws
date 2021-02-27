@@ -1,5 +1,3 @@
-context("Signer - V4")
-
 # Returns a credentials object with a test credential provider.
 test_creds <- Credentials(
   provider = list(

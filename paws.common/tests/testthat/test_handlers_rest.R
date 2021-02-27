@@ -1,5 +1,3 @@
-context("REST")
-
 test_that("clean_path", {
   url <- Url(
     path = "//foo//bar",

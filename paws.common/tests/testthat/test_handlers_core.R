@@ -1,5 +1,3 @@
-context("Handlers - Core")
-
 test_that("validate_endpoint_handler no endpoint", {
   svc <- Client()
   svc$config$region <- "us-west-2"

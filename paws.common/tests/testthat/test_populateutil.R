@@ -1,5 +1,3 @@
-context("Shape builders")
-
 test_that("Structure", {
   foo <- Structure(a = 1, b = 2)
   expect_equal(tag_get(foo, "type"), "structure")
