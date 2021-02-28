@@ -158,7 +158,7 @@ make_doc_example <- function(example, op_name) {
     last_quote <- quotes[length(quotes)]
     first <- substr(x, 1, first_quote)
     middle <- substr(x, first_quote+1, nchar(x)-1)
-    middle <- paste0(substr(middle, 1, 90-nchar(first)-5), "...")
+    middle <- paste0(substr(middle, 1, 80-nchar(first)-5), "...")
     middle <- escape_unmatched_chars(middle, '"')
     middle <- escape_unmatched_pairs(middle, c("{" = "}"))
     last <- substr(x, last_quote, nchar(x))

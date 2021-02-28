@@ -414,7 +414,7 @@ test_that("make_doc_examples", {
     "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
-    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":\\\"Allow\\\",\\\"Acti...\",",
+    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":\\\"Al...\",",
     "#'     Quux = 123",
     "#'   )",
     "#' )",
