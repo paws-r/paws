@@ -482,6 +482,30 @@ test_that("make_doc_examples", {
     sep = "\n"
   )
   expect_equal(actual, expected)
+
+  operation <- list(
+    name = "Operation",
+    examples = list(
+      list(
+        input = list(
+          "Foo" = "bar{"
+        ),
+        description = "Example with unmatched curly brace"
+      )
+    )
+  )
+  actual <- make_doc_examples(operation, api)
+  expected <- paste(
+    "#' @examples",
+    "#' \\dontrun{",
+    "#' # Example with unmatched curly brace",
+    "#' svc$operation(",
+    "#'   Foo = \"bar\\{\"",
+    "#' )",
+    "#' }",
+    sep = "\n"
+  )
+  expect_equal(actual, expected)
 })
 
 test_that("convert", {
