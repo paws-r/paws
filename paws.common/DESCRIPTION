@@ -19,7 +19,6 @@ Imports:
     base64enc,
     digest,
     httr,
-    ini,
     jsonlite,
     methods,
     utils,
@@ -34,6 +33,7 @@ RoxygenNote: 7.1.1
 Collate: 
     'struct.R'
     'handlers.R'
+    'iniutil.R'
     'dateutil.R'
     'credential_sts.R'
     'url.R'

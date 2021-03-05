@@ -1,6 +1,7 @@
 #' @include net.R
 #' @include credential_sts.R
 #' @include dateutil.R
+#' @include iniutil.R
 NULL
 
 Creds <- struct(
@@ -40,7 +41,7 @@ credentials_file_provider <- function(profile = "") {
 
   aws_profile <- get_profile_name(profile)
 
-  credentials <- ini::read.ini(credentials_path)
+  credentials <- read_ini(credentials_path)
 
   if (is.null(credentials[[aws_profile]])) return(NULL)
 
@@ -73,7 +74,7 @@ config_file_provider <- function(profile = "") {
   config_path <- get_config_file_path()
   if (is.null(config_path)) return(NULL)
 
-  config <- ini::read.ini(config_path)
+  config <- read_ini(config_path)
 
   profile_name <- get_profile_name(profile)
   if (profile_name != "default") profile_name <- paste("profile", profile_name)

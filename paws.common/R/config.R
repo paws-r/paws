@@ -1,3 +1,6 @@
+#' @include iniutil.R
+NULL
+
 #' Get the service configuration from the service object.
 #'
 #' Look up the service configuration from the service object, e.g. when
@@ -191,7 +194,7 @@ check_config_file_region <- function(profile = "") {
   profile <- get_profile_name(profile)
   if (profile != "default") profile <- paste("profile", profile)
 
-  config_values <- ini::read.ini(config_path)
+  config_values <- read_ini(config_path)
 
   if (is.null(config_values[[profile]])) return(NULL)
 
