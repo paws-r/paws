@@ -256,7 +256,7 @@ svc$modify_rule(
       )
     )
   ),
-  RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my..."
+  RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-r..."
 )
 }
 

@@ -853,7 +853,7 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #'   PolicyAttributes = list(
 #'     list(
 #'       AttributeName = "PublicKey",
-#'       AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjh..."
+#'       AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnf..."
 #'     )
 #'   ),
 #'   PolicyName = "my-PublicKey-policy",

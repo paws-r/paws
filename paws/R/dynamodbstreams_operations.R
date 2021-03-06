@@ -78,7 +78,7 @@ NULL
 #' \dontrun{
 #' # The following example describes a stream with a given stream ARN.
 #' svc$describe_stream(
-#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
+#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2..."
 #' )
 #' }
 #'
@@ -240,7 +240,7 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
 #' \dontrun{
 #' # The following example retrieves all the stream records from a shard.
 #' svc$get_records(
-#'   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05..."
+#'   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stre..."
 #' )
 #' }
 #'
@@ -328,7 +328,7 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 #' svc$get_shard_iterator(
 #'   ShardId = "00000001414576573621-f55eea83",
 #'   ShardIteratorType = "TRIM_HORIZON",
-#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
+#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2..."
 #' )
 #' }
 #'

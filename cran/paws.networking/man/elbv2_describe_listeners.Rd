@@ -126,7 +126,7 @@ listeners.
 # This example describes the specified listener.
 svc$describe_listeners(
   ListenerArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balance..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-lo..."
   )
 )
 }

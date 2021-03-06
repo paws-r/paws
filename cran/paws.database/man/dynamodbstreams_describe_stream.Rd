@@ -77,7 +77,7 @@ longer receive more data.
 \dontrun{
 # The following example describes a stream with a given stream ARN.
 svc$describe_stream(
-  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
+  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2..."
 )
 }
 

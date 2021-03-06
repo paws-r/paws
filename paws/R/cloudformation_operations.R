@@ -1990,8 +1990,9 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' resource that has been checked for drift. Resources that have not yet
 #' been checked for drift are not included. Resources that do not currently
 #' support drift detection are not checked, and so not included. For a list
-#' of resources that support drift detection, see Resources that Support
-#' Drift Detection.
+#' of resources that support drift detection, see [Resources that Support
+#' Drift
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #' 
 #' Use
 #' [`detect_stack_resource_drift`][cloudformation_detect_stack_resource_drift]
@@ -2117,8 +2118,9 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' You must specify either `StackName` or `PhysicalResourceId`, but not
 #' both. In addition, you can specify `LogicalResourceId` to filter the
 #' returned result. For more information about resources, the
-#' `LogicalResourceId` and `PhysicalResourceId`, go to the AWS
-#' CloudFormation User Guide.
+#' `LogicalResourceId` and `PhysicalResourceId`, go to the [AWS
+#' CloudFormation User
+#' Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 #' 
 #' A `ValidationError` is returned if you specify both `StackName` and
 #' `PhysicalResourceId` in the same request.
@@ -2708,7 +2710,8 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 #' to detect drift on individual resources.
 #' 
 #' For a list of stack resources that currently support drift detection,
-#' see Resources that Support Drift Detection.
+#' see [Resources that Support Drift
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #' 
 #' [`detect_stack_drift`][cloudformation_detect_stack_drift] can take up to
 #' several minutes, depending on the number of resources contained within
@@ -2791,7 +2794,8 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' 
 #' Resources that do not currently support drift detection cannot be
 #' checked. For a list of resources that support drift detection, see
-#' Resources that Support Drift Detection.
+#' [Resources that Support Drift
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #'
 #' @usage
 #' cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
@@ -2870,8 +2874,8 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' Detect drift on a stack set. When CloudFormation performs drift
 #' detection on a stack set, it performs drift detection on the stack
 #' associated with each stack instance in the stack set. For more
-#' information, see How CloudFormation Performs Drift Detection on a Stack
-#' Set.
+#' information, see [How CloudFormation Performs Drift Detection on a Stack
+#' Set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
 #' 
 #' [`detect_stack_set_drift`][cloudformation_detect_stack_set_drift]
 #' returns the `OperationId` of the stack set drift detection operation.

@@ -95,7 +95,7 @@ specified by the ARNs of the assessment runs.
 # specified by the ARNs of the assessment runs.
 svc$list_findings(
   assessmentRunArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/r..."
+    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
   ),
   maxResults = 123L
 )

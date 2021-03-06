@@ -263,7 +263,7 @@ svc$assume_role_with_saml(
   DurationSeconds = 3600L,
   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",
-  SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sO..."
+  SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5..."
 )
 }
 

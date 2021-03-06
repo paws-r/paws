@@ -152,7 +152,7 @@ You must specify either a listener or one or more rules.
 # This example describes the specified rule.
 svc$describe_rules(
   RuleArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-ba..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/..."
   )
 )
 }

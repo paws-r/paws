@@ -65,7 +65,7 @@ resource-based policy is optional.
 # The following example shows how to validate a resource-based policy to a
 # secret.
 svc$validate_resource_policy(
-  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",\n\"P...",
+  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
   SecretId = "MyTestDatabaseSecret"
 )
 }

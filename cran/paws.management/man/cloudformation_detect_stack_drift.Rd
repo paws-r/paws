@@ -36,7 +36,7 @@ drift on all supported resources for a given stack, or
 to detect drift on individual resources.
 
 For a list of stack resources that currently support drift detection,
-see Resources that Support Drift Detection.
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
 
 \code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} can take up to
 several minutes, depending on the number of resources contained within

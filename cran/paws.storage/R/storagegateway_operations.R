@@ -1288,7 +1288,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' # Initiates an ad-hoc snapshot of a gateway volume.
 #' svc$create_snapshot(
 #'   SnapshotDescription = "My root volume snapshot as of 10/03/2017",
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -1388,7 +1388,7 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' # Initiates a snapshot of a gateway from a volume recovery point.
 #' svc$create_snapshot_from_volume_recovery_point(
 #'   SnapshotDescription = "My root volume snapshot as of 2017-06-30T10:10:10.000Z",
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -1998,7 +1998,7 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' # for a specified iSCSI target and initiator pair.
 #' svc$delete_chap_credentials(
 #'   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
-#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
+#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -2191,7 +2191,7 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' \dontrun{
 #' # This action enables you to delete a snapshot schedule for a volume.
 #' svc$delete_snapshot_schedule(
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -2440,7 +2440,7 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #' # Deletes the specified gateway volume that you previously created using
 #' # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
 #' svc$delete_volume(
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -2858,7 +2858,7 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' # credentials information for a specified iSCSI target, one for each
 #' # target-initiator pair.
 #' svc$describe_chap_credentials(
-#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
+#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -3310,7 +3310,7 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 #' # Describes the snapshot schedule for the specified gateway volume
 #' # including intervals at which snapshots are automatically initiated.
 #' svc$describe_snapshot_schedule(
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -5871,7 +5871,7 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
 #'   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
 #'   SecretToAuthenticateInitiator = "111111111111",
 #'   SecretToAuthenticateTarget = "222222222222",
-#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
+#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -6611,7 +6611,7 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #'   Description = "Hourly snapshot",
 #'   RecurrenceInHours = 1L,
 #'   StartAt = 0L,
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 #' )
 #' }
 #'
@@ -6674,7 +6674,7 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 #' # is activated.
 #' svc$update_vtl_device_type(
 #'   DeviceType = "Medium Changer",
-#'   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/..."
+#'   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw..."
 #' )
 #' }
 #'

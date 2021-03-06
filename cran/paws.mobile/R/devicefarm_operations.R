@@ -2237,7 +2237,7 @@ devicefarm_get_offering_status <- function(nextToken = NULL) {
 #' \dontrun{
 #' # The following example gets information about a specific project.
 #' svc$get_project(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12..."
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c..."
 #' )
 #' }
 #'
@@ -2518,7 +2518,7 @@ devicefarm_get_remote_access_session <- function(arn) {
 #' \dontrun{
 #' # The following example gets information about a specific test run.
 #' svc$get_run(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6..."
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b..."
 #' )
 #' }
 #'
@@ -3003,7 +3003,7 @@ devicefarm_get_vpce_configuration <- function(arn) {
 #' # remote access session.
 #' svc$install_to_remote_access_session(
 #'   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
-#'   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE..."
+#'   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:sessi..."
 #' )
 #' }
 #'
@@ -4002,7 +4002,7 @@ devicefarm_list_offerings <- function(nextToken = NULL) {
 #' # The following example returns information about the specified project in
 #' # Device Farm.
 #' svc$list_projects(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12...",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )
 #' }
@@ -4301,7 +4301,7 @@ devicefarm_list_remote_access_sessions <- function(arn, nextToken = NULL) {
 #' \dontrun{
 #' # The following example returns information about a specific test run.
 #' svc$list_runs(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6...",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )
 #' }
@@ -6575,7 +6575,7 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #' # The following example updates the specified project with a new name.
 #' svc$update_project(
 #'   name = "NewName",
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12..."
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-46..."
 #' )
 #' }
 #'

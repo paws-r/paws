@@ -107,7 +107,7 @@ svc <- glacier()
 # my-vault:
 svc$abort_multipart_upload(
   accountId = "-",
-  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
+  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLq...",
   vaultName = "my-vault"
 )
 }

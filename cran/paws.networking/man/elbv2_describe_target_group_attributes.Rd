@@ -44,7 +44,7 @@ in the \emph{Gateway Load Balancers Guide}
 \dontrun{
 # This example describes the attributes of the specified target group.
 svc$describe_target_group_attributes(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 )
 }
 

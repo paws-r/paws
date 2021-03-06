@@ -52,7 +52,7 @@ storage volume you want to delete.
 # Deletes the specified gateway volume that you previously created using
 # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
 svc$delete_volume(
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 )
 }
 

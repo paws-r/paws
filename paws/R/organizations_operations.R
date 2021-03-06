@@ -4962,7 +4962,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' # the preceding example with a new JSON policy text string that allows S3
 #' # actions instead of EC2 actions:/n/n
 #' svc$update_policy(
-#'   Content = "\{ \"Version\": \"2012-10-17\", \"Statement\": \{\"Effect\": \"Allow\", \"Action\": \"s...",
+#'   Content = "\{ \"Version\": \"2012-10-17\", \"Statement\": \{\"Effect\": \"Allow\", \"A...",
 #'   PolicyId = "p-examplepolicyid111"
 #' )
 #' }

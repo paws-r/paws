@@ -60,7 +60,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 # The example deletes the archive specified by the archive ID.
 svc$delete_archive(
   accountId = "-",
-  archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLH...",
+  archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyU...",
   vaultName = "examplevault"
 )
 }

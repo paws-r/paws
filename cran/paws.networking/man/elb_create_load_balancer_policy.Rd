@@ -67,7 +67,7 @@ svc$create_load_balancer_policy(
   PolicyAttributes = list(
     list(
       AttributeName = "PublicKey",
-      AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnfyEyXr1pxjh..."
+      AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnf..."
     )
   ),
   PolicyName = "my-PublicKey-policy",

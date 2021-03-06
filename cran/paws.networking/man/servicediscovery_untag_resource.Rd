@@ -33,7 +33,7 @@ Removes one or more tags from the specified resource.
 # This example removes the "Department" and "Project" tags from a
 # resource.
 svc$untag_resource(
-  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjil...",
+  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/...",
   TagKeys = list(
     "Project",
     "Department"

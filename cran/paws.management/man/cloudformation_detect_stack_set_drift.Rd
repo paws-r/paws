@@ -25,8 +25,7 @@ A list with the following syntax:\preformatted{list(
 Detect drift on a stack set. When CloudFormation performs drift
 detection on a stack set, it performs drift detection on the stack
 associated with each stack instance in the stack set. For more
-information, see How CloudFormation Performs Drift Detection on a Stack
-Set.
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html}{How CloudFormation Performs Drift Detection on a Stack Set}.
 
 \code{\link[=cloudformation_detect_stack_set_drift]{detect_stack_set_drift}}
 returns the \code{OperationId} of the stack set drift detection operation.

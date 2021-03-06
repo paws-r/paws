@@ -45,7 +45,7 @@ tape gateway types.
 # credentials information for a specified iSCSI target, one for each
 # target-initiator pair.
 svc$describe_chap_credentials(
-  TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
+  TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 )
 }
 

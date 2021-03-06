@@ -240,11 +240,11 @@ settings, each call succeeds.
 svc$create_listener(
   DefaultActions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
       Type = "forward"
     )
   ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
   Port = 80L,
   Protocol = "HTTP"
 )
@@ -264,11 +264,11 @@ svc$create_listener(
   ),
   DefaultActions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
       Type = "forward"
     )
   ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
   Port = 443L,
   Protocol = "HTTPS",
   SslPolicy = "ELBSecurityPolicy-2015-05"

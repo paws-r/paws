@@ -78,7 +78,7 @@ in the \emph{Amazon Elastic Compute Cloud API Reference}.
 # Initiates a snapshot of a gateway from a volume recovery point.
 svc$create_snapshot_from_volume_recovery_point(
   SnapshotDescription = "My root volume snapshot as of 2017-06-30T10:10:10.000Z",
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 )
 }
 

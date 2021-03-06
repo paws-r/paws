@@ -61,7 +61,7 @@ see \code{\link[=inspector_subscribe_to_event]{subscribe_to_event}} and
 # specified by the ARN of the assessment template.
 svc$list_event_subscriptions(
   maxResults = 123L,
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/..."
+  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX..."
 )
 }
 

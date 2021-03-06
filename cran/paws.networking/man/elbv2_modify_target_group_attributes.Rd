@@ -49,7 +49,7 @@ svc$modify_target_group_attributes(
       Value = "600"
     )
   ),
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 )
 }
 

@@ -92,7 +92,7 @@ svc$create_cluster(
       "subnet-e7e761ac"
     )
   ),
-  roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonE..."
+  roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRole..."
 )
 }
 

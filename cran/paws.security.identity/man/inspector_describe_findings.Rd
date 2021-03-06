@@ -122,7 +122,7 @@ Describes the findings that are specified by the ARNs of the findings.
 # Describes the findings that are specified by the ARNs of the findings.
 svc$describe_findings(
   findingArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/r..."
+    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
   )
 )
 }

@@ -40,7 +40,7 @@ the tape gateway type.
 # is activated.
 svc$update_vtl_device_type(
   DeviceType = "Medium Changer",
-  VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/..."
+  VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw..."
 )
 }
 

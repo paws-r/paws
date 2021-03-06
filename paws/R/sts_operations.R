@@ -381,7 +381,7 @@ NULL
 #' # 
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
 #'   RoleSessionName = "testAssumeRoleSession",
 #'   Tags = list(
@@ -709,7 +709,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #'   DurationSeconds = 3600L,
 #'   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
 #'   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",
-#'   SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sO..."
+#'   SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5..."
 #' )
 #' }
 #'
@@ -1059,11 +1059,11 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' # 
 #' svc$assume_role_with_web_identity(
 #'   DurationSeconds = 3600L,
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
 #'   ProviderId = "www.amazon.com",
 #'   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",
 #'   RoleSessionName = "app1",
-#'   WebIdentityToken = "Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJ..."
+#'   WebIdentityToken = "Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwX..."
 #' )
 #' }
 #'
@@ -1608,7 +1608,7 @@ sts_get_caller_identity <- function() {
 #' svc$get_federation_token(
 #'   DurationSeconds = 3600L,
 #'   Name = "testFedUserSession",
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
 #'   Tags = list(
 #'     list(
 #'       Key = "Project",

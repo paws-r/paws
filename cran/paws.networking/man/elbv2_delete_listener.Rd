@@ -29,7 +29,7 @@ balancer to which it is attached.
 \dontrun{
 # This example deletes the specified listener.
 svc$delete_listener(
-  ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-..."
+  ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listen..."
 )
 }
 

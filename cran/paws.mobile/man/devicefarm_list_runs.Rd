@@ -131,7 +131,7 @@ Gets information about runs, given an AWS Device Farm project ARN.
 \dontrun{
 # The following example returns information about a specific test run.
 svc$list_runs(
-  arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6...",
+  arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b...",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )
 }

@@ -62,7 +62,7 @@ in the \emph{IAM User Guide}.
 # The following command changes IAM user Bob's password and sets the flag
 # that required Bob to change the password the next time he signs in.
 svc$create_login_profile(
-  Password = "h]6EszR}vJ*m",
+  Password = "h]6EszR\}vJ*m",
   PasswordResetRequired = TRUE,
   UserName = "Bob"
 )

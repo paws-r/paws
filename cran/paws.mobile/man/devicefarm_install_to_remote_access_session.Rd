@@ -51,7 +51,7 @@ applications, the file must be in .ipa format.
 # remote access session.
 svc$install_to_remote_access_session(
   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
-  remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE..."
+  remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:sessi..."
 )
 }
 

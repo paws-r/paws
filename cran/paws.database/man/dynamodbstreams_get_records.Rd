@@ -139,7 +139,7 @@ MB of data or 1000 stream records, whichever comes first.
 \dontrun{
 # The following example retrieves all the stream records from a shard.
 svc$get_records(
-  ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05..."
+  ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stre..."
 )
 }
 

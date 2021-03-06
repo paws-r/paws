@@ -117,7 +117,7 @@ targets in the specified target group.
 svc$modify_target_group(
   HealthCheckPort = "443",
   HealthCheckProtocol = "HTTPS",
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 )
 }
 

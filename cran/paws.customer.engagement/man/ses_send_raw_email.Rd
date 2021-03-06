@@ -231,7 +231,7 @@ svc$send_raw_email(
   Destinations = list(),
   FromArn = "",
   RawMessage = list(
-    Data = "From: sender@example.com\\\\nTo: recipient@example.com\\\\nSubject: Test emai..."
+    Data = "From: sender@example.com\\\\nTo: recipient@example.com\\\\nSubject:..."
   ),
   ReturnPathArn = "",
   Source = "",

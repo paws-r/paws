@@ -149,7 +149,7 @@ of a secret, use
 # upon completion of this command. The rotation function runs
 # asynchronously in the background.
 svc$rotate_secret(
-  RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseR...",
+  RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTes...",
   RotationRules = list(
     AutomaticallyAfterDays = 30L
   ),

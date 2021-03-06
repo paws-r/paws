@@ -50,7 +50,7 @@ in the Amazon DynamoDB Developer Guide.
 svc <- dynamodbstreams()
 # The following example describes a stream with a given stream ARN.
 svc$describe_stream(
-  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
+  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2..."
 )
 }
 

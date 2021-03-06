@@ -112,7 +112,7 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' # This example adds the specified tags to the specified load balancer.
 #' svc$add_tags(
 #'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -390,11 +390,11 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' svc$create_listener(
 #'   DefaultActions = list(
 #'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
 #'       Type = "forward"
 #'     )
 #'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
 #'   Port = 80L,
 #'   Protocol = "HTTP"
 #' )
@@ -414,11 +414,11 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'   ),
 #'   DefaultActions = list(
 #'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
 #'       Type = "forward"
 #'     )
 #'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
 #'   Port = 443L,
 #'   Protocol = "HTTPS",
 #'   SslPolicy = "ELBSecurityPolicy-2015-05"
@@ -928,7 +928,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' svc$create_rule(
 #'   Actions = list(
 #'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
 #'       Type = "forward"
 #'     )
 #'   ),
@@ -940,7 +940,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'       )
 #'     )
 #'   ),
-#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-...",
+#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen...",
 #'   Priority = 10L
 #' )
 #' }
@@ -1199,7 +1199,7 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 #' \dontrun{
 #' # This example deletes the specified listener.
 #' svc$delete_listener(
-#'   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-..."
+#'   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listen..."
 #' )
 #' }
 #'
@@ -1259,7 +1259,7 @@ elbv2_delete_listener <- function(ListenerArn) {
 #' \dontrun{
 #' # This example deletes the specified load balancer.
 #' svc$delete_load_balancer(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
 #' )
 #' }
 #'
@@ -1309,7 +1309,7 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
 #' \dontrun{
 #' # This example deletes the specified rule.
 #' svc$delete_rule(
-#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my..."
+#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-r..."
 #' )
 #' }
 #'
@@ -1363,7 +1363,7 @@ elbv2_delete_rule <- function(RuleArn) {
 #' \dontrun{
 #' # This example deletes the specified target group.
 #' svc$delete_target_group(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 #' )
 #' }
 #'
@@ -1424,7 +1424,7 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
 #' # This example deregisters the specified instance from the specified
 #' # target group.
 #' svc$deregister_targets(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
 #'   Targets = list(
 #'     list(
 #'       Id = "i-0f76fade"
@@ -1711,7 +1711,7 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #' # This example describes the specified listener.
 #' svc$describe_listeners(
 #'   ListenerArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balance..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-lo..."
 #'   )
 #' )
 #' }
@@ -1786,7 +1786,7 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 #' \dontrun{
 #' # This example describes the attributes of the specified load balancer.
 #' svc$describe_load_balancer_attributes(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
 #' )
 #' }
 #'
@@ -1890,7 +1890,7 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #' # This example describes the specified load balancer.
 #' svc$describe_load_balancers(
 #'   LoadBalancerArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
 #'   )
 #' )
 #' }
@@ -2064,7 +2064,7 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #' # This example describes the specified rule.
 #' svc$describe_rules(
 #'   RuleArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-ba..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/..."
 #'   )
 #' )
 #' }
@@ -2219,7 +2219,7 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 #' # This example describes the tags assigned to the specified load balancer.
 #' svc$describe_tags(
 #'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
 #'   )
 #' )
 #' }
@@ -2292,7 +2292,7 @@ elbv2_describe_tags <- function(ResourceArns) {
 #' \dontrun{
 #' # This example describes the attributes of the specified target group.
 #' svc$describe_target_group_attributes(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 #' )
 #' }
 #'
@@ -2390,7 +2390,7 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #' # This example describes the specified target group.
 #' svc$describe_target_groups(
 #'   TargetGroupArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
 #'   )
 #' )
 #' }
@@ -2468,13 +2468,13 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #' # target group. One target is healthy but the other is not specified in an
 #' # action, so it can't receive traffic from the load balancer.
 #' svc$describe_target_health(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 #' )
 #' 
 #' # This example describes the health of the specified target. This target
 #' # is healthy.
 #' svc$describe_target_health(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
 #'   Targets = list(
 #'     list(
 #'       Id = "i-0f76fade",
@@ -2731,11 +2731,11 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' svc$modify_listener(
 #'   DefaultActions = list(
 #'     list(
-#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+#'       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
 #'       Type = "forward"
 #'     )
 #'   ),
-#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-..."
+#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
 #' )
 #' 
 #' # This example changes the server certificate for the specified HTTPS
@@ -2746,7 +2746,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
 #'     )
 #'   ),
-#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-..."
+#'   ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
 #' )
 #' }
 #'
@@ -2824,7 +2824,7 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #'       Value = "true"
 #'     )
 #'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
 #' )
 #' 
 #' # This example changes the idle timeout value for the specified load
@@ -2836,7 +2836,7 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #'       Value = "30"
 #'     )
 #'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
 #' )
 #' 
 #' # This example enables access logs for the specified load balancer. Note
@@ -2858,7 +2858,7 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #'       Value = "myapp"
 #'     )
 #'   ),
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
 #' )
 #' }
 #'
@@ -3136,7 +3136,7 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #'       )
 #'     )
 #'   ),
-#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my..."
+#'   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-r..."
 #' )
 #' }
 #'
@@ -3268,7 +3268,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' svc$modify_target_group(
 #'   HealthCheckPort = "443",
 #'   HealthCheckProtocol = "HTTPS",
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 #' )
 #' }
 #'
@@ -3340,7 +3340,7 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 #'       Value = "600"
 #'     )
 #'   ),
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 #' )
 #' }
 #'
@@ -3411,7 +3411,7 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #' # This example registers the specified instances with the specified target
 #' # group.
 #' svc$register_targets(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
 #'   Targets = list(
 #'     list(
 #'       Id = "i-80c8dd94"
@@ -3426,7 +3426,7 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #' # group using multiple ports. This enables you to register ECS containers
 #' # on the same instance as targets in the target group.
 #' svc$register_targets(
-#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
+#'   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
 #'   Targets = list(
 #'     list(
 #'       Id = "i-80c8dd94",
@@ -3546,7 +3546,7 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 #' # balancer.
 #' svc$remove_tags(
 #'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
 #'   ),
 #'   TagKeys = list(
 #'     "project",
@@ -3776,7 +3776,7 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #'   RulePriorities = list(
 #'     list(
 #'       Priority = 5L,
-#'       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/ap..."
+#'       RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
 #'     )
 #'   )
 #' )
@@ -3844,7 +3844,7 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' # This example associates the specified security group with the specified
 #' # load balancer.
 #' svc$set_security_groups(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
 #'   SecurityGroups = list(
 #'     "sg-5943793c"
 #'   )
@@ -3974,7 +3974,7 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' # This example enables the Availability Zones for the specified subnets
 #' # for the specified load balancer.
 #' svc$set_subnets(
-#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+#'   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
 #'   Subnets = list(
 #'     "subnet-8360a9e7",
 #'     "subnet-b7d581c0"

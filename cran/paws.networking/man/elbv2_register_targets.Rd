@@ -50,7 +50,7 @@ instances of these types by IP address.
 # This example registers the specified instances with the specified target
 # group.
 svc$register_targets(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
   Targets = list(
     list(
       Id = "i-80c8dd94"
@@ -65,7 +65,7 @@ svc$register_targets(
 # group using multiple ports. This enables you to register ECS containers
 # on the same instance as targets in the target group.
 svc$register_targets(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
   Targets = list(
     list(
       Id = "i-80c8dd94",

@@ -227,11 +227,11 @@ action, specify a list with the current actions plus the new action.
 svc$modify_listener(
   DefaultActions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
       Type = "forward"
     )
   ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-..."
+  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
 )
 
 # This example changes the server certificate for the specified HTTPS
@@ -242,7 +242,7 @@ svc$modify_listener(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
     )
   ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-..."
+  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
 )
 }
 

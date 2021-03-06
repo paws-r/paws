@@ -106,7 +106,7 @@ configurations, plus any additional subnets.
 # This example enables the Availability Zones for the specified subnets
 # for the specified load balancer.
 svc$set_subnets(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
   Subnets = list(
     "subnet-8360a9e7",
     "subnet-b7d581c0"

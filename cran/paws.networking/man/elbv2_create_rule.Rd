@@ -268,7 +268,7 @@ in the \emph{Application Load Balancers Guide}.
 svc$create_rule(
   Actions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
       Type = "forward"
     )
   ),
@@ -280,7 +280,7 @@ svc$create_rule(
       )
     )
   ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-...",
+  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen...",
   Priority = 10L
 )
 }

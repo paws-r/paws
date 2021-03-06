@@ -78,7 +78,7 @@ more target groups.
 # This example describes the specified target group.
 svc$describe_target_groups(
   TargetGroupArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
   )
 )
 }

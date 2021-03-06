@@ -75,7 +75,7 @@ in the \emph{IAM User Guide}.
 \dontrun{
 # The following command attaches a policy to the IAM user named Bob.
 svc$put_user_policy(
-  PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"Action\":\"*...",
+  PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"...",
   PolicyName = "AllAccessPolicy",
   UserName = "Bob"
 )

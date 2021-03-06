@@ -71,7 +71,7 @@ svc$validate_configuration_settings(
     list(
       Namespace = "aws:elasticbeanstalk:healthreporting:system",
       OptionName = "ConfigDocument",
-      Value = "\{"CloudWatchMetrics": \{"Environment": \{"ApplicationLatencyP99.9": null..."
+      Value = "\{\"CloudWatchMetrics\": \{\"Environment\": \{\"ApplicationLatencyP9..."
     )
   )
 )

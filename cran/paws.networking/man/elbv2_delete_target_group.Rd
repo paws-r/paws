@@ -32,7 +32,7 @@ them.
 \dontrun{
 # This example deletes the specified target group.
 svc$delete_target_group(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 )
 }
 
