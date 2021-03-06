@@ -17,7 +17,7 @@ read_ini <- function(file_name) {
   if (!file.exists(file_name)) {
     stop(sprintf("Unable to find file: %s", file_name))
   }
-  content <- scan(file_name, what="", quiet = T)
+  content <- scan(file_name, what = "", sep = "\n", quiet = T)
   profiles <- list()
   current_profile <- ""
   for (i in 1:length(content)) {
