@@ -414,7 +414,7 @@ test_that("make_doc_examples", {
     "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
-    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":\\\"Allow\\\",\\\"Acti...\",",
+    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":\\\"Al...\",",
     "#'     Quux = 123",
     "#'   )",
     "#' )",
@@ -477,6 +477,30 @@ test_that("make_doc_examples", {
     "#'   Baz = list(",
     "#'     Qux = 123",
     "#'   )",
+    "#' )",
+    "#' }",
+    sep = "\n"
+  )
+  expect_equal(actual, expected)
+
+  operation <- list(
+    name = "Operation",
+    examples = list(
+      list(
+        input = list(
+          "Foo" = "bar{"
+        ),
+        description = "Example with unmatched curly brace"
+      )
+    )
+  )
+  actual <- make_doc_examples(operation, api)
+  expected <- paste(
+    "#' @examples",
+    "#' \\dontrun{",
+    "#' # Example with unmatched curly brace",
+    "#' svc$operation(",
+    "#'   Foo = \"bar\\{\"",
     "#' )",
     "#' }",
     sep = "\n"

@@ -152,13 +152,17 @@ make_doc_example <- function(example, op_name) {
   # to avoid further warnings from R CMD check about unmatched quotes.
   lines <- strsplit(call, "\n")[[1]]
   truncated <- lapply(lines, function(x) {
-    if (nchar(x) <= 95) return(x)
+    if (nchar(x) <= 95) {
+      x <- escape_unmatched_chars(x, '"')
+      x <- escape_unmatched_pairs(x, c("{" = "}"))
+      return(x)
+    }
     quotes <- stringr::str_locate_all(x, '"')[[1]][, 1]
     first_quote <- quotes[1]
     last_quote <- quotes[length(quotes)]
     first <- substr(x, 1, first_quote)
     middle <- substr(x, first_quote+1, nchar(x)-1)
-    middle <- paste0(substr(middle, 1, 90-nchar(first)-5), "...")
+    middle <- paste0(substr(middle, 1, 80-nchar(first)-5), "...")
     middle <- escape_unmatched_chars(middle, '"')
     middle <- escape_unmatched_pairs(middle, c("{" = "}"))
     last <- substr(x, last_quote, nchar(x))
