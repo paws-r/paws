@@ -6,10 +6,12 @@ extract_ini_profile <- function(item) {
 
 # Get a parameter and its value
 extract_ini_parameter <- function(item) {
-    item_split <- strsplit(item, "=")[[1]]
-    parameter <- list()
-    parameter[[trimws(item_split[1])]] <- trimws(item_split[2])
-    return(parameter)
+  split_index <- regexpr("=", item)
+  parameter <- list()
+  key <- substring(item, 1, split_index)
+  value <- substring(item, split_index + 1)
+  parameter[[trimws(key)]] <- trimws(value)
+  return(parameter)
 }
 
 # Read in values from an ini file
@@ -21,7 +23,9 @@ read_ini <- function(file_name) {
   profiles <- list()
   current_profile <- ""
   for (i in 1:length(content)) {
-    if (grepl("\\[.*\\]", content[i])) {
+    if (grepl("(^;)|(^#)", content[i])) {
+      next
+    } else if (grepl("^\\[.*\\]", content[i])) {
       current_profile <- extract_ini_profile(content[i])
       profiles[[current_profile]] <- c()
       next
