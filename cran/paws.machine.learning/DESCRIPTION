@@ -1,6 +1,6 @@
 Package: paws.machine.learning
 Title: Amazon Web Services Machine Learning Services
-Version: 0.1.10
+Version: 0.1.11
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
