@@ -54,7 +54,7 @@ svc <- sts()
 # 
 svc$assume_role(
   ExternalId = "123ABC",
-  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
+  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
   RoleArn = "arn:aws:iam::123456789012:role/demo",
   RoleSessionName = "testAssumeRoleSession",
   Tags = list(

@@ -623,7 +623,7 @@ ec2 <- function(config = list()) {
 #'   AvailabilityZone = "us-west-2a",
 #'   InstanceId = "i-abcd1234",
 #'   InstanceOSUser = "ec2-user",
-#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5..."
+#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6d..."
 #' )
 #' }
 #'
@@ -905,7 +905,7 @@ ecs <- function(config = list()) {
 #'       "subnet-e7e761ac"
 #'     )
 #'   ),
-#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonE..."
+#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRole..."
 #' )
 #' }
 #'
@@ -1851,7 +1851,7 @@ fsx <- function(config = list()) {
 #' # my-vault:
 #' svc$abort_multipart_upload(
 #'   accountId = "-",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLq...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -1932,7 +1932,7 @@ glacier <- function(config = list()) {
 #' svc$abort_multipart_upload(
 #'   Bucket = "examplebucket",
 #'   Key = "bigobject",
-#'   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOm..."
+#'   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LA..."
 #' )
 #' }
 #'
@@ -2191,7 +2191,7 @@ s3control <- function(config = list()) {
 #' 
 #' For more information, see [Announcement: Heads-up – Longer AWS Storage
 #' Gateway volume and snapshot IDs coming in
-#' 2016](https://forums.aws.amazon.com:443/ann.jspa?annID=3557).
+#' 2016](https://forums.aws.amazon.com/ann.jspa?annID=3557).
 #'
 #' @param
 #' config
@@ -2666,7 +2666,7 @@ dynamodb <- function(config = list()) {
 #' svc <- dynamodbstreams()
 #' # The following example describes a stream with a given stream ARN.
 #' svc$describe_stream(
-#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
+#'   StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2..."
 #' )
 #' }
 #'
@@ -4308,7 +4308,7 @@ elb <- function(config = list()) {
 #' # This example adds the specified tags to the specified load balancer.
 #' svc$add_tags(
 #'   ResourceArns = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -11684,7 +11684,7 @@ iam <- function(config = list()) {
 #'     )
 #'   ),
 #'   findingArns = list(
-#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/r..."
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
 #'   )
 #' )
 #' }
@@ -12446,7 +12446,7 @@ shield <- function(config = list()) {
 #' # 
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
 #'   RoleSessionName = "testAssumeRoleSession",
 #'   Tags = list(

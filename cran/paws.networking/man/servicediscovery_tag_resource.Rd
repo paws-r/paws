@@ -37,7 +37,7 @@ Adds one or more tags to the specified resource.
 \dontrun{
 # This example adds "Department" and "Project" tags to a resource.
 svc$tag_resource(
-  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjil...",
+  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/...",
   Tags = list(
     list(
       Key = "Department",

@@ -43,7 +43,7 @@ Gateway Load Balancer.
 # This example associates the specified security group with the specified
 # load balancer.
 svc$set_security_groups(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer...",
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
   SecurityGroups = list(
     "sg-5943793c"
   )

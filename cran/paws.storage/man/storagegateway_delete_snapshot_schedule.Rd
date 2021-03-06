@@ -43,7 +43,7 @@ in the \emph{Amazon Elastic Compute Cloud API Reference}.
 \dontrun{
 # This action enables you to delete a snapshot schedule for a volume.
 svc$delete_snapshot_schedule(
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 )
 }
 

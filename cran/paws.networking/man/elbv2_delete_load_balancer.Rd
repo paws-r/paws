@@ -38,7 +38,7 @@ stop or terminate them.
 \dontrun{
 # This example deletes the specified load balancer.
 svc$delete_load_balancer(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
 )
 }
 

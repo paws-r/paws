@@ -53,7 +53,7 @@ information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/User
 # The following command updates the role trust policy for the role named
 # Test-Role:
 svc$update_assume_role_policy(
-  PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Effect\":\"Allow\",\"Principal...",
+  PolicyDocument = "\{"Version":"2012-10-17","Statement":[\{"Effect":"Allow",...",
   RoleName = "S3AccessForEC2Instances"
 )
 }

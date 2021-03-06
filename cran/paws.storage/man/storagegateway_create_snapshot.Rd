@@ -83,7 +83,7 @@ page.
 # Initiates an ad-hoc snapshot of a gateway volume.
 svc$create_snapshot(
   SnapshotDescription = "My root volume snapshot as of 10/03/2017",
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
+  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 )
 }
 

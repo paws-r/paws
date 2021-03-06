@@ -41,7 +41,7 @@ limit of running up to 500 concurrent agents per AWS account.
 # limit of running up to 500 concurrent agents per AWS account.
 svc$start_assessment_run(
   assessmentRunName = "examplerun",
-  assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX..."
+  assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/..."
 )
 }
 

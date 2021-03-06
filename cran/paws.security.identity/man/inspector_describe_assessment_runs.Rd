@@ -94,7 +94,7 @@ assessment runs.
 # assessment runs.
 svc$describe_assessment_runs(
   assessmentRunArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/r..."
+    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
   )
 )
 }

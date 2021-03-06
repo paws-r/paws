@@ -317,7 +317,7 @@ svc$create_auto_scaling_group(
   MaxSize = 3L,
   MinSize = 1L,
   TargetGroupARNs = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
   ),
   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 )

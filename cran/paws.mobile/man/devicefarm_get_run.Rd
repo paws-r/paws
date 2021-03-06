@@ -122,7 +122,7 @@ Gets information about a run.
 \dontrun{
 # The following example gets information about a specific test run.
 svc$get_run(
-  arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6..."
+  arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b..."
 )
 }
 

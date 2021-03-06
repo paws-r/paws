@@ -57,7 +57,7 @@ NULL
 #'     )
 #'   ),
 #'   findingArns = list(
-#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/r..."
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
 #'   )
 #' )
 #' }
@@ -409,7 +409,7 @@ inspector_create_resource_group <- function(resourceGroupTags) {
 #' # Deletes the assessment run that is specified by the ARN of the
 #' # assessment run.
 #' svc$delete_assessment_run(
-#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/temp..."
+#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvg..."
 #' )
 #' }
 #'
@@ -511,7 +511,7 @@ inspector_delete_assessment_target <- function(assessmentTargetArn) {
 #' # Deletes the assessment template that is specified by the ARN of the
 #' # assessment template.
 #' svc$delete_assessment_template(
-#'   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX..."
+#'   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/..."
 #' )
 #' }
 #'
@@ -629,7 +629,7 @@ inspector_delete_assessment_template <- function(assessmentTemplateArn) {
 #' # assessment runs.
 #' svc$describe_assessment_runs(
 #'   assessmentRunArns = list(
-#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/r..."
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
 #'   )
 #' )
 #' }
@@ -1069,7 +1069,7 @@ inspector_describe_exclusions <- function(exclusionArns, locale = NULL) {
 #' # Describes the findings that are specified by the ARNs of the findings.
 #' svc$describe_findings(
 #'   findingArns = list(
-#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/r..."
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
 #'   )
 #' )
 #' }
@@ -1431,7 +1431,7 @@ inspector_get_exclusions_preview <- function(assessmentTemplateArn, previewToken
 #' # Information about the data that is collected for the specified
 #' # assessment run.
 #' svc$get_telemetry_metadata(
-#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/temp..."
+#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kF..."
 #' )
 #' }
 #'
@@ -1529,7 +1529,7 @@ inspector_get_telemetry_metadata <- function(assessmentRunArn) {
 #' # Lists the agents of the assessment runs that are specified by the ARNs
 #' # of the assessment runs.
 #' svc$list_assessment_run_agents(
-#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/temp...",
+#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kF...",
 #'   maxResults = 123L
 #' )
 #' }
@@ -1898,7 +1898,7 @@ inspector_list_assessment_templates <- function(assessmentTargetArns = NULL, fil
 #' # specified by the ARN of the assessment template.
 #' svc$list_event_subscriptions(
 #'   maxResults = 123L,
-#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/..."
+#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX..."
 #' )
 #' }
 #'
@@ -2073,7 +2073,7 @@ inspector_list_exclusions <- function(assessmentRunArn, nextToken = NULL, maxRes
 #' # specified by the ARNs of the assessment runs.
 #' svc$list_findings(
 #'   assessmentRunArns = list(
-#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/r..."
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
 #'   ),
 #'   maxResults = 123L
 #' )
@@ -2197,7 +2197,7 @@ inspector_list_rules_packages <- function(nextToken = NULL, maxResults = NULL) {
 #' \dontrun{
 #' # Lists all tags associated with an assessment template.
 #' svc$list_tags_for_resource(
-#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/..."
+#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq..."
 #' )
 #' }
 #'
@@ -2404,7 +2404,7 @@ inspector_register_cross_account_access_role <- function(roleArn) {
 #'     "key=Example,value=example"
 #'   ),
 #'   findingArns = list(
-#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/r..."
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
 #'   )
 #' )
 #' }
@@ -2464,7 +2464,7 @@ inspector_remove_attributes_from_findings <- function(findingArns, attributeKeys
 #' # Sets tags (key and value pairs) to the assessment template that is
 #' # specified by the ARN of the assessment template.
 #' svc$set_tags_for_resource(
-#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/...",
+#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX...",
 #'   tags = list(
 #'     list(
 #'       key = "Example",
@@ -2534,7 +2534,7 @@ inspector_set_tags_for_resource <- function(resourceArn, tags = NULL) {
 #' # limit of running up to 500 concurrent agents per AWS account.
 #' svc$start_assessment_run(
 #'   assessmentRunName = "examplerun",
-#'   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX..."
+#'   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/..."
 #' )
 #' }
 #'
@@ -2591,7 +2591,7 @@ inspector_start_assessment_run <- function(assessmentTemplateArn, assessmentRunN
 #' # Stops the assessment run that is specified by the ARN of the assessment
 #' # run.
 #' svc$stop_assessment_run(
-#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/temp..."
+#'   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvg..."
 #' )
 #' }
 #'
@@ -2648,7 +2648,7 @@ inspector_stop_assessment_run <- function(assessmentRunArn, stopAction = NULL) {
 #' # notifications about a specified event to a specified SNS topic.
 #' svc$subscribe_to_event(
 #'   event = "ASSESSMENT_RUN_COMPLETED",
-#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/...",
+#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX...",
 #'   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
 #' )
 #' }
@@ -2706,7 +2706,7 @@ inspector_subscribe_to_event <- function(resourceArn, event, topicArn) {
 #' # notifications about a specified event to a specified SNS topic.
 #' svc$unsubscribe_from_event(
 #'   event = "ASSESSMENT_RUN_COMPLETED",
-#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/...",
+#'   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX...",
 #'   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
 #' )
 #' }

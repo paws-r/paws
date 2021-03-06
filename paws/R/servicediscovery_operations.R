@@ -1815,7 +1815,7 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
 #' \dontrun{
 #' # This example adds "Department" and "Project" tags to a resource.
 #' svc$tag_resource(
-#'   ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjil...",
+#'   ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/...",
 #'   Tags = list(
 #'     list(
 #'       Key = "Department",
@@ -1879,7 +1879,7 @@ servicediscovery_tag_resource <- function(ResourceARN, Tags) {
 #' # This example removes the "Department" and "Project" tags from a
 #' # resource.
 #' svc$untag_resource(
-#'   ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjil...",
+#'   ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/...",
 #'   TagKeys = list(
 #'     "Project",
 #'     "Department"

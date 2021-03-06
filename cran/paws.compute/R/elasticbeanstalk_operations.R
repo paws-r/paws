@@ -4373,7 +4373,7 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #'     list(
 #'       Namespace = "aws:elasticbeanstalk:healthreporting:system",
 #'       OptionName = "ConfigDocument",
-#'       Value = "\{"CloudWatchMetrics": \{"Environment": \{"ApplicationLatencyP99.9": null..."
+#'       Value = "\{\"CloudWatchMetrics\": \{\"Environment\": \{\"ApplicationLatencyP9..."
 #'     )
 #'   )
 #' )

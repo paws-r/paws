@@ -66,7 +66,7 @@ drift on all resources in a given stack that support drift detection.
 
 Resources that do not currently support drift detection cannot be
 checked. For a list of resources that support drift detection, see
-Resources that Support Drift Detection.
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
 }
 \section{Request syntax}{
 \preformatted{svc$detect_stack_resource_drift(

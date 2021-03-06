@@ -77,7 +77,7 @@ of the assessment runs.
 # Lists the agents of the assessment runs that are specified by the ARNs
 # of the assessment runs.
 svc$list_assessment_run_agents(
-  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/temp...",
+  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kF...",
   maxResults = 123L
 )
 }

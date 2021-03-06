@@ -87,7 +87,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 # The example lists all the parts of a multipart upload.
 svc$list_parts(
   accountId = "-",
-  uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYt...",
+  uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ...",
   vaultName = "examplevault"
 )
 }

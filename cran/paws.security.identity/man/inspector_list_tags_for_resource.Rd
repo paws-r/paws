@@ -35,7 +35,7 @@ Lists all tags associated with an assessment template.
 \dontrun{
 # Lists all tags associated with an assessment template.
 svc$list_tags_for_resource(
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/..."
+  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq..."
 )
 }
 

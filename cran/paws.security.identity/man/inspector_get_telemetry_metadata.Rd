@@ -39,7 +39,7 @@ assessment run.
 # Information about the data that is collected for the specified
 # assessment run.
 svc$get_telemetry_metadata(
-  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/temp..."
+  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kF..."
 )
 }
 

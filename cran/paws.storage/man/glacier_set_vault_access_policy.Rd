@@ -48,7 +48,7 @@ KB in size. For more information about vault access policies, see
 svc$set_vault_access_policy(
   accountId = "-",
   policy = list(
-    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-owner-access-rights..."
+    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-owner-acc..."
   ),
   vaultName = "examplevault"
 )

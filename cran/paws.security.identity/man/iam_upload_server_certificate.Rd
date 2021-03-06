@@ -137,9 +137,9 @@ in the \emph{IAM User Guide}.
 # The following upload-server-certificate command uploads a server
 # certificate to your AWS account:
 svc$upload_server_certificate(
-  CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>...",
+  CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate te...",
   Path = "/company/servercerts/",
-  PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----E...",
+  PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key str...",
   ServerCertificateName = "ProdServerCert"
 )
 }

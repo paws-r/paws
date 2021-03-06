@@ -149,7 +149,7 @@ svc$set_rule_priorities(
   RulePriorities = list(
     list(
       Priority = 5L,
-      RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/ap..."
+      RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
     )
   )
 )

@@ -46,7 +46,7 @@ listeners, or rules.
 # This example describes the tags assigned to the specified load balancer.
 svc$describe_tags(
   ResourceArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
   )
 )
 }

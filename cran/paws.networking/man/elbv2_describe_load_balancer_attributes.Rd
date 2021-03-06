@@ -46,7 +46,7 @@ in the \emph{Gateway Load Balancers Guide}
 \dontrun{
 # This example describes the attributes of the specified load balancer.
 svc$describe_load_balancer_attributes(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
 )
 }
 

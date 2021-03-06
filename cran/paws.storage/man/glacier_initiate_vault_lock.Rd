@@ -80,7 +80,7 @@ new vault lock policy.
 svc$initiate_vault_lock(
   accountId = "-",
   policy = list(
-    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-lock\",\"Effect..."
+    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-loc..."
   ),
   vaultName = "my-vault"
 )

@@ -83,7 +83,7 @@ Describes the specified load balancers or all of your load balancers.
 # This example describes the specified load balancer.
 svc$describe_load_balancers(
   LoadBalancerArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
   )
 )
 }

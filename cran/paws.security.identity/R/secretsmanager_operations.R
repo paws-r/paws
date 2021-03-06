@@ -1497,7 +1497,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' # The following example shows how to add a resource-based policy to a
 #' # secret.
 #' svc$put_resource_policy(
-#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",\n\"P...",
+#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
 #'   SecretId = "MyTestDatabaseSecret"
 #' )
 #' }
@@ -2002,7 +2002,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' # upon completion of this command. The rotation function runs
 #' # asynchronously in the background.
 #' svc$rotate_secret(
-#'   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseR...",
+#'   RotationLambdaARN = "arn:aws:lambda:us-west-2:123456789012:function:MyTes...",
 #'   RotationRules = list(
 #'     AutomaticallyAfterDays = 30L
 #'   ),
@@ -2760,7 +2760,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' # The following example shows how to validate a resource-based policy to a
 #' # secret.
 #' svc$validate_resource_policy(
-#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",\n\"P...",
+#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"A...",
 #'   SecretId = "MyTestDatabaseSecret"
 #' )
 #' }

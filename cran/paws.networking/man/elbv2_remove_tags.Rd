@@ -39,7 +39,7 @@ groups, listeners, or rules.
 # balancer.
 svc$remove_tags(
   ResourceArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/m..."
   ),
   TagKeys = list(
     "project",

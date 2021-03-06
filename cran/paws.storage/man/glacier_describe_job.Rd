@@ -143,7 +143,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 # specified by the job ID.
 svc$describe_job(
   accountId = "-",
-  jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW...",
+  jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ej...",
   vaultName = "my-vault"
 )
 }

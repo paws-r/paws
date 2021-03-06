@@ -97,7 +97,7 @@ action is no longer available.
 # job being created, this action is no longer available.
 svc$update_job(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
-  Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster ship...",
+  Description = "Upgraded to Edge, shipped to Finance Dept, and requested f...",
   JobId = "JID123e4567-e89b-12d3-a456-426655440000",
   ShippingOption = "NEXT_DAY",
   SnowballCapacityPreference = "T100"

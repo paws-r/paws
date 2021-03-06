@@ -188,7 +188,7 @@ svc$send_email(
     Body = list(
       Html = list(
         Charset = "UTF-8",
-        Data = "This message body contains HTML formatting. It can, for example, cont..."
+        Data = "This message body contains HTML formatting. It can, for exa..."
       ),
       Text = list(
         Charset = "UTF-8",

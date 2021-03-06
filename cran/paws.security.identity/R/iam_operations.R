@@ -473,7 +473,7 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #' \dontrun{
 #' # The following command changes the password for the current IAM user.
 #' svc$change_password(
-#'   NewPassword = "]35d/{pB9Fo9wJ",
+#'   NewPassword = "]35d/\{pB9Fo9wJ",
 #'   OldPassword = "3s0K_;xh4~8XXI"
 #' )
 #' }
@@ -909,7 +909,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' # The following command changes IAM user Bob's password and sets the flag
 #' # that required Bob to change the password the next time he signs in.
 #' svc$create_login_profile(
-#'   Password = "h]6EszR}vJ*m",
+#'   Password = "h]6EszR\}vJ*m",
 #'   PasswordResetRequired = TRUE,
 #'   UserName = "Bob"
 #' )
@@ -9083,7 +9083,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' # named Admins.
 #' svc$put_group_policy(
 #'   GroupName = "Admins",
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"Action\":\"*...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"...",
 #'   PolicyName = "AllPerms"
 #' )
 #' }
@@ -9254,7 +9254,7 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' # The following command adds a permissions policy to the role named
 #' # Test-Role.
 #' svc$put_role_policy(
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"Action\":\"s...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"...",
 #'   PolicyName = "S3AccessPolicy",
 #'   RoleName = "S3Access"
 #' )
@@ -9414,7 +9414,7 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' \dontrun{
 #' # The following command attaches a policy to the IAM user named Bob.
 #' svc$put_user_policy(
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"Action\":\"*...",
+#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":\{\"Effect\":\"Allow\",\"...",
 #'   PolicyName = "AllAccessPolicy",
 #'   UserName = "Bob"
 #' )
@@ -11199,7 +11199,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' # The following command updates the role trust policy for the role named
 #' # Test-Role:
 #' svc$update_assume_role_policy(
-#'   PolicyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Effect\":\"Allow\",\"Principal...",
+#'   PolicyDocument = "\{"Version":"2012-10-17","Statement":[\{"Effect":"Allow",...",
 #'   RoleName = "S3AccessForEC2Instances"
 #' )
 #' }
@@ -12275,9 +12275,9 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' # The following upload-server-certificate command uploads a server
 #' # certificate to your AWS account:
 #' svc$upload_server_certificate(
-#'   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>...",
+#'   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate te...",
 #'   Path = "/company/servercerts/",
-#'   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----E...",
+#'   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key str...",
 #'   ServerCertificateName = "ProdServerCert"
 #' )
 #' }

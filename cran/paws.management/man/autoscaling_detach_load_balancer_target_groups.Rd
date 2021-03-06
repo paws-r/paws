@@ -37,7 +37,7 @@ group.
 svc$detach_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group",
   TargetGroupARNs = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
   )
 )
 }

@@ -129,7 +129,7 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' svc$attach_load_balancer_target_groups(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   TargetGroupARNs = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
 #'   )
 #' )
 #' }
@@ -830,7 +830,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   MaxSize = 3L,
 #'   MinSize = 1L,
 #'   TargetGroupARNs = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
 #'   ),
 #'   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 #' )
@@ -3330,7 +3330,7 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' svc$detach_load_balancer_target_groups(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   TargetGroupARNs = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
 #'   )
 #' )
 #' }
@@ -4272,7 +4272,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #'   TargetTrackingConfiguration = list(
 #'     PredefinedMetricSpecification = list(
 #'       PredefinedMetricType = "ALBRequestCountPerTarget",
-#'       ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2..."
+#'       ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targe..."
 #'     ),
 #'     TargetValue = 1000
 #'   )

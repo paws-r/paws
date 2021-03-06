@@ -270,7 +270,7 @@ the user tag.
 svc$get_federation_token(
   DurationSeconds = 3600L,
   Name = "testFedUserSession",
-  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
+  Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
   Tags = list(
     list(
       Key = "Project",

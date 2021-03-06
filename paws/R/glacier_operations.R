@@ -61,7 +61,7 @@ NULL
 #' # my-vault:
 #' svc$abort_multipart_upload(
 #'   accountId = "-",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLq...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -338,7 +338,7 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #'   accountId = "-",
 #'   archiveSize = "3145728",
 #'   checksum = "9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLq...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -592,7 +592,7 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' # The example deletes the archive specified by the archive ID.
 #' svc$delete_archive(
 #'   accountId = "-",
-#'   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLH...",
+#'   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyU...",
 #'   vaultName = "examplevault"
 #' )
 #' }
@@ -984,7 +984,7 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' # specified by the job ID.
 #' svc$describe_job(
 #'   accountId = "-",
-#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW...",
+#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ej...",
 #'   vaultName = "my-vault"
 #' )
 #' }
@@ -1298,7 +1298,7 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' # retrieval job that is identified by the job ID.
 #' svc$get_job_output(
 #'   accountId = "-",
-#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW...",
+#'   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ej...",
 #'   range = "",
 #'   vaultName = "my-vaul"
 #' )
@@ -1915,7 +1915,7 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' svc$initiate_vault_lock(
 #'   accountId = "-",
 #'   policy = list(
-#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-lock\",\"Effect..."
+#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-loc..."
 #'   ),
 #'   vaultName = "my-vault"
 #' )
@@ -2341,7 +2341,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' # The example lists all the parts of a multipart upload.
 #' svc$list_parts(
 #'   accountId = "-",
-#'   uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYt...",
+#'   uploadId = "OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ...",
 #'   vaultName = "examplevault"
 #' )
 #' }
@@ -2846,7 +2846,7 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
 #' svc$set_vault_access_policy(
 #'   accountId = "-",
 #'   policy = list(
-#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-owner-access-rights..."
+#'     Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-owner-acc..."
 #'   ),
 #'   vaultName = "examplevault"
 #' )
@@ -3198,7 +3198,7 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #'   body = "part1",
 #'   checksum = "c06f7cd4baacb087002a99a5f48bf953",
 #'   range = "bytes 0-1048575/*",
-#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR...",
+#'   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLq...",
 #'   vaultName = "examplevault"
 #' )
 #' }

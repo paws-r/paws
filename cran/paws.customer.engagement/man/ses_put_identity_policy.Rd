@@ -56,7 +56,7 @@ You can execute this operation no more than once per second.
 # identity:
 svc$put_identity_policy(
   Identity = "example.com",
-  Policy = "\{"Version":"2008-10-17","Statement":[\{"Sid":"stmt1469123904194","Effect":...",
+  Policy = "\{"Version":"2008-10-17","Statement":[\{"Sid":"stmt1469123904194"...",
   PolicyName = "MyPolicy"
 )
 }

@@ -37,7 +37,7 @@ notifications about a specified event to a specified SNS topic.
 # notifications about a specified event to a specified SNS topic.
 svc$subscribe_to_event(
   event = "ASSESSMENT_RUN_COMPLETED",
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/...",
+  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX...",
   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"
 )
 }

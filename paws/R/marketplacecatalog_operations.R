@@ -360,7 +360,8 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' try to start a ChangeSet containing a change against an entity that is
 #' already locked, you will receive a `ResourceInUseException`.
 #' 
-#' For example, you cannot start the ChangeSet described in the example
+#' For example, you cannot start the ChangeSet described in the
+#' [example](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples)
 #' below because it contains two changes to execute the same change type
 #' (`AddRevisions`) against the same entity (`entity-id@@1)`.
 #'

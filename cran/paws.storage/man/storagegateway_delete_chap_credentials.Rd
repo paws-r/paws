@@ -40,7 +40,7 @@ supported in volume and tape gateway types.
 # for a specified iSCSI target and initiator pair.
 svc$delete_chap_credentials(
   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
-  TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
+  TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
 )
 }
 

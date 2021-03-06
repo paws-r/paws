@@ -54,13 +54,13 @@ Describes the health of the specified targets or all of your targets.
 # target group. One target is healthy but the other is not specified in an
 # action, so it can't receive traffic from the load balancer.
 svc$describe_target_health(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
 )
 
 # This example describes the health of the specified target. This target
 # is healthy.
 svc$describe_target_health(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m...",
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
   Targets = list(
     list(
       Id = "i-0f76fade",

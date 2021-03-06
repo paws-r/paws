@@ -2954,7 +2954,7 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' # identity:
 #' svc$put_identity_policy(
 #'   Identity = "example.com",
-#'   Policy = "\{"Version":"2008-10-17","Statement":[\{"Sid":"stmt1469123904194","Effect":...",
+#'   Policy = "\{"Version":"2008-10-17","Statement":[\{"Sid":"stmt1469123904194"...",
 #'   PolicyName = "MyPolicy"
 #' )
 #' }
@@ -3625,7 +3625,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #'     Body = list(
 #'       Html = list(
 #'         Charset = "UTF-8",
-#'         Data = "This message body contains HTML formatting. It can, for example, cont..."
+#'         Data = "This message body contains HTML formatting. It can, for exa..."
 #'       ),
 #'       Text = list(
 #'         Charset = "UTF-8",
@@ -3918,7 +3918,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'   Destinations = list(),
 #'   FromArn = "",
 #'   RawMessage = list(
-#'     Data = "From: sender@example.com\\nTo: recipient@example.com\\nSubject: Test emai..."
+#'     Data = "From: sender@example.com\\nTo: recipient@example.com\\nSubject:..."
 #'   ),
 #'   ReturnPathArn = "",
 #'   Source = "",

@@ -184,7 +184,7 @@ svc$put_scaling_policy(
   TargetTrackingConfiguration = list(
     PredefinedMetricSpecification = list(
       PredefinedMetricType = "ALBRequestCountPerTarget",
-      ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2..."
+      ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targe..."
     ),
     TargetValue = 1000
   )

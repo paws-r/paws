@@ -70,7 +70,7 @@ The following operations are related to
 # The following example sets a permission policy on a bucket.
 svc$put_bucket_policy(
   Bucket = "examplebucket",
-  Policy = "\{"Version": "2012-10-17", "Statement": [\{ "Sid": "id-1","Effect": "Allow"..."
+  Policy = "\{\"Version\": \"2012-10-17\", \"Statement\": [\{ \"Sid\": \"id-1\",\"Effect..."
 )
 }
 
