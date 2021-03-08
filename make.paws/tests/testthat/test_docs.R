@@ -655,6 +655,14 @@ test_that("convert within-package links", {
   text <- "<code>metadata-function=<i>lambda_arn</i>, sdk-version=<i>version_number</i></code>"
   expected <- "`metadata-function=lambda_arn, sdk-version=version_number`"
   expect_equal(convert(text), expected)
+
+  text <- "<p><code>Foo</code> and <code>Bar</code></p>"
+  links <- list(
+    Foo = list(r_name = "foo", internal_r_name = "foo"),
+    Bar = list(r_name = "bar", internal_r_name = "bar")
+  )
+  expected <- c("[`foo`][foo] and [`bar`][bar]")
+  expect_equal(convert(text, links = links), expected)
 })
 
 test_that("first_sentence", {

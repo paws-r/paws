@@ -444,9 +444,9 @@ clean_markdown <- function(markdown) {
 # that, we search for what look like package reference links, e.g.
 # [foo](help_url), and change them to [foo][help_url].
 fix_internal_links <- function(x) {
-  link_text <- "(\\[.+\\])"
+  link_text <- "(\\[[^\\]]+\\])"
   link_url <- "\\(([a-z0-9_]+)\\)"
-  result <- gsub(paste0(link_text, link_url), "\\1[\\2]", x)
+  result <- gsub(paste0(link_text, link_url), "\\1[\\2]", x, perl = TRUE)
   result
 }
 
