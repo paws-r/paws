@@ -24,7 +24,7 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use
-\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
 When this value is present, AWS KMS does not return more than the

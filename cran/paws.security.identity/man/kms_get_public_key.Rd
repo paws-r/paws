@@ -24,7 +24,7 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use
-\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
 get the alias name and alias ARN, use
 \code{\link[=kms_list_aliases]{list_aliases}}.}
 
@@ -59,7 +59,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 You do not need to download the public key. Instead, you can use the
 public key within AWS KMS by calling the \code{\link[=kms_encrypt]{encrypt}},
-\href{kms_re_encrypt}{\code{re_encrypt}}, or \code{\link[=kms_verify]{verify}} operations
+\code{\link[=kms_re_encrypt]{re_encrypt}}, or \code{\link[=kms_verify]{verify}} operations
 with the identifier of an asymmetric CMK. When you use the public key
 within AWS KMS, you benefit from the authentication, authorization, and
 logging that are part of every AWS KMS operation. You also reduce of

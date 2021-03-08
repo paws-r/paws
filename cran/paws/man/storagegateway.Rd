@@ -62,7 +62,7 @@ ID format looks like the following:
 A snapshot ID with the longer ID format looks like the following:
 \verb{snap-78e226633445566ee}.
 
-For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=3557}{Announcement: Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
+For more information, see \href{https://forums.aws.amazon.com:443/ann.jspa?annID=3557}{Announcement: Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
 }
 \section{Service syntax}{
 \preformatted{svc <- storagegateway(

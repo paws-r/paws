@@ -19,7 +19,7 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use
-\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{PendingWindowInDays}{The waiting period, specified in number of days. After the waiting
 period ends, AWS KMS deletes the customer master key (CMK).

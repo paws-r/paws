@@ -2072,7 +2072,7 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #' already in the `DELETING` state, no error is returned.
 #' 
 #' DynamoDB might continue to accept data read and write operations, such
-#' as [`get_item`](dynamodb_get_item) and [`put_item`][dynamodb_put_item],
+#' as [`get_item`][dynamodb_get_item] and [`put_item`][dynamodb_put_item],
 #' on a table in the `DELETING` state until the table deletion is complete.
 #' 
 #' When you delete a table, any indexes on that table are also deleted.

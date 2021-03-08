@@ -8,7 +8,7 @@ waf_get_rule(RuleId)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the Rule that you want to get. \code{RuleId} is returned by
-\href{waf_create_rule}{\code{create_rule}} and by \code{\link[=waf_list_rules]{list_rules}}.}
+\code{\link[=waf_create_rule]{create_rule}} and by \code{\link[=waf_list_rules]{list_rules}}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

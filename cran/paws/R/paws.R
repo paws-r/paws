@@ -2191,7 +2191,7 @@ s3control <- function(config = list()) {
 #' 
 #' For more information, see [Announcement: Heads-up – Longer AWS Storage
 #' Gateway volume and snapshot IDs coming in
-#' 2016](https://forums.aws.amazon.com/ann.jspa?annID=3557).
+#' 2016](https://forums.aws.amazon.com:443/ann.jspa?annID=3557).
 #'
 #' @param
 #' config
@@ -12096,8 +12096,8 @@ ram <- function(config = list()) {
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
-#' information about the AWS Discussion Forums, see [Forums
+#' Forum](https://forums.aws.amazon.com:443/forum.jspa?forumID=296). For
+#' more information about the AWS Discussion Forums, see [Forums
 #' Help](https://forums.aws.amazon.com:443/help.jspa).
 #' 
 #' **How examples are presented**

@@ -21,7 +21,7 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use
-\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing
 it with \code{\link[=kms_import_key_material]{import_key_material}}. For more
