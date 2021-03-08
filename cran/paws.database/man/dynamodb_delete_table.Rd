@@ -171,7 +171,7 @@ not exist, DynamoDB returns a \code{ResourceNotFoundException}. If table is
 already in the \code{DELETING} state, no error is returned.
 
 DynamoDB might continue to accept data read and write operations, such
-as \href{dynamodb_get_item}{\code{get_item}} and \code{\link[=dynamodb_put_item]{put_item}},
+as \code{\link[=dynamodb_get_item]{get_item}} and \code{\link[=dynamodb_put_item]{put_item}},
 on a table in the \code{DELETING} state until the table deletion is complete.
 
 When you delete a table, any indexes on that table are also deleted.

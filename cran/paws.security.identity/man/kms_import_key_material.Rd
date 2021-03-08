@@ -24,7 +24,7 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use
-\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{ImportToken}{[required] The import token that you received in the response to a previous
 \code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request. It

@@ -7754,7 +7754,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' Policies that are attached to users and roles as permissions boundaries
 #' are not returned. To view which managed policy is currently used to set
 #' the permissions boundary for a user or role, use the
-#' [`get_user`](iam_get_user) or [`get_role`][iam_get_role] operations.
+#' [`get_user`][iam_get_user] or [`get_role`][iam_get_role] operations.
 #'
 #' @usage
 #' iam_list_policies_granting_service_access(Marker, Arn,

@@ -47,8 +47,8 @@ Therefore, for operations that require larger sizes, use a POST request.
 
 We welcome your feedback. Send your comments to
 \href{mailto:awssecretsmanager-feedback@amazon.com}{awssecretsmanager-feedback@amazon.com}, or post your feedback and
-questions in the \href{https://forums.aws.amazon.com/forum.jspa?forumID=296}{AWS Secrets Manager Discussion Forum}. For more
-information about the AWS Discussion Forums, see \href{https://forums.aws.amazon.com:443/help.jspa}{Forums Help}.
+questions in the \href{https://forums.aws.amazon.com:443/forum.jspa?forumID=296}{AWS Secrets Manager Discussion Forum}. For
+more information about the AWS Discussion Forums, see \href{https://forums.aws.amazon.com:443/help.jspa}{Forums Help}.
 
 \strong{How examples are presented}
 

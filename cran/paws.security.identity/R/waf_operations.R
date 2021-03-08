@@ -3399,7 +3399,7 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
 #' waf_get_rule(RuleId)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to get. `RuleId` is returned by
-#' [`create_rule`](waf_create_rule) and by [`list_rules`][waf_list_rules].
+#' [`create_rule`][waf_create_rule] and by [`list_rules`][waf_list_rules].
 #'
 #' @return
 #' A list with the following syntax:

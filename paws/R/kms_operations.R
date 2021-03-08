@@ -46,7 +46,7 @@ NULL
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' A list with the following syntax:
@@ -292,7 +292,7 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' An empty list.
@@ -473,7 +473,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' 
 #' -   Grants for symmetric CMKs cannot allow operations that are not
 #'     supported for symmetric CMKs, including [`sign`][kms_sign],
-#'     [`verify`](kms_verify), and [`get_public_key`][kms_get_public_key].
+#'     [`verify`][kms_verify], and [`get_public_key`][kms_get_public_key].
 #'     (There are limited exceptions to this rule for legacy operations,
 #'     but you should not create a grant for an operation that AWS KMS does
 #'     not support.)
@@ -492,7 +492,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #'     stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 #' 
 #' -   Grants for asymmetric CMKs with a `KeyUsage` of `ENCRYPT_DECRYPT`
-#'     cannot allow the [`sign`](kms_sign) or [`verify`][kms_verify]
+#'     cannot allow the [`sign`][kms_sign] or [`verify`][kms_verify]
 #'     operations. Grants for asymmetric CMKs with a `KeyUsage` of
 #'     `SIGN_VERIFY` cannot allow the [`encrypt`][kms_encrypt] or
 #'     [`decrypt`][kms_decrypt] operations.
@@ -550,7 +550,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param GranteePrincipal &#91;required&#93; The principal that is given permission to perform the operations that
 #' the grant permits.
 #' 
@@ -1181,7 +1181,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param EncryptionAlgorithm Specifies the encryption algorithm that will be used to decrypt the
@@ -1485,7 +1485,7 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' An empty list.
@@ -1758,7 +1758,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param GrantTokens A list of grant tokens.
@@ -1884,7 +1884,7 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' An empty list.
@@ -1975,7 +1975,7 @@ kms_disable_key <- function(KeyId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' An empty list.
@@ -2140,7 +2140,7 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' An empty list.
@@ -2228,7 +2228,7 @@ kms_enable_key <- function(KeyId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' An empty list.
@@ -2390,7 +2390,7 @@ kms_enable_key_rotation <- function(KeyId) {
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param Plaintext &#91;required&#93; Data to be encrypted.
@@ -2596,7 +2596,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
@@ -2800,7 +2800,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param KeyPairSpec &#91;required&#93; Determines the type of data key pair that is generated.
@@ -2962,7 +2962,7 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param KeyPairSpec &#91;required&#93; Determines the type of data key pair that is generated.
@@ -3119,7 +3119,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
@@ -3304,7 +3304,7 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param PolicyName &#91;required&#93; Specifies the name of the key policy. The only valid name is `default`.
 #' To get the names of key policies, use
 #' [`list_key_policies`][kms_list_key_policies].
@@ -3413,7 +3413,7 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' A list with the following syntax:
@@ -3524,7 +3524,7 @@ kms_get_key_rotation_status <- function(KeyId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param WrappingAlgorithm &#91;required&#93; The algorithm you will use to encrypt the key material before importing
 #' it with [`import_key_material`][kms_import_key_material]. For more
 #' information, see [Encrypt the Key
@@ -3600,7 +3600,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' 
 #' You do not need to download the public key. Instead, you can use the
 #' public key within AWS KMS by calling the [`encrypt`][kms_encrypt],
-#' [`re_encrypt`](kms_re_encrypt), or [`verify`][kms_verify] operations
+#' [`re_encrypt`][kms_re_encrypt], or [`verify`][kms_verify] operations
 #' with the identifier of an asymmetric CMK. When you use the public key
 #' within AWS KMS, you benefit from the authentication, authorization, and
 #' logging that are part of every AWS KMS operation. You also reduce of
@@ -3671,7 +3671,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param GrantTokens A list of grant tokens.
@@ -3825,7 +3825,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param ImportToken &#91;required&#93; The import token that you received in the response to a previous
 #' [`get_parameters_for_import`][kms_get_parameters_for_import] request. It
 #' must be from the same response that contained the public key that you
@@ -3953,7 +3953,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param Limit Use this parameter to specify the maximum number of items to return.
 #' When this value is present, AWS KMS does not return more than the
 #' specified number of items, but it might return fewer.
@@ -4076,7 +4076,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #'
 #' @return
 #' A list with the following syntax:
@@ -4185,7 +4185,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param Limit Use this parameter to specify the maximum number of items to return.
 #' When this value is present, AWS KMS does not return more than the
 #' specified number of items, but it might return fewer.
@@ -4373,7 +4373,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param Limit Use this parameter to specify the maximum number of items to return.
 #' When this value is present, AWS KMS does not return more than the
 #' specified number of items, but it might return fewer.
@@ -4608,7 +4608,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param PolicyName &#91;required&#93; The name of the key policy. The only valid value is `default`.
 #' @param Policy &#91;required&#93; The key policy to attach to the CMK.
 #' 
@@ -4843,7 +4843,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param DestinationKeyId &#91;required&#93; A unique identifier for the CMK that is used to reencrypt the data.
@@ -4868,7 +4868,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param DestinationEncryptionContext Specifies that encryption context to use when the reencrypting the data.
@@ -5105,7 +5105,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param GrantId &#91;required&#93; Identifier of the grant to be revoked.
 #'
 #' @return
@@ -5214,7 +5214,7 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param PendingWindowInDays The waiting period, specified in number of days. After the waiting
 #' period ends, AWS KMS deletes the customer master key (CMK).
 #' 
@@ -5356,7 +5356,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param Message &#91;required&#93; Specifies the message or message digest to sign. Messages can be 0-4096
@@ -5480,7 +5480,7 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param Tags &#91;required&#93; One or more tags.
 #' 
 #' Each tag consists of a tag key and a tag value. The tag value can be an
@@ -5593,7 +5593,7 @@ kms_tag_resource <- function(KeyId, Tags) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param TagKeys &#91;required&#93; One or more tag keys. Specify only the tag keys, not the tag values.
 #'
 #' @return
@@ -5725,7 +5725,7 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' 
 #' To verify that the alias is mapped to the correct CMK, use
 #' [`list_aliases`][kms_list_aliases].
@@ -5938,7 +5938,7 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 #'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key].
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
 #' @param Description &#91;required&#93; New description for the CMK.
 #'
 #' @return
@@ -6055,7 +6055,7 @@ kms_update_key_description <- function(KeyId, Description) {
 #' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' To get the key ID and key ARN for a CMK, use
-#' [`list_keys`](kms_list_keys) or [`describe_key`][kms_describe_key]. To
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key]. To
 #' get the alias name and alias ARN, use
 #' [`list_aliases`][kms_list_aliases].
 #' @param Message &#91;required&#93; Specifies the message that was signed. You can submit a raw message of

@@ -22,7 +22,7 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use
-\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{GranteePrincipal}{[required] The principal that is given permission to perform the operations that
 the grant permits.
@@ -101,7 +101,7 @@ grant allows an operation that the CMK does not support,
 \itemize{
 \item Grants for symmetric CMKs cannot allow operations that are not
 supported for symmetric CMKs, including \code{\link[=kms_sign]{sign}},
-\href{kms_verify}{\code{verify}}, and \code{\link[=kms_get_public_key]{get_public_key}}.
+\code{\link[=kms_verify]{verify}}, and \code{\link[=kms_get_public_key]{get_public_key}}.
 (There are limited exceptions to this rule for legacy operations,
 but you should not create a grant for an operation that AWS KMS does
 not support.)
@@ -112,7 +112,7 @@ or operations related to \href{https://docs.aws.amazon.com/kms/latest/developerg
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
 or CMKs in \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}.
 \item Grants for asymmetric CMKs with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}
-cannot allow the \href{kms_sign}{\code{sign}} or \code{\link[=kms_verify]{verify}}
+cannot allow the \code{\link[=kms_sign]{sign}} or \code{\link[=kms_verify]{verify}}
 operations. Grants for asymmetric CMKs with a \code{KeyUsage} of
 \code{SIGN_VERIFY} cannot allow the \code{\link[=kms_encrypt]{encrypt}} or
 \code{\link[=kms_decrypt]{decrypt}} operations.

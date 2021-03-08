@@ -22,7 +22,7 @@ example: 2019-07-26T20:00:00Z for 8:00 PM UTC July 26, 2019.}
 and consists of two or more terms, which are comprised of lowercase
 alphanumeric characters, separated by a hyphen. Examples are
 email-open-rate and successful-delivery-rate. For a list of valid
-values, see the \href{https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html}{Amazon Pinpoint Developer Guide}.}
+values, see the Amazon Pinpoint Developer Guide.}
 
 \item{NextToken}{The string that specifies which page of results to return in a paginated
 response. This parameter is not supported for application, campaign, and

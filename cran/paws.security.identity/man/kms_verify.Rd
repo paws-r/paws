@@ -27,7 +27,7 @@ For example:
 }
 
 To get the key ID and key ARN for a CMK, use
-\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+\code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
 get the alias name and alias ARN, use
 \code{\link[=kms_list_aliases]{list_aliases}}.}
 
