@@ -1,3 +1,40 @@
+# paws 0.1.11
+
+* Fix the default endpoints for a number of services which previously used
+  non-standard or incorrect endpoints:
+  + API Gateway Management API (apigatewaymanagementapi)
+  + API Gateway V2 (apigatewayv2)
+  + Application AutoScaling (applicationautoscaling)
+  + AutoScaling Plans (autoscalingplans)
+  + EC2 Instance Connect (ec2instanceconnect)
+  + Elastic Container Registry (ecr)
+  + EventBridge (eventbridge)
+  + Kinesis Analytics V2 (kinesisanalyticsv2)
+  + License Manager (licensemanager)
+  + Personalize Events (personalizeevents)
+  + Personalize Runtime (personalizeruntime)
+  + Pinpoint Email (pinpointemail)
+  + Pinpoint SMS and Voice (pinpointsmsvoice)
+  + RDS Data Service (rdsdataservice)
+  + S3 Control (s3control)
+  + SageMaker (sagemaker)
+* Updates to documentation:
+  + Link to the relevant Paws help page wherever the documentation refers to
+    an API operation, e.g. references to S3's `ListBuckets` operation now link
+    to the `list_buckets` documentation.
+  + Show the structure of API responses.
+  + Remove extra escapes and fix miscellaneous formatting issues.
+* Updates to credential support inherited from updates to paws.common. See
+  https://github.com/paws-r/paws/blob/main/docs/credentials.md for details 
+  about which options are supported and how to use them.
+  + Support multifactor authentication with the `mfa_serial` shared 
+    configuration file setting in concert with `role_arn`.
+  + Cache credentials in each service object and automatically refresh them
+    when they expire.
+  + Support the environment variable options `AWS_CONFIG_FILE`, 
+    `AWS_SHARED_CREDENTIALS_FILE`, `AWS_CREDENTIAL_EXPIRATION`, and 
+    `AWS_EC2_METADATA_DISABLED`.
+
 # paws 0.1.10
 
 * Update Paws with the latest AWS features.
