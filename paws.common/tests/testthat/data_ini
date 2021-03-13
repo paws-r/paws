@@ -1,0 +1,23 @@
+[default]
+arg1=value1
+arg2=value2
+
+[foo]
+arg1=foo_value1
+arg2=foo_value2
+
+# [ignore1]
+# arg1=value1
+# arg2=value2
+
+; [ignore2]
+; arg1=value1
+; arg2=value2
+
+[profile bar]
+arg1=bar_value1
+arg2=bar_value2
+
+[equalsign]
+arg1=value1==
+arg2=value2
