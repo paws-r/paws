@@ -25,6 +25,11 @@ test_that("update_endpoint_for_s3_config", {
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "foo-bar.s3.amazonaws.com")
 
+  req <- build_request(bucket = "foo-bar", operation = "ListObjects")
+  req$config$s3_force_path_style <- TRUE
+  result <- update_endpoint_for_s3_config(req)
+  expect_equal(result$http_request$url$host, "s3.amazonaws.com")
+
   req <- build_request(bucket = "foo.bar", operation = "ListObjects")
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "s3.amazonaws.com")
