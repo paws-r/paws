@@ -25,15 +25,24 @@ test_that("update_endpoint_for_s3_config", {
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "foo-bar.s3.amazonaws.com")
 
+  # Use a path style URL if the config specifies path style.
   req <- build_request(bucket = "foo-bar", operation = "ListObjects")
   req$config$s3_force_path_style <- TRUE
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "s3.amazonaws.com")
 
+  # Use a path style URL if the config has a custom endpoint.
+  req <- build_request(bucket = "foo-bar", operation = "ListObjects")
+  req$config$endpoint <- "localhost:9000"
+  result <- update_endpoint_for_s3_config(req)
+  expect_equal(result$http_request$url$host, "s3.amazonaws.com")
+
+  # Use a path style URL if the bucket name is not DNS compatible.
   req <- build_request(bucket = "foo.bar", operation = "ListObjects")
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "s3.amazonaws.com")
 
+  # Use a path style URL for GetBucketLocation specifically.
   req <- build_request(bucket = "foo-bar", operation = "GetBucketLocation")
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "s3.amazonaws.com")
