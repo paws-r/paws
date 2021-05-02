@@ -65,8 +65,14 @@ update_endpoint_for_s3_config <- function(request) {
 
   if (request$operation$name %in% c("GetBucketLocation")) return(request)
 
-  request$http_request$url <-
-    move_bucket_to_host(request$http_request$url, bucket_name)
+  use_virtual_host_style <- TRUE
+  if (request$config$s3_force_path_style) use_virtual_host_style <- FALSE
+  if (request$config$endpoint != "") use_virtual_host_style <- FALSE
+
+  if (use_virtual_host_style) {
+    request$http_request$url <-
+      move_bucket_to_host(request$http_request$url, bucket_name)
+  }
 
   return(request)
 }
