@@ -108,7 +108,7 @@ new_request <- function(client, operation, params, data) {
     method <- "POST"
   }
 
-  http_req <- new_http_request(method, "", NULL)
+  http_req <- new_http_request(method, "", NULL, client$config$timeout)
 
   http_req$url <- parse_url(
     paste0(client$client_info$endpoint, operation$http_path)

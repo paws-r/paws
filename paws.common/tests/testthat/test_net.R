@@ -9,6 +9,29 @@ test_that("issue", {
   expect_equal(body$slideshow$title, "Sample Slide Show")
 })
 
+test_that("timeout", {
+  req <- HttpRequest(
+    method = "GET",
+    url = parse_url("https://example.com:81"),
+    timeout = 1
+  )
+  quietly <- function(expr) suppressMessages(tryCatch(expr, error = function(e) {}))
+  time <- system.time({
+    quietly(issue(req))
+  })
+  expect_equivalent(time["elapsed"], 1, tolerance = 0.5)
+})
+
+test_that("timeout does not affect established connections", {
+  req <- HttpRequest(
+    method = "GET",
+    url = parse_url("https://httpbin.org/delay/3"),
+    timeout = 1
+  )
+  resp <- issue(req)
+  expect_equal(resp$status_code, 200)
+})
+
 test_that("don't decompress the body when already decompressed", {
   req <- HttpRequest(
     method = "GET",

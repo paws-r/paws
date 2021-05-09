@@ -90,7 +90,8 @@ issue <- function(http_request) {
   url <- build_url(http_request$url)
   headers <- unlist(http_request$header)
   body <- http_request$body
-  timeout <- if (!is.null(http_request$timeout)) httr::timeout(http_request$timeout)
+  timeout <- httr::config(connecttimeout = http_request$timeout)
+  if (is.null(http_request$timeout)) timeout <- NULL
 
   if (url == "") {
     stop("no url provided")

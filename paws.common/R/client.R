@@ -12,6 +12,7 @@ Config <- struct(
   region = "",
   disable_ssl = FALSE,
   max_retries = -1,
+  timeout = 60,
   retryer = NULL,
   disable_param_validation = FALSE,
   disable_compute_checksums = FALSE,
