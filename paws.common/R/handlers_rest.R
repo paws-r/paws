@@ -16,11 +16,6 @@ rest_build_location_elements <- function(request, values, build_get_query) {
   for (field_name in names(values)) {
     field <- values[[field_name]]
 
-    # Ignore unexported fields.
-    if (substr(field_name, 1, 1) == tolower(substr(field_name, 1, 1))) {
-      next
-    }
-
     if (is_valid(field)) {
       name <- tag_get(field, "locationName")
       if (name == "") {

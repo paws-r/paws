@@ -50,3 +50,25 @@ test_that("build request with URL requiring escaping", {
   expect_equal(r$url$path, "/mybucket/my/cool+thing space/object世界")
   expect_equal(r$url$raw_path, "/mybucket/my/cool%2Bthing%20space/object%E4%B8%96%E7%95%8C")
 })
+
+test_that("build request with URL", {
+  op1 <- Operation(
+    name = "OperationName",
+    http_method = "GET",
+    http_path = "/{foo}"
+  )
+  op_input1 <- function(foo) {
+    args <- list(foo = foo)
+    interface <- Structure(
+      foo = Scalar(type = "string", .tags = list(location = "uri"))
+    )
+    return(populate(args, interface))
+  }
+  input <- op_input1(
+    foo = "bar"
+  )
+  req <- new_request(svc, op1, input, NULL)
+  req <- build(req)
+  r <- req$http_request
+  expect_equal(r$url$path, "/bar")
+})
