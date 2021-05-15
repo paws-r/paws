@@ -14,7 +14,6 @@ Description: Functions for making low-level API requests to Amazon Web Services
     Service (S3).
 License: Apache License (>= 2.0)
 Encoding: UTF-8
-LazyData: true
 Imports:
     base64enc,
     digest,
