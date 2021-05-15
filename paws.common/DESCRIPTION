@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.3.9
+Version: 0.3.10
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = c("aut", "cre")),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -14,7 +14,6 @@ Description: Functions for making low-level API requests to Amazon Web Services
     Service (S3).
 License: Apache License (>= 2.0)
 Encoding: UTF-8
-LazyData: true
 Imports:
     base64enc,
     digest,
