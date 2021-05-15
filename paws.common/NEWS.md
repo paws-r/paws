@@ -1,3 +1,29 @@
+# paws.common 0.3.10
+
+* Use path style URLs for S3 when using custom endpoints, (e.g. 
+  localhost:9000/mybucket). This is useful when using software like MinIO. When
+  not using custom endpoints, Paws will in general use "virtual hosted" URLs
+  (e.g. mybucket.s3.amazonaws.com) except in special cases.
+
+* Use path style URLs for S3 when using the new `s3_force_path_style` option
+  when calling paws::s3(), e.g.:
+  ```r
+  s3 <- paws::s3(config = list(
+      s3_force_path_style = TRUE
+  ))
+  ```
+
+* Add support and a default value for `timeout`, how long to wait in seconds
+  for an acknowledgement of an HTTP request before failing. Default = 60.
+  This is user configurable by adding arguments to the service call, e.g.
+  ```r
+  svc <- paws::svc(config = list(timeout = 10))
+  ```
+
+* Don't skip lower case field names for REST location elements. For example,
+  `lexmodelbuildingservice$create_bot_version(name, checksum)` previously
+  failed due incorrectly skipping the `name` field.
+
 # paws.common 0.3.9
 
 * Support multifactor authentication, using the `mfa_serial` shared
