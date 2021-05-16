@@ -56,10 +56,40 @@ move_bucket_to_host <- function(url, bucket) {
   return(url)
 }
 
+# Check if a given bucket name is an S3 access point.
+is_access_point <- function(bucket_name) {
+  regex <- "^(.+):(.+):(.+):(.+):(.+):(.+)$"
+  return(grepl(regex, bucket_name))
+}
+
+# Parse the S3 access point ARN and return the corresponding endpoint.
+# Access point endpoint format: {accesspointName}-{accountId}.s3-accesspoint.{region}.{dnsSuffix}
+# Example: myaccesspoint-012345678901.s3-accesspoint.us-west-2.amazonaws.com
+get_access_point_endpoint <- function(access_point) {
+  part <- strsplit(access_point, ":|/")[[1]]
+  region <- part[4]
+  account <- part[5]
+  name <- part[7]
+  endpoint <- sprintf("%s-%s.s3-accesspoint.%s.amazonaws.com", name, account, region)
+  return(endpoint)
+}
+
+remove_bucket_from_url <- function(url) {
+  url$path <- gsub("\\{Bucket+?\\}", "", url$path)
+  if (url$path == "") url$path <- "/"
+  return(url)
+}
+
 update_endpoint_for_s3_config <- function(request) {
   bucket_name <- bucket_name_from_req_params(request)
 
   if (is.null(bucket_name)) return(request)
+
+  if (is_access_point(bucket_name)) {
+    request$http_request$url$host <- get_access_point_endpoint(bucket_name)
+    request$http_request$url <- remove_bucket_from_url(request$http_request$url)
+    return(request)
+  }
 
   if (!host_compatible_bucket_name(bucket_name)) return(request)
 
